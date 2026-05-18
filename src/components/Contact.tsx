@@ -11,9 +11,10 @@ interface ContactProps {
   onPrivacy: () => void;
   onTerms: () => void;
   onContact: () => void;
+  onBlog: () => void;
 }
 
-export function Contact({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTerms, onContact }: ContactProps) {
+export function Contact({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTerms, onContact, onBlog }: ContactProps) {
   useEffect(() => {
     document.title = "Contact Us | Wedding Planning Checklists";
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -24,7 +25,7 @@ export function Contact({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, on
 
   return (
     <div className="min-h-screen bg-white">
-      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} onPrivacy={onPrivacy} onContact={onContact} />
+      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} onPrivacy={onPrivacy} onBlog={onBlog} onContact={onContact} />
 
       <section className="relative pt-40 pb-16 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-rose-50/50 rounded-full blur-3xl -z-10" />
