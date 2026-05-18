@@ -167,7 +167,7 @@ export function Dashboard({ tasks, setTasks, budget, guests, couple, currency, o
             </div>
 
             <div className="space-y-4">
-              {budget.categories.slice(0, 4).map(cat => (
+              {[...budget.categories].sort((a, b) => b.allocated - a.allocated).slice(0, 4).map(cat => (
                 <div key={cat.id} className="space-y-1.5">
                   <div className="flex justify-between text-xs font-medium">
                     <span className="text-slate-600">{cat.name}</span>
