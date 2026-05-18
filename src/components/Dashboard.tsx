@@ -33,9 +33,10 @@ interface DashboardProps {
   };
   currency: string;
   onOpenSettings: () => void;
+  onTabChange: (tab: string) => void;
 }
 
-export function Dashboard({ tasks, budget, guests, couple, currency, onOpenSettings }: DashboardProps) {
+export function Dashboard({ tasks, budget, guests, couple, currency, onOpenSettings, onTabChange }: DashboardProps) {
   const completedTasks = tasks.filter(t => t.completed).length;
   const totalTasks = tasks.length;
   const taskProgress = Math.round((completedTasks / totalTasks) * 100);
@@ -44,13 +45,22 @@ export function Dashboard({ tasks, budget, guests, couple, currency, onOpenSetti
   const totalGuests = guests.length;
 
   const totalSpent = budget.categories.reduce((acc, cat) => acc + cat.spent, 0);
-  const budgetProgress = Math.round((totalSpent / budget.total) * 100);
+  const budgetProgress = budget.total > 0 ? Math.round((totalSpent / budget.total) * 100) : 0;
 
   const symbol = CURRENCY_SYMBOLS[currency] || '₨';
 
+  const formatShort = (val: number) => {
+    if (val >= 1000000) return (val / 1000000).toFixed(1) + 'M';
+    if (val >= 1000) return (val / 1000).toFixed(1) + 'k';
+    return val.toString();
+  };
+
+  const daysToWedding = Math.ceil((new Date(couple.weddingDate || '2026-10-12').getTime() - new Date().getTime()) / (1000 * 3600 * 24));
+  const formattedDate = new Date(couple.weddingDate || '2026-10-12').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
   const chartData = [
     { name: 'Spent', value: totalSpent },
-    { name: 'Remaining', value: budget.total - totalSpent }
+    { name: 'Remaining', value: Math.max(0, budget.total - totalSpent) }
   ];
 
   const COLORS = ['#f43f5e', '#e2e8f0'];
@@ -89,15 +99,15 @@ export function Dashboard({ tasks, budget, guests, couple, currency, onOpenSetti
         />
         <StatCard 
           title="Budget Spent" 
-          value={`${symbol}${(totalSpent / 1000000).toFixed(1)}M`} 
-          subtitle={`${budgetProgress}% of total budget`}
+          value={`${symbol}${formatShort(totalSpent)}`} 
+          subtitle={`${budgetProgress}% of ${symbol}${formatShort(budget.total)}`}
           icon={CreditCard}
           color="emerald"
         />
         <StatCard 
           title="Days to Wedding" 
-          value="242" 
-          subtitle="October 12, 2026"
+          value={daysToWedding > 0 ? daysToWedding : 0} 
+          subtitle={formattedDate}
           icon={Clock}
           color="amber"
         />
@@ -115,7 +125,7 @@ export function Dashboard({ tasks, budget, guests, couple, currency, onOpenSetti
         <div className="lg:col-span-2 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between mb-6">
             <h3 className="font-bold text-lg">Budget Overview</h3>
-            <button className="text-xs font-semibold text-rose-500 flex items-center gap-1 hover:underline">
+            <button onClick={() => onTabChange('budget')} className="text-xs font-semibold text-rose-500 flex items-center gap-1 hover:underline">
               View full report <ArrowUpRight size={14} />
             </button>
           </div>
@@ -186,7 +196,7 @@ export function Dashboard({ tasks, budget, guests, couple, currency, onOpenSetti
               </div>
             ))}
           </div>
-          <button className="w-full mt-6 py-3 border border-slate-100 rounded-2xl text-xs font-bold text-slate-500 hover:bg-slate-50 transition-all">
+          <button onClick={() => onTabChange('tasks')} className="w-full mt-6 py-3 border border-slate-100 rounded-2xl text-xs font-bold text-slate-500 hover:bg-slate-50 transition-all">
             See All Tasks
           </button>
         </div>
