@@ -174,10 +174,11 @@ const INITIAL_VENDORS: Vendor[] = [
 
 import { LandingPage } from './components/LandingPage';
 import { Guide } from './components/Guide';
+import { About } from './components/About';
 import { Modal } from './components/ui/Modal';
 import { CURRENCY_SYMBOLS } from './lib/constants';
 
-type Tab = 'home' | 'guide' | 'dashboard' | 'tasks' | 'budget' | 'guests' | 'vendors' | 'calendar';
+type Tab = 'home' | 'about' | 'guide' | 'dashboard' | 'tasks' | 'budget' | 'guests' | 'vendors' | 'calendar';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('home');
@@ -191,7 +192,8 @@ export default function App() {
     partner1: 'Zain', 
     partner2: 'Sarah',
     contactPerson: 'Zain',
-    contactNumber: '+92 300 1234567'
+    contactNumber: '+92 300 1234567',
+    weddingDate: '2026-10-12'
   });
   const [currency, setCurrency] = useState('PKR');
 
@@ -203,6 +205,9 @@ export default function App() {
 
   // Temp state for settings form
   const [settingsForm, setSettingsForm] = useState({ ...couple, currency, totalBudget: budget.total });
+
+  const daysToWedding = Math.ceil((new Date(couple.weddingDate || '2026-10-12').getTime() - new Date().getTime()) / (1000 * 3600 * 24));
+  const formattedWeddingDate = new Date(couple.weddingDate || '2026-10-12').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
@@ -217,7 +222,8 @@ export default function App() {
       partner1: settingsForm.partner1, 
       partner2: settingsForm.partner2,
       contactPerson: settingsForm.contactPerson,
-      contactNumber: settingsForm.contactNumber
+      contactNumber: settingsForm.contactNumber,
+      weddingDate: settingsForm.weddingDate
     });
     setCurrency(settingsForm.currency);
     setBudget(prev => ({ ...prev, total: settingsForm.totalBudget }));
@@ -238,9 +244,11 @@ export default function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'home':
-        return <LandingPage onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} couple={couple} />;
+        return <LandingPage onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} couple={couple} />;
       case 'guide':
-        return <Guide onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} />;
+        return <Guide onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} />;
+      case 'about':
+        return <About onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} />;
       case 'dashboard':
         return (
           <Dashboard 
@@ -250,6 +258,7 @@ export default function App() {
             couple={couple} 
             currency={currency}
             onOpenSettings={openSettings} 
+            onTabChange={setActiveTab}
           />
         );
       case 'tasks':
@@ -271,6 +280,7 @@ export default function App() {
             couple={couple} 
             currency={currency}
             onOpenSettings={openSettings} 
+            onTabChange={setActiveTab}
           />
         );
     }
@@ -344,8 +354,8 @@ export default function App() {
                   <Calendar size={16} className="text-rose-400" />
                   <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">Countdown</span>
                 </div>
-                <p className="text-2xl font-bold mb-1">242 Days</p>
-                <p className="text-[10px] text-slate-400">to the Big Day • Oct 12, 2026</p>
+                <p className="text-2xl font-bold mb-1">{daysToWedding > 0 ? daysToWedding : 0} Days</p>
+                <p className="text-[10px] text-slate-400">to the Big Day • {formattedWeddingDate}</p>
               </div>
             </div>
           </div>
@@ -354,7 +364,7 @@ export default function App() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
-        {activeTab !== 'home' && activeTab !== 'guide' && (
+        {activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && (
           <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-30 shrink-0">
             <button 
               onClick={toggleSidebar}
@@ -377,7 +387,7 @@ export default function App() {
 
         <div className={cn(
           "p-0 overflow-auto h-full",
-          activeTab !== 'home' && activeTab !== 'guide' && "p-4 sm:p-8"
+          activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && "p-4 sm:p-8"
         )}>
           <AnimatePresence mode="wait">
             <motion.div
@@ -446,6 +456,17 @@ export default function App() {
                 className="w-full px-5 py-3 bg-slate-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-rose-500 outline-none transition-all"
               />
             </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Wedding Date</label>
+            <input
+              type="date"
+              required
+              value={settingsForm.weddingDate}
+              onChange={e => setSettingsForm({ ...settingsForm, weddingDate: e.target.value })}
+              className="w-full px-5 py-3 bg-slate-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-rose-500 outline-none transition-all"
+            />
           </div>
 
           <div className="space-y-2">
