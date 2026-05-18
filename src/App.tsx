@@ -176,10 +176,13 @@ import { LandingPage } from './components/LandingPage';
 import { Guide } from './components/Guide';
 import { About } from './components/About';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { TermsOfService } from './components/TermsOfService';
+import { Blog } from './components/Blog';
+import { Contact } from './components/Contact';
 import { Modal } from './components/ui/Modal';
 import { CURRENCY_SYMBOLS } from './lib/constants';
 
-type Tab = 'home' | 'about' | 'privacy' | 'guide' | 'dashboard' | 'tasks' | 'budget' | 'guests' | 'vendors' | 'calendar';
+type Tab = 'home' | 'about' | 'privacy' | 'terms' | 'blog' | 'contact' | 'guide' | 'dashboard' | 'tasks' | 'budget' | 'guests' | 'vendors' | 'calendar';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>(() => {
@@ -189,7 +192,7 @@ export default function App() {
     if (path === '/guide') return 'guide';
     if (path === '/' || path === '') return 'home';
     const cleanPath = path.replace('/', '') as Tab;
-    const validTabs: Tab[] = ['home', 'about', 'privacy', 'guide', 'dashboard', 'tasks', 'budget', 'guests', 'vendors', 'calendar'];
+    const validTabs: Tab[] = ['home', 'about', 'privacy', 'terms', 'blog', 'contact', 'guide', 'dashboard', 'tasks', 'budget', 'guests', 'vendors', 'calendar'];
     return validTabs.includes(cleanPath) ? cleanPath : 'home';
   });
 
@@ -197,6 +200,9 @@ export default function App() {
     let path = '/';
     if (activeTab === 'about') path = '/about-us';
     else if (activeTab === 'privacy') path = '/privacy-policy';
+    else if (activeTab === 'terms') path = '/terms-of-service';
+    else if (activeTab === 'blog') path = '/blog';
+    else if (activeTab === 'contact') path = '/contact';
     else if (activeTab === 'guide') path = '/guide';
     else if (activeTab !== 'home') path = `/${activeTab}`;
     
@@ -210,11 +216,14 @@ export default function App() {
       const path = window.location.pathname;
       if (path === '/about-us') setActiveTab('about');
       else if (path === '/privacy-policy') setActiveTab('privacy');
+      else if (path === '/terms-of-service') setActiveTab('terms');
+      else if (path === '/blog') setActiveTab('blog');
+      else if (path === '/contact') setActiveTab('contact');
       else if (path === '/guide') setActiveTab('guide');
       else if (path === '/' || path === '') setActiveTab('home');
       else {
         const cleanPath = path.replace('/', '') as Tab;
-        const validTabs: Tab[] = ['home', 'about', 'privacy', 'guide', 'dashboard', 'tasks', 'budget', 'guests', 'vendors', 'calendar'];
+        const validTabs: Tab[] = ['home', 'about', 'privacy', 'terms', 'blog', 'contact', 'guide', 'dashboard', 'tasks', 'budget', 'guests', 'vendors', 'calendar'];
         setActiveTab(validTabs.includes(cleanPath) ? cleanPath : 'home');
       }
     };
@@ -284,13 +293,19 @@ export default function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'home':
-        return <LandingPage onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} couple={couple} />;
+        return <LandingPage onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} onTerms={() => setActiveTab('terms')} onBlog={() => setActiveTab('blog')} onContact={() => setActiveTab('contact')} couple={couple} />;
       case 'guide':
-        return <Guide onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} />;
+        return <Guide onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} onTerms={() => setActiveTab('terms')} onBlog={() => setActiveTab('blog')} onContact={() => setActiveTab('contact')} />;
       case 'about':
-        return <About onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} />;
+        return <About onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} onTerms={() => setActiveTab('terms')} onBlog={() => setActiveTab('blog')} onContact={() => setActiveTab('contact')} />;
       case 'privacy':
-        return <PrivacyPolicy onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} />;
+        return <PrivacyPolicy onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} onTerms={() => setActiveTab('terms')} onBlog={() => setActiveTab('blog')} onContact={() => setActiveTab('contact')} />;
+      case 'terms':
+        return <TermsOfService onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} onTerms={() => setActiveTab('terms')} onBlog={() => setActiveTab('blog')} onContact={() => setActiveTab('contact')} />;
+      case 'blog':
+        return <Blog onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} onTerms={() => setActiveTab('terms')} onBlog={() => setActiveTab('blog')} onContact={() => setActiveTab('contact')} />;
+      case 'contact':
+        return <Contact onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} onTerms={() => setActiveTab('terms')} onBlog={() => setActiveTab('blog')} onContact={() => setActiveTab('contact')} />;
       case 'dashboard':
         return (
           <Dashboard 
@@ -406,7 +421,7 @@ export default function App() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
-        {activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && activeTab !== 'privacy' && (
+        {activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && activeTab !== 'privacy' && activeTab !== 'terms' && activeTab !== 'blog' && activeTab !== 'contact' && (
           <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-30 shrink-0">
             <button 
               onClick={toggleSidebar}
@@ -429,7 +444,7 @@ export default function App() {
 
         <div className={cn(
           "p-0 overflow-auto h-full",
-          activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && activeTab !== 'privacy' && "p-4 sm:p-8"
+          activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && activeTab !== 'privacy' && activeTab !== 'terms' && activeTab !== 'blog' && activeTab !== 'contact' && "p-4 sm:p-8"
         )}>
           <AnimatePresence mode="wait">
             <motion.div
