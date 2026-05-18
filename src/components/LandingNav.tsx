@@ -24,10 +24,10 @@ export function LandingNav({ onHome, onGuide, onStart, onAbout, onPrivacy }: Lan
         </div>
 
         <nav className="hidden lg:flex items-center gap-10">
-          <button onClick={onHome} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Home</button>
-          <button onClick={onAbout} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">About Us</button>
-          <button onClick={onGuide} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Wedding Planning Checklists</button>
-          <button onClick={onPrivacy} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Privacy Policy</button>
+          <a href="/" onClick={(e) => { e.preventDefault(); onHome(); }} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Home</a>
+          <a href="/about-us" onClick={(e) => { e.preventDefault(); onAbout(); }} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">About Us</a>
+          <a href="/guide" onClick={(e) => { e.preventDefault(); onGuide(); }} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Wedding Planning Checklists</a>
+          <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); onPrivacy(); }} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Privacy Policy</a>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -56,10 +56,10 @@ export function LandingNav({ onHome, onGuide, onStart, onAbout, onPrivacy }: Lan
             className="lg:hidden bg-white border-b border-slate-100 overflow-hidden"
           >
             <div className="p-6 flex flex-col gap-6">
-              <button onClick={() => { setIsMenuOpen(false); onHome(); }} className="text-left text-sm font-bold text-slate-500">Home</button>
-              <button onClick={() => { setIsMenuOpen(false); onAbout(); }} className="text-left text-sm font-bold text-slate-500">About Us</button>
-              <button onClick={() => { setIsMenuOpen(false); onGuide(); }} className="text-left text-sm font-bold text-slate-500">Wedding Planning Checklists</button>
-              <button onClick={() => { setIsMenuOpen(false); onPrivacy(); }} className="text-left text-sm font-bold text-slate-500">Privacy Policy</button>
+              <a href="/" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onHome(); }} className="block text-left text-sm font-bold text-slate-500">Home</a>
+              <a href="/about-us" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onAbout(); }} className="block text-left text-sm font-bold text-slate-500">About Us</a>
+              <a href="/guide" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onGuide(); }} className="block text-left text-sm font-bold text-slate-500">Wedding Planning Checklists</a>
+              <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onPrivacy(); }} className="block text-left text-sm font-bold text-slate-500">Privacy Policy</a>
               <button 
                 onClick={onStart}
                 className="w-full bg-slate-900 text-white py-3.5 rounded-xl text-sm font-black"
