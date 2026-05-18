@@ -30,6 +30,7 @@ interface DashboardProps {
     partner2: string;
     contactPerson: string;
     contactNumber: string;
+    weddingDate?: string;
   };
   currency: string;
   onOpenSettings: () => void;
