@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Heart } from 'lucide-react';
 import { LandingNav } from './LandingNav';
+import { Footer } from './Footer';
 
 interface PrivacyPolicyProps {
   onStart: () => void;
@@ -179,23 +180,15 @@ export function PrivacyPolicy({ onStart, onOpenGuide, onGoHome, onAbout, onPriva
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={onGoHome}>
-            <div className="w-8 h-8 bg-rose-500 rounded-lg flex items-center justify-center text-white">
-              <Heart size={18} fill="currentColor" />
-            </div>
-            <span className="text-lg font-black tracking-tight">Wedding Planner<span className="text-rose-500 ml-1">Checklists</span></span>
-          </div>
-          <div className="flex gap-8 text-sm font-medium text-slate-400">
-            <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); onPrivacy(); }} className="hover:text-slate-600 transition-colors">Privacy Policy</a>
-            <a href="/terms-of-service" onClick={(e) => { e.preventDefault(); onTerms(); }} className="hover:text-slate-600 transition-colors">Terms of Service</a>
-            <a href="/about-us" onClick={(e) => { e.preventDefault(); onAbout(); }} className="hover:text-slate-600 transition-colors">About Us</a>
-            <a href="/contact" onClick={(e) => { e.preventDefault(); onContact(); }} className="hover:text-slate-600 transition-colors">Contact Support</a>
-          </div>
-        </div>
-      </footer>
+      <Footer 
+        onHome={onGoHome} 
+        onAbout={onAbout} 
+        onGuide={onOpenGuide} 
+        onBlog={onBlog} 
+        onContact={onContact} 
+        onPrivacy={onPrivacy} 
+        onTerms={onTerms} 
+      />
     </div>
   );
 }
