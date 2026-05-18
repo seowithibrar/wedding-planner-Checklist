@@ -175,10 +175,11 @@ const INITIAL_VENDORS: Vendor[] = [
 import { LandingPage } from './components/LandingPage';
 import { Guide } from './components/Guide';
 import { About } from './components/About';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { Modal } from './components/ui/Modal';
 import { CURRENCY_SYMBOLS } from './lib/constants';
 
-type Tab = 'home' | 'about' | 'guide' | 'dashboard' | 'tasks' | 'budget' | 'guests' | 'vendors' | 'calendar';
+type Tab = 'home' | 'about' | 'privacy' | 'guide' | 'dashboard' | 'tasks' | 'budget' | 'guests' | 'vendors' | 'calendar';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('home');
@@ -244,11 +245,13 @@ export default function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'home':
-        return <LandingPage onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} couple={couple} />;
+        return <LandingPage onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} couple={couple} />;
       case 'guide':
-        return <Guide onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} />;
+        return <Guide onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} />;
       case 'about':
-        return <About onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} />;
+        return <About onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} />;
+      case 'privacy':
+        return <PrivacyPolicy onStart={() => setActiveTab('dashboard')} onOpenGuide={() => setActiveTab('guide')} onGoHome={() => setActiveTab('home')} onAbout={() => setActiveTab('about')} onPrivacy={() => setActiveTab('privacy')} />;
       case 'dashboard':
         return (
           <Dashboard 
@@ -364,7 +367,7 @@ export default function App() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
-        {activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && (
+        {activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && activeTab !== 'privacy' && (
           <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-30 shrink-0">
             <button 
               onClick={toggleSidebar}
@@ -387,7 +390,7 @@ export default function App() {
 
         <div className={cn(
           "p-0 overflow-auto h-full",
-          activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && "p-4 sm:p-8"
+          activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && activeTab !== 'privacy' && "p-4 sm:p-8"
         )}>
           <AnimatePresence mode="wait">
             <motion.div
