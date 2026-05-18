@@ -8,9 +8,11 @@ interface LandingNavProps {
   onStart: () => void;
   onAbout: () => void;
   onPrivacy: () => void;
+  onBlog: () => void;
+  onContact: () => void;
 }
 
-export function LandingNav({ onHome, onGuide, onStart, onAbout, onPrivacy }: LandingNavProps) {
+export function LandingNav({ onHome, onGuide, onStart, onAbout, onPrivacy, onBlog, onContact }: LandingNavProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -27,8 +29,8 @@ export function LandingNav({ onHome, onGuide, onStart, onAbout, onPrivacy }: Lan
           <a href="/" onClick={(e) => { e.preventDefault(); onHome(); }} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Home</a>
           <a href="/about-us" onClick={(e) => { e.preventDefault(); onAbout(); }} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">About Us</a>
           <a href="/guide" onClick={(e) => { e.preventDefault(); onGuide(); }} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Wedding Planning Checklists</a>
-          <a href="/blog" className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Blog</a>
-          <a href="/contact" className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Contact Us</a>
+          <a href="/blog" onClick={(e) => { e.preventDefault(); onBlog(); }} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Blog</a>
+          <a href="/contact" onClick={(e) => { e.preventDefault(); onContact(); }} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Contact Us</a>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -60,8 +62,8 @@ export function LandingNav({ onHome, onGuide, onStart, onAbout, onPrivacy }: Lan
               <a href="/" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onHome(); }} className="block text-left text-sm font-bold text-slate-500">Home</a>
               <a href="/about-us" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onAbout(); }} className="block text-left text-sm font-bold text-slate-500">About Us</a>
               <a href="/guide" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onGuide(); }} className="block text-left text-sm font-bold text-slate-500">Wedding Planning Checklists</a>
-              <a href="/blog" className="block text-left text-sm font-bold text-slate-500">Blog</a>
-              <a href="/contact" className="block text-left text-sm font-bold text-slate-500">Contact Us</a>
+              <a href="/blog" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onBlog(); }} className="block text-left text-sm font-bold text-slate-500">Blog</a>
+              <a href="/contact" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onContact(); }} className="block text-left text-sm font-bold text-slate-500">Contact Us</a>
               <button 
                 onClick={onStart}
                 className="w-full bg-slate-900 text-white py-3.5 rounded-xl text-sm font-black"
