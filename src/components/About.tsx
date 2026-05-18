@@ -22,7 +22,7 @@ export function About({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy }: Ab
 
   return (
     <div className="min-h-screen bg-white">
-      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} />
+      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} onPrivacy={onPrivacy} />
 
       {/* Hero Section */}
       <section className="relative pt-40 pb-16 overflow-hidden">
