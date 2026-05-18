@@ -7,9 +7,10 @@ interface LandingNavProps {
   onGuide: () => void;
   onStart: () => void;
   onAbout: () => void;
+  onPrivacy: () => void;
 }
 
-export function LandingNav({ onHome, onGuide, onStart, onAbout }: LandingNavProps) {
+export function LandingNav({ onHome, onGuide, onStart, onAbout, onPrivacy }: LandingNavProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -26,8 +27,7 @@ export function LandingNav({ onHome, onGuide, onStart, onAbout }: LandingNavProp
           <button onClick={onHome} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Home</button>
           <button onClick={onAbout} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">About Us</button>
           <button onClick={onGuide} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Wedding Planning Checklists</button>
-          <button className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Blog</button>
-          <button className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Contact Us</button>
+          <button onClick={onPrivacy} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Privacy Policy</button>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -59,8 +59,7 @@ export function LandingNav({ onHome, onGuide, onStart, onAbout }: LandingNavProp
               <button onClick={() => { setIsMenuOpen(false); onHome(); }} className="text-left text-sm font-bold text-slate-500">Home</button>
               <button onClick={() => { setIsMenuOpen(false); onAbout(); }} className="text-left text-sm font-bold text-slate-500">About Us</button>
               <button onClick={() => { setIsMenuOpen(false); onGuide(); }} className="text-left text-sm font-bold text-slate-500">Wedding Planning Checklists</button>
-              <button className="text-left text-sm font-bold text-slate-500">Blog</button>
-              <button className="text-left text-sm font-bold text-slate-500">Contact Us</button>
+              <button onClick={() => { setIsMenuOpen(false); onPrivacy(); }} className="text-left text-sm font-bold text-slate-500">Privacy Policy</button>
               <button 
                 onClick={onStart}
                 className="w-full bg-slate-900 text-white py-3.5 rounded-xl text-sm font-black"
