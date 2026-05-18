@@ -187,9 +187,9 @@ export function PrivacyPolicy({ onStart, onOpenGuide, onGoHome, onAbout, onPriva
           </div>
           <div className="flex gap-8 text-sm font-medium text-slate-400">
             <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); onPrivacy(); }} className="hover:text-slate-600 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-slate-600 transition-colors">Terms of Service</a>
+            <a href="/terms-of-service" className="hover:text-slate-600 transition-colors">Terms of Service</a>
             <a href="/about-us" onClick={(e) => { e.preventDefault(); onAbout(); }} className="hover:text-slate-600 transition-colors">About Us</a>
-            <a href="#" className="hover:text-slate-600 transition-colors">Contact Support</a>
+            <a href="/contact" className="hover:text-slate-600 transition-colors">Contact Support</a>
           </div>
         </div>
       </footer>
