@@ -6,9 +6,10 @@ interface LandingNavProps {
   onHome: () => void;
   onGuide: () => void;
   onStart: () => void;
+  onAbout: () => void;
 }
 
-export function LandingNav({ onHome, onGuide, onStart }: LandingNavProps) {
+export function LandingNav({ onHome, onGuide, onStart, onAbout }: LandingNavProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -23,7 +24,7 @@ export function LandingNav({ onHome, onGuide, onStart }: LandingNavProps) {
 
         <nav className="hidden lg:flex items-center gap-10">
           <button onClick={onHome} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Home</button>
-          <button className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">About Us</button>
+          <button onClick={onAbout} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">About Us</button>
           <button onClick={onGuide} className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Wedding Planning Checklists</button>
           <button className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Blog</button>
           <button className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Contact Us</button>
@@ -56,7 +57,7 @@ export function LandingNav({ onHome, onGuide, onStart }: LandingNavProps) {
           >
             <div className="p-6 flex flex-col gap-6">
               <button onClick={() => { setIsMenuOpen(false); onHome(); }} className="text-left text-sm font-bold text-slate-500">Home</button>
-              <button className="text-left text-sm font-bold text-slate-500">About Us</button>
+              <button onClick={() => { setIsMenuOpen(false); onAbout(); }} className="text-left text-sm font-bold text-slate-500">About Us</button>
               <button onClick={() => { setIsMenuOpen(false); onGuide(); }} className="text-left text-sm font-bold text-slate-500">Wedding Planning Checklists</button>
               <button className="text-left text-sm font-bold text-slate-500">Blog</button>
               <button className="text-left text-sm font-bold text-slate-500">Contact Us</button>
