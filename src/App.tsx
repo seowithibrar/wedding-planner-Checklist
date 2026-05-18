@@ -310,6 +310,7 @@ export default function App() {
         return (
           <Dashboard 
             tasks={tasks} 
+            setTasks={setTasks}
             budget={budget} 
             guests={guests} 
             couple={couple} 
@@ -332,6 +333,7 @@ export default function App() {
         return (
           <Dashboard 
             tasks={tasks} 
+            setTasks={setTasks}
             budget={budget} 
             guests={guests} 
             couple={couple} 
