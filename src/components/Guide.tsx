@@ -18,7 +18,7 @@ import { cn } from '../lib/utils';
 
 import { LandingNav } from './LandingNav';
 
-export function Guide({ onStart, onOpenGuide, onGoHome, onAbout }: { onStart: () => void; onOpenGuide: () => void; onGoHome: () => void; onAbout: () => void; }) {
+export function Guide({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy }: { onStart: () => void; onOpenGuide: () => void; onGoHome: () => void; onAbout: () => void; onPrivacy: () => void; }) {
   const sections = [
     {
       title: "12 Months Before",
