@@ -243,7 +243,7 @@ export function LandingPage({ onStart, onOpenGuide, onGoHome, couple }: LandingP
                   <h4 className="font-bold text-slate-900 mb-3">Wedding Dress & Attire</h4>
                   <ul className="list-disc pl-5 space-y-2 text-slate-600">
                     <li>Begin shopping for your wedding dress (Allow 4–6 months for production)</li>
-                    <li>Choose bridesmaids' attire and groomsmen suits</li>
+                    <li>Choose bridesmaids&apos; attire and groomsmen suits</li>
                     <li>Research wedding jewelry and accessories</li>
                   </ul>
                 </div>
@@ -389,7 +389,7 @@ export function LandingPage({ onStart, onOpenGuide, onGoHome, couple }: LandingP
                     <li>Charge all devices (phone, camera backup)</li>
                     <li>Lay out everything you need for the next day</li>
                     <li>Pack your bridal emergency kit</li>
-                    <li>Get a good night's sleep</li>
+                    <li>Get a good night&apos;s sleep</li>
                   </ul>
                 </div>
                 <div>
