@@ -18,7 +18,7 @@ import { cn } from '../lib/utils';
 
 import { LandingNav } from './LandingNav';
 
-export function Guide({ onStart, onOpenGuide, onGoHome }: { onStart: () => void; onOpenGuide: () => void; onGoHome: () => void }) {
+export function Guide({ onStart, onOpenGuide, onGoHome, onAbout }: { onStart: () => void; onOpenGuide: () => void; onGoHome: () => void; onAbout: () => void; }) {
   const sections = [
     {
       title: "12 Months Before",
@@ -51,7 +51,7 @@ export function Guide({ onStart, onOpenGuide, onGoHome }: { onStart: () => void;
 
   return (
     <div className="bg-white min-h-screen">
-      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} />
+      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} />
       
       {/* Hero Section */}
       <section className="bg-rose-50/50 pt-32 pb-16">
