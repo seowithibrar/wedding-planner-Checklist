@@ -43,7 +43,7 @@ export function Dashboard({ tasks, setTasks, budget, guests, couple, currency, o
   const totalTasks = tasks.length;
   const taskProgress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
-  const toggleTask = (taskId: string) => {
+  const toggleTask = (taskId: number) => {
     if (setTasks) {
       setTasks(prev => prev.map(t => 
         t.id === taskId ? { ...t, completed: !t.completed } : t
