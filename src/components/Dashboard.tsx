@@ -20,6 +20,7 @@ import { CURRENCY_SYMBOLS } from '../lib/constants';
 
 interface DashboardProps {
   tasks: Task[];
+  setTasks?: React.Dispatch<React.SetStateAction<Task[]>>;
   budget: {
     total: number;
     categories: BudgetCategory[];
@@ -37,10 +38,18 @@ interface DashboardProps {
   onTabChange: (tab: string) => void;
 }
 
-export function Dashboard({ tasks, budget, guests, couple, currency, onOpenSettings, onTabChange }: DashboardProps) {
+export function Dashboard({ tasks, setTasks, budget, guests, couple, currency, onOpenSettings, onTabChange }: DashboardProps) {
   const completedTasks = tasks.filter(t => t.completed).length;
   const totalTasks = tasks.length;
-  const taskProgress = Math.round((completedTasks / totalTasks) * 100);
+  const taskProgress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
+  const toggleTask = (taskId: string) => {
+    if (setTasks) {
+      setTasks(prev => prev.map(t => 
+        t.id === taskId ? { ...t, completed: !t.completed } : t
+      ));
+    }
+  };
 
   const confirmedGuests = guests.filter(g => g.status === 'confirmed').length;
   const totalGuests = guests.length;
@@ -181,7 +190,11 @@ export function Dashboard({ tasks, budget, guests, couple, currency, onOpenSetti
           <h3 className="font-bold text-lg mb-4">Upcoming Tasks</h3>
           <div className="space-y-4">
             {tasks.filter(t => !t.completed).slice(0, 5).map(task => (
-              <div key={task.id} className="flex items-start gap-3 p-3 rounded-2xl hover:bg-slate-50 transition-colors group">
+              <div 
+                key={task.id} 
+                onClick={() => toggleTask(task.id)}
+                className="flex items-start gap-3 p-3 rounded-2xl hover:bg-slate-50 transition-colors group cursor-pointer"
+              >
                 <div className="mt-0.5 min-w-[20px]">
                   <div className="w-5 h-5 rounded border-2 border-slate-200 flex items-center justify-center group-hover:border-rose-400 transition-colors">
                     {task.completed && <CheckCircle2 size={14} className="text-rose-500" />}
