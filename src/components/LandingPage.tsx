@@ -631,9 +631,9 @@ export function LandingPage({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy
             <span className="text-lg font-black tracking-tight">Wedding Planner<span className="text-rose-500 ml-1">Checklists</span></span>
           </div>
           <div className="flex gap-8 text-sm font-medium text-slate-400">
-            <button onClick={onPrivacy} className="hover:text-slate-600 transition-colors">Privacy Policy</button>
+            <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); onPrivacy(); }} className="hover:text-slate-600 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-slate-600 transition-colors">Terms of Service</a>
-            <button onClick={onAbout} className="hover:text-slate-600 transition-colors">About Us</button>
+            <a href="/about-us" onClick={(e) => { e.preventDefault(); onAbout(); }} className="hover:text-slate-600 transition-colors">About Us</a>
             <a href="#" className="hover:text-slate-600 transition-colors">Contact Support</a>
           </div>
         </div>
