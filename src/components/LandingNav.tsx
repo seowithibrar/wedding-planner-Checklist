@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Heart, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface LandingNavProps {
   onHome: () => void;
@@ -34,6 +35,9 @@ export function LandingNav({ onHome, onGuide, onStart, onAbout, onPrivacy, onBlo
         </nav>
 
         <div className="flex items-center gap-4">
+          <div className="hidden md:block">
+            <LanguageSwitcher />
+          </div>
           <button 
             onClick={onStart}
             className="hidden sm:flex items-center gap-2 bg-slate-900 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-rose-500 transition-all shadow-lg shadow-slate-100"
@@ -64,6 +68,12 @@ export function LandingNav({ onHome, onGuide, onStart, onAbout, onPrivacy, onBlo
               <a href="/guide" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onGuide(); }} className="block text-left text-sm font-bold text-slate-500">Wedding Planning Checklists</a>
               <a href="/blog" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onBlog(); }} className="block text-left text-sm font-bold text-slate-500">Blog</a>
               <a href="/contact" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); onContact(); }} className="block text-left text-sm font-bold text-slate-500">Contact Us</a>
+              
+              <div className="pt-4 border-t border-slate-100 md:hidden">
+                <p className="text-xs font-bold text-slate-400 mb-3 uppercase tracking-wider">Select Language</p>
+                <LanguageSwitcher />
+              </div>
+
               <button 
                 onClick={onStart}
                 className="w-full bg-slate-900 text-white py-3.5 rounded-xl text-sm font-black"
