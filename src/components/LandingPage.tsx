@@ -79,9 +79,9 @@ export function LandingPage({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-[1.1]"
+              className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]"
             >
-              Wedding Planning <span className="text-rose-500 underline decoration-rose-200 underline-offset-8">Checklists</span>
+              Complete Wedding Planning <span className="text-rose-500 underline decoration-rose-200 underline-offset-8">Checklists</span> for Your Big Day
             </motion.h1>
             
             <motion.p 
@@ -118,7 +118,7 @@ export function LandingPage({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy
       <section className="py-24 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-3xl font-bold text-slate-900">Your Planning Command Center</h2>
+            <h2 className="text-3xl font-bold text-slate-900">Wedding Planning Checklists</h2>
             <p className="text-slate-500 font-medium">Everything you need to orchestrate the wedding of your dreams.</p>
           </div>
 
