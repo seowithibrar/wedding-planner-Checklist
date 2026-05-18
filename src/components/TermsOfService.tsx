@@ -11,9 +11,10 @@ interface TermsOfServiceProps {
   onPrivacy: () => void;
   onTerms: () => void;
   onContact: () => void;
+  onBlog: () => void;
 }
 
-export function TermsOfService({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTerms, onContact }: TermsOfServiceProps) {
+export function TermsOfService({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTerms, onContact, onBlog }: TermsOfServiceProps) {
   useEffect(() => {
     document.title = "Terms of Service | Wedding Planning Checklists";
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -24,7 +25,7 @@ export function TermsOfService({ onStart, onOpenGuide, onGoHome, onAbout, onPriv
 
   return (
     <div className="min-h-screen bg-white">
-      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} onPrivacy={onPrivacy} onContact={onContact} />
+      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} onPrivacy={onPrivacy} onBlog={onBlog} onContact={onContact} />
 
       <section className="relative pt-40 pb-16 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-rose-50/50 rounded-full blur-3xl -z-10" />
