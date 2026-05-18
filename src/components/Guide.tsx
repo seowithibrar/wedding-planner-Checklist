@@ -18,7 +18,7 @@ import { cn } from '../lib/utils';
 
 import { LandingNav } from './LandingNav';
 
-export function Guide({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy }: { onStart: () => void; onOpenGuide: () => void; onGoHome: () => void; onAbout: () => void; onPrivacy: () => void; }) {
+export function Guide({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTerms, onBlog, onContact }: { onStart: () => void; onOpenGuide: () => void; onGoHome: () => void; onAbout: () => void; onPrivacy: () => void; onTerms: () => void; onBlog: () => void; onContact: () => void; }) {
   const sections = [
     {
       title: "12 Months Before",
@@ -51,7 +51,7 @@ export function Guide({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy }: { 
 
   return (
     <div className="bg-white min-h-screen">
-      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} onPrivacy={onPrivacy} />
+      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} onPrivacy={onPrivacy} onBlog={onBlog} onContact={onContact} />
       
       {/* Hero Section */}
       <section className="bg-rose-50/50 pt-32 pb-16">
