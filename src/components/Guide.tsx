@@ -51,7 +51,7 @@ export function Guide({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy }: { 
 
   return (
     <div className="bg-white min-h-screen">
-      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} />
+      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} onPrivacy={onPrivacy} />
       
       {/* Hero Section */}
       <section className="bg-rose-50/50 pt-32 pb-16">
