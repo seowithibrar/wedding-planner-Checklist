@@ -7,9 +7,10 @@ interface AboutProps {
   onOpenGuide: () => void;
   onGoHome: () => void;
   onAbout: () => void;
+  onPrivacy: () => void;
 }
 
-export function About({ onStart, onOpenGuide, onGoHome, onAbout }: AboutProps) {
+export function About({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy }: AboutProps) {
   useEffect(() => {
     // Set Meta Title and Description for SEO
     document.title = "About Us | Wedding Planning Checklists — Who We Are & Why We Built This";
@@ -173,7 +174,7 @@ export function About({ onStart, onOpenGuide, onGoHome, onAbout }: AboutProps) {
             <span className="text-lg font-black tracking-tight">Wedding Planner<span className="text-rose-500 ml-1">Checklists</span></span>
           </div>
           <div className="flex gap-8 text-sm font-medium text-slate-400">
-            <a href="#" className="hover:text-slate-600 transition-colors">Privacy Policy</a>
+            <button onClick={onPrivacy} className="hover:text-slate-600 transition-colors">Privacy Policy</button>
             <a href="#" className="hover:text-slate-600 transition-colors">Terms of Service</a>
             <button onClick={onAbout} className="hover:text-slate-600 transition-colors">About Us</button>
             <a href="#" className="hover:text-slate-600 transition-colors">Contact Support</a>
