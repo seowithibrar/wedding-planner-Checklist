@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   BarChart3, 
   CheckSquare, 
@@ -182,7 +182,46 @@ import { CURRENCY_SYMBOLS } from './lib/constants';
 type Tab = 'home' | 'about' | 'privacy' | 'guide' | 'dashboard' | 'tasks' | 'budget' | 'guests' | 'vendors' | 'calendar';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<Tab>('home');
+  const [activeTab, setActiveTab] = useState<Tab>(() => {
+    const path = window.location.pathname;
+    if (path === '/about-us') return 'about';
+    if (path === '/privacy-policy') return 'privacy';
+    if (path === '/guide') return 'guide';
+    if (path === '/' || path === '') return 'home';
+    const cleanPath = path.replace('/', '') as Tab;
+    const validTabs: Tab[] = ['home', 'about', 'privacy', 'guide', 'dashboard', 'tasks', 'budget', 'guests', 'vendors', 'calendar'];
+    return validTabs.includes(cleanPath) ? cleanPath : 'home';
+  });
+
+  useEffect(() => {
+    let path = '/';
+    if (activeTab === 'about') path = '/about-us';
+    else if (activeTab === 'privacy') path = '/privacy-policy';
+    else if (activeTab === 'guide') path = '/guide';
+    else if (activeTab !== 'home') path = `/${activeTab}`;
+    
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, '', path);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path === '/about-us') setActiveTab('about');
+      else if (path === '/privacy-policy') setActiveTab('privacy');
+      else if (path === '/guide') setActiveTab('guide');
+      else if (path === '/' || path === '') setActiveTab('home');
+      else {
+        const cleanPath = path.replace('/', '') as Tab;
+        const validTabs: Tab[] = ['home', 'about', 'privacy', 'guide', 'dashboard', 'tasks', 'budget', 'guests', 'vendors', 'calendar'];
+        setActiveTab(validTabs.includes(cleanPath) ? cleanPath : 'home');
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
   // Modal state
