@@ -81,7 +81,7 @@ export function LandingPage({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy
               transition={{ delay: 0.1 }}
               className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-[1.1]"
             >
-              Planning your <span className="text-rose-500 underline decoration-rose-200 underline-offset-8">Perfect Day</span> is now easy.
+              Wedding Planning <span className="text-rose-500 underline decoration-rose-200 underline-offset-8">Checklists</span>
             </motion.h1>
             
             <motion.p 
