@@ -8,9 +8,12 @@ interface AboutProps {
   onGoHome: () => void;
   onAbout: () => void;
   onPrivacy: () => void;
+  onTerms: () => void;
+  onBlog: () => void;
+  onContact: () => void;
 }
 
-export function About({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy }: AboutProps) {
+export function About({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTerms, onBlog, onContact }: AboutProps) {
   useEffect(() => {
     // Set Meta Title and Description for SEO
     document.title = "About Us | Wedding Planning Checklists — Who We Are & Why We Built This";
@@ -22,7 +25,7 @@ export function About({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy }: Ab
 
   return (
     <div className="min-h-screen bg-white">
-      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} onPrivacy={onPrivacy} />
+      <LandingNav onHome={onGoHome} onGuide={onOpenGuide} onStart={onStart} onAbout={onAbout} onPrivacy={onPrivacy} onBlog={onBlog} onContact={onContact} />
 
       {/* Hero Section */}
       <section className="relative pt-40 pb-16 overflow-hidden">
@@ -175,9 +178,9 @@ export function About({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy }: Ab
           </div>
           <div className="flex gap-8 text-sm font-medium text-slate-400">
             <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); onPrivacy(); }} className="hover:text-slate-600 transition-colors">Privacy Policy</a>
-            <a href="/terms-of-service" className="hover:text-slate-600 transition-colors">Terms of Service</a>
+            <a href="/terms-of-service" onClick={(e) => { e.preventDefault(); onTerms(); }} className="hover:text-slate-600 transition-colors">Terms of Service</a>
             <a href="/about-us" onClick={(e) => { e.preventDefault(); onAbout(); }} className="hover:text-slate-600 transition-colors">About Us</a>
-            <a href="/contact" className="hover:text-slate-600 transition-colors">Contact Support</a>
+            <a href="/contact" onClick={(e) => { e.preventDefault(); onContact(); }} className="hover:text-slate-600 transition-colors">Contact Support</a>
           </div>
         </div>
       </footer>
