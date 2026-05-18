@@ -17,6 +17,7 @@ import { motion } from 'motion/react';
 import { cn } from '../lib/utils';
 
 import { LandingNav } from './LandingNav';
+import { Footer } from './Footer';
 
 export function Guide({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTerms, onBlog, onContact }: { onStart: () => void; onOpenGuide: () => void; onGoHome: () => void; onAbout: () => void; onPrivacy: () => void; onTerms: () => void; onBlog: () => void; onContact: () => void; }) {
   const sections = [
@@ -294,6 +295,15 @@ export function Guide({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTe
           </button>
         </div>
       </section>
+      <Footer 
+        onHome={onGoHome} 
+        onAbout={onAbout} 
+        onGuide={onOpenGuide} 
+        onBlog={onBlog} 
+        onContact={onContact} 
+        onPrivacy={onPrivacy} 
+        onTerms={onTerms} 
+      />
     </div>
   );
 }
