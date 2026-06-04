@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendors | Evera</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'], 
+                    },
+                    colors: {
+                        brand: {
+                            pink: '#FFF0F3', 
+                            rosegold: '#C88A92',
+                            red: '#E86E7A',
+                            cream: '#FAFAFA', 
+                            gold: '#D4AF37',
+                            dark: '#2A2A2A',
+                            text: '#686868',
+                            lightText: '#9A9A9A'
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- html2pdf for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>body { background-color: #FAFAFA; background-image: none; }</style>
+</head>
+<body class="antialiased text-brand-text font-sans bg-brand-cream" x-data="vendorsData()">
+
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-[260px] bg-white hidden md:flex flex-col h-full border-r border-gray-100 relative z-20 flex-shrink-0">
+            <div class="px-8 py-8">
+                <a href="index.html" class="flex items-center gap-3">
+                    <i data-lucide="gem" class="w-6 h-6 text-brand-rosegold"></i>
+                    <span class="font-bold text-xl text-brand-dark">Evera</span>
+                </a>
+            </div>
+
+            <div class="px-8 mb-6">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-brand-lightText mb-3">My Wedding</p>
+                <div class="space-y-1">
+                    <a href="dashboard.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="home" class="w-4 h-4"></i> Overview
+                    </a>
+                    <a href="checklist.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="check-square" class="w-4 h-4"></i> Checklist
+                    </a>
+                    <a href="budget.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="pie-chart" class="w-4 h-4"></i> Budget
+                    </a>
+                    <a href="guests.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="users" class="w-4 h-4"></i> Guest List
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i> Venue
+                    </a>
+                    <a href="vendors.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl bg-brand-pink text-brand-rosegold font-semibold text-sm transition-colors">
+                        <i data-lucide="store" class="w-4 h-4"></i> Vendors
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i> Style & Decor
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> Schedule
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="edit-3" class="w-4 h-4"></i> Notes & Ideas
+                    </a>
+                </div>
+            </div>
+
+            <!-- Wedding Date Card -->
+            <div class="mt-auto px-6 pb-8">
+                <div class="bg-brand-pink/50 rounded-2xl p-5 border border-brand-pink">
+                    <div class="flex items-center gap-2 text-brand-dark font-bold text-sm mb-3">
+                        <i data-lucide="calendar" class="w-4 h-4 text-brand-text"></i> Wedding Date
+                    </div>
+                    <p class="text-brand-rosegold font-bold mb-3">24 May 2025</p>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-brand-text">
+                        <i data-lucide="heart" class="w-3 h-3 text-brand-rosegold"></i> 230 days to go
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 relative h-full overflow-y-auto custom-scrollbar">
+            <div class="p-8 max-w-[1200px] mx-auto w-full space-y-6">
+                
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-2">
+                    <div>
+                        <h1 class="text-3xl font-bold text-brand-dark mb-1">Vendor Directory</h1>
+                        <p class="text-brand-lightText text-sm font-medium">Organize your dream team.</p>
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <button @click="isAddingVendor = true" x-show="!isAddingVendor" class="bg-brand-rosegold text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-opacity-90 flex items-center gap-2 shadow-sm transition-all hidden sm:flex">
+                            <i data-lucide="plus" class="w-4 h-4"></i> Add Vendor
+                        </button>
+                        <button class="text-brand-lightText hover:text-brand-dark transition-colors">
+                            <i data-lucide="bell" class="w-5 h-5"></i>
+                        </button>
+                        <div class="flex items-center gap-3 cursor-pointer">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="User" class="w-10 h-10 rounded-full border border-gray-200">
+                            <span class="font-bold text-brand-dark text-sm hidden sm:inline-block">Emma Johnson</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-brand-lightText hidden sm:inline-block"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters & View Toggle -->
+                <div class="flex justify-between items-center pb-2 pt-2 mb-4">
+                    <div class="flex gap-3 overflow-x-auto custom-scrollbar flex-1">
+                        <template x-for="filter in ['All', 'Booked', 'Pending', 'Researching']">
+                            <button @click="currentFilter = filter" 
+                                    class="px-5 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors border"
+                                    :class="currentFilter === filter ? 'bg-brand-dark text-white border-brand-dark shadow-sm' : 'bg-white text-brand-text border-gray-200 hover:border-gray-300 hover:bg-gray-50'">
+                                <span x-text="filter"></span>
+                            </button>
+                        </template>
+                    </div>
+                    <div class="flex bg-white rounded-full border border-gray-200 p-1 flex-shrink-0 shadow-sm ml-4 hidden sm:flex">
+                        <button @click="viewMode = 'grid'; setTimeout(() => lucide.createIcons(), 50)" class="p-1.5 rounded-full transition-colors" :class="viewMode === 'grid' ? 'bg-brand-pink text-brand-rosegold' : 'text-brand-lightText hover:text-brand-dark'"><i data-lucide="grid" class="w-4 h-4"></i></button>
+                        <button @click="viewMode = 'kanban'; setTimeout(() => lucide.createIcons(), 50)" class="p-1.5 rounded-full transition-colors" :class="viewMode === 'kanban' ? 'bg-brand-pink text-brand-rosegold' : 'text-brand-lightText hover:text-brand-dark'"><i data-lucide="columns" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+
+                <!-- Vendor Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" x-show="viewMode === 'grid'">
+                    
+                    <!-- Add Vendor Form -->
+                    <div x-show="isAddingVendor" class="bg-brand-pink/30 p-6 rounded-3xl border border-brand-pink relative" style="display: none;">
+                        <h3 class="font-bold text-brand-dark mb-4">Add New Vendor</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-wider font-bold text-brand-lightText mb-1 block">Category</label>
+                                <select x-model="newVendor.category" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                    <option value="Venue">Venue</option>
+                                    <option value="Photographer">Photographer</option>
+                                    <option value="Caterer">Caterer</option>
+                                    <option value="Florist">Florist</option>
+                                    <option value="Music / DJ">Music / DJ</option>
+                                    <option value="Makeup Artist">Makeup Artist</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-wider font-bold text-brand-lightText mb-1 block">Vendor Name</label>
+                                <input type="text" x-model="newVendor.name" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold" placeholder="e.g. The Grand Estate">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-[10px] uppercase tracking-wider font-bold text-brand-lightText mb-1 block">Contact Name</label>
+                                    <input type="text" x-model="newVendor.contactName" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold" placeholder="e.g. Eleanor Vance">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] uppercase tracking-wider font-bold text-brand-lightText mb-1 block">Phone Number</label>
+                                    <input type="text" x-model="newVendor.phone" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold" placeholder="e.g. (555) 123-4567">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="text-[10px] uppercase tracking-wider font-bold text-brand-lightText mb-1 block">Email Address</label>
+                                    <input type="email" x-model="newVendor.email" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold" placeholder="e.g. hello@grandestate.com">
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-2 pt-2">
+                                <button @click="saveNewVendor()" class="px-4 py-2 bg-brand-rosegold text-white rounded-lg text-xs font-bold hover:bg-opacity-90">Save Vendor</button>
+                                <button @click="isAddingVendor = false" class="px-4 py-2 bg-white border border-gray-200 text-brand-text rounded-lg text-xs font-bold hover:bg-gray-50">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <template x-for="(vendor, idx) in filteredVendors" :key="vendor.id">
+                        <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50 group transition-all hover:border-gray-100 relative">
+                            
+                            <!-- View Mode -->
+                            <div x-show="!vendor.isEditing">
+                                <!-- Header Info -->
+                                <div class="flex justify-between items-start mb-6">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-sm" :style="`background-color: ${vendor.color}`">
+                                            <i :data-lucide="vendor.icon" class="w-6 h-6"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-[10px] uppercase tracking-wider font-bold text-brand-lightText mb-1" x-text="vendor.category"></p>
+                                            <h3 class="font-bold text-xl text-brand-dark flex items-center gap-2">
+                                                <span x-text="vendor.name || 'Not Selected'"></span>
+                                                <div class="flex text-brand-gold gap-0.5">
+                                                    <template x-for="s in 5">
+                                                        <i data-lucide="star" class="w-3 h-3" :class="s <= vendor.rating ? 'fill-brand-gold' : 'text-gray-200 fill-gray-200'"></i>
+                                                    </template>
+                                                </div>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-end gap-2">
+                                        <span class="text-[9px] uppercase font-bold tracking-wider px-3 py-1 rounded-full"
+                                              :class="{
+                                                  'bg-emerald-50 text-emerald-600 border border-emerald-100': vendor.status === 'Booked',
+                                                  'bg-amber-50 text-amber-600 border border-amber-100': vendor.status === 'Pending',
+                                                  'bg-gray-50 text-brand-text border border-gray-200': vendor.status === 'Researching'
+                                              }" x-text="vendor.status"></span>
+                                        
+                                        <div class="flex gap-1 absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all">
+                                            <button @click="vendor.isEditing = true; setTimeout(() => lucide.createIcons(), 50)" class="p-2 text-brand-lightText hover:text-brand-rosegold hover:bg-brand-pink/50 rounded-lg">
+                                                <i data-lucide="edit-2" class="w-4 h-4"></i>
+                                            </button>
+                                            <button @click="removeVendor(vendor.id)" class="p-2 text-brand-lightText hover:text-brand-red hover:bg-red-50 rounded-lg">
+                                                <i data-lucide="trash" class="w-4 h-4"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Contact Details -->
+                                <div class="bg-gray-50/50 rounded-2xl p-4 mb-4 grid grid-cols-1 sm:grid-cols-2 gap-4 border border-gray-100" x-show="vendor.name">
+                                    <div class="flex items-center gap-3 text-sm font-medium text-brand-dark">
+                                        <div class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-lightText"><i data-lucide="user" class="w-3 h-3"></i></div>
+                                        <span x-text="vendor.contactName"></span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-sm font-medium text-brand-dark">
+                                        <div class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-lightText"><i data-lucide="phone" class="w-3 h-3"></i></div>
+                                        <span x-text="vendor.phone"></span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-sm font-medium text-brand-dark sm:col-span-2">
+                                        <div class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-lightText"><i data-lucide="mail" class="w-3 h-3"></i></div>
+                                        <a :href="`mailto:${vendor.email}`" class="hover:text-brand-rosegold transition-colors" x-text="vendor.email"></a>
+                                    </div>
+                                </div>
+
+                                <!-- Financials & Contract -->
+                                <div class="flex flex-col sm:flex-row gap-4 justify-between items-end border-t border-gray-100 pt-4">
+                                    <div class="w-full sm:w-auto flex-1">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <p class="text-[10px] uppercase tracking-wider font-bold text-brand-lightText">Payment Status</p>
+                                            <span class="text-[10px] font-bold text-brand-lightText flex items-center gap-1"><i data-lucide="file-text" class="w-3 h-3"></i> Contract: <span :class="vendor.contractStatus === 'Signed' ? 'text-emerald-500' : 'text-amber-500'" x-text="vendor.contractStatus"></span></span>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <div class="w-full bg-brand-pink rounded-full h-1.5 max-w-[150px]">
+                                                <div class="bg-brand-rosegold h-1.5 rounded-full" :style="`width: ${vendor.totalCost > 0 ? (vendor.paid / vendor.totalCost) * 100 : 0}%`"></div>
+                                            </div>
+                                            <span class="text-xs font-bold text-brand-dark" x-text="`${formatCurrency(vendor.paid)} / ${formatCurrency(vendor.totalCost)}`"></span>
+                                            <span x-show="vendor.dueDate" class="text-[10px] font-bold text-brand-lightText bg-gray-50 px-2 py-1 rounded border border-gray-100">Due: <span x-text="vendor.dueDate"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Edit Mode -->
+                            <div x-show="vendor.isEditing" style="display: none;" class="space-y-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="font-bold text-brand-dark text-sm">Edit Vendor</h4>
+                                    <button @click="vendor.isEditing = false; setTimeout(() => lucide.createIcons(), 50)" class="text-xs font-bold bg-brand-dark text-white px-4 py-1.5 rounded-lg hover:bg-opacity-90">Save Details</button>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="text-[10px] uppercase font-bold text-brand-lightText block mb-1">Name</label>
+                                        <input type="text" x-model="vendor.name" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] uppercase font-bold text-brand-lightText block mb-1">Status & Rating</label>
+                                        <div class="flex gap-2">
+                                            <select x-model="vendor.status" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                                <option value="Researching">Researching</option>
+                                                <option value="Pending">Pending</option>
+                                                <option value="Booked">Booked</option>
+                                            </select>
+                                            <select x-model.number="vendor.rating" class="w-20 bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                                <option value="0">0 ⭐</option>
+                                                <option value="1">1 ⭐</option>
+                                                <option value="2">2 ⭐</option>
+                                                <option value="3">3 ⭐</option>
+                                                <option value="4">4 ⭐</option>
+                                                <option value="5">5 ⭐</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] uppercase font-bold text-brand-lightText block mb-1">Contact</label>
+                                        <input type="text" x-model="vendor.contactName" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold mb-2" placeholder="Contact Name">
+                                        <input type="text" x-model="vendor.phone" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold" placeholder="Phone">
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] uppercase font-bold text-brand-lightText block mb-1">Email</label>
+                                        <input type="email" x-model="vendor.email" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                    </div>
+                                    <div class="col-span-2 grid grid-cols-4 gap-4 p-4 bg-brand-pink/30 rounded-xl border border-brand-pink">
+                                        <div>
+                                            <label class="text-[10px] uppercase font-bold text-brand-lightText block mb-1">Total Cost</label>
+                                            <input type="number" x-model.number="vendor.totalCost" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-bold outline-none focus:border-brand-rosegold text-brand-rosegold">
+                                        </div>
+                                        <div>
+                                            <label class="text-[10px] uppercase font-bold text-brand-lightText block mb-1">Paid</label>
+                                            <input type="number" x-model.number="vendor.paid" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-bold outline-none focus:border-brand-rosegold text-brand-dark">
+                                        </div>
+                                        <div>
+                                            <label class="text-[10px] uppercase font-bold text-brand-lightText block mb-1">Contract</label>
+                                            <select x-model="vendor.contractStatus" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                                <option value="Pending">Pending</option>
+                                                <option value="Signed">Signed</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="text-[10px] uppercase font-bold text-brand-lightText block mb-1">Next Payment</label>
+                                            <input type="date" x-model="vendor.dueDate" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Kanban View -->
+                <div class="flex gap-6 overflow-x-auto pb-4 h-[600px]" x-show="viewMode === 'kanban'" style="display: none;">
+                    <template x-for="statusCol in ['Researching', 'Pending', 'Booked']">
+                        <div class="w-80 flex-shrink-0 bg-gray-50/50 rounded-3xl p-4 border border-gray-100 flex flex-col h-full shadow-inner">
+                            <div class="flex justify-between items-center mb-4 px-2">
+                                <h4 class="font-bold text-brand-dark text-sm uppercase tracking-wider" x-text="statusCol"></h4>
+                                <span class="text-xs font-bold bg-white text-brand-lightText px-2 py-1 rounded-lg border border-gray-200 shadow-sm" x-text="vendors.filter(v => v.status === statusCol).length"></span>
+                            </div>
+                            <div class="space-y-4 flex-1 overflow-y-auto custom-scrollbar pr-2">
+                                <template x-for="(vendor, idx) in vendors.filter(v => v.status === statusCol)" :key="vendor.id">
+                                    <!-- Kanban Card -->
+                                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 group relative hover:border-brand-rosegold transition-all cursor-grab">
+                                        <div class="flex justify-between items-start mb-3">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white" :style="`background-color: ${vendor.color}`">
+                                                    <i :data-lucide="vendor.icon" class="w-4 h-4"></i>
+                                                </div>
+                                                <div>
+                                                    <p class="text-[9px] uppercase tracking-wider font-bold text-brand-lightText" x-text="vendor.category"></p>
+                                                    <h3 class="font-bold text-sm text-brand-dark leading-tight" x-text="vendor.name || 'Unnamed'"></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex text-brand-gold gap-0.5 mb-3">
+                                            <template x-for="s in 5">
+                                                <i data-lucide="star" class="w-2.5 h-2.5" :class="s <= vendor.rating ? 'fill-brand-gold' : 'text-gray-200 fill-gray-200'"></i>
+                                            </template>
+                                        </div>
+                                        <div class="text-xs font-semibold text-brand-text mb-3" x-show="vendor.totalCost > 0">
+                                            <div class="flex justify-between mb-1">
+                                                <span>Cost</span> <span class="text-brand-dark font-bold" x-text="formatCurrency(vendor.totalCost)"></span>
+                                            </div>
+                                            <div class="w-full bg-brand-pink rounded-full h-1">
+                                                <div class="bg-brand-rosegold h-1 rounded-full" :style="`width: ${(vendor.paid / vendor.totalCost) * 100}%`"></div>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between items-center text-[10px] font-bold text-brand-lightText">
+                                            <span x-show="vendor.contractStatus === 'Signed'" class="text-emerald-500 flex items-center gap-1"><i data-lucide="check-circle" class="w-3 h-3"></i> Contract</span>
+                                            <button @click="vendor.isEditing = true; viewMode = 'grid'; setTimeout(() => lucide.createIcons(), 50)" class="hover:text-brand-rosegold ml-auto">Edit</button>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('vendorsData', () => ({
+                currentFilter: 'All',
+                viewMode: 'grid',
+                currency: localStorage.getItem('evera_currency') || 'USD',
+                isAddingVendor: false,
+                newVendor: { category: 'Venue', name: '', contactName: '', phone: '', email: '' },
+                vendors: [
+                    { id: 1, category: 'Venue', name: 'The Grand Estate', status: 'Booked', contactName: 'Eleanor Vance', phone: '(555) 123-4567', email: 'hello@grandestate.com', totalCost: 8000, paid: 4000, icon: 'map-pin', color: '#E86E7A', contractStatus: 'Signed', dueDate: '2024-11-01', rating: 5, isEditing: false },
+                    { id: 2, category: 'Photographer', name: 'Lumiere Studios', status: 'Pending', contactName: 'David Chen', phone: '(555) 987-6543', email: 'david@lumierestudios.com', totalCost: 3500, paid: 0, icon: 'camera', color: '#F3A7B0', contractStatus: 'Pending', dueDate: '', rating: 4, isEditing: false },
+                    { id: 3, category: 'Caterer', name: 'Gourmet Gatherings', status: 'Booked', contactName: 'Chef Michael', phone: '(555) 456-7890', email: 'info@gourmetg.com', totalCost: 7000, paid: 2000, icon: 'utensils', color: '#F9D0D4', contractStatus: 'Signed', dueDate: '2025-01-15', rating: 5, isEditing: false },
+                    { id: 4, category: 'Makeup Artist', name: 'Blush Beauty Bar', status: 'Researching', contactName: 'Jessica Styles', phone: 'TBD', email: 'jess@blushbeauty.com', totalCost: 1000, paid: 0, icon: 'scissors', color: '#FCE2E4', contractStatus: 'Pending', dueDate: '', rating: 0, isEditing: false },
+                    { id: 5, category: 'DJ / Entertainment', name: 'SoundWave DJs', status: 'Researching', contactName: '', phone: '', email: '', totalCost: 0, paid: 0, icon: 'music', color: '#F3A7B0', contractStatus: 'Pending', dueDate: '', rating: 3, isEditing: false },
+                    { id: 6, category: 'Florist', name: 'Bloom & Co.', status: 'Pending', contactName: 'Sarah Jenkins', phone: '(555) 222-3333', email: 'sarah@bloomco.com', totalCost: 2500, paid: 0, icon: 'sparkles', color: '#E86E7A', contractStatus: 'Pending', dueDate: '', rating: 4, isEditing: false }
+                ],
+                
+                saveNewVendor() {
+                    if (this.newVendor.name.trim() === '') return;
+                    
+                    const categoryMap = {
+                        'Venue': { icon: 'map-pin', color: '#E86E7A' },
+                        'Photographer': { icon: 'camera', color: '#F3A7B0' },
+                        'Caterer': { icon: 'utensils', color: '#F9D0D4' },
+                        'Florist': { icon: 'sparkles', color: '#E86E7A' },
+                        'Music / DJ': { icon: 'music', color: '#F3A7B0' },
+                        'Makeup Artist': { icon: 'scissors', color: '#FCE2E4' },
+                        'Other': { icon: 'store', color: '#C88A92' }
+                    };
+                    
+                    const styling = categoryMap[this.newVendor.category] || categoryMap['Other'];
+
+                    this.vendors.unshift({ 
+                        id: Date.now(),
+                        category: this.newVendor.category, 
+                        name: this.newVendor.name, 
+                        status: 'Researching', 
+                        contactName: this.newVendor.contactName, 
+                        phone: this.newVendor.phone, 
+                        email: this.newVendor.email, 
+                        totalCost: 0, 
+                        paid: 0, 
+                        icon: styling.icon, 
+                        color: styling.color,
+                        contractStatus: 'Pending',
+                        dueDate: '',
+                        rating: 0,
+                        isEditing: false
+                    });
+                    
+                    this.newVendor = { category: 'Venue', name: '', contactName: '', phone: '', email: '' };
+                    this.isAddingVendor = false;
+                    setTimeout(() => lucide.createIcons(), 50);
+                },
+
+                removeVendor(id) {
+                    const idx = this.vendors.findIndex(v => v.id === id);
+                    if(idx > -1) this.vendors.splice(idx, 1);
+                },
+
+                get filteredVendors() {
+                    if (this.currentFilter === 'All') return this.vendors;
+                    return this.vendors.filter(v => v.status === this.currentFilter);
+                },
+                
+                get currencySymbol() {
+                    const map = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'CAD': 'C$', 'AUD': 'A$', 'INR': '₹', 'PKR': 'Rs' };
+                    return map[this.currency] || '$';
+                },
+
+                formatCurrency(val) {
+                    try {
+                        return new Intl.NumberFormat('en-US', { style: 'currency', currency: this.currency, maximumFractionDigits: 0 }).format(val);
+                    } catch(e) {
+                        return this.currencySymbol + val;
+                    }
+                },
+
+                init() {
+                    setTimeout(() => lucide.createIcons(), 50);
+                    this.$watch('currentFilter', () => setTimeout(() => lucide.createIcons(), 50));
+                }
+            }))
+        })
+    </script>
+</body>
+</html>

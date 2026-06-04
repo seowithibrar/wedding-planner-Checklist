@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Timeline | Evera</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'], 
+                    },
+                    colors: {
+                        brand: {
+                            pink: '#FFF0F3', 
+                            rosegold: '#C88A92',
+                            red: '#E86E7A',
+                            cream: '#FAFAFA', 
+                            gold: '#D4AF37',
+                            dark: '#2A2A2A',
+                            text: '#686868',
+                            lightText: '#9A9A9A'
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>body { background-color: #FAFAFA; background-image: none; }</style>
+</head>
+<body class="antialiased text-brand-text font-sans bg-brand-cream" x-data="checklistData()">
+
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-[260px] bg-white hidden md:flex flex-col h-full border-r border-gray-100 relative z-20 flex-shrink-0">
+            <div class="px-8 py-8">
+                <a href="index.html" class="flex items-center gap-3">
+                    <i data-lucide="gem" class="w-6 h-6 text-brand-rosegold"></i>
+                    <span class="font-bold text-xl text-brand-dark">Evera</span>
+                </a>
+            </div>
+
+            <div class="px-8 mb-6">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-brand-lightText mb-3">My Wedding</p>
+                <div class="space-y-1">
+                    <a href="dashboard.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="home" class="w-4 h-4"></i> Overview
+                    </a>
+                    <a href="checklist.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl bg-brand-pink text-brand-rosegold font-semibold text-sm transition-colors">
+                        <i data-lucide="check-square" class="w-4 h-4"></i> Checklist
+                    </a>
+                    <a href="budget.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="pie-chart" class="w-4 h-4"></i> Budget
+                    </a>
+                    <a href="guests.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="users" class="w-4 h-4"></i> Guest List
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i> Venue
+                    </a>
+                    <a href="vendors.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="store" class="w-4 h-4"></i> Vendors
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i> Style & Decor
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> Schedule
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="edit-3" class="w-4 h-4"></i> Notes & Ideas
+                    </a>
+                </div>
+            </div>
+
+            <!-- Wedding Date Card -->
+            <div class="mt-auto px-6 pb-8">
+                <div class="bg-brand-pink/50 rounded-2xl p-5 border border-brand-pink">
+                    <div class="flex items-center gap-2 text-brand-dark font-bold text-sm mb-3">
+                        <i data-lucide="calendar" class="w-4 h-4 text-brand-text"></i> Wedding Date
+                    </div>
+                    <p class="text-brand-rosegold font-bold mb-3">24 May 2025</p>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-brand-text">
+                        <i data-lucide="heart" class="w-3 h-3 text-brand-rosegold"></i> 230 days to go
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 relative h-full overflow-y-auto custom-scrollbar">
+            <div class="p-8 max-w-[1000px] mx-auto w-full space-y-6">
+                
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-2">
+                    <div>
+                        <h1 class="text-3xl font-bold text-brand-dark mb-1">Smart Timeline</h1>
+                        <p class="text-brand-lightText text-sm font-medium">Your personalized step-by-step wedding plan.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <select x-model="filterStatus" class="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold text-brand-dark">
+                            <option value="All">All Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                        <select x-model="filterPriority" class="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold text-brand-dark">
+                            <option value="All">All Priorities</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                        <div class="relative w-48 hidden sm:block">
+                            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-lightText"></i>
+                            <input type="text" x-model="searchQuery" placeholder="Search tasks..." class="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-200 focus:border-brand-rosegold focus:ring-1 focus:ring-brand-rosegold bg-white outline-none text-sm shadow-sm transition-all">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Header Card -->
+                <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wider text-brand-lightText font-bold mb-1">Overall Completion</p>
+                        <p class="font-bold text-3xl text-brand-dark" x-text="`${calculateProgress()}%`"></p>
+                    </div>
+                    <div class="w-full md:w-2/3 max-w-md">
+                        <div class="h-2.5 w-full bg-brand-pink rounded-full overflow-hidden">
+                            <div class="h-full bg-brand-rosegold rounded-full transition-all duration-500" :style="`width: ${calculateProgress()}%`"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-xs font-semibold text-brand-lightText">
+                            <span>0%</span>
+                            <span>100%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Settings -->
+                <div class="bg-brand-pink/30 p-4 rounded-2xl border border-brand-pink flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-brand-rosegold shadow-sm"><i data-lucide="calendar-clock" class="w-5 h-5"></i></div>
+                        <div>
+                            <p class="font-bold text-brand-dark text-sm">Automated Timeline</p>
+                            <p class="text-xs text-brand-text font-medium">Recalculate task due dates based on your wedding date.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <input type="date" x-model="weddingDate" class="flex-1 sm:flex-none bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-bold outline-none focus:border-brand-rosegold text-brand-dark shadow-sm">
+                        <button @click="recalculateDates()" class="bg-brand-dark text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">Recalculate Dates</button>
+                    </div>
+                </div>
+
+                <!-- Timeline Accordion -->
+                <div class="space-y-4">
+                    <template x-for="(section, sIdx) in checklist" :key="sIdx">
+                        <div class="bg-white rounded-3xl border border-gray-50 overflow-hidden shadow-card" x-show="sectionMatches(section)">
+                            
+                            <!-- Section Header -->
+                            <button @click="section.expanded = !section.expanded" class="w-full px-6 py-5 flex justify-between items-center hover:bg-gray-50 transition-colors border-b border-gray-50">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-8 h-8 rounded-full bg-brand-pink text-brand-rosegold flex items-center justify-center font-bold text-sm" x-text="section.tasks.filter(t => t.status === 'Completed').length"></div>
+                                    <h3 class="font-bold text-lg text-brand-dark" x-text="section.title"></h3>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <span class="text-xs font-medium text-brand-lightText" x-text="`${section.tasks.length} tasks`"></span>
+                                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-text transition-transform duration-300" :class="section.expanded ? 'rotate-180' : ''"></i>
+                                </div>
+                            </button>
+                            
+                            <!-- Tasks List -->
+                            <div x-show="section.expanded" x-collapse>
+                                <div class="p-2 space-y-2">
+                                    <template x-for="(task, tIdx) in section.tasks" :key="tIdx">
+                                        <div class="group p-4 rounded-2xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100"
+                                             :class="task.status === 'Completed' ? 'opacity-60' : ''" x-show="taskMatches(task)">
+                                            
+                                            <!-- Normal View -->
+                                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4" x-show="!task.isEditing">
+                                                <div class="flex items-start gap-4">
+                                                    <!-- Custom Checkbox -->
+                                                    <div class="mt-1 relative flex items-center justify-center cursor-pointer" @click="toggleStatus(sIdx, tIdx)">
+                                                        <div class="w-5 h-5 rounded border-2 transition-all flex items-center justify-center"
+                                                             :class="{
+                                                                'border-gray-300 bg-white': task.status === 'Pending',
+                                                                'border-brand-gold bg-brand-gold': task.status === 'In Progress',
+                                                                'border-emerald-500 bg-emerald-500': task.status === 'Completed'
+                                                             }">
+                                                            <i data-lucide="minus" class="w-3 h-3 text-white" x-show="task.status === 'In Progress'"></i>
+                                                            <i data-lucide="check" class="w-3 h-3 text-white" x-show="task.status === 'Completed'"></i>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div>
+                                                        <p class="font-bold text-brand-dark text-sm transition-all" :class="task.status === 'Completed' ? 'line-through text-brand-lightText' : ''" x-text="task.name"></p>
+                                                        <div class="flex items-center gap-3 mt-1">
+                                                            <span class="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
+                                                                  :class="{
+                                                                     'bg-red-50 text-brand-red border border-red-100': task.priority === 'High',
+                                                                     'bg-gray-100 text-brand-text border border-gray-200': task.priority === 'Medium',
+                                                                     'bg-gray-50 text-brand-lightText border border-gray-100': task.priority === 'Low'
+                                                                  }" x-text="task.priority"></span>
+                                                            <span class="text-xs font-semibold text-brand-lightText flex items-center gap-1">
+                                                                <i data-lucide="calendar" class="w-3 h-3"></i> <span x-text="task.dueDate"></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Actions -->
+                                                <div class="flex items-center gap-2 sm:opacity-0 group-hover:opacity-100 transition-opacity pl-9 sm:pl-0">
+                                                    <select x-model="task.status" class="text-xs font-semibold bg-white border border-gray-200 text-brand-text rounded-md px-2 py-1 outline-none focus:border-brand-rosegold shadow-sm">
+                                                        <option value="Pending">Pending</option>
+                                                        <option value="In Progress">In Progress</option>
+                                                        <option value="Completed">Completed</option>
+                                                    </select>
+                                                    <button @click="task.isEditing = true; reInitIcons()" class="p-1.5 text-brand-lightText hover:text-brand-rosegold bg-white rounded-md border border-gray-200 shadow-sm"><i data-lucide="edit-2" class="w-3 h-3"></i></button>
+                                                    <button @click="deleteTask(sIdx, tIdx)" class="p-1.5 text-brand-lightText hover:text-brand-red bg-white rounded-md border border-gray-200 shadow-sm"><i data-lucide="trash" class="w-3 h-3"></i></button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Edit View -->
+                                            <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center w-full" x-show="task.isEditing" style="display: none;">
+                                                <input type="text" x-model="task.name" class="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                                <select x-model="task.priority" class="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                                    <option value="High">High Priority</option>
+                                                    <option value="Medium">Medium Priority</option>
+                                                    <option value="Low">Low Priority</option>
+                                                </select>
+                                                <input type="text" x-model="task.dueDate" placeholder="e.g. Aug 2024" class="w-32 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                                <div class="flex gap-2 w-full sm:w-auto mt-2 sm:mt-0">
+                                                    <button @click="task.isEditing = false" class="flex-1 sm:flex-none px-4 py-2 bg-brand-dark text-white rounded-lg text-xs font-bold hover:bg-opacity-90">Save</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </template>
+                                    
+                                    <!-- Add Task Form -->
+                                    <div class="p-4 bg-brand-pink/30 rounded-2xl border border-brand-pink mt-2" x-show="section.isAdding" style="display: none;">
+                                        <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+                                            <input type="text" x-model="section.newTask.name" placeholder="Task Name..." class="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold w-full">
+                                            <select x-model="section.newTask.priority" class="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold w-full sm:w-auto">
+                                                <option value="High">High</option>
+                                                <option value="Medium">Medium</option>
+                                                <option value="Low">Low</option>
+                                            </select>
+                                            <input type="text" x-model="section.newTask.dueDate" placeholder="Due Date..." class="w-full sm:w-32 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                        </div>
+                                        <div class="flex gap-2 mt-3">
+                                            <button @click="saveNewTask(sIdx)" class="px-4 py-2 bg-brand-rosegold text-white rounded-lg text-xs font-bold hover:bg-opacity-90">Add Task</button>
+                                            <button @click="section.isAdding = false" class="px-4 py-2 bg-white border border-gray-200 text-brand-text rounded-lg text-xs font-bold hover:bg-gray-50">Cancel</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Add Task Button -->
+                                    <button x-show="!section.isAdding" @click="section.isAdding = true; initNewTask(sIdx)" class="w-full py-3 mt-2 border-2 border-dashed border-gray-200 rounded-2xl text-sm font-semibold text-brand-lightText hover:text-brand-rosegold hover:border-brand-rosegold hover:bg-brand-pink transition-all flex items-center justify-center gap-2">
+                                        <i data-lucide="plus" class="w-4 h-4"></i> Add Custom Task
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('checklistData', () => ({
+                searchQuery: '',
+                filterStatus: 'All',
+                filterPriority: 'All',
+                weddingDate: '2025-05-24',
+                checklist: [
+                    {
+                        title: '12+ Months Before',
+                        expanded: true,
+                        isAdding: false,
+                        newTask: { name: '', priority: 'Medium', dueDate: '' },
+                        tasks: [
+                            { name: 'Set wedding budget', status: 'Completed', priority: 'High', dueDate: 'May 2024', isEditing: false },
+                            { name: 'Create guest list', status: 'Completed', priority: 'High', dueDate: 'May 2024', isEditing: false },
+                            { name: 'Book venue', status: 'Completed', priority: 'High', dueDate: 'May 2024', isEditing: false },
+                            { name: 'Hire wedding planner', status: 'Pending', priority: 'Medium', dueDate: 'May 2024', isEditing: false },
+                            { name: 'Choose wedding theme', status: 'In Progress', priority: 'Medium', dueDate: 'May 2024', isEditing: false }
+                        ]
+                    },
+                    {
+                        title: '9 Months Before',
+                        expanded: true,
+                        isAdding: false,
+                        newTask: { name: '', priority: 'Medium', dueDate: '' },
+                        tasks: [
+                            { name: 'Book photographer', status: 'Pending', priority: 'High', dueDate: 'Aug 2024', isEditing: false },
+                            { name: 'Book caterer', status: 'Pending', priority: 'High', dueDate: 'Aug 2024', isEditing: false },
+                            { name: 'Select bridal dress', status: 'Pending', priority: 'High', dueDate: 'Aug 2024', isEditing: false },
+                            { name: 'Book makeup artist', status: 'Pending', priority: 'Medium', dueDate: 'Aug 2024', isEditing: false }
+                        ]
+                    },
+                    {
+                        title: '6 Months Before',
+                        expanded: false,
+                        isAdding: false,
+                        newTask: { name: '', priority: 'Medium', dueDate: '' },
+                        tasks: [
+                            { name: 'Send invitations', status: 'Pending', priority: 'High', dueDate: 'Nov 2024', isEditing: false },
+                            { name: 'Confirm vendors', status: 'Pending', priority: 'Medium', dueDate: 'Nov 2024', isEditing: false },
+                            { name: 'Plan honeymoon', status: 'Pending', priority: 'Low', dueDate: 'Nov 2024', isEditing: false }
+                        ]
+                    }
+                ],
+                
+                recalculateDates() {
+                    if (!this.weddingDate) return;
+                    const wDate = new Date(this.weddingDate);
+                    this.checklist.forEach(sec => {
+                        const match = sec.title.match(/(\d+)/);
+                        if(match) {
+                            const monthsBefore = parseInt(match[1]);
+                            sec.tasks.forEach(task => {
+                                const d = new Date(wDate);
+                                d.setMonth(d.getMonth() - monthsBefore);
+                                const options = { year: 'numeric', month: 'short' };
+                                task.dueDate = d.toLocaleDateString('en-US', options);
+                            });
+                        }
+                    });
+                    this.reInitIcons();
+                },
+
+                taskMatches(task) {
+                    if (this.filterStatus !== 'All' && task.status !== this.filterStatus) return false;
+                    if (this.filterPriority !== 'All' && task.priority !== this.filterPriority) return false;
+                    if (this.searchQuery === '') return true;
+                    return task.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+                },
+
+                sectionMatches(section) {
+                    if (this.searchQuery === '') return section.tasks.length > 0;
+                    // If searching, only show sections that have matching tasks
+                    // and automatically expand them
+                    const hasMatch = section.tasks.some(t => this.taskMatches(t));
+                    if (hasMatch && this.searchQuery !== '') {
+                        section.expanded = true;
+                    }
+                    return hasMatch;
+                },
+
+                initNewTask(sIdx) {
+                    this.checklist[sIdx].newTask = { name: '', priority: 'Medium', dueDate: '', status: 'Pending', isEditing: false };
+                },
+
+                saveNewTask(sIdx) {
+                    const taskData = this.checklist[sIdx].newTask;
+                    if (taskData.name.trim() === '') return;
+                    
+                    this.checklist[sIdx].tasks.push({
+                        name: taskData.name,
+                        priority: taskData.priority,
+                        dueDate: taskData.dueDate,
+                        status: 'Pending',
+                        isEditing: false
+                    });
+                    
+                    this.checklist[sIdx].isAdding = false;
+                    this.reInitIcons();
+                },
+
+                deleteTask(sIdx, tIdx) {
+                    this.checklist[sIdx].tasks.splice(tIdx, 1);
+                },
+
+                toggleStatus(sIdx, tIdx) {
+                    const statuses = ['Pending', 'In Progress', 'Completed'];
+                    const current = this.checklist[sIdx].tasks[tIdx].status;
+                    const nextIdx = (statuses.indexOf(current) + 1) % statuses.length;
+                    this.checklist[sIdx].tasks[tIdx].status = statuses[nextIdx];
+                },
+
+                calculateProgress() {
+                    let total = 0;
+                    let completed = 0;
+                    this.checklist.forEach(sec => {
+                        sec.tasks.forEach(t => {
+                            total++;
+                            if (t.status === 'Completed') completed++;
+                        });
+                    });
+                    return total === 0 ? 0 : Math.round((completed / total) * 100);
+                },
+
+                reInitIcons() {
+                    setTimeout(() => lucide.createIcons(), 50);
+                },
+
+                init() {
+                    this.reInitIcons();
+                    this.$watch('searchQuery', () => this.reInitIcons());
+                    this.$watch('checklist', () => this.reInitIcons(), { deep: true });
+                }
+            }))
+        })
+    </script>
+</body>
+</html>

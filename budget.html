@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Planner | Evera</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'], 
+                    },
+                    colors: {
+                        brand: {
+                            pink: '#FFF0F3', 
+                            rosegold: '#C88A92',
+                            red: '#E86E7A',
+                            cream: '#FAFAFA', 
+                            gold: '#D4AF37',
+                            dark: '#2A2A2A',
+                            text: '#686868',
+                            lightText: '#9A9A9A'
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- html2pdf for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>body { background-color: #FAFAFA; background-image: none; }</style>
+</head>
+<body class="antialiased text-brand-text font-sans bg-brand-cream" x-data="budgetData()">
+
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-[260px] bg-white hidden md:flex flex-col h-full border-r border-gray-100 relative z-20 flex-shrink-0">
+            <div class="px-8 py-8">
+                <a href="index.html" class="flex items-center gap-3">
+                    <i data-lucide="gem" class="w-6 h-6 text-brand-rosegold"></i>
+                    <span class="font-bold text-xl text-brand-dark">Evera</span>
+                </a>
+            </div>
+
+            <div class="px-8 mb-6">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-brand-lightText mb-3">My Wedding</p>
+                <div class="space-y-1">
+                    <a href="dashboard.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="home" class="w-4 h-4"></i> Overview
+                    </a>
+                    <a href="checklist.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="check-square" class="w-4 h-4"></i> Checklist
+                    </a>
+                    <a href="budget.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl bg-brand-pink text-brand-rosegold font-semibold text-sm transition-colors">
+                        <i data-lucide="pie-chart" class="w-4 h-4"></i> Budget
+                    </a>
+                    <a href="guests.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="users" class="w-4 h-4"></i> Guest List
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i> Venue
+                    </a>
+                    <a href="vendors.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="store" class="w-4 h-4"></i> Vendors
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i> Style & Decor
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> Schedule
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="edit-3" class="w-4 h-4"></i> Notes & Ideas
+                    </a>
+                </div>
+            </div>
+
+            <!-- Wedding Date Card -->
+            <div class="mt-auto px-6 pb-8">
+                <div class="bg-brand-pink/50 rounded-2xl p-5 border border-brand-pink">
+                    <div class="flex items-center gap-2 text-brand-dark font-bold text-sm mb-3">
+                        <i data-lucide="calendar" class="w-4 h-4 text-brand-text"></i> Wedding Date
+                    </div>
+                    <p class="text-brand-rosegold font-bold mb-3">24 May 2025</p>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-brand-text">
+                        <i data-lucide="heart" class="w-3 h-3 text-brand-rosegold"></i> 230 days to go
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 relative h-full overflow-y-auto custom-scrollbar">
+            <div class="p-8 max-w-[1000px] mx-auto w-full space-y-6">
+                
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-2">
+                    <div>
+                        <h1 class="text-3xl font-bold text-brand-dark mb-1">Budget Planner</h1>
+                        <p class="text-brand-lightText text-sm font-medium">Track every penny of your dream day.</p>
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <select x-model="currency" @change="saveCurrency()" class="hidden sm:block bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold cursor-pointer text-brand-dark">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="GBP">GBP (£)</option>
+                            <option value="CAD">CAD (C$)</option>
+                            <option value="AUD">AUD (A$)</option>
+                            <option value="INR">INR (₹)</option>
+                            <option value="PKR">PKR (Rs)</option>
+                        </select>
+                        <button @click="downloadPDF()" class="text-brand-lightText hover:text-brand-rosegold transition-colors" title="Export PDF">
+                            <i data-lucide="download" class="w-5 h-5"></i>
+                        </button>
+                        <div class="flex items-center gap-3 cursor-pointer">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="User" class="w-10 h-10 rounded-full border border-gray-200">
+                            <span class="font-bold text-brand-dark text-sm hidden sm:inline-block">Emma Johnson</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-brand-lightText hidden sm:inline-block"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Budget Summary Header -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50 flex flex-col justify-between">
+                        <p class="text-[11px] uppercase tracking-wider text-brand-lightText font-bold mb-4">Total Budget</p>
+                        <div class="flex items-center gap-1 relative group cursor-text">
+                            <span class="text-2xl font-bold text-brand-dark" x-text="currencySymbol"></span>
+                            <input type="number" x-model.number="totalBudget" class="font-bold text-4xl text-brand-dark bg-transparent outline-none w-full appearance-none">
+                            <i data-lucide="edit-2" class="w-4 h-4 text-gray-300 absolute right-0 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50 flex flex-col justify-between">
+                        <p class="text-[11px] uppercase tracking-wider text-brand-lightText font-bold mb-4">Total Spent</p>
+                        <div>
+                            <span class="font-bold text-4xl text-brand-rosegold" x-text="formatCurrency(calculateTotalSpent())"></span>
+                            <p class="text-xs font-semibold text-brand-lightText mt-2" x-text="`${Math.round((calculateTotalSpent() / totalBudget) * 100)}% of total budget`"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-3xl shadow-card border flex flex-col justify-between" :class="remainingBalance() < 0 ? 'border-brand-red bg-red-50' : 'border-gray-50'">
+                        <p class="text-[11px] uppercase tracking-wider text-brand-lightText font-bold mb-4">Remaining Balance</p>
+                        <div>
+                            <span class="font-bold text-4xl" :class="remainingBalance() < 0 ? 'text-brand-red' : 'text-emerald-500'" x-text="formatCurrency(remainingBalance())"></span>
+                            <p class="text-xs font-semibold mt-2" :class="remainingBalance() < 0 ? 'text-brand-red' : 'text-emerald-500'" x-text="remainingBalance() < 0 ? 'You are over budget!' : 'You are within budget.'"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insights & Alerts -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Visual Chart -->
+                    <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50 flex items-center gap-6 lg:col-span-1">
+                        <div class="w-24 h-24 relative flex-shrink-0">
+                            <svg viewBox="0 0 36 36" class="w-full h-full transform -rotate-90">
+                                <circle r="15.915" cx="18" cy="18" fill="transparent" stroke="#f3f4f6" stroke-width="4"></circle>
+                                <template x-for="slice in chartSlices">
+                                    <circle r="15.915" cx="18" cy="18" fill="transparent" :stroke="slice.color" stroke-width="4" :stroke-dasharray="`${slice.percentage} ${100 - slice.percentage}`" :stroke-dashoffset="slice.offset" class="transition-all duration-500"></circle>
+                                </template>
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                                <span class="font-bold text-xs text-brand-dark" x-text="`${totalBudget > 0 ? Math.round((calculateTotalSpent() / totalBudget) * 100) : 0}%`"></span>
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider text-[10px] mb-3">Top Expenses</h4>
+                            <div class="space-y-2">
+                                <template x-for="cat in [...categories].sort((a,b)=>b.spent - a.spent).slice(0,3)">
+                                    <div class="flex items-center justify-between text-xs font-semibold">
+                                        <div class="flex items-center gap-1.5 min-w-0"><div class="w-2 h-2 rounded-full flex-shrink-0" :style="`background-color: ${cat.color}`"></div><span class="text-brand-text truncate max-w-[80px]" x-text="cat.name"></span></div>
+                                        <span class="text-brand-dark flex-shrink-0" x-text="formatCurrency(cat.spent)"></span>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Dynamic Alerts -->
+                    <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50 flex flex-col lg:col-span-2 relative overflow-hidden transition-colors" :class="overBudgetCategories.length > 0 ? 'border-brand-red bg-red-50/20' : ''">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i data-lucide="alert-circle" class="w-4 h-4 text-brand-red" x-show="overBudgetCategories.length > 0"></i>
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500" x-show="overBudgetCategories.length === 0"></i>
+                            <h3 class="font-bold text-sm text-brand-dark uppercase tracking-wider text-[11px]" x-text="overBudgetCategories.length > 0 ? 'Budget Alerts' : 'You\'re on track!'"></h3>
+                        </div>
+                        <div x-show="overBudgetCategories.length > 0" class="flex-1 flex flex-col" style="display: none;">
+                            <p class="text-xs text-brand-text font-medium mb-3">You are over budget in <span class="font-bold text-brand-red" x-text="overBudgetCategories.length"></span> categories. Consider reallocating funds.</p>
+                            <div class="flex gap-3 overflow-x-auto pb-2 custom-scrollbar mt-auto">
+                                <template x-for="cat in overBudgetCategories">
+                                    <div class="bg-white border border-red-100 rounded-2xl p-3 flex-shrink-0 flex items-center gap-3 shadow-sm min-w-[200px]">
+                                        <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white flex-shrink-0 shadow-sm" :style="`background-color: ${cat.color}`"><i :data-lucide="cat.icon" class="w-3.5 h-3.5"></i></div>
+                                        <div class="min-w-0">
+                                            <p class="text-xs font-bold text-brand-dark truncate" x-text="cat.name"></p>
+                                            <p class="text-[10px] font-bold text-brand-red truncate" x-text="`Over by ${formatCurrency(cat.spent - cat.allocated)}`"></p>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                        <div x-show="overBudgetCategories.length === 0" class="flex-1 flex items-center">
+                            <p class="text-sm text-brand-text font-medium">All categories are within their allocated limits. Great job managing your expenses!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Categories -->
+                <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-bold text-lg text-brand-dark">Expenses by Category</h3>
+                        <button @click="addCategory()" class="text-xs text-brand-rosegold font-bold hover:underline flex items-center gap-1">
+                            <i data-lucide="plus" class="w-3 h-3"></i> Add Category
+                        </button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <template x-for="(cat, idx) in categories" :key="idx">
+                            <div class="bg-gray-50/50 p-4 sm:p-5 rounded-2xl border transition-all hover:bg-white hover:shadow-sm" :class="cat.spent > cat.allocated ? 'border-red-200' : 'border-gray-100'">
+                                <div class="flex flex-col md:flex-row md:items-center gap-4">
+                                    <div class="flex items-center gap-4 w-full md:w-1/3">
+                                        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white" :style="`background-color: ${cat.color}`">
+                                            <i :data-lucide="cat.icon" class="w-5 h-5"></i>
+                                        </div>
+                                        <div class="flex-1 flex items-center gap-2 group/edit relative min-w-0">
+                                            <div @click="cat.isEditing = true" @click.outside="cat.isEditing = false" class="cursor-text flex items-center gap-2">
+                                                <h4 x-show="!cat.isEditing" class="font-bold text-brand-dark text-sm truncate" x-text="cat.name"></h4>
+                                                <input x-show="cat.isEditing" type="text" x-model="cat.name" class="font-bold text-brand-dark text-sm bg-white border border-brand-rosegold rounded px-1.5 py-0.5 w-full max-w-[150px] outline-none shadow-sm" style="display: none;">
+                                                <i data-lucide="edit-2" class="w-3 h-3 text-brand-lightText opacity-0 group-hover/edit:opacity-100 transition-opacity" x-show="!cat.isEditing"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-4 items-center">
+                                        <div>
+                                            <label class="text-[10px] uppercase tracking-wider font-semibold text-brand-lightText block mb-1">Allocated</label>
+                                            <div class="flex items-center gap-1 border-b border-gray-200 pb-1">
+                                                <span class="text-sm font-semibold text-brand-text" x-text="currencySymbol"></span>
+                                                <input type="number" x-model.number="cat.allocated" class="w-full bg-transparent outline-none text-sm font-bold text-brand-dark">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="text-[10px] uppercase tracking-wider font-semibold text-brand-lightText block mb-1">Spent</label>
+                                            <div class="flex items-center gap-1 border-b border-gray-200 pb-1">
+                                                <span class="text-sm font-semibold text-brand-text" x-text="currencySymbol"></span>
+                                                <input type="number" x-model.number="cat.spent" class="w-full bg-transparent outline-none text-sm font-bold text-brand-rosegold">
+                                            </div>
+                                        </div>
+                                        <div class="hidden sm:flex text-right flex-col items-end gap-2 relative group/item">
+                                            <div class="w-full">
+                                                <label class="text-[10px] uppercase tracking-wider font-semibold text-brand-lightText block mb-1">Remaining</label>
+                                                <span class="text-sm font-bold block" :class="cat.allocated - cat.spent < 0 ? 'text-brand-red' : 'text-emerald-500'" x-text="formatCurrency(cat.allocated - cat.spent)"></span>
+                                            </div>
+                                            <button @click="removeCategory(idx)" class="text-gray-300 hover:text-brand-red transition-colors absolute -right-2 top-0 p-1 opacity-0 group-hover/item:opacity-100">
+                                                <i data-lucide="trash" class="w-3 h-3"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 pt-4 border-t border-gray-100">
+                                    <div class="flex justify-between text-xs mb-1.5 font-semibold">
+                                        <span class="text-brand-lightText">Progress</span>
+                                        <span :class="cat.spent > cat.allocated ? 'text-brand-red' : 'text-brand-dark'" x-text="`${Math.round((cat.spent / cat.allocated) * 100)}%`"></span>
+                                    </div>
+                                    <div class="h-1.5 w-full bg-brand-pink rounded-full overflow-hidden">
+                                        <div class="h-full transition-all" 
+                                             :class="cat.spent > cat.allocated ? 'bg-brand-red' : 'bg-brand-rosegold'"
+                                             :style="`width: ${Math.min(100, (cat.spent / cat.allocated) * 100)}%`"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('budgetData', () => ({
+                currency: localStorage.getItem('evera_currency') || 'USD',
+                totalBudget: 30000,
+                categories: [
+                    { name: 'Venue', allocated: 8000, spent: 8500, icon: 'map-pin', color: '#E86E7A', isEditing: false }, 
+                    { name: 'Food & Catering', allocated: 7000, spent: 5000, icon: 'utensils', color: '#F3A7B0', isEditing: false }, 
+                    { name: 'Photography', allocated: 3000, spent: 3000, icon: 'camera', color: '#F9D0D4', isEditing: false },
+                    { name: 'Decoration', allocated: 2500, spent: 1000, icon: 'sparkles', color: '#FCE2E4', isEditing: false },
+                    { name: 'Dresses & Attire', allocated: 3000, spent: 3200, icon: 'shirt', color: '#E86E7A', isEditing: false },
+                    { name: 'Makeup & Hair', allocated: 1000, spent: 500, icon: 'scissors', color: '#F3A7B0', isEditing: false },
+                    { name: 'Entertainment', allocated: 2000, spent: 500, icon: 'music', color: '#F9D0D4', isEditing: false },
+                    { name: 'Honeymoon', allocated: 3500, spent: 0, icon: 'plane', color: '#FCE2E4', isEditing: false }
+                ],
+                
+                get overBudgetCategories() {
+                    return this.categories.filter(c => c.spent > c.allocated);
+                },
+                
+                get chartSlices() {
+                    const totalSpent = this.calculateTotalSpent() || 1;
+                    let currentOffset = 100;
+                    return this.categories.filter(c => c.spent > 0).map(cat => {
+                        const percentage = (cat.spent / totalSpent) * 100;
+                        const slice = { color: cat.color, percentage: percentage, offset: currentOffset };
+                        currentOffset -= percentage;
+                        return slice;
+                    });
+                },
+                
+                removeCategory(idx) {
+                    this.categories.splice(idx, 1);
+                },
+                
+                addCategory() {
+                    this.categories.unshift({ 
+                        name: 'New Category', 
+                        allocated: 0, 
+                        spent: 0, 
+                        icon: 'plus', 
+                        color: '#E86E7A' 
+                    });
+                    setTimeout(() => lucide.createIcons(), 50);
+                },
+
+                calculateTotalSpent() {
+                    return this.categories.reduce((acc, cat) => acc + cat.spent, 0);
+                },
+                
+                remainingBalance() {
+                    return this.totalBudget - this.calculateTotalSpent();
+                },
+                
+                get currencySymbol() {
+                    const map = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'CAD': 'C$', 'AUD': 'A$', 'INR': '₹', 'PKR': 'Rs' };
+                    return map[this.currency] || '$';
+                },
+                
+                formatCurrency(val) {
+                    try {
+                        return new Intl.NumberFormat('en-US', { style: 'currency', currency: this.currency, maximumFractionDigits: 0 }).format(val);
+                    } catch(e) {
+                        return this.currencySymbol + val;
+                    }
+                },
+                
+                saveCurrency() {
+                    localStorage.setItem('evera_currency', this.currency);
+                },
+                
+                downloadPDF() {
+                    const element = document.querySelector('main');
+                    const opt = {
+                        margin: 0.5,
+                        filename: 'Evera_Budget_Planner.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2, useCORS: true },
+                        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                    };
+                    html2pdf().set(opt).from(element).save();
+                },
+
+                init() {
+                    setTimeout(() => lucide.createIcons(), 50);
+                    this.$watch('categories', () => setTimeout(() => lucide.createIcons(), 50), { deep: true });
+                }
+            }))
+        })
+    </script>
+</body>
+</html>

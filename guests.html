@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest List | Evera</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'], 
+                    },
+                    colors: {
+                        brand: {
+                            pink: '#FFF0F3', 
+                            rosegold: '#C88A92',
+                            red: '#E86E7A',
+                            cream: '#FAFAFA', 
+                            gold: '#D4AF37',
+                            dark: '#2A2A2A',
+                            text: '#686868',
+                            lightText: '#9A9A9A'
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- html2pdf for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>body { background-color: #FAFAFA; background-image: none; }</style>
+</head>
+<body class="antialiased text-brand-text font-sans bg-brand-cream" x-data="guestData()">
+
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-[260px] bg-white hidden md:flex flex-col h-full border-r border-gray-100 relative z-20 flex-shrink-0">
+            <div class="px-8 py-8">
+                <a href="index.html" class="flex items-center gap-3">
+                    <i data-lucide="gem" class="w-6 h-6 text-brand-rosegold"></i>
+                    <span class="font-bold text-xl text-brand-dark">Evera</span>
+                </a>
+            </div>
+
+            <div class="px-8 mb-6">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-brand-lightText mb-3">My Wedding</p>
+                <div class="space-y-1">
+                    <a href="dashboard.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="home" class="w-4 h-4"></i> Overview
+                    </a>
+                    <a href="checklist.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="check-square" class="w-4 h-4"></i> Checklist
+                    </a>
+                    <a href="budget.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="pie-chart" class="w-4 h-4"></i> Budget
+                    </a>
+                    <a href="guests.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl bg-brand-pink text-brand-rosegold font-semibold text-sm transition-colors">
+                        <i data-lucide="users" class="w-4 h-4"></i> Guest List
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i> Venue
+                    </a>
+                    <a href="vendors.html" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="store" class="w-4 h-4"></i> Vendors
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i> Style & Decor
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> Schedule
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-gray-50 text-brand-text font-medium text-sm transition-colors">
+                        <i data-lucide="edit-3" class="w-4 h-4"></i> Notes & Ideas
+                    </a>
+                </div>
+            </div>
+
+            <!-- Wedding Date Card -->
+            <div class="mt-auto px-6 pb-8">
+                <div class="bg-brand-pink/50 rounded-2xl p-5 border border-brand-pink">
+                    <div class="flex items-center gap-2 text-brand-dark font-bold text-sm mb-3">
+                        <i data-lucide="calendar" class="w-4 h-4 text-brand-text"></i> Wedding Date
+                    </div>
+                    <p class="text-brand-rosegold font-bold mb-3">24 May 2025</p>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-brand-text">
+                        <i data-lucide="heart" class="w-3 h-3 text-brand-rosegold"></i> 230 days to go
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 relative h-full overflow-y-auto custom-scrollbar">
+            <div class="p-8 max-w-[1200px] mx-auto w-full space-y-6">
+                
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-2">
+                    <div>
+                        <h1 class="text-3xl font-bold text-brand-dark mb-1">Guest List</h1>
+                        <p class="text-brand-lightText text-sm font-medium">Manage RSVPs, meals, and seating.</p>
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <button @click="isAddingGuest = true" x-show="!isAddingGuest" class="bg-brand-rosegold text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-opacity-90 flex items-center gap-2 shadow-sm transition-all hidden sm:flex">
+                            <i data-lucide="user-plus" class="w-4 h-4"></i> Add Guest
+                        </button>
+                        <button @click="downloadPDF()" class="text-brand-lightText hover:text-brand-rosegold transition-colors" title="Export List">
+                            <i data-lucide="download" class="w-5 h-5"></i>
+                        </button>
+                        <div class="flex items-center gap-3 cursor-pointer">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="User" class="w-10 h-10 rounded-full border border-gray-200">
+                            <span class="font-bold text-brand-dark text-sm hidden sm:inline-block">Emma Johnson</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-brand-lightText hidden sm:inline-block"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50 flex flex-col justify-between items-center text-center">
+                        <p class="text-[11px] uppercase tracking-wider text-brand-lightText font-bold mb-2">Total Invited</p>
+                        <p class="font-bold text-4xl text-brand-dark" x-text="guests.length"></p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50 flex flex-col justify-between items-center text-center">
+                        <p class="text-[11px] uppercase tracking-wider text-brand-lightText font-bold mb-2">Going</p>
+                        <p class="font-bold text-4xl text-emerald-500" x-text="guests.filter(g => g.rsvp === 'Attending').length"></p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50 flex flex-col justify-between items-center text-center">
+                        <p class="text-[11px] uppercase tracking-wider text-brand-lightText font-bold mb-2">Pending</p>
+                        <p class="font-bold text-4xl text-amber-500" x-text="guests.filter(g => g.rsvp === 'Pending').length"></p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-card border border-gray-50 flex flex-col justify-between items-center text-center">
+                        <p class="text-[11px] uppercase tracking-wider text-brand-lightText font-bold mb-2">Not Going</p>
+                        <p class="font-bold text-4xl text-brand-red" x-text="guests.filter(g => g.rsvp === 'Declined').length"></p>
+                    </div>
+                </div>
+
+                <!-- Guest Table Area -->
+                <div class="bg-white rounded-3xl shadow-card border border-gray-50 overflow-hidden">
+                    <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4 bg-gray-50/30">
+                        <div class="relative flex-1 w-full max-w-md">
+                            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-lightText"></i>
+                            <input type="text" x-model="searchQuery" placeholder="Search guests or groups..." class="w-full pl-11 pr-4 py-2.5 rounded-xl border border-gray-200 focus:border-brand-rosegold focus:ring-1 focus:ring-brand-rosegold bg-white outline-none text-sm font-semibold transition-all shadow-sm">
+                        </div>
+                        <div class="flex gap-2 w-full sm:w-auto">
+                            <select x-model="filterGroup" class="bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-semibold outline-none w-full sm:w-auto text-brand-dark shadow-sm">
+                                <option value="All">All Groups</option>
+                                <option value="Bride's Family">Bride's Family</option>
+                                <option value="Groom's Family">Groom's Family</option>
+                                <option value="Friends">Friends</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Bulk Actions Toolbar -->
+                    <div x-show="selectedCount > 0" class="bg-brand-pink/50 border-b border-brand-pink px-6 py-3 flex items-center justify-between" style="display: none;">
+                        <span class="text-sm font-bold text-brand-rosegold"><span x-text="selectedCount"></span> guests selected</span>
+                        <div class="flex gap-2">
+                            <button @click="bulkUpdateRSVP('Attending')" class="text-xs bg-white border border-brand-pink px-3 py-1.5 rounded-lg font-bold hover:bg-gray-50 text-emerald-600">Mark Attending</button>
+                            <button @click="bulkUpdateRSVP('Declined')" class="text-xs bg-white border border-brand-pink px-3 py-1.5 rounded-lg font-bold hover:bg-gray-50 text-brand-red">Mark Declined</button>
+                            <button @click="bulkDelete()" class="text-xs bg-white border border-brand-pink text-brand-red px-3 py-1.5 rounded-lg font-bold hover:bg-red-50 flex items-center gap-1"><i data-lucide="trash" class="w-3 h-3"></i> Delete</button>
+                        </div>
+                    </div>
+
+                    <!-- Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[800px]">
+                            <thead>
+                                <tr class="bg-white text-[11px] uppercase tracking-wider text-brand-lightText border-b border-gray-100">
+                                    <th class="p-5 w-12 text-center"><input type="checkbox" :checked="allSelected" @change="toggleSelectAll($event)" class="accent-brand-rosegold w-4 h-4 cursor-pointer"></th>
+                                    <th class="p-5 font-bold w-1/3">Guest Name & Details</th>
+                                    <th class="p-5 font-bold">Group / Side</th>
+                                    <th class="p-5 font-bold text-center">RSVP</th>
+                                    <th class="p-5 font-bold">Meal Choice</th>
+                                    <th class="p-5 font-bold text-center">Table</th>
+                                    <th class="p-5 w-24"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-50">
+                                <!-- Add Guest Inline Form -->
+                                <tr x-show="isAddingGuest" class="bg-brand-pink/30 border-b border-brand-pink" style="display: none;">
+                                    <td class="p-5 text-center"></td>
+                                    <td class="p-5">
+                                        <input type="text" x-model="newGuest.name" placeholder="Guest Name" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold mb-2">
+                                        <input type="email" x-model="newGuest.email" placeholder="Email Address" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-brand-rosegold mb-2">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <input type="checkbox" x-model="newGuest.plusOne" id="newPlusOne" class="accent-brand-rosegold">
+                                            <label for="newPlusOne" class="text-xs font-bold text-brand-text">+ Plus One</label>
+                                        </div>
+                                        <input type="text" x-show="newGuest.plusOne" x-model="newGuest.plusOneName" placeholder="Plus One Name" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-brand-rosegold mb-2">
+                                        <input type="text" x-model="newGuest.dietary" placeholder="Dietary Restrictions (comma separated)" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-brand-rosegold">
+                                    </td>
+                                    <td class="p-5 align-top">
+                                        <select x-model="newGuest.group" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                            <option value="Bride's Family">Bride's Family</option>
+                                            <option value="Groom's Family">Groom's Family</option>
+                                            <option value="Friends">Friends</option>
+                                            <option value="Colleagues">Colleagues</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-5 text-center align-top">
+                                        <span class="text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full bg-amber-50 text-amber-600 border border-amber-100">Pending</span>
+                                    </td>
+                                    <td class="p-5 align-top">
+                                        <select x-model="newGuest.meal" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                            <option value="Not Selected">Not Selected</option>
+                                            <option value="Beef">Beef</option>
+                                            <option value="Chicken">Chicken</option>
+                                            <option value="Fish">Fish</option>
+                                            <option value="Vegetarian">Vegetarian</option>
+                                            <option value="Vegan">Vegan</option>
+                                            <option value="Kids Meal">Kids Meal</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-5 text-center align-top">
+                                        <input type="number" x-model="newGuest.table" placeholder="No." class="w-16 bg-white border border-gray-200 rounded-lg px-2 py-2 text-sm font-semibold outline-none focus:border-brand-rosegold text-center mx-auto">
+                                    </td>
+                                    <td class="p-5 text-right whitespace-nowrap align-top">
+                                        <button @click="saveNewGuest()" class="px-3 py-1.5 bg-brand-rosegold text-white rounded-lg text-xs font-bold hover:bg-opacity-90 w-full mb-2">Save</button>
+                                        <button @click="isAddingGuest = false" class="px-3 py-1.5 bg-white border border-gray-200 text-brand-text rounded-lg text-xs font-bold hover:bg-gray-50 w-full">Cancel</button>
+                                    </td>
+                                </tr>
+
+                                <template x-for="(guest, idx) in filteredGuests" :key="guest.id || idx">
+                                    <tr class="hover:bg-gray-50/50 transition-colors group" :class="guest.selected ? 'bg-brand-pink/10' : ''">
+                                        <td class="p-5 text-center">
+                                            <input type="checkbox" x-model="guest.selected" class="accent-brand-rosegold w-4 h-4 cursor-pointer">
+                                        </td>
+                                        
+                                        <!-- View Mode -->
+                                        <td class="p-5" x-show="!guest.isEditing">
+                                            <div class="font-bold text-brand-dark text-sm" x-text="guest.name"></div>
+                                            <div class="text-[10px] font-bold text-brand-rosegold uppercase tracking-wider mt-1" x-show="guest.plusOne">+ <span x-text="guest.plusOneName || 'Guest'"></span></div>
+                                            <div class="flex flex-wrap gap-1 mt-1" x-show="guest.dietary">
+                                                <template x-for="diet in guest.dietary.split(',').filter(d=>d.trim()!=='')">
+                                                    <span class="text-[9px] bg-red-50 text-brand-red px-1.5 py-0.5 rounded border border-red-100 font-bold uppercase" x-text="diet.trim()"></span>
+                                                </template>
+                                            </div>
+                                            <div class="text-xs text-brand-lightText font-medium mt-1" x-text="guest.email"></div>
+                                        </td>
+                                        <td class="p-5 text-sm font-semibold text-brand-text" x-show="!guest.isEditing" x-text="guest.group"></td>
+                                        <td class="p-5 text-center" x-show="!guest.isEditing">
+                                            <span class="text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full inline-block"
+                                                  :class="{
+                                                      'bg-emerald-50 text-emerald-600 border border-emerald-100': guest.rsvp === 'Attending',
+                                                      'bg-amber-50 text-amber-600 border border-amber-100': guest.rsvp === 'Pending',
+                                                      'bg-red-50 text-brand-red border border-red-100': guest.rsvp === 'Declined'
+                                                  }" x-text="guest.rsvp"></span>
+                                        </td>
+                                        <td class="p-5" x-show="!guest.isEditing">
+                                            <select x-model="guest.meal" class="text-sm font-semibold bg-transparent border-b border-dashed border-gray-300 focus:border-brand-rosegold outline-none pb-0.5 text-brand-dark w-full max-w-[120px]">
+                                                <option value="Not Selected">Not Selected</option>
+                                                <option value="Beef">Beef</option>
+                                                <option value="Chicken">Chicken</option>
+                                                <option value="Fish">Fish</option>
+                                                <option value="Vegetarian">Vegetarian</option>
+                                                <option value="Vegan">Vegan</option>
+                                                <option value="Kids Meal">Kids Meal</option>
+                                            </select>
+                                        </td>
+                                        <td class="p-5 text-center" x-show="!guest.isEditing">
+                                            <div class="w-8 h-8 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center mx-auto text-sm font-bold text-brand-dark" x-text="guest.table || '-'"></div>
+                                        </td>
+                                        <td class="p-5 text-right whitespace-nowrap" x-show="!guest.isEditing">
+                                            <button @click="guest.isEditing = true; setTimeout(() => lucide.createIcons(), 50)" class="p-2 text-brand-lightText hover:text-brand-rosegold rounded-lg transition-colors opacity-0 group-hover:opacity-100">
+                                                <i data-lucide="edit-2" class="w-4 h-4"></i>
+                                            </button>
+                                            <button @click="removeGuest(idx)" class="p-2 text-brand-lightText hover:text-brand-red hover:bg-red-50 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
+                                                <i data-lucide="trash" class="w-4 h-4"></i>
+                                            </button>
+                                        </td>
+
+                                        <!-- Edit Mode -->
+                                        <td class="p-5 bg-gray-50/80 shadow-inner" x-show="guest.isEditing" style="display: none;">
+                                            <input type="text" x-model="guest.name" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold mb-2">
+                                            <input type="email" x-model="guest.email" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-brand-rosegold mb-2">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <input type="checkbox" x-model="guest.plusOne" class="accent-brand-rosegold">
+                                                <label class="text-[10px] font-bold text-brand-text uppercase">+ Plus One</label>
+                                            </div>
+                                            <input type="text" x-show="guest.plusOne" x-model="guest.plusOneName" placeholder="Plus One Name" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-brand-rosegold mb-2">
+                                            <input type="text" x-model="guest.dietary" placeholder="Dietary: e.g. Vegan, Nut Allergy" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-brand-rosegold">
+                                        </td>
+                                        <td class="p-5 bg-gray-50/80 shadow-inner align-top" x-show="guest.isEditing" style="display: none;">
+                                            <select x-model="guest.group" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold">
+                                                <option value="Bride's Family">Bride's Family</option>
+                                                <option value="Groom's Family">Groom's Family</option>
+                                                <option value="Friends">Friends</option>
+                                                <option value="Colleagues">Colleagues</option>
+                                            </select>
+                                        </td>
+                                        <td class="p-5 bg-gray-50/80 shadow-inner text-center align-top" x-show="guest.isEditing" style="display: none;">
+                                            <select x-model="guest.rsvp" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs font-semibold outline-none focus:border-brand-rosegold">
+                                                <option value="Pending">Pending</option>
+                                                <option value="Attending">Attending</option>
+                                                <option value="Declined">Declined</option>
+                                            </select>
+                                        </td>
+                                        <td class="p-5 bg-gray-50/80 shadow-inner align-top" x-show="guest.isEditing" style="display: none;">
+                                            <select x-model="guest.meal" class="w-full bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs font-semibold outline-none focus:border-brand-rosegold">
+                                                <option value="Not Selected">Not Selected</option>
+                                                <option value="Beef">Beef</option>
+                                                <option value="Chicken">Chicken</option>
+                                                <option value="Fish">Fish</option>
+                                                <option value="Vegetarian">Vegetarian</option>
+                                                <option value="Vegan">Vegan</option>
+                                                <option value="Kids Meal">Kids Meal</option>
+                                            </select>
+                                        </td>
+                                        <td class="p-5 bg-gray-50/80 shadow-inner text-center align-top" x-show="guest.isEditing" style="display: none;">
+                                            <input type="number" x-model="guest.table" class="w-16 bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-sm font-semibold outline-none focus:border-brand-rosegold text-center mx-auto">
+                                        </td>
+                                        <td class="p-5 bg-gray-50/80 shadow-inner text-right whitespace-nowrap align-top" x-show="guest.isEditing" style="display: none;">
+                                            <button @click="guest.isEditing = false; setTimeout(() => lucide.createIcons(), 50)" class="px-4 py-2 bg-brand-dark text-white rounded-lg text-xs font-bold hover:bg-opacity-90 shadow-sm">Save</button>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('guestData', () => ({
+                searchQuery: '',
+                filterGroup: 'All',
+                isAddingGuest: false,
+                newGuest: { name: '', email: '', group: 'Bride\'s Family', rsvp: 'Pending', meal: 'Not Selected', table: null, dietary: '', plusOne: false, plusOneName: '' },
+                guests: [
+                    { id: 1, name: 'John Doe', email: 'john@example.com', group: 'Bride\'s Family', rsvp: 'Attending', meal: 'Beef', table: 1, dietary: 'Nut Allergy', plusOne: true, plusOneName: 'Jane Smith', isEditing: false, selected: false },
+                    { id: 2, name: 'Jane Doe', email: 'jane@example.com', group: 'Bride\'s Family', rsvp: 'Attending', meal: 'Vegetarian', table: 1, dietary: 'Vegetarian', plusOne: false, plusOneName: '', isEditing: false, selected: false },
+                    { id: 3, name: 'Robert Smith', email: 'robert@example.com', group: 'Groom\'s Family', rsvp: 'Pending', meal: 'Not Selected', table: null, dietary: '', plusOne: false, plusOneName: '', isEditing: false, selected: false },
+                    { id: 4, name: 'Emily Clark', email: 'emily@example.com', group: 'Friends', rsvp: 'Attending', meal: 'Chicken', table: 4, dietary: '', plusOne: true, plusOneName: 'Michael Clark', isEditing: false, selected: false },
+                    { id: 5, name: 'Michael Johnson', email: 'michael@example.com', group: 'Friends', rsvp: 'Declined', meal: 'Not Selected', table: null, dietary: '', plusOne: false, plusOneName: '', isEditing: false, selected: false },
+                    { id: 6, name: 'Sarah Wilson', email: 'sarah@example.com', group: 'Groom\'s Family', rsvp: 'Attending', meal: 'Fish', table: 2, dietary: 'Gluten-Free', plusOne: false, plusOneName: '', isEditing: false, selected: false }
+                ],
+                
+                saveNewGuest() {
+                    if (this.newGuest.name.trim() === '') return;
+                    this.guests.unshift({ 
+                        id: Date.now(),
+                        name: this.newGuest.name, 
+                        email: this.newGuest.email, 
+                        group: this.newGuest.group, 
+                        rsvp: 'Pending', 
+                        meal: this.newGuest.meal, 
+                        table: this.newGuest.table,
+                        dietary: this.newGuest.dietary,
+                        plusOne: this.newGuest.plusOne,
+                        plusOneName: this.newGuest.plusOneName,
+                        isEditing: false,
+                        selected: false
+                    });
+                    this.newGuest = { name: '', email: '', group: 'Bride\'s Family', rsvp: 'Pending', meal: 'Not Selected', table: null, dietary: '', plusOne: false, plusOneName: '' };
+                    this.isAddingGuest = false;
+                    setTimeout(() => lucide.createIcons(), 50);
+                },
+
+                removeGuest(idx) {
+                    this.guests.splice(idx, 1);
+                },
+
+                get allSelected() {
+                    return this.filteredGuests.length > 0 && this.filteredGuests.every(g => g.selected);
+                },
+                
+                get selectedCount() {
+                    return this.guests.filter(g => g.selected).length;
+                },
+
+                toggleSelectAll(e) {
+                    const checked = e.target.checked;
+                    this.filteredGuests.forEach(g => g.selected = checked);
+                },
+
+                bulkUpdateRSVP(status) {
+                    this.guests.forEach(g => { if(g.selected) g.rsvp = status; });
+                    this.guests.forEach(g => g.selected = false);
+                },
+
+                bulkDelete() {
+                    if(confirm(`Are you sure you want to delete ${this.selectedCount} guests?`)) {
+                        this.guests = this.guests.filter(g => !g.selected);
+                    }
+                },
+
+                get filteredGuests() {
+                    let result = this.guests;
+                    
+                    if (this.filterGroup !== 'All') {
+                        result = result.filter(g => g.group === this.filterGroup);
+                    }
+                    
+                    if (this.searchQuery !== '') {
+                        const q = this.searchQuery.toLowerCase();
+                        result = result.filter(g => g.name.toLowerCase().includes(q) || g.group.toLowerCase().includes(q));
+                    }
+                    
+                    return result;
+                },
+
+                downloadPDF() {
+                    const element = document.querySelector('main');
+                    const opt = {
+                        margin: 0.5,
+                        filename: 'Evera_Guest_List.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2, useCORS: true },
+                        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                    };
+                    html2pdf().set(opt).from(element).save();
+                },
+
+                init() {
+                    setTimeout(() => lucide.createIcons(), 50);
+                    this.$watch('searchQuery', () => setTimeout(() => lucide.createIcons(), 50));
+                    this.$watch('filterGroup', () => setTimeout(() => lucide.createIcons(), 50));
+                }
+            }))
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Elements -->
+    <title>Wedding Planning Checklists: Ultimate Guide & Timeline for Couples | Evera</title>
+    <meta name="description" content="Complete wedding planning checklists with timeline, budget planner, vendor guide, and bridal checklist to plan your perfect wedding.">
+    <meta name="keywords" content="wedding planning checklists, wedding planner checklist, printable wedding checklist, wedding timeline checklist, wedding budget planner, wedding planning tool, wedding checklist PDF, wedding organizer tool">
+    <link rel="canonical" href="https://www.weddingplanningchecklists.org/wedding-planning-checklists">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            pink: '#fcecf0',
+                            rosegold: '#B76E79',
+                            cream: '#fdfbf7',
+                            gold: '#D4AF37',
+                            dark: '#2c2224',
+                            text: '#4a4445',
+                            beige: '#F5F5DC',
+                            accent: '#ecd5d8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Icons (Lucide via Unpkg) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        .faq-transition {
+            transition: all 0.3s ease-out;
+        }
+        .toc-active {
+            color: #B76E79;
+            font-weight: 600;
+            border-left: 2px solid #B76E79;
+            padding-left: 8px;
+        }
+    </style>
+</head>
+<body class="antialiased text-brand-text bg-brand-cream selection:bg-brand-rosegold selection:text-white" x-data="{ mobileMenuOpen: false }">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.location.href='https://www.weddingplanningchecklists.org/'">
+                    <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
+                    <span class="font-heading font-bold text-2xl tracking-tight text-brand-dark">Evera</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#features" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Features</a>
+                    <a href="index.html#dashboard-preview" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Tools</a>
+                    <a href="checklist.html" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Timeline</a>
+                    <a href="budget.html" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Budget</a>
+                    <a href="wedding-planning-checklists.html" class="text-sm font-semibold text-brand-rosegold">Guide</a>
+                    <a href="planner.html" class="bg-brand-rosegold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all hover:shadow-lg hover:-translate-y-0.5">Start Planning</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-text hover:text-brand-rosegold">
+                        <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenuOpen"></i>
+                        <i data-lucide="x" class="w-6 h-6" x-show="mobileMenuOpen" x-cloak></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden glass-dark absolute w-full border-b border-white/20 shadow-xl" x-cloak>
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html#features" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Features</a>
+                <a href="index.html#dashboard-preview" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Tools</a>
+                <a href="checklist.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Timeline</a>
+                <a href="budget.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Budget</a>
+                <a href="wedding-planning-checklists.html" class="block px-3 py-2 rounded-md text-base font-medium bg-brand-pink/70 text-brand-rosegold">Guide</a>
+                <a href="planner.html" class="block text-center bg-brand-rosegold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90">Start Planning</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Article Hero -->
+    <header class="relative pt-32 pb-12 lg:pt-40 lg:pb-16 overflow-hidden">
+        <div class="absolute top-0 right-0 -z-10 w-full h-full overflow-hidden opacity-40">
+            <div class="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-brand-pink blur-[100px]"></div>
+            <div class="absolute top-[20%] -left-[10%] w-[40%] h-[40%] rounded-full bg-brand-beige blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Breadcrumbs -->
+            <nav class="flex justify-center items-center gap-2 text-xs font-semibold tracking-wider uppercase text-brand-rosegold mb-4">
+                <a href="index.html" class="hover:underline">Home</a>
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                <span class="text-brand-text/60">Guides</span>
+            </nav>
+            
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight mb-6">
+                The Ultimate Wedding Planning Checklists Guide for a Stress-Free Wedding
+            </h1>
+            
+            <p class="text-lg text-brand-text/80 max-w-2xl mx-auto font-light leading-relaxed mb-8">
+                Learn why structured checklists are the secret to flawless planning, get a month-by-month timeline, download printable worksheets, and assess your wedding readiness with our interactive tool.
+            </p>
+            
+            <!-- Metadata -->
+            <div class="flex items-center justify-center gap-6 text-sm text-brand-text/70 border-y border-brand-accent/30 py-4 max-w-xl mx-auto">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="calendar" class="w-4 h-4 text-brand-rosegold"></i>
+                    <span>Updated June 2026</span>
+                </div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="clock" class="w-4 h-4 text-brand-rosegold"></i>
+                    <span>10 Min Read</span>
+                </div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="user" class="w-4 h-4 text-brand-rosegold"></i>
+                    <span>Evera Editorial</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        
+        <!-- Featured Image -->
+        <div class="max-w-5xl mx-auto mb-16">
+            <figure class="glass p-3 rounded-[2.5rem] shadow-2xl">
+                <img src="images/media__1780562771886.jpg" 
+                     alt="A happy couple sitting together at a decorated dining table, laughing and using a laptop with a wedding budget spreadsheet, a notebook planner, flowers, and a calendar to plan their wedding checklist." 
+                     class="w-full max-h-[550px] object-cover rounded-[2rem]">
+                <figcaption class="text-center text-xs text-brand-text/60 mt-4 italic font-sans">
+                    Planning a wedding is a beautiful journey. Starting early with structured checklists and planners helps ensure a stress-free countdown.
+                </figcaption>
+            </figure>
+        </div>
+
+        <!-- Grid Layout for Article + Sidebar -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
+            
+            <!-- Sidebar Table of Contents (Sticky) -->
+            <aside class="col-span-1 lg:col-span-3 hidden lg:block">
+                <div class="sticky top-28 space-y-6">
+                    <div class="glass p-6 rounded-3xl border border-brand-accent/20">
+                        <h4 class="font-heading font-bold text-lg text-brand-dark mb-4 pb-2 border-b border-brand-accent/30 flex items-center gap-2">
+                            <i data-lucide="list" class="w-4 h-4 text-brand-rosegold"></i> Guide Sections
+                        </h4>
+                        <nav class="space-y-3 text-sm">
+                            <a href="#essential" class="block text-brand-text hover:text-brand-rosegold transition-colors">1. Why Checklists Matter</a>
+                            <a href="#included" class="block text-brand-text hover:text-brand-rosegold transition-colors">2. What to Include</a>
+                            <a href="#when" class="block text-brand-text hover:text-brand-rosegold transition-colors">3. When to Start</a>
+                            <a href="#budget" class="block text-brand-text hover:text-brand-rosegold transition-colors">4. Wedding Budget Planner</a>
+                            <a href="#venue" class="block text-brand-text hover:text-brand-rosegold transition-colors">5. Venue Selection Guide</a>
+                            <a href="#vendors" class="block text-brand-text hover:text-brand-rosegold transition-colors">6. Vendors to Book First</a>
+                            <a href="#guests" class="block text-brand-text hover:text-brand-rosegold transition-colors">7. Guest List Tips</a>
+                            <a href="#bridal" class="block text-brand-text hover:text-brand-rosegold transition-colors">8. Complete Bridal Checklist</a>
+                            <a href="#timeline" class="block text-brand-text hover:text-brand-rosegold transition-colors">9. Month-by-Month Guide</a>
+                            <a href="#mistakes" class="block text-brand-text hover:text-brand-rosegold transition-colors">10. Mistakes to Avoid</a>
+                            <a href="#tool" class="block text-brand-text hover:text-brand-rosegold transition-colors font-medium">11. Self-Assessment Tool</a>
+                            <a href="#printable" class="block text-brand-text hover:text-brand-rosegold transition-colors">12. Printable Checklists</a>
+                            <a href="#final" class="block text-brand-text hover:text-brand-rosegold transition-colors">13. Final Wedding Day</a>
+                            <a href="#faqs" class="block text-brand-text hover:text-brand-rosegold transition-colors">14. Planning FAQs</a>
+                        </nav>
+                    </div>
+
+                    <!-- Sidebar Promo Callout -->
+                    <div class="bg-gradient-to-br from-brand-rosegold to-brand-dark text-white p-6 rounded-3xl shadow-lg border border-white/10 text-center relative overflow-hidden">
+                        <div class="absolute -right-12 -bottom-12 w-28 h-28 bg-white/5 rounded-full blur-xl"></div>
+                        <h4 class="font-heading font-bold text-xl mb-2">Build Your Checklist</h4>
+                        <p class="text-xs text-white/80 mb-6 leading-relaxed">
+                            Generate a customized wedding checklist & timeline based on your specific wedding date.
+                        </p>
+                        <a href="planner.html" class="inline-block bg-white text-brand-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:bg-brand-pink transition-all shadow-md">
+                            Get Started Free
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Blog Post Body Content -->
+            <article class="col-span-1 lg:col-span-9 space-y-12 prose prose-brand max-w-none text-brand-text font-sans">
+                
+                <!-- Introduction -->
+                <section class="space-y-4">
+                    <p class="text-lg leading-relaxed first-letter:text-5xl first-letter:font-heading first-letter:float-left first-letter:mr-3 first-letter:text-brand-rosegold font-light">
+                        Planning a wedding involves hundreds of decisions, deadlines, and moving parts. Without a clear system, it's easy to forget important tasks or feel overwhelmed. That's why <strong>Wedding Planning Checklists</strong> have become an essential tool for modern couples. A well-structured wedding checklist helps organize every detail, from setting a budget to booking vendors and preparing for the big day.
+                    </p>
+                    <p class="leading-relaxed">
+                        Whether you're planning a small intimate ceremony or a grand celebration, this comprehensive wedding planning guide, paired with our <a href="checklist.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">interactive wedding checklist</a>, will help you stay organized, reduce stress, and create the wedding you've always envisioned.
+                    </p>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- Why Are Wedding Planning Checklists Essential? -->
+                <section id="essential" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">01.</span> Why Are Wedding Planning Checklists Essential?
+                    </h2>
+                    <p class="leading-relaxed">
+                        Wedding planning is essentially a large-scale project involving <a href="budget.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">budgeting</a>, scheduling, <a href="guests.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">guest management</a>, <a href="vendors.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">vendor coordination</a>, and event execution. Transitioning from excitement to execution becomes much easier when every task is documented and prioritized.
+                    </p>
+                    
+                    <div class="bg-brand-pink/40 border border-brand-accent/40 rounded-3xl p-8 my-6">
+                        <h4 class="font-heading font-bold text-lg text-brand-dark mb-4 flex items-center gap-2">
+                            <i data-lucide="info" class="w-5 h-5 text-brand-rosegold"></i> A Wedding Checklist Helps You:
+                        </h4>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <li class="flex items-center gap-3 text-sm">
+                                <i data-lucide="check" class="w-5 h-5 text-brand-rosegold bg-white p-1 rounded-full border border-brand-accent/40 shadow-sm"></i>
+                                <span>Stay organized through every milestone</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-sm">
+                                <i data-lucide="check" class="w-5 h-5 text-brand-rosegold bg-white p-1 rounded-full border border-brand-accent/40 shadow-sm"></i>
+                                <span>Meet important deadlines without rushing</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-sm">
+                                <i data-lucide="check" class="w-5 h-5 text-brand-rosegold bg-white p-1 rounded-full border border-brand-accent/40 shadow-sm"></i>
+                                <span>Avoid costly booking or ordering mistakes</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-sm">
+                                <i data-lucide="check" class="w-5 h-5 text-brand-rosegold bg-white p-1 rounded-full border border-brand-accent/40 shadow-sm"></i>
+                                <span>Manage and track wedding expenses easily</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-sm">
+                                <i data-lucide="check" class="w-5 h-5 text-brand-rosegold bg-white p-1 rounded-full border border-brand-accent/40 shadow-sm"></i>
+                                <span>Coordinate timelines with vendors</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-sm">
+                                <i data-lucide="check" class="w-5 h-5 text-brand-rosegold bg-white p-1 rounded-full border border-brand-accent/40 shadow-sm"></i>
+                                <span>Reduce day-to-day planning stress</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-sm col-span-1 md:col-span-2">
+                                <i data-lucide="check" class="w-5 h-5 text-brand-rosegold bg-white p-1 rounded-full border border-brand-accent/40 shadow-sm"></i>
+                                <span>Keep family members and planners informed</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <p class="leading-relaxed">
+                        Without a structured wedding preparation list, many couples discover missing details only days before their wedding. Laying out a concrete path minimizes surprises.
+                    </p>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- What Is Included in a Wedding Planning Checklist? -->
+                <section id="included" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">02.</span> What Is Included in a Wedding Planning Checklist?
+                    </h2>
+                    <p class="leading-relaxed">
+                        A complete wedding planning checklist covers every stage of the engagement-to-wedding journey. Breaking this massive list into core pillars helps maintain focus:
+                    </p>
+
+                    <!-- Content Image 1: Wavy Timeline Elements Diagram -->
+                    <figure class="glass p-3 rounded-[2rem] shadow-lg my-8">
+                        <img src="images/media__1780562771894.jpg" 
+                             alt="A beautiful hand-drawn style wedding planning timeline infographic highlighting key checklists like setting a budget, booking a wedding venue, writing the guest list, dress fitting, hiring vendors, sending invitations, and walking down the aisle." 
+                             class="w-full object-cover rounded-[1.5rem]">
+                        <figcaption class="text-center text-xs text-brand-text/60 mt-3 italic">
+                            Figure 1: Core stages of a wedding planning checklist timeline from setting your budget to booking dresses and rings.
+                        </figcaption>
+                    </figure>
+
+                    <!-- Core Pillars Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        
+                        <!-- Budget Planning Tasks -->
+                        <div class="glass p-6 rounded-2xl border border-brand-accent/20">
+                            <h3 class="font-heading font-bold text-xl text-brand-dark mb-4 flex items-center gap-2">
+                                <i data-lucide="wallet" class="w-5 h-5 text-brand-rosegold"></i> Budget Planning Tasks
+                            </h3>
+                            <p class="text-sm mb-4">Your <a href="budget.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">wedding budget planner</a> should outline every anticipated expense:</p>
+                            <ul class="space-y-2 text-xs">
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Venue rental & catering costs</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Photography & videography packages</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Wedding attire, styling, and rings</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Entertainment, DJ, band, and florists</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Invitations, decor, and transport</li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-brand-pink/30 rounded-lg text-xs italic text-brand-text/80">
+                                <strong>Tip:</strong> Allocate 5-10% of your total budget for unexpected emergency costs.
+                            </div>
+                        </div>
+
+                        <!-- Venue Selection Tasks -->
+                        <div class="glass p-6 rounded-2xl border border-brand-accent/20">
+                            <h3 class="font-heading font-bold text-xl text-brand-dark mb-4 flex items-center gap-2">
+                                <i data-lucide="building" class="w-5 h-5 text-brand-rosegold"></i> Venue Selection Tasks
+                            </h3>
+                            <p class="text-sm mb-4">Venue coordination forms the foundation of your wedding logistics:</p>
+                            <ul class="space-y-2 text-xs">
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Defining guest capacity guidelines</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Comparing packages and rental hours</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Reviewing contracts and vendor restrictions</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Checking weather backup plans and availability</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Scheduling on-site walkthroughs</li>
+                            </ul>
+                        </div>
+
+                        <!-- Vendor Booking Tasks -->
+                        <div class="glass p-6 rounded-2xl border border-brand-accent/20">
+                            <h3 class="font-heading font-bold text-xl text-brand-dark mb-4 flex items-center gap-2">
+                                <i data-lucide="briefcase" class="w-5 h-5 text-brand-rosegold"></i> Vendor Booking Tasks
+                            </h3>
+                            <p class="text-sm mb-4">Book in-demand, professional <a href="vendors.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">wedding vendors</a> early:</p>
+                            <ul class="space-y-2 text-xs">
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Photographer & Videographer</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Caterer & Florist</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> DJ or Live Ceremony Band</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Makeup Artists & Officiant</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Transportation and decor rentals</li>
+                            </ul>
+                        </div>
+
+                        <!-- Guest List Management -->
+                        <div class="glass p-6 rounded-2xl border border-brand-accent/20">
+                            <h3 class="font-heading font-bold text-xl text-brand-dark mb-4 flex items-center gap-2">
+                                <i data-lucide="users" class="w-5 h-5 text-brand-rosegold"></i> Guest List Management
+                            </h3>
+                            <p class="text-sm mb-4">Managing guests is a dynamic task that continues up to the big day. Use a <a href="guests.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">guest list manager</a> to track RSVPs:</p>
+                            <ul class="space-y-2 text-xs">
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Creating preliminary guest counts</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Tracking RSVPs and invitations</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Structuring table seating charts</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Accommodating dietary restrictions</li>
+                                <li class="flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-brand-gold"></i> Coordinating hotel accommodations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- When Should You Start Wedding Planning? -->
+                <section id="when" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">03.</span> When Should You Start Wedding Planning?
+                    </h2>
+                    <p class="leading-relaxed">
+                        The ideal wedding timeline begins <strong>12 to 18 months</strong> before your wedding date. Starting early allows you to secure preferred venues and vendors while reducing last-minute pressure.
+                    </p>
+
+                    <!-- Content Image 2: Timeline Infographic -->
+                    <figure class="glass p-3 rounded-[2rem] shadow-lg my-8">
+                        <img src="images/media__1780562771887.jpg" 
+                             alt="An elegant step-by-step wedding planning timeline chart showing key tasks from the engagement ring and champagne to venue booking, vendor coordination, invitations, and the final ceremony." 
+                             class="w-full object-cover rounded-[1.5rem]">
+                        <figcaption class="text-center text-xs text-brand-text/60 mt-3 italic">
+                            Figure 2: Month-by-month checklist timeline flow indicating vendor and styling milestones.
+                        </figcaption>
+                    </figure>
+
+                    <!-- Timeline Milestones -->
+                    <div class="space-y-6 mt-8">
+                        <div class="border-l-2 border-brand-rosegold pl-6 relative space-y-4">
+                            <!-- 12 Months -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1 w-4 h-4 bg-brand-rosegold rounded-full border-4 border-brand-cream"></div>
+                                <h4 class="font-heading font-bold text-lg text-brand-dark">12 Months Before the Wedding</h4>
+                                <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 text-sm text-brand-text/90">
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Set wedding budget</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Choose wedding style</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Create guest list</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Book venue</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Hire planner & research services</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- 9 Months -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1 w-4 h-4 bg-brand-rosegold rounded-full border-4 border-brand-cream"></div>
+                                <h4 class="font-heading font-bold text-lg text-brand-dark">9 Months Before the Wedding</h4>
+                                <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 text-sm text-brand-text/90">
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Book major vendors (Photo, Band, Catering)</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Shop for wedding attire</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Reserve hotel accommodations</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Create wedding website</li>
+                                </ul>
+                            </div>
+
+                            <!-- 6 Months -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1 w-4 h-4 bg-brand-rosegold rounded-full border-4 border-brand-cream"></div>
+                                <h4 class="font-heading font-bold text-lg text-brand-dark">6 Months Before the Wedding</h4>
+                                <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 text-sm text-brand-text/90">
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Send save-the-dates</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Finalize catering menu</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Schedule engagement photos</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Plan honeymoon details</li>
+                                </ul>
+                            </div>
+
+                            <!-- 3 Months -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1 w-4 h-4 bg-brand-rosegold rounded-full border-4 border-brand-cream"></div>
+                                <h4 class="font-heading font-bold text-lg text-brand-dark">3 Months Before the Wedding</h4>
+                                <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 text-sm text-brand-text/90">
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Send formal invitations</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Confirm vendor timelines</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Schedule beauty & hair appointments</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Finalize seating plans</li>
+                                </ul>
+                            </div>
+
+                            <!-- 1 Month -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1 w-4 h-4 bg-brand-rosegold rounded-full border-4 border-brand-cream"></div>
+                                <h4 class="font-heading font-bold text-lg text-brand-dark">1 Month Before the Wedding</h4>
+                                <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 text-sm text-brand-text/90">
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Final wedding dress fittings</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Confirm guest counts</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Review vendor contracts</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Prepare wedding day emergency kits</li>
+                                </ul>
+                            </div>
+
+                            <!-- Week Of -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1 w-4 h-4 bg-brand-rosegold rounded-full border-4 border-brand-cream"></div>
+                                <h4 class="font-heading font-bold text-lg text-brand-dark">Wedding Week Tasks</h4>
+                                <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 text-sm text-brand-text/90">
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Confirm final bookings</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Pack personal essentials</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Distribute schedule to bridal party</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4 text-brand-rosegold"></i> Rehearse ceremony and readings</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- How to Create a Wedding Budget Planner -->
+                <section id="budget" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">04.</span> How to Create a Wedding Budget Planner
+                    </h2>
+                    <p class="leading-relaxed">
+                        Money management is one of the biggest challenges. Setting realistic spending expectations reduces financial friction. Using our interactive <a href="budget.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">wedding budget planner</a> makes tracking simple. Follow these standard budgeting steps:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass p-6 rounded-2xl border border-brand-accent/20 hover:border-brand-rosegold/50 transition-colors">
+                            <span class="text-xs uppercase tracking-widest text-brand-rosegold font-bold block mb-1">Step 1</span>
+                            <h4 class="font-heading font-bold text-lg text-brand-dark mb-2">Determine Total Budget</h4>
+                            <p class="text-sm leading-relaxed">
+                                Identify contributions from you, your partner, and family members. Establish a hard financial cap before looking at venues.
+                            </p>
+                        </div>
+                        <div class="glass p-6 rounded-2xl border border-brand-accent/20 hover:border-brand-rosegold/50 transition-colors">
+                            <span class="text-xs uppercase tracking-widest text-brand-rosegold font-bold block mb-1">Step 2</span>
+                            <h4 class="font-heading font-bold text-lg text-brand-dark mb-2">Prioritize Spending</h4>
+                            <p class="text-sm leading-relaxed">
+                                Decide what elements matter most to you as a couple, whether that is the venue, food and beverage, or photography.
+                            </p>
+                        </div>
+                        <div class="glass p-6 rounded-2xl border border-brand-accent/20 hover:border-brand-rosegold/50 transition-colors">
+                            <span class="text-xs uppercase tracking-widest text-brand-rosegold font-bold block mb-1">Step 3</span>
+                            <h4 class="font-heading font-bold text-lg text-brand-dark mb-2">Track Every Expense</h4>
+                            <p class="text-sm leading-relaxed">
+                                Use wedding budget spreadsheets, digital planners, or printable templates to log deposits and balance dues.
+                            </p>
+                        </div>
+                        <div class="glass p-6 rounded-2xl border border-brand-accent/20 hover:border-brand-rosegold/50 transition-colors">
+                            <span class="text-xs uppercase tracking-widest text-brand-rosegold font-bold block mb-1">Step 4</span>
+                            <h4 class="font-heading font-bold text-lg text-brand-dark mb-2">Maintain Emergency Funds</h4>
+                            <p class="text-sm leading-relaxed">
+                                Always reserve at least 10% of the total budget for unexpected costs (e.g. last-minute alterations or rain cover).
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- How Do You Choose the Right Wedding Venue? -->
+                <section id="venue" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">05.</span> How Do You Choose the Right Wedding Venue?
+                    </h2>
+                    <p class="leading-relaxed">
+                        The venue influences nearly every other wedding decision. When booking site visits, ensure you create a comparison checklist that includes:
+                    </p>
+                    
+                    <div class="bg-white rounded-3xl border border-brand-accent/20 overflow-hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-brand-accent/20">
+                            <div class="p-6 space-y-4">
+                                <h4 class="font-heading font-bold text-lg text-brand-dark flex items-center gap-2">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600"></i> Venue Essentials
+                                </h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mt-0.5 text-brand-rosegold"></i>
+                                        <span><strong>Guest capacity:</strong> Ensure comfortable seating for your guest counts.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mt-0.5 text-brand-rosegold"></i>
+                                        <span><strong>Location Accessibility:</strong> Convenient transport and hotels for travelers.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mt-0.5 text-brand-rosegold"></i>
+                                        <span><strong>Parking availability:</strong> Ample parking spaces or valet options.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="p-6 space-y-4">
+                                <h4 class="font-heading font-bold text-lg text-brand-dark flex items-center gap-2">
+                                    <i data-lucide="help-circle" class="w-5 h-5 text-brand-gold"></i> Key Questions to Ask
+                                </h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mt-0.5 text-brand-rosegold"></i>
+                                        <span>Are there indoor and outdoor weather backup plans?</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mt-0.5 text-brand-rosegold"></i>
+                                        <span>What are the in-house catering and vendor policies?</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mt-0.5 text-brand-rosegold"></i>
+                                        <span>What restrictions exist for music levels and sparklers?</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- What Wedding Vendors Should You Book First? -->
+                <section id="vendors" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">06.</span> What Wedding Vendors Should You Book First?
+                    </h2>
+                    <p class="leading-relaxed">
+                        Vendor availability determines the success of your timeline. Start with the most in-demand professionals who only book one wedding per day.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex gap-4 p-5 bg-white rounded-2xl border border-brand-accent/20">
+                            <div class="w-12 h-12 bg-brand-pink rounded-xl flex items-center justify-center flex-shrink-0 text-brand-rosegold">
+                                <i data-lucide="camera" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-lg text-brand-dark">Photographer & Videographer</h4>
+                                <p class="text-sm text-brand-text/80 mt-1">
+                                    Book 9-12 months in advance. Review portfolios, packages, online client reviews, and check their backup equipment and lighting policies.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4 p-5 bg-white rounded-2xl border border-brand-accent/20">
+                            <div class="w-12 h-12 bg-brand-beige rounded-xl flex items-center justify-center flex-shrink-0 text-brand-gold">
+                                <i data-lucide="utensils" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-lg text-brand-dark">Caterer</h4>
+                                <p class="text-sm text-brand-text/80 mt-1">
+                                    Food significantly impacts guest satisfaction. Schedule comprehensive tastings before signing catering contracts.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-5 bg-white rounded-2xl border border-brand-accent/20">
+                            <div class="w-12 h-12 bg-brand-pink rounded-xl flex items-center justify-center flex-shrink-0 text-brand-rosegold">
+                                <i data-lucide="music" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-lg text-brand-dark">Entertainment (DJ or Band)</h4>
+                                <p class="text-sm text-brand-text/80 mt-1">
+                                    Whether you hire a DJ or live band, secure entertainment early. Popular event dates fill quickly.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-5 bg-white rounded-2xl border border-brand-accent/20">
+                            <div class="w-12 h-12 bg-brand-beige rounded-xl flex items-center justify-center flex-shrink-0 text-brand-gold">
+                                <i data-lucide="palette" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-lg text-brand-dark">Florist & Decor Team</h4>
+                                <p class="text-sm text-brand-text/80 mt-1">
+                                    Décor planning affects the overall atmosphere. Set up alignment consultations to discuss floral themes, color palettes, and reception centerpieces.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- How to Manage Your Wedding Guest List Effectively? -->
+                <section id="guests" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">07.</span> How to Manage Your Wedding Guest List Effectively?
+                    </h2>
+                    <p class="leading-relaxed">
+                        Guest management can quickly become complicated. Good organization prevents confusion and improves the guest experience. Our <a href="guests.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">wedding guest list tracker</a> is designed to help you stay organized. Keep these guidelines in mind:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="p-5 bg-white rounded-2xl border border-brand-accent/20 text-center">
+                            <i data-lucide="layers" class="w-6 h-6 text-brand-rosegold mx-auto mb-3"></i>
+                            <h5 class="font-bold text-sm text-brand-dark mb-1">Categorize Guests</h5>
+                            <p class="text-xs text-brand-text/80">Segment guests by family, close friends, and acquaintances (A-list and B-list).</p>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl border border-brand-accent/20 text-center">
+                            <i data-lucide="smartphone" class="w-6 h-6 text-brand-rosegold mx-auto mb-3"></i>
+                            <h5 class="font-bold text-sm text-brand-dark mb-1">Track RSVPs</h5>
+                            <p class="text-xs text-brand-text/80">Use online RSVP trackers to capture meal and dietary requirements automatically.</p>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl border border-brand-accent/20 text-center">
+                            <i data-lucide="grid" class="w-6 h-6 text-brand-rosegold mx-auto mb-3"></i>
+                            <h5 class="font-bold text-sm text-brand-dark mb-1">Create Seating Charts</h5>
+                            <p class="text-xs text-brand-text/80">Use digital seating planners early to visualize table spacing and flow.</p>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl border border-brand-accent/20 text-center">
+                            <i data-lucide="alert-circle" class="w-6 h-6 text-brand-rosegold mx-auto mb-3"></i>
+                            <h5 class="font-bold text-sm text-brand-dark mb-1">Expect Changes</h5>
+                            <p class="text-xs text-brand-text/80">Always expect last-minute cancellations and keep vendor counts updated.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- The Complete Bridal Checklist Before the Big Day -->
+                <section id="bridal" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">08.</span> The Complete Bridal Checklist Before the Big Day
+                    </h2>
+                    <p class="leading-relaxed">
+                        A bridal checklist helps ensure personal preparations are not overlooked. A prepared bride enjoys the wedding day with greater confidence and peace of mind.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <!-- Beauty Preparation -->
+                        <div class="glass p-5 rounded-2xl border border-brand-accent/20">
+                            <h4 class="font-heading font-bold text-base text-brand-dark mb-3 flex items-center gap-2">
+                                <i data-lucide="sparkles" class="w-4 h-4 text-brand-rosegold"></i> Beauty Prep
+                            </h4>
+                            <ul class="space-y-2 text-xs">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Hair trial booking</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Makeup trial booking</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Consistent skincare routine</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Nail appointments</li>
+                            </ul>
+                        </div>
+
+                        <!-- Wardrobe Preparation -->
+                        <div class="glass p-5 rounded-2xl border border-brand-accent/20">
+                            <h4 class="font-heading font-bold text-base text-brand-dark mb-3 flex items-center gap-2">
+                                <i data-lucide="scissors" class="w-4 h-4 text-brand-rosegold"></i> Wardrobe Prep
+                            </h4>
+                            <ul class="space-y-2 text-xs">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Wedding dress fittings</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Shoe breaking-in</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Jewelry & accessories</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Veil preparation</li>
+                            </ul>
+                        </div>
+
+                        <!-- Personal Essentials -->
+                        <div class="glass p-5 rounded-2xl border border-brand-accent/20">
+                            <h4 class="font-heading font-bold text-base text-brand-dark mb-3 flex items-center gap-2">
+                                <i data-lucide="smile" class="w-4 h-4 text-brand-rosegold"></i> Personal Essentials
+                            </h4>
+                            <ul class="space-y-2 text-xs">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Marriage license filing</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Emergency backup kit</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Writing personal vows</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-rosegold"></i> Wedding day contact lists</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- Wedding Timeline: Month-by-Month Planning Guide -->
+                <section id="timeline" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">09.</span> Wedding Timeline: Month-by-Month Planning Guide
+                    </h2>
+                    <p class="leading-relaxed">
+                        An effective <a href="checklist.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">wedding tasks timeline</a> keeps the planning manageable. Use this timeline framework to reference key monthly priorities:
+                    </p>
+                    
+                    <!-- Beautiful Responsive Table -->
+                    <div class="glass rounded-3xl overflow-hidden border border-brand-accent/20 shadow-md">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-brand-rosegold text-white">
+                                        <th class="p-4 font-heading font-semibold text-base">Timeframe</th>
+                                        <th class="p-4 font-heading font-semibold text-base">Key Tasks</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-brand-accent/10">
+                                    <tr class="hover:bg-brand-pink/20 transition-colors">
+                                        <td class="p-4 font-semibold text-brand-dark whitespace-nowrap">12 Months</td>
+                                        <td class="p-4">Determine budget boundaries, select venue type, draft guest lists</td>
+                                    </tr>
+                                    <tr class="hover:bg-brand-pink/20 transition-colors">
+                                        <td class="p-4 font-semibold text-brand-dark whitespace-nowrap">9 Months</td>
+                                        <td class="p-4">Book core vendors, buy wedding dress/attire, arrange lodging</td>
+                                    </tr>
+                                    <tr class="hover:bg-brand-pink/20 transition-colors">
+                                        <td class="p-4 font-semibold text-brand-dark whitespace-nowrap">6 Months</td>
+                                        <td class="p-4">Send save-the-dates, finalize menus, book honeymoon packages</td>
+                                    </tr>
+                                    <tr class="hover:bg-brand-pink/20 transition-colors">
+                                        <td class="p-4 font-semibold text-brand-dark whitespace-nowrap">3 Months</td>
+                                        <td class="p-4">Send out formal invites, manage RSVPs, compile seating arrangements</td>
+                                    </tr>
+                                    <tr class="hover:bg-brand-pink/20 transition-colors">
+                                        <td class="p-4 font-semibold text-brand-dark whitespace-nowrap">1 Month</td>
+                                        <td class="p-4">Perform final dress fittings, confirm vendor counts, prepare day-of details</td>
+                                    </tr>
+                                    <tr class="hover:bg-brand-pink/20 transition-colors">
+                                        <td class="p-4 font-semibold text-brand-dark whitespace-nowrap">1 Week</td>
+                                        <td class="p-4">Conduct ceremony rehearsal, review coordinator schedule, hand off checks</td>
+                                    </tr>
+                                    <tr class="hover:bg-brand-pink/20 transition-colors">
+                                        <td class="p-4 font-semibold text-brand-dark whitespace-nowrap">Wedding Day</td>
+                                        <td class="p-4 font-medium text-brand-rosegold">Relax, smile, and enjoy the celebration!</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- Common Wedding Planning Mistakes to Avoid -->
+                <section id="mistakes" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">10.</span> Common Wedding Planning Mistakes to Avoid
+                    </h2>
+                    <p class="leading-relaxed">
+                        Even the most organized couples can make mistakes. Recognizing them ahead of time saves money, time, and stress.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-5 bg-white rounded-2xl border-l-4 border-red-400 border border-brand-accent/25 flex gap-3">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="font-bold text-sm text-brand-dark">Starting Planning Too Late</h5>
+                                <p class="text-xs text-brand-text/80 mt-1">This limits venue options and leaves you with fewer available vendor dates.</p>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl border-l-4 border-red-400 border border-brand-accent/25 flex gap-3">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="font-bold text-sm text-brand-dark">Ignoring Budget Guardrails</h5>
+                                <p class="text-xs text-brand-text/80 mt-1">Small items accumulate fast. Keep tracking every transaction in a budget tool.</p>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl border-l-4 border-red-400 border border-brand-accent/25 flex gap-3">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="font-bold text-sm text-brand-dark">Not Reading Vendor Contracts</h5>
+                                <p class="text-xs text-brand-text/80 mt-1">Look closely at cancellation terms, backup clauses, and hidden fees.</p>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl border-l-4 border-red-400 border border-brand-accent/25 flex gap-3">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="font-bold text-sm text-brand-dark">Skipping Weather Contingency Plans</h5>
+                                <p class="text-xs text-brand-text/80 mt-1">Always secure rain tents or indoor options. Never gamble with the weather.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- Interactive self-assessment tool -->
+                <section id="tool" class="space-y-6 scroll-mt-24" x-data="{
+                    items: [
+                        { id: 1, text: 'Have you set a wedding budget?', checked: false },
+                        { id: 2, text: 'Have you booked your venue?', checked: false },
+                        { id: 3, text: 'Have you selected major vendors?', checked: false },
+                        { id: 4, text: 'Have invitations been sent?', checked: false },
+                        { id: 5, text: 'Have RSVPs been tracked?', checked: false },
+                        { id: 6, text: 'Do you have a wedding timeline?', checked: false },
+                        { id: 7, text: 'Is your bridal checklist complete?', checked: false },
+                        { id: 8, text: 'Have you confirmed vendor contracts?', checked: false },
+                        { id: 9, text: 'Do you have an emergency backup plan?', checked: false },
+                        { id: 10, text: 'Have you scheduled final fittings?', checked: false }
+                    ],
+                    get score() {
+                        return this.items.filter(item => item.checked).length * 5;
+                    },
+                    get interpretation() {
+                        let total = this.score;
+                        if (total <= 20) {
+                            return 'Planning just started. Focus on foundational tasks like setting your budget and looking at venues.';
+                        } else if (total <= 40) {
+                            return 'Good progress. Continue following your wedding preparation list and lock in your remaining vendors.';
+                        } else {
+                            return 'Excellent! You\'re nearly ready for your wedding day. Review final timelines and hand off tasks.';
+                        }
+                    },
+                    reset() {
+                        this.items.forEach(item => item.checked = false);
+                    }
+                }">
+                    <div class="glass p-8 rounded-[2rem] border border-brand-accent/30 shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-pink/40 rounded-bl-[100px] -z-10"></div>
+                        
+                        <div class="text-center max-w-xl mx-auto mb-8">
+                            <span class="text-xs uppercase tracking-widest text-brand-rosegold font-bold block mb-1">Assessment Widget</span>
+                            <h3 class="font-heading text-2xl md:text-3xl font-bold text-brand-dark">Wedding Planning Checklist Self-Assessment</h3>
+                            <p class="text-xs text-brand-text/75 mt-2">
+                                Check off the wedding tasks you have completed to automatically calculate your preparedness score and review our planning advice.
+                            </p>
+                        </div>
+
+                        <!-- Progress Circle Gauge / Score Display -->
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-8 border-b border-brand-accent/20 pb-8">
+                            <div class="relative w-36 h-36 flex items-center justify-center bg-white rounded-full shadow-inner border border-brand-accent/10">
+                                <!-- Background circle SVG -->
+                                <svg class="absolute w-full h-full transform -rotate-90">
+                                    <circle cx="72" cy="72" r="60" stroke="#fcecf0" stroke-width="10" fill="transparent" />
+                                    <circle cx="72" cy="72" r="60" stroke="#B76E79" stroke-width="10" fill="transparent"
+                                            stroke-dasharray="377"
+                                            :stroke-dashoffset="377 - (377 * score / 50)"
+                                            stroke-linecap="round"
+                                            class="transition-all duration-500" />
+                                </svg>
+                                <div class="text-center">
+                                    <span class="block text-4xl font-bold text-brand-dark font-heading" x-text="score"></span>
+                                    <span class="text-[10px] uppercase font-bold text-brand-text/60 tracking-wider">Points</span>
+                                </div>
+                            </div>
+
+                            <div class="text-center md:text-left max-w-md">
+                                <h5 class="font-bold text-sm text-brand-dark uppercase tracking-wider mb-2">Readiness Feedback</h5>
+                                <p class="text-sm text-brand-text/90 italic leading-relaxed" x-text="interpretation"></p>
+                                <button @click="reset()" class="mt-4 text-xs font-semibold text-brand-rosegold hover:text-brand-dark flex items-center gap-1.5 justify-center md:justify-start">
+                                    <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Clear Checklist
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Checkboxes List -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <template x-for="item in items" :key="item.id">
+                                <label class="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-accent/20 hover:border-brand-rosegold cursor-pointer transition-all shadow-sm">
+                                    <input type="checkbox" x-model="item.checked" class="rounded text-brand-rosegold focus:ring-brand-rosegold w-5 h-5 border-gray-300">
+                                    <span class="text-sm font-medium" :class="item.checked ? 'text-brand-text/60 line-through' : 'text-brand-dark'" x-text="item.text"></span>
+                                </label>
+                            </template>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- Why Use Printable Wedding Planning Checklists? -->
+                <section id="printable" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">11.</span> Why Use Printable Wedding Planning Checklists?
+                    </h2>
+                    <p class="leading-relaxed">
+                        While wedding apps are highly useful for sending digital updates and tracking RSVPs, printable wedding checklist templates offer unique benefits. Writing down tasks provides a sensory experience, keeping you focused without digital notifications.
+                    </p>
+
+                    <!-- Content Image 3: Printed booklet checklist planning -->
+                    <figure class="glass p-3 rounded-[2rem] shadow-lg my-8">
+                        <img src="images/media__1780562771898.jpg" 
+                             alt="A smiling couple collaborating at their desk, reviewing a printed wedding checklist booklet while using a laptop, calendar, tablet, and ribbon swatches to coordinate their wedding planning." 
+                             class="w-full object-cover rounded-[1.5rem]">
+                        <figcaption class="text-center text-xs text-brand-text/60 mt-3 italic">
+                            Figure 3: Reviewing a printed binder checklist is a tactile, collaborative way to make planning decisions.
+                        </figcaption>
+                    </figure>
+                    
+                    <div class="bg-white p-6 rounded-3xl border border-brand-accent/20 space-y-4">
+                        <h4 class="font-heading font-bold text-lg text-brand-dark">Advantages of Printable Worksheets:</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-rosegold mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <h5 class="font-semibold text-sm text-brand-dark">Tactile Accountability</h5>
+                                    <p class="text-xs text-brand-text/80 mt-1">Physically crossing off completed tasks triggers dopamine, driving progress.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-rosegold mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <h5 class="font-semibold text-sm text-brand-dark">No Screen Fatigue</h5>
+                                    <p class="text-xs text-brand-text/80 mt-1">Reduce screen distractions and organize timelines at a physical binder station.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-rosegold mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <h5 class="font-semibold text-sm text-brand-dark">Better Teamwork</h5>
+                                    <p class="text-xs text-brand-text/80 mt-1">Share worksheets with family members or wedding coordinators easily.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-rosegold mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <h5 class="font-semibold text-sm text-brand-dark">Perfect Archives</h5>
+                                    <p class="text-xs text-brand-text/80 mt-1">Preserve your planning journals and binders as a keepsake for years to come.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- Final Wedding Day Checklist -->
+                <section id="final" class="space-y-6 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">12.</span> Final Wedding Day Checklist
+                    </h2>
+                    <p class="leading-relaxed">
+                        Before walking out the door for your ceremony venue, check off this final review checklist to ensure a smooth transition:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <label class="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-accent/20">
+                            <input type="checkbox" class="rounded text-brand-rosegold focus:ring-brand-rosegold w-5 h-5 border-gray-300">
+                            <span class="text-sm font-semibold text-brand-dark">Rings Packed (Handed to Best Man)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-accent/20">
+                            <input type="checkbox" class="rounded text-brand-rosegold focus:ring-brand-rosegold w-5 h-5 border-gray-300">
+                            <span class="text-sm font-semibold text-brand-dark">Signed Marriage License</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-accent/20">
+                            <input type="checkbox" class="rounded text-brand-rosegold focus:ring-brand-rosegold w-5 h-5 border-gray-300">
+                            <span class="text-sm font-semibold text-brand-dark">Vendor Contact Sheets Distrubuted</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-accent/20">
+                            <input type="checkbox" class="rounded text-brand-rosegold focus:ring-brand-rosegold w-5 h-5 border-gray-300">
+                            <span class="text-sm font-semibold text-brand-dark">Bridal Day-of Emergency Kit</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-accent/20">
+                            <input type="checkbox" class="rounded text-brand-rosegold focus:ring-brand-rosegold w-5 h-5 border-gray-300">
+                            <span class="text-sm font-semibold text-brand-dark">Vendor Payment & Gratuity Envelopes</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-accent/20">
+                            <input type="checkbox" class="rounded text-brand-rosegold focus:ring-brand-rosegold w-5 h-5 border-gray-300">
+                            <span class="text-sm font-semibold text-brand-dark">Wedding Attire & Styling Accessories Packed</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-accent/20">
+                            <input type="checkbox" class="rounded text-brand-rosegold focus:ring-brand-rosegold w-5 h-5 border-gray-300">
+                            <span class="text-sm font-semibold text-brand-dark">Timeline Distributed to Wedding Party</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-accent/20">
+                            <input type="checkbox" class="rounded text-brand-rosegold focus:ring-brand-rosegold w-5 h-5 border-gray-300">
+                            <span class="text-sm font-semibold text-brand-dark">Transportation Arrival Times Confirmed</span>
+                        </label>
+                    </div>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- Conclusion -->
+                <section class="space-y-4">
+                    <h3 class="font-heading text-2xl font-bold text-brand-dark">Conclusion</h3>
+                    <p class="leading-relaxed">
+                        Successful weddings are built on careful preparation, realistic budgeting, and consistent organization. Using detailed wedding planning checklists allows couples to manage timelines, coordinate vendors, track expenses, and prepare for every milestone leading up to the big day.
+                    </p>
+                    <p class="leading-relaxed text-brand-rosegold font-medium">
+                        Whether you're just engaged or approaching your wedding date, following a structured wedding checklist helps eliminate uncertainty and keeps everything running smoothly. Begin checking off tasks today to make your experience enjoyable!
+                    </p>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <!-- Frequently Asked Questions (FAQs) - Alpine Accordion -->
+                <section id="faqs" class="space-y-6 scroll-mt-24" x-data="{ activeFaq: null }">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark text-center mb-8">Frequently Asked Questions</h2>
+                    
+                    <div class="space-y-3 max-w-4xl mx-auto">
+                        <!-- FAQ 1 -->
+                        <div class="glass rounded-2xl overflow-hidden border border-brand-accent/15">
+                            <button @click="activeFaq = activeFaq === 1 ? null : 1" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none bg-white hover:bg-brand-pink/10 transition-colors">
+                                <span class="font-semibold text-sm sm:text-base text-brand-dark">1. How to plan a wedding checklist from scratch?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-rosegold transition-transform duration-300" :class="activeFaq === 1 ? 'rotate-180' : ''"></i>
+                            </button>
+                            <div x-show="activeFaq === 1" x-collapse x-cloak>
+                                <div class="px-6 pb-4 pt-2 text-sm text-brand-text/80 leading-relaxed border-t border-brand-accent/10">
+                                    Start by setting a wedding budget, creating a guest list, selecting a venue, and establishing a wedding timeline. Then organize tasks into monthly milestones and prioritize vendor bookings. A structured wedding checklist ensures nothing important is overlooked and keeps planning manageable throughout the engagement period.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="glass rounded-2xl overflow-hidden border border-brand-accent/15">
+                            <button @click="activeFaq = activeFaq === 2 ? null : 2" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none bg-white hover:bg-brand-pink/10 transition-colors">
+                                <span class="font-semibold text-sm sm:text-base text-brand-dark">2. What is included in a wedding planning checklist?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-rosegold transition-transform duration-300" :class="activeFaq === 2 ? 'rotate-180' : ''"></i>
+                            </button>
+                            <div x-show="activeFaq === 2" x-collapse x-cloak>
+                                <div class="px-6 pb-4 pt-2 text-sm text-brand-text/80 leading-relaxed border-t border-brand-accent/10">
+                                    A wedding planning checklist typically includes budgeting, venue selection, vendor booking, guest management, bridal preparation, décor planning, invitation management, transportation arrangements, and wedding-day coordination. It acts as a complete roadmap from engagement to the wedding ceremony.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="glass rounded-2xl overflow-hidden border border-brand-accent/15">
+                            <button @click="activeFaq = activeFaq === 3 ? null : 3" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none bg-white hover:bg-brand-pink/10 transition-colors">
+                                <span class="font-semibold text-sm sm:text-base text-brand-dark">3. When should you start wedding planning?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-rosegold transition-transform duration-300" :class="activeFaq === 3 ? 'rotate-180' : ''"></i>
+                            </button>
+                            <div x-show="activeFaq === 3" x-collapse x-cloak>
+                                <div class="px-6 pb-4 pt-2 text-sm text-brand-text/80 leading-relaxed border-t border-brand-accent/10">
+                                    Most wedding professionals recommend starting 12 to 18 months before the wedding date. Early planning provides more venue options, better vendor availability, and additional time to compare services, manage budgets, and handle unexpected changes.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="glass rounded-2xl overflow-hidden border border-brand-accent/15">
+                            <button @click="activeFaq = activeFaq === 4 ? null : 4" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none bg-white hover:bg-brand-pink/10 transition-colors">
+                                <span class="font-semibold text-sm sm:text-base text-brand-dark">4. Why is a wedding timeline important?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-rosegold transition-transform duration-300" :class="activeFaq === 4 ? 'rotate-180' : ''"></i>
+                            </button>
+                            <div x-show="activeFaq === 4" x-collapse x-cloak>
+                                <div class="px-6 pb-4 pt-2 text-sm text-brand-text/80 leading-relaxed border-t border-brand-accent/10">
+                                    A wedding timeline helps organize tasks according to deadlines and milestones. It prevents last-minute stress, improves communication among vendors, and ensures critical planning activities are completed on time.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 5 -->
+                        <div class="glass rounded-2xl overflow-hidden border border-brand-accent/15">
+                            <button @click="activeFaq = activeFaq === 5 ? null : 5" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none bg-white hover:bg-brand-pink/10 transition-colors">
+                                <span class="font-semibold text-sm sm:text-base text-brand-dark">5. How much should a wedding budget planner include?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-rosegold transition-transform duration-300" :class="activeFaq === 5 ? 'rotate-180' : ''"></i>
+                            </button>
+                            <div x-show="activeFaq === 5" x-collapse x-cloak>
+                                <div class="px-6 pb-4 pt-2 text-sm text-brand-text/80 leading-relaxed border-t border-brand-accent/10">
+                                    A wedding budget planner should include all expected expenses such as venue rental, catering, attire, photography, entertainment, flowers, transportation, invitations, and a contingency reserve. Tracking these costs helps avoid overspending.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 6 -->
+                        <div class="glass rounded-2xl overflow-hidden border border-brand-accent/15">
+                            <button @click="activeFaq = activeFaq === 6 ? null : 6" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none bg-white hover:bg-brand-pink/10 transition-colors">
+                                <span class="font-semibold text-sm sm:text-base text-brand-dark">6. What vendors should be booked first?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-rosegold transition-transform duration-300" :class="activeFaq === 6 ? 'rotate-180' : ''"></i>
+                            </button>
+                            <div x-show="activeFaq === 6" x-collapse x-cloak>
+                                <div class="px-6 pb-4 pt-2 text-sm text-brand-text/80 leading-relaxed border-t border-brand-accent/10">
+                                    The venue, photographer, videographer, caterer, and entertainment providers should usually be booked first. These services often have limited availability, especially during peak wedding seasons.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 7 -->
+                        <div class="glass rounded-2xl overflow-hidden border border-brand-accent/15">
+                            <button @click="activeFaq = activeFaq === 7 ? null : 7" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none bg-white hover:bg-brand-pink/10 transition-colors">
+                                <span class="font-semibold text-sm sm:text-base text-brand-dark">7. How do you organize a wedding guest list?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-rosegold transition-transform duration-300" :class="activeFaq === 7 ? 'rotate-180' : ''"></i>
+                            </button>
+                            <div x-show="activeFaq === 7" x-collapse x-cloak>
+                                <div class="px-6 pb-4 pt-2 text-sm text-brand-text/80 leading-relaxed border-t border-brand-accent/10">
+                                    Begin with a master guest list, categorize guests by priority, track RSVPs digitally, and update seating arrangements regularly. Effective guest management improves event logistics and communication.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 8 -->
+                        <div class="glass rounded-2xl overflow-hidden border border-brand-accent/15">
+                            <button @click="activeFaq = activeFaq === 8 ? null : 8" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none bg-white hover:bg-brand-pink/10 transition-colors">
+                                <span class="font-semibold text-sm sm:text-base text-brand-dark">8. What should be on a bridal checklist?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-rosegold transition-transform duration-300" :class="activeFaq === 8 ? 'rotate-180' : ''"></i>
+                            </button>
+                            <div x-show="activeFaq === 8" x-collapse x-cloak>
+                                <div class="px-6 pb-4 pt-2 text-sm text-brand-text/80 leading-relaxed border-t border-brand-accent/10">
+                                    A bridal checklist should include dress fittings, beauty appointments, accessories, marriage license preparation, vows, emergency supplies, and transportation arrangements. These details help ensure a smooth wedding day experience.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 9 -->
+                        <div class="glass rounded-2xl overflow-hidden border border-brand-accent/15">
+                            <button @click="activeFaq = activeFaq === 9 ? null : 9" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none bg-white hover:bg-brand-pink/10 transition-colors">
+                                <span class="font-semibold text-sm sm:text-base text-brand-dark">9. Are printable wedding planning checklists better than apps?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-rosegold transition-transform duration-300" :class="activeFaq === 9 ? 'rotate-180' : ''"></i>
+                            </button>
+                            <div x-show="activeFaq === 9" x-collapse x-cloak>
+                                <div class="px-6 pb-4 pt-2 text-sm text-brand-text/80 leading-relaxed border-t border-brand-accent/10">
+                                    Both options offer advantages. Printable checklists provide visual tracking and accessibility, while apps offer automation, reminders, and collaboration features. Many couples successfully use a combination of both.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 10 -->
+                        <div class="glass rounded-2xl overflow-hidden border border-brand-accent/15">
+                            <button @click="activeFaq = activeFaq === 10 ? null : 10" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none bg-white hover:bg-brand-pink/10 transition-colors">
+                                <span class="font-semibold text-sm sm:text-base text-brand-dark">10. Can a wedding planner replace a wedding checklist?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-rosegold transition-transform duration-300" :class="activeFaq === 10 ? 'rotate-180' : ''"></i>
+                            </button>
+                            <div x-show="activeFaq === 10" x-collapse x-cloak>
+                                <div class="px-6 pb-4 pt-2 text-sm text-brand-text/80 leading-relaxed border-t border-brand-accent/10">
+                                    A professional wedding planner can manage many tasks, but a wedding checklist remains valuable for tracking progress, reviewing deadlines, and ensuring both the couple and planner stay aligned throughout the planning process.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6 cursor-pointer" onclick="window.location.href='index.html'">
+                        <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
+                        <span class="font-heading font-bold text-2xl tracking-tight">Evera</span>
+                    </div>
+                    <p class="text-white/60 mb-8 max-w-sm leading-relaxed">
+                        The modern, elegant way to plan the wedding of your dreams. Simple tools, stunning design, stress-free planning.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Planning Tools</h4>
+                    <ul class="space-y-3">
+                        <li><a href="checklist.html" class="text-white/60 hover:text-white transition-colors">Wedding Timeline Checklist</a></li>
+                        <li><a href="budget.html" class="text-white/60 hover:text-white transition-colors">Wedding Budget Planner</a></li>
+                        <li><a href="guests.html" class="text-white/60 hover:text-white transition-colors">Guest List Manager</a></li>
+                        <li><a href="vendors.html" class="text-white/60 hover:text-white transition-colors">Vendor Organization</a></li>
+                        <li><a href="wedding-planning-checklists.html" class="text-white/60 hover:text-white transition-colors font-semibold">Ultimate Checklists Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Stay Inspired</h4>
+                    <p class="text-white/60 mb-4 text-sm">Join our newsletter for weekly wedding tips and aesthetic ideas.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Your email" class="bg-white/10 border border-white/20 rounded-lg px-4 py-2 w-full text-white placeholder-white/40 focus:outline-none focus:border-brand-rosegold">
+                        <button type="submit" class="bg-brand-rosegold px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/40 text-sm">&copy; 2026 Evera Wedding Co. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-white/40">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full p-4 glass-dark border-t border-white/20 z-50">
+        <a href="planner.html" class="block w-full bg-brand-rosegold text-white text-center py-3.5 rounded-xl font-medium text-lg shadow-lg">
+            Create Free Checklist
+        </a>
+    </div>
+
+    <!-- Initialize Icons & ScrollSpy for TOC -->
+    <script>
+        lucide.createIcons();
+
+        // Simple table of contents active highlighting on scroll
+        const links = document.querySelectorAll('aside nav a');
+        const sections = Array.from(links).map(link => document.querySelector(link.getAttribute('href')));
+        
+        window.addEventListener('scroll', () => {
+            let currentActiveIdx = 0;
+            const scrollPos = window.scrollY + 120;
+            
+            sections.forEach((section, idx) => {
+                if (section && scrollPos >= section.offsetTop) {
+                    currentActiveIdx = idx;
+                }
+            });
+            
+            links.forEach((link, idx) => {
+                if (idx === currentActiveIdx) {
+                    link.classList.add('toc-active');
+                } else {
+                    link.classList.remove('toc-active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
