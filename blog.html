@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planning Blog & Guides | Evera</title>
+    <!-- SEO Requirements -->
+    <meta name="description" content="Expert checklists, budgeting strategies, and stress-free timelines to help you navigate your wedding planning journey. Read our latest articles.">
+    <meta name="keywords" content="wedding blog, wedding planning guides, wedding checklist blog, wedding planning advice">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            pink: '#fcecf0',
+                            rosegold: '#B76E79',
+                            cream: '#fdfbf7',
+                            gold: '#D4AF37',
+                            dark: '#2c2224',
+                            text: '#4a4445',
+                            beige: '#F5F5DC',
+                            accent: '#ecd5d8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Icons (Lucide via Unpkg) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="antialiased text-brand-text bg-brand-cream selection:bg-brand-rosegold selection:text-white" x-data="{ mobileMenuOpen: false }">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                    <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
+                    <span class="font-heading font-bold text-2xl tracking-tight text-brand-dark">Evera</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#features" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Features</a>
+                    <a href="index.html#dashboard-preview" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Tools</a>
+                    <a href="index.html#testimonials" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Stories</a>
+                    <a href="blog.html" class="text-sm font-semibold text-brand-rosegold">Blog</a>
+                    <a href="dashboard.html" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Login</a>
+                    <a href="planner.html" class="bg-brand-rosegold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all hover:shadow-lg hover:-translate-y-0.5">Start Planning</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-text hover:text-brand-rosegold">
+                        <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenuOpen"></i>
+                        <i data-lucide="x" class="w-6 h-6" x-show="mobileMenuOpen" x-cloak></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden glass-dark absolute w-full border-b border-white/20 shadow-xl" x-cloak>
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html#features" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Features</a>
+                <a href="index.html#dashboard-preview" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Tools</a>
+                <a href="index.html#testimonials" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Stories</a>
+                <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium bg-brand-pink/70 text-brand-rosegold">Blog</a>
+                <a href="dashboard.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Blog Hero -->
+    <header class="relative pt-32 pb-12 lg:pt-40 lg:pb-16 overflow-hidden">
+        <div class="absolute top-0 right-0 -z-10 w-full h-full overflow-hidden opacity-40">
+            <div class="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-brand-pink blur-[100px]"></div>
+            <div class="absolute top-[20%] -left-[10%] w-[40%] h-[40%] rounded-full bg-brand-beige blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-brand-rosegold font-bold uppercase tracking-wider text-sm mb-2 block">Inspiration & Advice</span>
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight mb-4">
+                Wedding Planning Guides
+            </h1>
+            <p class="text-lg text-brand-text/80 max-w-2xl mx-auto font-light leading-relaxed">
+                Expert checklists, budgeting strategies, and stress-free timelines to help you navigate your journey.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content: Blog Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: Blog Posts -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Featured Guide Card -->
+                <div class="glass rounded-3xl overflow-hidden shadow-md flex flex-col hover-lift border border-brand-rosegold/20">
+                    <div class="relative h-64 sm:h-80 w-full overflow-hidden">
+                        <img src="images/media__1780562771886.jpg" 
+                             alt="A happy couple sitting together at a decorated dining table, laughing and using a laptop with a wedding budget spreadsheet, a notebook planner, flowers, and a calendar to plan their wedding checklist." 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-4 left-4 bg-brand-rosegold text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Featured Guide</span>
+                    </div>
+                    <div class="p-6 sm:p-8 flex flex-col justify-between flex-grow">
+                        <div>
+                            <div class="flex gap-4 text-xs font-medium text-brand-text/60 mb-3">
+                                <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-rosegold"></i> June 2026</span>
+                                <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-brand-rosegold"></i> 10 Min Read</span>
+                            </div>
+                            <h2 class="font-heading text-xl sm:text-2xl font-bold text-brand-dark mb-3">
+                                <a href="wedding-planning-checklists.html" class="hover:text-brand-rosegold transition-colors">The Ultimate Wedding Planning Checklists Guide for a Stress-Free Wedding</a>
+                            </h2>
+                            <p class="text-brand-text/80 text-sm leading-relaxed mb-6">
+                                Planning a wedding involves hundreds of decisions, deadlines, and moving parts. Without a clear system, it's easy to forget important tasks. Our comprehensive guide walks you through setting budgets, selecting venues, booking vendors, and managing guest lists.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="wedding-planning-checklists.html" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-rosegold hover:text-brand-dark transition-colors group">
+                                Read Full Guide
+                                <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-grid of other blog posts -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Post 2: Placeholder for New Blog Post -->
+                    <div class="glass rounded-3xl overflow-hidden shadow-sm flex flex-col hover-lift border border-brand-text/10 bg-white/40">
+                        <div class="relative h-48 w-full overflow-hidden bg-brand-pink/30 flex items-center justify-center">
+                            <i data-lucide="image" class="w-12 h-12 text-brand-rosegold/30 animate-pulse"></i>
+                        </div>
+                        <div class="p-6 flex flex-col justify-between flex-grow">
+                            <div>
+                                <div class="flex gap-4 text-xs font-medium text-brand-text/60 mb-2">
+                                    <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-rosegold"></i> June 2026</span>
+                                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-brand-rosegold"></i> 5 Min Read</span>
+                                </div>
+                                <h3 class="font-heading text-lg font-bold text-brand-dark mb-2">
+                                    <a href="#" class="hover:text-brand-rosegold transition-colors">Your New Blog Post Title</a>
+                                </h3>
+                                <p class="text-brand-text/80 text-xs leading-relaxed mb-4">
+                                    A short summary of your new blog post goes here to entice readers to click. Create a new HTML file for your post and link it here!
+                                </p>
+                            </div>
+                            <div>
+                                <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-rosegold hover:text-brand-dark transition-colors group">
+                                    Read Article <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Tools Column -->
+            <div class="flex flex-col gap-8 lg:col-span-1">
+                <!-- Tool Card 1: Budget Planner -->
+                <div class="glass p-8 rounded-3xl flex flex-col justify-between hover-lift h-1/2 border border-brand-text/10 bg-white/50">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-brand-beige flex items-center justify-center mb-6"><i data-lucide="calculator" class="w-5 h-5 text-brand-gold"></i></div>
+                        <span class="text-[10px] uppercase font-bold text-brand-gold tracking-wider mb-2 block">Interactive Tool</span>
+                        <h4 class="font-heading text-lg font-bold text-brand-dark mb-2">Smart Budget Planner</h4>
+                        <p class="text-xs text-brand-text/80 leading-relaxed mb-4">Set budget boundaries, track wedding expenses, and monitor overspending alerts in real-time.</p>
+                    </div>
+                    <div>
+                        <a href="budget.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-rosegold hover:text-brand-dark transition-colors">
+                            Open Budget Planner <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tool Card 2: Interactive Timeline Checklist -->
+                <div class="glass p-8 rounded-3xl flex flex-col justify-between hover-lift h-1/2 border border-brand-text/10 bg-white/50">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-brand-pink flex items-center justify-center mb-6"><i data-lucide="check-square" class="w-5 h-5 text-brand-rosegold"></i></div>
+                        <span class="text-[10px] uppercase font-bold text-brand-rosegold tracking-wider mb-2 block">Interactive Tool</span>
+                        <h4 class="font-heading text-lg font-bold text-brand-dark mb-2">Interactive Tasks Checklist</h4>
+                        <p class="text-xs text-brand-text/80 leading-relaxed mb-4">Follow an auto-generated timeline checklist from 12+ months out right up to your wedding day.</p>
+                    </div>
+                    <div>
+                        <a href="checklist.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-rosegold hover:text-brand-dark transition-colors">
+                            Open Checklist Tool <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
+                        <span class="font-heading font-bold text-2xl tracking-tight">Evera</span>
+                    </div>
+                    <p class="text-white/60 mb-8 max-w-sm leading-relaxed">
+                        The modern, elegant way to plan the wedding of your dreams. Simple tools, stunning design, stress-free planning.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Planning Tools</h4>
+                    <ul class="space-y-3">
+                        <li><a href="checklist.html" class="text-white/60 hover:text-white transition-colors">Wedding Timeline Checklist</a></li>
+                        <li><a href="budget.html" class="text-white/60 hover:text-white transition-colors">Wedding Budget Planner</a></li>
+                        <li><a href="guests.html" class="text-white/60 hover:text-white transition-colors">Guest List Manager</a></li>
+                        <li><a href="vendors.html" class="text-white/60 hover:text-white transition-colors">Vendor Organization</a></li>
+                        <li><a href="wedding-planning-checklists.html" class="text-white/60 hover:text-white transition-colors font-semibold">Ultimate Checklists Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Stay Inspired</h4>
+                    <p class="text-white/60 mb-4 text-sm">Join our newsletter for weekly wedding tips and aesthetic ideas.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Your email" class="bg-white/10 border border-white/20 rounded-lg px-4 py-2 w-full text-white placeholder-white/40 focus:outline-none focus:border-brand-rosegold">
+                        <button type="submit" class="bg-brand-rosegold px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/40 text-sm">&copy; 2026 Evera Wedding Co. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-white/40">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
