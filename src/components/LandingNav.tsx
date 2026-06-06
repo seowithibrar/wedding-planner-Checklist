@@ -19,11 +19,8 @@ export function LandingNav({ onHome, onGuide, onStart, onAbout, onPrivacy, onBlo
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-white/20">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={onHome}>
-          <div className="w-9 h-9 bg-rose-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-rose-200">
-            <Heart size={20} fill="currentColor" />
-          </div>
-          <span className="text-xl font-black tracking-tight">Wedding Planner<span className="text-rose-500 ml-1">Checklists</span></span>
+        <div className="flex items-center cursor-pointer" onClick={onHome}>
+          <img src="/logo.png" alt="Wedding Planning Checklists" className="h-12 w-auto object-contain" />
         </div>
 
         <nav className="hidden lg:flex items-center gap-10">

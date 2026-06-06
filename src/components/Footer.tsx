@@ -21,13 +21,8 @@ export function Footer({ onHome, onAbout, onGuide, onBlog, onContact, onPrivacy,
           
           {/* Brand Info */}
           <div className="space-y-6 lg:col-span-1">
-            <div className="flex items-center gap-2 cursor-pointer" onClick={(e) => { e.preventDefault(); onHome(); }}>
-              <div className="w-8 h-8 bg-rose-500 rounded-lg flex items-center justify-center text-white shadow-md shadow-rose-200">
-                <Heart size={16} fill="currentColor" />
-              </div>
-              <span className="text-lg font-black tracking-tight text-slate-900">
-                Wedding Planner<span className="text-rose-500 ml-1">Checklists</span>
-              </span>
+            <div className="flex items-center cursor-pointer" onClick={(e) => { e.preventDefault(); onHome(); }}>
+              <img src="/logo.png" alt="Wedding Planning Checklists" className="h-10 w-auto object-contain" />
             </div>
             <p className="text-slate-500 text-sm leading-relaxed">
               Your ultimate companion for stress-free wedding planning. We provide couples with the tools, timelines, and templates they need to organize their dream wedding flawlessly.
