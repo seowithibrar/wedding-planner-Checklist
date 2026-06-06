@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Budget-Saving Tips Every Couple Needs to Know | Evera</title>
+    <!-- SEO Requirements -->
+    <meta name="description" content="Save money on your wedding without sacrificing style. Read our 10 wedding budget-saving tips including venue negotiations, decor hacks, and smart planning.">
+    <meta name="keywords" content="wedding budget planner, wedding savings, affordable wedding, stress-free wedding budget">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            pink: '#fcecf0',
+                            rosegold: '#B76E79',
+                            cream: '#fdfbf7',
+                            gold: '#D4AF37',
+                            dark: '#2c2224',
+                            text: '#4a4445',
+                            beige: '#F5F5DC',
+                            accent: '#ecd5d8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Icons (Lucide via Unpkg) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="antialiased text-brand-text bg-brand-cream selection:bg-brand-rosegold selection:text-white" x-data="{ mobileMenuOpen: false }">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.location.href='../index.html'">
+                    <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
+                    <span class="font-heading font-bold text-2xl tracking-tight text-brand-dark">Evera</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="../index.html#features" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Features</a>
+                    <a href="../index.html#dashboard-preview" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Tools</a>
+                    <a href="../checklist.html" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Timeline</a>
+                    <a href="../budget.html" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Budget</a>
+                    <a href="../blog.html" class="text-sm font-semibold text-brand-rosegold">Blog</a>
+                    <a href="../planner.html" class="bg-brand-rosegold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all hover:shadow-lg hover:-translate-y-0.5">Start Planning</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-text hover:text-brand-rosegold">
+                        <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenuOpen"></i>
+                        <i data-lucide="x" class="w-6 h-6" x-show="mobileMenuOpen" x-cloak></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden glass-dark absolute w-full border-b border-white/20 shadow-xl" x-cloak>
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="../index.html#features" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Features</a>
+                <a href="../index.html#dashboard-preview" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Tools</a>
+                <a href="../checklist.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Timeline</a>
+                <a href="../budget.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Budget</a>
+                <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium bg-brand-pink/70 text-brand-rosegold">Blog</a>
+                <a href="../planner.html" class="block text-center bg-brand-rosegold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90">Start Planning</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Article Hero -->
+    <header class="relative pt-32 pb-12 lg:pt-40 lg:pb-16 overflow-hidden">
+        <div class="absolute top-0 right-0 -z-10 w-full h-full overflow-hidden opacity-40">
+            <div class="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-brand-pink blur-[100px]"></div>
+            <div class="absolute top-[20%] -left-[10%] w-[40%] h-[40%] rounded-full bg-brand-beige blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <nav class="flex justify-center items-center gap-2 text-xs font-semibold tracking-wider uppercase text-brand-rosegold mb-4">
+                <a href="../index.html" class="hover:underline">Home</a>
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                <a href="../blog.html" class="hover:underline">Blog</a>
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                <span class="text-brand-text/60">Budget</span>
+            </nav>
+            
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight mb-6">
+                10 Budget-Saving Tips Every Couple Needs to Know
+            </h1>
+            
+            <div class="flex items-center justify-center gap-6 text-sm text-brand-text/70 border-y border-brand-accent/30 py-4 max-w-xl mx-auto">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="calendar" class="w-4 h-4 text-brand-rosegold"></i>
+                    <span>Updated June 2026</span>
+                </div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="clock" class="w-4 h-4 text-brand-rosegold"></i>
+                    <span>5 Min Read</span>
+                </div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="user" class="w-4 h-4 text-brand-rosegold"></i>
+                    <span>Evera Editorial</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <!-- Featured Image -->
+        <div class="max-w-5xl mx-auto mb-16">
+            <figure class="glass p-3 rounded-[2.5rem] shadow-2xl">
+                <img src="../images/blog_budget.png" 
+                     alt="A close-up of a beautifully decorated wedding reception table with gold cutlery, pink roses in vases, candles, and a wedding menu card" 
+                     class="w-full max-h-[550px] object-cover rounded-[2rem]">
+            </figure>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
+            <!-- Sidebar Table of Contents (Sticky) -->
+            <aside class="col-span-1 lg:col-span-3 hidden lg:block">
+                <div class="sticky top-28 space-y-6">
+                    <div class="glass p-6 rounded-3xl border border-brand-accent/20">
+                        <h4 class="font-heading font-bold text-lg text-brand-dark mb-4 pb-2 border-b border-brand-accent/30 flex items-center gap-2">
+                            <i data-lucide="list" class="w-4 h-4 text-brand-rosegold"></i> Guide Sections
+                        </h4>
+                        <nav class="space-y-3 text-sm">
+                            <a href="#priorities" class="block text-brand-text hover:text-brand-rosegold transition-colors">1. Focus on Priorities</a>
+                            <a href="#off-peak" class="block text-brand-text hover:text-brand-rosegold transition-colors">2. Off-Peak Options</a>
+                            <a href="#decor-hacks" class="block text-brand-text hover:text-brand-rosegold transition-colors">3. Decor & Flower Hacks</a>
+                            <a href="#tracking" class="block text-brand-text hover:text-brand-rosegold transition-colors">4. Track Daily Spending</a>
+                        </nav>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Blog Post Body Content -->
+            <article class="col-span-1 lg:col-span-9 space-y-12 prose prose-brand max-w-none text-brand-text font-sans">
+                <section id="priorities" class="space-y-4 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">01.</span> Focus on Priorities
+                    </h2>
+                    <p class="leading-relaxed">
+                        The easiest way to save money on a wedding is to identify your top 3 priorities. If you care deeply about fine food and great music, then cut back on elaborate florist arrangements or expensive designer wedding invitations. Prioritizing ensures you spend money where it truly impacts your experience, rather than trying to pay for every popular trend.
+                    </p>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <section id="off-peak" class="space-y-4 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">02.</span> Consider Off-Peak Dates and Days
+                    </h2>
+                    <p class="leading-relaxed">
+                        Saturday evenings in June or September carry the highest venue rental premiums. By hosting your wedding on a Friday, Sunday, or choosing an off-peak month (like November or January), you can save up to 30% on venue rentals and catering minimums. Some venues also offer deep discounts for morning brunches, which can feel incredibly intimate and fresh.
+                    </p>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <section id="decor-hacks" class="space-y-4 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">03.</span> Decor and Flower Hacks
+                    </h2>
+                    <p class="leading-relaxed">
+                        Florists represent one of the most expensive categories in wedding decor. To save money, repurpose your ceremony flowers for your reception tables. Talk to your florist about using local, in-season blooms rather than importing exotic flowers. Additionally, incorporating elements like tall candles, lanterns, and lush greenery is much more cost-effective than elaborate floral centerpieces.
+                    </p>
+                </section>
+
+                <hr class="border-brand-accent/20">
+
+                <section id="tracking" class="space-y-4 scroll-mt-24">
+                    <h2 class="font-heading text-3xl font-bold text-brand-dark flex items-center gap-3">
+                        <span class="text-brand-rosegold">04.</span> Track Daily Spending
+                    </h2>
+                    <p class="leading-relaxed">
+                        It's not the major venue fee that causes couples to go over budget—it's the hundreds of micro-transactions like stamps, favors, signs, and hair trials. Keep your finances completely organized by updating your deposits, payments, and estimates in our interactive <a href="../budget.html" class="text-brand-rosegold hover:text-brand-dark underline font-medium">Smart Budget Planner</a> on a weekly basis.
+                    </p>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
+                        <span class="font-heading font-bold text-2xl tracking-tight">Evera</span>
+                    </div>
+                    <p class="text-white/60 mb-8 max-w-sm leading-relaxed">
+                        The modern, elegant way to plan the wedding of your dreams. Simple tools, stunning design, stress-free planning.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Planning Tools</h4>
+                    <ul class="space-y-3">
+                        <li><a href="../checklist.html" class="text-white/60 hover:text-white transition-colors">Wedding Timeline Checklist</a></li>
+                        <li><a href="../budget.html" class="text-white/60 hover:text-white transition-colors">Wedding Budget Planner</a></li>
+                        <li><a href="../guests.html" class="text-white/60 hover:text-white transition-colors">Guest List Manager</a></li>
+                        <li><a href="../vendors.html" class="text-white/60 hover:text-white transition-colors">Vendor Organization</a></li>
+                        <li><a href="../wedding-planning-checklists.html" class="text-white/60 hover:text-white transition-colors font-semibold">Ultimate Checklists Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Stay Inspired</h4>
+                    <p class="text-white/60 mb-4 text-sm">Join our newsletter for weekly wedding tips and aesthetic ideas.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Your email" class="bg-white/10 border border-white/20 rounded-lg px-4 py-2 w-full text-white placeholder-white/40 focus:outline-none focus:border-brand-rosegold">
+                        <button type="submit" class="bg-brand-rosegold px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/40 text-sm">&copy; 2026 Evera Wedding Co. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-white/40">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
