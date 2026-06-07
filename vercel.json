@@ -7,19 +7,6 @@
       "use": "@vercel/static-build"
     }
   ],
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.weddingplanningchecklists.org"
-        }
-      ],
-      "destination": "https://weddingplanningchecklists.org/$1",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
