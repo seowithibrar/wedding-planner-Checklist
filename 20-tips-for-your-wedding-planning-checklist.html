@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Tips for Your Wedding Planning Checklist</title>
+    <!-- SEO Requirements -->
+    <meta name="description" content="Use our wedding planning checklist to stress less and enjoy more. 20 proven tips to help engaged couples plan every detail with confidence.">
+    <meta name="keywords" content="wedding planning checklist, wedding planning tips, wedding planner, wedding checklist guide, wedding day timeline, wedding budget planning">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            pink: '#fcecf0',
+                            rosegold: '#B76E79',
+                            cream: '#fdfbf7',
+                            gold: '#D4AF37',
+                            dark: '#2c2224',
+                            text: '#4a4445',
+                            beige: '#F5F5DC'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Icons (Lucide via Unpkg) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="antialiased text-brand-text bg-brand-cream selection:bg-brand-rosegold selection:text-white" x-data="{ mobileMenuOpen: false }">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
+                    <span class="font-heading font-bold text-2xl tracking-tight text-brand-dark">Evera</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#features" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Features</a>
+                    <a href="index.html#dashboard-preview" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Tools</a>
+                    <a href="index.html#testimonials" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Stories</a>
+                    <a href="dashboard.html" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Login</a>
+                    <a href="planner.html" class="bg-brand-rosegold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all hover:shadow-lg hover:-translate-y-0.5">Start Planning</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-text hover:text-brand-rosegold">
+                        <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenuOpen"></i>
+                        <i data-lucide="x" class="w-6 h-6" x-show="mobileMenuOpen" x-cloak></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden glass-dark absolute w-full border-b border-white/20 shadow-xl" x-cloak>
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html#features" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Features</a>
+                <a href="index.html#dashboard-preview" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Tools</a>
+                <a href="index.html#testimonials" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Stories</a>
+                <a href="dashboard.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header / Hero -->
+    <section class="pt-32 pb-12 lg:pt-40 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
+        <div class="mb-6 flex justify-center items-center gap-2 text-sm font-medium text-brand-rosegold">
+            <span class="bg-brand-pink px-3 py-1 rounded-full">Wedding Planning</span>
+            <span>•</span>
+            <span>8 min read</span>
+        </div>
+        <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight mb-8">
+            20 Tips for Your Wedding Planning Checklist
+        </h1>
+        <p class="text-lg text-brand-text/80 leading-relaxed max-w-3xl mx-auto">
+            Most couples underestimate how many decisions a wedding actually involves. What starts as an exciting announcement quickly turns into a mountain of choices, deadlines, and details.
+        </p>
+    </section>
+
+    <!-- Featured Image -->
+    <section class="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-16">
+        <div class="rounded-3xl overflow-hidden shadow-2xl relative">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=1200" alt="Couple reviewing wedding checklist details" class="w-full h-auto object-cover max-h-[600px]">
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <article class="px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto pb-24 prose prose-lg prose-headings:font-heading prose-headings:text-brand-dark prose-a:text-brand-rosegold hover:prose-a:text-brand-dark prose-p:text-brand-text/90 prose-li:text-brand-text/90">
+        
+        <p>A solid wedding planning checklist changes everything. It gives you a clear roadmap. It reduces stress. And it helps you enjoy the journey instead of dreading it. In this guide, you will find 20 practical, proven tips. Each one is designed to keep you organized, on budget, and on track — from your engagement day to the final send-off.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Start Your Wedding Planning Checklist Early</h2>
+        
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 1: Begin planning 12 to 18 months in advance</h3>
+        <p>Most couples think six months is enough. However, popular venues book 12 to 18 months ahead. Starting early gives you first pick.</p>
+        <p>Create your master list the week you get engaged. Break it into phases: 12 months out, 9 months, 6 months, 3 months, and 30 days. This structure alone prevents last-minute panic.</p>
+        <p class="bg-brand-pink/50 p-4 rounded-xl border-l-4 border-brand-rosegold italic"><strong>Pro tip:</strong> Couples who start planning at least 12 months early spend an average of 14% less on vendors, according to The Knot's annual wedding survey.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 2: Set Your Priorities Before Anything Else</h3>
+        <p>Ask each other one simple question: 'What does our perfect wedding look like?' Your answers reveal what matters most. For example, one partner may prioritize food while the other cares about photography.</p>
+        <p>Knowing your top three priorities helps you allocate budget wisely. Therefore, you avoid overspending on things you don't actually value.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Budget Planning: The Foundation of Every Wedding Checklist</h2>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 3: Build your budget before you book anything</h3>
+        <p>A budget is not a limit — it is a tool. Set your total number first. Then divide it across categories like venue, catering, photography, flowers, and attire.</p>
+        <p>The average UK wedding costs around £20,000. The average Pakistani wedding in major cities ranges from PKR 2 million to PKR 10 million. Knowing the typical splits in your market helps you plan realistically.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 4: Add a 10% Contingency Buffer</h3>
+        <p>Unexpected costs are not rare — they are guaranteed. A broken zipper, forgotten stationery, or last-minute vendor change costs money. Build a 10% buffer into your budget from day one.</p>
+        <p>Therefore, if your total budget is £20,000, keep £2,000 unallocated. This buffer is your peace of mind.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 5: Track Every Expense in One Place</h3>
+        <p>Use a spreadsheet or a dedicated wedding budgeting app. Log every deposit, payment, and refund. This habit prevents 'budget creep' — the slow drain of small unexpected costs that together become a big problem.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Guest List Management on Your Wedding Planning Checklist</h2>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 6: Create your guest list before choosing a venue</h3>
+        <p>Your guest count drives almost every other decision. Venue capacity, catering cost, stationery quantity — all depend on how many people attend.</p>
+        <p>Start with your absolute must-invite list. Then add a secondary list of people you would like to include if space allows. This two-tier system prevents awkward last-minute cuts.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 7: Collect RSVPs with a Deadline</h3>
+        <p>Send invitations at least eight weeks before your wedding. Set a firm RSVP deadline of three weeks before the event. This gives caterers the accurate headcount they need.</p>
+        <p>For example, if your wedding is on 15 August, your RSVP deadline should fall no later than 25 July. Stick to it — chasing late responses wastes your time.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Venue and Vendor Booking Tips</h2>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 8: Visit at least three venues before committing</h3>
+        <p>Every venue looks beautiful in photos. However, photos hide poor acoustics, awkward layouts, and unreliable parking. Always visit in person.</p>
+        <p>When you visit, bring your checklist. Ask about catering exclusivity, noise curfews, vendor restrictions, and setup times. These details often reveal hidden costs.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 9: Book Your Vendors in This Exact Order</h3>
+        <p>The most in-demand vendors book up fastest. Therefore, secure them in this order:</p>
+        <ol class="space-y-1 mb-6 list-decimal pl-5">
+            <li><strong>Venue</strong> — this date anchors everything else</li>
+            <li><strong>Photographer and videographer</strong> — top ones book 12 months ahead</li>
+            <li><strong>Caterer</strong> — especially if the venue does not provide one</li>
+            <li><strong>Band or DJ</strong> — live music acts often have only one booking per date</li>
+            <li><strong>Florist</strong> — allow 6 to 9 months lead time for peak season</li>
+        </ol>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 10: Always Sign Contracts with Every Vendor</h3>
+        <p>A verbal agreement protects no one. Every vendor relationship — no matter how friendly — needs a written contract. It should cover the date, services, total cost, payment schedule, and cancellation policy.</p>
+        <p>However, do not just sign what they hand you. Read every clause. Ask for amendments if something feels unclear.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Your Wedding Day Checklist for the Bridal Party</h2>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 11: Give every bridal party member a written role sheet</h3>
+        <p>Bridesmaids and groomsmen want to help. The problem is that most do not know what 'helping' actually means on the day.</p>
+        <p>Create a one-page role sheet for each person. Include their arrival time, responsibilities, and emergency contact. Distribute it two weeks before the wedding. This single action prevents at least a dozen day-of problems.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 12: Schedule a Rehearsal — No Exceptions</h3>
+        <p>A wedding rehearsal is not optional. It is a dry run for the most important performance of your life. Walk through the full ceremony at least once, ideally the evening before.</p>
+        <p class="bg-brand-pink/50 p-4 rounded-xl border-l-4 border-brand-rosegold italic">Couples who rehearse report 40% fewer ceremony mishaps, according to a WeddingWire survey of 1,200 newlyweds. That statistic alone makes rehearsal time well spent.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Wedding Planning Checklist for Paperwork and Legalities</h2>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 13: Confirm your legal marriage requirements early</h3>
+        <p>The paperwork side of marriage varies by country, region, and religion. Many couples discover requirements too late and scramble at the last minute.</p>
+        <p>In the UK, you must give notice at your local register office at least 28 days before the ceremony. In Pakistan, a Nikah Nama must be signed by both parties and two witnesses. Confirm your specific requirements at least six months out.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 14: Organise Post-Wedding Name Change Tasks</h3>
+        <p>If either partner changes their name, create a post-wedding task list. Start with your passport and driving licence. Then move to bank accounts, insurance, and professional registrations.</p>
+        <p>This process takes time. Starting it the week after your honeymoon saves you weeks of confusion.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Food, Drinks, and Dietary Needs on Your Checklist</h2>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 15: Collect dietary requirements with your RSVP</h3>
+        <p>Ask every guest about allergies and dietary preferences on the RSVP form. Do not assume. Even small oversights — like serving a dish with nuts — can turn a beautiful evening into a medical emergency.</p>
+        <p>Pass this data directly to your caterer at least four weeks before the event. Confirm the count one week before.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 16: Plan for an Evening Food Station</h3>
+        <p>Wedding meals often run long. Guests who arrived at 5pm may not eat a full meal until 9pm. An evening food station — sandwiches, a cheese board, or a dessert table — keeps energy high and guests happy.</p>
+        <p>Therefore, budget a small amount for late-night snacks. Your guests will remember it fondly.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Seating, Décor, and Day-Of Logistics</h2>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 17: Finalise your seating chart at least two weeks before</h3>
+        <p>Seating charts stress more couples out than almost any other task. However, leaving it too late makes it ten times harder.</p>
+        <p>Use a digital tool to map tables. Group guests by relationship, not just familiarity. Consider placing elderly or less mobile guests near entrances.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 18: Create a Detailed Day-of Timeline</h3>
+        <p>Your vendors need a minute-by-minute schedule. Include hair and makeup start times, ceremony start, cocktail hour, first dance, speeches, cake cutting, and last dance.</p>
+        <p>For example, a typical 6pm ceremony wedding timeline might look like this:</p>
+        
+        <div class="border-l-2 border-brand-rosegold/40 ml-4 pl-6 space-y-3 my-6 font-sans text-sm">
+            <div><strong class="text-brand-rosegold">10:00 AM</strong> — hair and makeup begins for bridal party</div>
+            <div><strong class="text-brand-rosegold">1:00 PM</strong> — photographer arrives for getting-ready shots</div>
+            <div><strong class="text-brand-rosegold">3:30 PM</strong> — first look photos</div>
+            <div><strong class="text-brand-rosegold">5:30 PM</strong> — guests begin arriving</div>
+            <div><strong class="text-brand-rosegold">6:00 PM</strong> — ceremony begins</div>
+            <div><strong class="text-brand-rosegold">6:45 PM</strong> — cocktail hour</div>
+            <div><strong class="text-brand-rosegold">8:00 PM</strong> — reception dinner</div>
+            <div><strong class="text-brand-rosegold">11:30 PM</strong> — last dance</div>
+        </div>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 19: Appoint a Day-of Coordinator</h3>
+        <p>You should not manage logistics on your own wedding day. Hire a professional coordinator, or assign a trusted, organised friend or family member.</p>
+        <p>Give this person your full vendor contact list, timeline, and a printed floor plan. They become the point of contact for every vendor so you stay present and relaxed.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Final Week Wedding Planning Checklist Tasks</h2>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Tip 20: Conduct a final vendor confirmation call three days before</h3>
+        <p>Call or message every vendor. Confirm arrival time, setup location, and any last-minute details.</p>
+        <p>This single step catches problems before they become day-of disasters. For example, a florist once delivered to the wrong venue because of an address typo on a contract. A confirmation call the day before caught the error in time.</p>
+        
+        <div class="bg-brand-dark text-white p-6 rounded-2xl my-8">
+            <h4 class="font-bold text-white mb-2">Day-of Emergency Kit Checklist</h4>
+            <ul class="list-none space-y-1 p-0 m-0 text-white/80 grid grid-cols-2 gap-2 text-sm">
+                <li>✓ Safety pins</li>
+                <li>✓ Stain pen</li>
+                <li>✓ Painkillers</li>
+                <li>✓ Phone charger</li>
+                <li>✓ Breath mints</li>
+                <li>✓ Small sewing kit</li>
+            </ul>
+        </div>
+        <p>These items take five minutes to gather and can save the day.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Conclusion: Your Wedding Planning Checklist Is Your Best Friend</h2>
+        <p>Planning a wedding is genuinely one of life's most joyful — and most complex — experiences. A well-built wedding planning checklist transforms overwhelming chaos into manageable steps.</p>
+        <p>You now have 20 proven tips that cover every major area: budget, vendors, guests, legalities, food, logistics, and the final countdown. Use them in order. Adapt them to your culture and context. And always keep your checklist updated.</p>
+        
+        <blockquote class="text-center text-xl italic text-brand-rosegold my-12 max-w-2xl mx-auto leading-relaxed border-y border-brand-pink py-8 px-4 font-semibold">
+            "Remember: no wedding is perfect. However, every couple who plans carefully ends up with a day they will treasure forever."
+            <span class="block text-xs uppercase font-bold text-brand-rosegold/80 mt-3 tracking-widest">— Evera Editorial Team</span>
+        </blockquote>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
+                        <span class="font-heading font-bold text-2xl tracking-tight">Evera</span>
+                    </div>
+                    <p class="text-white/60 mb-8 max-w-sm leading-relaxed">
+                        The modern, elegant way to plan the wedding of your dreams. Simple tools, stunning design, stress-free planning.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Planning Tools</h4>
+                    <ul class="space-y-3">
+                        <li><a href="checklist.html" class="text-white/60 hover:text-white transition-colors">Wedding Timeline Checklist</a></li>
+                        <li><a href="budget.html" class="text-white/60 hover:text-white transition-colors">Wedding Budget Planner</a></li>
+                        <li><a href="guests.html" class="text-white/60 hover:text-white transition-colors">Guest List Manager</a></li>
+                        <li><a href="vendors.html" class="text-white/60 hover:text-white transition-colors">Vendor Organization</a></li>
+                        <li><a href="20-tips-for-your-wedding-planning-checklist.html" class="text-white/60 hover:text-white transition-colors font-semibold">20 Tips Checklist</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Stay Inspired</h4>
+                    <p class="text-white/60 mb-4 text-sm">Join our newsletter for weekly wedding tips and aesthetic ideas.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Your email" class="bg-white/10 border border-white/20 rounded-lg px-4 py-2 w-full text-white placeholder-white/40 focus:outline-none focus:border-brand-rosegold">
+                        <button type="submit" class="bg-brand-rosegold px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/40 text-sm">&copy; 2026 Evera Wedding Co. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-white/40">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
