@@ -187,9 +187,11 @@ type Tab = 'home' | 'about' | 'privacy' | 'terms' | 'blog' | 'contact' | 'guide'
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>(() => {
     const path = window.location.pathname;
+    const pathLower = path.toLowerCase().replace(/\/$/, '');
     if (path === '/about-us') return 'about';
     if (path === '/privacy-policy') return 'privacy';
-    if (path === '/guide') return 'guide';
+    if (pathLower === '/guide' || pathLower === '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding') return 'guide';
+    if (path.startsWith('/blog')) return 'blog';
     if (path === '/' || path === '') return 'home';
     const cleanPath = path.replace('/', '') as Tab;
     const validTabs: Tab[] = ['home', 'about', 'privacy', 'terms', 'blog', 'contact', 'guide', 'dashboard', 'tasks', 'budget', 'guests', 'vendors', 'calendar'];
@@ -201,9 +203,14 @@ export default function App() {
     if (activeTab === 'about') path = '/about-us';
     else if (activeTab === 'privacy') path = '/privacy-policy';
     else if (activeTab === 'terms') path = '/terms-of-service';
-    else if (activeTab === 'blog') path = '/blog';
+    else if (activeTab === 'blog') {
+      if (window.location.pathname.startsWith('/blog/')) {
+        return;
+      }
+      path = '/blog';
+    }
     else if (activeTab === 'contact') path = '/contact';
-    else if (activeTab === 'guide') path = '/guide';
+    else if (activeTab === 'guide') path = '/blog/The-Ultimate-Wedding-Planning-Checklists-Guide-for-a-Stress-Free-Wedding';
     else if (activeTab !== 'home') path = `/${activeTab}`;
     
     if (window.location.pathname !== path) {
@@ -214,12 +221,13 @@ export default function App() {
   useEffect(() => {
     const handlePopState = () => {
       const path = window.location.pathname;
+      const pathLower = path.toLowerCase().replace(/\/$/, '');
       if (path === '/about-us') setActiveTab('about');
       else if (path === '/privacy-policy') setActiveTab('privacy');
       else if (path === '/terms-of-service') setActiveTab('terms');
-      else if (path === '/blog') setActiveTab('blog');
+      else if (pathLower === '/guide' || pathLower === '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding') setActiveTab('guide');
+      else if (path.startsWith('/blog')) setActiveTab('blog');
       else if (path === '/contact') setActiveTab('contact');
-      else if (path === '/guide') setActiveTab('guide');
       else if (path === '/' || path === '') setActiveTab('home');
       else {
         const cleanPath = path.replace('/', '') as Tab;

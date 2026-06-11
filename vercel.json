@@ -9,6 +9,22 @@
   ],
   "rewrites": [
     {
+      "source": "/blog/20-Tips-for-Your-Wedding-Planning-Checklist",
+      "destination": "/20-tips-for-your-wedding-planning-checklist.html"
+    },
+    {
+      "source": "/blog/20-tips-for-your-wedding-planning-checklist",
+      "destination": "/20-tips-for-your-wedding-planning-checklist.html"
+    },
+    {
+      "source": "/blog/The-Ultimate-Wedding-Planning-Checklists-Guide-for-a-Stress-Free-Wedding",
+      "destination": "/wedding-planning-checklists.html"
+    },
+    {
+      "source": "/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding",
+      "destination": "/wedding-planning-checklists.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

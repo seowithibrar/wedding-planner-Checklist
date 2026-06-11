@@ -121,10 +121,67 @@ const BLOG_POSTS: BlogPost[] = [
   }
 ];
 
+const getSlugFromPostId = (id: string): string => {
+  const mapping: Record<string, string> = {
+    'checklists-guide': 'The-Ultimate-Wedding-Planning-Checklists-Guide-for-a-Stress-Free-Wedding',
+    'wedding-planning-checklist-tips': '20-Tips-for-Your-Wedding-Planning-Checklist',
+    'how-to-choose-wedding-venue': 'How-to-Choose-the-Perfect-Wedding-Venue',
+    'wedding-budget-tips': '10-Budget-Saving-Tips-Every-Couple-Needs-to-Know',
+    'perfect-guest-list-guide': 'Mastering-Your-Guest-List-&-Seating-Charts',
+    'moodboard-layout': 'Chic-&-Modern-Aesthetic:-Visual-Moodboard-Layout'
+  };
+  return mapping[id] || id;
+};
+
+const getPostIdFromSlug = (slug: string): string | null => {
+  const normalizedSlug = decodeURIComponent(slug).toLowerCase().replace(/\/$/, '');
+  const mapping: Record<string, string> = {
+    'the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding': 'checklists-guide',
+    '20-tips-for-your-wedding-planning-checklist': 'wedding-planning-checklist-tips',
+    'how-to-choose-the-perfect-wedding-venue': 'how-to-choose-wedding-venue',
+    '10-budget-saving-tips-every-couple-needs-to-know': 'wedding-budget-tips',
+    'mastering-your-guest-list-&-seating-charts': 'perfect-guest-list-guide',
+    'mastering-your-guest-list-and-seating-charts': 'perfect-guest-list-guide',
+    'chic-&-modern-aesthetic:-visual-moodboard-layout': 'moodboard-layout',
+    'chic-and-modern-aesthetic-visual-moodboard-layout': 'moodboard-layout'
+  };
+  return mapping[normalizedSlug] || null;
+};
+
 export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTerms, onContact, onBlog }: BlogProps) {
-  const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
+  const [selectedPostId, setSelectedPostId] = useState<string | null>(() => {
+    const path = window.location.pathname;
+    if (path.startsWith('/blog/')) {
+      const slug = path.substring(6);
+      const postId = getPostIdFromSlug(slug);
+      if (postId && postId !== 'checklists-guide') {
+        return postId;
+      }
+    }
+    return null;
+  });
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const path = window.location.pathname;
+      if (path.startsWith('/blog/')) {
+        const slug = path.substring(6);
+        const postId = getPostIdFromSlug(slug);
+        if (postId && postId !== 'checklists-guide') {
+          setSelectedPostId(postId);
+        } else {
+          setSelectedPostId(null);
+        }
+      } else {
+        setSelectedPostId(null);
+      }
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -170,12 +227,22 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
     if (postId === 'checklists-guide') {
       onOpenGuide();
     } else {
+      const slug = getSlugFromPostId(postId);
+      const newPath = `/blog/${slug}`;
+      if (window.location.pathname !== newPath) {
+        window.history.pushState({}, '', newPath);
+      }
       setSelectedPostId(postId);
+      window.scrollTo(0, 0);
     }
   };
 
   const handleBackToBlog = () => {
+    if (window.location.pathname !== '/blog') {
+      window.history.pushState({}, '', '/blog');
+    }
     setSelectedPostId(null);
+    window.scrollTo(0, 0);
   };
 
   return (
