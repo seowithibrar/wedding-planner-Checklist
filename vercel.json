@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/blog/Hairstyles-for-Wedding",
+      "destination": "/hairstyles-for-wedding.html"
+    },
+    {
+      "source": "/blog/hairstyles-for-wedding",
+      "destination": "/hairstyles-for-wedding.html"
+    },
+    {
       "source": "/blog/20-Tips-for-Your-Wedding-Planning-Checklist",
       "destination": "/20-tips-for-your-wedding-planning-checklist.html"
     },

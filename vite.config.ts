@@ -21,6 +21,7 @@ export default defineConfig(({mode}) => {
           main: path.resolve(__dirname, 'index.html'),
           checklists: path.resolve(__dirname, 'wedding-planning-checklists.html'),
           tips: path.resolve(__dirname, '20-tips-for-your-wedding-planning-checklist.html'),
+          hairstyles: path.resolve(__dirname, 'hairstyles-for-wedding.html'),
         }
       }
     },
