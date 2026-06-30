@@ -2269,11 +2269,32 @@ function WeddingHairstylesArticle() {
    ========================================================================= */
 function WeddingTimelineArticle() {
   return (
-    <article className="max-w-4xl mx-auto px-6 py-12 prose prose-lg prose-slate prose-a:text-brand-rosegold hover:prose-a:text-brand-pink">
-      <h1>How to Plan a Wedding Timeline: Step-by-Step Guide (2026)</h1>
+    <div className="max-w-7xl mx-auto px-6 py-12 text-slate-800">
+      <header className="max-w-4xl mx-auto text-center space-y-6 mb-12">
+        <div className="flex justify-center items-center gap-2 text-xs font-bold tracking-wider uppercase text-rose-500">
+          <span>Planning</span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
+          How to Plan a Wedding Timeline: Step-by-Step Guide (2026)
+        </h1>
+        <div className="flex items-center justify-center gap-6 text-sm text-slate-400 border-y border-slate-100 py-4 max-w-xl mx-auto">
+          <span className="flex items-center gap-1"><Calendar size={14} className="text-rose-500" /> Updated June 2026</span>
+          <span className="flex items-center gap-1"><Clock size={14} className="text-rose-500" /> 7 Min Read</span>
+          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Evera Editorial</span>
+        </div>
+      </header>
       
-      <img src="/How to Plan a Wedding Timeline.webp" alt="Wedding Timeline" />
-      
+      <div className="max-w-5xl mx-auto mb-16">
+        <div className="bg-white p-3 rounded-[32px] shadow-sm border border-slate-200">
+          <img 
+            src="/How to Plan a Wedding Timeline.webp" 
+            alt="Wedding Timeline" 
+            className="w-full max-h-[500px] object-cover rounded-[24px]"
+          />
+        </div>
+      </div>
+
+      <article className="max-w-3xl mx-auto pb-24 prose prose-lg prose-headings:font-heading prose-headings:text-slate-900 prose-a:text-rose-500 hover:prose-a:text-rose-600 prose-p:text-slate-600 prose-li:text-slate-600">
       <p>Figuring out how to plan a wedding timeline is one of the first things every engaged couple needs to sort out, and it's also one of the most overwhelming. Between booking vendors, choosing a venue, and keeping family happy, it's easy to lose track of what should happen when. A clear wedding timeline solves that problem. It tells you exactly what to do each month leading up to the big day, how your wedding day itself should flow hour by hour, and when your money needs to go out the door.</p>
       
       <h2>Table of Contents</h2>
@@ -2292,7 +2313,7 @@ function WeddingTimelineArticle() {
 
       <h2 id="main-topic">The Month-by-Month Wedding Planning Timeline</h2>
       <p>This is the core of how to plan a wedding timeline: breaking the engagement period into manageable phases.</p>
-      <img src="/The Month-by-Month Wedding Planning Timeline.webp" alt="Month by Month Timeline" />
+      <img src="/The Month-by-Month Wedding Planning Timeline.webp" alt="Month by Month Timeline" className="rounded-2xl shadow-sm border border-slate-200 my-8 w-full h-auto" />
 
       <h3>12+ Months Before</h3>
       <ul>
@@ -2416,5 +2437,6 @@ function WeddingTimelineArticle() {
       <p>Knowing how to plan a wedding timeline takes the guesswork out of one of the most stressful parts of getting married. Start with the month-by-month plan, layer in your wedding day and reception timelines closer to the date, and keep your budget timeline running alongside it the whole way through.</p>
       <p>For the full task breakdown behind every stage of this timeline, explore our complete <a href="/">wedding planning checklist</a> and keep everything organized in one place!</p>
     </article>
+    </div>
   );
 }
