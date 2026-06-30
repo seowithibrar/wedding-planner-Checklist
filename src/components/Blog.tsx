@@ -2269,284 +2269,152 @@ function WeddingHairstylesArticle() {
    ========================================================================= */
 function WeddingTimelineArticle() {
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12 text-slate-800">
-      <header className="max-w-4xl mx-auto text-center space-y-6 mb-12">
-        <div className="flex justify-center items-center gap-2 text-xs font-bold tracking-wider uppercase text-rose-500">
-          <span>Planning</span>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
-          How to Plan a Wedding Timeline: A Complete Step-by-Step Guide
-        </h1>
-        <div className="flex items-center justify-center gap-6 text-sm text-slate-400 border-y border-slate-100 py-4 max-w-xl mx-auto">
-          <span className="flex items-center gap-1"><Calendar size={14} className="text-rose-500" /> Updated June 2026</span>
-          <span className="flex items-center gap-1"><Clock size={14} className="text-rose-500" /> 7 Min Read</span>
-          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Evera Editorial</span>
-        </div>
-      </header>
+    <article className="max-w-4xl mx-auto px-6 py-12 prose prose-lg prose-slate prose-a:text-brand-rosegold hover:prose-a:text-brand-pink">
+      <h1>How to Plan a Wedding Timeline: Step-by-Step Guide (2026)</h1>
       
-      <div className="max-w-5xl mx-auto mb-16">
-        <div className="bg-white p-3 rounded-[32px] shadow-sm border border-slate-200">
-          <img 
-            src="/How to Plan a Wedding Timeline.webp" 
-            alt="Wedding Timeline" 
-            className="w-full max-h-[500px] object-cover rounded-[24px]"
-          />
-        </div>
-      </div>
+      <img src="/How to Plan a Wedding Timeline.webp" alt="Wedding Timeline" />
+      
+      <p>Figuring out how to plan a wedding timeline is one of the first things every engaged couple needs to sort out, and it's also one of the most overwhelming. Between booking vendors, choosing a venue, and keeping family happy, it's easy to lose track of what should happen when. A clear wedding timeline solves that problem. It tells you exactly what to do each month leading up to the big day, how your wedding day itself should flow hour by hour, and when your money needs to go out the door.</p>
+      
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#main-topic">The Month-by-Month Wedding Planning Timeline</a></li>
+        <li><a href="#step-by-step">Step-by-Step Guide</a></li>
+        <li><a href="#expert-tips">Expert Tips</a></li>
+        <li><a href="#common-mistakes">Common Mistakes</a></li>
+        <li><a href="#faq">Frequently Asked Questions</a></li>
+        <li><a href="#conclusion">Conclusion + CTA</a></li>
+      </ul>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
-        {/* Sticky Sidebar Navigation */}
-        <aside className="col-span-1 lg:col-span-3 hidden lg:block">
-          <div className="sticky top-40 space-y-6">
-            <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
-              <h4 className="font-bold text-sm text-slate-950 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
-                <List size={16} className="text-rose-500" /> Guide Sections
-              </h4>
-              <nav className="space-y-3 text-xs font-semibold text-slate-500">
-                <a href="#why" className="block hover:text-rose-500 transition-colors border-l-2 border-transparent hover:border-rose-500 pl-3">1. Why You Need a Timeline</a>
-                <a href="#month-by-month" className="block hover:text-rose-500 transition-colors border-l-2 border-transparent hover:border-rose-500 pl-3">2. Month-by-Month Plan</a>
-                <a href="#wedding-day" className="block hover:text-rose-500 transition-colors border-l-2 border-transparent hover:border-rose-500 pl-3">3. Wedding Day Timeline</a>
-                <a href="#reception" className="block hover:text-rose-500 transition-colors border-l-2 border-transparent hover:border-rose-500 pl-3">4. Reception Timeline</a>
-                <a href="#budget" className="block hover:text-rose-500 transition-colors border-l-2 border-transparent hover:border-rose-500 pl-3">5. Budget Timeline</a>
-                <a href="#checklist" className="block hover:text-rose-500 transition-colors border-l-2 border-transparent hover:border-rose-500 pl-3">6. Tying to Checklist</a>
-                <a href="#mistakes" className="block hover:text-rose-500 transition-colors border-l-2 border-transparent hover:border-rose-500 pl-3">7. Mistakes to Avoid</a>
-              </nav>
-            </div>
-          </div>
-        </aside>
+      <h2 id="introduction">Introduction</h2>
+      <p>A wedding timeline is more than a to-do list. It's the framework that keeps every other part of your planning on schedule. Without one, couples tend to book vendors too late, forget deposits, or end up cramming a month's worth of decisions into a single stressful weekend. This guide breaks down everything you need: a month-by-month wedding planning timeline, a wedding day timeline, a wedding reception timeline, and a wedding budget timeline, so you have one complete system instead of four separate headaches.</p>
 
-        {/* Article Body */}
-        <article className="col-span-1 lg:col-span-9 space-y-12 text-slate-600 text-base leading-relaxed">
-          <section className="space-y-4">
-            <p className="text-lg font-medium text-slate-900 leading-relaxed text-left">
-              Figuring out how to plan a wedding timeline is one of the first things every engaged couple needs to sort out, and it's also one of the most overwhelming. Between booking vendors, choosing a venue, and keeping family happy, it's easy to lose track of what should happen when.
-            </p>
-            <p className="text-left">
-              A clear wedding timeline solves that problem. It tells you exactly what to do each month leading up to the big day, how your wedding day itself should flow hour by hour, and when your money needs to go out the door.
-            </p>
-            <p className="text-left">
-              This guide breaks down everything you need: a month-by-month wedding planning timeline, a wedding day timeline, a wedding reception timeline, and a wedding budget timeline, so you have one complete system instead of four separate headaches.
-            </p>
-          </section>
+      <h2 id="main-topic">The Month-by-Month Wedding Planning Timeline</h2>
+      <p>This is the core of how to plan a wedding timeline: breaking the engagement period into manageable phases.</p>
+      <img src="/The Month-by-Month Wedding Planning Timeline.webp" alt="Month by Month Timeline" />
 
-          <hr className="border-slate-100" />
+      <h3>12+ Months Before</h3>
+      <ul>
+        <li>Set your wedding date and rough budget</li>
+        <li>Choose your wedding style and vision</li>
+        <li>Start your guest list draft</li>
+        <li>Research and book your venue</li>
+        <li>Begin researching planners and photographers</li>
+      </ul>
 
-          {/* Section 1: Why You Need a Wedding Timeline */}
-          <section id="why" className="space-y-6 scroll-mt-40 text-left">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="text-rose-500">01.</span> Why You Need a Wedding Timeline
-            </h2>
-            <p>
-              A wedding timeline is more than a to-do list. It's the framework that keeps every other part of your planning on schedule. Without one, couples tend to book vendors too late, forget deposits, or end up cramming a month's worth of decisions into a single stressful weekend.
-            </p>
-            <p>The exact timeline you need depends on a few factors:</p>
-            
-            <div className="space-y-4 mt-4">
-              {[
-                { title: "Engagement length.", desc: "A 12-month engagement allows a relaxed pace; a 4-6 month engagement compresses tasks and requires faster decisions." },
-                { title: "Guest count.", desc: "Larger weddings need earlier venue and catering bookings." },
-                { title: "Venue flexibility.", desc: "Popular venues and peak wedding season (spring and early autumn) get booked 9-12 months out." },
-                { title: "Vendor availability.", desc: "Photographers, florists, and planners with strong reputations fill their calendars early." }
-              ].map((factor, idx) => (
-                <div key={idx} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-2">
-                  <h4 className="font-bold text-slate-900 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-rose-500"></span> {factor.title}
-                  </h4>
-                  <p className="text-sm leading-relaxed text-slate-600">{factor.desc}</p>
-                </div>
-              ))}
-            </div>
-            <p>Once you understand these variables, you can adapt the timeline below to fit a shorter or longer engagement.</p>
-          </section>
+      <h3>9-11 Months Before</h3>
+      <ul>
+        <li>Book your photographer and videographer</li>
+        <li>Choose your wedding party</li>
+        <li>Start dress and suit shopping</li>
+        <li>Hire a caterer if not included with your venue</li>
+        <li>Reserve your officiant</li>
+      </ul>
 
-          <hr className="border-slate-100" />
+      <h3>6-8 Months Before</h3>
+      <ul>
+        <li>Book florist, DJ or band, and other entertainment</li>
+        <li>Send save-the-dates</li>
+        <li>Plan your honeymoon</li>
+        <li>Begin registry setup</li>
+      </ul>
 
-          {/* Section 2: Month-by-Month Plan */}
-          <section id="month-by-month" className="space-y-8 scroll-mt-40 text-left">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="text-rose-500">02.</span> The Month-by-Month Wedding Planning Timeline
-            </h2>
-            <p>
-              This is the core of how to plan a wedding timeline: breaking the engagement period into manageable phases.
-            </p>
+      <h3>4-5 Months Before</h3>
+      <ul>
+        <li>Order invitations</li>
+        <li>Finalize your menu and cake</li>
+        <li>Book hair and makeup trials</li>
+        <li>Arrange transportation</li>
+      </ul>
 
-            <img src="/The Month-by-Month Wedding Planning Timeline.webp" alt="Month by Month Timeline" className="w-full h-auto rounded-2xl shadow-sm border border-slate-200 my-8" />
+      <h3>2-3 Months Before</h3>
+      <ul>
+        <li>Send invitations</li>
+        <li>Finalize your wedding day timeline with vendors</li>
+        <li>Apply for your marriage license</li>
+        <li>Confirm accommodation blocks for out-of-town guests</li>
+      </ul>
 
-            <div className="space-y-6">
-              {[
-                { time: "12+ Months Before", items: ["Set your wedding date and rough budget", "Choose your wedding style and vision", "Start your guest list draft", "Research and book your venue", "Begin researching planners and photographers"] },
-                { time: "9-11 Months Before", items: ["Book your photographer and videographer", "Choose your wedding party", "Start dress and suit shopping", "Hire a caterer if not included with your venue", "Reserve your officiant"] },
-                { time: "6-8 Months Before", items: ["Book florist, DJ or band, and other entertainment", "Send save-the-dates", "Plan your honeymoon", "Begin registry setup"] },
-                { time: "4-5 Months Before", items: ["Order invitations", "Finalize your menu and cake", "Book hair and makeup trials", "Arrange transportation"] },
-                { time: "2-3 Months Before", items: ["Send invitations", "Finalize your wedding day timeline with vendors", "Apply for your marriage license", "Confirm accommodation blocks for out-of-town guests"] },
-                { time: "1 Month Before", items: ["Finalize headcount and seating chart", "Confirm final payments with vendors", "Have your final dress or suit fitting", "Write vows and confirm ceremony details"] },
-                { time: "Week Before and Day Before", items: ["Confirm pickup times with transportation vendors", "Pack for the wedding and honeymoon", "Rehearse the ceremony", "Hand off decor and signage to your coordinator"] }
-              ].map((phase, idx) => (
-                <div key={idx} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                  <h3 className="font-bold text-slate-900 text-lg mb-4 text-rose-500">{phase.time}</h3>
-                  <ul className="space-y-2">
-                    {phase.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <Check size={16} className="text-rose-500 mt-0.5 shrink-0" />
-                        <span className="text-sm text-slate-600">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-            <p>
-              This phased structure pairs directly with a full wedding planning checklist, so you always know which tasks belong to which stage instead of guessing.
-            </p>
-          </section>
+      <h3>1 Month Before</h3>
+      <ul>
+        <li>Finalize headcount and seating chart</li>
+        <li>Confirm final payments with vendors</li>
+        <li>Have your final dress or suit fitting</li>
+        <li>Write vows and confirm ceremony details</li>
+      </ul>
 
-          <hr className="border-slate-100" />
+      <h3>Week Before and Day Before</h3>
+      <ul>
+        <li>Confirm pickup times with transportation vendors</li>
+        <li>Pack for the wedding and honeymoon</li>
+        <li>Rehearse the ceremony</li>
+        <li>Hand off decor and signage to your coordinator</li>
+      </ul>
 
-          {/* Section 3: Wedding Day Timeline */}
-          <section id="wedding-day" className="space-y-6 scroll-mt-40 text-left">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="text-rose-500">03.</span> How to Plan a Wedding Day Timeline
-            </h2>
-            <p>
-              While the month-by-month plan covers the lead-up, the wedding day timeline covers the actual day itself, hour by hour. This is one of the most searched parts of wedding planning because even well-organized couples underestimate how tight the day can feel.
-            </p>
-            <p>A simple wedding day timeline framework looks like this:</p>
-            
-            <div className="mt-6 border-l-2 border-rose-100 ml-4 pl-6 space-y-6 relative mb-8">
-              {[
-                { time: "Morning", event: "Hair, makeup, and getting-ready photos (allow 2-3 hours)" },
-                { time: "Pre-ceremony", event: "First look (optional), wedding party photos, family photos" },
-                { time: "Ceremony", event: "Typically 20-45 minutes depending on tradition" },
-                { time: "Cocktail hour", event: "Guests transition while couple finishes photos" },
-                { time: "Reception entrance", event: "Grand entrance, welcome toast" },
-                { time: "Dinner service", event: "45-60 minutes" },
-                { time: "Speeches and toasts", event: "15-20 minutes" },
-                { time: "First dance", event: "10-15 minutes (includes parent dances)" },
-                { time: "Cake cutting", event: "5-10 minutes" },
-                { time: "Open dancing", event: "1.5-2 hours" },
-                { time: "Send-off", event: "10-15 minutes" }
-              ].map((item, idx) => (
-                <div key={idx} className="relative group text-left">
-                  <span className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-2 border-rose-300 bg-white group-hover:bg-rose-500 transition-colors" />
-                  <div className="text-xs text-rose-500 font-bold mb-0.5">{item.time}</div>
-                  <div className="text-sm font-semibold text-slate-800">{item.event}</div>
-                </div>
-              ))}
-            </div>
+      <h2 id="step-by-step">Step-by-Step Guide</h2>
+      <p>Building your wedding day timeline is crucial. Here is a step-by-step framework to plan your actual wedding day:</p>
+      <ol>
+        <li><strong>Morning:</strong> Schedule hair, makeup, and getting-ready photos (allow 2-3 hours).</li>
+        <li><strong>Pre-ceremony:</strong> Plan for a first look (optional), wedding party photos, and family photos.</li>
+        <li><strong>Ceremony:</strong> Block out 20-45 minutes depending on your tradition.</li>
+        <li><strong>Cocktail hour:</strong> Guests transition while the couple finishes any remaining photos.</li>
+        <li><strong>Reception entrance:</strong> Coordinate the grand entrance and welcome toast.</li>
+        <li><strong>Dinner service:</strong> Allocate 45-60 minutes for meal service.</li>
+        <li><strong>Speeches and toasts:</strong> Keep these to 15-20 minutes total.</li>
+        <li><strong>Dances:</strong> Schedule the first dance and parent dances (10-15 minutes).</li>
+        <li><strong>Cake cutting:</strong> Allocate 5-10 minutes.</li>
+        <li><strong>Open dancing:</strong> Leave 1.5-2 hours for guests to enjoy the dance floor.</li>
+        <li><strong>Send-off:</strong> Plan a 10-15 minute grand exit.</li>
+      </ol>
 
-            <div className="bg-rose-50/50 border border-slate-200 border-l-4 border-l-rose-500 p-6 rounded-r-3xl mt-6 text-left">
-              <h4 className="font-bold text-slate-900 text-sm flex items-center gap-2">
-                <Lightbulb className="text-rose-500" size={18} /> Pro Tip: Buffer Time
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed mt-2">
-                The biggest mistake couples make when planning their wedding day timeline is not building in buffer time. Hair and makeup almost always run longer than expected, and photo sessions get delayed by weather or family logistics. Add 15-30 minutes of cushion between major blocks, and share the finalized timeline with every vendor at least two weeks before the wedding.
-              </p>
-            </div>
-          </section>
+      <img src="/Tying Your Timeline to Your Wedding Checklist.webp" alt="Tying Your Timeline to Your Wedding Checklist" />
 
-          <hr className="border-slate-100" />
+      <h2 id="expert-tips">Expert Tips</h2>
+      <ul>
+        <li><strong>Add Buffer Time:</strong> The biggest mistake couples make when planning their wedding day timeline is not building in buffer time. Hair and makeup almost always run longer than expected, and photo sessions get delayed by weather or family logistics. Add 15-30 minutes of cushion between major blocks.</li>
+        <li><strong>Share Early:</strong> Share the finalized timeline with every vendor at least two weeks before the wedding.</li>
+        <li><strong>Work Backward:</strong> When building your reception timeline, work backward from your venue's end time.</li>
+        <li><strong>Sync Budget:</strong> Map your budget against your timeline to prevent the common surprise of multiple large payments landing in the same month.</li>
+      </ul>
 
-          {/* Section 4: Reception Timeline */}
-          <section id="reception" className="space-y-6 scroll-mt-40 text-left">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="text-rose-500">04.</span> How to Plan a Wedding Reception Timeline
-            </h2>
-            <img src="/Tying Your Timeline to Your Wedding Checklist.webp" alt="Tying Your Timeline" className="w-full h-auto rounded-2xl shadow-sm border border-slate-200 mb-6" />
-            <p>
-              The reception timeline deserves its own attention because it's where most of the night's energy and structure live. A well-paced reception timeline keeps guests engaged without feeling rushed or dragging on too long.
-            </p>
-            <p>A standard wedding reception timeline includes:</p>
-            
-            <ul className="space-y-3 mt-4">
-              {[
-                "Guest arrival and seating", "Wedding party and couple's grand entrance",
-                "Welcome toast from parents or hosts", "Dinner service",
-                "Best man and maid of honor speeches", "First dance",
-                "Parent dances (father-daughter, mother-son)", "Cake cutting",
-                "Bouquet and garter toss (optional)", "Open dance floor", "Last dance and send-off"
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
-                  <div className="w-6 h-6 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center text-xs font-bold shrink-0">{idx + 1}</div>
-                  <span className="text-sm text-slate-700">{item}</span>
-                </li>
-              ))}
-            </ul>
+      <h2 id="common-mistakes">Common Mistakes</h2>
+      <ul>
+        <li><strong>Booking vendors out of order:</strong> Venue and photographer should be locked in before florals or entertainment.</li>
+        <li><strong>Skipping buffer time:</strong> Not leaving enough time in the day-of schedule for delays.</li>
+        <li><strong>Ignoring your budget timeline:</strong> Leading to multiple deposits due in the same month.</li>
+        <li><strong>Not sharing the final timeline:</strong> Waiting until the last minute to communicate with vendors.</li>
+        <li><strong>Treating the checklist and timeline as separate tools:</strong> Instead of one connected system.</li>
+      </ul>
 
-            <p className="mt-6">
-              When building your reception timeline, work backward from your venue's end time. Most reception venues run 4-6 hours; if your DJ or band needs setup and breakdown time, confirm that window doesn't eat into your guest-facing hours. Share the reception timeline with your DJ, caterer, and venue coordinator together so transitions (like moving from dinner to dancing) happen smoothly.
-            </p>
-          </section>
+      <h2 id="faq">Frequently Asked Questions</h2>
+      <h3>1. What is the best wedding planning checklist timeline?</h3>
+      <p>Most couples start planning 12 months before the wedding, but the right timeline depends on your guest count, venue flexibility, and vendor availability.</p>
+      
+      <h3>2. Can I plan a wedding timeline for a short engagement?</h3>
+      <p>Yes. For engagements under 6 months, prioritize venue and key vendor bookings first, then work through the remaining checklist tasks in parallel.</p>
+      
+      <h3>3. How far in advance should I finalize my wedding day timeline?</h3>
+      <p>Share your finalized wedding day and reception timeline with all vendors at least two weeks before the wedding.</p>
+      
+      <h3>4. When should I send out save-the-dates?</h3>
+      <p>Save-the-dates should ideally be sent 6 to 8 months before your wedding, or up to a year in advance for destination weddings.</p>
 
-          <hr className="border-slate-100" />
+      <h3>5. How much time should I allocate for hair and makeup?</h3>
+      <p>Generally, allocate 45 minutes for bridesmaids and 60-90 minutes for the bride, plus 30 minutes of buffer time.</p>
 
-          {/* Section 5: Budget Timeline */}
-          <section id="budget" className="space-y-6 scroll-mt-40 text-left">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="text-rose-500">05.</span> How to Plan a Wedding Budget Timeline
-            </h2>
-            <p>
-              Your wedding budget timeline runs parallel to your planning timeline, because deposits and final payments are due at different stages, not all at once.
-            </p>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-              {[
-                { time: "At booking (9-12 months out)", desc: "Venue deposit, photographer deposit, planner retainer" },
-                { time: "6-8 months out", desc: "Catering deposit, florist deposit, entertainment deposit" },
-                { time: "2-3 months out", desc: "Invitation costs, attire alterations, transportation deposits" },
-                { time: "2-4 weeks out", desc: "Final catering headcount payment, final vendor balances, gratuities" }
-              ].map((b, idx) => (
-                <div key={idx} className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-center">
-                  <h4 className="font-bold text-slate-900 text-sm text-rose-500 mb-1">{b.time}</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed">{b.desc}</p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-4">
-              Mapping your budget against your timeline prevents the common surprise of multiple large payments landing in the same month. Pair this with a dedicated wedding budget calculator so every payment due date is tracked alongside the task it belongs to.
-            </p>
-          </section>
+      <h3>6. When should the photographer arrive?</h3>
+      <p>Your photographer should arrive during the last 30-45 minutes of hair and makeup to capture getting-ready shots.</p>
 
-          <hr className="border-slate-100" />
+      <h3>7. How long does a typical wedding ceremony last?</h3>
+      <p>Secular ceremonies usually last 20-30 minutes, while religious ceremonies can take 45-60 minutes.</p>
 
-          {/* Section 6: Tying to Checklist */}
-          <section id="checklist" className="space-y-6 scroll-mt-40 text-left">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="text-rose-500">06.</span> Tying Your Timeline to Your Checklist
-            </h2>
-            <p>
-              A timeline tells you when things need to happen. A checklist tells you what those things actually involve. The two work best as a single system: your month-by-month timeline sets the deadlines, and your full wedding planning checklist breaks each deadline into specific, actionable tasks.
-            </p>
-          </section>
+      <h3>8. Do I need to feed my vendors?</h3>
+      <p>Yes! Always allocate time and budget to feed any vendors working through the reception, such as your photographer, videographer, and planner.</p>
 
-          <hr className="border-slate-100" />
-
-          {/* Section 7: Mistakes to Avoid */}
-          <section id="mistakes" className="space-y-6 scroll-mt-40 text-left">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="text-rose-500">07.</span> Common Wedding Timeline Mistakes to Avoid
-            </h2>
-            <div className="space-y-4 mt-4">
-              {[
-                { title: "Booking vendors out of order", desc: "Venue and photographer should be locked in before florals or entertainment." },
-                { title: "Skipping buffer time", desc: "Not leaving enough time in the day-of schedule for delays." },
-                { title: "Ignoring your budget timeline", desc: "Leading to multiple deposits due in the same month." },
-                { title: "Not sharing the final timeline", desc: "Waiting until the last minute to communicate with vendors." },
-                { title: "Treating the checklist and timeline as separate tools", desc: "Instead of one connected system." }
-              ].map((mistake, idx) => (
-                <div key={idx} className="bg-rose-50/30 p-5 rounded-2xl border border-rose-100/50 flex gap-4 items-start">
-                  <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center shrink-0 text-rose-500 font-bold text-sm">
-                    {idx + 1}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-sm mb-1">{mistake.title}</h4>
-                    <p className="text-xs text-slate-600">{mistake.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </article>
-      </div>
-    </div>
+      <h2 id="conclusion">Conclusion + CTA</h2>
+      <p>Knowing how to plan a wedding timeline takes the guesswork out of one of the most stressful parts of getting married. Start with the month-by-month plan, layer in your wedding day and reception timelines closer to the date, and keep your budget timeline running alongside it the whole way through.</p>
+      <p>For the full task breakdown behind every stage of this timeline, explore our complete <a href="/">wedding planning checklist</a> and keep everything organized in one place!</p>
+    </article>
   );
 }
