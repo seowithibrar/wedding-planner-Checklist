@@ -20,7 +20,8 @@ const LANGUAGES = [
   { code: 'ja', name: '日本語' },
   { code: 'ko', name: '한국어' },
   { code: 'ar', name: 'العربية' },
-  { code: 'hi', name: 'हिन्दी' }
+  { code: 'hi', name: 'हिन्दी' },
+  { code: 'id', name: 'Bahasa Indonesia' }
 ];
 
 export function LanguageSwitcher() {

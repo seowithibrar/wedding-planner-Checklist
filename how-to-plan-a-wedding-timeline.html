@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Plan a Wedding Timeline: Step-by-Step Guide (2026)</title>
+    <!-- SEO Requirements -->
+    <meta name="description" content="Learn how to plan a wedding timeline from engagement to wedding day, including a wedding day timeline, reception timeline, and budget timeline.">
+    <meta name="keywords" content="how to plan a wedding timeline, wedding day timeline, reception timeline, budget timeline, wedding planning checklist">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            pink: '#fcecf0',
+                            rosegold: '#B76E79',
+                            cream: '#fdfbf7',
+                            gold: '#D4AF37',
+                            dark: '#2c2224',
+                            text: '#4a4445',
+                            beige: '#F5F5DC'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Icons (Lucide via Unpkg) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="antialiased text-brand-text bg-brand-cream selection:bg-brand-rosegold selection:text-white" x-data="{ mobileMenuOpen: false }">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
+                    <span class="font-heading font-bold text-2xl tracking-tight text-brand-dark">Evera</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#features" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Features</a>
+                    <a href="index.html#dashboard-preview" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Tools</a>
+                    <a href="index.html#testimonials" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Stories</a>
+                    <a href="dashboard.html" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Login</a>
+                    <a href="planner.html" class="bg-brand-rosegold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all hover:shadow-lg hover:-translate-y-0.5">Start Planning</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-text hover:text-brand-rosegold">
+                        <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenuOpen"></i>
+                        <i data-lucide="x" class="w-6 h-6" x-show="mobileMenuOpen" x-cloak></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden glass-dark absolute w-full border-b border-white/20 shadow-xl" x-cloak>
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html#features" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Features</a>
+                <a href="index.html#dashboard-preview" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Tools</a>
+                <a href="index.html#testimonials" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Stories</a>
+                <a href="dashboard.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header / Hero -->
+    <section class="pt-32 pb-12 lg:pt-40 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
+        <div class="mb-6 flex justify-center items-center gap-2 text-sm font-medium text-brand-rosegold">
+            <span class="bg-brand-pink px-3 py-1 rounded-full">Wedding Planning</span>
+            <span>•</span>
+            <span>7 min read</span>
+        </div>
+        <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight mb-8">
+            How to Plan a Wedding Timeline: A Complete Step-by-Step Guide
+        </h1>
+        <p class="text-lg text-brand-text/80 leading-relaxed max-w-3xl mx-auto">
+            Figuring out how to plan a wedding timeline is one of the first things every engaged couple needs to sort out, and it's also one of the most overwhelming. Between booking vendors, choosing a venue, and keeping family happy, it's easy to lose track of what should happen when.
+        </p>
+    </section>
+
+    <!-- Featured Image -->
+    <section class="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-16">
+        <div class="rounded-3xl overflow-hidden shadow-2xl relative">
+            <img src="dist/How%20to%20Plan%20a%20Wedding%20Timeline.webp" alt="How to Plan a Wedding Timeline" class="w-full h-auto object-cover max-h-[600px]">
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <article class="px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto pb-24 prose prose-lg prose-headings:font-heading prose-headings:text-brand-dark prose-a:text-brand-rosegold hover:prose-a:text-brand-dark prose-p:text-brand-text/90 prose-li:text-brand-text/90">
+        
+        <p>A clear wedding timeline solves that problem. It tells you exactly what to do each month leading up to the big day, how your wedding day itself should flow hour by hour, and when your money needs to go out the door.</p>
+        <p>This guide breaks down everything you need: a month-by-month wedding planning timeline, a wedding day timeline, a wedding reception timeline, and a wedding budget timeline, so you have one complete system instead of four separate headaches.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Why You Need a Wedding Timeline</h2>
+        <p>A wedding timeline is more than a to-do list. It's the framework that keeps every other part of your planning on schedule. Without one, couples tend to book vendors too late, forget deposits, or end up cramming a month's worth of decisions into a single stressful weekend.</p>
+        <p>The exact timeline you need depends on a few factors:</p>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li><strong>Engagement length.</strong> A 12-month engagement allows a relaxed pace; a 4-6 month engagement compresses tasks and requires faster decisions.</li>
+            <li><strong>Guest count.</strong> Larger weddings need earlier venue and catering bookings.</li>
+            <li><strong>Venue flexibility.</strong> Popular venues and peak wedding season (spring and early autumn) get booked 9-12 months out.</li>
+            <li><strong>Vendor availability.</strong> Photographers, florists, and planners with strong reputations fill their calendars early.</li>
+        </ul>
+        <p>Once you understand these variables, you can adapt the timeline below to fit a shorter or longer engagement.</p>
+
+        <img src="dist/The%20Month-by-Month%20Wedding%20Planning%20Timeline.webp" alt="The Month-by-Month Wedding Planning Timeline" class="w-full h-auto rounded-2xl shadow-lg my-10">
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">The Month-by-Month Wedding Planning Timeline</h2>
+        <p>This is the core of how to plan a wedding timeline: breaking the engagement period into manageable phases.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">12+ Months Before</h3>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li>Set your wedding date and rough budget</li>
+            <li>Choose your wedding style and vision</li>
+            <li>Start your guest list draft</li>
+            <li>Research and book your venue</li>
+            <li>Begin researching planners and photographers</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">9-11 Months Before</h3>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li>Book your photographer and videographer</li>
+            <li>Choose your wedding party</li>
+            <li>Start dress and suit shopping</li>
+            <li>Hire a caterer if not included with your venue</li>
+            <li>Reserve your officiant</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">6-8 Months Before</h3>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li>Book florist, DJ or band, and other entertainment</li>
+            <li>Send save-the-dates</li>
+            <li>Plan your honeymoon</li>
+            <li>Begin registry setup</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">4-5 Months Before</h3>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li>Order invitations</li>
+            <li>Finalize your menu and cake</li>
+            <li>Book hair and makeup trials</li>
+            <li>Arrange transportation</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">2-3 Months Before</h3>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li>Send invitations</li>
+            <li>Finalize your wedding day timeline with vendors</li>
+            <li>Apply for your marriage license</li>
+            <li>Confirm accommodation blocks for out-of-town guests</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">1 Month Before</h3>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li>Finalize headcount and seating chart</li>
+            <li>Confirm final payments with vendors</li>
+            <li>Have your final dress or suit fitting</li>
+            <li>Write vows and confirm ceremony details</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Week Before and Day Before</h3>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li>Confirm pickup times with transportation vendors</li>
+            <li>Pack for the wedding and honeymoon</li>
+            <li>Rehearse the ceremony</li>
+            <li>Hand off decor and signage to your coordinator</li>
+        </ul>
+        <p>This phased structure pairs directly with a <a href="wedding-planning-checklists.html">full wedding planning checklist</a>, so you always know which tasks belong to which stage instead of guessing.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">How to Plan a Wedding Day Timeline</h2>
+        <p>While the month-by-month plan covers the lead-up, the wedding day timeline covers the actual day itself, hour by hour. This is one of the most searched parts of wedding planning because even well-organized couples underestimate how tight the day can feel.</p>
+        <p>A simple wedding day timeline framework looks like this:</p>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li><strong>Morning:</strong> Hair, makeup, and getting-ready photos (allow 2-3 hours)</li>
+            <li><strong>Pre-ceremony:</strong> First look (optional), wedding party photos, family photos</li>
+            <li><strong>Ceremony:</strong> Typically 20-45 minutes depending on tradition</li>
+            <li><strong>Cocktail hour:</strong> Guests transition while couple finishes photos</li>
+            <li><strong>Reception entrance:</strong> Grand entrance, welcome toast</li>
+            <li><strong>Dinner service:</strong> 45-60 minutes</li>
+            <li><strong>Speeches and toasts:</strong> 15-20 minutes</li>
+            <li><strong>First dance and parent dances:</strong> 10-15 minutes</li>
+            <li><strong>Cake cutting:</strong> 5-10 minutes</li>
+            <li><strong>Open dancing:</strong> 1.5-2 hours</li>
+            <li><strong>Send-off:</strong> 10-15 minutes</li>
+        </ul>
+        <p class="bg-brand-pink/50 p-4 rounded-xl border-l-4 border-brand-rosegold italic"><strong>Pro tip:</strong> The biggest mistake couples make when planning their wedding day timeline is not building in buffer time. Hair and makeup almost always run longer than expected, and photo sessions get delayed by weather or family logistics. Add 15-30 minutes of cushion between major blocks, and share the finalized timeline with every vendor at least two weeks before the wedding.</p>
+
+        <img src="dist/Tying%20Your%20Timeline%20to%20Your%20Wedding%20Checklist.webp" alt="Tying Your Timeline to Your Wedding Checklist" class="w-full h-auto rounded-2xl shadow-lg my-10">
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">How to Plan a Wedding Reception Timeline</h2>
+        <p>The reception timeline deserves its own attention because it's where most of the night's energy and structure live. A well-paced reception timeline keeps guests engaged without feeling rushed or dragging on too long.</p>
+        <p>A standard wedding reception timeline includes:</p>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li>Guest arrival and seating</li>
+            <li>Wedding party and couple's grand entrance</li>
+            <li>Welcome toast from parents or hosts</li>
+            <li>Dinner service</li>
+            <li>Best man and maid of honor speeches</li>
+            <li>First dance</li>
+            <li>Parent dances (father-daughter, mother-son)</li>
+            <li>Cake cutting</li>
+            <li>Bouquet and garter toss (optional)</li>
+            <li>Open dance floor</li>
+            <li>Last dance and send-off</li>
+        </ul>
+        <p>When building your reception timeline, work backward from your venue's end time. Most reception venues run 4-6 hours; if your DJ or band needs setup and breakdown time, confirm that window doesn't eat into your guest-facing hours. Share the reception timeline with your DJ, caterer, and venue coordinator together so transitions (like moving from dinner to dancing) happen smoothly.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">How to Plan a Wedding Budget Timeline</h2>
+        <p>Your wedding budget timeline runs parallel to your planning timeline, because deposits and final payments are due at different stages, not all at once.</p>
+        <p>A general wedding budget timeline looks like this:</p>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li><strong>At booking (9-12 months out):</strong> Venue deposit, photographer deposit, planner retainer</li>
+            <li><strong>6-8 months out:</strong> Catering deposit, florist deposit, entertainment deposit</li>
+            <li><strong>2-3 months out:</strong> Invitation costs, attire alterations, transportation deposits</li>
+            <li><strong>2-4 weeks out:</strong> Final catering headcount payment, final vendor balances, gratuities</li>
+        </ul>
+        <p>Mapping your budget against your timeline prevents the common surprise of multiple large payments landing in the same month. Pair this with a dedicated wedding budget calculator so every payment due date is tracked alongside the task it belongs to, rather than living in a separate spreadsheet you forget to check.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Tying Your Timeline to Your Wedding Checklist</h2>
+        <p>A timeline tells you when things need to happen. A checklist tells you what those things actually involve. The two work best as a single system: your month-by-month timeline sets the deadlines, and your full wedding planning checklist breaks each deadline into specific, actionable tasks.</p>
+        <p>If you haven't built out your full checklist yet, start there first, then layer this timeline on top of it to assign real dates to each task based on your wedding date.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Common Wedding Timeline Mistakes to Avoid</h2>
+        <ul class="space-y-2 mb-6 list-disc pl-5">
+            <li><strong>Booking vendors out of order:</strong> Venue and photographer should be locked in before florals or entertainment.</li>
+            <li><strong>Skipping buffer time:</strong> Not leaving enough time in the day-of schedule for delays.</li>
+            <li><strong>Ignoring your budget timeline:</strong> Leading to multiple deposits due in the same month.</li>
+            <li><strong>Not sharing the final timeline:</strong> Waiting until the last minute to communicate with vendors.</li>
+            <li><strong>Treating the checklist and timeline as separate tools:</strong> Instead of one connected system.</li>
+        </ul>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Frequently Asked Questions</h2>
+        
+        <h3 class="text-2xl font-semibold mt-8 mb-4">What is the best wedding planning checklist timeline?</h3>
+        <p>Most couples start planning 12 months before the wedding, but the right timeline depends on your guest count, venue flexibility, and vendor availability. Shorter engagements simply compress the same tasks into fewer months.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">Can I plan a wedding timeline for a short engagement?</h3>
+        <p>Yes. For engagements under 6 months, prioritize venue and key vendor bookings first, then work through the remaining checklist tasks in parallel rather than strictly sequentially.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4">How far in advance should I finalize my wedding day timeline?</h3>
+        <p>Share your finalized wedding day and reception timeline with all vendors at least two weeks before the wedding so everyone can plan logistics around it.</p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Build Your Timeline Today</h2>
+        <p>Knowing how to plan a wedding timeline takes the guesswork out of one of the most stressful parts of getting married. Start with the month-by-month plan, layer in your wedding day and reception timelines closer to the date, and keep your budget timeline running alongside it the whole way through. For the full task breakdown behind every stage of this timeline, explore the complete <a href="wedding-planning-checklists.html">wedding planning checklist</a> and keep everything organized in one place.</p>
+        
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
+                        <span class="font-heading font-bold text-2xl tracking-tight">Evera</span>
+                    </div>
+                    <p class="text-white/60 mb-8 max-w-sm leading-relaxed">
+                        The modern, elegant way to plan the wedding of your dreams. Simple tools, stunning design, stress-free planning.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Planning Tools</h4>
+                    <ul class="space-y-3">
+                        <li><a href="checklist.html" class="text-white/60 hover:text-white transition-colors">Wedding Timeline Checklist</a></li>
+                        <li><a href="budget.html" class="text-white/60 hover:text-white transition-colors">Wedding Budget Planner</a></li>
+                        <li><a href="guests.html" class="text-white/60 hover:text-white transition-colors">Guest List Manager</a></li>
+                        <li><a href="vendors.html" class="text-white/60 hover:text-white transition-colors">Vendor Organization</a></li>
+                        <li><a href="how-to-plan-a-wedding-timeline.html" class="text-white/60 hover:text-white transition-colors font-semibold">How to Plan a Wedding Timeline</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Stay Inspired</h4>
+                    <p class="text-white/60 mb-4 text-sm">Join our newsletter for weekly wedding tips and aesthetic ideas.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Your email" class="bg-white/10 border border-white/20 rounded-lg px-4 py-2 w-full text-white placeholder-white/40 focus:outline-none focus:border-brand-rosegold">
+                        <button type="submit" class="bg-brand-rosegold px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/40 text-sm">&copy; 2026 Evera Wedding Co. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-white/40">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
