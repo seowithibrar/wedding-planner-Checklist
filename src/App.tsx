@@ -354,7 +354,7 @@ export default function App() {
   };
 
   return (
-    <div className="h-[100dvh] w-full bg-slate-50 flex font-sans text-slate-900 overflow-hidden">
+    <div className="min-h-screen w-full bg-slate-50 flex font-sans text-slate-900">
       {/* Mobile Sidebar Overlay */}
       <AnimatePresence>
         {isSidebarOpen && (
@@ -371,7 +371,7 @@ export default function App() {
       {/* Sidebar */}
       {activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && activeTab !== 'privacy' && activeTab !== 'terms' && activeTab !== 'blog' && activeTab !== 'contact' && (
         <aside className={cn(
-          "fixed inset-y-0 left-0 w-64 bg-white border-r border-slate-200 z-50 transition-transform duration-300 transform lg:translate-x-0 lg:static lg:inset-auto",
+          "fixed inset-y-0 left-0 w-64 bg-white border-r border-slate-200 z-50 transition-transform duration-300 transform lg:sticky lg:top-0 lg:h-screen",
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         )}>
           <div className="h-full flex flex-col">
@@ -424,7 +424,7 @@ export default function App() {
       )}
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
+      <main className="flex-1 flex flex-col min-w-0">
         {activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && activeTab !== 'privacy' && activeTab !== 'terms' && activeTab !== 'blog' && activeTab !== 'contact' && (
           <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-30 shrink-0">
             <button 
@@ -447,7 +447,7 @@ export default function App() {
         )}
 
         <div className={cn(
-          "p-0 overflow-auto h-full",
+          "p-0 w-full",
           activeTab !== 'home' && activeTab !== 'guide' && activeTab !== 'about' && activeTab !== 'privacy' && activeTab !== 'terms' && activeTab !== 'blog' && activeTab !== 'contact' && "p-4 sm:p-8"
         )}>
           <AnimatePresence mode="wait">
