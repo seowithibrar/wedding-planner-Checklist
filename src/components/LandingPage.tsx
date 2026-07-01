@@ -603,8 +603,12 @@ export function LandingPage({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy
                 <div 
                   key={post.id} 
                   onClick={() => {
-                    window.history.pushState({}, '', '/blog/' + post.title.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-'));
-                    onBlog();
+                    let dest = '/wedding-planning-checklists.html';
+                    if (post.id === 'checklists-guide') dest = '/wedding-planning-checklists.html';
+                    else if (post.id === 'wedding-planning-checklist-tips') dest = '/20-tips-for-your-wedding-planning-checklist.html';
+                    else if (post.id === 'hairstyles-for-wedding') dest = '/hairstyles-for-wedding.html';
+                    else if (post.id === 'how-to-plan-a-wedding-timeline') dest = '/how-to-plan-a-wedding-timeline.html';
+                    window.location.href = dest;
                   }}
                   className="bg-white rounded-[28px] overflow-hidden shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer group"
                 >

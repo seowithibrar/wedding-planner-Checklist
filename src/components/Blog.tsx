@@ -259,17 +259,12 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
   const featuredPost = BLOG_POSTS.find(p => p.featured);
 
   const handlePostClick = (postId: string) => {
-    if (postId === 'checklists-guide') {
-      onOpenGuide();
-    } else {
-      const slug = getSlugFromPostId(postId);
-      const newPath = `/blog/${slug}`;
-      if (window.location.pathname !== newPath) {
-        window.history.pushState({}, '', newPath);
-      }
-      setSelectedPostId(postId);
-      window.scrollTo(0, 0);
-    }
+    let dest = '/wedding-planning-checklists.html';
+    if (postId === 'checklists-guide') dest = '/wedding-planning-checklists.html';
+    else if (postId === 'wedding-planning-checklist-tips') dest = '/20-tips-for-your-wedding-planning-checklist.html';
+    else if (postId === 'hairstyles-for-wedding') dest = '/hairstyles-for-wedding.html';
+    else if (postId === 'how-to-plan-a-wedding-timeline') dest = '/how-to-plan-a-wedding-timeline.html';
+    window.location.href = dest;
   };
 
   const handleBackToBlog = () => {
@@ -2470,7 +2465,7 @@ function BlogFooter() {
       </div>
       <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Related Articles</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="/blog/20-Tips-for-Your-Wedding-Planning-Checklist" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
+        <a href="/20-tips-for-your-wedding-planning-checklist.html" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
           <div className="h-32 bg-slate-100 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=800" alt="20 Tips" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
@@ -2479,7 +2474,7 @@ function BlogFooter() {
             <p className="text-xs text-slate-500 mt-2">8 Min Read</p>
           </div>
         </a>
-        <a href="/blog/How-to-Plan-a-Wedding-Timeline" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
+        <a href="/how-to-plan-a-wedding-timeline.html" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
           <div className="h-32 bg-slate-100 overflow-hidden">
             <img src="/How to Plan a Wedding Timeline.webp" alt="Wedding Timeline" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
@@ -2488,7 +2483,7 @@ function BlogFooter() {
             <p className="text-xs text-slate-500 mt-2">7 Min Read</p>
           </div>
         </a>
-        <a href="/blog/Hairstyles-for-Wedding" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
+        <a href="/hairstyles-for-wedding.html" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
           <div className="h-32 bg-slate-100 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1591555200577-059798e70a6c?auto=format&fit=crop&q=80&w=800" alt="Hairstyles" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
