@@ -79,16 +79,28 @@
     <!-- Blog Header / Hero -->
     <section class="pt-32 pb-12 lg:pt-40 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
         <div class="mb-6 flex justify-center items-center gap-2 text-sm font-medium text-brand-rosegold">
-            <span class="bg-brand-pink px-3 py-1 rounded-full">Wedding Planning</span>
+            <span class="bg-brand-pink px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Timeline</span>
+            <span>•</span>
+            <span>By Evera Editorial</span>
+            <span>•</span>
+            <span>Oct 14, 2026</span>
             <span>•</span>
             <span>7 min read</span>
         </div>
         <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight mb-8">
             How to Plan a Wedding Timeline: A Complete Step-by-Step Guide
         </h1>
-        <p class="text-lg text-brand-text/80 leading-relaxed max-w-3xl mx-auto">
+        <p class="text-lg text-brand-text/80 leading-relaxed max-w-3xl mx-auto mb-6">
             Figuring out how to plan a wedding timeline is one of the first things every engaged couple needs to sort out, and it's also one of the most overwhelming.
         </p>
+
+        <nav class="flex justify-center items-center gap-2 text-xs text-brand-text/50 mt-10" aria-label="Breadcrumb">
+            <a href="index.html" class="hover:text-brand-rosegold transition-colors">Home</a>
+            <i data-lucide="chevron-right" class="w-3 h-3"></i>
+            <a href="blog" class="hover:text-brand-rosegold transition-colors">Blog</a>
+            <i data-lucide="chevron-right" class="w-3 h-3"></i>
+            <span class="text-brand-text/80 font-medium">How to Plan a Wedding Timeline</span>
+        </nav>
     </section>
 
     <!-- Featured Image -->
@@ -98,26 +110,37 @@
         </div>
     </section>
 
-    <!-- Blog Content -->
-    <article class="px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto pb-24 prose prose-lg prose-headings:font-heading prose-headings:text-brand-dark prose-a:text-brand-rosegold hover:prose-a:text-brand-dark prose-p:text-brand-text/90 prose-li:text-brand-text/90">
+    <!-- Blog Content Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <!-- Sticky Sidebar Navigation -->
+        <aside class="col-span-1 lg:col-span-3 hidden lg:block">
+            <div class="sticky top-28 space-y-6">
+                <div class="bg-white p-6 rounded-3xl border border-brand-pink/30 shadow-sm">
+                    <h4 class="font-heading font-bold text-base text-brand-dark mb-4 pb-2 border-b border-brand-pink/20 flex items-center gap-2">
+                        <i data-lucide="list" class="w-4 h-4 text-brand-rosegold"></i> Table of Contents
+                    </h4>
+                    <nav class="space-y-2.5 text-xs font-semibold text-brand-text/70" id="toc-nav">
+                        <a href="#introduction" class="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Introduction</a>
+                        <a href="#main-topic" class="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Month-by-Month Timeline</a>
+                        <a href="#step-by-step" class="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Step-by-Step Guide</a>
+                        <a href="#expert-tips" class="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Expert Tips</a>
+                        <a href="#common-mistakes" class="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Common Mistakes</a>
+                        <a href="#faq" class="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">FAQs</a>
+                        <a href="#conclusion" class="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Conclusion</a>
+                    </nav>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Blog Post Article -->
+        <article class="col-span-1 lg:col-span-9 prose prose-lg max-w-none text-brand-text/90">
         
         <p>Figuring out how to plan a wedding timeline is one of the first things every engaged couple needs to sort out, and it's also one of the most overwhelming. Between booking vendors, choosing a venue, and keeping family happy, it's easy to lose track of what should happen when. A clear wedding timeline solves that problem. It tells you exactly what to do each month leading up to the big day, how your wedding day itself should flow hour by hour, and when your money needs to go out the door.</p>
-            
-            <h2 class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Table of Contents</h2>
-            <ul class="space-y-2 mb-6 list-disc pl-5">
-                <li><a href="#introduction" class="text-brand-rosegold hover:text-brand-pink">Introduction</a></li>
-                <li><a href="#main-topic" class="text-brand-rosegold hover:text-brand-pink">The Month-by-Month Wedding Planning Timeline</a></li>
-                <li><a href="#step-by-step" class="text-brand-rosegold hover:text-brand-pink">Step-by-Step Guide</a></li>
-                <li><a href="#expert-tips" class="text-brand-rosegold hover:text-brand-pink">Expert Tips</a></li>
-                <li><a href="#common-mistakes" class="text-brand-rosegold hover:text-brand-pink">Common Mistakes</a></li>
-                <li><a href="#faq" class="text-brand-rosegold hover:text-brand-pink">Frequently Asked Questions</a></li>
-                <li><a href="#conclusion" class="text-brand-rosegold hover:text-brand-pink">Conclusion + CTA</a></li>
-            </ul>
 
-            <h2 id="introduction" class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Introduction</h2>
+            <h2 id="introduction" class="text-3xl font-bold mt-12 mb-6 text-brand-dark scroll-mt-24">Introduction</h2>
             <p>A wedding timeline is more than a to-do list. It's the framework that keeps every other part of your planning on schedule. Without one, couples tend to book vendors too late, forget deposits, or end up cramming a month's worth of decisions into a single stressful weekend. This guide breaks down everything you need: a month-by-month wedding planning timeline, a wedding day timeline, a wedding reception timeline, and a wedding budget timeline, so you have one complete system instead of four separate headaches.</p>
 
-            <h2 id="main-topic" class="text-3xl font-bold mt-12 mb-6 text-brand-dark">The Month-by-Month Wedding Planning Timeline</h2>
+            <h2 id="main-topic" class="text-3xl font-bold mt-12 mb-6 text-brand-dark scroll-mt-24">The Month-by-Month Wedding Planning Timeline</h2>
             <p>This is the core of how to plan a wedding timeline: breaking the engagement period into manageable phases.</p>
             <img src="public/The Month-by-Month Wedding Planning Timeline.webp" alt="Month by Month Timeline" class="w-full h-auto rounded-2xl shadow-lg my-10" />
 
@@ -179,7 +202,7 @@
                 <li>Hand off decor and signage to your coordinator</li>
             </ul>
 
-            <h2 id="step-by-step" class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Step-by-Step Guide</h2>
+            <h2 id="step-by-step" class="text-3xl font-bold mt-12 mb-6 text-brand-dark scroll-mt-24">Step-by-Step Guide</h2>
             <p>Building your wedding day timeline is crucial. Here is a step-by-step framework to plan your actual wedding day:</p>
             <ol class="space-y-2 mb-6 list-decimal pl-5">
                 <li><strong>Morning:</strong> Schedule hair, makeup, and getting-ready photos (allow 2-3 hours).</li>
@@ -197,7 +220,7 @@
 
             <img src="public/Tying Your Timeline to Your Wedding Checklist.webp" alt="Tying Your Timeline to Your Wedding Checklist" class="w-full h-auto rounded-2xl shadow-lg my-10" />
 
-            <h2 id="expert-tips" class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Expert Tips</h2>
+            <h2 id="expert-tips" class="text-3xl font-bold mt-12 mb-6 text-brand-dark scroll-mt-24">Expert Tips</h2>
             <ul class="space-y-2 mb-6 list-disc pl-5">
                 <li><strong>Add Buffer Time:</strong> The biggest mistake couples make when planning their wedding day timeline is not building in buffer time. Hair and makeup almost always run longer than expected, and photo sessions get delayed by weather or family logistics. Add 15-30 minutes of cushion between major blocks.</li>
                 <li><strong>Share Early:</strong> Share the finalized timeline with every vendor at least two weeks before the wedding.</li>
@@ -205,7 +228,7 @@
                 <li><strong>Sync Budget:</strong> Map your budget against your timeline to prevent the common surprise of multiple large payments landing in the same month.</li>
             </ul>
 
-            <h2 id="common-mistakes" class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Common Mistakes</h2>
+            <h2 id="common-mistakes" class="text-3xl font-bold mt-12 mb-6 text-brand-dark scroll-mt-24">Common Mistakes</h2>
             <ul class="space-y-2 mb-6 list-disc pl-5">
                 <li><strong>Booking vendors out of order:</strong> Venue and photographer should be locked in before florals or entertainment.</li>
                 <li><strong>Skipping buffer time:</strong> Not leaving enough time in the day-of schedule for delays.</li>
@@ -214,7 +237,7 @@
                 <li><strong>Treating the checklist and timeline as separate tools:</strong> Instead of one connected system.</li>
             </ul>
 
-            <h2 id="faq" class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Frequently Asked Questions</h2>
+            <h2 id="faq" class="text-3xl font-bold mt-12 mb-6 text-brand-dark scroll-mt-24">Frequently Asked Questions</h2>
             <h3 class="text-2xl font-semibold mt-8 mb-4">1. What is the best wedding planning checklist timeline?</h3>
             <p>Most couples start planning 12 months before the wedding, but the right timeline depends on your guest count, venue flexibility, and vendor availability.</p>
             
@@ -239,10 +262,76 @@
             <h3 class="text-2xl font-semibold mt-8 mb-4">8. Do I need to feed my vendors?</h3>
             <p>Yes! Always allocate time and budget to feed any vendors working through the reception, such as your photographer, videographer, and planner.</p>
 
-            <h2 id="conclusion" class="text-3xl font-bold mt-12 mb-6 text-brand-dark">Conclusion + CTA</h2>
+            <h2 id="conclusion" class="text-3xl font-bold mt-12 mb-6 text-brand-dark scroll-mt-24">Conclusion</h2>
             <p>Knowing how to plan a wedding timeline takes the guesswork out of one of the most stressful parts of getting married. Start with the month-by-month plan, layer in your wedding day and reception timelines closer to the date, and keep your budget timeline running alongside it the whole way through.</p>
             <p>For the full task breakdown behind every stage of this timeline, explore our complete <a href="wedding-planning-checklists.html">wedding planning checklist</a> and keep everything organized in one place!</p>
+            
+            <hr class="border-brand-pink/20 my-10" />
+
+            <!-- Related Articles -->
+            <section id="related-articles" class="space-y-6 scroll-mt-24 text-left">
+                <h3 class="font-heading text-2xl font-bold text-brand-dark">Related Articles</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <a href="20-tips-for-your-wedding-planning-checklist.html" class="block group">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-pink/20 transition-all hover:shadow-md">
+                            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=600" alt="Wedding planning tips" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="p-4">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-rosegold bg-brand-pink px-2 py-1 rounded-full">Planning</span>
+                                <h4 class="font-bold text-brand-dark text-sm mt-2 group-hover:text-brand-rosegold transition-colors">20 Tips for Your Wedding Planning Checklist</h4>
+                                <p class="text-xs text-brand-text/70 mt-1">8 min read</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="hairstyles-for-wedding.html" class="block group">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-pink/20 transition-all hover:shadow-md">
+                            <img src="https://images.unsplash.com/photo-1591555200577-059798e70a6c?auto=format&fit=crop&q=80&w=600" alt="Bridal hairstyle" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="p-4">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-rosegold bg-brand-pink px-2 py-1 rounded-full">Style Guide</span>
+                                <h4 class="font-bold text-brand-dark text-sm mt-2 group-hover:text-brand-rosegold transition-colors">50+ Hairstyles for Wedding</h4>
+                                <p class="text-xs text-brand-text/70 mt-1">9 min read</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="wedding-planning-checklists.html" class="block group">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-pink/20 transition-all hover:shadow-md">
+                            <img src="/images/blog/feature-post.jpg" alt="Wedding planning checklists" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="p-4">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-rosegold bg-brand-pink px-2 py-1 rounded-full">Checklists</span>
+                                <h4 class="font-bold text-brand-dark text-sm mt-2 group-hover:text-brand-rosegold transition-colors">Ultimate Guide to Wedding Checklists</h4>
+                                <p class="text-xs text-brand-text/70 mt-1">15 min read</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <hr class="border-brand-pink/20 my-10" />
+
+            <!-- Newsletter CTA -->
+            <section class="bg-brand-pink/30 border border-brand-rosegold/30 rounded-3xl p-8 text-center my-10">
+                <h3 class="font-heading text-2xl font-bold text-brand-dark mb-3">Don't Miss a Single Wedding Detail</h3>
+                <p class="text-sm text-brand-text/80 max-w-xl mx-auto mb-6">Join our newsletter to receive weekly wedding tips, aesthetic ideas, and exclusive planning checklists directly in your inbox.</p>
+                <form class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+                    <input type="email" placeholder="Enter your email address" class="flex-1 bg-white border border-brand-pink rounded-full px-5 py-3 text-sm focus:outline-none focus:border-brand-rosegold shadow-sm" required>
+                    <button type="submit" class="bg-brand-rosegold text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all hover:shadow-md">Subscribe</button>
+                </form>
+            </section>
+
+            <!-- Author Box -->
+            <section class="bg-white border border-brand-pink/40 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center md:items-start gap-6 shadow-sm mt-12 text-left">
+                <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-brand-pink shadow-sm">
+                    <img src="https://ui-avatars.com/api/?name=Evera+Editorial&background=fcecf0&color=B76E79&size=200" alt="Evera Editorial Team" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h4 class="font-bold text-brand-dark text-lg mb-1">Evera Editorial Team</h4>
+                    <p class="text-xs font-semibold text-brand-rosegold uppercase tracking-wider mb-3">Wedding Planning Experts</p>
+                    <p class="text-sm text-brand-text/80 leading-relaxed">
+                        The Evera Editorial Team is dedicated to helping couples plan the wedding of their dreams without the stress. We combine industry expertise, modern aesthetics, and practical advice to bring you the best in wedding planning resources.
+                    </p>
+                </div>
+            </section>
         </article>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-brand-dark text-white pt-20 pb-10">
