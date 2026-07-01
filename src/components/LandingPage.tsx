@@ -14,6 +14,8 @@ import { cn } from '../lib/utils';
 
 import { LandingNav } from './LandingNav';
 import { Footer } from './Footer';
+import { BLOG_POSTS, BlogPost } from './Blog';
+import { Clock } from 'lucide-react';
 
 interface LandingPageProps {
   onStart: () => void;
@@ -582,6 +584,62 @@ export function LandingPage({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy
               <li>Share with your partner so planning stays collaborative</li>
               <li>Review weekly every Sunday to stay on track</li>
             </ul>
+          </div>
+
+          {/* LATEST FROM BLOG */}
+          <div className="space-y-6 border-t border-slate-200 pt-12 pb-12">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+              <div>
+                <h2 className="text-3xl font-bold text-slate-900">Latest from our Blog</h2>
+                <p className="text-slate-600 mt-2 text-lg">Expert tips and aesthetic inspiration for your big day.</p>
+              </div>
+              <button onClick={onBlog} className="hidden md:flex items-center gap-2 text-rose-500 font-bold hover:text-rose-600 transition-colors">
+                View All Articles <ArrowRight size={20} />
+              </button>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              {BLOG_POSTS.slice(0, 3).map((post: BlogPost) => (
+                <div 
+                  key={post.id} 
+                  onClick={() => {
+                    window.history.pushState({}, '', '/blog/' + post.title.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-'));
+                    onBlog();
+                  }}
+                  className="bg-white rounded-[28px] overflow-hidden shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer group"
+                >
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute top-3 left-3 bg-slate-900 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                      {post.category}
+                    </span>
+                  </div>
+                  <div className="p-6 flex-grow flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <div className="flex gap-3 text-xs font-semibold text-slate-400">
+                        <span className="flex items-center gap-1"><Calendar size={12} /> {post.date}</span>
+                        <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime}</span>
+                      </div>
+                      <h3 className="font-bold text-lg text-slate-900 leading-snug line-clamp-2 group-hover:text-rose-500 transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-slate-500 text-xs leading-relaxed line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 text-center md:hidden">
+              <button onClick={onBlog} className="inline-flex items-center gap-2 text-rose-500 font-bold hover:text-rose-600 transition-colors">
+                View All Articles <ArrowRight size={20} />
+              </button>
+            </div>
           </div>
 
           <div className="space-y-6 border-t border-slate-200 pt-12">

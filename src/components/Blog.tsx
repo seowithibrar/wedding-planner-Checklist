@@ -39,7 +39,7 @@ interface BlogProps {
   onBlog: () => void;
 }
 
-interface BlogPost {
+export interface BlogPost {
   id: string;
   title: string;
   category: string;
@@ -52,7 +52,7 @@ interface BlogPost {
   featured?: boolean;
 }
 
-const BLOG_POSTS: BlogPost[] = [
+export const BLOG_POSTS: BlogPost[] = [
   {
     id: 'checklists-guide',
     title: 'The Ultimate Wedding Planning Checklists Guide for a Stress-Free Wedding',
