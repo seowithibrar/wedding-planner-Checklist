@@ -2437,6 +2437,8 @@ function WeddingTimelineArticle() {
       <p>Knowing how to plan a wedding timeline takes the guesswork out of one of the most stressful parts of getting married. Start with the month-by-month plan, layer in your wedding day and reception timelines closer to the date, and keep your budget timeline running alongside it the whole way through.</p>
       <p>For the full task breakdown behind every stage of this timeline, explore our complete <a href="/">wedding planning checklist</a> and keep everything organized in one place!</p>
     </article>
+    
+    <BlogFooter />
     </div>
   );
 }
