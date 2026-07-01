@@ -651,6 +651,7 @@ function BudgetTipsArticle() {
           </div>
         </article>
       </div>
+      <BlogFooter />
     </div>
   );
 }
@@ -800,6 +801,7 @@ function WeddingVenueArticle() {
           </div>
         </article>
       </div>
+      <BlogFooter />
     </div>
   );
 }
@@ -1639,6 +1641,7 @@ function WeddingChecklistTipsArticle() {
 
         </article>
       </div>
+      <BlogFooter />
     </div>
   );
 }
@@ -2260,6 +2263,7 @@ function WeddingHairstylesArticle() {
 
         </article>
       </div>
+      <BlogFooter />
     </div>
   );
 }
@@ -2439,6 +2443,61 @@ function WeddingTimelineArticle() {
     </article>
     
     <BlogFooter />
+    </div>
+  );
+}
+
+function BlogFooter() {
+  return (
+    <div className="max-w-4xl mx-auto pb-24 mt-12">
+      <hr className="border-slate-200 mb-12" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm text-center">
+          <h3 className="text-xl font-bold text-slate-900 mb-2">Subscribe to our Newsletter</h3>
+          <p className="text-sm text-slate-500 mb-6">Get the latest wedding tips and trends delivered straight to your inbox.</p>
+          <div className="flex gap-2">
+            <input type="email" placeholder="Your email address" className="flex-1 px-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-rose-500" />
+            <button className="bg-slate-900 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-slate-800 transition-colors">Subscribe</button>
+          </div>
+        </div>
+        <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex items-center gap-6">
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=150" alt="Author" className="w-20 h-20 rounded-full object-cover shadow-sm" />
+          <div>
+            <h3 className="text-lg font-bold text-slate-900">Evera Editorial</h3>
+            <p className="text-sm text-slate-500 mt-1">Passionate about helping couples plan their dream weddings with zero stress and maximum joy.</p>
+          </div>
+        </div>
+      </div>
+      <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Related Articles</h3>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/blog/20-Tips-for-Your-Wedding-Planning-Checklist" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
+          <div className="h-32 bg-slate-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=800" alt="20 Tips" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div className="p-4">
+            <h4 className="font-bold text-sm text-slate-900 group-hover:text-rose-500 transition-colors line-clamp-2">20 Tips for Your Wedding Planning Checklist</h4>
+            <p className="text-xs text-slate-500 mt-2">8 Min Read</p>
+          </div>
+        </a>
+        <a href="/blog/How-to-Plan-a-Wedding-Timeline" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
+          <div className="h-32 bg-slate-100 overflow-hidden">
+            <img src="/How to Plan a Wedding Timeline.webp" alt="Wedding Timeline" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div className="p-4">
+            <h4 className="font-bold text-sm text-slate-900 group-hover:text-rose-500 transition-colors line-clamp-2">How to Plan a Wedding Timeline</h4>
+            <p className="text-xs text-slate-500 mt-2">7 Min Read</p>
+          </div>
+        </a>
+        <a href="/blog/Hairstyles-for-Wedding" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
+          <div className="h-32 bg-slate-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1591555200577-059798e70a6c?auto=format&fit=crop&q=80&w=800" alt="Hairstyles" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div className="p-4">
+            <h4 className="font-bold text-sm text-slate-900 group-hover:text-rose-500 transition-colors line-clamp-2">50+ Hairstyles for Wedding</h4>
+            <p className="text-xs text-slate-500 mt-2">9 Min Read</p>
+          </div>
+        </a>
+      </div>
     </div>
   );
 }
