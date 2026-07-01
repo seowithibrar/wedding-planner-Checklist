@@ -51,42 +51,50 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="antialiased text-brand-text bg-brand-cream selection:bg-brand-rosegold selection:text-white" x-data="{ mobileMenuOpen: false }">
+    
+    
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-white/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="/" class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
-                    <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
-                    <span class="font-heading font-bold text-2xl tracking-tight text-brand-dark">Wedding Planning Checklists</span>
-                </a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="/#features" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Features</a>
-                    <a href="/#dashboard-preview" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Tools</a>
-                    <a href="/#testimonials" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Stories</a>
-                    <a href="dashboard.html" class="text-sm font-medium hover:text-brand-rosegold transition-colors">Login</a>
-                    <a href="planner.html" class="bg-brand-rosegold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all hover:shadow-lg hover:-translate-y-0.5">Start Planning</a>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-text hover:text-brand-rosegold">
-                        <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenuOpen"></i>
-                        <i data-lucide="x" class="w-6 h-6" x-show="mobileMenuOpen" x-cloak></i>
-                    </button>
-                </div>
-            </div>
+    <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center cursor-pointer">
+          <a href="/"><img src="/logo.png" alt="Wedding Planning Checklists" class="h-12 w-auto object-contain" /></a>
         </div>
-        <!-- Mobile Menu -->
-        <div x-show="mobileMenuOpen" x-transition class="md:hidden glass-dark absolute w-full border-b border-white/20 shadow-xl" x-cloak>
-            <div class="px-4 pt-2 pb-6 space-y-2 bg-white">
-                <a href="/#features" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Features</a>
-                <a href="/#dashboard-preview" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Tools</a>
-                <a href="/#testimonials" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Stories</a>
-                <a href="dashboard.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-pink/50">Login</a>
-            </div>
+
+        <nav class="hidden lg:flex items-center gap-10">
+          <a href="/" class="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Home</a>
+          <a href="/about-us" class="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">About Us</a>
+          <a href="/guide" class="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Wedding Planning Checklists</a>
+          <a href="/blog" class="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Blog</a>
+          <a href="/contact" class="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Contact Us</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <a href="/" class="hidden sm:flex items-center gap-2 bg-slate-900 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-rose-500 transition-all shadow-lg shadow-slate-100">
+            Get Started
+          </a>
+          <button class="lg:hidden p-2 text-slate-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+             <i data-lucide="menu"></i>
+          </button>
         </div>
-    </nav>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-100 overflow-hidden">
+        <div class="p-6 flex flex-col gap-6">
+          <a href="/" class="block text-left text-sm font-bold text-slate-500">Home</a>
+          <a href="/about-us" class="block text-left text-sm font-bold text-slate-500">About Us</a>
+          <a href="/guide" class="block text-left text-sm font-bold text-slate-500">Wedding Planning Checklists</a>
+          <a href="/blog" class="block text-left text-sm font-bold text-slate-500">Blog</a>
+          <a href="/contact" class="block text-left text-sm font-bold text-slate-500">Contact Us</a>
+          
+          <a href="/" class="w-full text-center bg-slate-900 text-white py-3.5 rounded-xl text-sm font-black mt-2">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </header>
+
+
 
     <!-- Blog Header / Hero -->
     <section class="pt-32 pb-12 lg:pt-40 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
@@ -1151,52 +1159,69 @@
         </article>
     </div>
 
+    
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center gap-2 mb-6">
-                        <i data-lucide="gem" class="w-8 h-8 text-brand-rosegold"></i>
-                        <span class="font-heading font-bold text-2xl tracking-tight">Wedding Planning Checklists</span>
-                    </div>
-                    <p class="text-white/60 mb-8 max-w-sm leading-relaxed">
-                        The modern, elegant way to plan the wedding of your dreams. Simple tools, stunning design, stress-free planning.
-                    </p>
-                </div>
-                
-                <div>
-                    <h4 class="font-heading font-semibold text-lg mb-6">Planning Tools</h4>
-                    <ul class="space-y-3">
-                        <li><a href="/tasks" class="text-white/60 hover:text-white transition-colors">Wedding Timeline Checklist</a></li>
-                        <li><a href="/budget" class="text-white/60 hover:text-white transition-colors">Wedding Budget Planner</a></li>
-                        <li><a href="/guests" class="text-white/60 hover:text-white transition-colors">Guest List Manager</a></li>
-                        <li><a href="/vendors" class="text-white/60 hover:text-white transition-colors">Vendor Organization</a></li>
-                        <li><a href="/blog/The-Ultimate-Wedding-Planning-Checklists-Guide-for-a-Stress-Free-Wedding" class="text-white/60 hover:text-white transition-colors font-semibold">Ultimate Checklists Guide</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-heading font-semibold text-lg mb-6">Stay Inspired</h4>
-                    <p class="text-white/60 mb-4 text-sm">Join our newsletter for weekly wedding tips and aesthetic ideas.</p>
-                    <form class="flex gap-2">
-                        <input type="email" placeholder="Your email" class="bg-white/10 border border-white/20 rounded-lg px-4 py-2 w-full text-white placeholder-white/40 focus:outline-none focus:border-brand-rosegold">
-                        <button type="submit" class="bg-brand-rosegold px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
-                            <i data-lucide="send" class="w-5 h-5"></i>
-                        </button>
-                    </form>
-                </div>
+    <footer class="bg-slate-50 pt-20 pb-10 border-t border-slate-100 font-sans">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+          
+          <div class="space-y-6 lg:col-span-1">
+            <div class="flex items-center cursor-pointer">
+              <a href="/"><img src="/logo.png" alt="Wedding Planning Checklists" class="h-10 w-auto object-contain" /></a>
             </div>
-            
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-white/40 text-sm">&copy; 2026 Wedding Planning Checklists All rights reserved.</p>
-                <div class="flex gap-6 text-sm text-white/40">
-                    <a href="#" class="hover:text-white">Privacy Policy</a>
-                    <a href="#" class="hover:text-white">Terms of Service</a>
-                </div>
-            </div>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              Your ultimate companion for stress-free wedding planning. We provide couples with the tools, timelines, and templates they need to organize their dream wedding flawlessly.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Platform</h3>
+            <ul class="space-y-4 text-sm font-medium text-slate-500">
+              <li><a href="/" class="hover:text-rose-500 transition-colors">Home</a></li>
+              <li><a href="/guide" class="hover:text-rose-500 transition-colors">Checklists & Tools</a></li>
+              <li><a href="/about-us" class="hover:text-rose-500 transition-colors">About Us</a></li>
+              <li><a href="/blog" class="hover:text-rose-500 transition-colors">Wedding Blog</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Support & Legal</h3>
+            <ul class="space-y-4 text-sm font-medium text-slate-500">
+              <li><a href="/contact" class="hover:text-rose-500 transition-colors">Contact Us</a></li>
+              <li><a href="/privacy-policy" class="hover:text-rose-500 transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms-of-service" class="hover:text-rose-500 transition-colors">Terms of Service</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Get In Touch</h3>
+            <ul class="space-y-4 text-sm font-medium text-slate-500">
+              <li class="flex items-start gap-3">
+                <i data-lucide="mail" class="w-4 h-4 text-rose-500 mt-0.5"></i>
+                <span>support@weddingplanningchecklists.org</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="map-pin" class="w-4 h-4 text-rose-500 mt-0.5"></i>
+                <span>Available worldwide for your planning needs.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="sparkles" class="w-4 h-4 text-rose-500 mt-0.5"></i>
+                <span>Always free, always organized.</span>
+              </li>
+            </ul>
+          </div>
+
         </div>
+
+        <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-slate-400">
+          <p>© 2026 Wedding Planning Checklists. All rights reserved.</p>
+          <p class="flex items-center gap-1">
+            Made with <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-500 mx-1 fill-current"></i> for couples everywhere.
+          </p>
+        </div>
+      </div>
     </footer>
+
     
     <!-- Initialize Icons -->
     <script>
