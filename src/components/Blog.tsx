@@ -59,7 +59,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Planning',
     date: 'June 2026',
     readTime: '10 Min Read',
-    author: 'Evera Editorial',
+    author: 'Wedding Planning Checklists',
     excerpt: 'Planning a wedding involves hundreds of decisions, deadlines, and moving parts. Without a clear system, it\'s easy to forget important tasks. Our comprehensive guide walks you through setting budgets, venues, and guest lists.',
     image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800',
     layout: 'standard',
@@ -71,7 +71,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Planning',
     date: 'June 2026',
     readTime: '8 Min Read',
-    author: 'Evera Editorial',
+    author: 'Wedding Planning Checklists',
     excerpt: 'Use our wedding planning checklist to stress less and enjoy more. 20 proven tips to help engaged couples plan every detail with confidence.',
     image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=800',
     layout: 'standard'
@@ -82,7 +82,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Venues',
     date: 'June 2026',
     readTime: '6 Min Read',
-    author: 'Evera Editorial',
+    author: 'Wedding Planning Checklists',
     excerpt: 'A complete walkthrough on setting venue budgets, matching styles, and checking for hidden costs during site visits.',
     image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800',
     layout: 'standard'
@@ -93,7 +93,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Budgeting',
     date: 'June 2026',
     readTime: '5 Min Read',
-    author: 'Evera Editorial',
+    author: 'Wedding Planning Checklists',
     excerpt: 'Learn how to save money on your dream wedding without sacrificing your style or the guest experience.',
     image: 'https://images.unsplash.com/photo-1507504038482-76214343e547?auto=format&fit=crop&q=80&w=800',
     layout: 'standard'
@@ -104,7 +104,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Guest List',
     date: 'June 2026',
     readTime: '7 Min Read',
-    author: 'Charlotte Evera',
+    author: 'Charlotte',
     excerpt: 'Discover stress-free strategies to build your guest lists, track RSVPs, and organize seating arrangements effortlessly.',
     image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800',
     layout: 'minimalist'
@@ -115,7 +115,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Style Guide',
     date: 'June 2026',
     readTime: '4 Min Read',
-    author: 'Charlotte Evera',
+    author: 'Charlotte',
     excerpt: 'A visual exploration of styling elements, color cards, decor details, and inspiring tablescapes for your mood boards.',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800',
     layout: 'gallery'
@@ -126,7 +126,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Style Guide',
     date: 'June 2026',
     readTime: '9 Min Read',
-    author: 'Evera Editorial',
+    author: 'Wedding Planning Checklists',
     excerpt: 'From classic bridal buns and Hollywood waves to South Asian wedding traditions and 2026\'s hottest trends — your complete guide to choosing the perfect wedding hairstyle.',
     image: 'https://images.unsplash.com/photo-1591555200577-059798e70a6c?auto=format&fit=crop&q=80&w=800',
     layout: 'standard'
@@ -137,7 +137,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Planning',
     date: 'June 2026',
     readTime: '7 Min Read',
-    author: 'Evera Editorial',
+    author: 'Wedding Planning Checklists',
     excerpt: 'Learn how to plan a wedding timeline from engagement to wedding day, including a wedding day timeline, reception timeline, and budget timeline.',
     image: '/How to Plan a Wedding Timeline.webp',
     layout: 'standard'
@@ -535,7 +535,7 @@ function BudgetTipsArticle() {
         <div className="flex items-center justify-center gap-6 text-sm text-slate-400 border-y border-slate-100 py-4 max-w-xl mx-auto">
           <span className="flex items-center gap-1"><Calendar size={14} className="text-rose-500" /> Updated June 2026</span>
           <span className="flex items-center gap-1"><Clock size={14} className="text-rose-500" /> 5 Min Read</span>
-          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Evera Editorial</span>
+          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Wedding Planning Checklists</span>
         </div>
       </header>
 
@@ -606,7 +606,7 @@ function BudgetTipsArticle() {
             <p className="text-lg italic text-slate-900 font-semibold leading-relaxed relative z-10">
               "A wedding budget is not about restricting your imagination; it is about channeling your creativity to build the details that matter most to you as a couple."
             </p>
-            <span className="text-xs uppercase font-bold text-rose-500 mt-3 block tracking-widest">— Evera Editorial Team</span>
+            <span className="text-xs uppercase font-bold text-rose-500 mt-3 block tracking-widest">— Wedding Planning Checklists Team</span>
           </div>
 
           <section id="decor-hacks" className="space-y-4 scroll-mt-40">
@@ -672,7 +672,7 @@ function WeddingVenueArticle() {
         <div className="flex items-center justify-center gap-6 text-sm text-slate-400 border-y border-slate-100 py-4 max-w-xl mx-auto">
           <span className="flex items-center gap-1"><Calendar size={14} className="text-rose-500" /> Updated June 2026</span>
           <span className="flex items-center gap-1"><Clock size={14} className="text-rose-500" /> 6 Min Read</span>
-          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Evera Editorial</span>
+          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Wedding Planning Checklists</span>
         </div>
       </header>
 
@@ -756,7 +756,7 @@ function WeddingVenueArticle() {
             <p className="text-lg italic text-slate-900 font-semibold leading-relaxed relative z-10">
               "The right venue will not only frame your ceremony; it will set the entire mood and simplify the planning of every other single vendor."
             </p>
-            <span className="text-xs uppercase font-bold text-rose-500 mt-3 block tracking-widest">— Evera Editorial Team</span>
+            <span className="text-xs uppercase font-bold text-rose-500 mt-3 block tracking-widest">— Wedding Planning Checklists Team</span>
           </div>
 
           <section id="hidden-costs" className="space-y-4 scroll-mt-40">
@@ -897,7 +897,7 @@ function GuestListArticle() {
           </div>
           <div className="space-y-3 text-center sm:text-left">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
-              <h5 className="font-bold text-lg text-slate-900">Written by Charlotte Evera</h5>
+              <h5 className="font-bold text-lg text-slate-900">Written by Charlotte</h5>
               <span className="text-[10px] uppercase font-bold text-rose-500 tracking-wider">Lead Planner & Stylist</span>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed">
@@ -1129,7 +1129,7 @@ function WeddingChecklistTipsArticle() {
         <div className="flex items-center justify-center gap-6 text-sm text-slate-400 border-y border-slate-100 py-4 max-w-xl mx-auto">
           <span className="flex items-center gap-1"><Calendar size={14} className="text-rose-500" /> Updated June 2026</span>
           <span className="flex items-center gap-1"><Clock size={14} className="text-rose-500" /> 8 Min Read</span>
-          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Evera Editorial</span>
+          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Wedding Planning Checklists</span>
         </div>
       </header>
 
@@ -1635,7 +1635,7 @@ function WeddingChecklistTipsArticle() {
               <p className="text-lg italic text-slate-900 font-semibold leading-relaxed relative z-10">
                 "Remember: no wedding is perfect. However, every couple who plans carefully ends up with a day they will treasure forever."
               </p>
-              <span className="text-xs uppercase font-bold text-rose-500 mt-3 block tracking-widest">— Evera Editorial Team</span>
+              <span className="text-xs uppercase font-bold text-rose-500 mt-3 block tracking-widest">— Wedding Planning Checklists Team</span>
             </div>
           </section>
 
@@ -1710,7 +1710,7 @@ function WeddingHairstylesArticle() {
         <div className="flex items-center justify-center gap-6 text-sm text-slate-400 border-y border-slate-100 py-4 max-w-xl mx-auto">
           <span className="flex items-center gap-1"><Calendar size={14} className="text-rose-500" /> Updated June 2026</span>
           <span className="flex items-center gap-1"><Clock size={14} className="text-rose-500" /> 9 Min Read</span>
-          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Evera Editorial</span>
+          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Wedding Planning Checklists</span>
         </div>
       </header>
 
@@ -2284,7 +2284,7 @@ function WeddingTimelineArticle() {
         <div className="flex items-center justify-center gap-6 text-sm text-slate-400 border-y border-slate-100 py-4 max-w-xl mx-auto">
           <span className="flex items-center gap-1"><Calendar size={14} className="text-rose-500" /> Updated June 2026</span>
           <span className="flex items-center gap-1"><Clock size={14} className="text-rose-500" /> 7 Min Read</span>
-          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Evera Editorial</span>
+          <span className="flex items-center gap-1"><User size={14} className="text-rose-500" /> Wedding Planning Checklists</span>
         </div>
       </header>
       
@@ -2463,7 +2463,7 @@ function BlogFooter() {
         <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex items-center gap-6">
           <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=150" alt="Author" className="w-20 h-20 rounded-full object-cover shadow-sm" />
           <div>
-            <h3 className="text-lg font-bold text-slate-900">Evera Editorial</h3>
+            <h3 className="text-lg font-bold text-slate-900">Wedding Planning Checklists</h3>
             <p className="text-sm text-slate-500 mt-1">Passionate about helping couples plan their dream weddings with zero stress and maximum joy.</p>
           </div>
         </div>
