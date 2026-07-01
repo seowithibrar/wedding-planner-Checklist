@@ -25,6 +25,14 @@
       "destination": "/wedding-planning-checklists.html"
     },
     {
+      "source": "/blog/How-to-Plan-a-Wedding-Timeline",
+      "destination": "/how-to-plan-a-wedding-timeline.html"
+    },
+    {
+      "source": "/blog/how-to-plan-a-wedding-timeline",
+      "destination": "/how-to-plan-a-wedding-timeline.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
