@@ -19,9 +19,22 @@
       "source": "/wedding-planning-checklists.html",
       "destination": "/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding",
       "permanent": true
+    },
+    {
+      "source": "/pakistani-wedding-hairstyles.html",
+      "destination": "/blog/pakistani-wedding-hairstyles",
+      "permanent": true
     }
   ],
   "rewrites": [
+    {
+      "source": "/blog/pakistani-wedding-hairstyles",
+      "destination": "/pakistani-wedding-hairstyles.html"
+    },
+    {
+      "source": "/blog/Pakistani-Wedding-Hairstyles",
+      "destination": "/pakistani-wedding-hairstyles.html"
+    },
     {
       "source": "/blog/Hairstyles-for-Wedding",
       "destination": "/hairstyles-for-wedding.html"

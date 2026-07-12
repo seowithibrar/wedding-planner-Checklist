@@ -1,4 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, us
+  {
+    id: 'pakistani-wedding-hairstyles',
+    title: 'Pakistani Wedding Hairstyles Guide: 45+ Styles',
+    category: 'Style Guide',
+    date: 'July 2026',
+    readTime: '10 Min Read',
+    author: 'Wedding Planning Checklists',
+    excerpt: 'Your complete guide to Pakistani wedding hairstyles. 45+ authentic styles for mehndi, baraat, and walima, organized by face shape and outfit.',
+    image: '/pakistani-wedding-hairstyles.webp',
+    layout: 'standard'
+  },eState } from 'react';
 import { 
   Heart, 
   Calendar, 
