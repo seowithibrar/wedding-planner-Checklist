@@ -33,6 +33,10 @@
       "destination": "/how-to-plan-a-wedding-timeline.html"
     },
     {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

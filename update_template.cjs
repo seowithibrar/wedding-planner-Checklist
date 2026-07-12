@@ -65,6 +65,7 @@ const footerHTML = `
               <li><a href="/guide" class="hover:text-rose-500 transition-colors">Checklists & Tools</a></li>
               <li><a href="/about-us" class="hover:text-rose-500 transition-colors">About Us</a></li>
               <li><a href="/blog" class="hover:text-rose-500 transition-colors">Wedding Blog</a></li>
+              <li><a href="/how-to-plan-a-wedding-timeline.html" class="hover:text-rose-500 transition-colors">Wedding Timeline</a></li>
             </ul>
           </div>
           
