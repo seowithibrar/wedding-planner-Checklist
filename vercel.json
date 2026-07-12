@@ -1,4 +1,26 @@
 {
+  "redirects": [
+    {
+      "source": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
+      "permanent": true
+    },
+    {
+      "source": "/hairstyles-for-wedding.html",
+      "destination": "/blog/hairstyles-for-wedding",
+      "permanent": true
+    },
+    {
+      "source": "/20-tips-for-your-wedding-planning-checklist.html",
+      "destination": "/blog/20-tips-for-your-wedding-planning-checklist",
+      "permanent": true
+    },
+    {
+      "source": "/wedding-planning-checklists.html",
+      "destination": "/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/blog/Hairstyles-for-Wedding",
