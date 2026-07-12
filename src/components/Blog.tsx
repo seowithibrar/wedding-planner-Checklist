@@ -270,11 +270,12 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
   const featuredPost = BLOG_POSTS.find(p => p.featured);
 
   const handlePostClick = (postId: string) => {
-    let dest = '/wedding-planning-checklists.html';
-    if (postId === 'checklists-guide') dest = '/wedding-planning-checklists.html';
-    else if (postId === 'wedding-planning-checklist-tips') dest = '/20-tips-for-your-wedding-planning-checklist.html';
-    else if (postId === 'hairstyles-for-wedding') dest = '/hairstyles-for-wedding.html';
-    else if (postId === 'how-to-plan-a-wedding-timeline') dest = '/how-to-plan-a-wedding-timeline.html';
+    let dest = '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding';
+    if (postId === 'checklists-guide') dest = '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding';
+    else if (postId === 'wedding-planning-checklist-tips') dest = '/blog/20-tips-for-your-wedding-planning-checklist';
+    else if (postId === 'hairstyles-for-wedding') dest = '/blog/hairstyles-for-wedding';
+    else if (postId === 'how-to-plan-a-wedding-timeline') dest = '/blog/how-to-plan-a-wedding-timeline';
+    else if (postId === 'pakistani-wedding-hairstyles') dest = '/blog/pakistani-wedding-hairstyles';
     window.location.href = dest;
   };
 
