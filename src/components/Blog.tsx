@@ -128,7 +128,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '9 Min Read',
     author: 'Wedding Planning Checklists',
     excerpt: 'From classic bridal buns and Hollywood waves to South Asian wedding traditions and 2026\'s hottest trends — your complete guide to choosing the perfect wedding hairstyle.',
-    image: 'https://images.unsplash.com/photo-1591555200577-059798e70a6c?auto=format&fit=crop&q=80&w=800',
+    image: '/50-hairstyles-for-wedding.webp',
     layout: 'standard'
   },
   {
