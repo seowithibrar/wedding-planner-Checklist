@@ -193,7 +193,8 @@ const getPostIdFromSlug = (slug: string): string | null => {
     'chic-&-modern-aesthetic:-visual-moodboard-layout': 'moodboard-layout',
     'chic-and-modern-aesthetic-visual-moodboard-layout': 'moodboard-layout',
     'hairstyles-for-wedding': 'hairstyles-for-wedding',
-    'how-to-plan-a-wedding-timeline': 'how-to-plan-a-wedding-timeline'
+    'how-to-plan-a-wedding-timeline': 'how-to-plan-a-wedding-timeline',
+    'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide'
   };
   return mapping[normalizedSlug] || null;
 };

@@ -77,16 +77,16 @@
                          "destination":  "/sitemap.xml"
                      },
                      {
-                         "source":  "/(.*)",
-                         "destination":  "/index.html"
-                     },
-                     {
                          "destination":  "/indian-wedding-hairstyles-guide.html",
                          "source":  "/blog/indian-wedding-hairstyles-guide"
                      },
                      {
                          "destination":  "/indian-wedding-hairstyles-guide.html",
                          "source":  "/blog/Indian-Wedding-Hairstyles-Guide"
+                     },
+                     {
+                         "source":  "/(.*)",
+                         "destination":  "/index.html"
                      }
                  ],
     "headers":  [
