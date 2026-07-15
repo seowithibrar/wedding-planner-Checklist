@@ -1,0 +1,223 @@
+const fs = require('fs');
+let code = fs.readFileSync('src/components/Blog.tsx', 'utf8');
+
+if (!code.includes("'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide'")) {
+  code = code.replace(
+    "'how-to-plan-a-wedding-timeline': 'how-to-plan-a-wedding-timeline'",
+    "'how-to-plan-a-wedding-timeline': 'how-to-plan-a-wedding-timeline',\n    'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide'"
+  );
+}
+
+if (!code.includes("else if (postId === 'indian-wedding-hairstyles-guide')")) {
+  code = code.replace(
+    "else if (postId === 'how-to-plan-a-wedding-timeline') dest = '/blog/how-to-plan-a-wedding-timeline';",
+    "else if (postId === 'how-to-plan-a-wedding-timeline') dest = '/blog/how-to-plan-a-wedding-timeline';\n    else if (postId === 'indian-wedding-hairstyles-guide') dest = '/blog/indian-wedding-hairstyles-guide';"
+  );
+}
+
+const componentCode = export function IndianWeddingHairstylesArticle() {
+  return (
+    <div className=\"max-w-7xl mx-auto px-6 py-12\">
+      <header className=\"max-w-4xl mx-auto text-center space-y-6 mb-12\">
+        <div className=\"flex justify-center items-center gap-2 text-xs font-bold tracking-wider uppercase text-rose-500\">
+          <span>Style Guide</span>
+        </div>
+        <h1 className=\"text-4xl sm:text-5xl font-black text-slate-900 leading-tight\">
+          Indian Wedding Hairstyles: The Complete Guide by Function, Face Shape & Region
+        </h1>
+        <div className=\"flex items-center justify-center gap-6 text-sm text-slate-400 border-y border-slate-100 py-4 max-w-xl mx-auto\">
+          <span className=\"flex items-center gap-1\"><Calendar size={14} className=\"text-rose-500\" /> Updated July 2026</span>
+          <span className=\"flex items-center gap-1\"><Clock size={14} className=\"text-rose-500\" /> 10 Min Read</span>
+          <span className=\"flex items-center gap-1\"><User size={14} className=\"text-rose-500\" /> Wedding Planning Checklists</span>
+        </div>
+      </header>
+
+      <div className=\"max-w-5xl mx-auto mb-16\">
+        <div className=\"bg-white p-3 rounded-[32px] shadow-sm border border-slate-200\">
+          <img 
+            src=\"/Indian Wedding Hairstyles The Complete Guide.webp\" 
+            alt=\"Beautiful Indian bride with a traditional braided hairstyle adorned with fresh jasmine flowers\" 
+            className=\"w-full max-h-[500px] object-cover rounded-[24px]\"
+          />
+        </div>
+      </div>
+
+      <div className=\"grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto\">
+        <aside className=\"col-span-1 lg:col-span-3 hidden lg:block\">
+          <div className=\"sticky top-40 space-y-6\">
+            <div className=\"bg-white p-6 rounded-3xl border border-slate-200 shadow-sm text-center space-y-3\">
+              <span className=\"text-[10px] font-bold tracking-wider text-slate-400 uppercase block\">Share Guide</span>
+              <div className=\"flex justify-center gap-2\">
+                <button className=\"w-8 h-8 rounded-full bg-slate-100 hover:bg-rose-500 hover:text-white text-slate-500 flex items-center justify-center transition-all\"><Facebook size={14} /></button>
+                <button className=\"w-8 h-8 rounded-full bg-slate-100 hover:bg-rose-500 hover:text-white text-slate-500 flex items-center justify-center transition-all\"><Twitter size={14} /></button>
+                <button className=\"w-8 h-8 rounded-full bg-slate-100 hover:bg-rose-500 hover:text-white text-slate-500 flex items-center justify-center transition-all\"><Instagram size={14} /></button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <article className=\"col-span-1 lg:col-span-9 space-y-12 text-slate-600 text-base leading-relaxed\">
+          <section className=\"space-y-4\">
+            <p className=\"text-lg font-medium text-slate-700\">
+              Indian wedding hairstyles are rarely a single decision — a bride typically needs three to five different looks across her haldi, mehendi, sangeet, wedding ceremony, and reception, each suited to a different outfit, mood, and level of movement. Getting this right takes more than a folder of Pinterest saves; it means matching the right style to the right function, your face shape, your hair type, and often your regional tradition. This guide walks through all of it, function by function, so you can plan your bridal hair the way you’d plan any other part of the wedding — with a clear checklist, not just inspiration.
+            </p>
+          </section>
+
+          <section className=\"space-y-4\">
+            <h2 className=\"text-2xl font-bold text-slate-900\">What Makes a Great Indian Wedding Hairstyle?</h2>
+            <img src=\"/What Makes a Great Indian Wedding Hairstyle.webp\" alt=\"What Makes a Great Indian Wedding Hairstyle\" className=\"w-full rounded-2xl my-4\" />
+            <p>
+              A great Indian wedding hairstyle balances four things: it holds up through hours of rituals, dancing, and photography without needing constant fixing; it’s built around your actual outfit and jewellery, not chosen in isolation; it flatters your specific face shape and hair type rather than a generic “bridal” template; and it respects your regional or family traditions where those matter to you. In practice, this means a haldi look should survive turmeric paste and movement, a sangeet look needs to last through dancing, and your wedding-day style should be planned only after your outfit, dupatta or veil, and jewellery are finalized.
+            </p>
+          </section>
+          
+          <hr className=\"border-slate-100\" />
+
+          <section className=\"space-y-4\">
+            <h2 className=\"text-2xl font-bold text-slate-900\">Indian Bridal Hairstyles by Wedding Function</h2>
+            
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Haldi Hairstyles</h3>
+            <img src=\"/Haldi Hairstyles.webp\" alt=\"Haldi Hairstyles\" className=\"w-full rounded-2xl my-4\" />
+            <p>Haldi is a messy, joyful ceremony, and your hairstyle should be built to survive it. A loose braid or low bun with minimal jewellery is the safest choice — both keep hair away from the face and shoulders while turmeric paste is applied. Fresh marigold strands woven into a simple braid are a popular, low-effort way to still feel festive.</p>
+            
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Mehendi Hairstyles</h3>
+            <img src=\"/Mehendi Hairstyles.webp\" alt=\"Mehendi Hairstyles\" className=\"w-full rounded-2xl my-4\" />
+            <p>Mehendi functions tend to be daytime, boho-leaning, and photograph-heavy, which makes them a good place for softer, more relaxed styles. A loose fishtail braid with fresh flowers, a half-up style with a floral crown, or a twisted side braid all work well.</p>
+
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Sangeet Hairstyles</h3>
+            <img src=\"/Sangeet Hairstyles.webp\" alt=\"Sangeet Hairstyles\" className=\"w-full rounded-2xl my-4\" />
+            <p>Sangeet is built around dancing, so movement-friendliness matters more here than at almost any other function. A high ponytail with volume, loose curls pulled back at the crown, or a braided updo with a statement ear chain all hold through hours of movement.</p>
+
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Wedding Day Hairstyles</h3>
+            <img src=\"/Wedding Day Hairstyles.webp\" alt=\"Wedding Day Hairstyles\" className=\"w-full rounded-2xl my-4\" />
+            <p>The wedding ceremony itself is typically the most structured, traditional look. A classic low bun with a maang tikka, an intricate braided bun with temple jewellery, or a gajra-adorned bun with volume at the crown are enduring choices precisely because they hold for the full length of the rituals.</p>
+
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Reception Hairstyles</h3>
+            <img src=\"/Reception Hairstyles.webp\" alt=\"Reception Hairstyles\" className=\"w-full rounded-2xl my-4\" />
+            <p>Receptions are usually the one function where brides shift toward a more modern, glamorous register. A sleek low ponytail with soft curls, glamorous Hollywood waves, or a half-up style with modern jewellery all suit the reception.</p>
+          </section>
+
+          <hr className=\"border-slate-100\" />
+
+          <section className=\"space-y-4\">
+            <h2 className=\"text-2xl font-bold text-slate-900\">Indian Bridal Hairstyles by Hair Type & Length</h2>
+            <img src=\"/Indian Bridal Hairstyles by Hair Type & Length.webp\" alt=\"Hair Type and Length\" className=\"w-full rounded-2xl my-4\" />
+            
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Long Hair</h3>
+            <img src=\"/Long Hair  for wedding hairstyles.webp\" alt=\"Long Hair\" className=\"w-full rounded-2xl my-4\" />
+            <p>Long hair offers the most flexibility — full South Indian braids, large gajra buns, and elaborate half-up styles all rely on length for their signature volume and drape.</p>
+
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Medium-Length Hair</h3>
+            <img src=\"/Bride Medium-Length Hair.webp\" alt=\"Medium Hair\" className=\"w-full rounded-2xl my-4\" />
+            <p>Medium-length hair suits most bun and half-up styles well. Very large, elaborate buns may need a small bun-shaper insert or clip-in extension.</p>
+
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Short Hair</h3>
+            <img src=\"/BrideShort Hair.webp\" alt=\"Short Hair\" className=\"w-full rounded-2xl my-4\" />
+            <p>Short-haired brides aren’t limited to fewer options — they’re often better suited to sleeker, more tailored looks. A side-swept style pinned with a jewelled clip works perfectly.</p>
+
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Thin or Fine Hair</h3>
+            <img src=\"/Thin or Fine Hair.webp\" alt=\"Thin Hair\" className=\"w-full rounded-2xl my-4\" />
+            <p>Thin hair can still carry the full, voluminous look many bridal styles call for. Backcombing at the crown and a volumizing root powder can work wonders.</p>
+          </section>
+
+          <hr className=\"border-slate-100\" />
+
+          <section className=\"space-y-4\">
+            <h2 className=\"text-2xl font-bold text-slate-900\">Indian Bridal Hairstyles by Region</h2>
+            
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">South Indian Styles</h3>
+            <img src=\"/South Indian Styles.webp\" alt=\"South Indian Styles\" className=\"w-full rounded-2xl my-4\" />
+            <p>South Indian bridal hairstyles are built around the braid — a long, thick plait wound with jasmine gajra and finished with temple-style gold jewellery.</p>
+            
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">North Indian & Punjabi Styles</h3>
+            <img src=\"/North Indian & Punjabi Styles.webp\" alt=\"North Indian Styles\" className=\"w-full rounded-2xl my-4\" />
+            <p>North Indian and Punjabi bridal looks tend to favor voluminous buns or braids paired with a matha patti or passa.</p>
+
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Bengali Styles</h3>
+            <img src=\"/Bengali Styles.webp\" alt=\"Bengali Styles\" className=\"w-full rounded-2xl my-4\" />
+            <p>Bengali bridal hairstyles traditionally center on a structured bun, often adorned with shola or floral work.</p>
+
+            <h3 className=\"text-xl font-bold text-slate-800 mt-6\">Maharashtrian & Rajasthani Styles</h3>
+            <img src=\"/Maharashtrian & Rajasthani Styles.webp\" alt=\"Maharashtrian Styles\" className=\"w-full rounded-2xl my-4\" />
+            <p>Maharashtrian bridal hair frequently incorporates a gajra-wrapped bun positioned slightly to one side.</p>
+          </section>
+
+          <hr className=\"border-slate-100\" />
+
+          <section className=\"space-y-4\">
+            <h2 className=\"text-2xl font-bold text-slate-900\">Choosing a Hairstyle for Your Face Shape</h2>
+            <img src=\"/Choosing a Hairstyle for Your Face Shape.webp\" alt=\"Face Shape\" className=\"w-full rounded-2xl my-4\" />
+            <ul className=\"space-y-4 mt-4 list-disc pl-5\">
+              <li><strong>Oval:</strong> Almost anything works — buns, braids, half-up styles, and open waves.</li>
+              <li><strong>Round:</strong> High buns, off-center braids, and half-up styles with crown volume add length. Avoid low, wide buns.</li>
+              <li><strong>Square:</strong> Soft waves, side-swept styles, and volume near the temples soften the jawline.</li>
+              <li><strong>Heart:</strong> Half-up styles and side-swept braids draw the eye downward.</li>
+              <li><strong>Diamond:</strong> Styles with volume at the jaw or chin level balance high cheekbones.</li>
+            </ul>
+          </section>
+
+          <hr className=\"border-slate-100\" />
+
+          <section className=\"space-y-4\">
+            <h2 className=\"text-2xl font-bold text-slate-900\">Pairing Your Hairstyle with Lehenga, Saree, or Gown</h2>
+            <img src=\"/Pairing Your Hairstyle with Lehenga, Saree, or Gown.webp\" alt=\"Pairing Hairstyle\" className=\"w-full rounded-2xl my-4\" />
+            <p>Your outfit should generally decide your hairstyle, not the other way around. A heavy, embellished lehenga with a dupatta usually calls for an updo or bun that can support pinning. A saree pairs naturally with a low braid or bun positioned to work with the pallu drape. A reception gown tends to suit open waves or a sleek half-up style better than a heavy traditional bun.</p>
+          </section>
+
+          <hr className=\"border-slate-100\" />
+
+          <section className=\"space-y-4\">
+            <h2 className=\"text-2xl font-bold text-slate-900\">Hair Accessories: Maang Tikka, Matha Patti & Gajra</h2>
+            <img src=\"/Hair Accessories Maang Tikka, Matha Patti & Gajra.webp\" alt=\"Hair Accessories\" className=\"w-full rounded-2xl my-4\" />
+            <p>The maang tikka is a single chain with a pendant that sits at the center parting. The matha patti is a larger, multi-strand piece extending across the forehead, favored in fuller hairstyles. The gajra wraps around a braid or bun and adds texture and fragrance without adding significant weight.</p>
+          </section>
+          
+          <hr className=\"border-slate-100\" />
+
+          <section className=\"space-y-4\">
+            <h2 className=\"text-2xl font-bold text-slate-900\">Step-by-Step Guide to Planning Your Bridal Hair</h2>
+            <img src=\"/Planning Your Bridal Hair Trial, Timeline & Cost in India.webp\" alt=\"Bridal Hair Planning\" className=\"w-full rounded-2xl my-4\" />
+            <ul className=\"space-y-4 mt-4\">
+              <li className=\"flex gap-4\"><div className=\"w-8 h-8 rounded-full bg-rose-100 text-rose-500 flex items-center justify-center font-bold shrink-0\">1</div><p><strong>Book your trial:</strong> Schedule 4-6 weeks before the wedding, and only after your outfit and jewellery are finalized.</p></li>
+              <li className=\"flex gap-4\"><div className=\"w-8 h-8 rounded-full bg-rose-100 text-rose-500 flex items-center justify-center font-bold shrink-0\">2</div><p><strong>Match your outfit:</strong> Bring reference photos, your actual jewellery, and your outfit to the trial to ensure nothing clashes.</p></li>
+              <li className=\"flex gap-4\"><div className=\"w-8 h-8 rounded-full bg-rose-100 text-rose-500 flex items-center justify-center font-bold shrink-0\">3</div><p><strong>Prep your hair:</strong> Discuss volumizing products or extensions if your hair is thin, and plan clip-ins ahead of time.</p></li>
+            </ul>
+          </section>
+
+          <hr className=\"border-slate-100\" />
+
+          <section className=\"space-y-4\">
+            <h2 className=\"text-2xl font-bold text-slate-900\">Easy Bridal Hairstyles You Can Do at Home</h2>
+            <img src=\"/Easy Bridal Hairstyles You Can Do at Home.webp\" alt=\"DIY Hairstyles\" className=\"w-full rounded-2xl my-4\" />
+            <p>For a slightly more polished DIY look, a low bun with a gajra wrapped around the base works beautifully. Gather hair into a low ponytail, twist it into a bun, secure with pins, then wind the gajra around the base to hide the pins.</p>
+          </section>
+
+          <hr className=\"border-slate-100\" />
+          
+          <section className=\"space-y-4\">
+            <h2 className=\"text-2xl font-bold text-slate-900\">Frequently Asked Questions</h2>
+            <div className=\"space-y-6 mt-6\">
+              <div><h4 className=\"font-bold text-slate-800\">How many hairstyles does an Indian bride need for one wedding?</h4><p className=\"text-sm mt-1\">Most Indian brides plan 3-5 distinct hairstyles across their wedding functions.</p></div>
+              <div><h4 className=\"font-bold text-slate-800\">What is the best hairstyle for a haldi ceremony?</h4><p className=\"text-sm mt-1\">Haldi hairstyles should be simple, low-maintenance, and turmeric-stain-resistant.</p></div>
+              <div><h4 className=\"font-bold text-slate-800\">Should sangeet hair be different from wedding day hair?</h4><p className=\"text-sm mt-1\">Yes — sangeet typically calls for a more voluminous, movement-friendly style.</p></div>
+              <div><h4 className=\"font-bold text-slate-800\">Which hairstyle suits a round face for an Indian wedding?</h4><p className=\"text-sm mt-1\">Round face shapes are generally flattered by styles that add height and length.</p></div>
+              <div><h4 className=\"font-bold text-slate-800\">Is open hair acceptable for an Indian wedding ceremony?</h4><p className=\"text-sm mt-1\">Yes, in many modern and regional traditions open or half-tied hair with soft waves is an accepted and increasingly popular choice.</p></div>
+              <div><h4 className=\"font-bold text-slate-800\">When should I book my bridal hairstyle trial?</h4><p className=\"text-sm mt-1\">A trial is generally recommended 4-6 weeks before the wedding date.</p></div>
+              <div><h4 className=\"font-bold text-slate-800\">What should I bring to a bridal hairstyle trial?</h4><p className=\"text-sm mt-1\">Bring reference photos, your actual bridal jewellery, and your outfit.</p></div>
+              <div><h4 className=\"font-bold text-slate-800\">How much does bridal hair styling cost in India?</h4><p className=\"text-sm mt-1\">Costs vary significantly by city and stylist reputation.</p></div>
+            </div>
+          </section>
+
+        </article>
+      </div>
+    </div>
+  );
+};
+
+const startIndex = code.indexOf('export function IndianWeddingHairstylesArticle() {');
+if (startIndex !== -1) {
+    code = code.substring(0, startIndex);
+}
+code += componentCode;
+fs.writeFileSync('src/components/Blog.tsx', code);
+console.log('Fixed Blog.tsx');
