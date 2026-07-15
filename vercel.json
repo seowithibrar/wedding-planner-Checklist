@@ -1,99 +1,112 @@
 {
-  "redirects": [
-    {
-      "source": "/how-to-plan-a-wedding-timeline.html",
-      "destination": "/blog/how-to-plan-a-wedding-timeline",
-      "permanent": true
-    },
-    {
-      "source": "/hairstyles-for-wedding.html",
-      "destination": "/blog/hairstyles-for-wedding",
-      "permanent": true
-    },
-    {
-      "source": "/20-tips-for-your-wedding-planning-checklist.html",
-      "destination": "/blog/20-tips-for-your-wedding-planning-checklist",
-      "permanent": true
-    },
-    {
-      "source": "/wedding-planning-checklists.html",
-      "destination": "/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding",
-      "permanent": true
-    },
-    {
-      "source": "/pakistani-wedding-hairstyles.html",
-      "destination": "/blog/pakistani-wedding-hairstyles",
-      "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/blog/pakistani-wedding-hairstyles",
-      "destination": "/pakistani-wedding-hairstyles.html"
-    },
-    {
-      "source": "/blog/Pakistani-Wedding-Hairstyles",
-      "destination": "/pakistani-wedding-hairstyles.html"
-    },
-    {
-      "source": "/blog/Hairstyles-for-Wedding",
-      "destination": "/hairstyles-for-wedding.html"
-    },
-    {
-      "source": "/blog/hairstyles-for-wedding",
-      "destination": "/hairstyles-for-wedding.html"
-    },
-    {
-      "source": "/blog/20-Tips-for-Your-Wedding-Planning-Checklist",
-      "destination": "/20-tips-for-your-wedding-planning-checklist.html"
-    },
-    {
-      "source": "/blog/20-tips-for-your-wedding-planning-checklist",
-      "destination": "/20-tips-for-your-wedding-planning-checklist.html"
-    },
-    {
-      "source": "/blog/The-Ultimate-Wedding-Planning-Checklists-Guide-for-a-Stress-Free-Wedding",
-      "destination": "/wedding-planning-checklists.html"
-    },
-    {
-      "source": "/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding",
-      "destination": "/wedding-planning-checklists.html"
-    },
-    {
-      "source": "/blog/How-to-Plan-a-Wedding-Timeline",
-      "destination": "/how-to-plan-a-wedding-timeline.html"
-    },
-    {
-      "source": "/blog/how-to-plan-a-wedding-timeline",
-      "destination": "/how-to-plan-a-wedding-timeline.html"
-    },
-    {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)\\.(jpg|jpeg|png|webp|gif|css|js)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)\\.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    }
-  ]
+    "redirects":  [
+                      {
+                          "source":  "/how-to-plan-a-wedding-timeline.html",
+                          "destination":  "/blog/how-to-plan-a-wedding-timeline",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/hairstyles-for-wedding.html",
+                          "destination":  "/blog/hairstyles-for-wedding",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/20-tips-for-your-wedding-planning-checklist.html",
+                          "destination":  "/blog/20-tips-for-your-wedding-planning-checklist",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/wedding-planning-checklists.html",
+                          "destination":  "/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/pakistani-wedding-hairstyles.html",
+                          "destination":  "/blog/pakistani-wedding-hairstyles",
+                          "permanent":  true
+                      },
+                      {
+                          "destination":  "/blog/indian-wedding-hairstyles-guide",
+                          "permanent":  true,
+                          "source":  "/indian-wedding-hairstyles-guide.html"
+                      }
+                  ],
+    "rewrites":  [
+                     {
+                         "source":  "/blog/pakistani-wedding-hairstyles",
+                         "destination":  "/pakistani-wedding-hairstyles.html"
+                     },
+                     {
+                         "source":  "/blog/Pakistani-Wedding-Hairstyles",
+                         "destination":  "/pakistani-wedding-hairstyles.html"
+                     },
+                     {
+                         "source":  "/blog/Hairstyles-for-Wedding",
+                         "destination":  "/hairstyles-for-wedding.html"
+                     },
+                     {
+                         "source":  "/blog/hairstyles-for-wedding",
+                         "destination":  "/hairstyles-for-wedding.html"
+                     },
+                     {
+                         "source":  "/blog/20-Tips-for-Your-Wedding-Planning-Checklist",
+                         "destination":  "/20-tips-for-your-wedding-planning-checklist.html"
+                     },
+                     {
+                         "source":  "/blog/20-tips-for-your-wedding-planning-checklist",
+                         "destination":  "/20-tips-for-your-wedding-planning-checklist.html"
+                     },
+                     {
+                         "source":  "/blog/The-Ultimate-Wedding-Planning-Checklists-Guide-for-a-Stress-Free-Wedding",
+                         "destination":  "/wedding-planning-checklists.html"
+                     },
+                     {
+                         "source":  "/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding",
+                         "destination":  "/wedding-planning-checklists.html"
+                     },
+                     {
+                         "source":  "/blog/How-to-Plan-a-Wedding-Timeline",
+                         "destination":  "/how-to-plan-a-wedding-timeline.html"
+                     },
+                     {
+                         "source":  "/blog/how-to-plan-a-wedding-timeline",
+                         "destination":  "/how-to-plan-a-wedding-timeline.html"
+                     },
+                     {
+                         "source":  "/sitemap.xml",
+                         "destination":  "/sitemap.xml"
+                     },
+                     {
+                         "source":  "/(.*)",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "destination":  "/indian-wedding-hairstyles-guide.html",
+                         "source":  "/blog/indian-wedding-hairstyles-guide"
+                     },
+                     {
+                         "destination":  "/indian-wedding-hairstyles-guide.html",
+                         "source":  "/blog/Indian-Wedding-Hairstyles-Guide"
+                     }
+                 ],
+    "headers":  [
+                    {
+                        "source":  "/(.*)\\.(jpg|jpeg|png|webp|gif|css|js)",
+                        "headers":  [
+                                        {
+                                            "key":  "Cache-Control",
+                                            "value":  "public, max-age=31536000, immutable"
+                                        }
+                                    ]
+                    },
+                    {
+                        "source":  "/(.*)\\.html",
+                        "headers":  [
+                                        {
+                                            "key":  "Cache-Control",
+                                            "value":  "public, max-age=0, must-revalidate"
+                                        }
+                                    ]
+                    }
+                ]
 }
