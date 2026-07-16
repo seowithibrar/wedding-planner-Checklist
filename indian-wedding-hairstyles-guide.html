@@ -211,8 +211,21 @@
   ]
 }
     </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .toc-active {
+            color: #B76E79 !important; /* brand-rosegold */
+            border-left-color: #B76E79 !important;
+            font-weight: 700 !important;
+        }
+    </style>
 </head>
 <body class="antialiased text-brand-text bg-brand-cream selection:bg-brand-rosegold selection:text-white" x-data="{ mobileMenuOpen: false }">
+
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="fixed top-20 left-0 h-1 bg-gradient-to-r from-brand-rosegold to-brand-gold z-[60] transition-all duration-150 shadow-sm" style="width: 0%"></div>
+
     
     
     
@@ -263,9 +276,9 @@
 
 
     <!-- Blog Header / Hero -->
-    <section class="pt-32 pb-12 lg:pt-40 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
+    <section class="pt-32 pb-12 lg:pt-40 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center bg-gradient-to-b from-brand-pink/20 to-transparent rounded-b-[4rem]">
         <figure class="my-8 mb-12 max-w-5xl mx-auto">
-            <img src="/pakistani-wedding-hairstyles.webp" alt="Pakistani Wedding Hairstyles" class="w-full h-auto rounded-3xl shadow-2xl object-cover" fetchpriority="high">
+            <img src="/pakistani-wedding-hairstyles.webp" alt="Pakistani Wedding Hairstyles" class="w-full h-auto rounded-3xl shadow-2xl object-cover hover:shadow-[0_20px_50px_rgba(183,110,121,0.3)] hover:-translate-y-2 transition-all duration-500" fetchpriority="high">
         </figure>
         <div class="mb-6 flex justify-center items-center gap-2 text-sm font-medium text-brand-rosegold">
             <span class="bg-brand-pink px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Style Guide</span>
@@ -332,12 +345,12 @@
                 </div>
                 
                 <!-- Quick Tools Sidebar Box -->
-                <div class="bg-brand-dark text-white p-6 rounded-3xl space-y-4 shadow-md text-left">
+                <div class="bg-gradient-to-br from-brand-dark to-slate-900 text-white p-6 rounded-3xl space-y-4 shadow-2xl shadow-brand-dark/20 border border-white/10 text-left hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden">
                     <h5 class="font-heading font-bold text-lg text-brand-pink">Planning Tools</h5>
                     <p class="text-xs text-white/70 leading-relaxed">
                         Keep every wedding detail perfectly organized with our <a href="/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding" class="text-brand-rosegold hover:underline font-semibold" title="Ultimate Wedding Planning Checklists Guide">free checklist</a> and budget tools.
                     </p>
-                    <a href="planner.html" class="block text-center bg-brand-rosegold text-white text-xs font-bold py-2.5 rounded-full hover:bg-opacity-90 transition-all hover:shadow-lg">Start Free Planning</a>
+                    <a href="planner.html" class="block text-center bg-gradient-to-r from-brand-rosegold to-brand-gold text-white text-xs font-bold py-3 rounded-full hover:scale-[1.02] hover:shadow-[0_10px_20px_rgba(183,110,121,0.4)] transition-all duration-300">Start Free Planning</a>
                 </div>
             </div>
         </aside>
@@ -704,6 +717,47 @@ Soft waves with volume concentrated at the crown, face-framing pieces curled awa
     <!-- Initialize Icons -->
     <script>
         lucide.createIcons();
+    </script>
+
+    <!-- UI & UX Scripts -->
+    <script>
+        // Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const progressBar = document.getElementById('reading-progress');
+            if (progressBar) progressBar.style.width = scrolled + '%';
+        });
+
+        // Scroll Spy for Table of Contents
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        const links = document.querySelectorAll('#toc-nav a');
+                        links.forEach(link => {
+                            link.classList.remove('toc-active');
+                            if (link.getAttribute('href') === '#' + id) {
+                                link.classList.add('toc-active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-120px 0px -60% 0px' });
+
+            // Ensure H2s and H3s inside the article have IDs if they don't already
+            const headings = document.querySelectorAll('article h2, article h3, section[id]');
+            headings.forEach((heading, index) => {
+                if (!heading.id && heading.tagName.match(/^H[23]$/)) {
+                    heading.id = heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                }
+                if (heading.id) {
+                    observer.observe(heading);
+                }
+            });
+        });
     </script>
 </body>
 </html>
