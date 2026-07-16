@@ -37,8 +37,21 @@
     
     <!-- Icons (Lucide via Unpkg) -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .toc-active {
+            color: #B76E79 !important; /* brand-rosegold */
+            border-left-color: #B76E79 !important;
+            font-weight: 700 !important;
+        }
+    </style>
 </head>
 <body class="antialiased text-brand-text bg-brand-cream selection:bg-brand-rosegold selection:text-white" x-data="{ mobileMenuOpen: false }">
+
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="fixed top-20 left-0 h-1 bg-gradient-to-r from-brand-rosegold to-brand-gold z-[60] transition-all duration-150 shadow-sm" style="width: 0%"></div>
+
     
     
     
@@ -89,7 +102,7 @@
 
 
     <!-- Blog Header / Hero -->
-    <section class="pt-32 pb-12 lg:pt-40 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
+    <section class="pt-32 pb-12 lg:pt-40 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center bg-gradient-to-b from-brand-pink/20 to-transparent rounded-b-[4rem]">
         <div class="mb-6 flex justify-center items-center gap-2 text-sm font-medium text-brand-rosegold">
             <span class="bg-brand-pink px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Planning Checklist</span>
             <span>•</span>
@@ -494,6 +507,47 @@
     <!-- Initialize Icons -->
     <script>
         lucide.createIcons();
+    </script>
+
+    <!-- UI & UX Scripts -->
+    <script>
+        // Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const progressBar = document.getElementById('reading-progress');
+            if (progressBar) progressBar.style.width = scrolled + '%';
+        });
+
+        // Scroll Spy for Table of Contents
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        const links = document.querySelectorAll('#toc-nav a');
+                        links.forEach(link => {
+                            link.classList.remove('toc-active');
+                            if (link.getAttribute('href') === '#' + id) {
+                                link.classList.add('toc-active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-120px 0px -60% 0px' });
+
+            // Ensure H2s and H3s inside the article have IDs if they don't already
+            const headings = document.querySelectorAll('article h2, article h3, section[id]');
+            headings.forEach((heading, index) => {
+                if (!heading.id && heading.tagName.match(/^H[23]$/)) {
+                    heading.id = heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                }
+                if (heading.id) {
+                    observer.observe(heading);
+                }
+            });
+        });
     </script>
 </body>
 </html>
