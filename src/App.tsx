@@ -200,17 +200,24 @@ export default function App() {
 
   useEffect(() => {
     let path = '/';
+    const currentPath = window.location.pathname.toLowerCase();
+    
     if (activeTab === 'about') path = '/about-us';
     else if (activeTab === 'privacy') path = '/privacy-policy';
     else if (activeTab === 'terms') path = '/terms-of-service';
     else if (activeTab === 'blog') {
-      if (window.location.pathname.startsWith('/blog/')) {
-        return;
+      if (currentPath.startsWith('/blog') || currentPath.includes('hairstyles') || currentPath.includes('timeline') || currentPath.includes('tips')) {
+        return; // Preserve the specific blog article URL
       }
       path = '/blog';
     }
     else if (activeTab === 'contact') path = '/contact';
-    else if (activeTab === 'guide') path = '/blog/The-Ultimate-Wedding-Planning-Checklists-Guide-for-a-Stress-Free-Wedding';
+    else if (activeTab === 'guide') {
+      if (currentPath.includes('wedding-planning-checklists')) {
+        return; // Preserve legacy checklist URLs
+      }
+      path = '/blog/The-Ultimate-Wedding-Planning-Checklists-Guide-for-a-Stress-Free-Wedding';
+    }
     else if (activeTab !== 'home') path = `/${activeTab}`;
     
     if (window.location.pathname !== path) {
