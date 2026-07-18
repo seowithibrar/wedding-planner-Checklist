@@ -190,8 +190,8 @@ export default function App() {
     const pathLower = path.toLowerCase().replace(/\/$/, '');
     if (path === '/about-us') return 'about';
     if (path === '/privacy-policy') return 'privacy';
-    if (pathLower === '/guide' || pathLower === '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding') return 'guide';
-    if (path.startsWith('/blog')) return 'blog';
+    if (pathLower === '/guide' || pathLower === '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding' || pathLower === '/wedding-planning-checklists.html' || pathLower === '/wedding-planning-checklists') return 'guide';
+    if (path.startsWith('/blog') || pathLower.includes('hairstyles') || pathLower.includes('timeline') || pathLower.includes('tips')) return 'blog';
     if (path === '/' || path === '') return 'home';
     const cleanPath = path.replace('/', '') as Tab;
     const validTabs: Tab[] = ['home', 'about', 'privacy', 'terms', 'blog', 'contact', 'guide', 'dashboard', 'tasks', 'budget', 'guests', 'vendors', 'calendar'];
@@ -225,8 +225,8 @@ export default function App() {
       if (path === '/about-us') setActiveTab('about');
       else if (path === '/privacy-policy') setActiveTab('privacy');
       else if (path === '/terms-of-service') setActiveTab('terms');
-      else if (pathLower === '/guide' || pathLower === '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding') setActiveTab('guide');
-      else if (path.startsWith('/blog')) setActiveTab('blog');
+      else if (pathLower === '/guide' || pathLower === '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding' || pathLower === '/wedding-planning-checklists.html' || pathLower === '/wedding-planning-checklists') setActiveTab('guide');
+      else if (path.startsWith('/blog') || pathLower.includes('hairstyles') || pathLower.includes('timeline') || pathLower.includes('tips')) setActiveTab('blog');
       else if (path === '/contact') setActiveTab('contact');
       else if (path === '/' || path === '') setActiveTab('home');
       else {

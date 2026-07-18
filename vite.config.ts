@@ -19,11 +19,6 @@ export default defineConfig(({mode}) => {
       rollupOptions: {
         input: {
           main: path.resolve(__dirname, 'index.html'),
-          checklists: path.resolve(__dirname, 'wedding-planning-checklists.html'),
-          tips: path.resolve(__dirname, '20-tips-for-your-wedding-planning-checklist.html'),
-          hairstyles: path.resolve(__dirname, 'hairstyles-for-wedding.html'),
-          timeline: path.resolve(__dirname, 'how-to-plan-a-wedding-timeline.html'),
-          pakistani_hairstyles: path.resolve(__dirname, 'pakistani-wedding-hairstyles.html'),
         }
       }
     },

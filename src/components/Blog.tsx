@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { LandingNav } from './LandingNav';
 import { Footer } from './Footer';
+import { PakistaniWeddingHairstylesArticle } from './articles/PakistaniWeddingHairstylesArticle';
 
 interface BlogProps {
   onStart: () => void;
@@ -202,12 +203,24 @@ const getPostIdFromSlug = (slug: string): string | null => {
 export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTerms, onContact, onBlog }: BlogProps) {
   const [selectedPostId, setSelectedPostId] = useState<string | null>(() => {
     const path = window.location.pathname;
+    const pathLower = path.toLowerCase();
+    
     if (path.startsWith('/blog/')) {
       const slug = path.substring(6);
       const postId = getPostIdFromSlug(slug);
       if (postId && postId !== 'checklists-guide') {
         return postId;
       }
+    } else if (pathLower.includes('hairstyles-for-wedding')) {
+      return 'hairstyles-for-wedding';
+    } else if (pathLower.includes('indian-wedding-hairstyles-guide')) {
+      return 'indian-wedding-hairstyles-guide';
+    } else if (pathLower.includes('pakistani-wedding-hairstyles')) {
+      return 'pakistani-wedding-hairstyles';
+    } else if (pathLower.includes('how-to-plan-a-wedding-timeline')) {
+      return 'how-to-plan-a-wedding-timeline';
+    } else if (pathLower.includes('20-tips-for-your-wedding-planning-checklist')) {
+      return 'wedding-planning-checklist-tips';
     }
     return null;
   });
@@ -217,6 +230,8 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
   useEffect(() => {
     const handleLocationChange = () => {
       const path = window.location.pathname;
+      const pathLower = path.toLowerCase();
+      
       if (path.startsWith('/blog/')) {
         const slug = path.substring(6);
         const postId = getPostIdFromSlug(slug);
@@ -225,6 +240,16 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
         } else {
           setSelectedPostId(null);
         }
+      } else if (pathLower.includes('hairstyles-for-wedding')) {
+        setSelectedPostId('hairstyles-for-wedding');
+      } else if (pathLower.includes('indian-wedding-hairstyles-guide')) {
+        setSelectedPostId('indian-wedding-hairstyles-guide');
+      } else if (pathLower.includes('pakistani-wedding-hairstyles')) {
+        setSelectedPostId('pakistani-wedding-hairstyles');
+      } else if (pathLower.includes('how-to-plan-a-wedding-timeline')) {
+        setSelectedPostId('how-to-plan-a-wedding-timeline');
+      } else if (pathLower.includes('20-tips-for-your-wedding-planning-checklist')) {
+        setSelectedPostId('wedding-planning-checklist-tips');
       } else {
         setSelectedPostId(null);
       }
@@ -524,6 +549,7 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
             {selectedPostId === 'hairstyles-for-wedding' && <WeddingHairstylesArticle />}
             {selectedPostId === 'how-to-plan-a-wedding-timeline' && <WeddingTimelineArticle />}
             {selectedPostId === 'indian-wedding-hairstyles-guide' && <IndianWeddingHairstylesArticle />}
+            {selectedPostId === 'pakistani-wedding-hairstyles' && <PakistaniWeddingHairstylesArticle />}
           </div>
         )}
       </main>
