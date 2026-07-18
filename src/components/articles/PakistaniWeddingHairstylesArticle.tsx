@@ -42,28 +42,28 @@ export function PakistaniWeddingHairstylesArticle() {
       ]}
       faqs={[
         {
-          question: "How should I prepare my hair for a Pakistani wedding?",
-          answer: "Start 6 weeks before: get a trim, begin weekly deep conditioning, do a root touch-up if you color, and schedule your bridal trial 2–3 weeks before. The week before the wedding, avoid new treatments and let your hair rest."
+          q: "How should I prepare my hair for a Pakistani wedding?",
+          a: "Start 6 weeks before: get a trim, begin weekly deep conditioning, do a root touch-up if you color, and schedule your bridal trial 2–3 weeks before. The week before the wedding, avoid new treatments and let your hair rest."
         },
         {
-          question: "What is the most popular Pakistani bridal hairstyle?",
-          answer: "The high jura with a gol bandi base is the most iconic and popular choice across Pakistan. It works for all face shapes, photographs beautifully, and accommodates traditional jewelry like maang tikas and jhumkas."
+          q: "What is the most popular Pakistani bridal hairstyle?",
+          a: "The high jura with a gol bandi base is the most iconic and popular choice across Pakistan. It works for all face shapes, photographs beautifully, and accommodates traditional jewelry like maang tikas and jhumkas."
         },
         {
-          question: "Can you wear your hair down for a Pakistani wedding?",
-          answer: "Yes, but it depends on the occasion. Loose waves or curls are appropriate for mehndi and walima but are less common for baraat and wedding day, where formal updos are traditional."
+          q: "Can you wear your hair down for a Pakistani wedding?",
+          a: "Yes, but it depends on the occasion. Loose waves or curls are appropriate for mehndi and walima but are less common for baraat and wedding day, where formal updos are traditional."
         },
         {
-          question: "Do Pakistani brides wear their hair up or down?",
-          answer: "For baraat and wedding day, updos are most common. For mehndi and walima, styles range from loose to half-up to fully pinned. Ultimately, it depends on your comfort and the occasion."
+          q: "Do Pakistani brides wear their hair up or down?",
+          a: "For baraat and wedding day, updos are most common. For mehndi and walima, styles range from loose to half-up to fully pinned. Ultimately, it depends on your comfort and the occasion."
         },
         {
-          question: "What hairstyle is best for lehenga?",
-          answer: "High updos, jura, and center-parted updos are best with lehenga because they balance the formality and embroidery of the outfit. Avoid very loose styles that make the overall look feel unfinished."
+          q: "What hairstyle is best for lehenga?",
+          a: "High updos, jura, and center-parted updos are best with lehenga because they balance the formality and embroidery of the outfit. Avoid very loose styles that make the overall look feel unfinished."
         },
         {
-          question: "How do you make Pakistani wedding hairstyles last all day?",
-          answer: "Use professional-grade hairspray, strategic U-pins and bobby pins, backcombing at the base for grip, and crisscross pinning for weight distribution. A bridal trial with your stylist ensures the style is built to last."
+          q: "How do you make Pakistani wedding hairstyles last all day?",
+          a: "Use professional-grade hairspray, strategic U-pins and bobby pins, backcombing at the base for grip, and crisscross pinning for weight distribution. A bridal trial with your stylist ensures the style is built to last."
         }
       ]}
       conclusion={
