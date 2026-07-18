@@ -185,7 +185,8 @@ const getSlugFromPostId = (id: string): string => {
     'moodboard-layout': 'Chic-&-Modern-Aesthetic:-Visual-Moodboard-Layout',
     'hairstyles-for-wedding': 'Hairstyles-for-Wedding',
     'how-to-plan-a-wedding-timeline': 'how-to-plan-a-wedding-timeline',
-    'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide'
+    'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide',
+    'pakistani-wedding-hairstyles': 'pakistani-wedding-hairstyles'
   };
   return mapping[id] || id;
 };
@@ -203,7 +204,8 @@ const getPostIdFromSlug = (slug: string): string | null => {
     'chic-and-modern-aesthetic-visual-moodboard-layout': 'moodboard-layout',
     'hairstyles-for-wedding': 'hairstyles-for-wedding',
     'how-to-plan-a-wedding-timeline': 'how-to-plan-a-wedding-timeline',
-    'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide'
+    'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide',
+    'pakistani-wedding-hairstyles': 'pakistani-wedding-hairstyles'
   };
   return mapping[normalizedSlug] || null;
 };
