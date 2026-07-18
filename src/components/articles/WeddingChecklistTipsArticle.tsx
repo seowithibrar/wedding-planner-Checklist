@@ -39,24 +39,24 @@ export function WeddingChecklistTipsArticle() {
       ]}
       faqs={[
         {
-          question: "When should I start my wedding planning checklist?",
-          answer: "You should start your checklist 12 to 18 months before your desired wedding date. This ensures you have first pick of popular venues and in-demand vendors."
+          q: "When should I start my wedding planning checklist?",
+          a: "You should start your checklist 12 to 18 months before your desired wedding date. This ensures you have first pick of popular venues and in-demand vendors."
         },
         {
-          question: "What is the very first thing to plan for a wedding?",
-          answer: "The very first step is defining your top three priorities as a couple and drafting a preliminary budget. Do not book a venue or hire a planner until you have a budget."
+          q: "What is the very first thing to plan for a wedding?",
+          a: "The very first step is defining your top three priorities as a couple and drafting a preliminary budget. Do not book a venue or hire a planner until you have a budget."
         },
         {
-          question: "How do I keep track of all my wedding vendors?",
-          answer: "Use a master spreadsheet that lists every vendor's contact information, total contract price, deposit paid, balance due date, and day-of arrival time."
+          q: "How do I keep track of all my wedding vendors?",
+          a: "Use a master spreadsheet that lists every vendor's contact information, total contract price, deposit paid, balance due date, and day-of arrival time."
         },
         {
-          question: "Is a day-of coordinator really necessary?",
-          answer: "Yes. You cannot manage catering issues, missing boutonnieres, or lost DJs while wearing a wedding dress. If you can't hire a professional, assign the role to a highly organized friend."
+          q: "Is a day-of coordinator really necessary?",
+          a: "Yes. You cannot manage catering issues, missing boutonnieres, or lost DJs while wearing a wedding dress. If you can't hire a professional, assign the role to a highly organized friend."
         },
         {
-          question: "When do I need to finalize the seating chart?",
-          answer: "Finalize your seating chart two weeks before the wedding. Send it to your caterer and stationer immediately so they can print place cards and organize meal distribution."
+          q: "When do I need to finalize the seating chart?",
+          a: "Finalize your seating chart two weeks before the wedding. Send it to your caterer and stationer immediately so they can print place cards and organize meal distribution."
         }
       ]}
       conclusion={

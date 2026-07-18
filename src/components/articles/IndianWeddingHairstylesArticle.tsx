@@ -37,24 +37,24 @@ export function IndianWeddingHairstylesArticle() {
       ]}
       faqs={[
         {
-          question: "How many hairstyles does an Indian bride need for one wedding?",
-          answer: "Most Indian brides plan 3-5 distinct hairstyles: a relaxed look for haldi/mehendi, a voluminous look for sangeet, a traditional style for the main wedding ceremony, and a glam look for the reception."
+          q: "How many hairstyles does an Indian bride need for one wedding?",
+          a: "Most Indian brides plan 3-5 distinct hairstyles: a relaxed look for haldi/mehendi, a voluminous look for sangeet, a traditional style for the main wedding ceremony, and a glam look for the reception."
         },
         {
-          question: "What is the best hairstyle for a haldi ceremony?",
-          answer: "Haldi hairstyles should be simple, low-maintenance, and turmeric-stain-resistant. A loose braid, low bun, or half-up style with minimal accessories works best since the ceremony involves messy paste."
+          q: "What is the best hairstyle for a haldi ceremony?",
+          a: "Haldi hairstyles should be simple, low-maintenance, and turmeric-stain-resistant. A loose braid, low bun, or half-up style with minimal accessories works best since the ceremony involves messy paste."
         },
         {
-          question: "Should sangeet hair be different from wedding day hair?",
-          answer: "Yes. Sangeet typically calls for a more voluminous, movement-friendly style since you will be dancing. Wedding day hair tends to be more structured and traditional to hold heavy dupattas."
+          q: "Should sangeet hair be different from wedding day hair?",
+          a: "Yes. Sangeet typically calls for a more voluminous, movement-friendly style since you will be dancing. Wedding day hair tends to be more structured and traditional to hold heavy dupattas."
         },
         {
-          question: "Is open hair acceptable for an Indian wedding ceremony?",
-          answer: "Yes, in many modern and regional traditions, open or half-tied hair with soft waves is accepted and increasingly popular, particularly for engagement functions and receptions."
+          q: "Is open hair acceptable for an Indian wedding ceremony?",
+          a: "Yes, in many modern and regional traditions, open or half-tied hair with soft waves is accepted and increasingly popular, particularly for engagement functions and receptions."
         },
         {
-          question: "What should I bring to a bridal hairstyle trial?",
-          answer: "Bring reference photos, your actual bridal jewellery (like your maang tikka or matha patti), and if possible, a photo or swatch of your outfit so the stylist understands the neckline."
+          q: "What should I bring to a bridal hairstyle trial?",
+          a: "Bring reference photos, your actual bridal jewellery (like your maang tikka or matha patti), and if possible, a photo or swatch of your outfit so the stylist understands the neckline."
         }
       ]}
       conclusion={

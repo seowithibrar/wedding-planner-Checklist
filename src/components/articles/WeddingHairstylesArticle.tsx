@@ -40,28 +40,28 @@ export function WeddingHairstylesArticle() {
       ]}
       faqs={[
         {
-          question: "How far in advance should I book my bridal hairstylist?",
-          answer: "Book your stylist 6 to 9 months before your wedding. High-demand artists often book out up to a year in advance during peak wedding season."
+          q: "How far in advance should I book my bridal hairstylist?",
+          a: "Book your stylist 6 to 9 months before your wedding. High-demand artists often book out up to a year in advance during peak wedding season."
         },
         {
-          question: "When should I schedule my bridal hair trial?",
-          answer: "Schedule your hair trial 4 to 6 weeks before the wedding. By this time, you should have your dress, veil, and hair accessories finalized so you can see the complete look."
+          q: "When should I schedule my bridal hair trial?",
+          a: "Schedule your hair trial 4 to 6 weeks before the wedding. By this time, you should have your dress, veil, and hair accessories finalized so you can see the complete look."
         },
         {
-          question: "Should I wash my hair on my wedding day?",
-          answer: "No. Professional stylists almost universally prefer 'second-day hair.' Freshly washed hair is too slippery and will not hold pins, curls, or volume as effectively."
+          q: "Should I wash my hair on my wedding day?",
+          a: "No. Professional stylists almost universally prefer 'second-day hair.' Freshly washed hair is too slippery and will not hold pins, curls, or volume as effectively."
         },
         {
-          question: "Do I need hair extensions for my wedding?",
-          answer: "Even brides with thick hair often use clip-in extensions on their wedding day. Extensions provide the necessary volume and structural support to hold heavy updos and long-lasting curls."
+          q: "Do I need hair extensions for my wedding?",
+          a: "Even brides with thick hair often use clip-in extensions on their wedding day. Extensions provide the necessary volume and structural support to hold heavy updos and long-lasting curls."
         },
         {
-          question: "How do I make my curls last all day?",
-          answer: "Curls last longest when hair is prepped with a strong mousse, curled using a hot iron, pinned up to cool completely, and then set with a humidity-resistant holding spray."
+          q: "How do I make my curls last all day?",
+          a: "Curls last longest when hair is prepped with a strong mousse, curled using a hot iron, pinned up to cool completely, and then set with a humidity-resistant holding spray."
         },
         {
-          question: "What is the best hairstyle for a strapless dress?",
-          answer: "A strapless dress is incredibly versatile. A classic updo highlights your neck and shoulders elegantly, while Hollywood waves draped over one shoulder add romantic glamour."
+          q: "What is the best hairstyle for a strapless dress?",
+          a: "A strapless dress is incredibly versatile. A classic updo highlights your neck and shoulders elegantly, while Hollywood waves draped over one shoulder add romantic glamour."
         }
       ]}
       conclusion={

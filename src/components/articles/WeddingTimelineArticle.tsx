@@ -36,28 +36,28 @@ export function WeddingTimelineArticle() {
       ]}
       faqs={[
         {
-          question: "Can I plan a wedding in under 6 months?",
-          answer: "Yes. For short engagements, you must prioritize booking your venue, photographer, and caterer immediately, as their availability will dictate your date. Then work through the remaining checklist tasks in parallel."
+          q: "Can I plan a wedding in under 6 months?",
+          a: "Yes. For short engagements, you must prioritize booking your venue, photographer, and caterer immediately, as their availability will dictate your date. Then work through the remaining checklist tasks in parallel."
         },
         {
-          question: "When should I send out save-the-dates?",
-          answer: "Save-the-dates should ideally be sent 6 to 8 months before your wedding. For a destination wedding or a holiday weekend, aim for 10 to 12 months in advance."
+          q: "When should I send out save-the-dates?",
+          a: "Save-the-dates should ideally be sent 6 to 8 months before your wedding. For a destination wedding or a holiday weekend, aim for 10 to 12 months in advance."
         },
         {
-          question: "How much time should I allocate for hair and makeup?",
-          answer: "Generally, allocate 45 minutes per bridesmaid and 60 to 90 minutes for the bride. Always add 30 minutes of total buffer time at the end to prevent rushing."
+          q: "How much time should I allocate for hair and makeup?",
+          a: "Generally, allocate 45 minutes per bridesmaid and 60 to 90 minutes for the bride. Always add 30 minutes of total buffer time at the end to prevent rushing."
         },
         {
-          question: "When should the photographer arrive?",
-          answer: "Your photographer should arrive during the final 30 to 45 minutes of hair and makeup to capture getting-ready shots, detail shots (rings, invitation suite), and candids."
+          q: "When should the photographer arrive?",
+          a: "Your photographer should arrive during the final 30 to 45 minutes of hair and makeup to capture getting-ready shots, detail shots (rings, invitation suite), and candids."
         },
         {
-          question: "How long does a typical wedding ceremony last?",
-          answer: "Secular ceremonies usually last 20 to 30 minutes. Traditional or religious ceremonies can take 45 to 60 minutes depending on the customs."
+          q: "How long does a typical wedding ceremony last?",
+          a: "Secular ceremonies usually last 20 to 30 minutes. Traditional or religious ceremonies can take 45 to 60 minutes depending on the customs."
         },
         {
-          question: "How far in advance should I share the final timeline?",
-          answer: "Distribute your finalized day-of timeline to all vendors, the bridal party, and immediate family exactly two weeks before the wedding day."
+          q: "How far in advance should I share the final timeline?",
+          a: "Distribute your finalized day-of timeline to all vendors, the bridal party, and immediate family exactly two weeks before the wedding day."
         }
       ]}
       conclusion={

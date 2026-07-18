@@ -8,7 +8,7 @@ interface QuickAnswerBoxProps {
 
 export function QuickAnswerBox({ title = "Quick Answer", children }: QuickAnswerBoxProps) {
   return (
-    <div className="bg-gradient-to-br from-brand-pink/30 to-brand-rosegold/20 rounded-2xl p-6 my-8 border border-brand-pink/50 shadow-sm relative overflow-hidden">
+    <div className="not-prose bg-gradient-to-br from-brand-pink/30 to-brand-rosegold/20 rounded-2xl p-6 my-8 border border-brand-pink/50 shadow-sm relative overflow-hidden">
       <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
         <Sparkles className="w-16 h-16 text-brand-dark" />
       </div>

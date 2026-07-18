@@ -36,28 +36,28 @@ export function WeddingVenueArticle() {
       ]}
       faqs={[
         {
-          question: "When should I book my wedding venue?",
-          answer: "You should book your venue 12 to 18 months in advance. Popular venues book up extremely fast, especially for prime dates in the spring and fall."
+          q: "When should I book my wedding venue?",
+          a: "You should book your venue 12 to 18 months in advance. Popular venues book up extremely fast, especially for prime dates in the spring and fall."
         },
         {
-          question: "How much of my budget should go to the venue?",
-          answer: "Typically, the venue rental and catering (if provided in-house) will consume 40% to 50% of your total wedding budget."
+          q: "How much of my budget should go to the venue?",
+          a: "Typically, the venue rental and catering (if provided in-house) will consume 40% to 50% of your total wedding budget."
         },
         {
-          question: "What is an all-inclusive wedding venue?",
-          answer: "An all-inclusive venue provides everything in-house, including catering, tables, chairs, linens, and sometimes even the cake and decor. They are often more cost-effective and stress-free."
+          q: "What is an all-inclusive wedding venue?",
+          a: "An all-inclusive venue provides everything in-house, including catering, tables, chairs, linens, and sometimes even the cake and decor. They are often more cost-effective and stress-free."
         },
         {
-          question: "Can I bring my own alcohol to a wedding venue?",
-          answer: "This depends entirely on the venue. Some allow 'BYOB' with a corkage fee, which saves thousands. Others require you to purchase expensive beverage packages through them."
+          q: "Can I bring my own alcohol to a wedding venue?",
+          a: "This depends entirely on the venue. Some allow 'BYOB' with a corkage fee, which saves thousands. Others require you to purchase expensive beverage packages through them."
         },
         {
-          question: "What happens if it rains at an outdoor venue?",
-          answer: "You must always ask about the venue's 'Plan B'. If they do not have a beautiful, guaranteed indoor space in case of bad weather, you should look elsewhere."
+          q: "What happens if it rains at an outdoor venue?",
+          a: "You must always ask about the venue's 'Plan B'. If they do not have a beautiful, guaranteed indoor space in case of bad weather, you should look elsewhere."
         },
         {
-          question: "Are venue prices negotiable?",
-          answer: "Yes, especially if you are booking an off-peak date (like a Friday or a Sunday) or getting married during a slower month (like January or February)."
+          q: "Are venue prices negotiable?",
+          a: "Yes, especially if you are booking an off-peak date (like a Friday or a Sunday) or getting married during a slower month (like January or February)."
         }
       ]}
       conclusion={

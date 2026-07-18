@@ -21,7 +21,7 @@ export function ArticleCTA({ type = 'guide', title, description, buttonText, lin
   };
 
   return (
-    <div className={cn("bg-brand-dark rounded-3xl p-8 sm:p-12 my-12 text-center text-white relative overflow-hidden", className)}>
+    <div className={cn("not-prose bg-brand-dark rounded-3xl p-8 sm:p-12 my-12 text-center text-white relative overflow-hidden", className)}>
       <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark to-brand-gold/20 opacity-50" />
       
       <div className="relative z-10 flex flex-col items-center max-w-2xl mx-auto">

@@ -36,28 +36,28 @@ export function MoodboardArticle() {
       ]}
       faqs={[
         {
-          question: "What should be included in a wedding moodboard?",
-          answer: "A complete moodboard should include color swatches, floral inspiration, typography (for invitations), venue architecture styles, and examples of fashion and lighting."
+          q: "What should be included in a wedding moodboard?",
+          a: "A complete moodboard should include color swatches, floral inspiration, typography (for invitations), venue architecture styles, and examples of fashion and lighting."
         },
         {
-          question: "Is Pinterest good for wedding planning?",
-          answer: "Pinterest is a great starting point, but it can lead to 'trend overload.' Use it to gather initial ideas, but curate a strict, smaller moodboard using Canva or Milanote for your vendors."
+          q: "Is Pinterest good for wedding planning?",
+          a: "Pinterest is a great starting point, but it can lead to 'trend overload.' Use it to gather initial ideas, but curate a strict, smaller moodboard using Canva or Milanote for your vendors."
         },
         {
-          question: "How many colors should be in a wedding palette?",
-          answer: "A professional color palette consists of 3 to 5 colors: one dominant color, two secondary colors, and one or two metallic or neutral accent colors."
+          q: "How many colors should be in a wedding palette?",
+          a: "A professional color palette consists of 3 to 5 colors: one dominant color, two secondary colors, and one or two metallic or neutral accent colors."
         },
         {
-          question: "Do I need a moodboard if I have a wedding planner?",
-          answer: "Yes! A moodboard helps your planner understand your brain. It ensures they pitch venues and vendors that actually align with your personal style."
+          q: "Do I need a moodboard if I have a wedding planner?",
+          a: "Yes! A moodboard helps your planner understand your brain. It ensures they pitch venues and vendors that actually align with your personal style."
         },
         {
-          question: "When should I finalize my moodboard?",
-          answer: "Finalize your moodboard immediately after booking your venue, but before booking your florist, rental company, or stationer."
+          q: "When should I finalize my moodboard?",
+          a: "Finalize your moodboard immediately after booking your venue, but before booking your florist, rental company, or stationer."
         },
         {
-          question: "How do I communicate my moodboard to vendors?",
-          answer: "Export your final moodboard as a PDF and attach it to every single vendor inquiry email. This ensures everyone is on the exact same page from day one."
+          q: "How do I communicate my moodboard to vendors?",
+          a: "Export your final moodboard as a PDF and attach it to every single vendor inquiry email. This ensures everyone is on the exact same page from day one."
         }
       ]}
       conclusion={

@@ -36,28 +36,28 @@ export function GuestListArticle() {
       ]}
       faqs={[
         {
-          question: "How do we split the guest list with parents?",
-          answer: "The traditional breakdown is 50% for the couple, 25% for the bride's parents, and 25% for the groom's parents. However, if you are paying for the wedding yourselves, you have full control over the list."
+          q: "How do we split the guest list with parents?",
+          a: "The traditional breakdown is 50% for the couple, 25% for the bride's parents, and 25% for the groom's parents. However, if you are paying for the wedding yourselves, you have full control over the list."
         },
         {
-          question: "When should we finalize the guest list?",
-          answer: "Your guest list should be 90% finalized before you book your venue, as your venue dictates your maximum capacity. Finalize the remaining 10% before sending save-the-dates at the 6-month mark."
+          q: "When should we finalize the guest list?",
+          a: "Your guest list should be 90% finalized before you book your venue, as your venue dictates your maximum capacity. Finalize the remaining 10% before sending save-the-dates at the 6-month mark."
         },
         {
-          question: "Do we have to invite coworkers?",
-          answer: "No. Only invite coworkers you socialize with outside of the office. If you invite one person from a small team, it's polite to invite the rest, but it's not strictly required."
+          q: "Do we have to invite coworkers?",
+          a: "No. Only invite coworkers you socialize with outside of the office. If you invite one person from a small team, it's polite to invite the rest, but it's not strictly required."
         },
         {
-          question: "What is an A-list and a B-list?",
-          answer: "The A-list consists of essential guests who receive the first round of invitations. As A-list guests decline, you send invitations to the B-list. Always send B-list invites at least 6 weeks before the wedding."
+          q: "What is an A-list and a B-list?",
+          a: "The A-list consists of essential guests who receive the first round of invitations. As A-list guests decline, you send invitations to the B-list. Always send B-list invites at least 6 weeks before the wedding."
         },
         {
-          question: "Do we need a seating chart?",
-          answer: "Unless you are having a very casual cocktail reception with under 50 people, yes. A seating chart prevents chaos, ensures families sit together, and speeds up dinner service."
+          q: "Do we need a seating chart?",
+          a: "Unless you are having a very casual cocktail reception with under 50 people, yes. A seating chart prevents chaos, ensures families sit together, and speeds up dinner service."
         },
         {
-          question: "How many people fit at a standard round table?",
-          answer: "A standard 60-inch round table comfortably seats 8 people (maximum 10). A 72-inch round table comfortably seats 10 people (maximum 12)."
+          q: "How many people fit at a standard round table?",
+          a: "A standard 60-inch round table comfortably seats 8 people (maximum 10). A 72-inch round table comfortably seats 10 people (maximum 12)."
         }
       ]}
       conclusion={

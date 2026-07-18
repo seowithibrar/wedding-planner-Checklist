@@ -38,28 +38,28 @@ export function BudgetTipsArticle() {
       ]}
       faqs={[
         {
-          question: "What is the biggest wedding expense?",
-          answer: "The venue and catering typically consume about 40% to 50% of the average wedding budget. Keeping your guest count manageable is the most effective way to lower this cost."
+          q: "What is the biggest wedding expense?",
+          a: "The venue and catering typically consume about 40% to 50% of the average wedding budget. Keeping your guest count manageable is the most effective way to lower this cost."
         },
         {
-          question: "How can I save money on wedding flowers?",
-          answer: "Repurpose your ceremony flowers (like the arch or aisle markers) for your reception. Also, choose locally grown, in-season flowers rather than expensive imported exotic blooms."
+          q: "How can I save money on wedding flowers?",
+          a: "Repurpose your ceremony flowers (like the arch or aisle markers) for your reception. Also, choose locally grown, in-season flowers rather than expensive imported exotic blooms."
         },
         {
-          question: "Is a Friday wedding cheaper than a Saturday?",
-          answer: "Yes. Venues often charge 15% to 30% less for Friday or Sunday weddings. Off-peak months (like January or November) offer even deeper discounts on rentals and catering minimums."
+          q: "Is a Friday wedding cheaper than a Saturday?",
+          a: "Yes. Venues often charge 15% to 30% less for Friday or Sunday weddings. Off-peak months (like January or November) offer even deeper discounts on rentals and catering minimums."
         },
         {
-          question: "Should we include a buffer in our wedding budget?",
-          answer: "Absolutely. You should allocate at least 10% to 15% of your total budget as an emergency buffer for unexpected expenses like postage, vendor tips, or last-minute alterations."
+          q: "Should we include a buffer in our wedding budget?",
+          a: "Absolutely. You should allocate at least 10% to 15% of your total budget as an emergency buffer for unexpected expenses like postage, vendor tips, or last-minute alterations."
         },
         {
-          question: "How do we track small wedding expenses?",
-          answer: "Use a dedicated spreadsheet or a wedding planning app to log every transaction. It's the micro-transactions (like stamps, signs, and trials) that usually push couples over budget."
+          q: "How do we track small wedding expenses?",
+          a: "Use a dedicated spreadsheet or a wedding planning app to log every transaction. It's the micro-transactions (like stamps, signs, and trials) that usually push couples over budget."
         },
         {
-          question: "Is it rude to not offer a plus-one to save money?",
-          answer: "It is perfectly acceptable to limit plus-ones. A standard rule is to only offer plus-ones to married, engaged, or long-term cohabitating couples to manage costs effectively."
+          q: "Is it rude to not offer a plus-one to save money?",
+          a: "It is perfectly acceptable to limit plus-ones. A standard rule is to only offer plus-ones to married, engaged, or long-term cohabitating couples to manage costs effectively."
         }
       ]}
       conclusion={
