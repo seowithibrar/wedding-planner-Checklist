@@ -1,107 +1,42 @@
 import React from 'react';
-import { Calendar, Clock, User, Facebook, Twitter, Instagram, List, ArrowRight } from 'lucide-react';
+import { BlogArticleLayout } from '../layout/BlogArticleLayout';
 
 export function PakistaniWeddingHairstylesArticle() {
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12 bg-white">
+    <BlogArticleLayout
+      slug="pakistani-wedding-hairstyles"
+      title="Pakistani Wedding Hairstyles Guide"
+      category="Style Guide"
+      readTime="9 Min Read"
+      updatedAt="July 2026"
+      heroImage="/pakistani-wedding-hairstyles.webp"
+      heroImageAlt="Pakistani Wedding Hairstyles"
+      introduction={
+        <p>
+          Your wedding hairstyle is your crown. It frames your face for hundreds of photographs, stays in place through hours of dancing, and showcases the jewelry and traditions that make your look distinctly yours.
+        </p>
+      }
+      keyTakeaways={[
+        "50+ Styles Covered",
+        "All Hair Types",
+        "Indian & Pakistani Weddings",
+        "2026 Trends"
+      ]}
+      tableOfContents={[
+        { id: 'quick-style-finder', label: 'Quick Style Finder' },
+        { id: 'mehndi-hairstyles', label: 'Mehndi Hairstyles' },
+        { id: 'baraat-hairstyles', label: 'Baraat Hairstyles' },
+        { id: 'wedding-day-hairstyles', label: 'Wedding Day Hairstyles' },
+        { id: 'walima-hairstyles', label: 'Walima Hairstyles' }
+      ]}
+      faqs={[]}
+      conclusion={
+        <p>
+          Finding the perfect Pakistani wedding hairstyle involves balancing tradition with personal style. Whether you opt for a dramatic Baraat updo or relaxed Mehndi waves, choose a look that makes you feel confident and comfortable throughout your celebrations.
+        </p>
+      }
+    >
       
-
-    {/*  Reading Progress Bar  */}
-    
-
-    
-    
-    
-    
-    
-    
-    
-    {/*  Navigation  */}
-    
-
-
-    {/*  Blog Header / Hero  */}
-    <section className="pt-32 pb-12 lg:pt-40 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center bg-gradient-to-b from-brand-pink/20 to-transparent rounded-b-[4rem]">
-        <figure className="my-8 mb-12 max-w-5xl mx-auto">
-            <img src="/pakistani-wedding-hairstyles.webp" alt="Pakistani Wedding Hairstyles" className="w-full h-auto rounded-3xl shadow-2xl object-cover hover:shadow-[0_20px_50px_rgba(183,110,121,0.3)] hover:-translate-y-2 transition-all duration-500" fetchpriority="high" />
-        </figure>
-        <div className="mb-6 flex justify-center items-center gap-2 text-sm font-medium text-brand-rosegold">
-            <span className="bg-brand-pink px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Style Guide</span>
-            <span>•</span>
-            <span>9 min read</span>
-        </div>
-        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight mb-6">
-            Pakistani Wedding Hairstyles Guide
-        </h1>
-
-<p className="text-xl font-medium text-brand-rosegold mb-4 font-heading italic">
-            Elegant Bridal Looks for Every Hair Type & Wedding Function
-        </p>
-        <p className="text-base text-brand-text/80 leading-relaxed max-w-3xl mx-auto mb-6">
-            Your <a href="/blog/hairstyles-for-wedding" className="text-brand-rosegold hover:underline font-semibold" title="50+ Hairstyles for Wedding">wedding hairstyle</a> is your crown. It frames your face for hundreds of photographs, stays in place through hours of dancing, and showcases the jewelry and traditions that make your look distinctly yours.
-        </p>
-        
-        <div className="flex flex-wrap justify-center gap-3 text-xs font-semibold text-brand-text/75 mt-8">
-            <span className="bg-white/60 border border-brand-pink/60 px-4 py-2 rounded-full shadow-sm">✓ 50+ Styles Covered</span>
-            <span className="bg-white/60 border border-brand-pink/60 px-4 py-2 rounded-full shadow-sm">✓ All Hair Types</span>
-            <span className="bg-white/60 border border-brand-pink/60 px-4 py-2 rounded-full shadow-sm">✓ Indian & Pakistani Weddings</span>
-            <span className="bg-white/60 border border-brand-pink/60 px-4 py-2 rounded-full shadow-sm">✓ 2026 Trends</span>
-        </div>
-
-        <nav className="flex justify-center items-center gap-2 text-xs text-brand-text/50 mt-10" aria-label="Breadcrumb">
-            <a href="/" className="hover:text-brand-rosegold transition-colors">Home</a>
-            <i data-lucide="chevron-right" className="w-3 h-3"></i>
-            <a href="/blog" className="hover:text-brand-rosegold transition-colors">Blog</a>
-            <i data-lucide="chevron-right" className="w-3 h-3"></i>
-            <span className="text-brand-text/80 font-medium">Pakistani Wedding Hairstyles</span>
-        </nav>
-    </section>
-
-    {/*  Featured Image  */}
-    <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-16">
-        <div className="rounded-3xl overflow-hidden shadow-2xl relative">
-            <img src="https://images.unsplash.com/photo-1591555200577-059798e70a6c?auto=format&fit=crop&q=80&w=1200" alt="Beautiful bridal hairstyle with floral details" className="w-full h-auto object-cover max-h-[600px]" />
-        </div>
-    </section>
-
-    {/*  Blog Content Grid  */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/*  Sticky Sidebar Navigation  */}
-        <aside className="col-span-1 lg:col-span-3 hidden lg:block">
-            <div className="sticky top-28 space-y-6">
-                <div className="bg-white p-6 rounded-3xl border border-brand-pink/30 shadow-sm">
-                    <h4 className="font-heading font-bold text-base text-brand-dark mb-4 pb-2 border-b border-brand-pink/20 flex items-center gap-2">
-                        <i data-lucide="list" className="w-4 h-4 text-brand-rosegold"></i> Table of Contents
-                    </h4>
-                    <nav className="space-y-2.5 text-xs font-semibold text-brand-text/70" id="toc-nav">
-                        
-                        <a href="#quick-style-finder" id="toc-link-1" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Quick Style Finder</a>
-                        <a href="#mehndi-hairstyles" id="toc-link-2" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Mehndi Hairstyles</a>
-                        <a href="#baraat-hairstyles" id="toc-link-3" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Baraat Hairstyles</a>
-                        <a href="#wedding-day-hairstyles" id="toc-link-4" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Wedding Day Hairstyles</a>
-                        <a href="#walima-hairstyles" id="toc-link-5" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Walima Hairstyles</a>
-                        <a href="#hairstyles-by-face-shape" id="toc-link-6" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">By Face Shape</a>
-                        <a href="#regional-hairstyles" id="toc-link-7" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Regional Styles</a>
-                        <a href="#hairstyles-by-outfit" id="toc-link-8" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">By Outfit Type</a>
-                        <a href="#hair-care-before-wedding" id="toc-link-9" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Pre-Wedding Hair Care</a>
-                        <a href="#common-mistakes" id="toc-link-10" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">Common Mistakes</a>
-                        <a href="#faq" id="toc-link-11" className="block hover:text-brand-rosegold transition-colors border-l-2 border-transparent hover:border-brand-rosegold pl-3">FAQs</a>
-                    </nav>
-                </div>
-                
-                {/*  Quick Tools Sidebar Box  */}
-                <div className="bg-gradient-to-br from-brand-dark to-slate-900 text-white p-6 rounded-3xl space-y-4 shadow-2xl shadow-brand-dark/20 border border-white/10 text-left hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden">
-                    <h5 className="font-heading font-bold text-lg text-brand-pink">Planning Tools</h5>
-                    <p className="text-xs text-white/70 leading-relaxed">
-                        Keep every wedding detail perfectly organized with our <a href="/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding" className="text-brand-rosegold hover:underline font-semibold" title="Ultimate Wedding Planning Checklists Guide">free checklist</a> and budget tools.
-                    </p>
-                    <a href="planner.html" className="block text-center bg-gradient-to-r from-brand-rosegold to-brand-gold text-white text-xs font-bold py-3 rounded-full hover:scale-[1.02] hover:shadow-[0_10px_20px_rgba(183,110,121,0.4)] transition-all duration-300">Start Free Planning</a>
-                </div>
-            </div>
-        </aside>
-
-        {/*  Main Blog Post Article  */}
-        <article className="col-span-1 lg:col-span-9 prose prose-lg max-w-none text-brand-text/90">
 <section className="space-y-6 text-left">
 <h2 className="font-heading text-2xl sm:text-3xl font-bold text-brand-dark" id="quick-style-finder">Quick Style Finder by Face Shape &amp; Occasion</h2>
 <p>Not sure where to start? Use this quick reference to narrow down your options.</p>
@@ -465,84 +400,7 @@ Soft waves with volume concentrated at the crown, face-framing pieces curled awa
                 </div>
             </section>
 
-        </article>
-    </div>
-
-    
-    
-    
-    {/*  Footer  */}
-    <footer className="bg-slate-50 pt-20 pb-10 border-t border-slate-100 font-sans">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
-          
-          <div className="space-y-6 lg:col-span-1">
-            <div className="flex items-center cursor-pointer">
-              <a href="/"><img src="/logo.png" alt="Wedding Planning Checklists" className="h-10 w-auto object-contain" /></a>
-            </div>
-            <p className="text-slate-500 text-sm leading-relaxed">
-              Your ultimate companion for stress-free wedding planning. We provide couples with the tools, timelines, and templates they need to organize their dream wedding flawlessly.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Platform</h3>
-            <ul className="space-y-4 text-sm font-medium text-slate-500">
-              <li><a href="/" className="hover:text-rose-500 transition-colors">Home</a></li>
-              <li><a href="/guide" className="hover:text-rose-500 transition-colors">Checklists & Tools</a></li>
-              <li><a href="/about-us" className="hover:text-rose-500 transition-colors">About Us</a></li>
-              <li><a href="/blog" className="hover:text-rose-500 transition-colors">Wedding Blog</a></li>
-              <li><a href="/how-to-plan-a-wedding-timeline.html" className="hover:text-rose-500 transition-colors">Wedding Timeline</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Support & Legal</h3>
-            <ul className="space-y-4 text-sm font-medium text-slate-500">
-              <li><a href="/contact" className="hover:text-rose-500 transition-colors">Contact Us</a></li>
-              <li><a href="/privacy-policy" className="hover:text-rose-500 transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms-of-service" className="hover:text-rose-500 transition-colors">Terms of Service</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Get In Touch</h3>
-            <ul className="space-y-4 text-sm font-medium text-slate-500">
-              <li className="flex items-start gap-3">
-                <i data-lucide="mail" className="w-4 h-4 text-rose-500 mt-0.5"></i>
-                <span>support@weddingplanningchecklists.org</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <i data-lucide="map-pin" className="w-4 h-4 text-rose-500 mt-0.5"></i>
-                <span>Available worldwide for your planning needs.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <i data-lucide="sparkles" className="w-4 h-4 text-rose-500 mt-0.5"></i>
-                <span>Always free, always organized.</span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-slate-400">
-          <p>© 2026 Wedding Planning Checklists. All rights reserved.</p>
-          <p className="flex items-center gap-1">
-            Made with <i data-lucide="heart" className="w-3.5 h-3.5 text-rose-500 mx-1 fill-current"></i> for couples everywhere.
-          </p>
-        </div>
-      </div>
-    </footer>
-
-
-
-    
-    {/*  Initialize Icons  */}
-    
-
-    {/*  UI & UX Scripts  */}
-    
-
-    </div>
+        
+    </BlogArticleLayout>
   );
 }
