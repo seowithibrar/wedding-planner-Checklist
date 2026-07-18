@@ -3,11 +3,11 @@ import { Calendar, Clock, User, Facebook, Twitter, Instagram, List, ArrowRight }
 
 export function PakistaniWeddingHairstylesArticle() {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="max-w-7xl mx-auto px-6 py-12 bg-white">
       
 
     {/*  Reading Progress Bar  */}
-    <div id="reading-progress" className="fixed top-20 left-0 h-1 bg-gradient-to-r from-brand-rosegold to-brand-gold z-[60] transition-all duration-150 shadow-sm" ></div>
+    
 
     
     
@@ -17,45 +17,7 @@ export function PakistaniWeddingHairstylesArticle() {
     
     
     {/*  Navigation  */}
-    <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div className="flex items-center cursor-pointer">
-          <a href="/"><img src="/logo.png" alt="Wedding Planning Checklists" className="h-12 w-auto object-contain" /></a>
-        </div>
-
-        <nav className="hidden lg:flex items-center gap-10">
-          <a href="/" className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Home</a>
-          <a href="/about-us" className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">About Us</a>
-          <a href="/guide" className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Wedding Planning Checklists</a>
-          <a href="/blog" className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Blog</a>
-          <a href="/contact" className="text-sm font-bold text-slate-500 hover:text-rose-500 transition-colors">Contact Us</a>
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <a href="/" className="hidden sm:flex items-center gap-2 bg-slate-900 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-rose-500 transition-all shadow-lg shadow-slate-100">
-            Get Started
-          </a>
-          <button className="lg:hidden p-2 text-slate-600" onClick={() => { /* document.getElementById('mobile-menu').classList.toggle('hidden') */ }}>
-             <i data-lucide="menu"></i>
-          </button>
-        </div>
-      </div>
-      
-      {/*  Mobile Menu  */}
-      <div id="mobile-menu" className="hidden lg:hidden bg-white border-b border-slate-100 overflow-hidden">
-        <div className="p-6 flex flex-col gap-6">
-          <a href="/" className="block text-left text-sm font-bold text-slate-500">Home</a>
-          <a href="/about-us" className="block text-left text-sm font-bold text-slate-500">About Us</a>
-          <a href="/guide" className="block text-left text-sm font-bold text-slate-500">Wedding Planning Checklists</a>
-          <a href="/blog" className="block text-left text-sm font-bold text-slate-500">Blog</a>
-          <a href="/contact" className="block text-left text-sm font-bold text-slate-500">Contact Us</a>
-          
-          <a href="/" className="w-full text-center bg-slate-900 text-white py-3.5 rounded-xl text-sm font-black mt-2">
-            Get Started
-          </a>
-        </div>
-      </div>
-    </header>
+    
 
 
     {/*  Blog Header / Hero  */}
