@@ -36,6 +36,7 @@ import { GuestListArticle } from './articles/GuestListArticle';
 import { WeddingVenueArticle } from './articles/WeddingVenueArticle';
 import { BudgetTipsArticle } from './articles/BudgetTipsArticle';
 import { PakistaniWeddingHairstylesArticle } from './articles/PakistaniWeddingHairstylesArticle';
+import { RegionalIndianWeddingHairstylesArticle } from './articles/RegionalIndianWeddingHairstylesArticle';
 
 interface BlogProps {
   onStart: () => void;
@@ -172,6 +173,17 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Learn how to plan a wedding timeline from engagement to wedding day, including a wedding day timeline, reception timeline, and budget timeline.',
     image: '/How to Plan a Wedding Timeline.webp',
     layout: 'standard'
+  },
+  {
+    id: 'regional-indian-wedding-hairstyles',
+    title: 'Regional Indian Wedding Hairstyles: A Complete Guide to Bridal Hair by Tradition',
+    category: 'Style Guide',
+    date: 'January 2025',
+    readTime: '10 Min Read',
+    author: 'Wedding Planning Checklists',
+    excerpt: 'Explore 5 major Indian and Pakistani bridal hairstyle traditions, including North Indian buns, South Indian temple curls, and Bengali waves. Get expert styling tips.',
+    image: '/regional-hero-bridal-hairstyles.png',
+    layout: 'standard'
   }
 ];
 
@@ -186,7 +198,8 @@ const getSlugFromPostId = (id: string): string => {
     'hairstyles-for-wedding': 'Hairstyles-for-Wedding',
     'how-to-plan-a-wedding-timeline': 'how-to-plan-a-wedding-timeline',
     'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide',
-    'pakistani-wedding-hairstyles': 'pakistani-wedding-hairstyles'
+    'pakistani-wedding-hairstyles': 'pakistani-wedding-hairstyles',
+    'regional-indian-wedding-hairstyles': 'regional-indian-wedding-hairstyles'
   };
   return mapping[id] || id;
 };
@@ -205,7 +218,8 @@ const getPostIdFromSlug = (slug: string): string | null => {
     'hairstyles-for-wedding': 'hairstyles-for-wedding',
     'how-to-plan-a-wedding-timeline': 'how-to-plan-a-wedding-timeline',
     'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide',
-    'pakistani-wedding-hairstyles': 'pakistani-wedding-hairstyles'
+    'pakistani-wedding-hairstyles': 'pakistani-wedding-hairstyles',
+    'regional-indian-wedding-hairstyles': 'regional-indian-wedding-hairstyles'
   };
   return mapping[normalizedSlug] || null;
 };
@@ -227,6 +241,8 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
       return 'indian-wedding-hairstyles-guide';
     } else if (pathLower.includes('pakistani-wedding-hairstyles')) {
       return 'pakistani-wedding-hairstyles';
+    } else if (pathLower.includes('regional-indian-wedding-hairstyles')) {
+      return 'regional-indian-wedding-hairstyles';
     } else if (pathLower.includes('how-to-plan-a-wedding-timeline')) {
       return 'how-to-plan-a-wedding-timeline';
     } else if (pathLower.includes('20-tips-for-your-wedding-planning-checklist')) {
@@ -256,6 +272,8 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
         setSelectedPostId('indian-wedding-hairstyles-guide');
       } else if (pathLower.includes('pakistani-wedding-hairstyles')) {
         setSelectedPostId('pakistani-wedding-hairstyles');
+      } else if (pathLower.includes('regional-indian-wedding-hairstyles')) {
+        setSelectedPostId('regional-indian-wedding-hairstyles');
       } else if (pathLower.includes('how-to-plan-a-wedding-timeline')) {
         setSelectedPostId('how-to-plan-a-wedding-timeline');
       } else if (pathLower.includes('20-tips-for-your-wedding-planning-checklist')) {
@@ -325,6 +343,7 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
     else if (postId === 'how-to-plan-a-wedding-timeline') dest = '/blog/how-to-plan-a-wedding-timeline';
     else if (postId === 'pakistani-wedding-hairstyles') dest = '/blog/pakistani-wedding-hairstyles';
     else if (postId === 'indian-wedding-hairstyles-guide') dest = '/blog/indian-wedding-hairstyles-guide';
+    else if (postId === 'regional-indian-wedding-hairstyles') dest = '/blog/regional-indian-wedding-hairstyles';
     window.location.href = dest;
   };
 
@@ -560,6 +579,7 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
             {selectedPostId === 'how-to-plan-a-wedding-timeline' && <WeddingTimelineArticle />}
             {selectedPostId === 'indian-wedding-hairstyles-guide' && <IndianWeddingHairstylesArticle />}
             {selectedPostId === 'pakistani-wedding-hairstyles' && <PakistaniWeddingHairstylesArticle />}
+            {selectedPostId === 'regional-indian-wedding-hairstyles' && <RegionalIndianWeddingHairstylesArticle />}
           </div>
         )}
       </main>
