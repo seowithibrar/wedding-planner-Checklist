@@ -37,6 +37,7 @@ import { WeddingVenueArticle } from './articles/WeddingVenueArticle';
 import { BudgetTipsArticle } from './articles/BudgetTipsArticle';
 import { PakistaniWeddingHairstylesArticle } from './articles/PakistaniWeddingHairstylesArticle';
 import { RegionalIndianWeddingHairstylesArticle } from './articles/RegionalIndianWeddingHairstylesArticle';
+import { FourteenMonthWeddingTimelineArticle } from './articles/FourteenMonthWeddingTimelineArticle';
 
 interface BlogProps {
   onStart: () => void;
@@ -63,6 +64,17 @@ export interface BlogPost {
 }
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: '14-month-wedding-planning-timeline',
+    title: 'The 14-Month Wedding Planning Timeline & Checklist',
+    category: 'Planning',
+    date: 'July 2026',
+    readTime: '12 Min Read',
+    author: 'Wedding Planning Checklists',
+    excerpt: 'A complete 14-month wedding planning timeline: month-by-month tasks, vendor booking order, budget breakdown, and a multi-day event variant.',
+    image: '/14-Month Wedding Planning Timeline.webp',
+    layout: 'standard'
+  },
   {
     id: 'indian-wedding-hairstyles-guide',
     title: 'Indian Wedding Hairstyles: Complete 2026 Guide by Function & Face Shape',
@@ -199,7 +211,8 @@ const getSlugFromPostId = (id: string): string => {
     'how-to-plan-a-wedding-timeline': 'how-to-plan-a-wedding-timeline',
     'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide',
     'pakistani-wedding-hairstyles': 'pakistani-wedding-hairstyles',
-    'regional-indian-wedding-hairstyles': 'regional-indian-wedding-hairstyles'
+    'regional-indian-wedding-hairstyles': 'regional-indian-wedding-hairstyles',
+    '14-month-wedding-planning-timeline': '14-month-wedding-planning-timeline'
   };
   return mapping[id] || id;
 };
@@ -219,7 +232,8 @@ const getPostIdFromSlug = (slug: string): string | null => {
     'how-to-plan-a-wedding-timeline': 'how-to-plan-a-wedding-timeline',
     'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide',
     'pakistani-wedding-hairstyles': 'pakistani-wedding-hairstyles',
-    'regional-indian-wedding-hairstyles': 'regional-indian-wedding-hairstyles'
+    'regional-indian-wedding-hairstyles': 'regional-indian-wedding-hairstyles',
+    '14-month-wedding-planning-timeline': '14-month-wedding-planning-timeline'
   };
   return mapping[normalizedSlug] || null;
 };
@@ -243,6 +257,8 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
       return 'pakistani-wedding-hairstyles';
     } else if (pathLower.includes('regional-indian-wedding-hairstyles')) {
       return 'regional-indian-wedding-hairstyles';
+    } else if (pathLower.includes('14-month-wedding-planning-timeline')) {
+      return '14-month-wedding-planning-timeline';
     } else if (pathLower.includes('how-to-plan-a-wedding-timeline')) {
       return 'how-to-plan-a-wedding-timeline';
     } else if (pathLower.includes('20-tips-for-your-wedding-planning-checklist')) {
@@ -274,6 +290,8 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
         setSelectedPostId('pakistani-wedding-hairstyles');
       } else if (pathLower.includes('regional-indian-wedding-hairstyles')) {
         setSelectedPostId('regional-indian-wedding-hairstyles');
+      } else if (pathLower.includes('14-month-wedding-planning-timeline')) {
+        setSelectedPostId('14-month-wedding-planning-timeline');
       } else if (pathLower.includes('how-to-plan-a-wedding-timeline')) {
         setSelectedPostId('how-to-plan-a-wedding-timeline');
       } else if (pathLower.includes('20-tips-for-your-wedding-planning-checklist')) {
@@ -344,6 +362,7 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
     else if (postId === 'pakistani-wedding-hairstyles') dest = '/blog/pakistani-wedding-hairstyles';
     else if (postId === 'indian-wedding-hairstyles-guide') dest = '/blog/indian-wedding-hairstyles-guide';
     else if (postId === 'regional-indian-wedding-hairstyles') dest = '/blog/regional-indian-wedding-hairstyles';
+    else if (postId === '14-month-wedding-planning-timeline') dest = '/blog/14-month-wedding-planning-timeline';
     window.location.href = dest;
   };
 
@@ -580,6 +599,7 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
             {selectedPostId === 'indian-wedding-hairstyles-guide' && <IndianWeddingHairstylesArticle />}
             {selectedPostId === 'pakistani-wedding-hairstyles' && <PakistaniWeddingHairstylesArticle />}
             {selectedPostId === 'regional-indian-wedding-hairstyles' && <RegionalIndianWeddingHairstylesArticle />}
+            {selectedPostId === '14-month-wedding-planning-timeline' && <FourteenMonthWeddingTimelineArticle />}
           </div>
         )}
       </main>
