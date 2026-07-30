@@ -215,7 +215,7 @@ export function FourteenMonthWeddingTimelineArticle() {
         </div>
 
         <p className="text-slate-700 leading-relaxed">
-          Everything in this timeline starts with three decisions: your budget, your rough guest count, and your venue. Talk through your budget honestly — including who's contributing what — before you fall in love with a venue that doesn't fit it, and start touring venues immediately, since popular venues for Saturday dates in peak season are often booked 10-14 months out.
+          Everything in this timeline starts with three decisions: your budget, your rough guest count, and your venue. Talk through your budget honestly — including who's contributing what — before you fall in love with a venue that doesn't fit it, and start touring venues immediately. For detailed steps on selecting a venue, read our guide on <a href="/blog/how-to-choose-the-perfect-wedding-venue" className="text-brand-pink hover:underline font-medium">how to choose the perfect wedding venue</a>.
         </p>
         <p className="text-slate-700 leading-relaxed">
           Once your date and venue are locked, book the vendors with the longest lead times next — photographer, videographer, and caterer — since strong photographers in particular get booked far ahead of when most couples expect. This is also when dress or suit shopping should start, since alterations and custom orders can take several months on their own.
@@ -224,7 +224,7 @@ export function FourteenMonthWeddingTimelineArticle() {
           With the big vendors locked, the middle stretch is about the details that shape how the day feels: invitation design, décor direction, and your menu tasting, plus launching a wedding website so out-of-town guests have somewhere to check details early.
         </p>
         <p className="text-slate-700 leading-relaxed">
-          As invitations go out and RSVPs start coming back, the day takes real shape on paper — this is also when a first dress fitting typically happens, leaving enough time for alterations before a final fitting closer to the date.
+          As invitations go out and RSVPs start coming back, the day takes real shape on paper — refer to our guide on <a href="/blog/mastering-your-guest-list-and-seating-charts" className="text-brand-pink hover:underline font-medium">mastering your guest list & seating charts</a> to manage guest counts and seating effortlessly.
         </p>
         <p className="text-slate-700 leading-relaxed">
           The final stretch is about confirmation, not new decisions: final headcount, final payments, final fittings, and a clear rundown for your wedding party and vendors so nothing depends on you remembering it that week.
@@ -323,7 +323,7 @@ export function FourteenMonthWeddingTimelineArticle() {
           <span className="text-brand-pink mr-2">04.</span> Wedding Budget Breakdown: What Your 14 Months Will Actually Cost
         </h2>
         <p className="text-slate-700 leading-relaxed">
-          Wedding costs vary enormously by city, guest count, and season, so treat the percentages below as a planning starting point, not a promise — industry budget surveys consistently show venue and catering taking the largest single share, with the rest distributed across photography, attire, florals, and everything else.
+          Wedding costs vary enormously by city, guest count, and season, so treat the percentages below as a planning starting point, not a promise — industry surveys such as <a href="https://www.theknot.com/content/wedding-checklist" target="_blank" rel="noopener noreferrer" className="text-brand-pink hover:underline font-medium">The Knot Real Weddings Study</a> consistently show venue and catering taking the largest single share, with the rest distributed across photography, attire, florals, and details. To maximize your budget, check out our guide on <a href="/blog/10-budget-saving-tips-every-couple-needs-to-know" className="text-brand-pink hover:underline font-medium">10 budget-saving tips every couple needs to know</a>.
         </p>
 
         <figure className="my-8">
