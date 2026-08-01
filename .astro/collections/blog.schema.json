@@ -35,6 +35,9 @@
       "default": false,
       "type": "boolean"
     },
+    "quickAnswer": {
+      "type": "string"
+    },
     "keyTakeaways": {
       "type": "array",
       "items": {

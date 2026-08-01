@@ -14,6 +14,7 @@ const blog = defineCollection({
     heroImage: z.string(),
     heroImageAlt: z.string().optional(),
     featured: z.boolean().default(false),
+    quickAnswer: z.string().optional(),
     keyTakeaways: z.array(z.string()).optional(),
     tableOfContents: z.array(
       z.object({
