@@ -1,7 +1,4 @@
 {
-  "framework": "astro",
-  "buildCommand": "astro build",
-  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
