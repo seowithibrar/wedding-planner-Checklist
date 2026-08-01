@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => (b.data.featured ? 1 : -1));
+const featuredPost = sortedPosts.find(p => p.data.featured) || sortedPosts[0];
+const otherPosts = sortedPosts.filter(p => p.id !== featuredPost?.id);
+
+const seo = {
+  title: 'Blog & Guides — Wedding Planning Checklists',
+  description: 'Expert advice, detailed checklists, and timeline planning guides to help you create a stress-free wedding day.',
+  canonical: 'https://www.weddingplanningchecklists.org/blog'
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical}>
+  <Header />
+
+  <main class="pt-12 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Expert Advice & Guides</span>
+      <h1 class="text-4xl sm:text-5xl font-black text-[#1A1A1A]">Wedding Planning Blog</h1>
+      <p class="text-slate-600 text-base">Browse our complete collection of timeline guides, style inspiration, venue tips, and budget planners.</p>
+    </div>
+
+    {featuredPost && (
+      <div class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden mb-16 grid grid-cols-1 lg:grid-cols-2">
+        <div class="h-64 sm:h-96 lg:h-auto overflow-hidden">
+          <img src={featuredPost.data.heroImage} alt={featuredPost.data.heroImageAlt || featuredPost.data.title} class="w-full h-full object-cover" />
+        </div>
+        <div class="p-8 lg:p-12 flex flex-col justify-between">
+          <div>
+            <span class="bg-[#FCECF0] text-[#B76E79] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Featured Guide</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A] mt-4 mb-4">
+              <a href={`/blog/${featuredPost.id}`} class="hover:text-[#B76E79] transition-colors">
+                {featuredPost.data.title}
+              </a>
+            </h2>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              {featuredPost.data.description}
+            </p>
+          </div>
+          <div>
+            <a href={`/blog/${featuredPost.id}`} class="inline-block bg-[#1A1A1A] text-white px-6 py-3 rounded-full text-xs font-bold hover:bg-[#B76E79] transition-all">
+              Read Full Article →
+            </a>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {otherPosts.map(post => (
+        <article class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all">
+          <div class="h-48 overflow-hidden">
+            <img src={post.data.heroImage} alt={post.data.heroImageAlt || post.data.title} class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-[10px] font-bold text-[#B76E79] uppercase tracking-wider">{post.data.category}</span>
+              <h3 class="font-bold text-lg text-[#1A1A1A] mt-1 mb-2 line-clamp-2">
+                <a href={`/blog/${post.id}`} class="hover:text-[#B76E79] transition-colors">{post.data.title}</a>
+              </h3>
+              <p class="text-xs text-slate-500 line-clamp-3 leading-relaxed">{post.data.description}</p>
+            </div>
+            <a href={`/blog/${post.id}`} class="text-xs font-bold text-[#B76E79] hover:underline inline-block">Read Article →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const seo = {
+  title: 'Wedding Planning Checklists — Complete Guide for Brides & Couples (Free)',
+  description: 'Discover the ultimate wedding planning checklist covering every task from 18 months before to wedding day. Free printable templates, month-by-month timeline, budget tracker & vendor organizer.',
+  canonical: 'https://www.weddingplanningchecklists.org/'
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical}>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-[#FCECF0]/40 to-transparent">
+      <div class="max-w-5xl mx-auto px-4 text-center space-y-6">
+        <span class="inline-block bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+          Wedding Planning Authority
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-[#1A1A1A] leading-tight tracking-tight">
+          Plan Your Dream Wedding with <span class="text-[#B76E79]">Zero Stress</span>
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Expert checklists, interactive budgeting calculators, and month-by-month timelines tailored for brides and couples worldwide.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 pt-4">
+          <a href="/blog/18-month-wedding-planning-timeline" class="bg-[#B76E79] hover:bg-rose-600 text-white px-8 py-4 rounded-full text-sm font-bold shadow-lg transition-all">
+            Explore 18-Month Timeline
+          </a>
+          <a href="/tools/budget-calculator" class="bg-white hover:bg-slate-50 text-[#1A1A1A] border border-slate-200 px-8 py-4 rounded-full text-sm font-bold transition-all shadow-sm">
+            Budget Calculator
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Guides Grid -->
+    <section class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold text-center text-[#1A1A1A] mb-12">Popular Planning Guides</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <a href="/blog/18-month-wedding-planning-timeline" class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md transition-all group">
+          <span class="text-xs font-bold text-[#B76E79] uppercase">Planning</span>
+          <h3 class="font-bold text-xl text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-2 mb-3">Complete 18-Month Timeline</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Month-by-month guide with deposit timelines and cultural event integrations.</p>
+        </a>
+        <a href="/blog/hairstyles-for-wedding" class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md transition-all group">
+          <span class="text-xs font-bold text-[#B76E79] uppercase">Style Guide</span>
+          <h3 class="font-bold text-xl text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-2 mb-3">50+ Bridal Hairstyles</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Bridal buns, Hollywood waves, and South Asian wedding hairstyle guides.</p>
+        </a>
+        <a href="/blog/how-to-choose-wedding-venue" class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md transition-all group">
+          <span class="text-xs font-bold text-[#B76E79] uppercase">Venues</span>
+          <h3 class="font-bold text-xl text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-2 mb-3">How to Choose a Venue</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Site tour questions, hidden vendor fees, and Plan B rain contingency tips.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
