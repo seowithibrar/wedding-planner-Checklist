@@ -194,9 +194,62 @@ export function BlogArticleLayout({
             </section>
           )}
 
-          {/* 12. Related Articles (Placeholder for now, can be populated via generic data) */}
-          
-          {/* 13. Newsletter / Download CTA */}
+          {/* 13. Related Articles */}
+          <section className="my-12">
+            <h3 className="font-heading text-2xl font-bold text-brand-dark mb-6">Related Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {slug !== '18-month-wedding-planning-timeline' && (
+                <a href="/blog/18-month-wedding-planning-timeline" className="block group bg-white rounded-2xl overflow-hidden border border-brand-pink/30 shadow-sm hover:shadow-md transition-all">
+                  <div className="h-36 bg-slate-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800" alt="18-Month Timeline" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-[10px] font-bold text-brand-rosegold uppercase tracking-wider block mb-1">Planning</span>
+                    <h4 className="font-bold text-sm text-brand-dark group-hover:text-brand-rosegold transition-colors line-clamp-2">Complete 18-Month Wedding Planning Timeline</h4>
+                    <p className="text-xs text-brand-text/60 mt-2">18 Min Read</p>
+                  </div>
+                </a>
+              )}
+              {slug !== '14-month-wedding-planning-timeline' && (
+                <a href="/blog/14-month-wedding-planning-timeline" className="block group bg-white rounded-2xl overflow-hidden border border-brand-pink/30 shadow-sm hover:shadow-md transition-all">
+                  <div className="h-36 bg-slate-100 overflow-hidden">
+                    <img src="/14-Month Wedding Planning Timeline.webp" alt="14-Month Timeline" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-[10px] font-bold text-brand-rosegold uppercase tracking-wider block mb-1">Planning</span>
+                    <h4 className="font-bold text-sm text-brand-dark group-hover:text-brand-rosegold transition-colors line-clamp-2">14-Month Wedding Planning Timeline & Checklist</h4>
+                    <p className="text-xs text-brand-text/60 mt-2">12 Min Read</p>
+                  </div>
+                </a>
+              )}
+              {slug !== 'how-to-plan-a-wedding-timeline' && (
+                <a href="/blog/how-to-plan-a-wedding-timeline" className="block group bg-white rounded-2xl overflow-hidden border border-brand-pink/30 shadow-sm hover:shadow-md transition-all">
+                  <div className="h-36 bg-slate-100 overflow-hidden">
+                    <img src="/How to Plan a Wedding Timeline.webp" alt="Wedding Timeline" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-[10px] font-bold text-brand-rosegold uppercase tracking-wider block mb-1">Planning</span>
+                    <h4 className="font-bold text-sm text-brand-dark group-hover:text-brand-rosegold transition-colors line-clamp-2">How to Plan a Wedding Timeline: Step-by-Step Guide</h4>
+                    <p className="text-xs text-brand-text/60 mt-2">7 Min Read</p>
+                  </div>
+                </a>
+              )}
+              {slug !== '20-tips-for-your-wedding-planning-checklist' && slug === '18-month-wedding-planning-timeline' && (
+                <a href="/blog/20-tips-for-your-wedding-planning-checklist" className="block group bg-white rounded-2xl overflow-hidden border border-brand-pink/30 shadow-sm hover:shadow-md transition-all">
+                  <div className="h-36 bg-slate-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=800" alt="20 Tips" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-[10px] font-bold text-brand-rosegold uppercase tracking-wider block mb-1">Planning</span>
+                    <h4 className="font-bold text-sm text-brand-dark group-hover:text-brand-rosegold transition-colors line-clamp-2">20 Essential Tips for Your Wedding Planning Checklist</h4>
+                    <p className="text-xs text-brand-text/60 mt-2">8 Min Read</p>
+                  </div>
+                </a>
+              )}
+            </div>
+          </section>
+
+          {/* 14. Newsletter / Download CTA */}
           <section className="bg-brand-dark text-white rounded-3xl p-8 text-center my-12 shadow-xl relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1200')] opacity-10 bg-cover bg-center"></div>
             <div className="relative z-10">

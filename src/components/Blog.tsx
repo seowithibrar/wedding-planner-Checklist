@@ -74,7 +74,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Wedding Planning Checklists',
     excerpt: 'The ultimate 18-month wedding planning timeline. Complete month-by-month guide, vendor booking schedules, budget breakdown, and multi-day cultural event planning.',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200',
-    layout: 'standard'
+    layout: 'standard',
+    featured: true
   },
   {
     id: '14-month-wedding-planning-timeline',
@@ -118,8 +119,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Wedding Planning Checklists',
     excerpt: 'Our ultimate wedding planning checklist guide walks you through every deadline, budget setup, venue selection, and vendor booking step-by-step.',
     image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800',
-    layout: 'standard',
-    featured: true
+    layout: 'standard'
   },
   {
     id: 'wedding-planning-checklist-tips',
