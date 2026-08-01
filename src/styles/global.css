@@ -7,21 +7,10 @@
   line-height: 2.25rem;
   font-weight: 800;
   color: #1A1A1A;
-  margin-top: 3.5rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
   border-bottom: 2px solid #F3E8EA;
-  position: relative;
-}
-
-.article-content h2::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background-color: #B76E79;
 }
 
 .article-content h3 {
@@ -29,68 +18,57 @@
   line-height: 1.75rem;
   font-weight: 700;
   color: #1A1A1A;
-  margin-top: 2.25rem;
-  margin-bottom: 1rem;
-  display: flex;
-  items-center: center;
-}
-
-.article-content h3::before {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #B76E79;
-  margin-right: 0.625rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .article-content h4 {
   font-size: 1.1rem;
   font-weight: 700;
   color: #B76E79;
-  margin-top: 1.75rem;
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .article-content p {
   color: #334155;
   line-height: 1.8;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   font-size: 1.05rem;
 }
 
 .article-content ul {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 1.75rem;
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #334155;
 }
 
 .article-content ul li {
-  position: relative;
-  padding-left: 1.75rem;
-  margin-bottom: 0.75rem;
-  color: #334155;
+  margin-bottom: 0.5rem;
   line-height: 1.7;
+  color: #334155;
 }
 
-.article-content ul li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #B76E79;
-  font-weight: bold;
+.article-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #334155;
+}
+
+.article-content ol li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+  color: #334155;
 }
 
 .article-content blockquote {
   background-color: #FCECF0;
   border-left: 4px solid #B76E79;
-  padding: 1.5rem 2rem;
-  border-radius: 0 1.5rem 1.5rem 0;
-  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 1rem 1rem 0;
+  margin: 1.75rem 0;
   font-style: italic;
   color: #1A1A1A;
   font-weight: 500;
@@ -98,30 +76,36 @@
 
 .article-content table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 2rem 0;
-  border-radius: 1.25rem;
-  overflow: hidden;
-  border: 1px solid #F3E8EA;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  border: 1px solid #E2E8F0;
 }
 
 .article-content th {
-  background-color: #FCECF0;
+  background-color: #F8FAFC;
   color: #1A1A1A;
   font-weight: 700;
-  padding: 1rem 1.25rem;
+  padding: 0.75rem 1rem;
   text-align: left;
   font-size: 0.875rem;
+  border: 1px solid #E2E8F0;
 }
 
 .article-content td {
-  padding: 1rem 1.25rem;
-  border-top: 1px solid #F3E8EA;
+  padding: 0.75rem 1rem;
+  border: 1px solid #E2E8F0;
   color: #334155;
   font-size: 0.875rem;
 }
 
 .article-content tr:nth-child(even) {
   background-color: #FAFAFA;
+}
+
+.article-content img {
+  border-radius: 1rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  height: auto;
 }
