@@ -1,185 +1,558 @@
-# AGENTS.md
-# WeddingPlanningChecklists.org AI Content Operating System (AI-COS)
+# AI Publisher Framework (AIPF) v1.0
+## AGENTS.md
 
 Version: 1.0
-Website: https://www.weddingplanningchecklists.org/
+
+Framework Name: AI Publisher Framework (AIPF)
+
+Purpose:
+A universal AI-powered content publishing system for any blog or content website.
 
 ---
 
 # Mission
 
-Your mission is to create, improve, review, optimize and publish world-class wedding planning content.
+Your mission is to create world-class content that satisfies search intent, provides genuine value, follows a consistent design system, and is ready for publication.
 
-Every article must:
-- Help real users
-- Satisfy search intent
-- Follow the approved layout system
-- Follow the design system
-- Follow SEO best practices
-- Follow internal linking rules
-- Follow publishing rules
-- Pass QA before publishing
+The framework must work for any industry including but not limited to:
 
-Never create random article layouts.
+- Blogs
+- Business Websites
+- SaaS
+- Travel
+- Education
+- Wedding
+- SEO
+- Health
+- Finance
+- eCommerce
+- Technology
+
+Never assume the website niche.
+
+Always read the website configuration first.
 
 ---
 
-# Production Rules
+# Core Philosophy
 
-Production Website: https://www.weddingplanningchecklists.org/
+Configuration over Customization.
 
-Always use production branding.
+The framework never hardcodes:
 
-Never use:
-- Demo content
-- Lorem Ipsum
-- Sample text
-- Template branding
-- Evera
-- Test Brand
-- Fake authors
-- Placeholder URLs
-- Dummy images
+- Website Name
+- Brand
+- Industry
+- Language
+- Tone
+- Audience
 
-Before publishing automatically validate:
-✓ Brand Name
-✓ Author
-✓ Logo
-✓ Footer
-✓ Header
-✓ CTA
-✓ Internal Links
-✓ Schema
-✓ Metadata
+Everything comes from
 
-Never overwrite production content with template content.
+/config/
+
+---
+
+# Startup Workflow
+
+Before starting any task
+
+Load
+
+/config/site.md
+
+↓
+
+Load
+
+/config/brand.md
+
+↓
+
+Load
+
+/config/content.md
+
+↓
+
+Load
+
+/config/seo.md
+
+↓
+
+Load
+
+/config/publishing.md
+
+Only after configuration has been loaded may content generation begin.
 
 ---
 
 # Content Workflow
 
-Every article must follow this workflow.
+Every task follows this workflow.
 
-### STEP 1: Determine Search Intent
-Possible intents:
-- Informational
-- Commercial
-- Transactional
-- Navigational
+STEP 1
 
-### STEP 2: Determine Content Type
-Choose ONLY one from available content types:
-- Ultimate Guide
-- Timeline Guide
-- Checklist
-- Ideas Article
-- Cost Guide
-- Comparison
-- Venue Guide
-- Vendor Guide
-- Seasonal Guide
-- FAQ Hub
+Understand the Request
 
-Never invent a new content type. If no template exists, STOP and create template first.
+↓
 
-### STEP 3: Load Layout Template
-Load the corresponding template. Never create a custom layout.
+STEP 2
 
-### STEP 4: Load Design Blocks
-Load required components:
-✓ Hero
-✓ Metadata
-✓ Quick Answer
-✓ Key Takeaways
-✓ Table of Contents
-✓ FAQ
-✓ Related Articles
-✓ CTA
-✓ Author Box
+Determine Search Intent
 
-Optional blocks: Timeline, Comparison Table, Checklist, Expert Tip, Warning, Quick Facts, Download Banner, Calculator, Budget Table.
+↓
 
-### STEP 5: Content Generation Requirements
-Write original content. Never copy or paraphrase competitors. Create better content. Every section must provide value. Avoid fluff and keyword stuffing.
-Use: Examples, Actionable advice, Real planning tips, Practical checklists, Decision making guidance.
-Every H2 must answer a user question. Every H3 must support its parent H2.
+STEP 3
 
-### STEP 6: SEO Optimization
-Validate: SEO Title, Meta Description, Slug, Primary Keyword, Secondary Keywords, Internal Links, External References, Image ALT, Schema, Heading hierarchy, Search Intent.
+Determine Content Type
 
-### STEP 7: Internal Linking
-Requirements: Minimum 3-5 contextual links, Relevant anchor text, Related Articles, No keyword stuffing, No irrelevant links.
+↓
 
-### STEP 8: Publishing Rules
-Before publishing validate: No placeholder content, No template branding, No broken links, No missing images, No fake schema, No fake metadata, No incomplete sections. If validation fails, STOP and fix automatically.
+STEP 4
 
-### STEP 9: Quality Assurance
-Content QA, SEO QA, UX QA, Publishing QA.
+Load Template
+
+↓
+
+STEP 5
+
+Load Design System
+
+↓
+
+STEP 6
+
+Generate Content
+
+↓
+
+STEP 7
+
+SEO Optimization
+
+↓
+
+STEP 8
+
+Internal Linking
+
+↓
+
+STEP 9
+
+Quality Assurance
+
+↓
+
+STEP 10
+
+Publishing Validation
+
+↓
+
+Complete
 
 ---
 
-# Content Rules
+# Content Type Detection
 
-- Never remove approved content.
-- Never shorten content without instruction.
-- Never delete sections, tables, FAQs, or expert tips.
-- Formatting may change, but content must remain complete.
+Select exactly ONE content type.
+
+Available templates
+
+Ultimate Guide
+
+How-To
+
+Checklist
+
+Ideas
+
+Comparison
+
+Timeline
+
+Cost Guide
+
+Landing Page
+
+Category Page
+
+FAQ
+
+Resource Hub
+
+Tool Page
+
+Calculator
+
+If no suitable template exists
+
+STOP
+
+Create a new template before writing.
+
+Never invent layouts.
+
+---
+
+# Template Loading
+
+Templates are located in
+
+/templates/
+
+Always load the appropriate template.
+
+Never mix multiple templates unless explicitly allowed.
+
+---
+
+# Design System
+
+Load
+
+/rules/design-system.md
+
+Use only approved blocks.
+
+Examples
+
+Hero
+
+Quick Answer
+
+Key Takeaways
+
+Table of Contents
+
+Timeline
+
+Checklist
+
+Comparison Table
+
+Callout
+
+Expert Tip
+
+Quick Facts
+
+Warning
+
+Download Banner
+
+FAQ
+
+Related Articles
+
+CTA
+
+Author Box
 
 ---
 
 # Writing Rules
 
-Always write for humans first, search engines second, AI never.
-Tone: Professional, Helpful, Friendly, Trustworthy, Readable. Avoid robotic writing, repetitive phrases, and filler.
+Always write
+
+Original content.
+
+Never copy competitors.
+
+Never paraphrase entire sections.
+
+Never use AI clichés.
+
+Write naturally.
+
+Human first.
+
+Search engine second.
+
+AI last.
 
 ---
 
-# EEAT Rules
+# SEO Rules
 
-Demonstrate: Experience, Expertise, Authority, Trust.
-Use: Examples, Expert recommendations, Practical guidance, Actionable tips, Decision frameworks.
+Load
+
+/rules/seo.md
+
+Validate
+
+SEO Title
+
+Meta Description
+
+Primary Keyword
+
+Secondary Keywords
+
+Entities
+
+Heading Hierarchy
+
+Internal Links
+
+External References
+
+Image ALT Text
+
+Schema
+
+Canonical
+
+---
+
+# Internal Linking
+
+Load
+
+/rules/internal-linking.md
+
+Requirements
+
+Minimum contextual links
+
+Related articles
+
+Relevant anchor text
+
+No broken links
+
+No keyword stuffing
 
 ---
 
 # Image Rules
 
-Hero image required. Every major section should include relevant images when appropriate.
-Every image requires: ALT text, SEO filename, Caption when useful. Never use placeholder images.
+Load
+
+/rules/images.md
+
+Every required image must include
+
+ALT text
+
+SEO filename
+
+Caption
+
+Prompt (if AI-generated)
 
 ---
 
-# FAQ Rules
+# EEAT Rules
 
-- Ultimate Guides: Minimum 8 FAQs
-- Supporting articles: Minimum 5 FAQs
-FAQs must match search intent and generate FAQ Schema.
+Load
+
+/rules/eeat.md
+
+Content must demonstrate
+
+Experience
+
+Expertise
+
+Authority
+
+Trust
+
+Support important claims with credible references where appropriate.
+
+Do not fabricate statistics, quotes, or credentials.
 
 ---
 
-# Final Publishing Rule
+# Accessibility Rules
 
-Before publishing compare Generated Draft vs Final Published Version.
-Confirm:
-✓ No content removed
-✓ No headings removed
-✓ No missing paragraphs
-✓ No missing tables
-✓ No missing FAQs
-✓ No missing images
+Load
 
-Only publish after achieving a complete content match.
+/rules/accessibility.md
+
+Ensure
+
+Proper heading hierarchy
+
+Readable formatting
+
+Meaningful link text
+
+Tables with headers
+
+Accessible images
 
 ---
 
-# Golden Rules
+# Quality Assurance
 
-1. Never create random layouts.
-2. Always use an approved template.
-3. Always use approved design blocks.
-4. Never remove approved content.
-5. Never publish without QA.
-6. Never use placeholder branding.
-7. Always improve user experience.
-8. Always prioritize helpful, original content.
-9. Every article should be the best resource on its topic.
-10. If uncertain, stop and request clarification instead of publishing incorrect content.
+Load
+
+/rules/qa.md
+
+Validate
+
+Grammar
+
+Formatting
+
+Readability
+
+Lists
+
+Tables
+
+Images
+
+Links
+
+FAQ
+
+Schema
+
+Metadata
+
+Design consistency
+
+---
+
+# Content Integrity
+
+Load
+
+/rules/content-integrity.md
+
+Confirm
+
+No missing sections
+
+No missing paragraphs
+
+No missing tables
+
+No missing FAQs
+
+No missing CTA
+
+No missing images
+
+Never publish incomplete content.
+
+---
+
+# Publishing Rules
+
+Load
+
+/config/publishing.md
+
+Validate
+
+Brand
+
+Author
+
+URLs
+
+Logo
+
+Footer
+
+Header
+
+Metadata
+
+Canonical
+
+Robots
+
+Schema
+
+No placeholder content
+
+No demo branding
+
+If validation fails
+
+STOP
+
+Do not publish.
+
+---
+
+# Global Rules
+
+Always:
+
+✓ Follow configuration files
+
+✓ Use approved templates
+
+✓ Use approved design blocks
+
+✓ Maintain content integrity
+
+✓ Satisfy search intent
+
+✓ Create original content
+
+✓ Validate before publishing
+
+Never:
+
+✗ Use placeholder content
+
+✗ Invent branding
+
+✗ Skip required sections
+
+✗ Pass failed QA
+
+✗ Remove approved content
+
+✗ Hallucinate facts
+
+✗ Copy competitors
+
+---
+
+# Success Criteria
+
+A task is complete only when:
+
+✓ Search intent is fully satisfied
+
+✓ Template is correctly applied
+
+✓ Design system is followed
+
+✓ SEO validation passes
+
+✓ QA passes
+
+✓ Content integrity passes
+
+✓ Publishing validation passes
+
+Only then should the article be considered ready for publication.
+
+---
+
+# Framework Principle
+
+One Framework.
+
+Unlimited Websites.
+
+Unlimited Niches.
+
+Consistent Quality.
+
+Configuration Driven.
+
+Scalable by Design.
