@@ -9,6 +9,8 @@ const sortedPosts = posts.sort((a, b) => (b.data.featured ? 1 : -1));
 const featuredPost = sortedPosts.find(p => p.data.featured) || sortedPosts[0];
 const otherPosts = sortedPosts.filter(p => p.id !== featuredPost?.id);
 
+const featuredSlug = featuredPost ? featuredPost.id.replace(/\.(md|mdx)$/, '') : '';
+
 const seo = {
   title: 'Blog & Guides — Wedding Planning Checklists',
   description: 'Expert advice, detailed checklists, and timeline planning guides to help you create a stress-free wedding day.',
@@ -35,7 +37,7 @@ const seo = {
           <div>
             <span class="bg-[#FCECF0] text-[#B76E79] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Featured Guide</span>
             <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A] mt-4 mb-4">
-              <a href={`/blog/${featuredPost.id}`} class="hover:text-[#B76E79] transition-colors">
+              <a href={`/blog/${featuredSlug}`} class="hover:text-[#B76E79] transition-colors">
                 {featuredPost.data.title}
               </a>
             </h2>
@@ -44,7 +46,7 @@ const seo = {
             </p>
           </div>
           <div>
-            <a href={`/blog/${featuredPost.id}`} class="inline-block bg-[#1A1A1A] text-white px-6 py-3 rounded-full text-xs font-bold hover:bg-[#B76E79] transition-all">
+            <a href={`/blog/${featuredSlug}`} class="inline-block bg-[#1A1A1A] text-white px-6 py-3 rounded-full text-xs font-bold hover:bg-[#B76E79] transition-all">
               Read Full Article →
             </a>
           </div>
@@ -53,23 +55,26 @@ const seo = {
     )}
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {otherPosts.map(post => (
-        <article class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all">
-          <div class="h-48 overflow-hidden">
-            <img src={post.data.heroImage} alt={post.data.heroImageAlt || post.data.title} class="w-full h-full object-cover" />
-          </div>
-          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
-            <div>
-              <span class="text-[10px] font-bold text-[#B76E79] uppercase tracking-wider">{post.data.category}</span>
-              <h3 class="font-bold text-lg text-[#1A1A1A] mt-1 mb-2 line-clamp-2">
-                <a href={`/blog/${post.id}`} class="hover:text-[#B76E79] transition-colors">{post.data.title}</a>
-              </h3>
-              <p class="text-xs text-slate-500 line-clamp-3 leading-relaxed">{post.data.description}</p>
+      {otherPosts.map(post => {
+        const slug = post.id.replace(/\.(md|mdx)$/, '');
+        return (
+          <article class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all">
+            <div class="h-48 overflow-hidden">
+              <img src={post.data.heroImage} alt={post.data.heroImageAlt || post.data.title} class="w-full h-full object-cover" />
             </div>
-            <a href={`/blog/${post.id}`} class="text-xs font-bold text-[#B76E79] hover:underline inline-block">Read Article →</a>
-          </div>
-        </article>
-      ))}
+            <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+              <div>
+                <span class="text-[10px] font-bold text-[#B76E79] uppercase tracking-wider">{post.data.category}</span>
+                <h3 class="font-bold text-lg text-[#1A1A1A] mt-1 mb-2 line-clamp-2">
+                  <a href={`/blog/${slug}`} class="hover:text-[#B76E79] transition-colors">{post.data.title}</a>
+                </h3>
+                <p class="text-xs text-slate-500 line-clamp-3 leading-relaxed">{post.data.description}</p>
+              </div>
+              <a href={`/blog/${slug}`} class="text-xs font-bold text-[#B76E79] hover:underline inline-block">Read Article →</a>
+            </div>
+          </article>
+        );
+      })}
     </div>
   </main>
 
