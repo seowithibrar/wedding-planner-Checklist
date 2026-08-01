@@ -14,6 +14,7 @@ export function PakistaniWeddingHairstylesArticle() {
       updatedAt="July 2026"
       heroImage="/pakistani-wedding-hairstyles.webp"
       heroImageAlt="Pakistani Wedding Hairstyles"
+      metaDescription="Complete guide to Pakistani wedding hairstyles. 45+ authentic bridal styles for Mehndi, Baraat, and Walima, organized by face shape, outfit, and veil."
       introduction={
         <p>
           Your wedding hairstyle is your crown. It frames your face for hundreds of photographs, stays in place through hours of dancing, and showcases the jewelry and traditions that make your look distinctly yours. Yet choosing the right style—one that suits your face shape, complements your outfit, and feels authentically you—can feel overwhelming with so many options.

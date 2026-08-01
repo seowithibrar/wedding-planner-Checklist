@@ -14,6 +14,7 @@ export function FourteenMonthWeddingTimelineArticle() {
       updatedAt="July 2026"
       heroImage="/14-Month Wedding Planning Timeline.webp"
       heroImageAlt="The 14-Month Wedding Planning Timeline & Checklist"
+      metaDescription="Complete 14-month wedding planning timeline. Month-by-month checklist, vendor booking schedule, budget breakdown, and multi-day ceremony guide."
       introduction={
         <p>
           You just got engaged, and somewhere between the celebration calls and the ring photos, a quieter thought creeps in: <em>where do we even start?</em> If your wedding is roughly 14 months away, you're in a genuinely good spot. It's enough time to book the venue and photographer you actually want, spread the cost across more paychecks, and make decisions without panic — without so much time that planning drags on for two years and loses momentum.
@@ -472,6 +473,7 @@ export function FourteenMonthWeddingTimelineArticle() {
           title="Ready to organize your wedding timeline?" 
           description="Use our free interactive wedding planning tools and customized checklists to keep every month on track effortlessly."
           buttonText="Explore Free Wedding Checklists"
+          link="/blog/The-Ultimate-Wedding-Planning-Checklists-Guide-for-a-Stress-Free-Wedding"
         />
 
       </section>

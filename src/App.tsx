@@ -216,7 +216,7 @@ export default function App() {
       if (currentPath.includes('wedding-planning-checklists')) {
         return; // Preserve legacy checklist URLs
       }
-      path = '/blog/The-Ultimate-Wedding-Planning-Checklists-Guide-for-a-Stress-Free-Wedding';
+      path = '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding';
     }
     else if (activeTab !== 'home') path = `/${activeTab}`;
     

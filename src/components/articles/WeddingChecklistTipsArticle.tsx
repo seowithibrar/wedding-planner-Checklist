@@ -14,6 +14,7 @@ export function WeddingChecklistTipsArticle() {
       updatedAt="July 2026"
       heroImage="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=1200"
       heroImageAlt="Couple looking at wedding planning checklist documents"
+      metaDescription="Discover 20 expert tips for your wedding planning checklist to eliminate stress, manage vendor contracts, and keep your wedding day on budget."
       introduction={
         <p>
           Most couples severely underestimate how many decisions a wedding actually involves. What starts as an exciting engagement announcement quickly turns into a mountain of vendor choices, deposit deadlines, and intricate logistical details.
@@ -57,6 +58,18 @@ export function WeddingChecklistTipsArticle() {
         {
           q: "When do I need to finalize the seating chart?",
           a: "Finalize your seating chart two weeks before the wedding. Send it to your caterer and stationer immediately so they can print place cards and organize meal distribution."
+        },
+        {
+          q: "What is the biggest planning mistake couples make?",
+          a: "The biggest mistake is booking vendors before defining a total budget or guest count limit."
+        },
+        {
+          q: "How many months in advance should we send save-the-dates?",
+          a: "Send save-the-dates 6 to 8 months in advance for local weddings, and 8 to 12 months for destination weddings."
+        },
+        {
+          q: "How can we stay organized during wedding planning?",
+          a: "Maintain a single master digital binder (Google Docs/Sheets or a dedicated planning app) with budget trackers, vendor contracts, and guest lists."
         }
       ]}
       conclusion={

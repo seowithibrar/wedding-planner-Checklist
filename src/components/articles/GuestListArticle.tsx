@@ -14,6 +14,7 @@ export function GuestListArticle() {
       updatedAt="July 2026"
       heroImage="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800"
       heroImageAlt="Curated table arrangements and seating checklist"
+      metaDescription="How to create an A/B wedding guest list, manage plus-ones, handle tricky family dynamics, and build an effortless seating chart."
       introduction={
         <p>
           Building a wedding guest list is often cited as the most stressful part of wedding planning. It forces couples to make difficult decisions about budget, venue capacity, and family politics—often all at the same time.
@@ -58,6 +59,14 @@ export function GuestListArticle() {
         {
           q: "How many people fit at a standard round table?",
           a: "A standard 60-inch round table comfortably seats 8 people (maximum 10). A 72-inch round table comfortably seats 10 people (maximum 12)."
+        },
+        {
+          q: "How do we handle guests who don't RSVP on time?",
+          a: "Wait 2 to 3 days past your RSVP deadline, then reach out individually with a polite message giving them 48 hours to confirm before assuming they cannot attend."
+        },
+        {
+          q: "Is an adults-only wedding acceptable?",
+          a: "Yes. Simply specify 'Adult Reception' on your invitation or address envelopes specifically to the parents to clarify that children are not included."
         }
       ]}
       conclusion={

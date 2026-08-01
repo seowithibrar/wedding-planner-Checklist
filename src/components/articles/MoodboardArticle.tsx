@@ -14,6 +14,7 @@ export function MoodboardArticle() {
       updatedAt="July 2026"
       heroImage="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=1200"
       heroImageAlt="Chic modern wedding venue decor"
+      metaDescription="Learn how to make a wedding moodboard layout. Curate color palettes, floral visual inspiration, typography, and decor themes for your vendors."
       introduction={
         <p>
           Before you book a florist, pick a dress, or design your invitations, you need a cohesive vision. A wedding moodboard is the foundation of your entire event's aesthetic. It communicates your style to your vendors faster and more accurately than words ever could.
@@ -58,6 +59,14 @@ export function MoodboardArticle() {
         {
           q: "How do I communicate my moodboard to vendors?",
           a: "Export your final moodboard as a PDF and attach it to every single vendor inquiry email. This ensures everyone is on the exact same page from day one."
+        },
+        {
+          q: "Can I create a digital wedding moodboard for free?",
+          a: "Yes. Tools like Canva, Milanote, and Pinterest offer excellent free templates to build professional digital wedding moodboards."
+        },
+        {
+          q: "Should I create separate moodboards for different wedding events?",
+          a: "Yes, especially for multi-event weddings (like rehearsal dinners or multi-day ceremonies). Creating a dedicated board for each event ensures every event has a distinct visual identity."
         }
       ]}
       conclusion={

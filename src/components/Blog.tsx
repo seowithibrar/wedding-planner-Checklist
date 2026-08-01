@@ -38,6 +38,7 @@ import { BudgetTipsArticle } from './articles/BudgetTipsArticle';
 import { PakistaniWeddingHairstylesArticle } from './articles/PakistaniWeddingHairstylesArticle';
 import { RegionalIndianWeddingHairstylesArticle } from './articles/RegionalIndianWeddingHairstylesArticle';
 import { FourteenMonthWeddingTimelineArticle } from './articles/FourteenMonthWeddingTimelineArticle';
+import { EighteenMonthWeddingTimelineArticle } from './articles/EighteenMonthWeddingTimelineArticle';
 
 interface BlogProps {
   onStart: () => void;
@@ -65,13 +66,24 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: '18-month-wedding-planning-timeline',
+    title: 'Complete 18-Month Wedding Planning Timeline: Month-by-Month Guide',
+    category: 'Planning',
+    date: 'August 2026',
+    readTime: '18 Min Read',
+    author: 'Wedding Planning Checklists',
+    excerpt: 'The ultimate 18-month wedding planning timeline. Complete month-by-month guide, vendor booking schedules, budget breakdown, and multi-day cultural event planning.',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200',
+    layout: 'standard'
+  },
+  {
     id: '14-month-wedding-planning-timeline',
     title: 'The 14-Month Wedding Planning Timeline & Checklist',
     category: 'Planning',
     date: 'July 2026',
     readTime: '12 Min Read',
     author: 'Wedding Planning Checklists',
-    excerpt: 'A complete 14-month wedding planning timeline: month-by-month tasks, vendor booking order, budget breakdown, and a multi-day event variant.',
+    excerpt: 'Complete 14-month wedding planning timeline. Month-by-month checklist, vendor booking schedule, budget breakdown, and multi-day ceremony guide.',
     image: '/14-Month Wedding Planning Timeline.webp',
     layout: 'standard'
   },
@@ -82,18 +94,18 @@ export const BLOG_POSTS: BlogPost[] = [
     date: 'July 2026',
     readTime: '10 Min Read',
     author: 'Wedding Planning Checklists',
-    excerpt: 'Plan every bridal hairstyle from haldi to reception � by face shape, hair type, and region � plus real trial timelines and cost ranges for Indian weddings.',
+    excerpt: 'Explore the best Indian wedding hairstyles for Haldi, Sangeet, Wedding, and Reception. Features bridal buns, gajra braids, hair trials, and cost guides.',
     image: '/images/indian-wedding-hairstyles-hero.jpg',
     layout: 'standard'
   },
   {
     id: 'pakistani-wedding-hairstyles',
-    title: 'Pakistani Wedding Hairstyles Guide: 45+ Styles',
+    title: 'Pakistani Wedding Hairstyles: 45+ Styles for Mehndi, Baraat & Walima',
     category: 'Style Guide',
     date: 'July 2026',
     readTime: '10 Min Read',
     author: 'Wedding Planning Checklists',
-    excerpt: 'Your complete guide to Pakistani wedding hairstyles. 45+ authentic styles for mehndi, baraat, and walima, organized by face shape and outfit.',
+    excerpt: 'Complete guide to Pakistani wedding hairstyles. 45+ authentic bridal styles for Mehndi, Baraat, and Walima, organized by face shape, outfit, and veil.',
     image: '/pakistani-wedding-hairstyles.webp',
     layout: 'standard'
   },
@@ -104,96 +116,96 @@ export const BLOG_POSTS: BlogPost[] = [
     date: 'June 2026',
     readTime: '10 Min Read',
     author: 'Wedding Planning Checklists',
-    excerpt: 'Planning a wedding involves hundreds of decisions, deadlines, and moving parts. Without a clear system, it\'s easy to forget important tasks. Our comprehensive guide walks you through setting budgets, venues, and guest lists.',
+    excerpt: 'Our ultimate wedding planning checklist guide walks you through every deadline, budget setup, venue selection, and vendor booking step-by-step.',
     image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800',
     layout: 'standard',
     featured: true
   },
   {
     id: 'wedding-planning-checklist-tips',
-    title: '20 Tips for Your Wedding Planning Checklist',
+    title: '20 Essential Tips for Your Wedding Planning Checklist',
     category: 'Planning',
     date: 'June 2026',
     readTime: '8 Min Read',
     author: 'Wedding Planning Checklists',
-    excerpt: 'Use our wedding planning checklist to stress less and enjoy more. 20 proven tips to help engaged couples plan every detail with confidence.',
+    excerpt: 'Discover 20 expert tips for your wedding planning checklist to eliminate stress, manage vendor contracts, and keep your wedding day on budget.',
     image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=800',
     layout: 'standard'
   },
   {
     id: 'how-to-choose-wedding-venue',
-    title: 'How to Choose the Perfect Wedding Venue',
+    title: 'How to Choose the Perfect Wedding Venue: Step-by-Step Guide',
     category: 'Venues',
     date: 'June 2026',
     readTime: '6 Min Read',
     author: 'Wedding Planning Checklists',
-    excerpt: 'A complete walkthrough on setting venue budgets, matching styles, and checking for hidden costs during site visits.',
+    excerpt: 'Learn how to choose a wedding venue that fits your budget and guest count. Checklist includes site tour questions, hidden fees, and Plan B prep.',
     image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800',
     layout: 'standard'
   },
   {
     id: 'wedding-budget-tips',
-    title: '10 Budget-Saving Tips Every Couple Needs to Know',
+    title: '10 Budget-Saving Wedding Tips Every Couple Needs to Know',
     category: 'Budgeting',
     date: 'June 2026',
     readTime: '5 Min Read',
     author: 'Wedding Planning Checklists',
-    excerpt: 'Learn how to save money on your dream wedding without sacrificing your style or the guest experience.',
+    excerpt: 'Save thousands on your wedding without sacrificing style. Learn 10 proven wedding budget tips for venue, catering, florals, and vendor negotiations.',
     image: 'https://images.unsplash.com/photo-1507504038482-76214343e547?auto=format&fit=crop&q=80&w=800',
     layout: 'standard'
   },
   {
     id: 'perfect-guest-list-guide',
-    title: 'Mastering Your Guest List & Seating Charts',
+    title: 'Mastering Your Wedding Guest List & Seating Charts',
     category: 'Guest List',
     date: 'June 2026',
     readTime: '7 Min Read',
-    author: 'Charlotte',
-    excerpt: 'Discover stress-free strategies to build your guest lists, track RSVPs, and organize seating arrangements effortlessly.',
+    author: 'Wedding Planning Checklists',
+    excerpt: 'How to create an A/B wedding guest list, manage plus-ones, handle tricky family dynamics, and build an effortless seating chart.',
     image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800',
     layout: 'minimalist'
   },
   {
     id: 'moodboard-layout',
-    title: 'Chic & Modern Aesthetic: Visual Moodboard Layout',
+    title: 'How to Create a Wedding Moodboard: Aesthetic Styling & Color Cards',
     category: 'Style Guide',
     date: 'June 2026',
     readTime: '4 Min Read',
-    author: 'Charlotte',
-    excerpt: 'A visual exploration of styling elements, color cards, decor details, and inspiring tablescapes for your mood boards.',
+    author: 'Wedding Planning Checklists',
+    excerpt: 'Learn how to make a wedding moodboard layout. Curate color palettes, floral visual inspiration, typography, and decor themes for your vendors.',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800',
     layout: 'gallery'
   },
   {
     id: 'hairstyles-for-wedding',
-    title: '50+ Hairstyles for Wedding: Elegant Bridal Looks',
+    title: '50+ Best Hairstyles for Wedding: Elegant Bridal Looks & Trends',
     category: 'Style Guide',
     date: 'June 2026',
     readTime: '9 Min Read',
     author: 'Wedding Planning Checklists',
-    excerpt: 'From classic bridal buns and Hollywood waves to South Asian wedding traditions and 2026\'s hottest trends — your complete guide to choosing the perfect wedding hairstyle.',
+    excerpt: 'Explore 50+ hairstyles for wedding day looks. From classic updos and Hollywood waves to South Asian bridal hair, find your perfect wedding hairstyle.',
     image: '/50-hairstyles-for-wedding.webp',
     layout: 'standard'
   },
   {
     id: 'how-to-plan-a-wedding-timeline',
-    title: 'How to Plan a Wedding Timeline: A Complete Step-by-Step Guide',
+    title: 'How to Plan a Wedding Timeline: Step-by-Step Guide (2026)',
     category: 'Planning',
     date: 'June 2026',
     readTime: '7 Min Read',
     author: 'Wedding Planning Checklists',
-    excerpt: 'Learn how to plan a wedding timeline from engagement to wedding day, including a wedding day timeline, reception timeline, and budget timeline.',
+    excerpt: 'Learn how to plan a wedding timeline from engagement to wedding day. Includes day-of timeline templates, vendor schedules, and reception timelines.',
     image: '/How to Plan a Wedding Timeline.webp',
     layout: 'standard'
   },
   {
     id: 'regional-indian-wedding-hairstyles',
-    title: 'Regional Indian Wedding Hairstyles: A Complete Guide to Bridal Hair by Tradition',
+    title: 'Regional Indian Wedding Hairstyles: Traditions, Buns & Gajras',
     category: 'Style Guide',
     date: 'January 2025',
     readTime: '10 Min Read',
     author: 'Wedding Planning Checklists',
-    excerpt: 'Explore 5 major Indian and Pakistani bridal hairstyle traditions, including North Indian buns, South Indian temple curls, and Bengali waves. Get expert styling tips.',
+    excerpt: 'Discover regional Indian wedding hairstyles including North Indian judas, South Indian temple braids, Bengali waves, and Maharashtrian bridal hair.',
     image: '/regional-hero-bridal-hairstyles.png',
     layout: 'standard'
   }
@@ -212,7 +224,8 @@ const getSlugFromPostId = (id: string): string => {
     'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide',
     'pakistani-wedding-hairstyles': 'pakistani-wedding-hairstyles',
     'regional-indian-wedding-hairstyles': 'regional-indian-wedding-hairstyles',
-    '14-month-wedding-planning-timeline': '14-month-wedding-planning-timeline'
+    '14-month-wedding-planning-timeline': '14-month-wedding-planning-timeline',
+    '18-month-wedding-planning-timeline': '18-month-wedding-planning-timeline'
   };
   return mapping[id] || id;
 };
@@ -233,7 +246,8 @@ const getPostIdFromSlug = (slug: string): string | null => {
     'indian-wedding-hairstyles-guide': 'indian-wedding-hairstyles-guide',
     'pakistani-wedding-hairstyles': 'pakistani-wedding-hairstyles',
     'regional-indian-wedding-hairstyles': 'regional-indian-wedding-hairstyles',
-    '14-month-wedding-planning-timeline': '14-month-wedding-planning-timeline'
+    '14-month-wedding-planning-timeline': '14-month-wedding-planning-timeline',
+    '18-month-wedding-planning-timeline': '18-month-wedding-planning-timeline'
   };
   return mapping[normalizedSlug] || null;
 };
@@ -363,6 +377,7 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
     else if (postId === 'indian-wedding-hairstyles-guide') dest = '/blog/indian-wedding-hairstyles-guide';
     else if (postId === 'regional-indian-wedding-hairstyles') dest = '/blog/regional-indian-wedding-hairstyles';
     else if (postId === '14-month-wedding-planning-timeline') dest = '/blog/14-month-wedding-planning-timeline';
+    else if (postId === '18-month-wedding-planning-timeline') dest = '/blog/18-month-wedding-planning-timeline';
     window.location.href = dest;
   };
 
@@ -600,6 +615,7 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
             {selectedPostId === 'pakistani-wedding-hairstyles' && <PakistaniWeddingHairstylesArticle />}
             {selectedPostId === 'regional-indian-wedding-hairstyles' && <RegionalIndianWeddingHairstylesArticle />}
             {selectedPostId === '14-month-wedding-planning-timeline' && <FourteenMonthWeddingTimelineArticle />}
+            {selectedPostId === '18-month-wedding-planning-timeline' && <EighteenMonthWeddingTimelineArticle />}
           </div>
         )}
       </main>
@@ -675,7 +691,7 @@ function BlogFooter() {
       </div>
       <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Related Articles</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="/20-tips-for-your-wedding-planning-checklist.html" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
+        <a href="/blog/20-tips-for-your-wedding-planning-checklist" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
           <div className="h-32 bg-slate-100 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=800" alt="20 Tips" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
@@ -684,7 +700,7 @@ function BlogFooter() {
             <p className="text-xs text-slate-500 mt-2">8 Min Read</p>
           </div>
         </a>
-        <a href="/how-to-plan-a-wedding-timeline.html" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
+        <a href="/blog/how-to-plan-a-wedding-timeline" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
           <div className="h-32 bg-slate-100 overflow-hidden">
             <img src="/How to Plan a Wedding Timeline.webp" alt="Wedding Timeline" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
@@ -693,7 +709,7 @@ function BlogFooter() {
             <p className="text-xs text-slate-500 mt-2">7 Min Read</p>
           </div>
         </a>
-        <a href="/hairstyles-for-wedding.html" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
+        <a href="/blog/hairstyles-for-wedding" className="block group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all">
           <div className="h-32 bg-slate-100 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1591555200577-059798e70a6c?auto=format&fit=crop&q=80&w=800" alt="Hairstyles" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>

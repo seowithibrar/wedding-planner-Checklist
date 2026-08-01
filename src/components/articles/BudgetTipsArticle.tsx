@@ -14,6 +14,7 @@ export function BudgetTipsArticle() {
       updatedAt="July 2026"
       heroImage="https://images.unsplash.com/photo-1507504038482-76214343e547?auto=format&fit=crop&q=80&w=1200"
       heroImageAlt="Wedding budget planning table"
+      metaDescription="Save thousands on your wedding without sacrificing style. Learn 10 proven wedding budget tips for venue, catering, florals, and vendor negotiations."
       introduction={
         <p>
           Welcome to our comprehensive guide on budget-saving tips every couple needs to know. Planning a wedding is incredibly exciting, but the rising costs of venues, catering, and decor can quickly become overwhelming if you don't have a solid financial strategy.
@@ -60,6 +61,14 @@ export function BudgetTipsArticle() {
         {
           q: "Is it rude to not offer a plus-one to save money?",
           a: "It is perfectly acceptable to limit plus-ones. A standard rule is to only offer plus-ones to married, engaged, or long-term cohabitating couples to manage costs effectively."
+        },
+        {
+          q: "What is the average cost of a wedding?",
+          a: "The average cost of a wedding varies greatly by location and style, but typically ranges between $25,000 and $35,000. Prioritizing your top 3 non-negotiables helps keep spending under control regardless of your total budget."
+        },
+        {
+          q: "How can we save money on wedding catering?",
+          a: "Opt for family-style or buffet dining instead of plated multi-course meals, reduce alcohol options to beer and wine, and serve a smaller display cake paired with sheet cakes for guests."
         }
       ]}
       conclusion={

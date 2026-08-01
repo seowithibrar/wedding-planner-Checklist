@@ -14,6 +14,7 @@ export function RegionalIndianWeddingHairstylesArticle() {
       updatedAt="January 2025"
       heroImage="/regional-hero-bridal-hairstyles.png"
       heroImageAlt="Five regional Indian bridal hairstyles displayed side-by-side"
+      metaDescription="Discover regional Indian wedding hairstyles including North Indian judas, South Indian temple braids, Bengali waves, and Maharashtrian bridal hair."
       introduction={
         <p>
           Your wedding hairstyle is far more than a beauty choice—it's your connection to centuries of bridal tradition, a statement of identity, and a practical decision that needs to last through mehendi, sangeet, and your big day. If you're an Indian or Pakistani bride, your hair choices carry cultural weight, and the good news is you have stunning options rooted in your region's bridal heritage.

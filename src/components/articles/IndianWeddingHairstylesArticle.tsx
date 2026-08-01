@@ -14,6 +14,7 @@ export function IndianWeddingHairstylesArticle() {
       updatedAt="March 2025"
       heroImage="/indian-wedding-hairstyles.webp"
       heroImageAlt="Indian Wedding Hairstyles"
+      metaDescription="Explore the best Indian wedding hairstyles for Haldi, Sangeet, Wedding, and Reception. Features bridal buns, gajra braids, hair trials, and cost guides."
       introduction={
         <p>
           Indian wedding hairstyles tell a story. Whether you're a bride preparing for your ceremony, a bridesmaid coordinating your look, or a professional hairstylist crafting the perfect updo, the hairstyle you choose carries centuries of tradition—plus modern flair that makes it unmistakably yours.

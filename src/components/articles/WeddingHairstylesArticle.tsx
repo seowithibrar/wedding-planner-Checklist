@@ -14,6 +14,7 @@ export function WeddingHairstylesArticle() {
       updatedAt="July 2026"
       heroImage="https://images.unsplash.com/photo-1591555200577-059798e70a6c?auto=format&fit=crop&q=80&w=1200"
       heroImageAlt="Beautiful bridal hairstyle with floral details"
+      metaDescription="Explore 50+ hairstyles for wedding day looks. From classic updos and Hollywood waves to South Asian bridal hair, find your perfect wedding hairstyle."
       introduction={
         <p>
           Your wedding hairstyle is far more than a beauty decision—it is the crown you wear on one of the most photographed days of your life. Whether you envision a sleek bridal bun adorned with pearls, loose romantic curls cascading down your back, or an intricate braid woven with fresh jasmine, the right hairstyle frames your face and complements your gown.
@@ -62,6 +63,14 @@ export function WeddingHairstylesArticle() {
         {
           q: "What is the best hairstyle for a strapless dress?",
           a: "A strapless dress is incredibly versatile. A classic updo highlights your neck and shoulders elegantly, while Hollywood waves draped over one shoulder add romantic glamour."
+        },
+        {
+          q: "How do I choose between an updo and wearing my hair down?",
+          a: "Consider your venue climate and dress neckline. High necklines and humid outdoor settings pair best with updos, while strapless dresses and indoor venues allow for romantic loose waves."
+        },
+        {
+          q: "What should I bring to my bridal hair trial?",
+          a: "Bring your hair accessories (tiara, veil, pins), inspiration photos, a photo of your wedding dress, and wear a button-up shirt so you can change easily without ruining the style."
         }
       ]}
       conclusion={

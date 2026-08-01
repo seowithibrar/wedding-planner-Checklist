@@ -175,14 +175,15 @@ Every article must follow this order:
 4. H1 Title
 5. Article Metadata (Author, Updated Date, Reading Time)
 6. Short Introduction (2–4 paragraphs)
-7. Quick Summary / Key Takeaways
-8. Sticky Table of Contents
-9. Main Content
-10. FAQ Section
-11. Conclusion
-12. Related Articles
-13. Newsletter / Download CTA
-14. Author Box
+7. Quick Summary / Key Takeaways Box
+8. Interactive Checklist Preview / Download Banner
+9. Sticky Table of Contents
+10. Main Content (including Timeline Sections, Comparison Tables, Expert Advice Quotes, & Callout Boxes)
+11. FAQ Section (minimum 8 questions with Schema)
+12. Conclusion + Next Steps
+13. Related Articles
+14. Newsletter / Download Printable CTA
+15. Author Box
 
 Never change this structure.
 
@@ -224,8 +225,14 @@ Every article should include:
 Avoid using repetitive stock photography.
 
 ## 6. Content Block Rules
-Use a mix of reusable content blocks to improve readability.
-Available blocks: Tip Box, Expert Advice, Checklist, Timeline, Warning Box, Quick Facts, Quote, Comparison Table, Step Cards, Key Takeaways, Frequently Asked Questions.
+Use a rich mix of reusable content blocks to enhance engagement and readability:
+* **Interactive Checklist Card:** Checkable items with visual progress tracking.
+* **Printable PDF / Spreadsheet Download Banner:** Prominent mid-article asset download card.
+* **Expert Advice & Planner Quotes:** Styled blockquotes featuring certified wedding planner quotes and industry tips.
+* **Comparison Tables:** Clean responsive tables comparing timelines, budgets, vendor priorities, or package styles.
+* **Timeline Stepper / Step Cards:** Numbered visual indicators for step-by-step phases.
+* **Callout Boxes:** Highlighted Tip Box, Warning Box, Quick Facts, and Key Takeaways.
+* **FAQ Accordion:** Interactive expandable Q&A matching Google FAQ Schema requirements.
 Do not repeat the same block excessively.
 
 ## 7. Readability Rules

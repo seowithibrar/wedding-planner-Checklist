@@ -19,6 +19,7 @@ export interface BlogArticleLayoutProps {
   updatedAt: string;
   heroImage: string;
   heroImageAlt?: string;
+  metaDescription?: string;
   introduction: React.ReactNode;
   keyTakeaways: React.ReactNode[];
   tableOfContents: TOCItem[];
@@ -35,6 +36,7 @@ export function BlogArticleLayout({
   updatedAt,
   heroImage,
   heroImageAlt = "Blog post featured image",
+  metaDescription,
   introduction,
   keyTakeaways,
   tableOfContents,
@@ -43,10 +45,16 @@ export function BlogArticleLayout({
   children
 }: BlogArticleLayoutProps) {
   
-  // Update document title for SEO
+  // Update document title & meta description for SEO
   useEffect(() => {
-    document.title = `${title} | Wedding Planning Checklists`;
-  }, [title]);
+    document.title = title.includes('Wedding Planning Checklists') ? title : `${title} | Wedding Planning Checklists`;
+    if (metaDescription) {
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta) {
+        meta.setAttribute('content', metaDescription);
+      }
+    }
+  }, [title, metaDescription]);
 
   return (
     <div className="bg-white min-h-screen">

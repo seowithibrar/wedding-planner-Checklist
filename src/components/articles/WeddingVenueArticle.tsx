@@ -14,6 +14,7 @@ export function WeddingVenueArticle() {
       updatedAt="July 2026"
       heroImage="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=1200"
       heroImageAlt="Elegant wedding venue layout"
+      metaDescription="Learn how to choose a wedding venue that fits your budget and guest count. Checklist includes site tour questions, hidden fees, and Plan B prep."
       introduction={
         <p>
           Choosing your wedding venue is the single most critical decision you will make. It dictates your wedding date, establishes your aesthetic theme, limits your guest count, and consumes a significant portion of your budget. 
@@ -58,6 +59,14 @@ export function WeddingVenueArticle() {
         {
           q: "Are venue prices negotiable?",
           a: "Yes, especially if you are booking an off-peak date (like a Friday or a Sunday) or getting married during a slower month (like January or February)."
+        },
+        {
+          q: "What questions should I ask when touring a venue?",
+          a: "Ask about total capacity, noise curfews, catering restrictions, security deposit requirements, and sound system policies."
+        },
+        {
+          q: "What is a venue coordinator vs a private wedding planner?",
+          a: "A venue coordinator oversees venue logistics (catering timing, venue staff). A private planner manages your overall budget, vendors, design, and personal timeline."
         }
       ]}
       conclusion={

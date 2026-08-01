@@ -14,6 +14,7 @@ export function WeddingTimelineArticle() {
       updatedAt="July 2026"
       heroImage="/How to Plan a Wedding Timeline.webp"
       heroImageAlt="Wedding Timeline Planning Documents"
+      metaDescription="Learn how to plan a wedding timeline from engagement to wedding day. Includes day-of timeline templates, vendor schedules, and reception timelines."
       introduction={
         <p>
           Figuring out how to plan a wedding timeline is one of the first things every engaged couple needs to sort out, and it's also one of the most overwhelming. Between booking vendors, choosing a venue, and managing family expectations, it's easy to lose track of what should happen when.
@@ -58,6 +59,14 @@ export function WeddingTimelineArticle() {
         {
           q: "How far in advance should I share the final timeline?",
           a: "Distribute your finalized day-of timeline to all vendors, the bridal party, and immediate family exactly two weeks before the wedding day."
+        },
+        {
+          q: "What time should an evening wedding ceremony start?",
+          a: "Most evening ceremonies start 2 hours before sunset. This allows ample time for golden-hour photos before transitioning to cocktail hour and reception."
+        },
+        {
+          q: "How long should reception speeches take?",
+          a: "Keep each speech to 3 to 5 minutes maximum. Total speech time across all speakers should not exceed 15 to 20 minutes to keep guests engaged."
         }
       ]}
       conclusion={
