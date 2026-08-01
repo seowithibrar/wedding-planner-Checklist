@@ -273,6 +273,8 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
       return 'regional-indian-wedding-hairstyles';
     } else if (pathLower.includes('14-month-wedding-planning-timeline')) {
       return '14-month-wedding-planning-timeline';
+    } else if (pathLower.includes('18-month-wedding-planning-timeline')) {
+      return '18-month-wedding-planning-timeline';
     } else if (pathLower.includes('how-to-plan-a-wedding-timeline')) {
       return 'how-to-plan-a-wedding-timeline';
     } else if (pathLower.includes('20-tips-for-your-wedding-planning-checklist')) {
@@ -306,6 +308,8 @@ export function Blog({ onStart, onOpenGuide, onGoHome, onAbout, onPrivacy, onTer
         setSelectedPostId('regional-indian-wedding-hairstyles');
       } else if (pathLower.includes('14-month-wedding-planning-timeline')) {
         setSelectedPostId('14-month-wedding-planning-timeline');
+      } else if (pathLower.includes('18-month-wedding-planning-timeline')) {
+        setSelectedPostId('18-month-wedding-planning-timeline');
       } else if (pathLower.includes('how-to-plan-a-wedding-timeline')) {
         setSelectedPostId('how-to-plan-a-wedding-timeline');
       } else if (pathLower.includes('20-tips-for-your-wedding-planning-checklist')) {
