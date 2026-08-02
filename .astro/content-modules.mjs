@@ -11,5 +11,6 @@ export default new Map([
 ["src/content/blog/perfect-guest-list-guide.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fperfect-guest-list-guide.mdx&astroContentModuleFlag=true")],
 ["src/content/blog/regional-indian-wedding-hairstyles.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fregional-indian-wedding-hairstyles.mdx&astroContentModuleFlag=true")],
 ["src/content/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fthe-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding.mdx&astroContentModuleFlag=true")],
-["src/content/blog/wedding-budget-tips.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fwedding-budget-tips.mdx&astroContentModuleFlag=true")]]);
+["src/content/blog/wedding-budget-tips.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fwedding-budget-tips.mdx&astroContentModuleFlag=true")],
+["src/content/blog/wedding-outfits.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fwedding-outfits.mdx&astroContentModuleFlag=true")]]);
 		

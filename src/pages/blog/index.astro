@@ -9,7 +9,7 @@ const sortedPosts = posts.sort((a, b) => (b.data.featured ? 1 : -1));
 const featuredPost = sortedPosts.find(p => p.data.featured) || sortedPosts[0];
 const otherPosts = sortedPosts.filter(p => p.id !== featuredPost?.id);
 
-const featuredSlug = featuredPost ? featuredPost.id.replace(/\.(md|mdx)$/, '') : '';
+const featuredSlug = featuredPost ? (featuredPost.data.slug || featuredPost.id.replace(/\.(md|mdx)$/, '')) : '';
 
 const seo = {
   title: 'Blog & Guides — Wedding Planning Checklists',
@@ -56,7 +56,7 @@ const seo = {
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {otherPosts.map(post => {
-        const slug = post.id.replace(/\.(md|mdx)$/, '');
+        const slug = post.data.slug || post.id.replace(/\.(md|mdx)$/, '');
         return (
           <article class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all">
             <div class="h-48 overflow-hidden">

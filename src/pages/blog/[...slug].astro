@@ -8,13 +8,13 @@ import { generateArticleSchema, generateFAQSchema, generateBreadcrumbSchema } fr
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map(post => {
-    const slug = post.id.replace(/\.(md|mdx)$/, '');
+    const slug = post.data.slug || post.id.replace(/\.(md|mdx)$/, '');
     return {
       params: { slug },
       props: { 
         post,
         slug,
-        allPosts: posts.filter(p => p.id.replace(/\.(md|mdx)$/, '') !== slug).slice(0, 3)
+        allPosts: posts.filter(p => (p.data.slug || p.id.replace(/\.(md|mdx)$/, '')) !== slug).slice(0, 3)
       },
     };
   });
@@ -313,7 +313,7 @@ const displayDate = post.data.updatedDate || 'August 2026';
           <h2 class="text-2xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">You May Also Like</h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {allPosts.map(rel => {
-              const relSlug = rel.id.replace(/\.(md|mdx)$/, '');
+              const relSlug = rel.data.slug || rel.id.replace(/\.(md|mdx)$/, '');
               return (
                 <a href={`/blog/${relSlug}`} class="block bg-white rounded-2xl overflow-hidden border border-[#F3E8EA] shadow-sm hover:shadow-lg transition-all group relative">
                   <div class="h-44 overflow-hidden bg-slate-100 relative">
