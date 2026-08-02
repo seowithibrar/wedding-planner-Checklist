@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { ChecklistGenerator } from '../../components/tools/ChecklistGenerator';
+import { generateFAQSchema, generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
+
+const seo = {
+  title: 'Free Wedding Checklist Generator & Custom Task Planner',
+  description: 'Generate a customized wedding planning checklist based on your wedding date. Filter 90+ tasks by timeline, category, and priority. Save progress automatically.',
+  canonical: 'https://www.weddingplanningchecklists.org/tools/wedding-checklist-generator'
+};
+
+const siteUrl = 'https://www.weddingplanningchecklists.org';
+const breadcrumbItems = [
+  { name: 'Home', item: siteUrl },
+  { name: 'Tools', item: `${siteUrl}/tools/budget-calculator` },
+  { name: 'Checklist Generator', item: seo.canonical }
+];
+
+const faqs = [
+  { q: 'How does the Wedding Checklist Generator work?', a: 'Enter your wedding date, and our tool automatically calculates due dates for 90+ essential planning tasks organized by timeline periods from 12+ months out to your wedding day.' },
+  { q: 'Can I track completed tasks?', a: 'Yes! Click any checkbox to mark a task complete. Your progress is saved automatically in your browser.' },
+  { q: 'Can I export or print my checklist?', a: 'Yes, you can export your checklist as a CSV file or print it directly using the built-in print layout.' }
+];
+
+const combinedSchema = `[${[
+  generateWebApplicationSchema({ name: 'Wedding Checklist Generator', description: seo.description, url: seo.canonical }),
+  generateFAQSchema(faqs),
+  generateBreadcrumbSchema(breadcrumbItems)
+].filter(Boolean).join(',')}]`;
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical} schemaScript={combinedSchema}>
+  <Header />
+  <main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-10">
+      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Free Planning Tool</span>
+      <h1 class="text-4xl sm:text-5xl font-black text-[#1A1A1A]">Wedding Checklist Generator</h1>
+      <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+        Generate a personalized wedding planning checklist tailored to your wedding date. Track progress across 15 categories.
+      </p>
+    </div>
+    <ChecklistGenerator client:visible />
+  </main>
+  <Footer />
+</BaseLayout>

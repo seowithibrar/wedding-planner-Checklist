@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { WeddingCountdown } from '../../components/tools/WeddingCountdown';
+import { generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
+
+const seo = {
+  title: 'Free Live Wedding Countdown Clock & Shareable Card',
+  description: 'Live ticking countdown timer to your wedding day with Saturday counter, upcoming milestones, and shareable social card.',
+  canonical: 'https://www.weddingplanningchecklists.org/tools/wedding-countdown'
+};
+
+const siteUrl = 'https://www.weddingplanningchecklists.org';
+const breadcrumbItems = [
+  { name: 'Home', item: siteUrl },
+  { name: 'Tools', item: `${siteUrl}/tools/budget-calculator` },
+  { name: 'Wedding Countdown', item: seo.canonical }
+];
+
+const combinedSchema = `[${[
+  generateWebApplicationSchema({ name: 'Wedding Countdown', description: seo.description, url: seo.canonical }),
+  generateBreadcrumbSchema(breadcrumbItems)
+].filter(Boolean).join(',')}]`;
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical} schemaScript={combinedSchema}>
+  <Header />
+  <main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-10">
+      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Free Planning Tool</span>
+      <h1 class="text-4xl sm:text-5xl font-black text-[#1A1A1A]">Wedding Countdown Timer</h1>
+      <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+        Live ticking countdown clock to your big day with milestone focus markers.
+      </p>
+    </div>
+    <WeddingCountdown client:visible />
+  </main>
+  <Footer />
+</BaseLayout>

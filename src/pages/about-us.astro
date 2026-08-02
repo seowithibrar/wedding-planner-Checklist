@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const seo = {
+  title: 'About Us — Wedding Planning Checklists',
+  description: 'Learn about our mission to help brides and couples plan stress-free, beautiful weddings with free checklists, timeline tools, and expert guides.',
+  canonical: 'https://www.weddingplanningchecklists.org/about-us'
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical}>
+  <Header />
+
+  <main class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="text-center space-y-4">
+      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Our Story</span>
+      <h1 class="text-4xl sm:text-5xl font-black text-[#1A1A1A]">About Wedding Planning Checklists</h1>
+    </div>
+
+    <div class="prose prose-lg prose-rose max-w-none text-slate-700 leading-relaxed">
+      <p>
+        WeddingPlanningChecklists.org was created with a single objective: to take the stress out of wedding planning by providing free, highly detailed, and actionable checklists for engaged couples.
+      </p>
+      <p>
+        From 18-month timelines and vendor contract guides to budget calculators and hairstyle roundups, our team of experienced planners curate every resource to empower you to plan with confidence.
+      </p>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
