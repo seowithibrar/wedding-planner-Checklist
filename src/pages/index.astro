@@ -18,24 +18,104 @@ const breadcrumbItems = [
 
 const faqs = [
   {
-    q: 'How far in advance should I start using a wedding planning checklist?',
-    a: 'Ideally the day after you get engaged. If your wedding is 12+ months away, you have the luxury of a relaxed pace. If it is 6 months away, start immediately — especially for venue and photographer bookings.'
+    num: 1,
+    q: 'What is a wedding planning checklist?',
+    a: 'A wedding planning checklist is a step-by-step guide that helps couples organize every stage of their wedding, from setting a budget and booking a venue to sending invitations and preparing for the wedding day. It ensures no important task is overlooked.'
   },
   {
-    q: 'What is the most important thing on a wedding checklist?',
-    a: 'Booking your venue and date is the single most critical task. Everything else — vendors, invitations, décor — flows from that one decision.'
+    num: 2,
+    q: 'When should you start planning your wedding?',
+    a: 'Most wedding experts recommend starting 12 to 18 months before your wedding date. This gives you enough time to book popular venues, hire vendors, manage your budget, and avoid last-minute stress.'
   },
   {
-    q: 'Can I use a wedding checklist for a small or intimate wedding?',
-    a: 'Absolutely. A small wedding still requires most of the same tasks. The checklist simply scales — fewer guests but the same vendor needs, stationery needs, and timeline requirements.'
+    num: 3,
+    q: 'What should be booked first when planning a wedding?',
+    a: 'Your wedding venue should be booked first because it determines your wedding date. Once your venue is confirmed, you can book photographers, caterers, florists, entertainment, and other vendors.'
   },
   {
-    q: 'Do I need a wedding planner if I have a checklist?',
-    a: 'A great checklist reduces your dependence on a full-service planner, but a day-of coordinator is always recommended. They manage the timeline on the day itself so you can actually enjoy your wedding.'
+    num: 4,
+    q: 'How much does a typical wedding cost?',
+    a: 'Wedding costs vary depending on location, guest count, and style. Your budget should include venue, catering, photography, decorations, attire, entertainment, transportation, and an emergency fund for unexpected expenses.'
   },
   {
-    q: 'Where can I download a free wedding planning checklist?',
-    a: 'Our free printable wedding checklist PDF is available on our site — covering every task from 12 months out through the wedding day itself.'
+    num: 5,
+    q: 'Can I plan a wedding without hiring a wedding planner?',
+    a: 'Yes. Many couples successfully plan their weddings using detailed checklists, budget trackers, timelines, and planning tools. A day-of coordinator can still be helpful for managing the event itself.'
+  },
+  {
+    num: 6,
+    q: 'What should a wedding budget include?',
+    a: 'A complete wedding budget should include venue rental, food, beverages, photography, videography, decorations, flowers, invitations, wedding attire, entertainment, transportation, favors, taxes, gratuities, and a contingency budget.'
+  },
+  {
+    num: 7,
+    q: 'How do I create a wedding guest list?',
+    a: 'Start with immediate family and close friends, then add extended family, colleagues, and acquaintances based on your venue capacity and overall budget. Prioritize guests who are most important to you as a couple.'
+  },
+  {
+    num: 8,
+    q: 'What vendors should I hire for my wedding?',
+    a: 'Most weddings require a venue, photographer, videographer, caterer, florist, DJ or live band, officiant, hair and makeup artist, transportation service, baker, and rental company.'
+  },
+  {
+    num: 9,
+    q: 'How far in advance should wedding invitations be sent?',
+    a: 'Save-the-date cards are usually sent 6 to 8 months before the wedding. Formal invitations are typically mailed 6 to 8 weeks before the ceremony, allowing guests enough time to RSVP.'
+  },
+  {
+    num: 10,
+    q: 'What is included in a printable wedding checklist?',
+    a: 'A printable wedding checklist typically includes monthly planning tasks, vendor booking timelines, guest list management, budgeting, ceremony planning, reception planning, honeymoon preparation, and wedding day essentials.'
+  },
+  {
+    num: 11,
+    q: 'How do I stay organized while planning a wedding?',
+    a: 'Use a digital or printable wedding planner to track tasks, deadlines, budgets, vendor contracts, guest RSVPs, and payment schedules. Reviewing your checklist weekly helps keep everything on schedule.'
+  },
+  {
+    num: 12,
+    q: 'What is the most stressful part of wedding planning?',
+    a: 'Couples often find managing the budget, finalizing the guest list, coordinating multiple vendors, and meeting deadlines to be the most challenging aspects of wedding planning.'
+  },
+  {
+    num: 13,
+    q: 'What should be in a bridal emergency kit?',
+    a: 'A bridal emergency kit should include safety pins, fashion tape, stain remover, tissues, pain relievers, bandages, deodorant, lipstick, hairpins, sewing kit, snacks, water, phone charger, and mints.'
+  },
+  {
+    num: 14,
+    q: 'How can I save money when planning a wedding?',
+    a: 'Set a realistic budget, prioritize essential expenses, reduce your guest count, compare vendor quotes, consider off-season dates, and choose DIY decorations where appropriate.'
+  },
+  {
+    num: 15,
+    q: 'What should be done one month before the wedding?',
+    a: 'Confirm vendor bookings, finalize seating arrangements, obtain your marriage license, complete dress fittings, prepare vendor payments, and create a detailed wedding day timeline.'
+  },
+  {
+    num: 16,
+    q: 'How do I choose the perfect wedding venue?',
+    a: 'Consider your guest count, budget, wedding style, location, accessibility, available services, parking, weather backup options, and vendor flexibility before making your decision.'
+  },
+  {
+    num: 17,
+    q: 'Is a wedding website necessary?',
+    a: 'While not required, a wedding website makes it easy to share event details, RSVP information, travel recommendations, gift registries, schedules, and updates with guests.'
+  },
+  {
+    num: 18,
+    q: 'How long does it take to plan a wedding?',
+    a: 'Most weddings take between 12 and 18 months to plan, although smaller weddings or elopements can often be organized within 3 to 6 months with careful planning.'
+  },
+  {
+    num: 19,
+    q: 'What happens if I have only six months to plan my wedding?',
+    a: 'Focus first on booking your venue, photographer, caterer, and officiant. Simplify decorations, reduce DIY projects, and use a structured checklist to prioritize essential tasks.'
+  },
+  {
+    num: 20,
+    q: 'Where can I find a free wedding planning checklist?',
+    a: 'You can download a free wedding planning checklist from WeddingPlanningChecklists.org. It includes monthly timelines, budget planning, vendor checklists, guest list organization, and wedding day preparation resources.'
   }
 ];
 
@@ -388,21 +468,31 @@ const combinedSchema = `[${[
       </div>
     </section>
 
-    <!-- FAQ Accordion Section -->
-    <section class="max-w-4xl mx-auto px-4 py-12 space-y-6">
-      <div class="text-center space-y-2">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1A1A1A]">Frequently Asked Questions</h2>
-        <p class="text-xs text-slate-500">Everything you need to know about using our wedding planning checklists.</p>
+    <!-- 20 FAQ Accordion Section with Custom Design -->
+    <section class="max-w-5xl mx-auto px-4 py-16 space-y-8">
+      <div class="text-center space-y-3">
+        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider bg-[#FCECF0] px-3 py-1 rounded-full">
+          Comprehensive Q&A
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1A1A1A]">20 Frequently Asked Questions</h2>
+        <p class="text-sm text-slate-500 max-w-lg mx-auto">Everything you need to know about wedding planning timelines, budgets, venues, guest lists, and checklists.</p>
       </div>
 
-      <div class="space-y-4">
-        {faqs.map((faq, idx) => (
-          <details className="bg-white rounded-2xl border border-[#F3E8EA] p-5 shadow-sm group [&_summary::-webkit-details-marker]:hidden">
-            <summary className="font-bold text-sm text-[#1A1A1A] cursor-pointer flex items-center justify-between">
-              <span>{faq.q}</span>
-              <span className="text-[#B76E79] font-bold group-open:rotate-180 transition-transform">▼</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {faqs.map((faq) => (
+          <details className="bg-white rounded-2xl border border-[#F3E8EA] p-5 shadow-sm hover:shadow-md hover:border-[#B76E79]/40 transition-all group [&_summary::-webkit-details-marker]:hidden flex flex-col justify-between">
+            <summary className="font-bold text-sm text-[#1A1A1A] cursor-pointer flex items-start justify-between gap-3">
+              <div className="flex items-start gap-2.5">
+                <span className="w-6 h-6 rounded-lg bg-[#FCECF0] text-[#B76E79] text-[11px] font-black flex items-center justify-center shrink-0 mt-0.5">
+                  {faq.num}
+                </span>
+                <span className="leading-snug pt-0.5">{faq.q}</span>
+              </div>
+              <span className="text-[#B76E79] font-bold text-xs group-open:rotate-180 transition-transform shrink-0 mt-1">▼</span>
             </summary>
-            <p className="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3">{faq.a}</p>
+            <p className="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3 pl-8">
+              {faq.a}
+            </p>
           </details>
         ))}
       </div>
