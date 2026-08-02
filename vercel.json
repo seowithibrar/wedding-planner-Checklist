@@ -1,6 +1,4 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
   "redirects": [
     {
       "source": "/how-to-plan-a-wedding-timeline.html",
@@ -164,17 +162,17 @@
     },
     {
       "source": "/how-to-make-wedding-moodboard.html",
-      "destination": "/blog/how-to-make-wedding-moodboard",
+      "destination": "/blog/moodboard-layout",
       "permanent": true
     },
     {
       "source": "/blog/how-to-make-wedding-moodboard.html",
-      "destination": "/blog/how-to-make-wedding-moodboard",
+      "destination": "/blog/moodboard-layout",
       "permanent": true
     },
     {
       "source": "/blog/Chic-&-Modern-Aesthetic:-Visual-Moodboard-Layout",
-      "destination": "/blog/how-to-make-wedding-moodboard",
+      "destination": "/blog/moodboard-layout",
       "permanent": true
     },
     {
