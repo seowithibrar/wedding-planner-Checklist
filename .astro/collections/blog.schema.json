@@ -2,8 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
+    "slug": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
     "title": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "description": {
       "type": "string"
@@ -26,7 +32,8 @@
       "type": "string"
     },
     "heroImage": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "heroImageAlt": {
       "type": "string"
@@ -85,6 +92,7 @@
     }
   },
   "required": [
+    "slug",
     "title",
     "description",
     "category",
