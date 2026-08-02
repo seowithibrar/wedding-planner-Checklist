@@ -1,0 +1,285 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { GuestListManager } from '../../components/tools/GuestListManager';
+import { generateFAQSchema, generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
+import guestListData from '../../data/guest-list-data.json';
+
+const seo = {
+  title: 'Free Wedding Guest List Manager & RSVP Tracker (2026)',
+  description: 'Organize your wedding guest list with our free interactive tool. Track RSVPs, meal preferences, seating assignments, plus-ones, and export to CSV. Works on mobile, saves automatically.',
+  canonical: 'https://www.weddingplanningchecklists.org/tools/guest-list-manager'
+};
+
+const siteUrl = 'https://www.weddingplanningchecklists.org';
+
+const breadcrumbItems = [
+  { name: 'Home', item: siteUrl },
+  { name: 'Planning Tools', item: `${siteUrl}/tools/budget-calculator` },
+  { name: 'Guest List Manager', item: seo.canonical }
+];
+
+const schemas = [
+  generateWebApplicationSchema({
+    name: 'Wedding Guest List Manager',
+    description: seo.description,
+    url: seo.canonical
+  }),
+  generateFAQSchema(guestListData.faqs),
+  generateBreadcrumbSchema(breadcrumbItems)
+];
+
+const combinedSchema = `[${schemas.filter(Boolean).join(',')}]`;
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  schemaScript={combinedSchema}
+>
+  <Header />
+
+  <main>
+    <!-- Breadcrumbs -->
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-1.5 text-xs text-slate-400">
+        {breadcrumbItems.map((crumb, idx) => (
+          <li class="flex items-center gap-1.5">
+            {idx > 0 && <span aria-hidden="true">/</span>}
+            {idx === breadcrumbItems.length - 1 ? (
+              <span class="font-semibold text-[#B76E79]">{crumb.name}</span>
+            ) : (
+              <a href={crumb.item} class="hover:text-[#B76E79] transition-colors">{crumb.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-12 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+        <span class="inline-block bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+          Free Planning Tool
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-black text-[#1A1A1A] leading-tight">
+          Wedding Guest List <span class="text-[#B76E79]">Manager</span>
+        </h1>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+          Track every guest, RSVP response, meal preference, and seating assignment in one place. Import from CSV, export anytime, and share your progress with your partner or wedding planner.
+        </p>
+      </div>
+
+      <!-- React Island -->
+      <GuestListManager client:visible />
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gradient-to-b from-transparent to-[#FCECF0]/30">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center space-y-3 mb-10">
+          <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Common Questions</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">Guest List FAQs</h2>
+          <p class="text-sm text-slate-500">Everything you need to know about building and managing your wedding guest list.</p>
+        </div>
+
+        <div class="space-y-3" id="faq-list">
+          {guestListData.faqs.map((faq, idx) => (
+            <div class="bg-white rounded-2xl border border-[#F3E8EA] shadow-sm overflow-hidden">
+              <button
+                class="faq-btn w-full flex items-center justify-between p-5 text-left cursor-pointer group"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${idx}`}
+                id={`faq-btn-${idx}`}
+              >
+                <span class="font-semibold text-sm text-[#1A1A1A] pr-4 group-hover:text-[#B76E79] transition-colors">{faq.q}</span>
+                <svg class="faq-chevron w-5 h-5 shrink-0 text-[#B76E79]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="faq-answer" id={`faq-answer-${idx}`} role="region" aria-labelledby={`faq-btn-${idx}`}>
+                <p class="text-sm text-slate-600 leading-relaxed">{faq.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Educational Article Section -->
+    <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article class="article-content">
+        <div class="text-center space-y-3 mb-12">
+          <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Complete Guide</span>
+          <h2 class="!mt-0 !mb-0 !border-0 !pb-0 text-center">The Complete Guide to Managing Your Wedding Guest List</h2>
+        </div>
+
+        <p>Your wedding guest list is one of the very first — and most impactful — decisions you will make during the planning process. It directly influences your budget, venue selection, catering quantities, seating arrangements, and the overall atmosphere of your celebration. Getting it right early on prevents cascading headaches later and ensures your big day feels exactly the way you imagined it.</p>
+
+        <p>Whether you are planning an intimate gathering of 30 or a grand celebration of 300, this guide walks you through every aspect of guest list management: from the initial brainstorm to final seating charts, with practical tips on etiquette, capacity planning, and digital tracking tools that save hours of spreadsheet juggling.</p>
+
+        <h3>Step 1: Start with an Uncensored Brainstorm</h3>
+        <p>Before you think about numbers, venue sizes, or budget constraints, sit down with your partner and write down every single person you might want at your wedding. Include family, close friends, childhood friends, college friends, work colleagues, neighbors, mentors, and anyone else who comes to mind. This is your "dream list" — the unfiltered starting point.</p>
+        <p>Do this exercise separately at first, then combine your lists. Most couples discover their combined list is 20–40% longer than they expected, which is perfectly normal. The goal here is not to commit to inviting everyone — it is to create a comprehensive pool from which you will strategically narrow down.</p>
+
+        <h3>Step 2: Establish Your Guest Categories</h3>
+        <p>Organize your brainstorm list into clear categories. The most common groupings are:</p>
+        <ul>
+          <li><strong>Immediate Family</strong> — parents, siblings, grandparents (non-negotiable for most couples)</li>
+          <li><strong>Extended Family</strong> — aunts, uncles, cousins, and their spouses</li>
+          <li><strong>Close Friends</strong> — people you see or speak with regularly</li>
+          <li><strong>Partner's Family & Friends</strong> — mirror the categories above for your partner</li>
+          <li><strong>Colleagues & Mentors</strong> — bosses, direct teammates, professional mentors</li>
+          <li><strong>Community & Neighbors</strong> — religious community members, longtime neighbors</li>
+        </ul>
+        <p>Categorizing makes it dramatically easier to apply consistent rules when you need to trim the list. For example, you might decide to invite all first cousins but no second cousins — a rule that applies equally across both families and prevents accusations of favoritism.</p>
+
+        <h3>Step 3: Set Your Target Number Based on Budget</h3>
+        <p>Your guest count is the single biggest driver of wedding costs. According to The Knot's 2025 Real Weddings Study, the average per-guest cost (covering catering, rentals, favors, and service charges) ranges from $100 to $300 depending on your region and style. To find your comfortable maximum:</p>
+        <ul>
+          <li>Take 45–50% of your total budget (the typical catering and venue allocation)</li>
+          <li>Divide by your estimated per-person cost</li>
+          <li>That is your practical ceiling</li>
+        </ul>
+        <p>For example, with a $30,000 budget and $150 per-person catering cost, you can comfortably accommodate about 90–100 guests. Factor in an additional 15–20% for declines, meaning you could send 115–120 invitations to land at your target of 100 attendees.</p>
+
+        <h3>Step 4: Create Your A-List and B-List</h3>
+        <p>Most wedding planners recommend splitting your list into two tiers. Your A-list includes absolute must-invites: immediate family, wedding party members, and lifelong friends. Send these invitations first, 8–10 weeks before the wedding.</p>
+        <p>Your B-list contains guests you would love to have if space permits. As A-list declines come in (and they will — expect 15–20%), send B-list invitations promptly. The key is timing: B-list invites should go out no later than 4–5 weeks before the wedding to give those guests adequate planning time.</p>
+        <p>Discretion is crucial. Never reference "lists" in conversation or on social media. From a guest's perspective, every invitation should feel personal and intentional.</p>
+
+        <h3>Step 5: Navigate the Plus-One Question</h3>
+        <p>Plus-ones are among the most emotionally charged guest list decisions. Here is a fair framework most etiquette experts agree on:</p>
+        <ul>
+          <li><strong>Married couples:</strong> always invited together (this is non-negotiable etiquette)</li>
+          <li><strong>Engaged couples:</strong> always invited together</li>
+          <li><strong>Long-term partners (6+ months):</strong> strongly recommended</li>
+          <li><strong>New relationships or single guests:</strong> discretionary — apply the same rule to everyone</li>
+        </ul>
+        <p>If budget is tight, it is perfectly acceptable to limit plus-ones to established couples. Address the invitation accordingly (both names for known partners, or "and Guest" for open plus-ones). Whichever policy you choose, apply it uniformly — giving some single friends plus-ones but not others will cause friction.</p>
+
+        <h3>Step 6: Collect and Track RSVPs Digitally</h3>
+        <p>Gone are the days of tallying paper response cards. Digital RSVP tools — like our Guest List Manager above — let you track responses in real time, send reminders, and generate accurate headcounts instantly. When setting up your RSVP process:</p>
+        <ul>
+          <li>Set a clear deadline, typically 3–4 weeks before the wedding</li>
+          <li>Provide multiple response channels (website, phone, email)</li>
+          <li>Follow up with non-responders one week after the deadline</li>
+          <li>Have a final follow-up call 10 days before the event</li>
+          <li>Plan for 3–5% no-shows even among confirmed guests</li>
+        </ul>
+
+        <h3>Step 7: Gather Meal Preferences Strategically</h3>
+        <p>Collecting meal preferences alongside RSVPs saves you a second round of outreach. Include 2–3 entrée options (one should always be vegetarian or plant-based) and an open field for dietary restrictions. For couples offering plated dinners, exact counts matter because caterers require final numbers 5–7 days before the event.</p>
+        <p>For buffet-style receptions, you still need approximate counts for portioning. Order 5–10% above your confirmed headcount to account for plus-ones who did not specify a preference and unexpected guests.</p>
+
+        <h3>Step 8: Plan Your Seating Arrangement</h3>
+        <p>Seating charts are part logistics, part social engineering. Here are proven strategies:</p>
+        <ul>
+          <li><strong>Group by relationship:</strong> seat families together, friend groups together</li>
+          <li><strong>Mix strategically:</strong> pair quiet guests with outgoing ones</li>
+          <li><strong>Avoid conflict zones:</strong> keep exes, feuding relatives, and political opposites apart</li>
+          <li><strong>Consider sight lines:</strong> seat elderly relatives and VIPs near the head table</li>
+          <li><strong>Kids table:</strong> group children together with a designated adult supervisor</li>
+        </ul>
+        <p>Standard round tables seat 8–10 guests. Rectangular farm tables seat 8–12. Leave the head table arrangement for last, as it depends on your final wedding party configuration. Use our Guest List Manager's seating group feature to assign guests to tables as RSVPs come in — it is much easier to rearrange digitally than on paper.</p>
+
+        <h3>Step 9: Handle Difficult Conversations</h3>
+        <p>Almost every couple faces at least one difficult guest list conversation. Here is how to navigate common scenarios:</p>
+        <ul>
+          <li><strong>Overbearing parents:</strong> if they are contributing financially, negotiate a fixed number of "parent picks." If not, kindly explain that venue capacity limits your total.</li>
+          <li><strong>Uninvited coworkers:</strong> set a simple rule (e.g., only people you have socialized with outside work) and stick to it.</li>
+          <li><strong>Estranged relatives:</strong> you are never obligated to invite someone who makes you uncomfortable. If family pressure is intense, discuss it privately and hold firm.</li>
+          <li><strong>Friend group politics:</strong> if you cannot afford to invite an entire group, consider inviting just your closest friend from that circle and having a separate celebration with the rest.</li>
+        </ul>
+
+        <h3>Step 10: Final Checks Before Sending Invitations</h3>
+        <p>Before your invitations go out, run through this checklist:</p>
+        <ul>
+          <li>Verify correct spelling of every guest's name</li>
+          <li>Confirm mailing addresses are current</li>
+          <li>Double-check that couples are addressed on the same invitation</li>
+          <li>Ensure your RSVP deadline leaves 3–4 weeks before the wedding</li>
+          <li>Verify your guest count does not exceed venue capacity (including plus-ones)</li>
+          <li>Confirm your B-list is ready to deploy as declines arrive</li>
+        </ul>
+
+        <h3>Digital vs. Paper Guest Lists: Which Is Better?</h3>
+        <p>Both have their place. Paper guest lists offer a tactile, romantic feel and work well for couples who enjoy binder-based planning. However, they are hard to share, impossible to search, and error-prone when updating.</p>
+        <p>Digital tools like our Guest List Manager offer real-time updates, instant search and filtering, automatic stat calculations, easy sharing with your partner or planner, and one-click export to CSV or print. For couples managing more than 50 guests, digital tracking is practically essential.</p>
+        <p>The ideal approach is digital-first with a printed backup: manage your list electronically throughout the planning process, then print a final copy for your day-of coordinator and wedding binder.</p>
+
+        <h3>Cultural Considerations for Guest Lists</h3>
+        <p>Wedding guest lists vary dramatically across cultures. South Asian weddings often include 300–500+ guests spanning extended family networks. Chinese weddings traditionally include family friends and business associates. Latin American weddings commonly include the entire parish community. Nigerian weddings can exceed 500 guests with owambe party traditions.</p>
+        <p>If you and your partner come from different cultural backgrounds, have an open conversation early about expectations. You may find that one family expects a much larger celebration than the other. Finding a compromise — perhaps a large ceremony with a smaller reception, or two separate celebrations — respects both traditions while staying within budget.</p>
+
+        <h3>Timeline for Guest List Milestones</h3>
+        <p>Use this timeline to stay on track:</p>
+        <ul>
+          <li><strong>12–18 months out:</strong> create your preliminary brainstorm list</li>
+          <li><strong>10–12 months out:</strong> finalize A-list based on venue capacity and budget</li>
+          <li><strong>8–10 months out:</strong> collect mailing addresses</li>
+          <li><strong>8 weeks out:</strong> send A-list invitations</li>
+          <li><strong>6 weeks out:</strong> begin sending B-list invitations as declines arrive</li>
+          <li><strong>4 weeks out:</strong> RSVP deadline; begin follow-up calls</li>
+          <li><strong>2 weeks out:</strong> finalize headcount, submit to caterer</li>
+          <li><strong>1 week out:</strong> complete seating chart, print place cards</li>
+        </ul>
+
+        <p>Managing your guest list does not have to be stressful. With the right tools, clear communication with your partner and families, and a systematic approach to categories, RSVPs, and seating, you can build a guest list that reflects the people who matter most — and ensures every seat at your wedding is filled with love.</p>
+      </article>
+    </section>
+
+    <!-- Related Tools Section -->
+    <section class="py-16 bg-gradient-to-b from-[#FCECF0]/30 to-transparent">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center space-y-3 mb-10">
+          <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">More Free Tools</span>
+          <h2 class="text-3xl font-black text-[#1A1A1A]">Related Planning Tools</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {guestListData.relatedTools.map((tool) => (
+            <a
+              href={tool.href}
+              class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md transition-all group"
+            >
+              <div class="w-10 h-10 rounded-xl bg-[#FCECF0] flex items-center justify-center mb-4 group-hover:bg-[#B76E79] transition-colors">
+                <svg class="w-5 h-5 text-[#B76E79] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  {tool.icon === 'calculator' ? (
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  ) : (
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  )}
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mb-2">{tool.title}</h3>
+              <p class="text-xs text-slate-500 leading-relaxed">{tool.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqButtons = document.querySelectorAll('.faq-btn');
+    faqButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const answerId = btn.getAttribute('aria-controls');
+        const answer = answerId ? document.getElementById(answerId) : null;
+        const chevron = btn.querySelector('.faq-chevron');
+
+        btn.setAttribute('aria-expanded', String(!expanded));
+        answer?.classList.toggle('open');
+        chevron?.classList.toggle('rotated');
+      });
+    });
+  });
+</script>
