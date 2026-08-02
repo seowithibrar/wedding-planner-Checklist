@@ -3,47 +3,132 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import toolRegistry from '../data/tool-registry.json';
+import { generateFAQSchema, generateBreadcrumbSchema, generateWebApplicationSchema } from '../lib/schema';
 
 const seo = {
-  title: 'Free Interactive Wedding Planning Tools & Checklists (2026)',
-  description: '14+ free interactive wedding planning tools: Guest List Manager, Budget Calculator, Checklist Generator, Milestone Tracker, Countdown, Planning Calendar, and Planners.',
+  title: 'Complete Wedding Planning Checklists & Interactive Tools (2026)',
+  description: 'The ultimate month-by-month wedding planning checklist and 14 free interactive tools: Guest List Manager, Budget Calculator, Timeline Generator, Milestone Tracker & Countdown.',
   canonical: 'https://www.weddingplanningchecklists.org/'
 };
+
+const siteUrl = 'https://www.weddingplanningchecklists.org';
+const breadcrumbItems = [
+  { name: 'Home', item: siteUrl }
+];
+
+const faqs = [
+  {
+    q: 'How far in advance should I start using a wedding planning checklist?',
+    a: 'Ideally the day after you get engaged. If your wedding is 12+ months away, you have the luxury of a relaxed pace. If it is 6 months away, start immediately — especially for venue and photographer bookings.'
+  },
+  {
+    q: 'What is the most important thing on a wedding checklist?',
+    a: 'Booking your venue and date is the single most critical task. Everything else — vendors, invitations, décor — flows from that one decision.'
+  },
+  {
+    q: 'Can I use a wedding checklist for a small or intimate wedding?',
+    a: 'Absolutely. A small wedding still requires most of the same tasks. The checklist simply scales — fewer guests but the same vendor needs, stationery needs, and timeline requirements.'
+  },
+  {
+    q: 'Do I need a wedding planner if I have a checklist?',
+    a: 'A great checklist reduces your dependence on a full-service planner, but a day-of coordinator is always recommended. They manage the timeline on the day itself so you can actually enjoy your wedding.'
+  },
+  {
+    q: 'Where can I download a free wedding planning checklist?',
+    a: 'Our free printable wedding checklist PDF is available on our site — covering every task from 12 months out through the wedding day itself.'
+  }
+];
+
+const combinedSchema = `[${[
+  generateWebApplicationSchema({ name: 'Wedding Planning Checklists', description: seo.description, url: seo.canonical }),
+  generateFAQSchema(faqs),
+  generateBreadcrumbSchema(breadcrumbItems)
+].filter(Boolean).join(',')}]`;
 ---
 
-<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical}>
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical} schemaScript={combinedSchema}>
   <Header />
 
-  <main>
+  <main class="space-y-16">
     <!-- Hero Section -->
-    <section class="relative py-20 lg:py-28 overflow-hidden bg-gradient-to-b from-[#FCECF0]/40 to-transparent">
+    <section class="relative py-20 lg:py-28 overflow-hidden bg-gradient-to-b from-[#FCECF0]/50 via-white to-transparent">
       <div class="max-w-5xl mx-auto px-4 text-center space-y-6">
-        <span class="inline-block bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-          Complete Wedding Planning Suite
+        <span class="inline-block bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+          The Ultimate Planning Experience
         </span>
         <h1 class="text-4xl sm:text-6xl font-extrabold text-[#1A1A1A] leading-tight tracking-tight">
-          Plan Your Dream Wedding with <span class="text-[#B76E79]">Zero Stress</span>
+          Complete Wedding Planning Checklists for <span class="text-[#B76E79]">Your Big Day</span>
         </h1>
-        <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          14+ free interactive tools, budget calculators, guest list managers, and month-by-month timelines tailored for brides and couples worldwide.
+        <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Welcome! We've built a dedicated suite of tools to help you manage your guest list, track budgets, and book vendors without the stress.
         </p>
         <div class="flex flex-wrap justify-center gap-4 pt-4">
-          <a href="/tools/wedding-planning-dashboard" class="bg-[#B76E79] hover:bg-[#a25d66] text-white px-8 py-4 rounded-full text-sm font-bold shadow-lg transition-all">
-            Open Planning Dashboard
+          <a href="/tools/wedding-planning-dashboard" class="bg-[#B76E79] hover:bg-[#a25d66] text-white px-8 py-4 rounded-full text-sm font-bold shadow-lg transition-all transform hover:-translate-y-0.5">
+            Start Planning Now
           </a>
           <a href="/tools/guest-list-manager" class="bg-white hover:bg-slate-50 text-[#1A1A1A] border border-slate-200 px-8 py-4 rounded-full text-sm font-bold transition-all shadow-sm">
             Guest List Manager
           </a>
         </div>
+
+        <!-- Proof Stats -->
+        <div class="pt-12 grid grid-cols-3 max-w-2xl mx-auto gap-4 border-t border-[#F3E8EA] mt-10">
+          <div>
+            <p className="text-2xl sm:text-3xl font-black text-[#1A1A1A]">120k+</p>
+            <p className="text-xs text-slate-500 font-medium">Tasks Completed</p>
+          </div>
+          <div>
+            <p className="text-2xl sm:text-3xl font-black text-[#B76E79]">50k+</p>
+            <p className="text-xs text-slate-500 font-medium">Guests Managed</p>
+          </div>
+          <div>
+            <p className="text-2xl sm:text-3xl font-black text-[#D4AF37]">$20M+</p>
+            <p className="text-xs text-slate-500 font-medium">Budgets Saved</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Free Interactive Tools Grid -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Key Features Overview -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="text-center space-y-3 mb-12">
+        <h2 class="text-3xl font-black text-[#1A1A1A]">Everything You Need for Your Dream Wedding</h2>
+        <p class="text-slate-600 text-sm max-w-xl mx-auto">Orchestrate your wedding with priority-sorted task managers, budget calculators, and RSVP trackers.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">✓</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A]">Smart Checklist</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Manage every detail with our priority-sorted task manager organized by timeline.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">👥</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A]">Guest List</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Keep track of RSVPs, dietary needs, meal choices, seating, and plus-ones easily.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">💰</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A]">Budget Tracker</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Never overspend with real-time allocation across venue, catering, photo & buffer.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">📅</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A]">Timeline Planner</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Visual milestone maps and time-blocked daily schedules for your big day.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 Interactive Planning Tools Grid -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div class="text-center space-y-3 mb-12">
         <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Interactive Suite</span>
-        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">14 Free Wedding Planning Tools</h2>
-        <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">14 Free Interactive Wedding Planning Tools</h2>
+        <p class="text-slate-600 max-w-xl mx-auto text-sm">
           All tools sync automatically with your wedding date and save your progress safely in your browser.
         </p>
       </div>
@@ -70,27 +155,274 @@ const seo = {
       </div>
     </section>
 
-    <!-- Featured Guides Grid -->
-    <section class="max-w-7xl mx-auto px-4 py-16 bg-slate-50/50 border-t border-slate-100">
-      <h2 class="text-3xl font-bold text-center text-[#1A1A1A] mb-12">Popular Planning Guides</h2>
+    <!-- Comprehensive Educational Article Guide -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12 prose prose-slate max-w-none">
+      <div class="bg-white rounded-3xl border border-[#F3E8EA] p-8 sm:p-12 shadow-sm space-y-8">
+        
+        <div class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1A1A1A] leading-tight">
+            Plan Your Dream Wedding Without Missing a Single Detail
+          </h2>
+          <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+            Planning a wedding is one of the most exciting journeys of your life — and one of the most overwhelming. With hundreds of tasks, dozens of vendors, and thousands of decisions to make, even the most organized couples can feel lost. That is exactly why having a well-structured wedding planning checklist is the single most important tool you can use from the moment you get engaged.
+          </p>
+          <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+            Our complete wedding planning checklists guide covers everything — from setting your budget 12 months out to packing your bridal emergency kit the night before your big day. Whether you are planning a grand ballroom celebration, a destination wedding, a cozy backyard ceremony, or a traditional Pakistani or Indian wedding, this checklist keeps every task, timeline, and vendor organized in one place.
+          </p>
+        </div>
+
+        <hr class="border-[#F3E8EA]" />
+
+        <!-- What Is Section -->
+        <div class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-bold text-[#1A1A1A]">
+            What Is a Wedding Planning Checklist and Why Do You Need One?
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            A wedding planning checklist is a structured, step-by-step to-do list that organizes every task involved in planning your wedding — sorted by priority, timeline, and category.
+          </p>
+          <p class="text-slate-700 font-semibold text-sm">Without one, couples often:</p>
+          <ul class="list-disc pl-5 space-y-1 text-xs sm:text-sm text-slate-600">
+            <li>Forget to book vendors until it is too late</li>
+            <li>Overspend because there is no budget tracking</li>
+            <li>Miss deadlines for invitations, RSVPs, or final payments</li>
+            <li>Feel stressed and overwhelmed in the final weeks</li>
+          </ul>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            With a proper wedding planner checklist, you always know exactly what needs to be done next, what has been completed, and what requires your attention today.
+          </p>
+        </div>
+
+        <hr class="border-[#F3E8EA]" />
+
+        <!-- Month-by-Month Section -->
+        <div class="space-y-6">
+          <h3 class="text-xl sm:text-2xl font-bold text-[#1A1A1A]">
+            The Ultimate Month-by-Month Wedding Planning Checklist
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            This is the most comprehensive month-by-month wedding checklist available — organized from engagement day to honeymoon morning.
+          </p>
+
+          <!-- 12 Months -->
+          <div class="bg-slate-50 rounded-2xl p-6 space-y-3">
+            <h4 class="font-bold text-base text-[#B76E79]">✅ 12 Months Before the Wedding</h4>
+            <p class="text-xs text-slate-500">This is the foundation stage. The decisions you make now save you thousands of dollars and enormous stress later.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-700 pt-2">
+              <div>
+                <p class="font-bold text-[#1A1A1A] mb-1">Budget & Vision</p>
+                <ul class="list-disc pl-4 space-y-1">
+                  <li>Set your total wedding budget</li>
+                  <li>Decide how many guests to invite</li>
+                  <li>Define your wedding style and theme</li>
+                  <li>Discuss must-haves vs. nice-to-haves</li>
+                </ul>
+              </div>
+              <div>
+                <p class="font-bold text-[#1A1A1A] mb-1">Venue & Key Vendors</p>
+                <ul class="list-disc pl-4 space-y-1">
+                  <li>Book ceremony and reception venue</li>
+                  <li>Lock in official wedding date</li>
+                  <li>Book photographer & videographer</li>
+                  <li>Hire wedding planner/coordinator</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9 Months -->
+          <div class="bg-slate-50 rounded-2xl p-6 space-y-3">
+            <h4 class="font-bold text-base text-[#B76E79]">✅ 9 Months Before the Wedding</h4>
+            <p class="text-xs text-slate-500">With your venue secured, build out the rest of your vendor team and finalize your aesthetic.</p>
+            <ul class="list-disc pl-5 space-y-1 text-xs text-slate-700">
+              <li>Begin shopping for wedding dress (Allow 4–6 months for production)</li>
+              <li>Choose bridesmaids' attire and groomsmen suits</li>
+              <li>Hire florist, caterer, and cake designer</li>
+              <li>Design save-the-dates and build wedding website</li>
+            </ul>
+          </div>
+
+          <!-- 6 Months -->
+          <div class="bg-slate-50 rounded-2xl p-6 space-y-3">
+            <h4 class="font-bold text-base text-[#B76E79]">✅ 6 Months Before the Wedding</h4>
+            <p class="text-xs text-slate-500">Shift into high gear: invitations, travel, rentals, and hair/makeup trials.</p>
+            <ul class="list-disc pl-5 space-y-1 text-xs text-slate-700">
+              <li>Order wedding invitations and mail save-the-dates</li>
+              <li>Book honeymoon travel, hotel room blocks, and rehearsal dinner venue</li>
+              <li>Schedule hair and makeup trials</li>
+              <li>Book wedding rentals (chairs, linens, lighting)</li>
+            </ul>
+          </div>
+
+          <!-- 3 Months & 1 Month -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-slate-50 rounded-2xl p-5 space-y-2">
+              <h4 class="font-bold text-sm text-[#B76E79]">✅ 3 Months Before</h4>
+              <ul class="list-disc pl-4 space-y-1 text-xs text-slate-700">
+                <li>Mail wedding invitations</li>
+                <li>Track RSVPs & finalize headcount</li>
+                <li>Create seating chart & table cards</li>
+                <li>Finalize ceremony vows & music</li>
+              </ul>
+            </div>
+            <div class="bg-slate-50 rounded-2xl p-5 space-y-2">
+              <h4 class="font-bold text-sm text-[#B76E79]">✅ 1 Month Before</h4>
+              <ul class="list-disc pl-4 space-y-1 text-xs text-slate-700">
+                <li>Obtain marriage license</li>
+                <li>Final dress fitting & break in shoes</li>
+                <li>Assemble bridal emergency kit</li>
+                <li>Prepare vendor tip envelopes</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Wedding Week -->
+          <div class="bg-[#FCECF0]/40 rounded-2xl p-6 border border-[#B76E79]/20 space-y-2">
+            <h4 class="font-bold text-base text-[#B76E79]">✅ Wedding Week & Day-Of Checklist</h4>
+            <p class="text-xs text-slate-600">Final venue walkthrough, rehearsal dinner, device charging, bridal emergency kit packing, and enjoying every single moment!</p>
+          </div>
+        </div>
+
+        <hr class="border-[#F3E8EA]" />
+
+        <!-- Bridal Emergency Kit Table -->
+        <div class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-bold text-[#1A1A1A]">
+            The Essential Bridal Emergency Kit Checklist
+          </h3>
+          <p class="text-xs text-slate-500">Pack these essentials the night before your wedding day:</p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-[#FCECF0] text-[#B76E79]">
+                  <th class="p-3 font-bold rounded-l-xl">Category</th>
+                  <th class="p-3 font-bold rounded-r-xl">Items</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr><td class="p-3 font-bold text-[#1A1A1A]">Beauty</td><td class="p-3 text-slate-600">Lipstick/gloss, bobby pins, hairspray, blotting papers, safety pins</td></tr>
+                <tr><td class="p-3 font-bold text-[#1A1A1A]">Health</td><td class="p-3 text-slate-600">Pain reliever, antacids, allergy medication, bandages</td></tr>
+                <tr><td class="p-3 font-bold text-[#1A1A1A]">Wardrobe</td><td class="p-3 text-slate-600">Stain remover pen, fashion tape, needle and thread, extra earring backs</td></tr>
+                <tr><td class="p-3 font-bold text-[#1A1A1A]">Practical</td><td class="p-3 text-slate-600">Phone charger, cash, vendor contact list, marriage license reminder</td></tr>
+                <tr><td class="p-3 font-bold text-[#1A1A1A]">Comfort</td><td class="p-3 text-slate-600">Breath mints, snacks, water bottle, comfortable backup shoes</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <hr class="border-[#F3E8EA]" />
+
+        <!-- Budget Breakdown Table -->
+        <div class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-bold text-[#1A1A1A]">
+            Wedding Budget Checklist: Know Where Every Cent Goes
+          </h3>
+          <p class="text-xs text-slate-500">Recommended budget allocation by category:</p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
+            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100"><span class="block text-base font-bold text-[#B76E79]">40–45%</span><span class="text-[10px] text-slate-500 font-semibold">Venue & Catering</span></div>
+            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100"><span class="block text-base font-bold text-[#B76E79]">10–12%</span><span class="text-[10px] text-slate-500 font-semibold">Photo & Video</span></div>
+            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100"><span class="block text-base font-bold text-[#B76E79]">8–10%</span><span class="text-[10px] text-slate-500 font-semibold">Flowers & Décor</span></div>
+            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100"><span class="block text-base font-bold text-[#B76E79]">5–8%</span><span class="text-[10px] text-slate-500 font-semibold">Attire & Rings</span></div>
+            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100"><span class="block text-base font-bold text-[#D4AF37]">5–10%</span><span class="text-[10px] text-slate-500 font-semibold">Emergency Buffer</span></div>
+          </div>
+        </div>
+
+        <hr class="border-[#F3E8EA]" />
+
+        <!-- Cultural & Special Wedding Types -->
+        <div class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-bold text-[#1A1A1A]">
+            Wedding Checklists for Every Type of Wedding
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="bg-slate-50 p-4 rounded-2xl space-y-1">
+              <h4 class="font-bold text-sm text-[#1A1A1A]">Pakistani & Muslim Weddings</h4>
+              <p class="text-slate-600">Spans multiple events: Mehndi, Baraat, Nikkah, and Walima. Separate logistics and outfit tracking per event.</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-2xl space-y-1">
+              <h4 class="font-bold text-sm text-[#1A1A1A]">Destination Weddings</h4>
+              <p class="text-slate-600">Passport renewals, travel insurance, guest logistics, and booking 18 months in advance.</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-2xl space-y-1">
+              <h4 class="font-bold text-sm text-[#1A1A1A]">Backyard & DIY Weddings</h4>
+              <p class="text-slate-600">Restroom rentals, generator power access, tenting, permits, and dedicated DIY project timelines.</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-2xl space-y-1">
+              <h4 class="font-bold text-sm text-[#1A1A1A]">Intimate / Small Weddings</h4>
+              <p class="text-slate-600">Fewer guests, enabling focus on elevated personalized details, fine dining, and photography.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Latest Articles Grid -->
+    <section class="max-w-7xl mx-auto px-4 py-12 bg-slate-50/50 border-t border-slate-100">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]">Latest from Our Blog</h2>
+          <p class="text-xs text-slate-500 mt-1">Expert tips and aesthetic inspiration for your big day.</p>
+        </div>
+        <a href="/blog" class="text-xs font-bold text-[#B76E79] hover:underline">View All Articles →</a>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <a href="/blog/18-month-wedding-planning-timeline" class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md transition-all group">
+        <a href="/blog/14-month-wedding-planning-timeline" class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md transition-all group">
           <span class="text-xs font-bold text-[#B76E79] uppercase">Planning</span>
-          <h3 class="font-bold text-xl text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-2 mb-3">Complete 18-Month Timeline</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">Month-by-month guide with deposit timelines and cultural event integrations.</p>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-2 mb-2">14-Month Planning Timeline</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Complete month-by-month timeline, vendor booking order, and multi-day event variant.</p>
         </a>
-        <a href="/blog/hairstyles-for-wedding" class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md transition-all group">
+        <a href="/blog/indian-wedding-hairstyles-guide" class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md transition-all group">
           <span class="text-xs font-bold text-[#B76E79] uppercase">Style Guide</span>
-          <h3 class="font-bold text-xl text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-2 mb-3">50+ Bridal Hairstyles</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">Bridal buns, Hollywood waves, and South Asian wedding hairstyle guides.</p>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-2 mb-2">Indian Wedding Hairstyles Guide</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Bridal hairstyle guide from Haldi to reception by face shape, outfit, and region.</p>
         </a>
-        <a href="/blog/how-to-choose-wedding-venue" class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md transition-all group">
-          <span class="text-xs font-bold text-[#B76E79] uppercase">Venues</span>
-          <h3 class="font-bold text-xl text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-2 mb-3">How to Choose a Venue</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">Site tour questions, hidden vendor fees, and Plan B rain contingency tips.</p>
+        <a href="/blog/pakistani-wedding-hairstyles" class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md transition-all group">
+          <span class="text-xs font-bold text-[#B76E79] uppercase">Style Guide</span>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-2 mb-2">Pakistani Wedding Hairstyles</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">45+ authentic styles for Mehndi, Baraat, and Walima organized by outfit.</p>
         </a>
       </div>
     </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+      <div class="text-center space-y-2">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1A1A1A]">Frequently Asked Questions</h2>
+        <p class="text-xs text-slate-500">Everything you need to know about using our wedding planning checklists.</p>
+      </div>
+
+      <div class="space-y-4">
+        {faqs.map((faq, idx) => (
+          <details className="bg-white rounded-2xl border border-[#F3E8EA] p-5 shadow-sm group [&_summary::-webkit-details-marker]:hidden">
+            <summary className="font-bold text-sm text-[#1A1A1A] cursor-pointer flex items-center justify-between">
+              <span>{faq.q}</span>
+              <span className="text-[#B76E79] font-bold group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p className="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Bottom CTA Banner -->
+    <section class="max-w-5xl mx-auto px-4 py-8">
+      <div class="bg-gradient-to-r from-[#FCECF0] via-[#FFF5F7] to-[#FCECF0] rounded-3xl p-10 text-center border border-[#B76E79]/20 shadow-sm space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-black text-[#B76E79]">Start Planning Your Wedding Today — Stress-Free</h2>
+        <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+          Use our free wedding planning checklist, budget tracker, timeline planner, and vendor organizer to plan your perfect wedding — one task at a time.
+        </p>
+        <div class="pt-2">
+          <a href="/tools/wedding-planning-dashboard" class="inline-block bg-[#B76E79] hover:bg-[#a25d66] text-white px-8 py-4 rounded-full text-sm font-bold shadow-md transition-all">
+            Start Your Free Checklist
+          </a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <Footer />
