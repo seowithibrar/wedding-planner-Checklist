@@ -63,3 +63,32 @@ export function generateBreadcrumbSchema(items: { name: string; item: string }[]
     }))
   });
 }
+
+export function generateWebApplicationSchema(app: {
+  name: string;
+  description: string;
+  url: string;
+  applicationCategory?: string;
+  operatingSystem?: string;
+  offers?: { price: string; priceCurrency: string };
+}) {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: app.name,
+    description: app.description,
+    url: app.url,
+    applicationCategory: app.applicationCategory || 'LifestyleApplication',
+    operatingSystem: app.operatingSystem || 'All',
+    offers: app.offers || {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD'
+    },
+    provider: {
+      '@type': 'Organization',
+      name: 'Wedding Planning Checklists',
+      url: 'https://www.weddingplanningchecklists.org'
+    }
+  });
+}
