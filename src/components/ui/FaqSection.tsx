@@ -190,7 +190,7 @@ export function FaqSection() {
     : faqsData.filter(item => item.category === activeTab);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-16 space-y-10">
+    <div className="max-w-[700px] mx-auto px-4 py-16 space-y-10">
       {/* Header */}
       <div className="text-center space-y-3">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1A1A1A] tracking-tight">
@@ -261,7 +261,7 @@ export function FaqSection() {
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <p className="pl-14 pr-8 pt-3 text-sm text-slate-600 leading-relaxed">
+                    <p className="pl-14 pr-4 pt-3 text-sm text-slate-600 leading-relaxed">
                       {item.a}
                     </p>
                   </motion.div>
