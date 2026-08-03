@@ -23,6 +23,22 @@ export default defineConfig({
       alias: {
         cookie: require.resolve('cookie')
       }
+    },
+    build: {
+      cssCodeSplit: true,
+      assetsInlineLimit: 4096,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+              return 'vendor-react';
+            }
+            if (id.includes('node_modules/lucide-react')) {
+              return 'vendor-lucide';
+            }
+          }
+        }
+      }
     }
   }
 });
