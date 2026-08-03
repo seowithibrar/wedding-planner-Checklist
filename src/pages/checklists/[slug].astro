@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import checklistsData from '../../data/categorized-checklists.json';
+import { generateBreadcrumbSchema, generateFAQSchema, generateArticleSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return checklistsData.checklists.map((item) => ({
+    params: { slug: item.slug },
+    props: { checklist: item },
+  }));
+}
+
+const { checklist } = Astro.props;
+
+const seo = {
+  title: `${checklist.title} — Free Planning Guide (2026)`,
+  description: checklist.description,
+  canonical: `https://www.weddingplanningchecklists.org/checklists/${checklist.slug}`
+};
+
+const breadcrumbItems = [
+  { name: 'Home', item: 'https://www.weddingplanningchecklists.org' },
+  { name: 'Checklists', item: 'https://www.weddingplanningchecklists.org/#categorized-checklists' },
+  { name: checklist.title, item: seo.canonical }
+];
+
+const faqs = [
+  {
+    q: `How do I use the ${checklist.title}?`,
+    a: `Start by reviewing the key takeaways and timeline stages outlined in this guide. Combine it with our free interactive tools to track your RSVPs, budget, and daily to-do lists.`
+  },
+  {
+    q: `Is the ${checklist.title} completely free?`,
+    a: `Yes! All checklist templates and interactive planning tools on WeddingPlanningChecklists.org are 100% free to access, download, and print.`
+  },
+  {
+    q: `Can I customize this checklist for my wedding style?`,
+    a: `Absolutely. You can tailor every task by using our interactive Wedding Task Generator and Dashboard to add or remove custom items.`
+  }
+];
+
+const combinedSchema = `[${[
+  generateArticleSchema({
+    title: checklist.title,
+    description: checklist.description,
+    slug: `checklists/${checklist.slug}`,
+    publishDate: '2026-01-01',
+    modifiedDate: '2026-08-03'
+  }),
+  generateFAQSchema(faqs),
+  generateBreadcrumbSchema(breadcrumbItems)
+].filter(Boolean).join(',')}]`;
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical} schemaScript={combinedSchema}>
+  <Header />
+
+  <main class="space-y-12">
+    <!-- Breadcrumbs -->
+    <nav class="max-w-[1300px] mx-auto px-4 pt-6 text-xs text-slate-500 flex items-center gap-2">
+      <a href="/" class="hover:text-[#B76E79]">Home</a>
+      <span>/</span>
+      <a href="/#categorized-checklists" class="hover:text-[#B76E79]">Checklists</a>
+      <span>/</span>
+      <span class="text-slate-800 font-semibold">{checklist.title}</span>
+    </nav>
+
+    <!-- Page Header Hero -->
+    <header class="max-w-[1300px] mx-auto px-4 space-y-4">
+      <div class="inline-flex items-center gap-2 bg-[#FCECF0] text-[#B76E79] px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+        <span>{checklist.icon}</span>
+        <span>{checklist.category} Guide</span>
+        <span>•</span>
+        <span>{checklist.badge}</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-[#1A1A1A] leading-tight">
+        {checklist.title}
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
+        {checklist.description}
+      </p>
+    </header>
+
+    <!-- Main Content Grid -->
+    <section class="max-w-[1300px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Main Content Column -->
+      <article class="lg:col-span-2 bg-white rounded-3xl border border-[#F3E8EA] p-6 sm:p-10 shadow-sm space-y-8">
+        
+        <!-- Summary Box -->
+        <div class="bg-[#FCECF0]/30 border border-[#B76E79]/20 p-6 rounded-2xl space-y-2">
+          <h2 class="text-lg font-bold text-[#B76E79]">Overview</h2>
+          <p class="text-sm text-slate-700 leading-relaxed">{checklist.summary}</p>
+        </div>
+
+        <!-- Key Takeaways & Stages -->
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A]">Key Execution Steps & Stages</h2>
+          <div class="space-y-3">
+            {checklist.keyTakeaways.map((takeaway, idx) => (
+              <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-[#B76E79] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                  {idx + 1}
+                </span>
+                <p class="text-sm text-slate-700 leading-relaxed pt-0.5">{takeaway}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <hr class="border-[#F3E8EA]" />
+
+        <!-- Deep Dive Guidance -->
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A]">Pro Tips for Using This Checklist</h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Organizing your wedding with a dedicated checklist ensures peace of mind. Combine this guide with our interactive planning tools to assign priorities, set deadlines, and track vendor budgets automatically.
+          </p>
+          <ul class="list-disc pl-5 space-y-2 text-sm text-slate-600">
+            <li><strong>Set Clear Priorities:</strong> Focus 60% of your initial planning time on the venue, caterer, and photographer.</li>
+            <li><strong>Keep Budgets Updated:</strong> Log every deposit immediately to prevent unexpected cost overruns.</li>
+            <li><strong>Delegate Tasks:</strong> Assign specific checklist items to your partner, maid of honor, or family members.</li>
+          </ul>
+        </div>
+
+        <!-- FAQs -->
+        <div class="space-y-4 pt-4 border-t border-[#F3E8EA]">
+          <h2 class="text-xl font-bold text-[#1A1A1A]">Frequently Asked Questions</h2>
+          <div class="space-y-3">
+            {faqs.map(faq => (
+              <div class="bg-slate-50 p-4 rounded-2xl space-y-1">
+                <h3 class="font-bold text-sm text-[#1A1A1A]">{faq.q}</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </article>
+
+      <!-- Sidebar Column -->
+      <aside class="space-y-6">
+        
+        <!-- Interactive Tool CTA Box -->
+        <div class="bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] text-white rounded-3xl p-6 shadow-md space-y-4">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0]/20 px-2.5 py-1 rounded-full">
+            Free Interactive Tool
+          </span>
+          <h3 class="text-xl font-bold">Track This Checklist Live</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Use our interactive Wedding Planning Dashboard to check off tasks, track RSVPs, and save your progress in real-time.
+          </p>
+          <a
+            href="/tools/wedding-planning-dashboard"
+            class="block text-center bg-[#B76E79] hover:bg-[#a25d66] text-white font-bold py-3 px-4 rounded-full text-xs transition-all shadow-md"
+          >
+            Open Interactive Tool →
+          </a>
+        </div>
+
+        <!-- Quick Tools Links -->
+        <div class="bg-white rounded-3xl border border-[#F3E8EA] p-6 shadow-sm space-y-4">
+          <h3 class="font-bold text-base text-[#1A1A1A]">Related Planning Tools</h3>
+          <ul class="space-y-2 text-xs font-medium">
+            <li>
+              <a href="/tools/guest-list-manager" class="text-slate-600 hover:text-[#B76E79] flex items-center justify-between py-1.5 border-b border-slate-100">
+                <span>👥 Guest List Manager</span>
+                <span>→</span>
+              </a>
+            </li>
+            <li>
+              <a href="/tools/budget-calculator" class="text-slate-600 hover:text-[#B76E79] flex items-center justify-between py-1.5 border-b border-slate-100">
+                <span>💰 Budget Calculator</span>
+                <span>→</span>
+              </a>
+            </li>
+            <li>
+              <a href="/tools/timeline-generator" class="text-slate-600 hover:text-[#B76E79] flex items-center justify-between py-1.5 border-b border-slate-100">
+                <span>📅 Timeline Generator</span>
+                <span>→</span>
+              </a>
+            </li>
+            <li>
+              <a href="/tools/wedding-countdown" class="text-slate-600 hover:text-[#B76E79] flex items-center justify-between py-1.5">
+                <span>⏰ Wedding Countdown</span>
+                <span>→</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </section>
+
+    <!-- Related Checklists Navigation -->
+    <section class="max-w-[1300px] mx-auto px-4 py-8">
+      <div class="bg-slate-50 rounded-3xl p-8 border border-slate-100 space-y-6">
+        <h2 class="text-xl font-bold text-[#1A1A1A]">Explore Other Categorized Checklists</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          {checklistsData.checklists.filter(c => c.slug !== checklist.slug).slice(0, 4).map(item => (
+            <a
+              href={`/checklists/${item.slug}`}
+              class="bg-white rounded-2xl p-4 border border-[#F3E8EA] shadow-sm hover:border-[#B76E79]/40 transition-all group"
+            >
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-base">{item.icon}</span>
+                <span class="text-[10px] font-bold text-[#B76E79] uppercase">{item.category}</span>
+              </div>
+              <h3 class="font-bold text-xs text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors leading-snug">
+                {item.title}
+              </h3>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
