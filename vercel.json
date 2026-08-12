@@ -1,43 +1,68 @@
 {
   "redirects": [
     {
+      "source": "/blog/how-to-plan-wedding-timeline",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-plan-wedding-timeline/",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-plan-wedding-timeline/index.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
+      "permanent": true
+    },
+    {
       "source": "/wedding/how-to-plan-wedding-timeline",
-      "destination": "/blog/how-to-plan-wedding-timeline",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
+      "permanent": true
+    },
+    {
+      "source": "/wedding/how-to-plan-wedding-timeline/",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/wedding/how-to-plan-wedding-timeline.html",
-      "destination": "/blog/how-to-plan-wedding-timeline",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/how-to-plan-wedding-timeline",
-      "destination": "/blog/how-to-plan-wedding-timeline",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-plan-wedding-timeline/",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/how-to-plan-wedding-timeline.html",
-      "destination": "/blog/how-to-plan-wedding-timeline",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/how-to-plan-a-wedding-timeline.html",
-      "destination": "/blog/how-to-plan-wedding-timeline",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/blog/how-to-plan-a-wedding-timeline.html",
-      "destination": "/blog/how-to-plan-wedding-timeline",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/blog/how-to-plan-wedding-timeline.html",
-      "destination": "/blog/how-to-plan-wedding-timeline",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/blog/How-to-Plan-a-Wedding-Timeline",
-      "destination": "/blog/how-to-plan-wedding-timeline",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
