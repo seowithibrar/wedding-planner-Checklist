@@ -26,6 +26,16 @@ const seo = getSEOMetadata({ title, description, canonical, image, type });
     })(window,document,'script','dataLayer','GTM-W23SV6KX');</script>
     <!-- End Google Tag Manager -->
 
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-88XTBS55X4"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-88XTBS55X4');
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{seo.title}</title>
