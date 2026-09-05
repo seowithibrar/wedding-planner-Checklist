@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import { generateBreadcrumbSchema } from '../lib/schema';
+import categorizedChecklists from '../data/categorized-checklists.json';
+import toolRegistry from '../data/tool-registry.json';
+
+const seo = {
+  title: 'Visual Sitemap & Directory | WeddingPlanningChecklists.org',
+  description: 'Explore the complete directory of wedding planning checklists, interactive budgeting and timeline tools, and expert wedding guides.',
+  canonical: 'https://www.weddingplanningchecklists.org/sitemap'
+};
+
+const siteUrl = 'https://www.weddingplanningchecklists.org';
+
+const breadcrumbItems = [
+  { name: 'Home', item: siteUrl },
+  { name: 'Sitemap', item: seo.canonical }
+];
+
+const schemaScript = `[${generateBreadcrumbSchema(breadcrumbItems)}]`;
+
+const corePages = [
+  { title: 'Home', url: '/', desc: 'Master homepage with full planning suites, tools, and featured guides.' },
+  { title: 'Blog & Articles Hub', url: '/blog', desc: 'Expert articles on timelines, budgeting, venues, outfits, and hairstyles.' },
+  { title: 'About Us', url: '/about-us', desc: 'Learn about the Wedding Planning Checklists mission and certified editorial team.' },
+  { title: 'Contact Us', url: '/contact', desc: 'Get in touch with our team for questions, suggestions, or editorial feedback.' },
+  { title: 'Privacy Policy', url: '/privacy-policy', desc: 'Our policies on data privacy and user information protection.' },
+  { title: 'Terms of Service', url: '/terms-of-service', desc: 'Terms governing the use of our planning tools, templates, and content.' }
+];
+
+const blogArticles = [
+  { title: '18-Month Wedding Planning Timeline: Month-by-Month Guide', url: '/blog/18-month-wedding-planning-timeline', cat: 'Planning' },
+  { title: '14-Month Wedding Planning Timeline: Month-by-Month Guide', url: '/blog/14-month-wedding-planning-timeline', cat: 'Planning' },
+  { title: 'How to Plan a Wedding Timeline: Professional Framework', url: '/blog/how-to-plan-a-wedding-timeline', cat: 'Planning' },
+  { title: 'The Ultimate Wedding Planning Checklists Guide', url: '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding', cat: 'Checklists' },
+  { title: '20 Essential Tips for Your Wedding Planning Checklist', url: '/blog/20-tips-for-your-wedding-planning-checklist', cat: 'Tips' },
+  { title: 'How to Choose the Perfect Wedding Venue', url: '/blog/how-to-choose-wedding-venue', cat: 'Venues' },
+  { title: 'Wedding Budget Tips & Savings Strategies', url: '/blog/wedding-budget-tips', cat: 'Budget' },
+  { title: 'The Perfect Wedding Guest List Guide', url: '/blog/perfect-guest-list-guide', cat: 'Guests' },
+  { title: 'Wedding Outfits: The Complete Style Guide', url: '/blog/wedding-outfits', cat: 'Attire' },
+  { title: 'Pakistani Wedding Outfits: Bridal & Groom Attire', url: '/blog/pakistani-wedding-outfits', cat: 'Cultural' },
+  { title: '50 Best Hairstyles for Wedding: Ultimate Bridal Hair Guide', url: '/blog/hairstyles-for-wedding', cat: 'Beauty' },
+  { title: 'Pakistani Wedding Hairstyles: Traditional to Modern', url: '/blog/pakistani-wedding-hairstyles', cat: 'Beauty' },
+  { title: 'Indian Wedding Hairstyles: Complete Cultural Guide', url: '/blog/indian-wedding-hairstyles-guide', cat: 'Beauty' },
+  { title: 'Regional Indian Bridal Hairstyles by State & Tradition', url: '/blog/regional-indian-wedding-hairstyles', cat: 'Beauty' },
+  { title: 'How to Create an Inspiring Wedding Moodboard', url: '/blog/how-to-make-wedding-moodboard', cat: 'Design' }
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  schemaScript={schemaScript}
+>
+  <Header />
+
+  <main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="text-xs text-slate-400">
+      <ol class="flex items-center gap-1.5">
+        <li><a href="/" class="hover:text-[#B76E79] transition-colors">Home</a></li>
+        <li class="text-slate-300">/</li>
+        <li class="font-semibold text-[#B76E79]">Visual Sitemap</li>
+      </ol>
+    </nav>
+
+    <!-- Hero -->
+    <div class="text-center max-w-3xl mx-auto space-y-4">
+      <span class="inline-block bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+        Visual Site Directory
+      </span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1A1A1A] leading-tight" style="font-family: 'Playfair Display', serif;">
+        Website <span class="text-[#B76E79]">Sitemap &amp; Directory</span>
+      </h1>
+      <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+        Easily explore and navigate every interactive planning tool, categorized checklist, and expert timeline guide across WeddingPlanningChecklists.org.
+      </p>
+
+      <!-- Raw XML Link -->
+      <div class="pt-2">
+        <a href="/sitemap.xml" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-[#B76E79] bg-white border border-[#F3E8EA] hover:border-[#B76E79] px-4 py-2 rounded-xl shadow-sm hover:shadow transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+          View Formatted XML Sitemap (/sitemap.xml)
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Stats Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-[#EFF6FF] text-blue-600 flex items-center justify-center text-xl font-bold">🛠️</div>
+        <div>
+          <div class="text-2xl font-black text-[#1A1A1A]">14</div>
+          <div class="text-xs font-bold text-slate-500 uppercase">Interactive Tools</div>
+        </div>
+      </div>
+      <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-xl font-bold">📋</div>
+        <div>
+          <div class="text-2xl font-black text-[#1A1A1A]">20</div>
+          <div class="text-xs font-bold text-slate-500 uppercase">Planning Checklists</div>
+        </div>
+      </div>
+      <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-[#FEF3C7] text-amber-600 flex items-center justify-center text-xl font-bold">📖</div>
+        <div>
+          <div class="text-2xl font-black text-[#1A1A1A]">15</div>
+          <div class="text-xs font-bold text-slate-500 uppercase">Expert Guides</div>
+        </div>
+      </div>
+      <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-xl font-bold">🌐</div>
+        <div>
+          <div class="text-2xl font-black text-[#1A1A1A]">55+</div>
+          <div class="text-xs font-bold text-slate-500 uppercase">Total Indexed Pages</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1: Interactive Planning Tools -->
+    <section class="space-y-6 pt-4">
+      <div class="flex items-center justify-between border-b border-[#F3E8EA] pb-3">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🛠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">Interactive Planning Tools</h2>
+            <p class="text-xs text-slate-500">Free calculators, schedule generators, guest managers, and trackers</p>
+          </div>
+        </div>
+        <span class="text-xs font-bold text-[#B76E79] bg-[#FCECF0] px-3 py-1 rounded-full">14 Tools</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {toolRegistry.tools.map(tool => (
+          <a href={tool.url} class="p-5 bg-white rounded-2xl border border-[#F3E8EA] hover:border-[#B76E79] shadow-sm hover:shadow-md transition-all group flex flex-col justify-between space-y-3">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xl">{tool.icon}</span>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{tool.category}</span>
+              </div>
+              <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{tool.title}</h3>
+              <p class="text-xs text-slate-600 leading-relaxed line-clamp-2">{tool.description}</p>
+            </div>
+            <span class="text-xs font-bold text-[#B76E79] inline-flex items-center gap-1 group-hover:gap-2 transition-all pt-2 border-t border-slate-50">
+              Open Tool →
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 2: Categorized Wedding Planning Checklists -->
+    <section class="space-y-6 pt-8">
+      <div class="flex items-center justify-between border-b border-[#F3E8EA] pb-3">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">📋</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">Categorized Planning Checklists</h2>
+            <p class="text-xs text-slate-500">Milestone checklists organized by timeline phases, budget tiers, and specialized styles</p>
+          </div>
+        </div>
+        <span class="text-xs font-bold text-[#B76E79] bg-[#FCECF0] px-3 py-1 rounded-full">20 Checklists</span>
+      </div>
+
+      <div class="space-y-8">
+        {categorizedChecklists.categories.map(category => (
+          <div class="space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="text-base">{category.icon}</span>
+              <h3 class="font-bold text-base text-[#1A1A1A]">{category.title}</h3>
+              <span class="text-xs text-slate-400 font-semibold">({category.checklists.length})</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {category.checklists.map(chk => (
+                <a href={`/checklists/${chk.slug}`} class="p-4 bg-white rounded-2xl border border-[#F3E8EA] hover:border-[#B76E79] shadow-sm hover:shadow-md transition-all group space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-lg">{chk.icon}</span>
+                    <span class="text-[9px] font-bold text-[#B76E79] bg-[#FCECF0] px-2 py-0.5 rounded-full">{chk.totalTasks} Tasks</span>
+                  </div>
+                  <h4 class="font-bold text-xs sm:text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors leading-snug">{chk.title}</h4>
+                  <p class="text-[11px] text-slate-500 line-clamp-2">{chk.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 3: Blog Articles & Guides -->
+    <section class="space-y-6 pt-8">
+      <div class="flex items-center justify-between border-b border-[#F3E8EA] pb-3">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">📖</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">Guides, Timelines &amp; Inspiration</h2>
+            <p class="text-xs text-slate-500">In-depth pillar guides for wedding timelines, budgeting, beauty, attire, and decor</p>
+          </div>
+        </div>
+        <span class="text-xs font-bold text-[#B76E79] bg-[#FCECF0] px-3 py-1 rounded-full">15 Guides</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {blogArticles.map(art => (
+          <a href={art.url} class="p-5 bg-white rounded-2xl border border-[#F3E8EA] hover:border-[#B76E79] shadow-sm hover:shadow-md transition-all group space-y-2">
+            <span class="text-[10px] font-bold text-[#B76E79] uppercase tracking-wider">{art.cat}</span>
+            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors leading-snug">{art.title}</h3>
+            <span class="text-xs font-bold text-[#B76E79] inline-flex items-center gap-1 group-hover:gap-2 transition-all pt-1">
+              Read Guide →
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 4: Core & Legal Pages -->
+    <section class="space-y-6 pt-8">
+      <div class="flex items-center justify-between border-b border-[#F3E8EA] pb-3">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🌟</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">Core Website &amp; Legal Pages</h2>
+            <p class="text-xs text-slate-500">Essential site navigation, company mission, contact channels, and policies</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {corePages.map(page => (
+          <a href={page.url} class="p-5 bg-white rounded-2xl border border-[#F3E8EA] hover:border-[#B76E79] shadow-sm hover:shadow-md transition-all group space-y-2">
+            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{page.title}</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">{page.desc}</p>
+            <span class="text-xs font-bold text-[#B76E79] inline-flex items-center gap-1 group-hover:gap-2 transition-all pt-1">
+              Visit Page →
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
