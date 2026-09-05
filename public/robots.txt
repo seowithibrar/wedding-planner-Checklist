@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.weddingplanningchecklists.org/sitemap-index.xml
-Sitemap: https://www.weddingplanningchecklists.org/sitemap-0.xml
+Sitemap: https://www.weddingplanningchecklists.org/sitemap.xml
