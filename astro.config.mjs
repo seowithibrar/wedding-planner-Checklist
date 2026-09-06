@@ -9,7 +9,9 @@ const require = createRequire(import.meta.url);
 
 export default defineConfig({
   site: 'https://www.weddingplanningchecklists.org',
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: { enabled: true }
+  }),
   output: 'static',
   integrations: [
     mdx(),
