@@ -6,6 +6,28 @@ import { generateBreadcrumbSchema } from '../lib/schema';
 import categorizedChecklists from '../data/categorized-checklists.json';
 import toolRegistry from '../data/tool-registry.json';
 
+const groupedCategories = categorizedChecklists.checklists.reduce((acc: Record<string, any>, chk: any) => {
+  if (!acc[chk.category]) {
+    let catIcon = '📋';
+    if (chk.category === 'Timeline') catIcon = '📅';
+    else if (chk.category === 'Budget') catIcon = '💰';
+    else if (chk.category === 'Cultural') catIcon = '🪔';
+    else if (chk.category === 'Style') catIcon = '🥂';
+    else if (chk.category === 'Day-Of') catIcon = '⏰';
+    else if (chk.category === 'Organizers') catIcon = '📑';
+
+    acc[chk.category] = {
+      title: chk.category + ' Checklists',
+      icon: catIcon,
+      checklists: []
+    };
+  }
+  acc[chk.category].checklists.push(chk);
+  return acc;
+}, {});
+
+const categoriesArray = Object.values(groupedCategories);
+
 const seo = {
   title: 'Visual Sitemap & Directory | WeddingPlanningChecklists.org',
   description: 'Explore the complete directory of wedding planning checklists, interactive budgeting and timeline tools, and expert wedding guides.',
@@ -167,7 +189,7 @@ const blogArticles = [
       </div>
 
       <div class="space-y-8">
-        {categorizedChecklists.categories.map(category => (
+        {categoriesArray.map((category: any) => (
           <div class="space-y-4">
             <div class="flex items-center gap-2">
               <span class="text-base">{category.icon}</span>
@@ -176,7 +198,7 @@ const blogArticles = [
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {category.checklists.map(chk => (
+              {category.checklists.map((chk: any) => (
                 <a href={`/checklists/${chk.slug}`} class="p-4 bg-white rounded-2xl border border-[#F3E8EA] hover:border-[#B76E79] shadow-sm hover:shadow-md transition-all group space-y-2">
                   <div class="flex items-center justify-between">
                     <span class="text-lg">{chk.icon}</span>
