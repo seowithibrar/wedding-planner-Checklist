@@ -8,36 +8,43 @@
     <loc>https://www.weddingplanningchecklists.org/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/sitemap</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/about-us</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/terms-of-service</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
 
   <!-- ═══════════════════════════════════════════════
@@ -47,71 +54,85 @@
     <loc>https://www.weddingplanningchecklists.org/tools/budget-calculator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/timeline-generator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/guest-list-manager</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/wedding-checklist-generator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/wedding-planning-timeline</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/wedding-task-generator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/wedding-milestone-tracker</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/wedding-planning-calendar</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/daily-wedding-planner</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/weekly-wedding-planner</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/monthly-wedding-planner</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/wedding-countdown</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/wedding-progress-tracker</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/wedding-planning-dashboard</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
 
   <!-- ═══════════════════════════════════════════════
@@ -121,101 +142,121 @@
     <loc>https://www.weddingplanningchecklists.org/checklists/12-month-wedding-planning-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/18-month-wedding-planning-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/6-month-wedding-planning-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/3-month-wedding-planning-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/wedding-budget-calculator-10k</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/wedding-budget-calculator-20k</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/wedding-budget-calculator-30k</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/wedding-budget-calculator-50k</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/pakistani-wedding-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/indian-wedding-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/destination-wedding-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/backyard-wedding-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/intimate-small-wedding-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/bridal-emergency-kit-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/wedding-day-of-timeline-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/wedding-guest-list-organizer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/wedding-vendor-booking-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/wedding-reception-planning-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/wedding-decor-flowers-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/checklists/printable-wedding-planning-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
 
   <!-- ═══════════════════════════════════════════════
@@ -225,75 +266,90 @@
     <loc>https://www.weddingplanningchecklists.org/blog/18-month-wedding-planning-timeline</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/14-month-wedding-planning-timeline</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/how-to-plan-a-wedding-timeline</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/how-to-choose-wedding-venue</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/wedding-budget-tips</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/perfect-guest-list-guide</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/wedding-outfits</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/pakistani-wedding-outfits</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/hairstyles-for-wedding</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/pakistani-wedding-hairstyles</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/indian-wedding-hairstyles-guide</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/regional-indian-wedding-hairstyles</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/how-to-make-wedding-moodboard</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-09-06</lastmod>
   </url>
 </urlset>

@@ -5,7 +5,7 @@ import Footer from '../../components/layout/Footer.astro';
 import { TimelineGenerator } from '../../components/tools/TimelineGenerator';
 
 const seo = {
-  title: 'Free Wedding Day-of Timeline Generator',
+  title: 'Timeline Generator (2026)',
   description: 'Generate a customized day-of wedding timeline based on your ceremony start time. Includes hair, makeup, photos, cocktail hour, and dinner schedules.',
   canonical: 'https://www.weddingplanningchecklists.org/tools/timeline-generator'
 };
@@ -24,6 +24,10 @@ const seo = {
     </div>
 
     <!-- React Island loaded client-side -->
+    <!-- SEO Intro Copy -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 text-center text-slate-600 text-sm leading-relaxed">
+      This interactive Timeline Generator helps you stay completely organized and on top of your wedding planning process. Simply enter your details below, and the tool will automatically adjust to fit your specific wedding needs. Save time, reduce stress, and ensure no detail is overlooked with this free resource.
+    </div>
     <TimelineGenerator client:visible />
   </main>
 

@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { checklist } = Astro.props;
 
 const seo = {
-  title: `${checklist.title} — Free Planning Guide (2026)`,
+  title: `${checklist.title} (2026)`,
   description: checklist.description,
   canonical: `https://www.weddingplanningchecklists.org/checklists/${checklist.slug}`
 };
@@ -81,6 +81,16 @@ const combinedSchema = `[${[
       <p class="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
         {checklist.description}
       </p>
+      
+      <!-- Authorship & Date Meta -->
+      <div class="flex items-center gap-4 text-xs font-medium text-slate-500 pt-2">
+        <span class="inline-flex items-center gap-2">
+          <div class="w-6 h-6 rounded-full bg-[#B76E79] text-white flex items-center justify-center font-bold text-[9px]">SJ</div>
+          By <strong class="text-[#1A1A1A]">Sarah Jenkins</strong>
+        </span>
+        <span class="text-slate-300">|</span>
+        <span>Last Updated: September 6, 2026</span>
+      </div>
     </header>
 
     <!-- Main Content Grid -->

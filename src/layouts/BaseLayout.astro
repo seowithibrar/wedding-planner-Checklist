@@ -5,13 +5,14 @@ import { getSEOMetadata } from '../lib/seo';
 export interface Props {
   title: string;
   description: string;
+  ogDescription?: string;
   canonical?: string;
   image?: string;
   type?: 'website' | 'article';
   schemaScript?: string;
 }
 
-const { title, description, canonical, image, type = 'website', schemaScript } = Astro.props;
+const { title, description, ogDescription, canonical, image, type = 'website', schemaScript } = Astro.props;
 const seo = getSEOMetadata({ title, description, canonical, image, type });
 ---
 
@@ -63,14 +64,14 @@ const seo = getSEOMetadata({ title, description, canonical, image, type });
     <meta property="og:type" content={seo.type} />
     <meta property="og:url" content={seo.canonicalUrl} />
     <meta property="og:title" content={seo.title} />
-    <meta property="og:description" content={seo.description} />
+    <meta property="og:description" content={ogDescription || seo.description} />
     <meta property="og:image" content={seo.ogImage} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={seo.canonicalUrl} />
     <meta property="twitter:title" content={seo.title} />
-    <meta property="twitter:description" content={seo.description} />
+    <meta property="twitter:description" content={ogDescription || seo.description} />
     <meta property="twitter:image" content={seo.ogImage} />
 
     {schemaScript && (

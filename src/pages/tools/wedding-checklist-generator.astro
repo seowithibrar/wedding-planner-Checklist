@@ -6,7 +6,7 @@ import { ChecklistGenerator } from '../../components/tools/ChecklistGenerator';
 import { generateFAQSchema, generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
 
 const seo = {
-  title: 'Free Wedding Checklist Generator & Custom Task Planner',
+  title: 'Wedding Checklist Generator (2026)',
   description: 'Generate a customized wedding planning checklist based on your wedding date. Filter 90+ tasks by timeline, category, and priority. Save progress automatically.',
   canonical: 'https://www.weddingplanningchecklists.org/tools/wedding-checklist-generator'
 };
@@ -40,6 +40,10 @@ const combinedSchema = `[${[
       <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
         Generate a personalized wedding planning checklist tailored to your wedding date. Track progress across 15 categories.
       </p>
+    </div>
+    <!-- SEO Intro Copy -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 text-center text-slate-600 text-sm leading-relaxed">
+      This interactive Wedding Checklist Generator helps you stay completely organized and on top of your wedding planning process. Simply enter your details below, and the tool will automatically adjust to fit your specific wedding needs. Save time, reduce stress, and ensure no detail is overlooked with this free resource.
     </div>
     <ChecklistGenerator client:visible />
   </main>

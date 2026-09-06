@@ -6,7 +6,7 @@ import { WeeklyPlanner } from '../../components/tools/WeeklyPlanner';
 import { generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
 
 const seo = {
-  title: 'Free Weekly Wedding Planner & Goal Setting Board',
+  title: 'Weekly Wedding Planner (2026)',
   description: '7-day weekly planning board with goal setting, task assignments, and progress tracking for stress-free wedding prep.',
   canonical: 'https://www.weddingplanningchecklists.org/tools/weekly-wedding-planner'
 };
@@ -33,6 +33,10 @@ const combinedSchema = `[${[
       <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
         7-day column view with weekly goal setting and daily task distribution.
       </p>
+    </div>
+    <!-- SEO Intro Copy -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 text-center text-slate-600 text-sm leading-relaxed">
+      This interactive Weekly Wedding Planner helps you stay completely organized and on top of your wedding planning process. Simply enter your details below, and the tool will automatically adjust to fit your specific wedding needs. Save time, reduce stress, and ensure no detail is overlooked with this free resource.
     </div>
     <WeeklyPlanner client:visible />
   </main>

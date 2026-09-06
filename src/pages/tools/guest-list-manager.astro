@@ -7,7 +7,7 @@ import { generateFAQSchema, generateBreadcrumbSchema, generateWebApplicationSche
 import guestListData from '../../data/guest-list-data.json';
 
 const seo = {
-  title: 'Free Wedding Guest List Manager & RSVP Tracker (2026)',
+  title: 'Guest List Manager (2026)',
   description: 'Organize your wedding guest list with our free interactive tool. Track RSVPs, meal preferences, seating assignments, plus-ones, and export to CSV. Works on mobile, saves automatically.',
   canonical: 'https://www.weddingplanningchecklists.org/tools/guest-list-manager'
 };
@@ -73,6 +73,10 @@ const combinedSchema = `[${schemas.filter(Boolean).join(',')}]`;
       </div>
 
       <!-- React Island -->
+      <!-- SEO Intro Copy -->
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 text-center text-slate-600 text-sm leading-relaxed">
+        This interactive Guest List Manager helps you stay completely organized and on top of your wedding planning process. Simply enter your details below, and the tool will automatically adjust to fit your specific wedding needs. Save time, reduce stress, and ensure no detail is overlooked with this free resource.
+      </div>
       <GuestListManager client:visible />
     </section>
 

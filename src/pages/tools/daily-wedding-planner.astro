@@ -6,7 +6,7 @@ import { DailyPlanner } from '../../components/tools/DailyPlanner';
 import { generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
 
 const seo = {
-  title: 'Free Daily Wedding Planner & Time-Blocked Schedule',
+  title: 'Daily Wedding Planner (2026)',
   description: 'Organize your wedding planning day-by-day with morning, afternoon, and evening time blocks and daily notes.',
   canonical: 'https://www.weddingplanningchecklists.org/tools/daily-wedding-planner'
 };
@@ -33,6 +33,10 @@ const combinedSchema = `[${[
       <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
         Time-blocked day planner for morning, afternoon, and evening tasks.
       </p>
+    </div>
+    <!-- SEO Intro Copy -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 text-center text-slate-600 text-sm leading-relaxed">
+      This interactive Daily Wedding Planner helps you stay completely organized and on top of your wedding planning process. Simply enter your details below, and the tool will automatically adjust to fit your specific wedding needs. Save time, reduce stress, and ensure no detail is overlooked with this free resource.
     </div>
     <DailyPlanner client:visible />
   </main>
