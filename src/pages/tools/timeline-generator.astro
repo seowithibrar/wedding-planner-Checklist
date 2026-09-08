@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import { TimelineGenerator } from '../../components/tools/TimelineGenerator';
+import { generateFAQSchema, generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
 
 const seo = {
   title: 'Wedding Day Timeline Generator - Free & Editable',
@@ -10,253 +11,262 @@ const seo = {
   canonical: 'https://www.weddingplanningchecklists.org/tools/timeline-generator'
 };
 
-// Schema
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "name": "Wedding Timeline Generator",
-      "url": "https://www.weddingplanningchecklists.org/tools/timeline-generator",
-      "applicationCategory": "LifestyleApplication",
-      "operatingSystem": "Web",
-      "description": "Free tool that generates a personalized wedding day timeline from your ceremony start time."
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do I create a wedding day timeline?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Start from your ceremony start time and work in both directions: backward through hair and makeup, portraits, and travel, and forward through cocktail hour, dinner, and the send-off."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How far in advance should I send my timeline to vendors?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Share a draft four to six weeks out so your photographer and planner can flag anything unrealistic, then send the finalized version two to four weeks before the wedding. Avoid sending multiple revisions in the final week — a vendor working from an outdated copy is a bigger risk than a small imperfection in the schedule."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much buffer time should I add between events?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Plan for 10-15 minutes between major blocks, plus a full 30-minute cushion before the ceremony. Every wedding runs a few minutes long somewhere; buffer time is what keeps a late hair appointment from pushing back the ceremony itself."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I still need a timeline if I have a wedding planner?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, in a lighter form. Your planner will build the detailed, vendor-facing version, but you and your wedding party still benefit from a simplified personal copy so everyone knows where to be without asking the planner every hour."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long should hair and makeup take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Budget 45-60 minutes per person for hair and 30-45 minutes for makeup for each member of the wedding party getting professional styling. For a party of four to six, that usually means starting four to five hours before the ceremony."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Should I do a first look?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A first look lets you complete most portraits before the ceremony, which frees up cocktail hour for you to actually attend it. Skipping it preserves the traditional aisle reveal, but pushes formal photos into a tighter cocktail-hour window — plan for 75-90 minutes if you go that route."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What's the difference between a wedding timeline and a wedding itinerary?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The terms are used interchangeably in most planning contexts. Both describe the same hour-by-hour (or minute-by-minute) schedule of the wedding day, though 'itinerary' sometimes extends to guest-facing details like parking and dress code."
-          }
-        }
-      ]
-    }
-  ]
-};
+const siteUrl = 'https://www.weddingplanningchecklists.org';
+
+const breadcrumbItems = [
+  { name: 'Home', item: siteUrl },
+  { name: 'Planning Tools', item: `${siteUrl}/tools/budget-calculator` },
+  { name: 'Timeline Generator', item: seo.canonical }
+];
+
+const faqs = [
+  {
+    q: "How do I create a wedding day timeline?",
+    a: "Start from your ceremony start time and work in both directions: backward through hair and makeup, portraits, and travel, and forward through cocktail hour, dinner, and the send-off. A generator does this math for you; building it by hand means estimating each block yourself and padding every transition by 10-15 minutes."
+  },
+  {
+    q: "How far in advance should I send my timeline to vendors?",
+    a: "Share a draft four to six weeks out so your photographer and planner can flag anything unrealistic, then send the finalized version two to four weeks before the wedding. Avoid sending multiple revisions in the final week — a vendor working from an outdated copy is a bigger risk than a small imperfection in the schedule."
+  },
+  {
+    q: "How much buffer time should I add between events?",
+    a: "Plan for 10-15 minutes between major blocks, plus a full 30-minute cushion before the ceremony. Every wedding runs a few minutes long somewhere; buffer time is what keeps a late hair appointment from pushing back the ceremony itself."
+  },
+  {
+    q: "Do I still need a timeline if I have a wedding planner?",
+    a: "Yes, in a lighter form. Your planner will build the detailed, vendor-facing version, but you and your wedding party still benefit from a simplified personal copy so everyone knows where to be without asking the planner every hour."
+  },
+  {
+    q: "How long should hair and makeup take?",
+    a: "Budget 45-60 minutes per person for hair and 30-45 minutes for makeup for each member of the wedding party getting professional styling. For a party of four to six, that usually means starting four to five hours before the ceremony."
+  },
+  {
+    q: "Should I do a first look?",
+    a: "A first look lets you complete most portraits before the ceremony, which frees up cocktail hour for you to actually attend it. Skipping it preserves the traditional aisle reveal, but pushes formal photos into a tighter cocktail-hour window — plan for 75-90 minutes if you go that route."
+  },
+  {
+    q: "What's the difference between a wedding timeline and a wedding itinerary?",
+    a: "The terms are used interchangeably in most planning contexts. Both describe the same hour-by-hour (or minute-by-minute) schedule of the wedding day, though 'itinerary' sometimes extends to guest-facing details like parking and dress code."
+  }
+];
+
+const schemas = [
+  generateWebApplicationSchema({
+    name: 'Wedding Timeline Generator',
+    description: seo.description,
+    url: seo.canonical
+  }),
+  generateFAQSchema(faqs),
+  generateBreadcrumbSchema(breadcrumbItems)
+];
+
+const combinedSchema = `[${schemas.filter(Boolean).join(',')}]`;
 ---
 
-<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical} schema={schema}>
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  schemaScript={combinedSchema}
+>
   <Header />
 
-  <main class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
-      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Free Planning Tool</span>
-      <h1 class="text-4xl sm:text-5xl font-black text-[#1A1A1A]">Free Wedding Day Timeline Generator: Build Your Minute-by-Minute Schedule</h1>
-      <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-        Your ceremony starts at 5:00 p.m. Work backward from there and every other block of the day — hair and makeup, first look, family formals, cocktail hour, dinner, the last dance — has to fit into hours you probably haven't counted yet. That's the math Wedding Timeline Generator does for you. Enter your ceremony time, and it lays out the rest of your day in minutes, not in an evening spent guessing.
-      </p>
-      <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-        Most couples build a timeline the hard way: a blank document, a rough sense of "morning stuff, then the wedding, then the party," and a nagging worry they've forgotten something. A generator flips that around. You start from the one time that's already fixed — your ceremony — and let the tool fill in everything else with realistic durations, then you adjust from there.
-      </p>
-    </div>
+  <main>
+    <!-- Breadcrumbs -->
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-1.5 text-xs text-slate-400">
+        {breadcrumbItems.map((crumb, idx) => (
+          <li class="flex items-center gap-1.5">
+            {idx > 0 && <span aria-hidden="true">/</span>}
+            {idx === breadcrumbItems.length - 1 ? (
+              <span class="font-semibold text-[#B76E79]">{crumb.name}</span>
+            ) : (
+              <a href={crumb.item} class="hover:text-[#B76E79] transition-colors">{crumb.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
 
-    <!-- Image: Hero / What It Does -->
-    <div class="max-w-4xl mx-auto mb-16">
-      <img src="/images/wedding-day-timeline-generator-hero.jpg" alt="Wedding day timeline generator showing a sample schedule on a tablet" class="w-full rounded-2xl shadow-lg border border-slate-100" />
-    </div>
-
-    <!-- React Island loaded client-side -->
-    <div class="mb-16">
-      <TimelineGenerator client:visible />
-    </div>
-
-    <article class="max-w-3xl mx-auto prose prose-slate prose-headings:text-[#1A1A1A] prose-headings:font-bold prose-a:text-[#B76E79] hover:prose-a:text-[#9A5B64] mt-16">
-      
-      <h2>What a Wedding Day Timeline Generator Actually Does</h2>
-      <p>
-        A wedding day timeline generator turns a single fixed point — your ceremony start time — into a full, ordered schedule for the day: when hair and makeup begins, when the wedding party needs to be dressed, when portraits happen, and how the evening unfolds from cocktail hour to send-off. Instead of estimating each block from scratch, you get a realistic draft to edit rather than a blank page to fill.
-      </p>
-      <p>
-        It isn't a replacement for a wedding planner's detailed, vendor-specific version. Think of it as the fast first draft: the skeleton that gets 80% of the guesswork out of the way so you, your planner, or your coordinator can spend your time on the 20% that's actually specific to your wedding. <a href="/tools/wedding-budget-planner">Wedding budget planning</a> is often tied to these timeline decisions, as vendor hours drive your overall cost.
-      </p>
-
-      <h2>How It Works</h2>
-      <p>
-        <img src="/images/how-wedding-timeline-generator-works.jpg" alt="Three steps to generate a wedding day timeline: enter time, edit, share" class="w-full rounded-xl shadow-md my-8" />
-      </p>
-      <ul>
-        <li><strong>Enter your ceremony start time</strong>, venue setup (one location or two), and whether you're planning a first look.</li>
-        <li><strong>Review the generated blocks</strong> — hair and makeup, portraits, ceremony, cocktail hour, reception — each with a suggested duration.</li>
-        <li><strong>Edit any time or label</strong>, add anything specific to your day, and export or share the result.</li>
-      </ul>
-      <p>
-        That's the whole flow. Most of the actual thinking — how long formals realistically take, how much buffer to leave before the ceremony, how long cocktail hour needs to run if you skipped a first look — is baked into the defaults, so you're adjusting a plan instead of inventing one.
-      </p>
-
-      <h2>What Your Generated Timeline Includes</h2>
-      <p>
-        Here's what a generated schedule looks like for a 5:00 p.m. ceremony with a first look. Times shift earlier or later depending on your own ceremony time, but the order and proportions hold for most weddings. As your <a href="/tools/guest-list-manager">guest list</a> changes, your catering and formals timing may need to adjust slightly.
-      </p>
-      
-      <div class="not-prose my-8 grid md:grid-cols-2 gap-8 items-start">
-        <div class="overflow-x-auto shadow ring-1 ring-black ring-opacity-5 rounded-lg">
-          <table class="min-w-full divide-y divide-gray-300">
-            <thead class="bg-gray-50">
-              <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Time</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Block</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Notes</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200 bg-white">
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">11:00 AM</td><td class="px-3 py-4 text-sm text-gray-500">Hair & makeup begins</td><td class="px-3 py-4 text-sm text-gray-500">4-6 people; 45-60 min/person hair, 30-45 makeup</td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">1:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Getting-ready photos</td><td class="px-3 py-4 text-sm text-gray-500">Detail shots, dress on, first-look prep</td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">2:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">First look + portraits</td><td class="px-3 py-4 text-sm text-gray-500">Optional; frees up cocktail hour later</td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">2:45 PM</td><td class="px-3 py-4 text-sm text-gray-500">Wedding party & family formals</td><td class="px-3 py-4 text-sm text-gray-500">Ask photographer for a real time estimate</td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">3:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Buffer / travel to ceremony site</td><td class="px-3 py-4 text-sm text-gray-500">10-15 min cushion, more if changing venues</td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">4:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">Guests seated</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">5:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">Ceremony</td><td class="px-3 py-4 text-sm text-gray-500">30 min including processional and recessional</td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">5:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Cocktail hour</td><td class="px-3 py-4 text-sm text-gray-500">60-90 min if formals weren't done pre-ceremony</td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">6:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Reception entrance & first dance</td><td class="px-3 py-4 text-sm text-gray-500">Links to <a href="/tools/wedding-seating-chart-maker" class="text-[#B76E79] hover:underline">seating arrangements</a></td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">7:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">Dinner</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">8:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">Toasts & cake cutting</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">8:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Open dancing</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">10:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Last call / send-off prep</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
-              <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">11:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">Grand exit</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <img src="/images/wedding-timeline-blocks-infographic.jpg" alt="Infographic of wedding day timeline blocks from getting ready to send-off" class="w-full rounded-xl shadow-md" />
-        </div>
-      </div>
-
-      <p>
-        Every block is editable. If your photographer needs 45 minutes for formals instead of the default 30, or your venue requires breakdown to finish by midnight, you change that block and everything downstream should shift with it.
-      </p>
-
-      <h2>Why a Timeline Beats a Mental Checklist</h2>
-      <p>
-        A wedding day is the one day where a 20-minute delay doesn't stay a 20-minute delay. A ceremony that starts late pushes portraits into cocktail hour. A cocktail hour that runs long means dinner comes out cold. A first dance at 9:30 instead of 8:30 means half the room has mentally checked out before the dancing starts. None of that is dramatic on its own — it's just what happens when nobody has written down what "on time" actually means for this specific day. Using a <a href="/tools/wedding-checklist-generator">day-of checklist</a> complements the timeline with task-level detail.
-      </p>
-      <p>
-        A timeline that exists only in your head isn't a plan; it's an assumption everyone involved is making differently. Your photographer is assuming one pace, your caterer another, and your maid of honor has no idea what either of them is assuming. A written, shared timeline is what makes those assumptions match.
-      </p>
-
-      <h2>Build Backward From Your Ceremony Time, Not Forward From Breakfast</h2>
-      <p>
-        Here's where most DIY timelines go wrong: couples start planning from the morning — "we'll wake up, have breakfast, start hair and makeup around 10" — and work forward, hoping it lands somewhere near the ceremony. It rarely does. The better approach, and the one a generator forces by design, is to anchor everything to the ceremony time and work outward in both directions. Ensure your <a href="/tools/wedding-invitation-timeline">invitations</a> match the exact ceremony time on the generated timeline.
-      </p>
-      <p>
-        A 4:00 p.m. ceremony and a 6:00 p.m. ceremony don't just shift the whole day by two hours — the gap is mostly absorbed by the morning. Hair and makeup for a bridal party of four to six typically needs four to five hours before the ceremony, so a later ceremony buys you a slower morning, not a shorter one. Anchoring to the ceremony time first is what keeps that math honest.
-      </p>
-
-      <h2>Sharing Your Timeline With Vendors and Your Wedding Party</h2>
-      <p>
-        A timeline only helps if the right people actually see it. The general pattern that works for most weddings:
-      </p>
-      <ul>
-        <li>Share a rough draft with your photographer and planner four to six weeks out and ask them to flag anything unrealistic — they've seen more wedding days than you have. Note: check your <a href="/tools/wedding-photography-shot-list">photography planning</a> shot list to ensure portrait blocks are sufficient.</li>
-        <li>Send the finalized version to every vendor two to four weeks before the wedding: photographer, videographer, florist, caterer, DJ or band, officiant, hair and makeup team, and transportation.</li>
-        <li>Give your maid of honor, best man, and both sets of parents the full timeline, not just their piece of it.</li>
-        <li>Avoid sending multiple revisions in the final week. A vendor working from an outdated copy is a bigger risk than a small imperfection in your schedule.</li>
-      </ul>
-
-      <h2>Common Timeline Mistakes to Avoid</h2>
-      <ul>
-        <li>Skipping buffer time — add 10-15 minutes between major blocks and a full 30-minute cushion before the ceremony.</li>
-        <li>Guessing photography timing instead of asking your photographer directly how long formals and portraits actually take.</li>
-        <li>Building one master document for every vendor instead of giving each person only the information relevant to their role.</li>
-        <li>Finalizing the timeline too late to give vendors time to flag conflicts — aim for a draft four to six weeks out.</li>
-        <li>Forgetting the night-before basics: <a href="/tools/rehearsal-dinner-planning-guide">rehearsal planning</a>, marriage license location, and a rain-plan call time if part of the day is outdoors.</li>
-      </ul>
-
-      <h2>Frequently Asked Questions</h2>
-      <div class="space-y-6 mt-8">
-        <div>
-          <h3 class="text-xl font-bold">How do I create a wedding day timeline?</h3>
-          <p>Start from your ceremony start time and work in both directions: backward through hair and makeup, portraits, and travel, and forward through cocktail hour, dinner, and the send-off. A generator does this math for you; building it by hand means estimating each block yourself and padding every transition by 10-15 minutes.</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold">How far in advance should I send my timeline to vendors?</h3>
-          <p>Share a draft four to six weeks out so your photographer and planner can flag anything unrealistic, then send the finalized version two to four weeks before the wedding. Avoid sending multiple revisions in the final week — a vendor working from an outdated copy is a bigger risk than a small imperfection in the schedule.</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold">How much buffer time should I add between events?</h3>
-          <p>Plan for 10-15 minutes between major blocks, plus a full 30-minute cushion before the ceremony. Every wedding runs a few minutes long somewhere; buffer time is what keeps a late hair appointment from pushing back the ceremony itself.</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold">Do I still need a timeline if I have a wedding planner?</h3>
-          <p>Yes, in a lighter form. Your planner will build the detailed, vendor-facing version, but you and your wedding party still benefit from a simplified personal copy so everyone knows where to be without asking the planner every hour.</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold">How long should hair and makeup take?</h3>
-          <p>Budget 45-60 minutes per person for hair and 30-45 minutes for makeup for each member of the wedding party getting professional styling. For a party of four to six, that usually means starting four to five hours before the ceremony.</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold">Should I do a first look?</h3>
-          <p>A first look lets you complete most portraits before the ceremony, which frees up cocktail hour for you to actually attend it. Skipping it preserves the traditional aisle reveal, but pushes formal photos into a tighter cocktail-hour window — plan for 75-90 minutes if you go that route.</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold">What's the difference between a wedding timeline and a wedding itinerary?</h3>
-          <p>The terms are used interchangeably in most planning contexts. Both describe the same hour-by-hour (or minute-by-minute) schedule of the wedding day, though 'itinerary' sometimes extends to guest-facing details like parking and dress code.</p>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center bg-slate-50 p-8 rounded-2xl border border-slate-100">
-        <h2 class="!mt-0">Build Your Timeline Now</h2>
-        <p>
-          You already know your ceremony time. Everything else on this page is the logic Wedding Timeline Generator runs automatically — enter your details, get a realistic draft, and spend your remaining planning time on the parts of the day that are actually unique to you.
+    <!-- Hero Section -->
+    <section class="py-12 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+        <span class="inline-block bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+          Free Planning Tool
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-black text-[#1A1A1A] leading-tight">
+          Wedding Timeline <span class="text-[#B76E79]">Generator</span>
+        </h1>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+          Build a minute-by-minute wedding day timeline. Enter your ceremony time, and it lays out the rest of your day in minutes. Edit any block, and share it with vendors free.
         </p>
-        <a href="#top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#B76E79] hover:bg-[#9A5B64] transition-colors mt-4 no-underline">
-          Start your free timeline →
-        </a>
       </div>
 
-    </article>
+      <!-- Image: Hero / What It Does -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <img src="/images/wedding-day-timeline-generator-hero.jpg" alt="Wedding day timeline generator showing a sample schedule on a tablet" class="w-full rounded-2xl shadow-lg border border-[#F3E8EA]" />
+      </div>
+
+      <!-- React Island -->
+      <!-- SEO Intro Copy -->
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 text-center text-slate-600 text-sm leading-relaxed">
+        This interactive Timeline Generator helps you stay completely organized and on top of your wedding planning process. Simply enter your details below, and the tool will automatically adjust to fit your specific wedding needs. Save time, reduce stress, and ensure no detail is overlooked with this free resource.
+      </div>
+      <TimelineGenerator client:visible />
+    </section>
+
+    <!-- Educational Article Section -->
+    <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article class="article-content">
+        <div class="text-center space-y-3 mb-12">
+          <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Complete Guide</span>
+          <h2 class="!mt-0 !mb-0 !border-0 !pb-0 text-center">Build Your Minute-by-Minute Schedule</h2>
+        </div>
+
+        <p>Your ceremony starts at 5:00 p.m. Work backward from there and every other block of the day — hair and makeup, first look, family formals, cocktail hour, dinner, the last dance — has to fit into hours you probably haven't counted yet. That's the math Wedding Timeline Generator does for you.</p>
+
+        <p>Most couples build a timeline the hard way: a blank document, a rough sense of "morning stuff, then the wedding, then the party," and a nagging worry they've forgotten something. A generator flips that around. You start from the one time that's already fixed — your ceremony — and let the tool fill in everything else with realistic durations, then you adjust from there.</p>
+
+        <h3>What a Wedding Day Timeline Generator Actually Does</h3>
+        <p>A wedding day timeline generator turns a single fixed point — your ceremony start time — into a full, ordered schedule for the day: when hair and makeup begins, when the wedding party needs to be dressed, when portraits happen, and how the evening unfolds from cocktail hour to send-off. Instead of estimating each block from scratch, you get a realistic draft to edit rather than a blank page to fill.</p>
+        <p>It isn't a replacement for a wedding planner's detailed, vendor-specific version. Think of it as the fast first draft: the skeleton that gets 80% of the guesswork out of the way so you, your planner, or your coordinator can spend your time on the 20% that's actually specific to your wedding. <a href="/tools/wedding-budget-planner">Wedding budget planning</a> is often tied to these timeline decisions, as vendor hours drive your overall cost.</p>
+
+        <h3>How It Works</h3>
+        <p>
+          <img src="/images/how-wedding-timeline-generator-works.jpg" alt="Three steps to generate a wedding day timeline: enter time, edit, share" class="w-full rounded-xl shadow-md my-8" />
+        </p>
+        <ul>
+          <li><strong>Enter your ceremony start time</strong>, venue setup (one location or two), and whether you're planning a first look.</li>
+          <li><strong>Review the generated blocks</strong> — hair and makeup, portraits, ceremony, cocktail hour, reception — each with a suggested duration.</li>
+          <li><strong>Edit any time or label</strong>, add anything specific to your day, and export or share the result.</li>
+        </ul>
+        <p>That's the whole flow. Most of the actual thinking — how long formals realistically take, how much buffer to leave before the ceremony, how long cocktail hour needs to run if you skipped a first look — is baked into the defaults, so you're adjusting a plan instead of inventing one.</p>
+
+        <h3>What Your Generated Timeline Includes</h3>
+        <p>Here's what a generated schedule looks like for a 5:00 p.m. ceremony with a first look. Times shift earlier or later depending on your own ceremony time, but the order and proportions hold for most weddings. As your <a href="/tools/guest-list-manager">guest list</a> changes, your catering and formals timing may need to adjust slightly.</p>
+        
+        <div class="my-8 grid md:grid-cols-2 gap-8 items-start">
+          <div class="overflow-x-auto shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+            <table class="min-w-full divide-y divide-gray-300 !my-0">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Time</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Block</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Notes</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 bg-white">
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">11:00 AM</td><td class="px-3 py-4 text-sm text-gray-500">Hair & makeup begins</td><td class="px-3 py-4 text-sm text-gray-500">4-6 people; 45-60 min/person hair, 30-45 makeup</td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">1:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Getting-ready photos</td><td class="px-3 py-4 text-sm text-gray-500">Detail shots, dress on, first-look prep</td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">2:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">First look + portraits</td><td class="px-3 py-4 text-sm text-gray-500">Optional; frees up cocktail hour later</td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">2:45 PM</td><td class="px-3 py-4 text-sm text-gray-500">Wedding party & family formals</td><td class="px-3 py-4 text-sm text-gray-500">Ask photographer for a real time estimate</td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">3:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Buffer / travel to ceremony site</td><td class="px-3 py-4 text-sm text-gray-500">10-15 min cushion, more if changing venues</td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">4:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">Guests seated</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">5:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">Ceremony</td><td class="px-3 py-4 text-sm text-gray-500">30 min including processional and recessional</td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">5:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Cocktail hour</td><td class="px-3 py-4 text-sm text-gray-500">60-90 min if formals weren't done pre-ceremony</td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">6:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Reception entrance</td><td class="px-3 py-4 text-sm text-gray-500">Links to <a href="/tools/wedding-seating-chart-maker">seating arrangements</a></td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">7:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">Dinner</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">8:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">Toasts & cake</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">8:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Open dancing</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">10:30 PM</td><td class="px-3 py-4 text-sm text-gray-500">Last call</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
+                <tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 font-medium">11:00 PM</td><td class="px-3 py-4 text-sm text-gray-500">Grand exit</td><td class="px-3 py-4 text-sm text-gray-500"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <img src="/images/wedding-timeline-blocks-infographic.jpg" alt="Infographic of wedding day timeline blocks from getting ready to send-off" class="w-full rounded-xl shadow-md !my-0" />
+          </div>
+        </div>
+
+        <p>Every block is editable. If your photographer needs 45 minutes for formals instead of the default 30, or your venue requires breakdown to finish by midnight, you change that block and everything downstream should shift with it.</p>
+
+        <h3>Why a Timeline Beats a Mental Checklist</h3>
+        <p>A wedding day is the one day where a 20-minute delay doesn't stay a 20-minute delay. A ceremony that starts late pushes portraits into cocktail hour. A cocktail hour that runs long means dinner comes out cold. A first dance at 9:30 instead of 8:30 means half the room has mentally checked out before the dancing starts. None of that is dramatic on its own — it's just what happens when nobody has written down what "on time" actually means for this specific day. Using a <a href="/tools/wedding-checklist-generator">day-of checklist</a> complements the timeline with task-level detail.</p>
+        <p>A timeline that exists only in your head isn't a plan; it's an assumption everyone involved is making differently. Your photographer is assuming one pace, your caterer another, and your maid of honor has no idea what either of them is assuming. A written, shared timeline is what makes those assumptions match.</p>
+
+        <h3>Build Backward From Your Ceremony Time</h3>
+        <p>Here's where most DIY timelines go wrong: couples start planning from the morning — "we'll wake up, have breakfast, start hair and makeup around 10" — and work forward, hoping it lands somewhere near the ceremony. It rarely does. The better approach, and the one a generator forces by design, is to anchor everything to the ceremony time and work outward in both directions. Ensure your <a href="/tools/wedding-invitation-timeline">invitations</a> match the exact ceremony time on the generated timeline.</p>
+        <p>A 4:00 p.m. ceremony and a 6:00 p.m. ceremony don't just shift the whole day by two hours — the gap is mostly absorbed by the morning. Hair and makeup for a bridal party of four to six typically needs four to five hours before the ceremony, so a later ceremony buys you a slower morning, not a shorter one. Anchoring to the ceremony time first is what keeps that math honest.</p>
+
+        <h3>Sharing Your Timeline With Vendors</h3>
+        <p>A timeline only helps if the right people actually see it. The general pattern that works for most weddings:</p>
+        <ul>
+          <li>Share a rough draft with your photographer and planner four to six weeks out and ask them to flag anything unrealistic — they've seen more wedding days than you have. Note: check your <a href="/tools/wedding-photography-shot-list">photography planning</a> shot list to ensure portrait blocks are sufficient.</li>
+          <li>Send the finalized version to every vendor two to four weeks before the wedding: photographer, videographer, florist, caterer, DJ or band, officiant, hair and makeup team, and transportation.</li>
+          <li>Give your maid of honor, best man, and both sets of parents the full timeline, not just their piece of it.</li>
+          <li>Avoid sending multiple revisions in the final week. A vendor working from an outdated copy is a bigger risk than a small imperfection in your schedule.</li>
+        </ul>
+
+        <h3>Common Timeline Mistakes to Avoid</h3>
+        <ul>
+          <li>Skipping buffer time — add 10-15 minutes between major blocks and a full 30-minute cushion before the ceremony.</li>
+          <li>Guessing photography timing instead of asking your photographer directly how long formals and portraits actually take.</li>
+          <li>Building one master document for every vendor instead of giving each person only the information relevant to their role.</li>
+          <li>Finalizing the timeline too late to give vendors time to flag conflicts — aim for a draft four to six weeks out.</li>
+          <li>Forgetting the night-before basics: <a href="/tools/rehearsal-dinner-planning-guide">rehearsal planning</a>, marriage license location, and a rain-plan call time if part of the day is outdoors.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gradient-to-b from-transparent to-[#FCECF0]/30">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center space-y-3 mb-10">
+          <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Common Questions</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">Timeline FAQs</h2>
+          <p class="text-sm text-slate-500">Everything you need to know about building your wedding day timeline.</p>
+        </div>
+
+        <div class="space-y-3" id="faq-list">
+          {faqs.map((faq, idx) => (
+            <div class="bg-white rounded-2xl border border-[#F3E8EA] shadow-sm overflow-hidden">
+              <button
+                class="faq-btn w-full flex items-center justify-between p-5 text-left cursor-pointer group"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${idx}`}
+                id={`faq-btn-${idx}`}
+              >
+                <span class="font-semibold text-sm text-[#1A1A1A] pr-4 group-hover:text-[#B76E79] transition-colors">{faq.q}</span>
+                <svg class="faq-chevron w-5 h-5 shrink-0 text-[#B76E79] transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="faq-answer hidden" id={`faq-answer-${idx}`} role="region" aria-labelledby={`faq-btn-${idx}`}>
+                <p class="text-sm text-slate-600 leading-relaxed p-5 pt-0 border-t border-[#F3E8EA]">{faq.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <Footer />
 </BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqButtons = document.querySelectorAll('.faq-btn');
+    faqButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const answerId = btn.getAttribute('aria-controls');
+        const answer = answerId ? document.getElementById(answerId) : null;
+        const chevron = btn.querySelector('.faq-chevron');
+
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if (answer) {
+          if (expanded) {
+            answer.classList.add('hidden');
+          } else {
+            answer.classList.remove('hidden');
+          }
+        }
+        if (chevron) {
+          chevron.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+      });
+    });
+  });
+</script>
