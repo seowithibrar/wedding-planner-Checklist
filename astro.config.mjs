@@ -11,6 +11,10 @@ export default defineConfig({
   site: 'https://www.weddingplanningchecklists.org',
   adapter: vercel(),
   output: 'static',
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport'
+  },
   integrations: [
     mdx(),
     react()

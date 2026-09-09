@@ -31,7 +31,7 @@ const seo = {
     {featuredPost && (
       <div class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden mb-16 grid grid-cols-1 lg:grid-cols-2">
         <div class="h-64 sm:h-96 lg:h-auto overflow-hidden">
-          <img src={featuredPost.data.heroImage} alt={featuredPost.data.heroImageAlt || featuredPost.data.title} class="w-full h-full object-cover" />
+          <img src={featuredPost.data.heroImage} alt={featuredPost.data.heroImageAlt || featuredPost.data.title} class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
         </div>
         <div class="p-8 lg:p-12 flex flex-col justify-between">
           <div>
@@ -60,7 +60,7 @@ const seo = {
         return (
           <article class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all">
             <div class="h-48 overflow-hidden">
-              <img src={post.data.heroImage} alt={post.data.heroImageAlt || post.data.title} class="w-full h-full object-cover" />
+              <img src={post.data.heroImage} alt={post.data.heroImageAlt || post.data.title} class="w-full h-full object-cover" loading="lazy" decoding="async" />
             </div>
             <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
               <div>
