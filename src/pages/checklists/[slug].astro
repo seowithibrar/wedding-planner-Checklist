@@ -6,10 +6,12 @@ import checklistsData from '../../data/categorized-checklists.json';
 import { generateBreadcrumbSchema, generateFAQSchema, generateArticleSchema } from '../../lib/schema';
 
 export async function getStaticPaths() {
-  return checklistsData.checklists.map((item) => ({
-    params: { slug: item.slug },
-    props: { checklist: item },
-  }));
+  return checklistsData.checklists
+    .filter((item) => item.slug !== 'wedding-budget-calculator-10k')
+    .map((item) => ({
+      params: { slug: item.slug },
+      props: { checklist: item },
+    }));
 }
 
 const { checklist } = Astro.props;
