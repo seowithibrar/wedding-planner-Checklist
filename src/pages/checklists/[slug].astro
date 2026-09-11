@@ -7,7 +7,7 @@ import { generateBreadcrumbSchema, generateFAQSchema, generateArticleSchema } fr
 
 export async function getStaticPaths() {
   return checklistsData.checklists
-    .filter((item) => item.slug !== 'wedding-budget-calculator-10k')
+    .filter((item) => item.slug !== 'wedding-budget-calculator-10k' && item.slug !== 'wedding-budget-calculator-20k')
     .map((item) => ({
       params: { slug: item.slug },
       props: { checklist: item },
