@@ -1,27 +1,128 @@
 ---
+import LanguageSelector from './LanguageSelector.astro';
+import LanguagePromptBanner from './LanguagePromptBanner.astro';
+import { useTranslations, localizeUrl, getLangFromPath } from '../../i18n/utils';
+import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang } = Astro.props;
+const currentLang = (lang || getLangFromPath(Astro.url.pathname)) as SupportedLanguage;
+const { t, common } = useTranslations(currentLang);
 ---
+
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#F3E8EA] transition-all">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2">
-      <div class="w-10 h-10 rounded-full bg-[#B76E79] text-white flex items-center justify-center font-bold text-xl shadow-md">W</div>
+    <!-- Brand Logo -->
+    <a href={localizeUrl('/', currentLang)} class="flex items-center gap-2">
+      <div class="w-10 h-10 rounded-full bg-[#B76E79] text-white flex items-center justify-center font-bold text-xl shadow-md shrink-0">W</div>
       <span class="font-bold text-lg sm:text-xl text-[#1A1A1A] tracking-tight">
         WeddingPlanning<span class="text-[#B76E79]">Checklists</span>.org
       </span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
-      <a href="/" class="hover:text-[#B76E79] transition-colors">Home</a>
-      <a href="/blog" class="hover:text-[#B76E79] transition-colors">Blog & Guides</a>
-      <a href="/tools/budget-calculator" class="hover:text-[#B76E79] transition-colors">Budget Calculator</a>
-      <a href="/tools/guest-list-manager" class="hover:text-[#B76E79] transition-colors">Guest List</a>
-      <a href="/about-us" class="hover:text-[#B76E79] transition-colors">About Us</a>
-      <a href="/contact" class="hover:text-[#B76E79] transition-colors">Contact</a>
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
+      <a href={localizeUrl('/', currentLang)} class="hover:text-[#B76E79] transition-colors">{common.nav.home}</a>
+      <a href={localizeUrl('/blog', currentLang)} class="hover:text-[#B76E79] transition-colors">{common.nav.blog}</a>
+      <a href={localizeUrl('/tools/budget-calculator', currentLang)} class="hover:text-[#B76E79] transition-colors">{common.nav.budgetCalculator}</a>
+      <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="hover:text-[#B76E79] transition-colors">{common.nav.guestList}</a>
+      <a href={localizeUrl('/about-us', currentLang)} class="hover:text-[#B76E79] transition-colors">{common.nav.aboutUs}</a>
+      <a href={localizeUrl('/contact', currentLang)} class="hover:text-[#B76E79] transition-colors">{common.nav.contact}</a>
     </nav>
 
-    <div class="flex items-center gap-4">
-      <a href="/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding" class="bg-[#1A1A1A] hover:bg-[#B76E79] text-white px-5 py-2.5 rounded-full text-xs font-bold transition-all shadow-md">
-        Get Checklists
+    <!-- Header Actions (Language Selector + CTA + Mobile Toggle) -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <!-- Desktop Language Selector -->
+      <div class="hidden sm:block">
+        <LanguageSelector currentLang={currentLang} />
+      </div>
+
+      <!-- CTA Button -->
+      <a 
+        href={localizeUrl('/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding', currentLang)} 
+        class="hidden md:inline-flex bg-[#1A1A1A] hover:bg-[#B76E79] text-white px-5 py-2.5 rounded-full text-xs font-bold transition-all shadow-md shrink-0"
+      >
+        {common.nav.getChecklists}
       </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button
+        id="mobile-nav-toggle"
+        type="button"
+        class="lg:hidden p-2 rounded-xl text-slate-700 hover:text-[#B76E79] hover:bg-slate-100 transition-colors focus:outline-none"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-nav-drawer" class="hidden lg:hidden bg-white border-b border-[#F3E8EA] px-4 pt-3 pb-6 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+    <div class="space-y-3 pt-2">
+      <!-- Mobile Language Selector -->
+      <div class="pb-3 border-b border-slate-100">
+        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+          {common.ui.selectLanguage}
+        </label>
+        <LanguageSelector currentLang={currentLang} isMobile={true} />
+      </div>
+
+      <!-- Mobile Navigation Links -->
+      <div class="flex flex-col space-y-2 text-sm font-semibold text-slate-700">
+        <a href={localizeUrl('/', currentLang)} class="px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-[#B76E79] transition-colors">{common.nav.home}</a>
+        <a href={localizeUrl('/blog', currentLang)} class="px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-[#B76E79] transition-colors">{common.nav.blog}</a>
+        <a href={localizeUrl('/tools/budget-calculator', currentLang)} class="px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-[#B76E79] transition-colors">{common.nav.budgetCalculator}</a>
+        <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-[#B76E79] transition-colors">{common.nav.guestList}</a>
+        <a href={localizeUrl('/about-us', currentLang)} class="px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-[#B76E79] transition-colors">{common.nav.aboutUs}</a>
+        <a href={localizeUrl('/contact', currentLang)} class="px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-[#B76E79] transition-colors">{common.nav.contact}</a>
+      </div>
+
+      <div class="pt-2">
+        <a 
+          href={localizeUrl('/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding', currentLang)} 
+          class="block text-center bg-[#1A1A1A] hover:bg-[#B76E79] text-white px-5 py-3 rounded-full text-xs font-bold transition-all shadow-md"
+        >
+          {common.nav.getChecklists}
+        </a>
+      </div>
     </div>
   </div>
 </header>
+
+<LanguagePromptBanner />
+
+<script is:inline>
+  (function() {
+    const toggleBtn = document.getElementById('mobile-nav-toggle');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    const hamburger = document.getElementById('hamburger-icon');
+    const close = document.getElementById('close-icon');
+
+    if (!toggleBtn || !drawer) return;
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = !drawer.classList.contains('hidden');
+      if (isOpen) {
+        drawer.classList.add('hidden');
+        hamburger?.classList.remove('hidden');
+        close?.classList.add('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        drawer.classList.remove('hidden');
+        hamburger?.classList.add('hidden');
+        close?.classList.remove('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  })();
+</script>

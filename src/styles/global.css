@@ -341,3 +341,49 @@
     height: 40px;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   INTERNATIONALIZATION & RTL SUPPORT
+   ═══════════════════════════════════════════════ */
+[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .back-to-top {
+  right: auto;
+  left: 2rem;
+}
+
+@media (max-width: 640px) {
+  [dir="rtl"] .back-to-top {
+    right: auto;
+    left: 1.25rem;
+  }
+}
+
+[dir="rtl"] .reading-progress-bar {
+  left: auto;
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* RTL & Multilingual Typography */
+html[lang="ur"] {
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', 'Segoe UI', Tahoma, sans-serif;
+  line-height: 1.85;
+}
+
+html[lang="ar"] {
+  font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, Arial, sans-serif;
+  line-height: 1.75;
+}
+
+html[lang="hi"] {
+  font-family: 'Plus Jakarta Sans', 'Devanagari Sangam MN', 'Nirmala UI', sans-serif;
+}
+

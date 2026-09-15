@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import { getSEOMetadata } from '../lib/seo';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, type SupportedLanguage } from '../i18n/config';
+import { getLangFromPath, getHreflangLinks, stripLangPrefix, SITE_URL } from '../i18n/utils';
 
 export interface Props {
   title: string;
@@ -10,14 +12,35 @@ export interface Props {
   image?: string;
   type?: 'website' | 'article';
   schemaScript?: string;
+  lang?: string;
 }
 
-const { title, description, ogDescription, canonical, image, type = 'website', schemaScript } = Astro.props;
-const seo = getSEOMetadata({ title, description, canonical, image, type });
+const { title, description, ogDescription, canonical, image, type = 'website', schemaScript, lang } = Astro.props;
+
+// Determine current language: explicit prop, or from URL path
+const currentLang = (lang && lang in SUPPORTED_LANGUAGES) 
+  ? (lang as SupportedLanguage) 
+  : getLangFromPath(Astro.url.pathname);
+
+const langConfig = SUPPORTED_LANGUAGES[currentLang] || SUPPORTED_LANGUAGES[DEFAULT_LANGUAGE];
+const direction = langConfig.dir;
+
+// Generate canonical URL for current language
+const currentPath = Astro.url.pathname;
+const cleanPath = stripLangPrefix(currentPath);
+const defaultCanonical = currentLang === DEFAULT_LANGUAGE 
+  ? (cleanPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${cleanPath}`)
+  : (cleanPath === '/' ? `${SITE_URL}/${currentLang}` : `${SITE_URL}/${currentLang}${cleanPath}`);
+
+const finalCanonical = canonical || defaultCanonical;
+const seo = getSEOMetadata({ title, description, canonical: finalCanonical, image, type });
+
+// Generate reciprocal hreflang links
+const hreflangLinks = getHreflangLinks(currentPath);
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang={currentLang} dir={direction} class="scroll-smooth">
   <head>
     <!-- Google Tag Manager -->
     <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -37,13 +60,18 @@ const seo = getSEOMetadata({ title, description, canonical, image, type });
       gtag('config', 'G-88XTBS55X4');
     </script>
 
-     <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="google-site-verification" content="HJSSJg6QdsmjvAnJA7IyDTThTiUjUa05IN-KsvdkTsI" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />
     <link rel="canonical" href={seo.canonicalUrl} />
     <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Reciprocal SEO Hreflang Tags -->
+    {hreflangLinks.map((item) => (
+      <link rel="alternate" hreflang={item.lang} href={item.url} />
+    ))}
 
     <!-- Performance & Font Optimizations for Ultra Fast LCP -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -52,12 +80,12 @@ const seo = getSEOMetadata({ title, description, canonical, image, type });
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link 
       rel="stylesheet" 
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" 
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" 
       media="print"
       onload="this.media='all'"
     />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" />
     </noscript>
 
     <!-- Open Graph / Facebook -->
@@ -66,6 +94,7 @@ const seo = getSEOMetadata({ title, description, canonical, image, type });
     <meta property="og:title" content={seo.title} />
     <meta property="og:description" content={ogDescription || seo.description} />
     <meta property="og:image" content={seo.ogImage} />
+    <meta property="og:locale" content={langConfig.locale.replace('-', '_')} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />

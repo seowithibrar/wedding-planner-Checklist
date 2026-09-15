@@ -31,7 +31,7 @@ export function ProgressTracker() {
     const source = checklistTasks.length > 0 ? checklistTasks : tasksData.tasks;
     return categories.map(cat => {
       const catTasks = source.filter(t => t.category === cat.id);
-      const done = catTasks.filter(t => t.completed).length;
+      const done = catTasks.filter(t => (t as any).completed).length;
       const pct = catTasks.length > 0 ? Math.round((done / catTasks.length) * 100) : 0;
       return { ...cat, total: catTasks.length, completed: done, percentage: pct };
     });

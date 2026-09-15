@@ -1,0 +1,110 @@
+{
+  "badge": "Free Planning Tool",
+  "tools": {
+    "budget-calculator": {
+      "title": "Wedding Budget Calculator",
+      "description": "Estimate your wedding expenses across venue, catering, photography, and more.",
+      "category": "Budget",
+      "intro": "Use our free wedding budget calculator to estimate costs by category, allocate spending by guest count, and track your wedding budget in one place."
+    },
+    "timeline-generator": {
+      "title": "Day-of Timeline Generator",
+      "description": "Generate a customized day-of wedding schedule based on your ceremony time.",
+      "category": "Timeline",
+      "intro": "Build a seamless day-of wedding schedule with automatic vendor arrival buffers and photography blocks."
+    },
+    "guest-list-manager": {
+      "title": "Guest List Manager",
+      "description": "Track RSVPs, meal preferences, seating, and plus-ones in one place.",
+      "category": "Guests",
+      "intro": "Organize your wedding guest list with our free interactive tool. Track RSVPs, meal preferences, seating assignments, plus-ones, and export to CSV."
+    },
+    "wedding-checklist-generator": {
+      "title": "Wedding Checklist Generator",
+      "description": "Generate a personalized wedding checklist based on your date and preferences.",
+      "category": "Tasks",
+      "intro": "Generate a fully customized wedding checklist tailored to your wedding date, traditions, and priorities."
+    },
+    "wedding-planning-timeline": {
+      "title": "Wedding Planning Timeline",
+      "description": "Visual milestone timeline mapped to months before your wedding date.",
+      "category": "Timeline",
+      "intro": "Track your complete wedding timeline across month-by-month planning phases."
+    },
+    "wedding-task-generator": {
+      "title": "Wedding Task Generator",
+      "description": "Smart task suggestions based on your date, style, budget, and preferences.",
+      "category": "Tasks",
+      "intro": "Get smart task recommendations customized to your unique ceremony style and venue."
+    },
+    "wedding-milestone-tracker": {
+      "title": "Wedding Milestone Tracker",
+      "description": "Track completion of 31 key wedding planning milestones.",
+      "category": "Tasks",
+      "intro": "Stay focused on high-priority milestones to guarantee on-time wedding delivery."
+    },
+    "wedding-planning-calendar": {
+      "title": "Wedding Planning Calendar",
+      "description": "Monthly calendar for scheduling vendor meetings, fittings, and events.",
+      "category": "Calendar",
+      "intro": "Keep track of vendor payment deadlines, attire fittings, and rehearsal dates."
+    },
+    "daily-wedding-planner": {
+      "title": "Daily Wedding Planner",
+      "description": "Day-by-day task planner with time-blocked scheduling.",
+      "category": "Planner",
+      "intro": "Plan each day leading up to your wedding with structured morning and evening time blocks."
+    },
+    "weekly-wedding-planner": {
+      "title": "Weekly Wedding Planner",
+      "description": "Week-view planning board with daily task distribution.",
+      "category": "Planner",
+      "intro": "Organize your weekly wedding to-do list with agile task columns and status tracking."
+    },
+    "monthly-wedding-planner": {
+      "title": "Monthly Wedding Planner",
+      "description": "Month-view planner with category-based goals and progress.",
+      "category": "Planner",
+      "intro": "Break down your big wedding goals into manageable monthly objectives."
+    },
+    "wedding-countdown": {
+      "title": "Wedding Countdown",
+      "description": "Live countdown timer to your wedding day with milestone markers.",
+      "category": "Timeline",
+      "intro": "Live ticking countdown timer to your wedding day with Saturday counter, upcoming milestones, and shareable social card."
+    },
+    "wedding-progress-tracker": {
+      "title": "Wedding Progress Tracker",
+      "description": "Overall planning progress across all categories and tools.",
+      "category": "Dashboard",
+      "intro": "Monitor overall completion percentage across tasks, RSVPs, and vendor confirmations."
+    },
+    "wedding-planning-dashboard": {
+      "title": "Wedding Planning Dashboard",
+      "description": "Central hub with at-a-glance stats, quick actions, and tool links.",
+      "category": "Dashboard",
+      "intro": "Your comprehensive command center uniting countdown, task progress, budget status, and guest confirmations."
+    }
+  },
+  "calculator": {
+    "totalBudget": "Total Wedding Budget",
+    "guestCount": "Estimated Guest Count",
+    "costPerGuest": "Cost Per Guest",
+    "standardBreakdown": "Standard Breakdown",
+    "customTracker": "Expense Tracker",
+    "target": "Target",
+    "actual": "Actual",
+    "remaining": "Remaining",
+    "totalSpent": "Total Logged",
+    "copySummary": "Copy Budget Summary",
+    "categories": {
+      "venue-catering": "Venue & Catering",
+      "photo-video": "Photography & Videography",
+      "attire-beauty": "Attire, Hair & Makeup",
+      "flowers-decor": "Florals & Decorations",
+      "music-entertainment": "Music & Entertainment",
+      "stationery-cake": "Stationery, Cake & Favors",
+      "contingency-buffer": "Contingency & Buffer"
+    }
+  }
+}

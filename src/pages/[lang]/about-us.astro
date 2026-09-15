@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { NON_DEFAULT_LANGUAGES, type SupportedLanguage } from '../../i18n/config';
+import { useTranslations, SITE_URL } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LANGUAGES.map(lang => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params;
+const currentLang = lang as SupportedLanguage;
+const { pages, common } = useTranslations(currentLang);
+
+const canonicalUrl = `${SITE_URL}/${currentLang}/about-us`;
+---
+
+<BaseLayout 
+  title={pages.aboutUs.title} 
+  description={pages.aboutUs.description} 
+  canonical={canonicalUrl}
+  lang={currentLang}
+>
+  <Header lang={currentLang} />
+
+  <main class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="text-center space-y-4">
+      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Our Story</span>
+      <h1 class="text-3xl sm:text-5xl font-black text-[#1A1A1A]">{pages.aboutUs.heading}</h1>
+      <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">{pages.aboutUs.subheading}</p>
+    </div>
+
+    <div class="prose prose-lg prose-rose max-w-none text-slate-700 leading-relaxed bg-white p-8 rounded-3xl border border-[#F3E8EA] shadow-sm">
+      <p class="text-xs font-semibold text-slate-400 mb-4">{common.ui.updated}: September 6, 2026</p>
+      <p>
+        WeddingPlanningChecklists.org was created with a single objective: to take the stress out of wedding planning by providing free, highly detailed, and actionable checklists for engaged couples worldwide. We believe that everyone deserves to have their dream wedding, regardless of their budget or timeline, and that starts with having the right organizational tools at your fingertips.
+      </p>
+      <p>
+        From 18-month timelines and vendor contract guides to budget calculators and hairstyle roundups, our team of experienced planners curate every resource to empower you to plan with confidence. We've helped thousands of couples navigate the complexities of venue booking, guest list management, and day-of coordination.
+      </p>
+      <h3 class="font-bold text-lg text-[#1A1A1A] mt-8 mb-4">Our Editorial Team</h3>
+      <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center font-bold text-lg">SJ</div>
+          <div>
+            <p class="font-bold text-[#1A1A1A]">Sarah Jenkins</p>
+            <p class="text-xs text-slate-500">Lead Wedding Planner & Editor</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center font-bold text-lg">MR</div>
+          <div>
+            <p class="font-bold text-[#1A1A1A]">Michael Rivera</p>
+            <p class="text-xs text-slate-500">Budget & Logistics Expert</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer lang={currentLang} />
+</BaseLayout>

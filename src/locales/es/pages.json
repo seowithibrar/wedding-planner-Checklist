@@ -1,0 +1,26 @@
+{
+  "aboutUs": {
+    "title": "Sobre Nosotros | Listas de Verificación de Bodas",
+    "description": "Conoce la misión, el equipo y las herramientas de WeddingPlanningChecklists.org.",
+    "heading": "Sobre Nosotros",
+    "subheading": "Apoyando a parejas de todo el mundo con listas verificadas y herramientas digitales inteligentes."
+  },
+  "contact": {
+    "title": "Contacto | Listas de Verificación de Bodas",
+    "description": "¿Tienes preguntas o sugerencias? Ponte en contacto con nuestro equipo.",
+    "heading": "Contáctanos",
+    "subheading": "Nos encantaría saber de ti. Envíanos tus comentarios o solicitudes de herramientas."
+  },
+  "privacyPolicy": {
+    "title": "Política de Privacidad | Listas de Verificación de Bodas",
+    "description": "Nuestra política de privacidad detalla el manejo seguro de tus datos."
+  },
+  "termsOfService": {
+    "title": "Términos de Servicio | Listas de Verificación de Bodas",
+    "description": "Consulta los términos y condiciones de uso de nuestro sitio y herramientas."
+  },
+  "sitemap": {
+    "title": "Mapa del Sitio y Directorio de Planificación (2026)",
+    "description": "Directorio completo de herramientas, listas y guías para planificar tu boda."
+  }
+}

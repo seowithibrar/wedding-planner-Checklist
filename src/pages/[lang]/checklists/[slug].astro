@@ -1,0 +1,28 @@
+---
+import ChecklistPage from '../../../components/pages/ChecklistPage.astro';
+import checklistsData from '../../../data/categorized-checklists.json';
+import { NON_DEFAULT_LANGUAGES, type SupportedLanguage } from '../../../i18n/config';
+
+export async function getStaticPaths() {
+  const filtered = checklistsData.checklists.filter(
+    (item) => item.slug !== 'wedding-budget-calculator-10k' && item.slug !== 'wedding-budget-calculator-20k'
+  );
+
+  const paths: any[] = [];
+  for (const lang of NON_DEFAULT_LANGUAGES) {
+    for (const item of filtered) {
+      paths.push({
+        params: { lang, slug: item.slug },
+        props: { checklist: item },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { checklist } = Astro.props;
+const { lang } = Astro.params;
+---
+
+<ChecklistPage checklist={checklist} lang={lang as SupportedLanguage} />

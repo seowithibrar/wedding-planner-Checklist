@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../layout/Header.astro';
+import Footer from '../layout/Footer.astro';
+import toolRegistry from '../../data/tool-registry.json';
+import categorizedChecklists from '../../data/categorized-checklists.json';
+import { FaqSection } from '../ui/FaqSection';
+import { generateFAQSchema, generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
+import { useTranslations, localizeUrl } from '../../i18n/utils';
+import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang = DEFAULT_LANGUAGE } = Astro.props;
+const currentLang = lang as SupportedLanguage;
+const { t, common, home, tools } = useTranslations(currentLang);
+
+const siteUrl = 'https://www.weddingplanningchecklists.org';
+const currentCanonical = currentLang === DEFAULT_LANGUAGE ? `${siteUrl}/` : `${siteUrl}/${currentLang}`;
+
+const seo = {
+  title: home.seo.title,
+  description: home.seo.description,
+  canonical: currentCanonical
+};
+
+const breadcrumbItems = [
+  { name: common.nav.home, item: currentCanonical }
+];
+
+const faqs = [
+  { q: 'What is a wedding planning checklist?', a: 'A wedding planning checklist is a step-by-step guide that helps couples organize every stage of their wedding, from setting a budget and booking a venue to sending invitations and preparing for the wedding day. It ensures no important task is overlooked.' },
+  { q: 'When should you start planning your wedding?', a: 'Most wedding experts recommend starting 12 to 18 months before your wedding date. This gives you enough time to book popular venues, hire vendors, manage your budget, and avoid last-minute stress.' },
+  { q: 'What should be booked first when planning a wedding?', a: 'Your wedding venue should be booked first because it determines your wedding date. Once your venue is confirmed, you can book photographers, caterers, florists, entertainment, and other vendors.' },
+  { q: 'How much does a typical wedding cost?', a: 'Wedding costs vary depending on location, guest count, and style. Your budget should include venue, catering, photography, decorations, attire, entertainment, transportation, and an emergency fund for unexpected expenses.' },
+  { q: 'Can I plan a wedding without hiring a wedding planner?', a: 'Yes. Many couples successfully plan their weddings using detailed checklists, budget trackers, timelines, and planning tools. A day-of coordinator can still be helpful for managing the event itself.' },
+  { q: 'What should a wedding budget include?', a: 'A complete wedding budget should include venue rental, food, beverages, photography, videography, decorations, flowers, invitations, wedding attire, entertainment, transportation, favors, taxes, gratuities, and a contingency budget.' },
+  { q: 'How do I create a wedding guest list?', a: 'Start with immediate family and close friends, then add extended family, colleagues, and acquaintances based on your venue capacity and overall budget. Prioritize guests who are most important to you as a couple.' },
+  { q: 'What vendors should I hire for my wedding?', a: 'Most weddings require a venue, photographer, videographer, caterer, florist, DJ or live band, officiant, hair and makeup artist, transportation service, baker, and rental company.' }
+];
+
+const combinedSchema = `[${[
+  generateWebApplicationSchema({ name: 'Wedding Planning Checklists', description: seo.description, url: seo.canonical }),
+  generateFAQSchema(faqs),
+  generateBreadcrumbSchema(breadcrumbItems)
+].filter(Boolean).join(',')}]`;
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical} schemaScript={combinedSchema} lang={currentLang}>
+  <Header lang={currentLang} />
+
+  <main class="space-y-16">
+    <!-- Hero Section -->
+    <section class="relative py-20 lg:py-28 overflow-hidden bg-gradient-to-b from-[#FCECF0]/50 via-white to-transparent">
+      <div class="max-w-5xl mx-auto px-4 text-center space-y-6">
+        <span class="inline-block bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+          {home.hero.badge}
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-[#1A1A1A] leading-tight tracking-tight">
+          {home.hero.title} <span class="text-[#B76E79]">{home.hero.titleHighlight}</span>
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          {home.hero.subtitle}
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 pt-4">
+          <a href={localizeUrl('/tools/wedding-planning-dashboard', currentLang)} class="bg-[#B76E79] hover:bg-[#a25d66] text-white px-8 py-4 rounded-full text-sm font-bold shadow-lg transition-all transform hover:-translate-y-0.5">
+            {home.hero.ctaPrimary}
+          </a>
+          <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="bg-white hover:bg-slate-50 text-[#1A1A1A] border border-slate-200 px-8 py-4 rounded-full text-sm font-bold transition-all shadow-sm">
+            {common.nav.guestList}
+          </a>
+        </div>
+
+        <!-- Proof Stats -->
+        <div class="pt-12 grid grid-cols-3 max-w-2xl mx-auto gap-4 border-t border-[#F3E8EA] mt-10">
+          <div>
+            <p class="text-2xl sm:text-3xl font-black text-[#1A1A1A]">120k+</p>
+            <p class="text-xs text-slate-500 font-medium">Tasks Completed</p>
+          </div>
+          <div>
+            <p className="text-2xl sm:text-3xl font-black text-[#B76E79]">50k+</p>
+            <p class="text-xs text-slate-500 font-medium">Guests Managed</p>
+          </div>
+          <div>
+            <p class="text-2xl sm:text-3xl font-black text-[#D4AF37]">$20M+</p>
+            <p class="text-xs text-slate-500 font-medium">Budgets Saved</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features Overview -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="text-center space-y-3 mb-12">
+        <h2 class="text-3xl font-black text-[#1A1A1A]">{home.features.title}</h2>
+        <p class="text-slate-600 text-sm max-w-xl mx-auto">{home.features.subtitle}</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">✓</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A]">Smart Checklist</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Manage every detail with our priority-sorted task manager organized by timeline.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">👥</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A]">Guest List</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Keep track of RSVPs, dietary needs, meal choices, seating, and plus-ones easily.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">💰</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A]">Budget Tracker</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Never overspend with real-time allocation across venue, catering, photo & buffer.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">📅</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A]">Timeline Planner</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Visual milestone maps and time-blocked daily schedules for your big day.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 Interactive Planning Tools Grid -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="text-center space-y-3 mb-12">
+        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">{home.features.toolsBadge}</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">14 Free Interactive Wedding Planning Tools</h2>
+        <p class="text-slate-600 max-w-xl mx-auto text-sm">
+          All tools sync automatically with your wedding date and save your progress safely in your browser.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {toolRegistry.tools.map(tool => {
+          const localizedTool = tools.tools[tool.id as keyof typeof tools.tools] || tool;
+          return (
+            <a
+              href={localizeUrl(tool.href, currentLang)}
+              class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md hover:border-[#B76E79]/40 transition-all group flex flex-col justify-between"
+            >
+              <div class="space-y-3">
+                <span class="inline-block text-[10px] font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-2.5 py-1 rounded-full">
+                  {localizedTool.category || tool.category}
+                </span>
+                <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{localizedTool.title || tool.title}</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">{localizedTool.description || tool.description}</p>
+              </div>
+              <div class="pt-4 flex items-center gap-1 text-xs font-bold text-[#B76E79]">
+                <span>{common.buttons.useTool}</span>
+                <span class="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl-flip">→</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- 20 Categorized Checklists & Tool Guides Section -->
+    <section id="categorized-checklists" class="max-w-[1300px] mx-auto px-4 sm:px-6 py-12 border-t border-slate-100">
+      <div class="text-center space-y-3 mb-12">
+        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider bg-[#FCECF0] px-3.5 py-1 rounded-full">
+          {home.checklistsSection.badge}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">{home.checklistsSection.title}</h2>
+        <p class="text-slate-600 max-w-xl mx-auto text-sm">
+          {home.checklistsSection.subtitle}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {categorizedChecklists.checklists.map(item => (
+          <a
+            href={localizeUrl(`/checklists/${item.slug}`, currentLang)}
+            class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md hover:border-[#B76E79]/40 transition-all group flex flex-col justify-between"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">{item.icon}</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-2.5 py-0.5 rounded-full">
+                  {item.badge}
+                </span>
+              </div>
+              <h3 class="font-bold text-base text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors leading-snug">
+                {item.title}
+              </h3>
+              <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                {item.description}
+              </p>
+            </div>
+            <div class="pt-4 flex items-center justify-between text-xs font-bold text-[#B76E79] border-t border-slate-50 mt-4">
+              <span class="text-[11px] text-slate-400 font-medium">{item.targetTimeline}</span>
+              <span class="flex items-center gap-1">
+                <span>{common.buttons.viewChecklist}</span>
+                <span class="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl-flip">→</span>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="text-center space-y-3 mb-10">
+        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider bg-[#FCECF0] px-3.5 py-1 rounded-full">
+          {home.faqSection.badge}
+        </span>
+        <h2 class="text-3xl font-black text-[#1A1A1A]">{home.faqSection.title}</h2>
+        <p class="text-slate-600 text-sm max-w-xl mx-auto">
+          {home.faqSection.subtitle}
+        </p>
+      </div>
+
+      <FaqSection items={faqs} client:visible />
+    </section>
+  </main>
+
+  <Footer lang={currentLang} />
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+import BlogArticlePage from '../../../components/pages/BlogArticlePage.astro';
+import { getCollection } from 'astro:content';
+import { NON_DEFAULT_LANGUAGES, type SupportedLanguage } from '../../../i18n/config';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const paths: any[] = [];
+
+  for (const lang of NON_DEFAULT_LANGUAGES) {
+    for (const post of posts) {
+      const slug = post.data.slug || post.id.replace(/\.(md|mdx)$/, '');
+      paths.push({
+        params: { lang, slug },
+        props: { 
+          post,
+          slug,
+          allPosts: posts.filter(p => (p.data.slug || p.id.replace(/\.(md|mdx)$/, '')) !== slug).slice(0, 3)
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { post, slug, allPosts } = Astro.props;
+const { lang } = Astro.params;
+---
+
+<BlogArticlePage post={post} slug={slug} allPosts={allPosts} lang={lang as SupportedLanguage} />

@@ -1,0 +1,34 @@
+{
+  "seo": {
+    "title": "Checklists Complètes de Mariage et Outils Interactifs (2026)",
+    "description": "La checklist ultime mois par mois pour organiser votre mariage et 14 outils interactifs gratuits : gestion des invités, calculateur de budget et plannings."
+  },
+  "hero": {
+    "badge": "L'Expérience Ultime d'Organisation",
+    "title": "Checklists Complètes pour",
+    "titleHighlight": "Votre Grand Jour",
+    "subtitle": "Bienvenue ! Nous avons créé une suite d'outils gratuits pour vous aider à gérer vos invités, votre budget et vos prestataires sans stress.",
+    "ctaPrimary": "Commencer Dès Maintenant",
+    "ctaSecondary": "Explorer 14+ Outils"
+  },
+  "features": {
+    "title": "Suite de Planification Interactive",
+    "subtitle": "Tout le nécessaire pour organiser le mariage de vos rêves, des fiançailles à la réception.",
+    "toolsBadge": "Outils Interactifs"
+  },
+  "checklistsSection": {
+    "badge": "Checklists Vérifiées",
+    "title": "Checklists de Mariage par Échéance",
+    "subtitle": "Des plannings d'experts étape par étape adaptés à chaque durée de préparation."
+  },
+  "blogSection": {
+    "badge": "Guides d'Experts",
+    "title": "Derniers Guides et Calendriers de Mariage",
+    "subtitle": "Conseils approfondis, coordination des prestataires et inspirations pour la mariée."
+  },
+  "faqSection": {
+    "badge": "Aide & Conseils",
+    "title": "Questions Fréquemment Posées",
+    "subtitle": "Réponses immédiates à toutes vos questions sur les budgets, les plannings et les prestataires."
+  }
+}

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { NON_DEFAULT_LANGUAGES, type SupportedLanguage } from '../../i18n/config';
+import { useTranslations, SITE_URL } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LANGUAGES.map(lang => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params;
+const currentLang = lang as SupportedLanguage;
+const { pages, common } = useTranslations(currentLang);
+
+const canonicalUrl = `${SITE_URL}/${currentLang}/contact`;
+---
+
+<BaseLayout 
+  title={pages.contact.title} 
+  description={pages.contact.description} 
+  canonical={canonicalUrl}
+  lang={currentLang}
+>
+  <Header lang={currentLang} />
+
+  <main class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="text-center space-y-4">
+      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Get in Touch</span>
+      <h1 class="text-3xl sm:text-5xl font-black text-[#1A1A1A]">{pages.contact.heading}</h1>
+      <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">{pages.contact.subheading}</p>
+    </div>
+
+    <form class="bg-white p-8 sm:p-10 rounded-3xl border border-[#F3E8EA] shadow-sm space-y-6 max-w-xl mx-auto">
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#B76E79] mb-2">Your Name</label>
+        <input type="text" placeholder="Jane Doe" required class="w-full p-4 border border-slate-200 rounded-2xl outline-none focus:border-[#B76E79] text-sm" />
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#B76E79] mb-2">Your Email</label>
+        <input type="email" placeholder="jane@example.com" required class="w-full p-4 border border-slate-200 rounded-2xl outline-none focus:border-[#B76E79] text-sm" />
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#B76E79] mb-2">Message</label>
+        <textarea rows="5" placeholder="How can we help you?" required class="w-full p-4 border border-slate-200 rounded-2xl outline-none focus:border-[#B76E79] text-sm"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-[#1A1A1A] hover:bg-[#B76E79] text-white p-4 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all shadow-md">
+        Send Message
+      </button>
+    </form>
+  </main>
+
+  <Footer lang={currentLang} />
+</BaseLayout>

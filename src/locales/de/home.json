@@ -1,0 +1,34 @@
+{
+  "seo": {
+    "title": "Komplette Hochzeits-Checklisten & Interaktive Tools (2026)",
+    "description": "Die ultimative Monats-Checkliste für Ihre Hochzeit und 14 kostenlose Tools: Gästelisten-Manager, Budgetrechner, Countdown und Ablaufplaner."
+  },
+  "hero": {
+    "badge": "Das Ultimative Planungserlebnis",
+    "title": "Vollständige Checklisten für",
+    "titleHighlight": "Ihren Großen Tag",
+    "subtitle": "Willkommen! Wir haben eine Auswahl kostenloser Tools entwickelt, mit denen Sie Gäste, Budgets und Dienstleister völlig stressfrei organisieren.",
+    "ctaPrimary": "Jetzt Planung Starten",
+    "ctaSecondary": "14+ Tools Entdecken"
+  },
+  "features": {
+    "title": "Interaktive Planungs-Suite",
+    "subtitle": "Alles, was Sie für Ihre Traumhochzeit von der Verlobung bis zur Feier benötigen.",
+    "toolsBadge": "Interaktive Tools"
+  },
+  "checklistsSection": {
+    "badge": "Geprüfte Checklisten",
+    "title": "Hochzeits-Checklisten nach Zeitplan",
+    "subtitle": "Schritt-für-Schritt Master-Checklisten von Hochzeitsexperten für jeden Vorbereitungszeitraum."
+  },
+  "blogSection": {
+    "badge": "Experten-Ratgeber",
+    "title": "Neueste Hochzeitsratgeber & Zeitpläne",
+    "subtitle": "Ausführliche Tipps, Dienstleister-Strategien und Styling-Inspirationen für die Braut."
+  },
+  "faqSection": {
+    "badge": "Hilfe & Beratung",
+    "title": "Häufig Gestellte Fragen",
+    "subtitle": "Sofortige Antworten auf die wichtigsten Fragen zu Hochzeitsbudgets, Zeitplänen und Dienstleistern."
+  }
+}

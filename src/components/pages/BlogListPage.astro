@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../layout/Header.astro';
+import Footer from '../layout/Footer.astro';
+import { getCollection } from 'astro:content';
+import { useTranslations, localizeUrl, getArticleI18n } from '../../i18n/utils';
+import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang = DEFAULT_LANGUAGE } = Astro.props;
+const currentLang = lang as SupportedLanguage;
+const { common, home } = useTranslations(currentLang);
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => (b.data.featured ? 1 : -1));
+const featuredPost = sortedPosts.find(p => p.data.featured) || sortedPosts[0];
+const otherPosts = sortedPosts.filter(p => p.id !== featuredPost?.id);
+
+const featuredSlug = featuredPost ? (featuredPost.data.slug || featuredPost.id.replace(/\.(md|mdx)$/, '')) : '';
+const featuredI18n = featuredSlug ? getArticleI18n(featuredSlug, currentLang) : null;
+const featuredTitle = featuredI18n?.title || featuredPost?.data.title;
+const featuredDescription = featuredI18n?.description || featuredPost?.data.description;
+const featuredCategory = featuredI18n?.category || featuredPost?.data.category;
+
+const siteUrl = 'https://www.weddingplanningchecklists.org';
+const currentCanonical = currentLang === DEFAULT_LANGUAGE ? `${siteUrl}/blog` : `${siteUrl}/${currentLang}/blog`;
+
+const seo = {
+  title: `${common.nav.blog} — Wedding Planning Checklists`,
+  description: 'Expert advice, detailed checklists, and timeline planning guides to help you create a stress-free wedding day.',
+  canonical: currentCanonical
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical} lang={currentLang}>
+  <Header lang={currentLang} />
+
+  <main class="pt-12 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">{home.blogSection.badge}</span>
+      <h1 class="text-4xl sm:text-5xl font-black text-[#1A1A1A]">{home.blogSection.title}</h1>
+      <p class="text-slate-600 text-base">{home.blogSection.subtitle}</p>
+    </div>
+
+    {featuredPost && (
+      <div class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden mb-16 grid grid-cols-1 lg:grid-cols-2">
+        <div class="h-64 sm:h-96 lg:h-auto overflow-hidden">
+          <img src={featuredPost.data.heroImage} alt={featuredPost.data.heroImageAlt || featuredTitle} class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+        <div class="p-8 lg:p-12 flex flex-col justify-between">
+          <div>
+            <span class="bg-[#FCECF0] text-[#B76E79] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              {featuredCategory || 'Featured Guide'}
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A] mt-4 mb-4">
+              <a href={localizeUrl(`/blog/${featuredSlug}`, currentLang)} class="hover:text-[#B76E79] transition-colors">
+                {featuredTitle}
+              </a>
+            </h2>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              {featuredDescription}
+            </p>
+          </div>
+          <div>
+            <a href={localizeUrl(`/blog/${featuredSlug}`, currentLang)} class="inline-flex items-center gap-1.5 bg-[#1A1A1A] text-white px-6 py-3 rounded-full text-xs font-bold hover:bg-[#B76E79] transition-all">
+              <span>{common.buttons.readMore}</span>
+              <span class="rtl-flip">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {otherPosts.map(post => {
+        const slug = post.data.slug || post.id.replace(/\.(md|mdx)$/, '');
+        const postI18n = getArticleI18n(slug, currentLang);
+        const postTitle = postI18n?.title || post.data.title;
+        const postDescription = postI18n?.description || post.data.description;
+        const postCategory = postI18n?.category || post.data.category;
+
+        return (
+          <article class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all">
+            <div class="h-48 overflow-hidden">
+              <img src={post.data.heroImage} alt={post.data.heroImageAlt || postTitle} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+              <div>
+                <span class="text-[10px] font-bold text-[#B76E79] uppercase tracking-wider">{postCategory}</span>
+                <h3 class="font-bold text-lg text-[#1A1A1A] mt-1 mb-2 line-clamp-2">
+                  <a href={localizeUrl(`/blog/${slug}`, currentLang)} class="hover:text-[#B76E79] transition-colors">{postTitle}</a>
+                </h3>
+                <p class="text-xs text-slate-500 line-clamp-3 leading-relaxed">{postDescription}</p>
+              </div>
+              <a href={localizeUrl(`/blog/${slug}`, currentLang)} class="text-xs font-bold text-[#B76E79] hover:underline inline-flex items-center gap-1">
+                <span>{common.buttons.readMore}</span>
+                <span class="rtl-flip">→</span>
+              </a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </main>
+
+  <Footer lang={currentLang} />
+</BaseLayout>

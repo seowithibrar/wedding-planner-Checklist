@@ -1,0 +1,127 @@
+---
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '../../i18n/config';
+---
+
+<div
+  id="lang-detection-banner"
+  class="hidden fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 bg-white border border-[#F3E8EA] rounded-2xl p-4 shadow-2xl transition-all duration-300 transform translate-y-8 opacity-0"
+  role="region"
+  aria-label="Language recommendation"
+>
+  <div class="flex items-start gap-3">
+    <div class="w-8 h-8 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center shrink-0 font-bold">
+      🌐
+    </div>
+    <div class="flex-1 space-y-2">
+      <p id="lang-detection-message" class="text-xs text-slate-700 font-medium leading-relaxed">
+        <!-- Message inserted by script -->
+      </p>
+      <div class="flex items-center gap-2 pt-1">
+        <a
+          id="lang-accept-btn"
+          href="#"
+          class="bg-[#B76E79] hover:bg-[#a25d66] text-white px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm"
+        >
+          <!-- Switch text -->
+        </a>
+        <button
+          id="lang-dismiss-btn"
+          type="button"
+          class="bg-slate-100 hover:bg-slate-200 text-slate-600 px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
+        >
+          Keep English
+        </button>
+      </div>
+    </div>
+    <button
+      id="lang-close-btn"
+      type="button"
+      class="text-slate-400 hover:text-slate-600 text-sm leading-none p-1"
+      aria-label="Dismiss banner"
+    >
+      ✕
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    const supportedLangs = ['ur', 'hi', 'es', 'fr', 'de', 'ar'];
+    const nativeNames = {
+      ur: 'اردو',
+      hi: 'हिन्दी',
+      es: 'Español',
+      fr: 'Français',
+      de: 'Deutsch',
+      ar: 'العربية'
+    };
+
+    function checkLanguagePreference() {
+      // Check if visitor has already chosen or dismissed
+      let saved = null;
+      try {
+        saved = localStorage.getItem('preferred-language');
+      } catch (e) {}
+
+      if (saved) return; // User already made a choice
+
+      // Check current URL: if already on a non-English path, don't show prompt
+      const pathname = window.location.pathname;
+      for (const lang of supportedLangs) {
+        if (pathname.startsWith('/' + lang)) return;
+      }
+
+      // Check browser language
+      const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      const matched = supportedLangs.find(code => browserLang === code || browserLang.startsWith(code + '-'));
+
+      if (!matched) return;
+
+      const banner = document.getElementById('lang-detection-banner');
+      const msg = document.getElementById('lang-detection-message');
+      const acceptBtn = document.getElementById('lang-accept-btn');
+      const dismissBtn = document.getElementById('lang-dismiss-btn');
+      const closeBtn = document.getElementById('lang-close-btn');
+
+      if (!banner || !msg || !acceptBtn || !dismissBtn || !closeBtn) return;
+
+      const langName = nativeNames[matched] || matched;
+      msg.textContent = 'Would you like to view Wedding Planning Checklists in ' + langName + ' (' + matched.toUpperCase() + ')?';
+      acceptBtn.textContent = 'View in ' + langName;
+      acceptBtn.href = '/' + matched + (pathname === '/' ? '' : pathname) + window.location.search;
+
+      function dismiss() {
+        try {
+          localStorage.setItem('preferred-language', 'en');
+        } catch (e) {}
+        banner.classList.add('translate-y-8', 'opacity-0');
+        setTimeout(() => banner.classList.add('hidden'), 300);
+      }
+
+      function accept() {
+        try {
+          localStorage.setItem('preferred-language', matched);
+          document.cookie = 'preferred-language=' + matched + ';path=/;max-age=31536000;SameSite=Lax';
+        } catch (e) {}
+      }
+
+      acceptBtn.addEventListener('click', accept);
+      dismissBtn.addEventListener('click', dismiss);
+      closeBtn.addEventListener('click', dismiss);
+
+      // Show with slight delay
+      setTimeout(() => {
+        banner.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          banner.classList.remove('translate-y-8', 'opacity-0');
+        });
+      }, 1200);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkLanguagePreference);
+    } else {
+      checkLanguagePreference();
+    }
+  })();
+</script>

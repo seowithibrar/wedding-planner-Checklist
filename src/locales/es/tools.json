@@ -1,0 +1,110 @@
+{
+  "badge": "Herramienta Gratuita",
+  "tools": {
+    "budget-calculator": {
+      "title": "Calculadora de Presupuesto de Boda",
+      "description": "Estima los gastos del lugar, catering, fotografía y más.",
+      "category": "Presupuesto",
+      "intro": "Usa nuestra calculadora gratuita para estimar costos por categoría, distribuir gastos por invitado y controlar tu presupuesto en un solo lugar."
+    },
+    "timeline-generator": {
+      "title": "Generador de Cronograma del Día",
+      "description": "Genera un cronograma personalizado del día de la boda según la hora de tu ceremonia.",
+      "category": "Cronograma",
+      "intro": "Crea un cronograma fluido del día de la boda con tiempos de llegada de proveedores y sesiones fotográficas."
+    },
+    "guest-list-manager": {
+      "title": "Gestor de Lista de Invitados",
+      "description": "Rastrea confirmaciones, preferencias de comida, asignación de mesas y acompañantes.",
+      "category": "Invitados",
+      "intro": "Organiza tu lista de invitados con nuestra herramienta interactiva gratuita y exporta a CSV."
+    },
+    "wedding-checklist-generator": {
+      "title": "Generador de Listas de Verificación",
+      "description": "Genera una lista personalizada según tu fecha y preferencias.",
+      "category": "Tareas",
+      "intro": "Obtén una lista completa adaptada a tu fecha, tradiciones y estilo de celebración."
+    },
+    "wedding-planning-timeline": {
+      "title": "Cronograma de Planificación de Bodas",
+      "description": "Línea de tiempo visual organizada por meses antes de la fecha de la boda.",
+      "category": "Cronograma",
+      "intro": "Sigue cada fase de planificación mes a mes hasta el gran día."
+    },
+    "wedding-task-generator": {
+      "title": "Generador de Tareas de Boda",
+      "description": "Sugerencias inteligentes de tareas según fecha, estilo y presupuesto.",
+      "category": "Tareas",
+      "intro": "Recomendaciones inteligentes de tareas adaptadas a tu lugar y estilo nupcial."
+    },
+    "wedding-milestone-tracker": {
+      "title": "Rastreador de Hitos de Boda",
+      "description": "Sigue la consecución de 31 hitos esenciales de planificación.",
+      "category": "Tareas",
+      "intro": "Mantén el enfoque en los hitos prioritarios para garantizar que todo esté listo a tiempo."
+    },
+    "wedding-planning-calendar": {
+      "title": "Calendario de Planificación de Bodas",
+      "description": "Calendario mensual para agendar citas con proveedores, pruebas y eventos.",
+      "category": "Calendario",
+      "intro": "Organiza plazos de pago a proveedores, pruebas de vestidos y ensayos."
+    },
+    "daily-wedding-planner": {
+      "title": "Planificador Diario de Boda",
+      "description": "Planificador de tareas diarias con bloques horarios.",
+      "category": "Planificador",
+      "intro": "Planifica cada día previo a tu boda con bloques de tiempo estructurados."
+    },
+    "weekly-wedding-planner": {
+      "title": "Planificador Semanal de Boda",
+      "description": "Tablero semanal con distribución diaria de actividades.",
+      "category": "Planificador",
+      "intro": "Organiza tus tareas semanales de forma clara y sin complicaciones."
+    },
+    "monthly-wedding-planner": {
+      "title": "Planificador Mensual de Boda",
+      "description": "Planificador mensual con objetivos por categoría y seguimiento de progreso.",
+      "category": "Planificador",
+      "intro": "Divide tus grandes metas nupciales en objetivos mensuales alcanzables."
+    },
+    "wedding-countdown": {
+      "title": "Cuenta Regresiva de Boda",
+      "description": "Reloj de cuenta regresiva en vivo hacia el día de tu boda.",
+      "category": "Cronograma",
+      "intro": "Reloj en tiempo real para contar los días, horas y semanas restantes."
+    },
+    "wedding-progress-tracker": {
+      "title": "Rastreador de Progreso de Boda",
+      "description": "Progreso general en todas las categorías y herramientas de planificación.",
+      "category": "Panel",
+      "intro": "Monitorea el porcentaje global de avance en tareas, invitados y proveedores."
+    },
+    "wedding-planning-dashboard": {
+      "title": "Panel de Control de Planificación",
+      "description": "Centro neurálgico con estadísticas, accesos rápidos y estado del evento.",
+      "category": "Panel",
+      "intro": "Tu centro de mando unificado con cuenta regresiva, estado del presupuesto e invitados."
+    }
+  },
+  "calculator": {
+    "totalBudget": "Presupuesto Total de la Boda",
+    "guestCount": "Número Estimado de Invitados",
+    "costPerGuest": "Costo por Invitado",
+    "standardBreakdown": "Desglose Estándar",
+    "customTracker": "Rastreador de Gastos",
+    "target": "Objetivo",
+    "actual": "Real",
+    "remaining": "Restante",
+    "totalSpent": "Total Gastado",
+    "copySummary": "Copiar Resumen del Presupuesto",
+    "categories": {
+      "venue-catering": "Lugar y Banquete",
+      "photo-video": "Fotografía y Video",
+      "attire-beauty": "Vestimenta, Peluquería y Maquillaje",
+      "flowers-decor": "Flores y Decoración",
+      "music-entertainment": "Música y Animación",
+      "stationery-cake": "Invitaciones, Pastel y Recuerdos",
+      "contingency-buffer": "Fondo de Imprevistos y Reserva"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+---
+import ChecklistPage from '../../../components/pages/ChecklistPage.astro';
+import checklistsData from '../../../data/categorized-checklists.json';
+import { NON_DEFAULT_LANGUAGES, type SupportedLanguage } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LANGUAGES.map(lang => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params;
+const checklist = checklistsData.checklists.find(c => c.slug === 'wedding-budget-calculator-20k');
+---
+
+<ChecklistPage checklist={checklist} lang={lang as SupportedLanguage} />

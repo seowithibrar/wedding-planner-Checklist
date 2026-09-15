@@ -1,0 +1,23 @@
+---
+import ToolPage from '../../../components/pages/ToolPage.astro';
+import toolRegistry from '../../../data/tool-registry.json';
+import { NON_DEFAULT_LANGUAGES, type SupportedLanguage } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  const paths: any[] = [];
+
+  for (const lang of NON_DEFAULT_LANGUAGES) {
+    for (const tool of toolRegistry.tools) {
+      paths.push({
+        params: { lang, tool: tool.id }
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { lang, tool } = Astro.params;
+---
+
+<ToolPage toolId={tool as string} lang={lang as SupportedLanguage} />

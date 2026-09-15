@@ -1,0 +1,170 @@
+---
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
+import { getLangFromPath, localizeUrl, stripLangPrefix } from '../../i18n/utils';
+
+export interface Props {
+  currentLang?: string;
+  isMobile?: boolean;
+}
+
+const { currentLang: propLang, isMobile = false } = Astro.props;
+const currentLang = (propLang && propLang in SUPPORTED_LANGUAGES) 
+  ? (propLang as SupportedLanguage) 
+  : getLangFromPath(Astro.url.pathname);
+
+const currentLangConfig = SUPPORTED_LANGUAGES[currentLang] || SUPPORTED_LANGUAGES[DEFAULT_LANGUAGE];
+const pathname = Astro.url.pathname;
+const search = Astro.url.search || '';
+
+const languageOptions = Object.values(SUPPORTED_LANGUAGES).map((lang) => ({
+  code: lang.code,
+  name: lang.name,
+  nativeName: lang.nativeName,
+  dir: lang.dir,
+  targetUrl: `${localizeUrl(pathname, lang.code)}${search}`,
+  isActive: lang.code === currentLang
+}));
+---
+
+<div class={`relative inline-block text-left language-selector-root ${isMobile ? 'w-full' : ''}`} data-current-lang={currentLang}>
+  <!-- Dropdown Trigger Button -->
+  <button
+    type="button"
+    class={`lang-toggle-btn inline-flex items-center justify-between gap-1.5 px-3 py-2 text-xs font-bold rounded-full border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#B76E79] focus:ring-offset-1 ${
+      isMobile 
+        ? 'w-full bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 justify-between' 
+        : 'bg-white/90 border-[#F3E8EA] text-slate-700 hover:text-[#B76E79] hover:border-[#B76E79]/40 shadow-sm'
+    }`}
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    aria-label="Select website language"
+  >
+    <span class="inline-flex items-center gap-1.5">
+      <svg class="w-3.5 h-3.5 text-[#B76E79] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke-width="2" />
+        <path stroke-width="2" d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+      </svg>
+      <span class="lang-btn-text tracking-wide">{currentLangConfig.nativeName}</span>
+    </span>
+    <svg class="lang-chevron w-3 h-3 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    class={`lang-menu hidden absolute z-50 mt-1.5 w-48 rounded-2xl bg-white shadow-xl border border-[#F3E8EA] py-1.5 focus:outline-none animate-in fade-in zoom-in-95 duration-150 ${
+      isMobile ? 'left-0 right-0 w-full static mt-2 shadow-none border-slate-200' : 'ltr:right-0 rtl:left-0'
+    }`}
+    role="listbox"
+    aria-label="Languages"
+    tabindex="-1"
+  >
+    <div class="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 mb-1">
+      Select Language
+    </div>
+    {languageOptions.map((opt) => (
+      <a
+        href={opt.targetUrl}
+        role="option"
+        aria-selected={opt.isActive ? 'true' : 'false'}
+        data-lang-code={opt.code}
+        class={`lang-option flex items-center justify-between px-3.5 py-2 text-xs transition-colors duration-150 ${
+          opt.isActive
+            ? 'bg-[#FCECF0] text-[#B76E79] font-bold'
+            : 'text-slate-700 hover:bg-[#FAFAFA] hover:text-[#B76E79] font-medium'
+        }`}
+        dir={opt.dir}
+      >
+        <span class="flex items-center gap-2">
+          <span>{opt.nativeName}</span>
+          {opt.code !== 'en' && (
+            <span class="text-[10px] text-slate-400 font-normal">({opt.name})</span>
+          )}
+        </span>
+        {opt.isActive && (
+          <svg class="w-3.5 h-3.5 text-[#B76E79] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+          </svg>
+        )}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    function initLanguageSelectors() {
+      const selectors = document.querySelectorAll('.language-selector-root');
+
+      selectors.forEach(root => {
+        if (root.dataset.initialized) return;
+        root.dataset.initialized = 'true';
+
+        const btn = root.querySelector('.lang-toggle-btn');
+        const menu = root.querySelector('.lang-menu');
+        const chevron = root.querySelector('.lang-chevron');
+        const options = root.querySelectorAll('.lang-option');
+
+        function openMenu() {
+          menu.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+          if (chevron) chevron.classList.add('rotate-180');
+        }
+
+        function closeMenu() {
+          menu.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+          if (chevron) chevron.classList.remove('rotate-180');
+        }
+
+        function toggleMenu() {
+          if (menu.classList.contains('hidden')) {
+            openMenu();
+          } else {
+            closeMenu();
+          }
+        }
+
+        btn?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleMenu();
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!root.contains(e.target)) {
+            closeMenu();
+          }
+        });
+
+        // Keyboard navigation
+        root.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeMenu();
+            btn?.focus();
+          }
+        });
+
+        // Store language preference on click
+        options.forEach(opt => {
+          opt.addEventListener('click', () => {
+            const langCode = opt.getAttribute('data-lang-code');
+            if (langCode) {
+              try {
+                localStorage.setItem('preferred-language', langCode);
+                document.cookie = 'preferred-language=' + langCode + ';path=/;max-age=31536000;SameSite=Lax';
+              } catch (e) {}
+            }
+          });
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLanguageSelectors);
+    } else {
+      initLanguageSelectors();
+    }
+  })();
+</script>

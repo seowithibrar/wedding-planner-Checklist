@@ -77,3 +77,5 @@ export interface ToolInfo {
 
 export type PlannerView = 'day' | 'week' | 'month';
 export type MilestoneStatus = 'not-started' | 'in-progress' | 'completed';
+
+export type { Guest } from './guest-list-types';

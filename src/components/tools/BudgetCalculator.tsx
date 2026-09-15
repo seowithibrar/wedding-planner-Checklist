@@ -19,7 +19,174 @@ const DEFAULT_CATEGORIES: CategoryItem[] = [
   { id: 'contingency-buffer', name: 'Contingency & Emergency Buffer', percentage: 7, icon: '🛡️', description: 'Unexpected vendor overtime, taxes, service fees & last-minute fixes', notes: 'Crucial safety cushion' }
 ];
 
-export function BudgetCalculator() {
+const I18N_LABELS: Record<string, any> = {
+  en: {
+    totalBudget: 'Total Wedding Budget ($USD)',
+    guestCount: 'Estimated Guest Count',
+    costPerGuest: 'Estimated cost per guest:',
+    perPerson: '/ person',
+    categoryAllocations: '📊 Category Allocations',
+    actualTracker: '📝 Estimated vs. Actual Tracker',
+    copySummary: 'Copy Breakdown',
+    copied: '✓ Copied!',
+    target: 'Target',
+    actual: 'Actual',
+    remaining: 'Remaining',
+    totalSpent: 'Total Logged',
+    categories: {
+      'venue-catering': 'Venue & Catering',
+      'photo-video': 'Photography & Videography',
+      'attire-beauty': 'Attire, Hair & Makeup',
+      'flowers-decor': 'Florals & Decorations',
+      'music-entertainment': 'Music & Entertainment',
+      'stationery-cake': 'Stationery, Cake & Favors',
+      'contingency-buffer': 'Contingency & Emergency Buffer'
+    }
+  },
+  ur: {
+    totalBudget: 'شادی کا کل بجٹ ($USD)',
+    guestCount: 'متوقع مہمانوں کی تعداد',
+    costPerGuest: 'فی مہمان متوقع لاگت:',
+    perPerson: '/ فی کس',
+    categoryAllocations: '📊 کیٹیگری کے مطابق تقسیم',
+    actualTracker: '📝 متوقع بمقابلہ اصل اخراجات',
+    copySummary: 'خلاصہ کاپی کریں',
+    copied: '✓ کاپی ہو گیا!',
+    target: 'ہدف',
+    actual: 'اصل خرچ',
+    remaining: 'باقی رقم',
+    totalSpent: 'کل خرچ شدہ',
+    categories: {
+      'venue-catering': 'ہال اور کھانا (کیٹرنگ)',
+      'photo-video': 'فوٹوگرافی اور ویڈیو گرافی',
+      'attire-beauty': 'لباس، بال اور میک اپ',
+      'flowers-decor': 'پھول اور سجاوٹ',
+      'music-entertainment': 'موسیقی اور انٹرٹینمنٹ',
+      'stationery-cake': 'کارڈز، کیک اور تحائف',
+      'contingency-buffer': 'ہنگامی فنڈ اور اضافی اخراجات'
+    }
+  },
+  hi: {
+    totalBudget: 'कुल शादी का बजट ($USD)',
+    guestCount: 'अनुमानित अतिथि संख्या',
+    costPerGuest: 'प्रति अतिथि अनुमानित लागत:',
+    perPerson: '/ व्यक्ति',
+    categoryAllocations: '📊 श्रेणी अनुसार आवंटन',
+    actualTracker: '📝 अनुमानित बनाम वास्तविक ट्रैकर',
+    copySummary: 'विवरण कॉपी करें',
+    copied: '✓ कॉपी हो गया!',
+    target: 'लक्ष्य',
+    actual: 'वास्तविक',
+    remaining: 'शेष',
+    totalSpent: 'कुल खर्च',
+    categories: {
+      'venue-catering': 'वेन्यू और कैटरिंग',
+      'photo-video': 'फोटोग्राफी और वीडियोग्राफी',
+      'attire-beauty': 'पोशाक, बाल और मेकअप',
+      'flowers-decor': 'फूल और सजावट',
+      'music-entertainment': 'संगीत और मनोरंजन',
+      'stationery-cake': 'कार्ड, केक और उपहार',
+      'contingency-buffer': 'आपातकालीन फंड और बफर'
+    }
+  },
+  es: {
+    totalBudget: 'Presupuesto Total de la Boda ($USD)',
+    guestCount: 'Número Estimado de Invitados',
+    costPerGuest: 'Costo estimado por invitado:',
+    perPerson: '/ persona',
+    categoryAllocations: '📊 Asignación por Categorías',
+    actualTracker: '📝 Estimado vs. Real',
+    copySummary: 'Copiar Desglose',
+    copied: '✓ ¡Copiado!',
+    target: 'Objetivo',
+    actual: 'Real',
+    remaining: 'Restante',
+    totalSpent: 'Total Gastado',
+    categories: {
+      'venue-catering': 'Lugar y Banquete',
+      'photo-video': 'Fotografía y Video',
+      'attire-beauty': 'Vestimenta, Peluquería y Maquillaje',
+      'flowers-decor': 'Flores y Decoración',
+      'music-entertainment': 'Música y Animación',
+      'stationery-cake': 'Invitaciones, Pastel y Recuerdos',
+      'contingency-buffer': 'Fondo de Imprevistos'
+    }
+  },
+  fr: {
+    totalBudget: 'Budget Total du Mariage ($USD)',
+    guestCount: 'Nombre d\'Invités Estimé',
+    costPerGuest: 'Coût estimé par invité :',
+    perPerson: '/ personne',
+    categoryAllocations: '📊 Répartition par Catégorie',
+    actualTracker: '📝 Estimé vs Réel',
+    copySummary: 'Copier la Répartition',
+    copied: '✓ Copié !',
+    target: 'Objectif',
+    actual: 'Réel',
+    remaining: 'Restant',
+    totalSpent: 'Total Dépensé',
+    categories: {
+      'venue-catering': 'Lieu & Traiteur',
+      'photo-video': 'Photo & Vidéo',
+      'attire-beauty': 'Tenues, Coiffure & Maquillage',
+      'flowers-decor': 'Fleurs & Décoration',
+      'music-entertainment': 'Musique & Animation',
+      'stationery-cake': 'Faire-part, Gâteau & Cadeaux',
+      'contingency-buffer': 'Imprévus & Réserve'
+    }
+  },
+  de: {
+    totalBudget: 'Gesamtbudget der Hochzeit ($USD)',
+    guestCount: 'Geschätzte Gästeanzahl',
+    costPerGuest: 'Geschätzte Kosten pro Gast:',
+    perPerson: '/ Person',
+    categoryAllocations: '📊 Aufteilung nach Kategorien',
+    actualTracker: '📝 Geplant vs. Tatsächlich',
+    copySummary: 'Aufteilung Kopieren',
+    copied: '✓ Kopiert!',
+    target: 'Ziel',
+    actual: 'Tatsächlich',
+    remaining: 'Verbleibend',
+    totalSpent: 'Gesamtausgaben',
+    categories: {
+      'venue-catering': 'Location & Catering',
+      'photo-video': 'Foto- & Videografie',
+      'attire-beauty': 'Kleidung, Haare & Make-up',
+      'flowers-decor': 'Blumen & Dekoration',
+      'music-entertainment': 'Musik & Entertainment',
+      'stationery-cake': 'Papeterie, Torte & Geschenke',
+      'contingency-buffer': 'Puffer für Unvorhergesehenes'
+    }
+  },
+  ar: {
+    totalBudget: 'إجمالي ميزانية الزفاف ($USD)',
+    guestCount: 'عدد الضيوف المتوقع',
+    costPerGuest: 'التكلفة التقديرية لكل ضيف:',
+    perPerson: '/ للشخص',
+    categoryAllocations: '📊 التوزيع حسب الفئات',
+    actualTracker: '📝 المتوقع مقابل الفعلي',
+    copySummary: 'نسخ التفاصيل',
+    copied: '✓ تم النسخ!',
+    target: 'المستهدف',
+    actual: 'الفعلي',
+    remaining: 'المتبقي',
+    totalSpent: 'إجمالي المنفق',
+    categories: {
+      'venue-catering': 'المكان والطعام',
+      'photo-video': 'التصوير والفيديو',
+      'attire-beauty': 'الأزياء والشعر والمكياج',
+      'flowers-decor': 'الزهور والديكور',
+      'music-entertainment': 'الموسيقى والترفيه',
+      'stationery-cake': 'البطاقات والكعكة والتوزيعات',
+      'contingency-buffer': 'صندوق الطوارئ والاحتياط'
+    }
+  }
+};
+
+export function BudgetCalculator({ lang }: { lang?: string } = {}) {
+  const activeLang = lang || (typeof document !== 'undefined' ? document.documentElement.lang : 'en') || 'en';
+  const t = I18N_LABELS[activeLang] || I18N_LABELS.en;
+
   const [totalBudget, setTotalBudget] = useState<number>(30000);
   const [guestCount, setGuestCount] = useState<number>(100);
   const [activeTab, setActiveTab] = useState<'standard' | 'tracker'>('standard');
@@ -47,9 +214,10 @@ export function BudgetCalculator() {
       `Cost per Guest: $${costPerGuest.toLocaleString()}/guest`,
       `---------------------------------`,
       ...DEFAULT_CATEGORIES.map(cat => {
+        const catName = t.categories?.[cat.id] || cat.name;
         const allocated = Math.round(totalBudget * (cat.percentage / 100));
         const actual = actualExpenses[cat.id] || 0;
-        return `${cat.name} (${cat.percentage}%): Target $${allocated.toLocaleString()} ${actual > 0 ? `| Actual: $${actual.toLocaleString()}` : ''}`;
+        return `${catName} (${cat.percentage}%): Target $${allocated.toLocaleString()} ${actual > 0 ? `| Actual: $${actual.toLocaleString()}` : ''}`;
       }),
       `---------------------------------`,
       `Total Logged: $${totalSpent.toLocaleString()}`,
@@ -62,6 +230,7 @@ export function BudgetCalculator() {
     });
   };
 
+
   return (
     <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#F3E8EA] shadow-xl max-w-4xl mx-auto space-y-8">
       
@@ -70,7 +239,7 @@ export function BudgetCalculator() {
         {/* Total Budget Input */}
         <div className="space-y-2">
           <label className="block text-xs font-extrabold uppercase tracking-wider text-[#B76E79]">
-            Total Wedding Budget ($USD)
+            {t.totalBudget}
           </label>
           <div className="relative">
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-slate-400">$</span>
@@ -105,7 +274,7 @@ export function BudgetCalculator() {
         {/* Guest Count & Per-Guest KPI */}
         <div className="space-y-2">
           <label className="block text-xs font-extrabold uppercase tracking-wider text-[#B76E79]">
-            Estimated Guest Count
+            {t.guestCount}
           </label>
           <div className="relative">
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl font-bold text-slate-400">👥</span>
@@ -119,8 +288,8 @@ export function BudgetCalculator() {
           </div>
           {/* KPI Indicator */}
           <div className="flex items-center justify-between bg-white px-3.5 py-2 rounded-xl border border-[#F3E8EA] text-xs">
-            <span className="text-slate-500 font-medium">Estimated cost per guest:</span>
-            <span className="font-extrabold text-[#B76E79] text-sm">${costPerGuest.toLocaleString()} <span className="text-[10px] text-slate-400 font-normal">/ person</span></span>
+            <span className="text-slate-500 font-medium">{t.costPerGuest}</span>
+            <span className="font-extrabold text-[#B76E79] text-sm">${costPerGuest.toLocaleString()} <span className="text-[10px] text-slate-400 font-normal">{t.perPerson}</span></span>
           </div>
         </div>
       </div>
@@ -137,7 +306,7 @@ export function BudgetCalculator() {
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
-            📊 Category Allocations
+            {t.categoryAllocations}
           </button>
           <button
             type="button"
@@ -148,7 +317,7 @@ export function BudgetCalculator() {
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
-            📝 Estimated vs. Actual Tracker
+            {t.actualTracker}
           </button>
         </div>
 
@@ -159,12 +328,12 @@ export function BudgetCalculator() {
         >
           {copied ? (
             <>
-              <span className="text-emerald-600 font-bold">✓ Copied!</span>
+              <span className="text-emerald-600 font-bold">{t.copied}</span>
             </>
           ) : (
             <>
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-              <span>Copy Breakdown</span>
+              <span>{t.copySummary}</span>
             </>
           )}
         </button>
@@ -177,6 +346,7 @@ export function BudgetCalculator() {
             {DEFAULT_CATEGORIES.map(cat => {
               const allocated = Math.round(totalBudget * (cat.percentage / 100));
               const isBuffer = cat.id === 'contingency-buffer';
+              const catName = t.categories?.[cat.id] || cat.name;
               return (
                 <div 
                   key={cat.id}
@@ -190,7 +360,7 @@ export function BudgetCalculator() {
                     <div className="flex items-center gap-2">
                       <span className="text-lg">{cat.icon}</span>
                       <div>
-                        <h4 className="font-bold text-xs sm:text-sm text-[#1A1A1A]">{cat.name}</h4>
+                        <h4 className="font-bold text-xs sm:text-sm text-[#1A1A1A]">{catName}</h4>
                         <span className="text-[10px] text-slate-400 font-semibold">{cat.percentage}% allocation</span>
                       </div>
                     </div>
@@ -205,6 +375,7 @@ export function BudgetCalculator() {
               );
             })}
           </div>
+
 
           {/* Visual Distribution Bar */}
           <div className="space-y-2 pt-4">
