@@ -52,6 +52,19 @@ $broken = @()
 
 foreach ($f in $srcFiles) {
     $text = [System.IO.File]::ReadAllText($f.FullName)
+    # find href="..."
+    $pattern1 = 'href=["''](/[^"''>#?]+)'
+    $matches1 = [System.Text.RegularExpressions.Regex]::Matches($text, $pattern1)
+    foreach ($m in $matches1) {
+        $path = $m.Groups[1].Value
+        if ($path.Length -gt 1 -and $path.EndsWith("/")) {
+            $path = $path.TrimEnd("/")
+        }
+        if (-not $validRoutes.Contains($path) -and -not $path.StartsWith("/sitemap.xsl")) {
+            $broken += [PSCustomObject]@{ File = $f.FullName.Replace((Get-Location).Path + "\", ""); Link = $path; Type = "Href" }
+        }
+    }
+
     # find heroImage: "..."
     $patternHero = '(?m)^heroImage:\s*["'']?(/[^"''\r\n]+)'
     $matchesHero = [System.Text.RegularExpressions.Regex]::Matches($text, $patternHero)
