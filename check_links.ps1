@@ -52,17 +52,33 @@ $broken = @()
 
 foreach ($f in $srcFiles) {
     $text = [System.IO.File]::ReadAllText($f.FullName)
-    # find href="..."
-    $pattern1 = 'href=["''](/[^"''>#?]+)'
-    $matches1 = [System.Text.RegularExpressions.Regex]::Matches($text, $pattern1)
-    foreach ($m in $matches1) {
-        $path = $m.Groups[1].Value
-        # clean trailing slash if not root
-        if ($path.Length -gt 1 -and $path.EndsWith("/")) {
-            $path = $path.TrimEnd("/")
+    # find heroImage: "..."
+    $patternHero = '(?m)^heroImage:\s*["'']?(/[^"''\r\n]+)'
+    $matchesHero = [System.Text.RegularExpressions.Regex]::Matches($text, $patternHero)
+    foreach ($m in $matchesHero) {
+        $path = $m.Groups[1].Value.Trim()
+        if (-not $validRoutes.Contains($path)) {
+            $broken += [PSCustomObject]@{ File = $f.FullName.Replace((Get-Location).Path + "\", ""); Link = $path; Type = "HeroImage" }
         }
-        if (-not $validRoutes.Contains($path) -and -not $path.StartsWith("/sitemap.xsl")) {
-            $broken += [PSCustomObject]@{ File = $f.FullName.Replace((Get-Location).Path + "\", ""); Link = $path }
+    }
+
+    # find img src="..."
+    $patternImg = 'src=["''](/[^"''>#?]+)'
+    $matchesImg = [System.Text.RegularExpressions.Regex]::Matches($text, $patternImg)
+    foreach ($m in $matchesImg) {
+        $path = $m.Groups[1].Value
+        if (-not $validRoutes.Contains($path)) {
+            $broken += [PSCustomObject]@{ File = $f.FullName.Replace((Get-Location).Path + "\", ""); Link = $path; Type = "ImgSrc" }
+        }
+    }
+
+    # find markdown images ![](/...)
+    $patternMdImg = '!\[[^\]]*\]\((/[^)#?]+)'
+    $matchesMdImg = [System.Text.RegularExpressions.Regex]::Matches($text, $patternMdImg)
+    foreach ($m in $matchesMdImg) {
+        $path = $m.Groups[1].Value
+        if (-not $validRoutes.Contains($path)) {
+            $broken += [PSCustomObject]@{ File = $f.FullName.Replace((Get-Location).Path + "\", ""); Link = $path; Type = "MdImg" }
         }
     }
 
