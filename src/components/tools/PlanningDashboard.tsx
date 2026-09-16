@@ -7,7 +7,7 @@ import { DatePickerInput } from '../ui/DatePickerInput';
 import toolRegistry from '../../data/tool-registry.json';
 import type { WeddingTask, Milestone, Guest } from '../../types/wedding-planner-types';
 
-export function PlanningDashboard() {
+export function PlanningDashboard({ lang }: { lang?: string } = {}) {
   const { weddingDate, setWeddingDate, daysUntilWedding, isLoaded: dateLoaded } = useWeddingDate();
   const [tasks] = useLocalStorage<WeddingTask[]>('wpc-checklist-tasks-v1', []);
   const [milestones] = useLocalStorage<Milestone[]>('wpc-milestones-v1', []);

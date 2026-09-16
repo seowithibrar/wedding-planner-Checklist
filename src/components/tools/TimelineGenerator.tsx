@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export function TimelineGenerator() {
+export function TimelineGenerator({ lang }: { lang?: string } = {}) {
   const [ceremonyTime, setCeremonyTime] = useState<string>('16:00');
 
   // Simple day-of timeline calculation

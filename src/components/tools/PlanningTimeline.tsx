@@ -12,7 +12,7 @@ import type { Milestone, MilestoneStatus, TaskCategory } from '../../types/weddi
 const categories: TaskCategory[] = tasksData.categories;
 const baseMilestones: Milestone[] = milestonesData.milestones.map(m => ({ ...m, status: 'not-started' as MilestoneStatus }));
 
-export function PlanningTimeline() {
+export function PlanningTimeline({ lang }: { lang?: string } = {}) {
   const { weddingDate, setWeddingDate, monthsUntilWedding, isLoaded: dateLoaded } = useWeddingDate();
   const [milestones, setMilestones, milestonesLoaded] = useLocalStorage<Milestone[]>('wpc-timeline-milestones-v1', []);
 

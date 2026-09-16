@@ -25,7 +25,7 @@ const TIME_PERIODS = [
   { label: 'Wedding Week & Day', min: 0, max: 0.1 },
 ];
 
-export function ChecklistGenerator() {
+export function ChecklistGenerator({ lang }: { lang?: string } = {}) {
   const { weddingDate, setWeddingDate, isLoaded: dateLoaded } = useWeddingDate();
   const [tasks, setTasks, tasksLoaded] = useLocalStorage<WeddingTask[]>('wpc-checklist-tasks-v1', []);
   const [isGenerated, setIsGenerated] = useLocalStorage<boolean>('wpc-checklist-generated-v1', false);

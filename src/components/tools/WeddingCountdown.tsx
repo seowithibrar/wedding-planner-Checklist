@@ -12,7 +12,7 @@ interface TimeLeft {
   seconds: number;
 }
 
-export function WeddingCountdown() {
+export function WeddingCountdown({ lang }: { lang?: string } = {}) {
   const { weddingDate, setWeddingDate, isLoaded: dateLoaded } = useWeddingDate();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [copied, setCopied] = useState(false);

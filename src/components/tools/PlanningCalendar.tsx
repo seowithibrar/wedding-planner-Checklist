@@ -12,7 +12,7 @@ const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function generateId() { return `ev_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`; }
 
-export function PlanningCalendar() {
+export function PlanningCalendar({ lang }: { lang?: string } = {}) {
   const { weddingDate, setWeddingDate, isLoaded: dateLoaded, daysUntilWedding } = useWeddingDate();
   const [events, setEvents, eventsLoaded] = useLocalStorage<CalendarEvent[]>('wpc-calendar-events-v1', []);
   const [currentDate, setCurrentDate] = useState(new Date());

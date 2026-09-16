@@ -15,7 +15,7 @@ const baseMilestones: Milestone[] = milestonesData.milestones;
 
 type ViewMode = 'board' | 'timeline';
 
-export function MilestoneTracker() {
+export function MilestoneTracker({ lang }: { lang?: string } = {}) {
   const { weddingDate, setWeddingDate, monthsUntilWedding, isLoaded: dateLoaded } = useWeddingDate();
   const [milestones, setMilestones, loaded] = useLocalStorage<Milestone[]>('wpc-milestones-v1', []);
   const [view, setView] = useState<ViewMode>('board');

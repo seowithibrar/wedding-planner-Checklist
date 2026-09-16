@@ -10,7 +10,7 @@ import type { WeddingTask, Milestone, TaskCategory } from '../../types/wedding-p
 
 const categories: TaskCategory[] = tasksData.categories;
 
-export function ProgressTracker() {
+export function ProgressTracker({ lang }: { lang?: string } = {}) {
   const { weddingDate, daysUntilWedding, monthsUntilWedding, isLoaded: dateLoaded } = useWeddingDate();
   const [checklistTasks] = useLocalStorage<WeddingTask[]>('wpc-checklist-tasks-v1', []);
   const [milestones] = useLocalStorage<Milestone[]>('wpc-milestones-v1', []);

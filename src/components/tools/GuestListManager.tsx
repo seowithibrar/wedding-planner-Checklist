@@ -484,7 +484,7 @@ function GuestEditModal({ guest, onSave, onCancel, seatingGroups }: {
 /* ──────────────────────────────────────────────
    MAIN COMPONENT
    ────────────────────────────────────────────── */
-export function GuestListManager() {
+export function GuestListManager({ lang }: { lang?: string } = {}) {
   const [guests, setGuests] = useState<Guest[]>([]);
   const [capacity, setCapacity] = useState<number>(200);
   const [isLoaded, setIsLoaded] = useState(false);

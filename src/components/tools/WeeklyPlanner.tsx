@@ -25,7 +25,7 @@ function getWeekDates(start: string): string[] {
   });
 }
 
-export function WeeklyPlanner() {
+export function WeeklyPlanner({ lang }: { lang?: string } = {}) {
   const { weddingDate, setWeddingDate, isLoaded: dateLoaded, daysUntilWedding } = useWeddingDate();
   const [weekStart, setWeekStart] = useState(getWeekStart(new Date()));
   const [plans, setPlans, loaded] = useLocalStorage<Record<string, WeekPlan>>('wpc-weekly-plans-v1', {});

@@ -80,7 +80,7 @@ const combinedSchema = `[${[
             <p class="text-xs text-slate-500 font-medium">Tasks Completed</p>
           </div>
           <div>
-            <p className="text-2xl sm:text-3xl font-black text-[#B76E79]">50k+</p>
+            <p class="text-2xl sm:text-3xl font-black text-[#B76E79]">50k+</p>
             <p class="text-xs text-slate-500 font-medium">Guests Managed</p>
           </div>
           <div>
@@ -99,29 +99,29 @@ const combinedSchema = `[${[
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+        <a href={localizeUrl('/tools/wedding-checklist-generator', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
           <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">✓</div>
-          <h3 class="font-bold text-lg text-[#1A1A1A]">Smart Checklist</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">Manage every detail with our priority-sorted task manager organized by timeline.</p>
-        </div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['wedding-checklist-generator']?.title || 'Smart Checklist'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['wedding-checklist-generator']?.description || 'Manage every detail with our priority-sorted task manager organized by timeline.'}</p>
+        </a>
 
-        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+        <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
           <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">👥</div>
-          <h3 class="font-bold text-lg text-[#1A1A1A]">Guest List</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">Keep track of RSVPs, dietary needs, meal choices, seating, and plus-ones easily.</p>
-        </div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['guest-list-manager']?.title || 'Guest List'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['guest-list-manager']?.description || 'Keep track of RSVPs, dietary needs, meal choices, seating, and plus-ones easily.'}</p>
+        </a>
 
-        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+        <a href={localizeUrl('/tools/budget-calculator', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
           <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">💰</div>
-          <h3 class="font-bold text-lg text-[#1A1A1A]">Budget Tracker</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">Never overspend with real-time allocation across venue, catering, photo & buffer.</p>
-        </div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['budget-calculator']?.title || 'Budget Tracker'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['budget-calculator']?.description || 'Never overspend with real-time allocation across venue, catering, photo & buffer.'}</p>
+        </a>
 
-        <div class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3">
+        <a href={localizeUrl('/tools/timeline-generator', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
           <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">📅</div>
-          <h3 class="font-bold text-lg text-[#1A1A1A]">Timeline Planner</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">Visual milestone maps and time-blocked daily schedules for your big day.</p>
-        </div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['timeline-generator']?.title || 'Timeline Planner'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['timeline-generator']?.description || 'Visual milestone maps and time-blocked daily schedules for your big day.'}</p>
+        </a>
       </div>
     </section>
 

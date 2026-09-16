@@ -1,8 +1,15 @@
-/* Google Fonts — Premium Typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
-
 @import "tailwindcss";
 @import "./tokens.css";
+
+@theme {
+  --color-primary: #B76E79;
+  --color-primary-light: #FCECF0;
+  --color-secondary: #D4AF37;
+  --color-dark: #1A1A1A;
+  --color-surface: #FFFFFF;
+  --color-border: #F3E8EA;
+  --color-text-muted: #64748B;
+}
 
 /* ═══════════════════════════════════════════════
    READING PROGRESS BAR

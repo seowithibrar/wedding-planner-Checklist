@@ -17,7 +17,7 @@ const TIME_BLOCKS = [
 function genId() { return `dt_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`; }
 function formatDate(d: string) { return new Date(d + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }); }
 
-export function DailyPlanner() {
+export function DailyPlanner({ lang }: { lang?: string } = {}) {
   const { weddingDate, setWeddingDate, isLoaded: dateLoaded, daysUntilWedding } = useWeddingDate();
   const today = new Date().toISOString().split('T')[0];
   const [selectedDate, setSelectedDate] = useState(today);

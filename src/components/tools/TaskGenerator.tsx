@@ -25,7 +25,7 @@ interface GeneratorConfig {
 
 const defaultConfig: GeneratorConfig = { style: 'traditional', budget: 'medium', guestCount: 'medium', priorities: [] };
 
-export function TaskGenerator() {
+export function TaskGenerator({ lang }: { lang?: string } = {}) {
   const { weddingDate, setWeddingDate, isLoaded: dateLoaded, monthsUntilWedding } = useWeddingDate();
   const [tasks, setTasks, tasksLoaded] = useLocalStorage<WeddingTask[]>('wpc-taskgen-tasks-v1', []);
   const [config, setConfig] = useLocalStorage<GeneratorConfig>('wpc-taskgen-config-v1', defaultConfig);

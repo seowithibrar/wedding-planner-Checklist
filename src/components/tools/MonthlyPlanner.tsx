@@ -12,7 +12,7 @@ const categories: TaskCategory[] = tasksData.categories;
 interface MonthPlan { month: string; goals: { id: string; text: string; completed: boolean; category: string }[]; notes: string; }
 function genId() { return `mg_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`; }
 
-export function MonthlyPlanner() {
+export function MonthlyPlanner({ lang }: { lang?: string } = {}) {
   const { weddingDate, setWeddingDate, isLoaded: dateLoaded, monthsUntilWedding } = useWeddingDate();
   const now = new Date();
   const [currentMonth, setCurrentMonth] = useState(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`);
