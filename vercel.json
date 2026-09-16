@@ -1,64 +1,78 @@
 {
   "redirects": [
     {
+      "source": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-plan-a-wedding-timeline",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-plan-a-wedding-timeline/",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
+      "permanent": true
+    },
+    {
       "source": "/blog/how-to-plan-wedding-timeline",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/blog/how-to-plan-wedding-timeline/",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/blog/how-to-plan-wedding-timeline/index.html",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/wedding/how-to-plan-wedding-timeline",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/wedding/how-to-plan-wedding-timeline/",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/wedding/how-to-plan-wedding-timeline.html",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/how-to-plan-wedding-timeline",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/how-to-plan-wedding-timeline/",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/how-to-plan-wedding-timeline.html",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
-
     {
       "source": "/blog/how-to-plan-a-wedding-timeline.html",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/blog/how-to-plan-wedding-timeline.html",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
       "source": "/blog/How-to-Plan-a-Wedding-Timeline",
-      "destination": "/how-to-plan-a-wedding-timeline.html",
+      "destination": "/blog/how-to-plan-a-wedding-timeline",
       "permanent": true
     },
     {
@@ -249,6 +263,56 @@
     {
       "source": "/blog/How-to-Choose-the-Perfect-Wedding-Venue",
       "destination": "/blog/how-to-choose-wedding-venue",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-make-wedding-moodboard",
+      "destination": "/blog/moodboard-layout",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-make-wedding-moodboard",
+      "destination": "/blog/moodboard-layout",
+      "permanent": true
+    },
+    {
+      "source": "/4-month-wedding-planning-timeline.html",
+      "destination": "/blog/4-month-wedding-planning-timeline",
+      "permanent": true
+    },
+    {
+      "source": "/4-month-wedding-timeline.html",
+      "destination": "/blog/4-month-wedding-planning-timeline",
+      "permanent": true
+    },
+    {
+      "source": "/pakistani-wedding-outfits.html",
+      "destination": "/blog/pakistani-wedding-outfits",
+      "permanent": true
+    },
+    {
+      "source": "/tools/wedding-budget-planner",
+      "destination": "/tools/budget-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/tools/wedding-seating-chart-maker",
+      "destination": "/tools/guest-list-manager",
+      "permanent": true
+    },
+    {
+      "source": "/tools/wedding-invitation-timeline",
+      "destination": "/tools/wedding-planning-timeline",
+      "permanent": true
+    },
+    {
+      "source": "/tools/wedding-photography-shot-list",
+      "destination": "/checklists/wedding-day-of-timeline-checklist",
+      "permanent": true
+    },
+    {
+      "source": "/tools/rehearsal-dinner-planning-guide",
+      "destination": "/checklists/wedding-day-of-timeline-checklist",
       "permanent": true
     },
     {
