@@ -19,7 +19,7 @@ Get-ChildItem -Path "src/pages/tools" -Filter "*.astro" | ForEach-Object {
 }
 
 # Checklists
-$chkJson = Get-Content -Raw -Path "src/data/categorized-checklists.json" | ConvertFrom-Json
+$chkJson = [System.IO.File]::ReadAllText((Resolve-Path "src/data/categorized-checklists.json")) | ConvertFrom-Json
 foreach ($c in $chkJson.checklists) {
     $validRoutes.Add("/checklists/$($c.slug)") | Out-Null
 }
@@ -28,7 +28,7 @@ $validRoutes.Add("/checklists/wedding-budget-calculator-20k") | Out-Null
 
 # Blog
 foreach ($bf in $blogFiles) {
-    $content = Get-Content -Raw -Path $bf.FullName
+    $content = [System.IO.File]::ReadAllText($bf.FullName)
     if ($content -match '(?m)^slug:\s*["'']?([^"''\r\n]+)') {
         $slug = $matches[1].Trim()
         $validRoutes.Add("/blog/$slug") | Out-Null
@@ -37,7 +37,14 @@ foreach ($bf in $blogFiles) {
     }
 }
 
-Write-Output "=== Valid Routes Count: $($validRoutes.Count) ==="
+# Check if file exists in public/
+Get-ChildItem -Path "public" -Recurse | ForEach-Object {
+    if (-not $_.PSIsContainer) {
+        $rel = $_.FullName.Substring((Resolve-Path "public").Path.Length).Replace("\", "/")
+        $validRoutes.Add($rel) | Out-Null
+        $validRoutes.Add([System.Uri]::EscapeUriString($rel)) | Out-Null
+    }
+}
 
 # Check all links in src (astro, mdx, json, ts)
 $srcFiles = Get-ChildItem -Path "src" -Recurse -Include "*.astro","*.mdx","*.json","*.ts"
