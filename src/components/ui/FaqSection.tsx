@@ -175,7 +175,12 @@ const categories = [
   { id: 'Guests', label: 'Invites & Guests' },
 ];
 
-export function FaqSection() {
+export interface FaqSectionProps {
+  items?: any[];
+  showHeader?: boolean;
+}
+
+export function FaqSection({ showHeader = false }: FaqSectionProps = {}) {
   const [activeTab, setActiveTab] = useState<string>('All');
   const [openIds, setOpenIds] = useState<number[]>([1]); // First item open by default
 
@@ -190,16 +195,18 @@ export function FaqSection() {
     : faqsData.filter(item => item.category === activeTab);
 
   return (
-    <div className="max-w-[700px] mx-auto px-4 py-16 space-y-10">
-      {/* Header */}
-      <div className="text-center space-y-3">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1A1A1A] tracking-tight">
-          Frequently asked questions
-        </h2>
-        <p className="text-sm sm:text-base text-slate-500 max-w-xl mx-auto">
-          These are the most commonly asked questions about wedding planning. Have a question? Reach out to our team.
-        </p>
-      </div>
+    <div className={`max-w-[700px] mx-auto px-4 ${showHeader ? 'py-16 space-y-10' : 'space-y-8'}`}>
+      {/* Optional Header */}
+      {showHeader && (
+        <div className="text-center space-y-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1A1A1A] tracking-tight">
+            Frequently asked questions
+          </h2>
+          <p className="text-sm sm:text-base text-slate-500 max-w-xl mx-auto">
+            These are the most commonly asked questions about wedding planning. Have a question? Reach out to our team.
+          </p>
+        </div>
+      )}
 
       {/* Pill Category Tabs */}
       <div className="flex flex-wrap justify-center gap-2">
