@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../layout/Header.astro';
 import Footer from '../layout/Footer.astro';
+import toolRegistry from '../../data/tool-registry.json';
+import categorizedChecklists from '../../data/categorized-checklists.json';
 import { useTranslations, localizeUrl } from '../../i18n/utils';
 import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
 
@@ -155,7 +157,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
   <Header lang={currentLang} />
 
   <main class="space-y-16 sm:space-y-24">
-    <!-- HERO SECTION -->
+    <!-- SECTION 1: HERO SECTION -->
     <section class="relative pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden bg-gradient-to-b from-[#FCECF0]/60 via-white to-transparent">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center space-y-6">
         <div class="inline-flex items-center gap-2 bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm border border-[#F3E8EA]">
@@ -193,24 +195,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
           </a>
         </div>
 
-        <!-- HERO IMAGE (16:9) -->
-        <figure class="relative max-w-5xl mx-auto mt-10 rounded-3xl overflow-hidden shadow-2xl border border-[#F3E8EA] bg-white group">
-          <img 
-            src="/wedding-planning-checklist-hero.jpg" 
-            alt="Free wedding planning checklist and budget planner flat lay" 
-            width="1200" 
-            height="675" 
-            class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-500" 
-            loading="eager" 
-            fetchpriority="high" 
-          />
-          <figcaption class="p-4 bg-white/95 backdrop-blur-sm border-t border-slate-100 text-xs sm:text-sm text-slate-600 flex flex-wrap items-center justify-between gap-2">
-            <span class="font-medium text-[#1A1A1A]">Editorial Flat Lay: Wedding Planning Checklist, Budget Spreadsheet & Timeline</span>
-            <span class="text-[#B76E79] font-bold">100% Free Resources &bull; Updated for 2026</span>
-          </figcaption>
-        </figure>
-
-        <!-- Social Proof Stats -->
+        <!-- Social Proof Stats (User Screenshot design) -->
         <div class="pt-10 grid grid-cols-2 sm:grid-cols-4 max-w-4xl mx-auto gap-6 border-t border-[#F3E8EA] mt-10 text-center">
           <div class="p-4 rounded-2xl bg-white border border-[#F3E8EA]/60 shadow-xs">
             <p class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">14</p>
@@ -229,10 +214,27 @@ const combinedSchema = JSON.stringify(schemaGraph);
             <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Free & Ad-Free Tools</p>
           </div>
         </div>
+
+        <!-- HERO IMAGE (16:9) -->
+        <figure class="relative max-w-5xl mx-auto mt-10 rounded-3xl overflow-hidden shadow-2xl border border-[#F3E8EA] bg-white group">
+          <img 
+            src="/wedding-planning-checklist-hero.jpg" 
+            alt="Free wedding planning checklist and budget planner flat lay" 
+            width="1200" 
+            height="675" 
+            class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-500" 
+            loading="eager" 
+            fetchpriority="high" 
+          />
+          <figcaption class="p-4 bg-white/95 backdrop-blur-sm border-t border-slate-100 text-xs sm:text-sm text-slate-600 flex flex-wrap items-center justify-between gap-2">
+            <span class="font-medium text-[#1A1A1A]">Editorial Flat Lay: Wedding Planning Checklist, Budget Spreadsheet & Timeline</span>
+            <span class="text-[#B76E79] font-bold">100% Free Resources &bull; Updated for 2026</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- SECTION: WHAT IS WEDDINGPLANNINGCHECKLISTS.ORG? -->
+    <!-- SECTION 2: WHAT IS WEDDINGPLANNINGCHECKLISTS.ORG? -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-8">
         <div class="max-w-3xl space-y-4">
@@ -284,8 +286,121 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: FREE WEDDING PLANNING CHECKLIST — START HERE -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- SECTION 3: KEY FEATURES OVERVIEW (OLD DESIGN) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="text-center space-y-3 mb-12">
+        <h2 class="text-3xl font-black text-[#1A1A1A]">{home.features.title}</h2>
+        <p class="text-slate-600 text-sm max-w-xl mx-auto">{home.features.subtitle}</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href={localizeUrl('/tools/wedding-checklist-generator', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">✓</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['wedding-checklist-generator']?.title || 'Smart Checklist'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['wedding-checklist-generator']?.description || 'Manage every detail with our priority-sorted task manager organized by timeline.'}</p>
+        </a>
+
+        <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">👥</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['guest-list-manager']?.title || 'Guest List'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['guest-list-manager']?.description || 'Keep track of RSVPs, dietary needs, meal choices, seating, and plus-ones easily.'}</p>
+        </a>
+
+        <a href={localizeUrl('/tools/budget-calculator', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">💰</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['budget-calculator']?.title || 'Budget Tracker'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['budget-calculator']?.description || 'Never overspend with real-time allocation across venue, catering, photo & buffer.'}</p>
+        </a>
+
+        <a href={localizeUrl('/tools/timeline-generator', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">📅</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['timeline-generator']?.title || 'Timeline Planner'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['timeline-generator']?.description || 'Visual milestone maps and time-blocked daily schedules for your big day.'}</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 14 INTERACTIVE PLANNING TOOLS GRID (OLD DESIGN) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="text-center space-y-3 mb-12">
+        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">{home.features.toolsBadge}</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">14 Free Interactive Wedding Planning Tools</h2>
+        <p class="text-slate-600 max-w-xl mx-auto text-sm">
+          All tools sync automatically with your wedding date and save your progress safely in your browser.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {toolRegistry.tools.map(tool => {
+          const localizedTool = tools.tools[tool.id as keyof typeof tools.tools] || tool;
+          return (
+            <a
+              href={localizeUrl(tool.href, currentLang)}
+              class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md hover:border-[#B76E79]/40 transition-all group flex flex-col justify-between"
+            >
+              <div class="space-y-3">
+                <span class="inline-block text-[10px] font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-2.5 py-1 rounded-full">
+                  {localizedTool.category || tool.category}
+                </span>
+                <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{localizedTool.title || tool.title}</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">{localizedTool.description || tool.description}</p>
+              </div>
+              <div class="pt-4 flex items-center gap-1 text-xs font-bold text-[#B76E79]">
+                <span>{common.buttons.useTool}</span>
+                <span class="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl-flip">→</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- SECTION 5: 20 CATEGORIZED CHECKLISTS & TOOL GUIDES (OLD DESIGN) -->
+    <section id="categorized-checklists" class="max-w-[1300px] mx-auto px-4 sm:px-6 py-12 border-t border-slate-100">
+      <div class="text-center space-y-3 mb-12">
+        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider bg-[#FCECF0] px-3.5 py-1 rounded-full">
+          {home.checklistsSection.badge}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">{home.checklistsSection.title}</h2>
+        <p class="text-slate-600 max-w-xl mx-auto text-sm">
+          {home.checklistsSection.subtitle}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {categorizedChecklists.checklists.map(item => (
+          <a
+            href={localizeUrl(`/checklists/${item.slug}`, currentLang)}
+            class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md hover:border-[#B76E79]/40 transition-all group flex flex-col justify-between"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">{item.icon}</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-2.5 py-0.5 rounded-full">
+                  {item.badge}
+                </span>
+              </div>
+              <h3 class="font-bold text-base text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors leading-snug">
+                {item.title}
+              </h3>
+              <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                {item.description}
+              </p>
+            </div>
+            <div class="pt-4 flex items-center justify-between text-xs font-bold text-[#B76E79] border-t border-slate-50 mt-4">
+              <span class="text-[11px] text-slate-400 font-medium">{item.targetTimeline}</span>
+              <span class="flex items-center gap-1">
+                <span>{common.buttons.viewChecklist}</span>
+                <span class="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl-flip">→</span>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- SECTION 6: FREE WEDDING PLANNING CHECKLIST — START HERE -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-100 pt-16">
       <div class="bg-gradient-to-br from-white to-[#FCECF0]/30 rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-7 space-y-5">
           <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
@@ -339,7 +454,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: QUICK WEDDING CHECKLIST (IF YOU'RE SHORT ON TIME) -->
+    <!-- SECTION 7: QUICK WEDDING CHECKLIST (IF YOU'RE SHORT ON TIME) -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
         <div class="max-w-3xl space-y-3">
@@ -413,7 +528,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: HOW TO PLAN A WEDDING STEP BY STEP -->
+    <!-- SECTION 8: HOW TO PLAN A WEDDING STEP BY STEP -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="space-y-10">
         <div class="text-center max-w-3xl mx-auto space-y-4">
@@ -544,7 +659,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: WEDDING PLANNING TIMELINES — CHOOSE YOUR COUNTDOWN -->
+    <!-- SECTION 9: WEDDING PLANNING TIMELINES — CHOOSE YOUR COUNTDOWN -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -647,7 +762,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: WEDDING BUDGET PLANNING & FREE BUDGET CALCULATOR -->
+    <!-- SECTION 10: WEDDING BUDGET PLANNING & FREE BUDGET CALCULATOR -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-gradient-to-br from-white via-white to-[#FCECF0]/30 rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -742,7 +857,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: WEDDING PLANNING TIPS THAT ACTUALLY SAVE TIME AND MONEY -->
+    <!-- SECTION 11: WEDDING PLANNING TIPS THAT ACTUALLY SAVE TIME AND MONEY -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
         <div class="max-w-3xl space-y-3">
@@ -814,184 +929,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: INTERACTIVE WEDDING PLANNING TOOLS -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="space-y-8">
-        <div class="text-center max-w-3xl mx-auto space-y-4">
-          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
-            Full Tool Suite
-          </span>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1A1A1A] font-serif">
-            Interactive Wedding Planning Tools
-          </h2>
-          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-            WeddingPlanningChecklists.org includes 14 free, interactive wedding planning tools designed to replace scattered spreadsheets, sticky notes, and half-remembered vendor emails:
-          </p>
-        </div>
-
-        <!-- IMAGE: Interactive Tools Dashboard Mockup (16:9) -->
-        <figure class="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl border border-[#F3E8EA] bg-white group">
-          <img 
-            src="/wedding-planning-tools-dashboard.jpg" 
-            alt="Wedding planning dashboard and interactive tools" 
-            width="1200" 
-            height="675" 
-            class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-500" 
-            loading="lazy" 
-          />
-          <figcaption class="p-3 bg-white border-t border-slate-100 text-xs text-center text-slate-500 font-medium">
-            Wedding planning dashboard and interactive tools suite interface
-          </figcaption>
-        </figure>
-
-        <!-- 14 Tools Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <a href={localizeUrl('/tools/wedding-planning-dashboard', currentLang)} class="p-5 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 hover:shadow-sm transition-all group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">1. Wedding Planning Dashboard</h3>
-            <p class="text-xs text-slate-500 mt-1">Your central hub for tracking every wedding task in one place.</p>
-          </a>
-
-          <a href={localizeUrl('/tools/budget-calculator', currentLang)} class="p-5 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 hover:shadow-sm transition-all group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">2. Wedding Budget Calculator</h3>
-            <p class="text-xs text-slate-500 mt-1">Break your total wedding budget into category-level spending targets.</p>
-          </a>
-
-          <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="p-5 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 hover:shadow-sm transition-all group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">3. Guest List Manager</h3>
-            <p class="text-xs text-slate-500 mt-1">Track invitations, RSVPs, and plus-ones from first draft to final headcount.</p>
-          </a>
-
-          <a href={localizeUrl('/tools/wedding-checklist-generator', currentLang)} class="p-5 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 hover:shadow-sm transition-all group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">4. Wedding Checklist Generator</h3>
-            <p class="text-xs text-slate-500 mt-1">Build a personalized wedding planning checklist around your exact wedding date.</p>
-          </a>
-
-          <a href={localizeUrl('/tools/timeline-generator', currentLang)} class="p-5 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 hover:shadow-sm transition-all group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">5. Day-of Timeline Generator</h3>
-            <p class="text-xs text-slate-500 mt-1">Build an hour-by-hour wedding day schedule for every vendor and family member.</p>
-          </a>
-
-          <a href={localizeUrl('/tools/wedding-planning-timeline', currentLang)} class="p-5 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 hover:shadow-sm transition-all group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">6. Wedding Planning Timeline</h3>
-            <p class="text-xs text-slate-500 mt-1">A visual, month-by-month countdown of what should be done and when.</p>
-          </a>
-
-          <div class="p-5 rounded-2xl bg-[#FAFAFA] border border-slate-100 shadow-2xs">
-            <h3 class="font-bold text-sm text-[#1A1A1A]">7. Wedding Task Generator</h3>
-            <p class="text-xs text-slate-500 mt-1">Automatically generate tasks based on how far away your wedding date is.</p>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-[#FAFAFA] border border-slate-100 shadow-2xs">
-            <h3 class="font-bold text-sm text-[#1A1A1A]">8. Wedding Milestone Tracker</h3>
-            <p class="text-xs text-slate-500 mt-1">Keep track of major deadlines like vendor deposits and final payments.</p>
-          </div>
-
-          <a href={localizeUrl('/tools/wedding-planning-calendar', currentLang)} class="p-5 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 hover:shadow-sm transition-all group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">9. Wedding Planning Calendar</h3>
-            <p class="text-xs text-slate-500 mt-1">See every wedding planning task laid out on a single, shared calendar.</p>
-          </a>
-
-          <div class="p-5 rounded-2xl bg-[#FAFAFA] border border-slate-100 shadow-2xs">
-            <h3 class="font-bold text-sm text-[#1A1A1A]">10. Daily Wedding Planner</h3>
-            <p class="text-xs text-slate-500 mt-1">Plan at the day-by-day micro level for final wedding week execution.</p>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-[#FAFAFA] border border-slate-100 shadow-2xs">
-            <h3 class="font-bold text-sm text-[#1A1A1A]">11. Weekly Wedding Planner</h3>
-            <p class="text-xs text-slate-500 mt-1">Organize weekly planning sprints without feeling overwhelmed.</p>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-[#FAFAFA] border border-slate-100 shadow-2xs">
-            <h3 class="font-bold text-sm text-[#1A1A1A]">12. Monthly Wedding Planner</h3>
-            <p class="text-xs text-slate-500 mt-1">Keep track of high-level progress month by month.</p>
-          </div>
-
-          <a href={localizeUrl('/tools/wedding-countdown', currentLang)} class="p-5 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 hover:shadow-sm transition-all group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">13. Wedding Countdown</h3>
-            <p class="text-xs text-slate-500 mt-1">A simple, motivating day-count to your wedding day.</p>
-          </a>
-
-          <div class="p-5 rounded-2xl bg-[#FAFAFA] border border-slate-100 shadow-2xs">
-            <h3 class="font-bold text-sm text-[#1A1A1A]">14. Wedding Progress Tracker</h3>
-            <p class="text-xs text-slate-500 mt-1">See exactly how much of your wedding planning checklist is already complete.</p>
-          </div>
-        </div>
-
-        <div class="p-4 rounded-xl bg-white border border-slate-200 text-center text-xs sm:text-sm text-slate-600">
-          Every tool is free to use and designed to work together, so a task you check off in the Checklist Generator can be tracked in the Dashboard and automatically reflected on your Planning Calendar.
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: WEDDING CHECKLISTS FOR EVERY STAGE OF PLANNING -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
-        <div class="max-w-3xl space-y-3">
-          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
-            Specialized Situations
-          </span>
-          <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
-            Wedding Checklists for Every Stage of Planning
-          </h2>
-          <p class="text-slate-600 text-base leading-relaxed">
-            Beyond the free master checklist, we maintain specific checklists for planning situations that generic, one-size-fits-all wedding checklists tend to handle poorly:
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
-          <a href={localizeUrl('/checklists/wedding-guest-list-organizer', currentLang)} class="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 transition-colors group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79]">Guest List & RSVP Master Checklist</h3>
-            <p class="text-xs text-slate-500 mt-1">Tier-based guest tracking, dietary management, and seating charts.</p>
-          </a>
-
-          <a href={localizeUrl('/checklists/wedding-vendor-booking-checklist', currentLang)} class="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 transition-colors group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79]">Vendor Booking Order & Contract Checklist</h3>
-            <p class="text-xs text-slate-500 mt-1">Prioritized vendor sequences, contract clauses, and payment schedules.</p>
-          </a>
-
-          <a href={localizeUrl('/checklists/wedding-reception-planning-checklist', currentLang)} class="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 transition-colors group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79]">Reception Master Checklist</h3>
-            <p class="text-xs text-slate-500 mt-1">Entrances, speeches, dinner pacing, first dances, and exit logistics.</p>
-          </a>
-
-          <a href={localizeUrl('/checklists/wedding-decor-flowers-checklist', currentLang)} class="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 transition-colors group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79]">Decor & Floral Checklist</h3>
-            <p class="text-xs text-slate-500 mt-1">Bouquets, ceremony arches, table centerpieces, signage, and ambient lighting.</p>
-          </a>
-
-          <a href={localizeUrl('/checklists/destination-wedding-checklist', currentLang)} class="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 transition-colors group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79]">Destination Wedding Checklist</h3>
-            <p class="text-xs text-slate-500 mt-1">Resort blocks, guest travel packets, flight coordination, and local marriage laws.</p>
-          </a>
-
-          <a href={localizeUrl('/checklists/backyard-wedding-checklist', currentLang)} class="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 transition-colors group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79]">Backyard & Private Estate Checklist</h3>
-            <p class="text-xs text-slate-500 mt-1">Tenting, portable restrooms, power generators, permits, and neighbor notices.</p>
-          </a>
-
-          <a href={localizeUrl('/checklists/intimate-small-wedding-checklist', currentLang)} class="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 transition-colors group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79]">Intimate & Small Wedding Checklist</h3>
-            <p class="text-xs text-slate-500 mt-1">Tailored for micro-weddings and dinner celebrations under 50 guests.</p>
-          </a>
-
-          <a href={localizeUrl('/checklists/bridal-emergency-kit-checklist', currentLang)} class="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 transition-colors group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79]">Bridal Emergency Kit Checklist</h3>
-            <p class="text-xs text-slate-500 mt-1">Fashion tape, stain removers, safety pins, blister pads, and backup essentials.</p>
-          </a>
-
-          <a href={localizeUrl('/checklists/wedding-day-of-timeline-checklist', currentLang)} class="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 transition-colors group block">
-            <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79]">Day-Of Schedule & Timeline Checklist</h3>
-            <p class="text-xs text-slate-500 mt-1">Minute-by-minute day-of schedule for bridal party and vendor setup.</p>
-          </a>
-        </div>
-
-        <div class="p-4 rounded-xl bg-[#FCECF0]/50 border border-[#F3E8EA] text-xs sm:text-sm text-slate-600">
-          If you're planning a destination wedding, a backyard or private-estate wedding, or a smaller, more intimate celebration, start with the checklist built specifically for that situation instead of adapting a generic wedding planning checklist — the logistics, vendor needs, and timelines involved are genuinely different from a standard venue wedding.
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: PAKISTANI, INDIAN & SOUTH ASIAN WEDDING PLANNING -->
+    <!-- SECTION 12: PAKISTANI, INDIAN & SOUTH ASIAN WEDDING PLANNING -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-gradient-to-br from-[#FCECF0]/40 via-white to-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-7 space-y-4">
@@ -1035,7 +973,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: WEDDING VENUES, VENDORS & GUEST LIST PLANNING -->
+    <!-- SECTION 13: WEDDING VENUES, VENDORS & GUEST LIST PLANNING -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
         <div class="max-w-3xl space-y-3">
@@ -1058,7 +996,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: BRIDAL STYLE, HAIRSTYLES & WEDDING DAY BEAUTY -->
+    <!-- SECTION 14: BRIDAL STYLE, HAIRSTYLES & WEDDING DAY BEAUTY -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-gradient-to-br from-white via-white to-[#FCECF0]/30 rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
         <div class="max-w-3xl space-y-3">
@@ -1078,7 +1016,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: WEDDING DAY EXECUTION — TIMELINE, EMERGENCY KIT & RECEPTION CHECKLISTS -->
+    <!-- SECTION 15: WEDDING DAY EXECUTION — TIMELINE, EMERGENCY KIT & RECEPTION CHECKLISTS -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
         <div class="max-w-3xl space-y-3">
@@ -1098,7 +1036,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: WHY USE A WEDDING PLANNING CHECKLIST? & HOW WE BUILD OUR CONTENT -->
+    <!-- SECTION 16: WHY USE A WEDDING PLANNING CHECKLIST? & HOW WE BUILD OUR CONTENT -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Card 1 -->
@@ -1135,7 +1073,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: FREQUENTLY ASKED QUESTIONS -->
+    <!-- SECTION 17: FREQUENTLY ASKED QUESTIONS -->
     <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       <div class="text-center space-y-3 mb-10">
         <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider bg-[#FCECF0] px-3.5 py-1 rounded-full">
@@ -1176,7 +1114,7 @@ const combinedSchema = JSON.stringify(schemaGraph);
       </div>
     </section>
 
-    <!-- SECTION: START PLANNING YOUR WEDDING TODAY (CLOSING CTA BANNER) -->
+    <!-- SECTION 18: START PLANNING YOUR WEDDING TODAY (CLOSING CTA BANNER) -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
       <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-[#1A1A1A] text-white rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
         <div class="absolute -right-16 -top-16 w-64 h-64 bg-[#B76E79]/20 rounded-full blur-3xl pointer-events-none"></div>
