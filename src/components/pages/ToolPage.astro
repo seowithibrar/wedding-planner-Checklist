@@ -7,20 +7,14 @@ import { generateBreadcrumbSchema, generateWebApplicationSchema } from '../../li
 import { useTranslations, localizeUrl, SITE_URL } from '../../i18n/utils';
 import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
 
-// Import all interactive tool components
+// Import 8 core interactive tool components
 import { BudgetCalculator } from '../tools/BudgetCalculator';
 import { TimelineGenerator } from '../tools/TimelineGenerator';
 import { GuestListManager } from '../tools/GuestListManager';
 import { ChecklistGenerator } from '../tools/ChecklistGenerator';
 import { PlanningTimeline } from '../tools/PlanningTimeline';
-import { TaskGenerator } from '../tools/TaskGenerator';
-import { MilestoneTracker } from '../tools/MilestoneTracker';
 import { PlanningCalendar } from '../tools/PlanningCalendar';
-import { DailyPlanner } from '../tools/DailyPlanner';
-import { WeeklyPlanner } from '../tools/WeeklyPlanner';
-import { MonthlyPlanner } from '../tools/MonthlyPlanner';
 import { WeddingCountdown } from '../tools/WeddingCountdown';
-import { ProgressTracker } from '../tools/ProgressTracker';
 import { PlanningDashboard } from '../tools/PlanningDashboard';
 
 export interface Props {
@@ -107,20 +101,14 @@ const schema = `[${[
 
     <!-- Dynamic Interactive Tool Component Mount -->
     <div class="mt-4">
-      {toolId === 'budget-calculator' && <BudgetCalculator client:visible lang={currentLang} />}
-      {toolId === 'timeline-generator' && <TimelineGenerator client:visible lang={currentLang} />}
-      {toolId === 'guest-list-manager' && <GuestListManager client:visible lang={currentLang} />}
-      {toolId === 'wedding-checklist-generator' && <ChecklistGenerator client:visible lang={currentLang} />}
-      {toolId === 'wedding-planning-timeline' && <PlanningTimeline client:visible lang={currentLang} />}
-      {toolId === 'wedding-task-generator' && <TaskGenerator client:visible lang={currentLang} />}
-      {toolId === 'wedding-milestone-tracker' && <MilestoneTracker client:visible lang={currentLang} />}
-      {toolId === 'wedding-planning-calendar' && <PlanningCalendar client:visible lang={currentLang} />}
-      {toolId === 'daily-wedding-planner' && <DailyPlanner client:visible lang={currentLang} />}
-      {toolId === 'weekly-wedding-planner' && <WeeklyPlanner client:visible lang={currentLang} />}
-      {toolId === 'monthly-wedding-planner' && <MonthlyPlanner client:visible lang={currentLang} />}
-      {toolId === 'wedding-countdown' && <WeddingCountdown client:visible lang={currentLang} />}
-      {toolId === 'wedding-progress-tracker' && <ProgressTracker client:visible lang={currentLang} />}
-      {toolId === 'wedding-planning-dashboard' && <PlanningDashboard client:visible lang={currentLang} />}
+      {(toolId === 'budget-calculator') && <BudgetCalculator client:visible lang={currentLang} />}
+      {(toolId === 'timeline-generator') && <TimelineGenerator client:visible lang={currentLang} />}
+      {(toolId === 'guest-list-manager') && <GuestListManager client:visible lang={currentLang} />}
+      {(toolId === 'wedding-checklist-generator' || toolId === 'checklist-generator') && <ChecklistGenerator client:visible lang={currentLang} />}
+      {(toolId === 'wedding-planning-timeline' || toolId === 'planning-timeline') && <PlanningTimeline client:visible lang={currentLang} />}
+      {(toolId === 'wedding-planning-calendar' || toolId === 'planning-calendar') && <PlanningCalendar client:visible lang={currentLang} />}
+      {(toolId === 'wedding-countdown') && <WeddingCountdown client:visible lang={currentLang} />}
+      {(toolId === 'wedding-planning-dashboard' || toolId === 'planning-dashboard') && <PlanningDashboard client:visible lang={currentLang} />}
     </div>
   </main>
 

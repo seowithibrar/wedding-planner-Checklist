@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { CheckSquare, Download, Printer, Filter, RotateCcw, ChevronDown, ChevronUp, Check } from 'lucide-react';
+import { CheckSquare, Download, Printer, Filter, RotateCcw, ChevronDown, ChevronUp, Check, SlidersHorizontal, Zap } from 'lucide-react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useWeddingDate } from '../../hooks/useWeddingDate';
 import { useProgress } from '../../hooks/useProgress';
@@ -25,12 +25,25 @@ const TIME_PERIODS = [
   { label: 'Wedding Week & Day', min: 0, max: 0.1 },
 ];
 
+type WeddingStyle = 'traditional' | 'modern' | 'destination' | 'intimate' | 'rustic' | 'glamorous';
+
+interface GeneratorConfig {
+  style: WeddingStyle;
+  budget: 'small' | 'medium' | 'large' | 'luxury';
+  guestCount: 'intimate' | 'medium' | 'large' | 'grand';
+  priorities: string[];
+}
+
+const defaultConfig: GeneratorConfig = { style: 'traditional', budget: 'medium', guestCount: 'medium', priorities: [] };
+
 export function ChecklistGenerator({ lang }: { lang?: string } = {}) {
-  const { weddingDate, setWeddingDate, isLoaded: dateLoaded } = useWeddingDate();
+  const { weddingDate, setWeddingDate, isLoaded: dateLoaded, monthsUntilWedding } = useWeddingDate();
   const [tasks, setTasks, tasksLoaded] = useLocalStorage<WeddingTask[]>('wpc-checklist-tasks-v1', []);
+  const [config, setConfig] = useLocalStorage<GeneratorConfig>('wpc-taskgen-config-v1', defaultConfig);
   const [isGenerated, setIsGenerated] = useLocalStorage<boolean>('wpc-checklist-generated-v1', false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPriority, setSelectedPriority] = useState('');
+  const [showCustomizer, setShowCustomizer] = useState(false);
   const [collapsedPeriods, setCollapsedPeriods] = useState<Set<string>>(new Set());
   const [toast, setToast] = useState('');
 
@@ -43,14 +56,30 @@ export function ChecklistGenerator({ lang }: { lang?: string } = {}) {
 
   const generateChecklist = () => {
     if (!weddingDate) return;
-    const generated = masterTasks.map(t => {
+    const months = monthsUntilWedding();
+    let filtered = masterTasks.filter(t => t.monthsBefore <= Math.max(months + 2, 18));
+
+    if (config.budget === 'small') filtered = filtered.filter(t => t.priority !== 'low' || t.monthsBefore <= 6);
+    if (config.guestCount === 'intimate') filtered = filtered.filter(t => !['accommodation', 'transport'].includes(t.category) || t.priority === 'high');
+
+    if (config.priorities.length > 0) {
+      filtered.sort((a, b) => {
+        const aP = config.priorities.includes(a.category) ? -1 : 0;
+        const bP = config.priorities.includes(b.category) ? -1 : 0;
+        return aP - bP || a.monthsBefore - b.monthsBefore;
+      });
+    } else {
+      filtered.sort((a, b) => b.monthsBefore - a.monthsBefore || (a.priority === 'high' ? -1 : 1));
+    }
+
+    const generated = filtered.map(t => {
       const target = new Date(weddingDate);
       target.setMonth(target.getMonth() - t.monthsBefore);
       return { ...t, dueDate: target.toISOString().split('T')[0], completed: false };
     });
     setTasks(generated);
     setIsGenerated(true);
-    showToast(`${generated.length} tasks generated!`);
+    showToast(`${generated.length} personalized tasks generated!`);
   };
 
   const toggleTask = (id: string) => {
@@ -101,13 +130,42 @@ export function ChecklistGenerator({ lang }: { lang?: string } = {}) {
     return <div className="space-y-4 max-w-4xl mx-auto animate-pulse"><div className="bg-white rounded-3xl border border-[#F3E8EA] p-8 h-64" /></div>;
   }
 
+  const selectStyles = "w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#B76E79] focus:ring-2 focus:ring-[#B76E79]/20 transition-all bg-white";
+  const labelStyles = "block text-[11px] font-bold uppercase tracking-wider text-[#B76E79] mb-1.5";
+
   if (!isGenerated) {
     return (
       <div className="max-w-lg mx-auto space-y-6">
-        <div className="bg-white rounded-3xl border border-[#F3E8EA] p-8 shadow-sm space-y-6">
-          <h2 className="text-xl font-bold text-[#1A1A1A] text-center">Set Up Your Checklist</h2>
-          <p className="text-sm text-slate-500 text-center">Enter your wedding date to generate a personalized checklist with {masterTasks.length} tasks organized by timeline.</p>
+        <div className="bg-white rounded-3xl border border-[#F3E8EA] p-8 shadow-sm space-y-5">
+          <h2 className="text-xl font-bold text-[#1A1A1A] text-center">Set Up Your Personalized Checklist</h2>
+          <p className="text-sm text-slate-500 text-center">Enter your date and style to generate a tailored wedding checklist organized by timeline.</p>
           <DatePickerInput value={weddingDate} onChange={setWeddingDate} />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className={labelStyles}>Wedding Style</label>
+              <select value={config.style} onChange={e => setConfig(prev => ({ ...prev, style: e.target.value as WeddingStyle }))} className={selectStyles}>
+                <option value="traditional">Traditional</option><option value="modern">Modern</option>
+                <option value="destination">Destination</option><option value="intimate">Intimate</option>
+                <option value="rustic">Rustic</option><option value="glamorous">Glamorous</option>
+              </select>
+            </div>
+            <div>
+              <label className={labelStyles}>Budget Range</label>
+              <select value={config.budget} onChange={e => setConfig(prev => ({ ...prev, budget: e.target.value as GeneratorConfig['budget'] }))} className={selectStyles}>
+                <option value="small">Under $15k</option><option value="medium">$15k–$40k</option>
+                <option value="large">$40k–$80k</option><option value="luxury">$80k+</option>
+              </select>
+            </div>
+            <div className="sm:col-span-2">
+              <label className={labelStyles}>Guest Count</label>
+              <select value={config.guestCount} onChange={e => setConfig(prev => ({ ...prev, guestCount: e.target.value as GeneratorConfig['guestCount'] }))} className={selectStyles}>
+                <option value="intimate">Under 50 guests</option><option value="medium">50–150 guests</option>
+                <option value="large">150–250 guests</option><option value="grand">250+ guests</option>
+              </select>
+            </div>
+          </div>
+
           <button
             onClick={generateChecklist}
             disabled={!weddingDate}
@@ -165,6 +223,10 @@ export function ChecklistGenerator({ lang }: { lang?: string } = {}) {
               {p.charAt(0).toUpperCase() + p.slice(1)} Priority
             </button>
           ))}
+          <button onClick={() => setShowCustomizer(prev => !prev)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${showCustomizer ? 'bg-[#FCECF0] text-[#B76E79] ring-1 ring-[#B76E79]' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
+            <SlidersHorizontal size={12} /> Customize List
+          </button>
           <div className="ml-auto flex gap-2">
             <button onClick={exportCSV} className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-slate-50 text-slate-600 text-xs font-semibold hover:bg-[#FCECF0] hover:text-[#B76E79] transition-colors">
               <Download size={13} /> Export
@@ -177,6 +239,42 @@ export function ChecklistGenerator({ lang }: { lang?: string } = {}) {
             </button>
           </div>
         </div>
+
+        {/* Expandable Customization Settings */}
+        <AnimatePresence>
+          {showCustomizer && (
+            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
+              className="pt-3 border-t border-[#F3E8EA] grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label className={labelStyles}>Wedding Style</label>
+                <select value={config.style} onChange={e => setConfig(prev => ({ ...prev, style: e.target.value as WeddingStyle }))} className={selectStyles}>
+                  <option value="traditional">Traditional</option><option value="modern">Modern</option>
+                  <option value="destination">Destination</option><option value="intimate">Intimate</option>
+                  <option value="rustic">Rustic</option><option value="glamorous">Glamorous</option>
+                </select>
+              </div>
+              <div>
+                <label className={labelStyles}>Budget Range</label>
+                <select value={config.budget} onChange={e => setConfig(prev => ({ ...prev, budget: e.target.value as GeneratorConfig['budget'] }))} className={selectStyles}>
+                  <option value="small">Under $15k</option><option value="medium">$15k–$40k</option>
+                  <option value="large">$40k–$80k</option><option value="luxury">$80k+</option>
+                </select>
+              </div>
+              <div>
+                <label className={labelStyles}>Guest Count</label>
+                <select value={config.guestCount} onChange={e => setConfig(prev => ({ ...prev, guestCount: e.target.value as GeneratorConfig['guestCount'] }))} className={selectStyles}>
+                  <option value="intimate">Under 50 guests</option><option value="medium">50–150 guests</option>
+                  <option value="large">150–250 guests</option><option value="grand">250+ guests</option>
+                </select>
+              </div>
+              <div className="sm:col-span-3 flex justify-end">
+                <button onClick={generateChecklist} className="bg-[#B76E79] hover:bg-[#a25d66] text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+                  <Zap size={13} /> Re-apply Customizations
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Task Periods */}

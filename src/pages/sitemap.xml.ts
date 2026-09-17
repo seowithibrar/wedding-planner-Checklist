@@ -21,20 +21,14 @@ const entries: SitemapEntry[] = [
   { path: '/privacy-policy', changefreq: 'yearly', priority: '0.3', lastmod },
   { path: '/terms-of-service', changefreq: 'yearly', priority: '0.3', lastmod },
 
-  // INTERACTIVE PLANNING TOOLS
+  // INTERACTIVE PLANNING TOOLS (8 Core Tools)
   { path: '/tools/budget-calculator', changefreq: 'weekly', priority: '0.9', lastmod },
   { path: '/tools/timeline-generator', changefreq: 'weekly', priority: '0.9', lastmod },
   { path: '/tools/guest-list-manager', changefreq: 'weekly', priority: '0.9', lastmod },
   { path: '/tools/wedding-checklist-generator', changefreq: 'weekly', priority: '0.9', lastmod },
   { path: '/tools/wedding-planning-timeline', changefreq: 'weekly', priority: '0.9', lastmod },
-  { path: '/tools/wedding-task-generator', changefreq: 'weekly', priority: '0.8', lastmod },
-  { path: '/tools/wedding-milestone-tracker', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/tools/wedding-planning-calendar', changefreq: 'weekly', priority: '0.8', lastmod },
-  { path: '/tools/daily-wedding-planner', changefreq: 'weekly', priority: '0.8', lastmod },
-  { path: '/tools/weekly-wedding-planner', changefreq: 'weekly', priority: '0.8', lastmod },
-  { path: '/tools/monthly-wedding-planner', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/tools/wedding-countdown', changefreq: 'weekly', priority: '0.8', lastmod },
-  { path: '/tools/wedding-progress-tracker', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/tools/wedding-planning-dashboard', changefreq: 'weekly', priority: '0.9', lastmod },
 
   // WEDDING PLANNING CHECKLISTS

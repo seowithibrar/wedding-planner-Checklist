@@ -41,7 +41,13 @@ export default defineConfig({
     '/tools/wedding-seating-chart-maker': '/tools/guest-list-manager',
     '/tools/wedding-invitation-timeline': '/tools/wedding-planning-timeline',
     '/tools/wedding-photography-shot-list': '/checklists/wedding-day-of-timeline-checklist',
-    '/tools/rehearsal-dinner-planning-guide': '/checklists/wedding-day-of-timeline-checklist'
+    '/tools/rehearsal-dinner-planning-guide': '/checklists/wedding-day-of-timeline-checklist',
+    '/tools/wedding-task-generator': '/tools/wedding-checklist-generator',
+    '/tools/wedding-milestone-tracker': '/tools/wedding-planning-dashboard',
+    '/tools/wedding-progress-tracker': '/tools/wedding-planning-dashboard',
+    '/tools/daily-wedding-planner': '/tools/wedding-planning-calendar',
+    '/tools/weekly-wedding-planner': '/tools/wedding-planning-calendar',
+    '/tools/monthly-wedding-planner': '/tools/wedding-planning-calendar'
   },
   prefetch: {
     prefetchAll: true,

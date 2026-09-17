@@ -48,7 +48,7 @@
   </url>
 
   <!-- ═══════════════════════════════════════════════
-       INTERACTIVE PLANNING TOOLS
+       INTERACTIVE PLANNING TOOLS (8 Core Tools)
        ═══════════════════════════════════════════════ -->
   <url>
     <loc>https://www.weddingplanningchecklists.org/tools/budget-calculator</loc>
@@ -81,49 +81,13 @@
     <lastmod>2026-09-06</lastmod>
   </url>
   <url>
-    <loc>https://www.weddingplanningchecklists.org/tools/wedding-task-generator</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-09-06</lastmod>
-  </url>
-  <url>
-    <loc>https://www.weddingplanningchecklists.org/tools/wedding-milestone-tracker</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-09-06</lastmod>
-  </url>
-  <url>
     <loc>https://www.weddingplanningchecklists.org/tools/wedding-planning-calendar</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-09-06</lastmod>
   </url>
   <url>
-    <loc>https://www.weddingplanningchecklists.org/tools/daily-wedding-planner</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-09-06</lastmod>
-  </url>
-  <url>
-    <loc>https://www.weddingplanningchecklists.org/tools/weekly-wedding-planner</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-09-06</lastmod>
-  </url>
-  <url>
-    <loc>https://www.weddingplanningchecklists.org/tools/monthly-wedding-planner</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-09-06</lastmod>
-  </url>
-  <url>
     <loc>https://www.weddingplanningchecklists.org/tools/wedding-countdown</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-09-06</lastmod>
-  </url>
-  <url>
-    <loc>https://www.weddingplanningchecklists.org/tools/wedding-progress-tracker</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-09-06</lastmod>
