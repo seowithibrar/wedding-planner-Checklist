@@ -28,6 +28,8 @@ export interface FaqSectionProps {
   items?: FaqItemData[];
   showHeader?: boolean;
 }
+
+const faqsData: FaqItemData[] = [
   {
     num: 1,
     category: 'Timeline',
