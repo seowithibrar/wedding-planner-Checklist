@@ -8,7 +8,7 @@ export interface SEOProps {
 
 export function getSEOMetadata({ title, description, canonical, image, type = 'website' }: SEOProps) {
   const siteUrl = 'https://www.weddingplanningchecklists.org';
-  const fullTitle = title.includes('Wedding Planning Checklists') 
+  const fullTitle = (title.toLowerCase().includes('wedding planning checklists') || title.toLowerCase().includes('wedding planning checklist')) 
     ? title 
     : `${title} | Wedding Planning Checklists`;
   

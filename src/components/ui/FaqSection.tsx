@@ -17,14 +17,17 @@ import {
 } from 'lucide-react';
 
 export interface FaqItemData {
-  num: number;
-  category: 'Timeline' | 'Budget' | 'Vendors' | 'Guests';
+  num?: number;
+  category?: string;
   q: string;
   a: string;
-  icon: any;
+  icon?: any;
 }
 
-const faqsData: FaqItemData[] = [
+export interface FaqSectionProps {
+  items?: FaqItemData[];
+  showHeader?: boolean;
+}
   {
     num: 1,
     category: 'Timeline',
@@ -175,12 +178,7 @@ const categories = [
   { id: 'Guests', label: 'Invites & Guests' },
 ];
 
-export interface FaqSectionProps {
-  items?: any[];
-  showHeader?: boolean;
-}
-
-export function FaqSection({ showHeader = false }: FaqSectionProps = {}) {
+export function FaqSection({ items, showHeader = false }: FaqSectionProps = {}) {
   const [activeTab, setActiveTab] = useState<string>('All');
   const [openIds, setOpenIds] = useState<number[]>([1]); // First item open by default
 
@@ -190,9 +188,19 @@ export function FaqSection({ showHeader = false }: FaqSectionProps = {}) {
     );
   };
 
+  const effectiveFaqs: FaqItemData[] = items && items.length > 0
+    ? items.map((item, idx) => ({
+        num: item.num || idx + 1,
+        category: item.category || 'Timeline',
+        q: item.q,
+        a: item.a,
+        icon: item.icon || (idx % 4 === 0 ? CheckCircle2 : idx % 4 === 1 ? Calendar : idx % 4 === 2 ? DollarSign : Sparkles)
+      }))
+    : faqsData;
+
   const filteredFaqs = activeTab === 'All'
-    ? faqsData
-    : faqsData.filter(item => item.category === activeTab);
+    ? effectiveFaqs
+    : effectiveFaqs.filter(item => item.category === activeTab);
 
   return (
     <div className={`max-w-[700px] mx-auto px-4 ${showHeader ? 'py-16 space-y-10' : 'space-y-8'}`}>
