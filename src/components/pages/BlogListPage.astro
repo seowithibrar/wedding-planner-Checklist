@@ -15,8 +15,14 @@ const currentLang = lang as SupportedLanguage;
 const { common, home } = useTranslations(currentLang);
 
 const posts = await getCollection('blog');
-const sortedPosts = posts.sort((a, b) => (b.data.featured ? 1 : -1));
-const featuredPost = sortedPosts.find(p => p.data.featured) || sortedPosts[0];
+const sortedPosts = posts.sort((a, b) => {
+  const isTargetA = (a.data.slug || a.id).includes('the-ultimate-wedding-planning-checklists-guide');
+  const isTargetB = (b.data.slug || b.id).includes('the-ultimate-wedding-planning-checklists-guide');
+  if (isTargetA) return -1;
+  if (isTargetB) return 1;
+  return (b.data.featured ? 1 : 0) - (a.data.featured ? 1 : 0);
+});
+const featuredPost = sortedPosts.find(p => (p.data.slug || p.id).includes('the-ultimate-wedding-planning-checklists-guide')) || sortedPosts.find(p => p.data.featured) || sortedPosts[0];
 const otherPosts = sortedPosts.filter(p => p.id !== featuredPost?.id);
 
 const featuredSlug = featuredPost ? (featuredPost.data.slug || featuredPost.id.replace(/\.(md|mdx)$/, '')) : '';

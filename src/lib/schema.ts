@@ -92,3 +92,24 @@ export function generateWebApplicationSchema(app: {
     }
   });
 }
+
+export function generateHowToSchema(howTo: {
+  name: string;
+  description: string;
+  url?: string;
+  steps: { name: string; text: string }[];
+}) {
+  if (!howTo || !howTo.steps || howTo.steps.length === 0) return null;
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    ...(howTo.url ? { '@id': `${howTo.url}#howto` } : {}),
+    name: howTo.name,
+    description: howTo.description,
+    step: howTo.steps.map(s => ({
+      '@type': 'HowToStep',
+      name: s.name,
+      text: s.text
+    }))
+  });
+}

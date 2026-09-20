@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../layout/Header.astro';
 import Footer from '../layout/Footer.astro';
 import { render } from 'astro:content';
-import { generateArticleSchema, generateFAQSchema, generateBreadcrumbSchema } from '../../lib/schema';
+import { generateArticleSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema } from '../../lib/schema';
 import { useTranslations, localizeUrl, getArticleI18n, SITE_URL } from '../../i18n/utils';
 import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
 
@@ -23,6 +23,7 @@ const { Content } = await render(post);
 // Check if there is localized metadata for this article
 const postI18n = getArticleI18n(slug, currentLang);
 const articleTitle = postI18n?.title || post.data.title;
+const pageTitle = postI18n?.seoTitle || post.data.seoTitle || articleTitle;
 const articleDescription = postI18n?.description || post.data.description;
 const articleCategory = postI18n?.category || post.data.category;
 
@@ -34,7 +35,9 @@ const articleSchema = generateArticleSchema({
   title: articleTitle,
   description: articleDescription,
   url: canonicalUrl,
-  image: post.data.heroImage
+  image: post.data.heroImage,
+  dateModified: post.data.dateModified || '2026-09-20',
+  datePublished: post.data.pubDate ? post.data.pubDate.toISOString().split('T')[0] : undefined
 });
 
 const faqSchema = post.data.faqs ? generateFAQSchema(post.data.faqs) : null;
@@ -44,7 +47,15 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   { name: articleTitle, item: canonicalUrl }
 ]);
 
-const combinedSchema = `[${articleSchema}${faqSchema ? `, ${faqSchema}` : ''}, ${breadcrumbSchema}]`;
+const howToSchema = post.data.howTo ? generateHowToSchema({
+  name: post.data.howTo.name,
+  description: post.data.howTo.description,
+  url: canonicalUrl,
+  steps: post.data.howTo.step
+}) : null;
+
+const schemas = [articleSchema, faqSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+const combinedSchema = `[${schemas.join(', ')}]`;
 
 // Build TOC items from frontmatter or defaults
 const tocItems = post.data.tableOfContents && post.data.tableOfContents.length > 0
@@ -57,11 +68,11 @@ const tocItems = post.data.tableOfContents && post.data.tableOfContents.length >
       { id: 'author', label: common.ui.author }
     ];
 
-const displayDate = post.data.updatedDate || 'August 2026';
+const displayDate = post.data.updatedDate || 'September 2026';
 ---
 
 <BaseLayout 
-  title={articleTitle} 
+  title={pageTitle} 
   description={articleDescription} 
   canonical={canonicalUrl}
   image={post.data.heroImage}

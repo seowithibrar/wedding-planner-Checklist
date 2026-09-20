@@ -13,9 +13,11 @@ const blog = defineCollection({
         "Slug must be lowercase, hyphen-separated, and contain no spaces or special characters (e.g. '18-month-wedding-planning-timeline')."
       ),
     title: z.string({ required_error: "Blog post title is required." }).min(1, "Title cannot be empty."),
+    seoTitle: z.string().optional(),
     description: z.string(),
     pubDate: z.date().optional(),
     updatedDate: z.string().optional(),
+    dateModified: z.string().optional(),
     category: z.string(),
     readTime: z.string(),
     author: z.string().default('Wedding Planning Checklists Team'),
@@ -35,7 +37,17 @@ const blog = defineCollection({
         q: z.string(),
         a: z.string()
       })
-    ).optional()
+    ).optional(),
+    howTo: z.object({
+      name: z.string(),
+      description: z.string(),
+      step: z.array(
+        z.object({
+          name: z.string(),
+          text: z.string()
+        })
+      )
+    }).optional()
   })
 });
 

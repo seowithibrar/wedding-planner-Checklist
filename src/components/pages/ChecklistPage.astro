@@ -112,6 +112,13 @@ const combinedSchema = `[${[
       <!-- Main Content Column -->
       <article class="lg:col-span-2 bg-white rounded-3xl border border-[#F3E8EA] p-6 sm:p-10 shadow-sm space-y-8">
         
+        {checklist.slug === '12-month-wedding-planning-checklist' && (
+          <div class="bg-gradient-to-r from-[#FCECF0]/60 to-white border border-[#F3E8EA] p-4 rounded-2xl text-xs sm:text-sm text-slate-600 flex items-center gap-2.5 shadow-xs">
+            <span class="text-[#B76E79] font-bold">💡 Tip:</span>
+            <span>Planning on an accelerated or custom timeline? Learn <a href={localizeUrl('/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding', currentLang)} class="text-[#B76E79] font-bold hover:underline">how to choose the right wedding checklist</a> for your target wedding date.</span>
+          </div>
+        )}
+
         <!-- Summary Box -->
         <div class="bg-[#FCECF0]/30 border border-[#B76E79]/20 p-6 rounded-2xl space-y-2">
           <h2 class="text-lg font-bold text-[#B76E79]">{checklists.overviewTitle || 'Overview'}</h2>
