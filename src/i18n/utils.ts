@@ -64,12 +64,41 @@ const translationsMap: Record<string, Record<string, any>> = {
 export const SITE_URL = 'https://www.weddingplanningchecklists.org';
 
 /**
- * Strips any supported language prefix from a pathname.
- * E.g. '/ur/blog/test' -> '/blog/test', '/ur' -> '/', '/blog' -> '/blog'
+ * Canonical tool path mapping for legacy aliases
+ */
+const CANONICAL_PATH_MAP: Record<string, string> = {
+  '/tools/checklist-generator': '/tools/wedding-checklist-generator',
+  '/tools/planning-timeline': '/tools/wedding-planning-timeline',
+  '/tools/planning-calendar': '/tools/wedding-planning-calendar',
+  '/tools/planning-dashboard': '/tools/wedding-planning-dashboard',
+  '/tools/wedding-budget-planner': '/tools/budget-calculator',
+  '/tools/wedding-seating-chart-maker': '/tools/guest-list-manager',
+  '/tools/wedding-invitation-timeline': '/tools/wedding-planning-timeline',
+  '/tools/wedding-task-generator': '/tools/wedding-checklist-generator',
+  '/tools/wedding-milestone-tracker': '/tools/wedding-planning-dashboard',
+  '/tools/wedding-progress-tracker': '/tools/wedding-planning-dashboard',
+  '/tools/daily-wedding-planner': '/tools/wedding-planning-calendar',
+  '/tools/weekly-wedding-planner': '/tools/wedding-planning-calendar',
+  '/tools/monthly-wedding-planner': '/tools/wedding-planning-calendar'
+};
+
+/**
+ * Normalizes a path by removing queries, hashes, duplicate slashes, and trailing slashes.
+ */
+export function normalizePath(path: string): string {
+  if (!path || path === '/') return '/';
+  const clean = path.split(/[?#]/)[0].replace(/\/+/g, '/');
+  const trimmed = clean.replace(/\/+$/, '');
+  const normalized = trimmed || '/';
+  return CANONICAL_PATH_MAP[normalized] || normalized;
+}
+
+/**
+ * Strips any supported language prefix from a pathname and normalizes it.
+ * E.g. '/ur/blog/test/' -> '/blog/test', '/ur' -> '/', '/blog/' -> '/blog'
  */
 export function stripLangPrefix(pathname: string): string {
   if (!pathname) return '/';
-  // Normalize leading slash
   let clean = pathname.startsWith('/') ? pathname : `/${pathname}`;
   
   for (const lang of NON_DEFAULT_LANGUAGES) {
@@ -77,10 +106,11 @@ export function stripLangPrefix(pathname: string): string {
       return '/';
     }
     if (clean.startsWith(`/${lang}/`)) {
-      return clean.slice(lang.length + 1);
+      clean = clean.slice(lang.length + 1);
+      break;
     }
   }
-  return clean;
+  return normalizePath(clean);
 }
 
 /**
@@ -132,6 +162,7 @@ export function localizeUrl(path: string, targetLang: string = DEFAULT_LANGUAGE)
 
 /**
  * Generates reciprocal hreflang links for an absolute or relative path across all supported languages.
+ * Always resolves to canonical URLs without trailing slashes (except root '/').
  */
 export function getHreflangLinks(pathname: string): { lang: string; url: string }[] {
   const cleanPath = stripLangPrefix(pathname);
