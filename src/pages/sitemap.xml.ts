@@ -9,7 +9,7 @@ interface SitemapEntry {
 }
 
 const siteUrl = 'https://www.weddingplanningchecklists.org';
-const lastmod = '2026-09-20';
+const lastmod = '2026-09-22';
 
 const entries: SitemapEntry[] = [
   // CORE PAGES
