@@ -11,6 +11,7 @@ export default defineConfig({
   site: 'https://www.weddingplanningchecklists.org',
   adapter: vercel(),
   output: 'static',
+  trailingSlash: 'never',
   redirects: {
     '/how-to-plan-a-wedding-timeline.html': '/blog/how-to-plan-a-wedding-timeline',
     '/how-to-plan-a-wedding-timeline': '/blog/how-to-plan-a-wedding-timeline',
@@ -47,7 +48,11 @@ export default defineConfig({
     '/tools/wedding-progress-tracker': '/tools/wedding-planning-dashboard',
     '/tools/daily-wedding-planner': '/tools/wedding-planning-calendar',
     '/tools/weekly-wedding-planner': '/tools/wedding-planning-calendar',
-    '/tools/monthly-wedding-planner': '/tools/wedding-planning-calendar'
+    '/tools/monthly-wedding-planner': '/tools/wedding-planning-calendar',
+    '/tools/checklist-generator': '/tools/wedding-checklist-generator',
+    '/tools/planning-timeline': '/tools/wedding-planning-timeline',
+    '/tools/planning-calendar': '/tools/wedding-planning-calendar',
+    '/tools/planning-dashboard': '/tools/wedding-planning-dashboard'
   },
   prefetch: {
     prefetchAll: true,

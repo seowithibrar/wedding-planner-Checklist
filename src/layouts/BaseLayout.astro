@@ -36,11 +36,21 @@ const defaultCanonical = currentLang === DEFAULT_LANGUAGE
   ? (cleanPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${cleanPath}`)
   : (cleanPath === '/' ? `${SITE_URL}/${currentLang}` : `${SITE_URL}/${currentLang}${cleanPath}`);
 
-const finalCanonical = canonical || defaultCanonical;
+// Ensure canonical URL is always normalized and matches the current language
+let finalCanonical = canonical || defaultCanonical;
+if (currentLang !== DEFAULT_LANGUAGE && finalCanonical.startsWith(SITE_URL)) {
+  const pathWithoutSite = finalCanonical.slice(SITE_URL.length);
+  const cleanCanonicalPath = stripLangPrefix(pathWithoutSite);
+  finalCanonical = cleanCanonicalPath === '/' 
+    ? `${SITE_URL}/${currentLang}` 
+    : `${SITE_URL}/${currentLang}${cleanCanonicalPath}`;
+}
+
 const seo = getSEOMetadata({ title, description, canonical: finalCanonical, image, type });
 
-// Generate reciprocal hreflang links
-const hreflangLinks = getHreflangLinks(currentPath);
+// Generate reciprocal hreflang links only for indexable pages
+const shouldRenderHreflang = !noindex && cleanPath !== '/404';
+const hreflangLinks = shouldRenderHreflang ? getHreflangLinks(currentPath) : [];
 ---
 
 <!doctype html>
