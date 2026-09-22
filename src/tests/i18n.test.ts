@@ -75,6 +75,19 @@ describe('i18n Utility Suite', () => {
       expect(urLink).toBeDefined();
       expect(urLink?.url).toBe(`${SITE_URL}/ur/tools/budget-calculator`);
     });
+
+    it('should strip trailing slashes and resolve legacy aliases to canonical URLs', () => {
+      const linksWithTrailingSlash = getHreflangLinks('/tools/budget-calculator/');
+      const enLink = linksWithTrailingSlash.find(l => l.lang === 'en');
+      expect(enLink?.url).toBe(`${SITE_URL}/tools/budget-calculator`);
+
+      const legacyLinks = getHreflangLinks('/tools/checklist-generator');
+      const legacyEn = legacyLinks.find(l => l.lang === 'en');
+      expect(legacyEn?.url).toBe(`${SITE_URL}/tools/wedding-checklist-generator`);
+
+      const legacyUr = legacyLinks.find(l => l.lang === 'ur');
+      expect(legacyUr?.url).toBe(`${SITE_URL}/ur/tools/wedding-checklist-generator`);
+    });
   });
 
   describe('useTranslations', () => {
