@@ -3,42 +3,873 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import { WeddingCountdown } from '../../components/tools/WeddingCountdown';
-import { generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
 
 const seo = {
-  title: 'Wedding Countdown (2026)',
-  description: 'Live ticking countdown timer to your wedding day with Saturday counter, upcoming milestones, and shareable social card.',
-  canonical: 'https://www.weddingplanningchecklists.org/tools/wedding-countdown'
+  title: 'Wedding Countdown: Free Live Timer & Days Left Tracker',
+  description: 'Use our free wedding countdown to see the days, hours and Saturdays left until your big day, track upcoming milestones and share a countdown card.',
+  canonical: 'https://www.weddingplanningchecklists.org/tools/wedding-countdown',
+  image: '/wedding-countdown-timer-calendar.jpg'
 };
 
 const siteUrl = 'https://www.weddingplanningchecklists.org';
+
 const breadcrumbItems = [
   { name: 'Home', item: siteUrl },
-  { name: 'Tools', item: `${siteUrl}/tools/budget-calculator` },
+  { name: 'Planning Tools', item: `${siteUrl}/tools/wedding-planning-dashboard` },
   { name: 'Wedding Countdown', item: seo.canonical }
 ];
 
-const combinedSchema = `[${[
-  generateWebApplicationSchema({ name: 'Wedding Countdown', description: seo.description, url: seo.canonical }),
-  generateBreadcrumbSchema(breadcrumbItems)
-].filter(Boolean).join(',')}]`;
+const faqs = [
+  {
+    q: 'How many days until my wedding?',
+    a: 'Enter your wedding date into the tool on this page. It works like a days until wedding calculator, showing the live count in days, hours, minutes and seconds. To check it yourself, add up the days in each month between now and your date, as in the worked example above.'
+  },
+  {
+    q: 'What is a wedding countdown timer?',
+    a: 'A wedding countdown timer is a live clock that shows how much time remains before your wedding. Ours also includes a Saturday counter, upcoming milestones and a shareable social card.'
+  },
+  {
+    q: 'Is the wedding countdown free?',
+    a: "Yes. It's a free planning tool on WeddingPlanningChecklists.org."
+  },
+  {
+    q: 'When should I start a wedding countdown?',
+    a: "As soon as you've set a date. Our timelines cover 18, 14, 12, 6 and 3 months, so whichever window you're in, there's a matching plan."
+  },
+  {
+    q: 'What does the Saturday counter show?',
+    a: "It shows the number of Saturdays left before your wedding date. That's a practical unit if you do most of your planning on weekends."
+  },
+  {
+    q: 'Can I share my countdown on social media?',
+    a: "Yes. The tool includes a shareable social card you can post or send. If you'd rather keep your date or venue private, check what the card displays before posting it publicly."
+  },
+  {
+    q: 'Is the timer available in other languages?',
+    a: 'The page is available in English, Urdu, Hindi, Spanish, French, German and Arabic. Use the language selector at the top of the page.'
+  },
+  {
+    q: 'What if my wedding is less than three months away?',
+    a: 'Start with the 3-Month Express Checklist and use the countdown to pace it. Sort out the venue, any vendors with limited availability, and the guest list first.'
+  }
+];
+
+const combinedSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.weddingplanningchecklists.org/tools/wedding-countdown#app",
+      "name": "Wedding Countdown",
+      "url": "https://www.weddingplanningchecklists.org/tools/wedding-countdown",
+      "description": "Live ticking countdown timer to your wedding day with a Saturday counter, upcoming milestones and a shareable social card.",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Any (web browser)",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Live countdown in days, hours, minutes and seconds",
+        "Saturday counter",
+        "Upcoming milestones",
+        "Shareable social card"
+      ],
+      "inLanguage": [
+        "en",
+        "ur",
+        "hi",
+        "es",
+        "fr",
+        "de",
+        "ar"
+      ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "WeddingPlanningChecklists.org",
+        "url": "https://www.weddingplanningchecklists.org/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.weddingplanningchecklists.org/tools/wedding-countdown#breadcrumb",
+      "itemListElement": breadcrumbItems.map((crumb, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": crumb.name,
+        "item": crumb.item
+      }))
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.weddingplanningchecklists.org/tools/wedding-countdown#howto",
+      "name": "How to use the wedding countdown timer",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Enter your details",
+          "text": "Add your wedding date and the other details the tool asks for. It adjusts to your wedding automatically, so there's nothing to configure."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Watch the live clock",
+          "text": "The timer counts down in real time through days, hours, minutes and seconds."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Check the Saturday counter",
+          "text": "It shows how many Saturdays are left before your date. Weekends are when many couples get to venue visits, tastings and fittings, so this number is often more useful than the raw day count."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Read your upcoming milestones",
+          "text": "The tool highlights what's coming next, which helps you decide where to spend this week's effort."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Share the social card",
+          "text": "Post it, or send it to your wedding party and family."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.weddingplanningchecklists.org/tools/wedding-countdown#faq",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    }
+  ]
+});
 ---
 
-<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical} schemaScript={combinedSchema}>
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  image={seo.image}
+  schemaScript={combinedSchema}
+>
   <Header />
-  <main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto space-y-4 mb-10">
-      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Free Planning Tool</span>
-      <h1 class="text-4xl sm:text-5xl font-black text-[#1A1A1A]">Wedding Countdown Timer</h1>
-      <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-        Live ticking countdown clock to your big day with milestone focus markers.
-      </p>
-    </div>
-    <!-- SEO Intro Copy -->
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 text-center text-slate-600 text-sm leading-relaxed">
-      This interactive Wedding Countdown helps you stay completely organized and on top of your wedding planning process. Simply enter your details below, and the tool will automatically adjust to fit your specific wedding needs. Save time, reduce stress, and ensure no detail is overlooked with this free resource.
-    </div>
-    <WeddingCountdown client:visible />
+
+  <main>
+    <!-- Breadcrumb Navigation -->
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-1.5 text-xs text-slate-400">
+        {breadcrumbItems.map((crumb, idx) => (
+          <li class="flex items-center gap-1.5">
+            {idx > 0 && <span aria-hidden="true" class="text-slate-300">/</span>}
+            {idx === breadcrumbItems.length - 1 ? (
+              <span class="font-semibold text-[#B76E79]">{crumb.name}</span>
+            ) : (
+              <a href={crumb.item} class="hover:text-[#B76E79] transition-colors">{crumb.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <!-- Hero Header Section -->
+    <section class="pt-8 pb-10 lg:pt-12 lg:pb-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-8">
+        <span class="inline-block bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+          Free Planning Tool
+        </span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1A1A1A] leading-tight" style="font-family: 'Playfair Display', serif;">
+          Wedding Countdown: Track Every Day, Hour and Saturday Until Your Big Day
+        </h1>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+          A wedding countdown turns a faraway date into a number you can plan around. Our free wedding countdown timer shows the days, hours, minutes and seconds left until your wedding day, keeps a Saturday counter, and lists the milestones coming up next. Use it as a simple wedding day countdown clock, or pair it with your checklist and planning timeline so every week has a job. This guide explains how to count the days until your wedding by hand, what to focus on at each stage, and how to share your countdown to the wedding day with family and friends.
+        </p>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+          Most couples know their wedding date. Far fewer know how many weekends they have left to get ready for it, and that gap is usually where the stress starts. A wedding countdown closes it. Start yours with the tool on this page, then use the rest of this guide to decide what each of those days is for.
+        </p>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="max-w-4xl mx-auto mb-10">
+        <img
+          src="/wedding-countdown-timer-calendar.jpg"
+          alt="Wedding countdown calendar, planner journal with checkpoints, and pocket watch on wooden table"
+          class="w-full rounded-2xl shadow-lg border border-[#F3E8EA] object-cover"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <p class="text-center text-xs text-slate-500 mt-2 italic">
+          A wedding countdown turns your wedding date into a concrete timeline of weekends, milestones, and deadlines.
+        </p>
+      </div>
+
+      <!-- React Interactive Tool Island -->
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-6 text-center text-slate-600 text-sm leading-relaxed">
+        Enter your wedding date below to start your live countdown timer. Track exact days, hours, minutes, and Saturdays left, view key checkpoints, and share your celebration card with family and friends.
+      </div>
+      <WeddingCountdown client:visible />
+    </section>
+
+    <!-- Comprehensive Content Guide Section -->
+    <section class="py-12 bg-gradient-to-b from-white via-[#FCECF0]/20 to-white border-t border-[#F3E8EA]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+        <!-- Section: What Is a Wedding Countdown? -->
+        <div class="space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Concept Overview</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              What Is a Wedding Countdown?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            A wedding countdown is a running tally of the time left before your wedding, usually shown in days, hours, minutes and seconds. You'll also see it called a wedding countdown timer, a wedding countdown clock or a wedding day countdown. They all mean the same thing: you enter the date, and the count updates on its own.
+          </p>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            The clock is the easy part. The useful part is what you do when you look at it. Two hundred and forty days feels roomy until you remember that the venue, the caterer and the printer each have deadlines tucked inside those days. That's why our timer shows upcoming milestones as well as a ticking number.
+          </p>
+        </div>
+
+        <!-- Section: How Does the Wedding Countdown Timer Work? -->
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Step-by-Step Guide</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              How Does the Wedding Countdown Timer Work?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Our timer is free, and it takes about a minute to set up. Here's how it works:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span class="w-7 h-7 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-xs">1</span>
+              <h3 class="font-bold text-sm text-[#1A1A1A]">Enter your details</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Add your wedding date and the other details the tool asks for. It adjusts to your wedding automatically, so there's nothing to configure.
+              </p>
+            </div>
+            <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span class="w-7 h-7 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-xs">2</span>
+              <h3 class="font-bold text-sm text-[#1A1A1A]">Watch the live clock</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                The timer counts down in real time through days, hours, minutes and seconds.
+              </p>
+            </div>
+            <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span class="w-7 h-7 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-xs">3</span>
+              <h3 class="font-bold text-sm text-[#1A1A1A]">Check the Saturday counter</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                It shows how many Saturdays are left before your date. Weekends are when many couples get to venue visits, tastings and fittings, so this number is often more useful than the raw day count.
+              </p>
+            </div>
+            <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span class="w-7 h-7 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-xs">4</span>
+              <h3 class="font-bold text-sm text-[#1A1A1A]">Read your upcoming milestones</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                The tool highlights what's coming next, which helps you decide where to spend this week's effort.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+            <span class="w-7 h-7 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-xs">5</span>
+            <h3 class="font-bold text-sm text-[#1A1A1A]">Share the social card</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Post it, or send it to your wedding party and family.
+            </p>
+          </div>
+
+          <div class="p-5 bg-gradient-to-r from-[#FCECF0]/60 via-white to-[#FCECF0]/40 rounded-2xl border border-[#F3E8EA] shadow-sm text-sm text-slate-700 leading-relaxed">
+            The countdown works best next to your other planning tools. The <a href="/tools/wedding-planning-dashboard" class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Wedding Planning Dashboard</a> gives you one view of your whole plan, and the <a href="/tools/wedding-checklist-generator" class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Wedding Checklist Generator</a> builds a checklist for you. If you'd rather work from a month-by-month schedule, open the <a href="/tools/wedding-planning-timeline" class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">wedding planning timeline</a>.
+          </div>
+        </div>
+
+        <!-- Section: Why Use a Wedding Countdown? -->
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Benefits & Motivation</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              Why Use a Wedding Countdown?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            A wedding countdown makes the time you have left concrete, and concrete time is much easier to plan against. Four things tend to change once you're looking at a real number.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <h3 class="font-bold text-sm text-[#1A1A1A] flex items-center gap-2">
+                <span class="text-[#B76E79]">⏳</span> Time stops feeling abstract
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                "Eleven months" sounds endless. About 48 Saturdays sounds like something you can divide up.
+              </p>
+            </div>
+            <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <h3 class="font-bold text-sm text-[#1A1A1A] flex items-center gap-2">
+                <span class="text-[#B76E79]">📈</span> You can judge your pace
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Compare the time left with a 12-month, 6-month or 3-month checklist and you'll see which schedule you're really on.
+              </p>
+            </div>
+            <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <h3 class="font-bold text-sm text-[#1A1A1A] flex items-center gap-2">
+                <span class="text-[#B76E79]">🤝</span> Everyone works from the same number
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                When parents, siblings or the wedding party ask "are we behind?", you can answer with a date instead of a guess.
+              </p>
+            </div>
+            <div class="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <h3 class="font-bold text-sm text-[#1A1A1A] flex items-center gap-2">
+                <span class="text-[#B76E79]">🎉</span> It adds a little fun
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Planning can feel like admin. A ticking clock and a shareable card give you something to enjoy along the way.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: How Do You Calculate the Days Until Your Wedding by Hand? -->
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Manual Calculation</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              How Do You Calculate the Days Until Your Wedding by Hand?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Count the days from today to the 1st of each following month, then add the days in the wedding month up to your date. Or let the tool do it. The manual method is still handy for double-checking a deadline in a contract or a venue's booking window against your own dates.
+          </p>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Here's a worked example. Say today is Sunday, 1 November 2026, and your wedding is on Saturday, 15 May 2027.
+          </p>
+
+          <div class="overflow-x-auto rounded-2xl border border-[#F3E8EA] shadow-sm bg-white">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead>
+                <tr class="bg-gradient-to-r from-[#FCECF0] to-white border-b border-[#F3E8EA] text-[#1A1A1A]">
+                  <th class="py-3.5 px-4 font-bold">Stretch</th>
+                  <th class="py-3.5 px-4 font-bold">Calculation</th>
+                  <th class="py-3.5 px-4 font-bold text-right">Days</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#F3E8EA]">
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3 px-4 font-semibold text-[#1A1A1A]">1 Nov to 1 Dec</td>
+                  <td class="py-3 px-4 text-slate-600">Days in November</td>
+                  <td class="py-3 px-4 text-right font-medium">30</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3 px-4 font-semibold text-[#1A1A1A]">December</td>
+                  <td class="py-3 px-4 text-slate-600">Full month</td>
+                  <td class="py-3 px-4 text-right font-medium">31</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3 px-4 font-semibold text-[#1A1A1A]">January</td>
+                  <td class="py-3 px-4 text-slate-600">Full month</td>
+                  <td class="py-3 px-4 text-right font-medium">31</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3 px-4 font-semibold text-[#1A1A1A]">February 2027</td>
+                  <td class="py-3 px-4 text-slate-600">Full month</td>
+                  <td class="py-3 px-4 text-right font-medium">28</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3 px-4 font-semibold text-[#1A1A1A]">March</td>
+                  <td class="py-3 px-4 text-slate-600">Full month</td>
+                  <td class="py-3 px-4 text-right font-medium">31</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3 px-4 font-semibold text-[#1A1A1A]">April</td>
+                  <td class="py-3 px-4 text-slate-600">Full month</td>
+                  <td class="py-3 px-4 text-right font-medium">30</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3 px-4 font-semibold text-[#1A1A1A]">1 May to 15 May</td>
+                  <td class="py-3 px-4 text-slate-600">Days up to the wedding</td>
+                  <td class="py-3 px-4 text-right font-medium">14</td>
+                </tr>
+                <tr class="bg-[#FCECF0]/40 font-bold text-[#1A1A1A]">
+                  <td class="py-3.5 px-4" colspan="2">Total</td>
+                  <td class="py-3.5 px-4 text-right text-[#B76E79]">195</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Divide 195 by seven and you get 27 weeks and 6 days. Because 1 November 2026 is a Sunday, the first Saturday on the way is 7 November. That makes 28 Saturdays counting the wedding day itself, and 27 before it. Counting Saturdays by hand takes a calendar and some patience, which is why the tool has a counter for it.
+          </p>
+        </div>
+
+        <!-- Section: What Should You Focus On as Your Wedding Countdown Shrinks? -->
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Planning Stages</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              What Should You Focus On as Your Wedding Countdown Shrinks?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Match your tasks to the time left. The table is a quick reference, and each row points to the checklist or tool that goes deeper.
+          </p>
+
+          <div class="overflow-x-auto rounded-2xl border border-[#F3E8EA] shadow-sm bg-white">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead>
+                <tr class="bg-gradient-to-r from-[#FCECF0] to-white border-b border-[#F3E8EA] text-[#1A1A1A]">
+                  <th class="py-3.5 px-4 font-bold">Time left</th>
+                  <th class="py-3.5 px-4 font-bold">Main focus</th>
+                  <th class="py-3.5 px-4 font-bold">Go deeper</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#F3E8EA]">
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3.5 px-4 font-bold text-[#B76E79] whitespace-nowrap">12+ months</td>
+                  <td class="py-3.5 px-4 text-slate-700">Set the budget, sketch a guest count, shortlist venues</td>
+                  <td class="py-3.5 px-4 text-slate-600">
+                    <a href="/checklists/12-month-wedding-planning-checklist" class="text-[#B76E79] font-semibold underline hover:text-[#a25d66]">12-Month Wedding Planning Checklist</a> and the <a href="/tools/budget-calculator" class="text-[#B76E79] font-semibold underline hover:text-[#a25d66]">Budget Calculator</a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3.5 px-4 font-bold text-[#B76E79] whitespace-nowrap">6 to 9 months</td>
+                  <td class="py-3.5 px-4 text-slate-700">Book the venue and key vendors, start on attire</td>
+                  <td class="py-3.5 px-4 text-slate-600">
+                    Your timeline checklist
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3.5 px-4 font-bold text-[#B76E79] whitespace-nowrap">3 months</td>
+                  <td class="py-3.5 px-4 text-slate-700">Get invitations out, confirm vendor details, book final fittings</td>
+                  <td class="py-3.5 px-4 text-slate-600">
+                    <a href="/checklists/3-month-wedding-planning-checklist" class="text-[#B76E79] font-semibold underline hover:text-[#a25d66]">3-Month Express Checklist</a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3.5 px-4 font-bold text-[#B76E79] whitespace-nowrap">Final month</td>
+                  <td class="py-3.5 px-4 text-slate-700">Chase RSVPs, set the seating, confirm every vendor</td>
+                  <td class="py-3.5 px-4 text-slate-600">
+                    <a href="/tools/guest-list-manager" class="text-[#B76E79] font-semibold underline hover:text-[#a25d66]">Guest List Manager</a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3.5 px-4 font-bold text-[#B76E79] whitespace-nowrap">Final week</td>
+                  <td class="py-3.5 px-4 text-slate-700">Lock the day-of schedule, pack an emergency kit, hand off tasks</td>
+                  <td class="py-3.5 px-4 text-slate-600">
+                    <a href="/checklists/wedding-day-of-timeline-checklist" class="text-[#B76E79] font-semibold underline hover:text-[#a25d66]">Day-Of Schedule & Timeline Checklist</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Timing varies. Destination and multi-day weddings usually need invitations and travel details out earlier, and every vendor has its own cutoffs, so check your contracts before trusting any generic schedule.
+          </p>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            If your countdown is already short, it isn't a verdict. Couples do plan good weddings in three months. You just have to decide faster and lean harder on your checklist.
+          </p>
+        </div>
+
+        <!-- Section: What Should You Do at 100, 60, 30, 14 and 7 Days to Go? -->
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Countdown Checkpoints</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              What Should You Do at 100, 60, 30, 14 and 7 Days to Go?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Round-number days make handy checkpoints. Treat these as prompts, and adjust them to your vendors' contracts.
+          </p>
+
+          <div class="space-y-3">
+            <div class="p-4 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-start gap-4">
+              <span class="px-3 py-1.5 rounded-xl bg-[#FCECF0] text-[#B76E79] font-black text-xs shrink-0">100 Days</span>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <strong>100 days:</strong> Confirm the venue and key vendors are booked, and order attire if you haven't yet.
+              </p>
+            </div>
+            <div class="p-4 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-start gap-4">
+              <span class="px-3 py-1.5 rounded-xl bg-[#FCECF0] text-[#B76E79] font-black text-xs shrink-0">60 Days</span>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <strong>60 days:</strong> Get invitations out (earlier for destination weddings) and set up a simple way to track RSVPs.
+              </p>
+            </div>
+            <div class="p-4 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-start gap-4">
+              <span class="px-3 py-1.5 rounded-xl bg-[#FCECF0] text-[#B76E79] font-black text-xs shrink-0">30 Days</span>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <strong>30 days:</strong> Chase missing RSVPs, start the seating plan, and confirm arrival times with every vendor.
+              </p>
+            </div>
+            <div class="p-4 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-start gap-4">
+              <span class="px-3 py-1.5 rounded-xl bg-[#FCECF0] text-[#B76E79] font-black text-xs shrink-0">14 Days</span>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <strong>14 days:</strong> Send your final headcount if the caterer or venue needs it, and check which payments are still due.
+              </p>
+            </div>
+            <div class="p-4 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-start gap-4">
+              <span class="px-3 py-1.5 rounded-xl bg-[#FCECF0] text-[#B76E79] font-black text-xs shrink-0">7 Days</span>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <strong>7 days:</strong> Share the day-of schedule with your wedding party and vendors, and pack the emergency kit.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: How Do Milestones Turn a Countdown Into a Plan? -->
+        <div class="space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Milestone Strategy</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              How Do Milestones Turn a Countdown Into a Plan?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            A milestone is a dated checkpoint: a decision made, a deposit paid, a list finished. The countdown tells you how far away the wedding is. Milestones tell you whether you're ready for that distance.
+          </p>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Pick five or six that carry real deadlines. Venue booked, invitations sent, RSVP cutoff, final headcount to the caterer, final payments and a shared day-of schedule are common ones. Log them in the <a href="/tools/wedding-milestone-tracker" class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Wedding Milestone Tracker</a>, check them against the countdown once a week, and put the dates on your <a href="/tools/wedding-planning-calendar" class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">wedding planning calendar</a>.
+          </p>
+        </div>
+
+        <!-- Section: How Is a Countdown Different From a Timeline or Calendar? -->
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Tool Comparison</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              How Is a Countdown Different From a Timeline or Calendar?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            They answer different questions. Use the countdown for how long, the timeline for what and when, and the calendar for exactly which day.
+          </p>
+
+          <div class="overflow-x-auto rounded-2xl border border-[#F3E8EA] shadow-sm bg-white">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead>
+                <tr class="bg-gradient-to-r from-[#FCECF0] to-white border-b border-[#F3E8EA] text-[#1A1A1A]">
+                  <th class="py-3.5 px-4 font-bold">Tool</th>
+                  <th class="py-3.5 px-4 font-bold">Question it answers</th>
+                  <th class="py-3.5 px-4 font-bold">Best used for</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#F3E8EA]">
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3.5 px-4 font-bold text-[#1A1A1A]">Wedding Countdown</td>
+                  <td class="py-3.5 px-4 text-slate-700">How much time is left?</td>
+                  <td class="py-3.5 px-4 text-slate-600">A quick daily check, motivation, sharing</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3.5 px-4 font-bold text-[#1A1A1A]">Wedding Planning Timeline</td>
+                  <td class="py-3.5 px-4 text-slate-700">What should I do, and roughly when?</td>
+                  <td class="py-3.5 px-4 text-slate-600">Building a month-by-month schedule</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3.5 px-4 font-bold text-[#1A1A1A]">Wedding Planning Calendar</td>
+                  <td class="py-3.5 px-4 text-slate-700">What's happening on which day?</td>
+                  <td class="py-3.5 px-4 text-slate-600">Appointments and hard deadlines</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3.5 px-4 font-bold text-[#1A1A1A]">Wedding Milestone Tracker</td>
+                  <td class="py-3.5 px-4 text-slate-700">Have I reached my key checkpoints?</td>
+                  <td class="py-3.5 px-4 text-slate-600">Big decisions and payments</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50">
+                  <td class="py-3.5 px-4 font-bold text-[#1A1A1A]">Wedding Planning Dashboard</td>
+                  <td class="py-3.5 px-4 text-slate-700">Where does everything stand?</td>
+                  <td class="py-3.5 px-4 text-slate-600">One overview of the whole plan</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section: Which Date Should You Count Down To in a Multi-Day Wedding? -->
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Multi-Day Planning</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              Which Date Should You Count Down To in a Multi-Day Wedding?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Count down to the first day that needs full planning, usually the first big function, and treat the main ceremony as a milestone.
+          </p>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Many Pakistani, Indian and wider South Asian weddings run across several days, with functions such as a mehndi, sangeet, baraat, nikah and walima. A countdown points at one date, so there's no perfect pick. Choosing the first function means venues, decor and travel all get planned against the earliest deadline. Choosing the main ceremony feels more natural but can leave the early events short of time.
+          </p>
+
+          <div class="my-6">
+            <img
+              src="/Multi-Day South Asian Wedding.webp"
+              alt="Multi-day South Asian wedding celebration timeline and bridal planning"
+              class="w-full rounded-2xl shadow-md border border-[#F3E8EA] object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <p class="text-center text-xs text-slate-500 mt-2 italic">
+              Multi-day celebrations require anchoring your countdown to the earliest function on your calendar.
+            </p>
+          </div>
+
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Our <a href="/checklists/pakistani-wedding-checklist" class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Pakistani & Muslim Multi-Day Checklist</a> and <a href="/checklists/indian-wedding-checklist" class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Indian Wedding Master Checklist</a> break the days into functions, so you can plan each one on its own.
+          </p>
+        </div>
+
+        <!-- Section: How Can You Share Your Countdown With Family and Friends? -->
+        <div class="space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Sharing & Social</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              How Can You Share Your Countdown With Family and Friends?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            The tool includes a shareable social card, so you can post your countdown or drop it into a group chat. A few ways couples tend to use one:
+          </p>
+          <ul class="space-y-2 text-slate-700 text-sm sm:text-base list-disc list-inside">
+            <li>Post it on round-number days, like 100, 50 and 30 to go.</li>
+            <li>Pin it in the wedding party chat so everyone sees the same date.</li>
+            <li>Send it to relatives who are booking travel and need a firm sense of time.</li>
+          </ul>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Check what the card shows before you post it publicly. If your date or venue is private, keep it in group chats.
+          </p>
+        </div>
+
+        <!-- Section: How Can a Saturday Planning Date Help? -->
+        <div class="space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Weekly Habits</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              How Can a Saturday Planning Date Help?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            The Saturday counter suggests a simple habit: treat each Saturday as a short planning session. Thirty to forty-five minutes is plenty. Try this agenda, and log the three tasks in the <a href="/tools/weekly-wedding-planner" class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Weekly Wedding Planner</a>:
+          </p>
+          <ul class="space-y-2 text-slate-700 text-sm sm:text-base list-disc list-inside">
+            <li>Glance at the countdown and your next milestone.</li>
+            <li>Pick three tasks for the week.</li>
+            <li>Make one decision you've been putting off.</li>
+            <li>Stop, and go do something that has nothing to do with the wedding.</li>
+          </ul>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Over 27 Saturdays, that's about 80 tasks and 27 decisions, without a single all-nighter.
+          </p>
+        </div>
+
+        <!-- Section: Should You Use a Digital Countdown or a Paper Calendar? -->
+        <div class="space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Format Options</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              Should You Use a Digital Countdown or a Paper Calendar?
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Both work, and they do different jobs. A digital wedding countdown clock updates itself, is easy to share and goes wherever your phone goes. A paper wedding countdown calendar on the fridge is harder to ignore and easy for a whole household to see.
+          </p>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            If you like crossing things off with a pen, print a checklist and keep the digital countdown as your source of truth. Our <a href="/checklists/printable-wedding-planning-checklist" class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">printable wedding planning checklist</a> is a good place to start.
+          </p>
+        </div>
+
+        <!-- Section: Which Countdown Mistakes Should You Avoid? -->
+        <div class="space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Mistakes to Avoid</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              Which Countdown Mistakes Should You Avoid?
+            </h2>
+          </div>
+          <div class="space-y-3">
+            <div class="p-4 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm">
+              <strong class="text-[#1A1A1A] block mb-1">Watching instead of doing.</strong>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">A ticking clock doesn't book a caterer. Attach one action to every check.</p>
+            </div>
+            <div class="p-4 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm">
+              <strong class="text-[#1A1A1A] block mb-1">Counting to the wrong date.</strong>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">For multi-day weddings, decide on the anchor date early, as covered above.</p>
+            </div>
+            <div class="p-4 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm">
+              <strong class="text-[#1A1A1A] block mb-1">Skipping buffers.</strong>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Set your own deadlines two to three weeks ahead of vendor cutoffs.</p>
+            </div>
+            <div class="p-4 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm">
+              <strong class="text-[#1A1A1A] block mb-1">Treating a short countdown as failure.</strong>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Fewer days means fewer, faster decisions. It doesn't mean a worse wedding.</p>
+            </div>
+            <div class="p-4 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm">
+              <strong class="text-[#1A1A1A] block mb-1">Forgetting to update.</strong>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">If the date moves, change the countdown the same day and re-share the card, so nobody keeps working from the old number.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Wedding Countdown FAQs -->
+        <div class="space-y-6 pt-6 border-t border-[#F3E8EA]">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Frequently Asked Questions</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              Wedding Countdown FAQs
+            </h2>
+          </div>
+
+          <div class="space-y-3" id="countdown-faq-list">
+            {faqs.map((faq, idx) => (
+              <div class="bg-white rounded-2xl border border-[#F3E8EA] shadow-sm overflow-hidden transition-all">
+                <button
+                  type="button"
+                  class="faq-accordion-btn w-full flex items-center justify-between p-5 text-left cursor-pointer group hover:bg-slate-50/50"
+                  aria-expanded="false"
+                  aria-controls={`faq-body-${idx}`}
+                  id={`faq-header-${idx}`}
+                >
+                  <span class="font-bold text-xs sm:text-sm text-[#1A1A1A] pr-4 group-hover:text-[#B76E79] transition-colors flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-black shrink-0">Q</span>
+                    {faq.q}
+                  </span>
+                  <svg class="faq-chevron-icon w-4 h-4 text-[#B76E79] shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-body hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-50" id={`faq-body-${idx}`} role="region" aria-labelledby={`faq-header-${idx}`}>
+                  <p>{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Section: Start Your Wedding Countdown Today -->
+        <div class="space-y-4 pt-6 border-t border-[#F3E8EA]">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Get Started</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">
+              Start Your Wedding Countdown Today
+            </h2>
+          </div>
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Your date isn't going anywhere, so the useful question is what to do with the days you have. Start the clock, note the next milestone, and pick three tasks for this Saturday. For the bigger picture, our <a href="/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding" class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Ultimate Wedding Planning Checklists Guide</a> walks through every stage of planning.
+          </p>
+        </div>
+
+        <!-- Author / Editorial Box -->
+        <div class="p-6 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg shrink-0">
+            💍
+          </div>
+          <div class="space-y-1 text-xs sm:text-sm">
+            <div class="font-bold text-[#1A1A1A]">Wedding Planning Checklists Editorial Team</div>
+            <p class="text-slate-500 text-xs">
+              Curated by wedding planning experts dedicated to providing free, stress-reducing tools, timelines, and comprehensive checklists for couples worldwide.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section: CTA & Next Step Navigation -->
+        <div class="bg-gradient-to-br from-[#1A1A1A] via-slate-900 to-[#2d2d2d] text-white p-8 sm:p-12 rounded-3xl text-center space-y-6 shadow-2xl relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-[#B76E79]/10 rounded-full blur-3xl"></div>
+          <div class="relative space-y-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#D4AF37] block">Next Planning Steps</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white" style="font-family: 'Playfair Display', serif;">
+              Plan Your Wedding at WeddingPlanningChecklists.org
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Combine your live wedding countdown timer with our full suite of interactive tools to organize vendor bookings, budget allocations, guest lists, and schedules from day one.
+            </p>
+
+            <!-- Quick Tool Access Cards -->
+            <div class="pt-4">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
+                <a href="/tools/wedding-planning-dashboard" class="p-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl text-xs font-bold text-white transition-all text-center">
+                  Planning Dashboard →
+                </a>
+                <a href="/tools/wedding-checklist-generator" class="p-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl text-xs font-bold text-white transition-all text-center">
+                  Checklist Generator →
+                </a>
+                <a href="/tools/wedding-planning-timeline" class="p-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl text-xs font-bold text-white transition-all text-center">
+                  Planning Timeline →
+                </a>
+                <a href="/tools/budget-calculator" class="p-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl text-xs font-bold text-white transition-all text-center">
+                  Budget Calculator →
+                </a>
+              </div>
+            </div>
+
+            <!-- Supporting Resources & Links -->
+            <div class="pt-6 border-t border-white/10 flex flex-wrap justify-center gap-3 text-xs">
+              <a href="/checklists/12-month-wedding-planning-checklist" class="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                12-month wedding planning checklist
+              </a>
+              <span class="text-slate-600">•</span>
+              <a href="/checklists/3-month-wedding-planning-checklist" class="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                3-month express checklist
+              </a>
+              <span class="text-slate-600">•</span>
+              <a href="/tools/guest-list-manager" class="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                guest list manager
+              </a>
+              <span class="text-slate-600">•</span>
+              <a href="/checklists/wedding-day-of-timeline-checklist" class="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                day-of timeline checklist
+              </a>
+              <span class="text-slate-600">•</span>
+              <a href="/checklists/printable-wedding-planning-checklist" class="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                printable wedding planning checklist
+              </a>
+              <span class="text-slate-600">•</span>
+              <a href="/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding" class="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                ultimate wedding planning guide
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
   </main>
+
   <Footer />
+
+  <!-- Interactive Accordion Script -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.faq-accordion-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          const targetId = btn.getAttribute('aria-controls');
+          const content = document.getElementById(targetId);
+          const chevron = btn.querySelector('.faq-chevron-icon');
+
+          if (isExpanded) {
+            btn.setAttribute('aria-expanded', 'false');
+            if (content) content.classList.add('hidden');
+            if (chevron) chevron.classList.remove('rotate-180');
+          } else {
+            btn.setAttribute('aria-expanded', 'true');
+            if (content) content.classList.remove('hidden');
+            if (chevron) chevron.classList.add('rotate-180');
+          }
+        });
+      });
+    });
+  </script>
 </BaseLayout>
