@@ -1,0 +1,26 @@
+{
+  "aboutUs": {
+    "title": "À Propos | Checklists de Mariage",
+    "description": "Découvrez l'équipe et la mission derrière WeddingPlanningChecklists.org.",
+    "heading": "À Propos de Nous",
+    "subheading": "Accompagner les couples du monde entier avec des checklists fiables et des outils modernes."
+  },
+  "contact": {
+    "title": "Contact | Checklists de Mariage",
+    "description": "Une question ou une suggestion ? Contactez l'équipe de WeddingPlanningChecklists.org.",
+    "heading": "Contactez-Nous",
+    "subheading": "Nous sommes à votre écoute pour toute remarque ou demande de nouvel outil."
+  },
+  "privacyPolicy": {
+    "title": "Politique de Confidentialité | Checklists de Mariage",
+    "description": "Notre politique de confidentialité vous explique comment vos données sont protégées."
+  },
+  "termsOfService": {
+    "title": "Conditions d'Utilisation | Checklists de Mariage",
+    "description": "Consultez les conditions d'utilisation de notre site et de nos outils gratuits."
+  },
+  "sitemap": {
+    "title": "Plan du Site & Annuaire de Planification (2026)",
+    "description": "Répertoire complet de tous les outils, guides et checklists pour votre mariage."
+  }
+}

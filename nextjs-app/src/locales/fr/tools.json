@@ -1,0 +1,110 @@
+{
+  "badge": "Outil Gratuit",
+  "tools": {
+    "budget-calculator": {
+      "title": "Calculateur de Budget de Mariage",
+      "description": "Estimez vos dépenses : lieu, traiteur, photographe et plus.",
+      "category": "Budget",
+      "intro": "Utilisez notre calculateur de budget gratuit pour estimer vos coûts par catégorie, répartir les frais par invité et suivre vos dépenses."
+    },
+    "timeline-generator": {
+      "title": "Générateur de Planning du Jour J",
+      "description": "Générez un planning personnalisé du jour de votre mariage selon l'heure de votre cérémonie.",
+      "category": "Calendrier",
+      "intro": "Créez un déroulé parfait du jour J avec les horaires d'arrivée des prestataires et les créneaux photo."
+    },
+    "guest-list-manager": {
+      "title": "Gestionnaire de Liste d'Invités",
+      "description": "Suivez les réponses, préférences de repas et placement à table au même endroit.",
+      "category": "Invités",
+      "intro": "Organisez votre liste d'invités avec notre outil gratuit et exportez vos données en CSV."
+    },
+    "wedding-checklist-generator": {
+      "title": "Générateur de Checklist de Mariage",
+      "description": "Générez une checklist sur mesure selon votre date et vos préférences.",
+      "category": "Tâches",
+      "intro": "Obtenez une liste complète de préparatifs adaptée à votre calendrier et vos envies."
+    },
+    "wedding-planning-timeline": {
+      "title": "Planning d'Organisation de Mariage",
+      "description": "Ligne de temps visuelle des étapes mois par mois avant la date.",
+      "category": "Calendrier",
+      "intro": "Suivez l'avancée de vos préparatifs mois par mois jusqu'au grand jour."
+    },
+    "wedding-task-generator": {
+      "title": "Générateur de Tâches de Mariage",
+      "description": "Suggestions intelligentes de tâches selon votre date, style et budget.",
+      "category": "Tâches",
+      "intro": "Recommandations adaptées à votre style de célébration et votre budget."
+    },
+    "wedding-milestone-tracker": {
+      "title": "Suivi des Grandes Étapes",
+      "description": "Suivez l'accomplissement des 31 étapes clés des préparatifs.",
+      "category": "Tâches",
+      "intro": "Gardez le cap sur les étapes prioritaires pour être prêt à temps."
+    },
+    "wedding-planning-calendar": {
+      "title": "Calendrier de Planification",
+      "description": "Calendrier mensuel pour vos rendez-vous prestataires et essayages.",
+      "category": "Calendrier",
+      "intro": "Planifiez les échéances de paiement, essayages et répétitions."
+    },
+    "daily-wedding-planner": {
+      "title": "Planning Quotidien de Mariage",
+      "description": "Planificateur de tâches jour par jour avec créneaux horaires.",
+      "category": "Planning",
+      "intro": "Organisez chaque journée précédant le mariage avec des blocs horaires clairs."
+    },
+    "weekly-wedding-planner": {
+      "title": "Planning Hebdomadaire de Mariage",
+      "description": "Tableau de bord de la semaine avec répartition des tâches.",
+      "category": "Planning",
+      "intro": "Gérez vos priorités hebdomadaires simplement et efficacement."
+    },
+    "monthly-wedding-planner": {
+      "title": "Planning Mensuel de Mariage",
+      "description": "Vue mensuelle avec objectifs par catégorie et suivi d'avancement.",
+      "category": "Planning",
+      "intro": "Découpez vos grands objectifs en étapes mensuelles faciles à gérer."
+    },
+    "wedding-countdown": {
+      "title": "Compte à Rebours de Mariage",
+      "description": "Compte à rebours en direct jusqu'au jour de votre mariage.",
+      "category": "Calendrier",
+      "intro": "Horloge interactive pour compter les jours, heures et minutes restants."
+    },
+    "wedding-progress-tracker": {
+      "title": "Suivi de Progression Globale",
+      "description": "Progression générale sur l'ensemble des tâches et outils.",
+      "category": "Tableau de Bord",
+      "intro": "Visualisez le pourcentage d'avancement de vos préparatifs en temps réel."
+    },
+    "wedding-planning-dashboard": {
+      "title": "Tableau de Bord de Planification",
+      "description": "Hub central avec statistiques, accès rapides et état des préparatifs.",
+      "category": "Tableau de Bord",
+      "intro": "Votre centre de commande complet avec compte à rebours, budget et invités."
+    }
+  },
+  "calculator": {
+    "totalBudget": "Budget Total du Mariage",
+    "guestCount": "Nombre d'Invités Estimé",
+    "costPerGuest": "Coût par Invité",
+    "standardBreakdown": "Répartition Standard",
+    "customTracker": "Suivi des Dépenses",
+    "target": "Objectif",
+    "actual": "Réel",
+    "remaining": "Restant",
+    "totalSpent": "Total Dépensé",
+    "copySummary": "Copier le Résumé du Budget",
+    "categories": {
+      "venue-catering": "Lieu & Traiteur",
+      "photo-video": "Photo & Vidéo",
+      "attire-beauty": "Tenues, Coiffure & Maquillage",
+      "flowers-decor": "Fleurs & Décoration",
+      "music-entertainment": "Musique & Animation",
+      "stationery-cake": "Faire-part, Gâteau & Cadeaux",
+      "contingency-buffer": "Imprévus & Réserve"
+    }
+  }
+}

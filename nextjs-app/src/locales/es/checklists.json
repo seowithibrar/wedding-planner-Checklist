@@ -1,0 +1,15 @@
+{
+  "badge": "Lista Gratuita",
+  "metaTitleSuffix": "Lista de Verificación de Boda (2026)",
+  "overviewTitle": "Resumen de la Lista y Etapas Clave",
+  "downloadPdf": "Descargar Lista (PDF)",
+  "printChecklist": "Imprimir Lista",
+  "categories": {
+    "timeline": "Listas de Cronograma",
+    "budget": "Listas de Presupuesto",
+    "cultural": "Listas Culturales y Tradicionales",
+    "destination": "Listas de Destino e Íntimas",
+    "dayOf": "Listas del Día de la Boda y Kit de Emergencia",
+    "vendors": "Listas de Proveedores y Organización"
+  }
+}

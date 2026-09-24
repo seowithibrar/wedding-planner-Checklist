@@ -1,0 +1,181 @@
+{
+  "categories": [
+    { "id": "family", "label": "Family", "color": "#B76E79" },
+    { "id": "partners-family", "label": "Partner's Family", "color": "#D4AF37" },
+    { "id": "friends", "label": "Friends", "color": "#6B8E7B" },
+    { "id": "partners-friends", "label": "Partner's Friends", "color": "#7B8EAF" },
+    { "id": "colleagues", "label": "Colleagues", "color": "#A0845C" },
+    { "id": "neighbors", "label": "Neighbors & Community", "color": "#8B7DA8" }
+  ],
+  "mealOptions": [
+    { "id": "chicken", "label": "Chicken" },
+    { "id": "beef", "label": "Beef" },
+    { "id": "fish", "label": "Fish / Seafood" },
+    { "id": "vegetarian", "label": "Vegetarian" },
+    { "id": "vegan", "label": "Vegan" },
+    { "id": "gluten-free", "label": "Gluten-Free" },
+    { "id": "kids-meal", "label": "Kids Meal" },
+    { "id": "halal", "label": "Halal" },
+    { "id": "kosher", "label": "Kosher" },
+    { "id": "none", "label": "Not Selected" }
+  ],
+  "rsvpStatuses": [
+    { "id": "pending", "label": "Pending", "color": "#F59E0B" },
+    { "id": "accepted", "label": "Accepted", "color": "#10B981" },
+    { "id": "declined", "label": "Declined", "color": "#EF4444" },
+    { "id": "no-response", "label": "No Response", "color": "#94A3B8" }
+  ],
+  "defaultSeatingGroups": [
+    "Head Table",
+    "Family Table 1",
+    "Family Table 2",
+    "Friends Table 1",
+    "Friends Table 2",
+    "Colleagues Table",
+    "Kids Table",
+    "Unassigned"
+  ],
+  "sampleGuests": [
+    {
+      "name": "Sarah Mitchell",
+      "email": "sarah.m@email.com",
+      "phone": "(555) 123-4567",
+      "category": "family",
+      "rsvpStatus": "accepted",
+      "mealPreference": "chicken",
+      "plusOne": true,
+      "plusOneName": "James Mitchell",
+      "plusOneMeal": "beef",
+      "seatingGroup": "Family Table 1",
+      "notes": "Aunt — arriving Friday evening"
+    },
+    {
+      "name": "David Chen",
+      "email": "david.chen@email.com",
+      "phone": "(555) 234-5678",
+      "category": "friends",
+      "rsvpStatus": "accepted",
+      "mealPreference": "vegetarian",
+      "plusOne": false,
+      "plusOneName": "",
+      "plusOneMeal": "none",
+      "seatingGroup": "Friends Table 1",
+      "notes": "College roommate"
+    },
+    {
+      "name": "Priya Sharma",
+      "email": "priya.s@email.com",
+      "phone": "(555) 345-6789",
+      "category": "colleagues",
+      "rsvpStatus": "pending",
+      "mealPreference": "none",
+      "plusOne": true,
+      "plusOneName": "",
+      "plusOneMeal": "none",
+      "seatingGroup": "Colleagues Table",
+      "notes": "Team lead — may need halal option"
+    },
+    {
+      "name": "Robert & Linda Thompson",
+      "email": "thompson.family@email.com",
+      "phone": "(555) 456-7890",
+      "category": "partners-family",
+      "rsvpStatus": "accepted",
+      "mealPreference": "fish",
+      "plusOne": false,
+      "plusOneName": "",
+      "plusOneMeal": "none",
+      "seatingGroup": "Family Table 2",
+      "notes": "Partner's uncle and aunt — gluten sensitivity"
+    },
+    {
+      "name": "Emily Rodriguez",
+      "email": "emily.r@email.com",
+      "phone": "(555) 567-8901",
+      "category": "friends",
+      "rsvpStatus": "declined",
+      "mealPreference": "none",
+      "plusOne": false,
+      "plusOneName": "",
+      "plusOneMeal": "none",
+      "seatingGroup": "Unassigned",
+      "notes": "Out of town — sending gift"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How many guests should I invite to my wedding?",
+      "a": "The ideal guest count depends on your budget, venue capacity, and personal preferences. Most weddings range from 50 to 250 guests. A good rule of thumb is to allocate roughly 40–50% of your total budget to catering, then divide that by the per-person cost to find your comfortable maximum. Remember that typically 15–20% of invited guests will decline, so you can invite slightly more than your target headcount."
+    },
+    {
+      "q": "When should I start building my wedding guest list?",
+      "a": "Start your guest list 12–18 months before the wedding, ideally right after you get engaged. Begin with a preliminary list that includes everyone you might want to invite, then narrow it down once you've set your budget and secured a venue. Having an early draft helps you choose the right-sized venue and plan catering quantities accurately."
+    },
+    {
+      "q": "How do I handle plus-ones for my wedding?",
+      "a": "Set a clear plus-one policy early. Common approaches include: offering plus-ones to all guests in relationships longer than six months, married or engaged couples always get plus-ones, and single guests may or may not receive them depending on your budget. Whatever rule you choose, apply it consistently across all groups to avoid hurt feelings. Communicate your policy clearly on the invitation."
+    },
+    {
+      "q": "Should I create an A-list and B-list for wedding guests?",
+      "a": "Yes, creating tiered guest lists is a practical strategy many couples use. Your A-list includes must-invite guests (immediate family, wedding party, closest friends). Your B-list includes guests you'd love to have if space allows. Send A-list invitations first (8–10 weeks before), then send B-list invites as declines come in (no later than 4–5 weeks before). Be discreet — no one should know they were on a B-list."
+    },
+    {
+      "q": "How do I diplomatically cut my guest list?",
+      "a": "Start by setting firm rules: no coworkers unless you socialize outside work, no children under a certain age, no distant relatives you haven't seen in years, and so on. Apply each rule uniformly. If you need to cut further, prioritize guests who have been part of your life in the past two years. Have an honest conversation with parents early if they're contributing to the budget and want to invite their own guests."
+    },
+    {
+      "q": "What information should I collect from each guest?",
+      "a": "At minimum, collect: full name (for place cards), mailing address (for invitations), RSVP status, meal preference, and any dietary restrictions or allergies. Also note whether they have a plus-one, their relationship to you (for seating planning), and any special needs such as wheelchair accessibility. Our Guest List Manager tracks all these fields automatically."
+    },
+    {
+      "q": "How do I track RSVPs effectively?",
+      "a": "Use a digital tool like our Guest List Manager to centralize all RSVPs in one place. Set a clear RSVP deadline (typically 3–4 weeks before the wedding) and print it on your invitations. Follow up with non-responders one week after the deadline via text or phone call. Many couples also use wedding websites with online RSVP forms to make tracking easier."
+    },
+    {
+      "q": "What is the average RSVP decline rate for weddings?",
+      "a": "On average, 15–20% of invited guests decline a wedding invitation. This rate varies significantly by factors like destination weddings (25–35% decline), local weddings (10–15%), weekday weddings (20–30%), and holiday weekends (15–25%). Factor this percentage into your planning to avoid over- or under-booking your venue and catering."
+    },
+    {
+      "q": "How should I organize seating for my wedding reception?",
+      "a": "Start by grouping guests who know each other or share common interests. Place immediate family at tables near the head table. Mix friend groups strategically to spark conversations. Avoid seating exes or feuding family members near each other. Consider a sweetheart table or head table arrangement for the wedding party. Most round tables seat 8–10 guests comfortably."
+    },
+    {
+      "q": "Can I export or print my guest list?",
+      "a": "Yes! Our Guest List Manager supports CSV export for spreadsheet compatibility, a print-optimized layout for physical binders, and clipboard copy for quick sharing. You can also generate a shareable link to collaborate with your partner or wedding planner. All data stays in your browser's localStorage for privacy."
+    },
+    {
+      "q": "How do I collect meal preferences from my guests?",
+      "a": "Include meal choices on your RSVP card or wedding website. List 2–3 entrée options plus a vegetarian and kids meal choice. For guests with severe allergies, add a 'dietary notes' field. Collect preferences at least 3–4 weeks before the wedding so your caterer has time to finalize quantities. Our tool lets you track meal preferences alongside RSVPs in one view."
+    },
+    {
+      "q": "Should I invite children to my wedding?",
+      "a": "This is entirely personal. If you prefer an adults-only reception, state it clearly on your invitation (e.g., 'We respectfully request an adults-only celebration'). If children are welcome, plan age-appropriate entertainment and kid-friendly meal options. Some couples compromise by inviting only children in the immediate family. Whatever you decide, communicate early and consistently."
+    },
+    {
+      "q": "How do I manage parents' guest lists alongside mine?",
+      "a": "If parents are contributing financially, they typically expect some say in the guest list. A common split is 50% couple's guests, 25% bride's parents, 25% groom's parents. Set clear limits early: agree on a number each side can invite and let parents fill their allocation. Discuss any potential conflicts (estranged relatives, family politics) before invitations go out."
+    },
+    {
+      "q": "What is the best format for a wedding guest list spreadsheet?",
+      "a": "An effective guest list spreadsheet includes columns for: guest name, email, phone, mailing address, category (family/friend/colleague), RSVP status, meal choice, plus-one details, table assignment, and notes. Our Guest List Manager provides all these fields with filtering and search built in. If you prefer spreadsheets, you can export our tool's data as a CSV at any time."
+    },
+    {
+      "q": "How do I handle last-minute guest additions or cancellations?",
+      "a": "Keep a running B-list so you can fill spots quickly when declines come in. For cancellations within 48 hours of the wedding, contact your caterer immediately — most have a final headcount deadline 72 hours before. For last-minute additions, confirm with your venue and caterer that they can accommodate. Update seating charts the day before, and print extra blank place cards just in case."
+    }
+  ],
+  "relatedTools": [
+    {
+      "title": "Wedding Budget Calculator",
+      "description": "Estimate your wedding expenses across venue, catering, photography, flowers, and emergency contingency.",
+      "href": "/tools/budget-calculator",
+      "icon": "calculator"
+    },
+    {
+      "title": "Wedding Timeline Generator",
+      "description": "Generate a customized day-of wedding schedule based on your ceremony start time.",
+      "href": "/tools/timeline-generator",
+      "icon": "clock"
+    }
+  ]
+}

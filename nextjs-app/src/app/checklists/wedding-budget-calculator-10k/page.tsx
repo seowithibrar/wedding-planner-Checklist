@@ -1,0 +1,894 @@
+import React from 'react';
+import type { Metadata } from 'next';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import BlogArticleClient from '@/components/blog/BlogArticleClient';
+import checklistsData from '@/data/categorized-checklists.json';
+import { DEFAULT_LANGUAGE } from '@/i18n/config';
+
+export const metadata: Metadata = {
+  title: '$10,000 Wedding Budget Checklist & Breakdown (2026)',
+  description:
+    'See exactly how to split a $10,000 wedding budget by category, plus guest-count guidance and money-saving tips for 2026 weddings.',
+  alternates: {
+    canonical: 'https://www.weddingplanningchecklists.org/checklists/wedding-budget-calculator-10k',
+  },
+  openGraph: {
+    title: '$10,000 Wedding Budget Checklist & Breakdown (2026)',
+    description:
+      'See exactly how to split a $10,000 wedding budget by category, plus guest-count guidance and money-saving tips for 2026 weddings.',
+    url: 'https://www.weddingplanningchecklists.org/checklists/wedding-budget-calculator-10k',
+    type: 'article',
+    images: [{ url: 'https://www.weddingplanningchecklists.org/10k-wedding-budget-checklist-flatlay.jpg' }],
+  },
+};
+
+const breadcrumbItems = [
+  { name: 'Home', item: 'https://www.weddingplanningchecklists.org/' },
+  { name: 'Checklists', item: 'https://www.weddingplanningchecklists.org/#categorized-checklists' },
+  { name: '$10,000 Wedding Budget Checklist', item: 'https://www.weddingplanningchecklists.org/checklists/wedding-budget-calculator-10k' },
+];
+
+const faqs = [
+  {
+    q: 'Is $10,000 enough for a real wedding?',
+    a: 'Yes, for most couples, especially with 50 to 75 guests, a non-traditional venue, and an off-peak date. Guest count and venue type matter more than the total budget itself.',
+  },
+  {
+    q: 'How many guests can I invite on this budget?',
+    a: 'Most couples comfortably host 50 to 75 guests at $10,000. Each additional ten guests typically requires cutting $150 to $250 from another category to stay on track.',
+  },
+  {
+    q: 'What is the biggest expense in a $10,000 wedding?',
+    a: 'Venue and catering together, typically 40% of the total, since they scale directly with guest count.',
+  },
+  {
+    q: 'Should I use a wedding loan to stretch a tight budget?',
+    a: 'Most planners recommend against financing a wedding. Trimming guest count or venue costs is a more sustainable way to stay within $10,000 than adding debt.',
+  },
+  {
+    q: 'Can I customize this checklist?',
+    a: 'Yes. Use the Wedding Task Generator and Planning Dashboard to add, remove, or reassign items, then re-run the numbers instantly with the Budget Calculator.',
+  },
+  {
+    q: 'How is this different from the $20,000 wedding budget checklist?',
+    a: 'The $20,000 tier allows for a plated dinner, full-day photography, and a guest list closer to 100 to 120 guests without the same trade-offs required at $10,000.',
+  },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: '$10,000 Wedding Budget Checklist: A Complete Breakdown for 2026',
+  description:
+    'See exactly how to split a $10,000 wedding budget by category, plus guest-count guidance and money-saving tips for 2026 weddings.',
+  image: 'https://www.weddingplanningchecklists.org/10k-wedding-budget-checklist-flatlay.jpg',
+  author: {
+    '@type': 'Person',
+    name: 'Sarah Jenkins',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'WeddingPlanningChecklists.org',
+    url: 'https://www.weddingplanningchecklists.org/',
+  },
+  mainEntityOfPage: 'https://www.weddingplanningchecklists.org/checklists/wedding-budget-calculator-10k',
+  datePublished: '2026-01-15',
+  dateModified: '2026-09-06',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbItems.map((item, idx) => ({
+    '@type': 'ListItem',
+    position: idx + 1,
+    name: item.name,
+    item: item.item,
+  })),
+};
+
+const combinedSchema = JSON.stringify([articleSchema, faqSchema, breadcrumbSchema]);
+
+const budgetTable = [
+  { category: 'Venue & Catering', percent: '40%', amount: '$4,000', details: 'Site rental, tables and chairs, buffet or family-style meal, basic bar package' },
+  { category: 'Photography & Videography', percent: '12%', amount: '$1,200', details: 'Five to six hours of coverage plus a digital gallery' },
+  { category: 'Attire, Hair & Makeup', percent: '10%', amount: '$1,000', details: 'Dress or suit, alterations, day-of hair and makeup' },
+  { category: 'Flowers & Decor', percent: '10%', amount: '$1,000', details: 'Bouquets, boutonnieres, centerpieces, and signage' },
+  { category: 'Music & Entertainment', percent: '8%', amount: '$800', details: 'DJ or a curated playlist system plus ceremony music' },
+  { category: 'Wedding Rings', percent: '5%', amount: '$500', details: 'Two bands' },
+  { category: 'Officiant & Ceremony', percent: '3%', amount: '$300', details: 'Officiant fee, marriage license, ceremony decor' },
+  { category: 'Stationery & Favors', percent: '3%', amount: '$300', details: 'Invitations, day-of paper goods, small favors' },
+  { category: 'Transportation', percent: '2%', amount: '$200', details: 'Getaway car or rideshare for the couple' },
+  { category: 'Contingency Buffer', percent: '7%', amount: '$700', details: 'Unplanned costs, gratuities, last-minute rentals' },
+];
+
+const tocItems = [
+  { id: 'quick-overview', label: 'Quick Overview' },
+  { id: 'how-far-it-goes', label: 'How Far $10,000 Really Goes' },
+  { id: 'guest-count-venue', label: 'Guest Count & Venue Guide' },
+  { id: 'budget-breakdown', label: 'Budget Breakdown by Category' },
+  { id: 'step-by-step', label: 'Step-by-Step Budget Plan' },
+  { id: 'stretch-budget', label: 'Smart Ways to Stretch Budget' },
+  { id: 'budget-tiers', label: '$10,000 vs. Other Tiers' },
+  { id: 'common-mistakes', label: 'Common Mistakes to Avoid' },
+  { id: 'faqs', label: 'Frequently Asked Questions' },
+  { id: 'pro-tips', label: 'Pro Tips & Next Steps' },
+];
+
+export default function WeddingBudgetCalculator10kPage() {
+  const relatedChecklists = checklistsData.checklists
+    .filter(c => c.slug !== 'wedding-budget-calculator-10k')
+    .slice(0, 4);
+
+  return (
+    <div className="min-h-screen flex flex-col bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: combinedSchema }}
+      />
+
+      <Header lang={DEFAULT_LANGUAGE} />
+
+      {/* READING PROGRESS BAR */}
+      <div id="reading-progress" className="reading-progress-bar" style={{ width: '0%' }}></div>
+
+      {/* HERO HEADER SECTION */}
+      <header className="relative pt-10 pb-14 bg-gradient-to-b from-[#FCECF0]/60 via-white to-transparent overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#FCECF0]/40 to-transparent rounded-full blur-3xl -z-10"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-[#F3E8EA]/30 to-transparent rounded-full blur-3xl -z-10"></div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+          {/* Breadcrumb Navigation */}
+          <nav className="flex items-center justify-center gap-2 text-xs font-semibold text-slate-500" aria-label="Breadcrumb">
+            <a href="/" className="hover:text-[#B76E79] transition-colors inline-flex items-center gap-1">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+              </svg>
+              Home
+            </a>
+            <svg className="w-3 h-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            <a href="/#categorized-checklists" className="hover:text-[#B76E79] transition-colors">
+              Checklists
+            </a>
+            <svg className="w-3 h-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            <span className="text-[#B76E79] truncate max-w-[200px] sm:max-w-xs">$10K Budget Checklist</span>
+          </nav>
+
+          {/* Category Badge & Read Time */}
+          <div className="flex items-center justify-center gap-3 text-xs font-bold">
+            <span className="bg-gradient-to-r from-[#B76E79] to-[#a25d66] text-white px-4 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+              💵 Budget Guide
+            </span>
+            <span className="text-slate-300">•</span>
+            <span className="bg-[#FCECF0] text-[#B76E79] px-3.5 py-1 rounded-full uppercase tracking-wider text-[11px] font-bold">
+              Budget Friendly
+            </span>
+            <span className="text-slate-300">•</span>
+            <span className="text-slate-600 inline-flex items-center gap-1">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              6 min read
+            </span>
+          </div>
+
+          {/* H1 Title */}
+          <h1
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1A1A1A] leading-tight tracking-tight max-w-3xl mx-auto"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            $10,000 Wedding Budget Checklist: A Complete Breakdown for 2026
+          </h1>
+
+          {/* Subtitle / Intro Lead */}
+          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            A $10,000 wedding budget sounds tight until you break it into categories. This checklist shows exactly where each dollar should go, what trade-offs actually matter, and how to protect your budget from the surprise costs that catch most couples off guard. Pair it with the free{' '}
+            <a href="/tools/budget-calculator" className="text-[#B76E79] font-bold underline hover:text-[#9c5963]">
+              wedding budget calculator
+            </a>{' '}
+            to run your own numbers before you book a single vendor.
+          </p>
+
+          {/* Author & Date Meta */}
+          <div className="flex items-center justify-center gap-2 sm:gap-4 flex-wrap text-xs text-slate-500 font-medium pt-2">
+            <span className="inline-flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center text-[10px] font-bold shadow-sm">
+                SJ
+              </div>
+              By <strong className="text-[#1A1A1A]">Sarah Jenkins</strong>
+            </span>
+            <span className="text-slate-300">|</span>
+            <span className="inline-flex items-center gap-1">
+              <svg className="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              Last Updated: September 6, 2026
+            </span>
+          </div>
+        </div>
+      </header>
+
+      {/* HERO IMAGE */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 mb-12 relative">
+        <div className="rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl border border-white/60 bg-white group">
+          <img
+            src="/10k-wedding-budget-checklist-flatlay.jpg"
+            alt="$10,000 wedding budget checklist flat-lay with notebook, calculator, and rings"
+            className="w-full h-auto max-h-[520px] object-cover group-hover:scale-[1.02] transition-transform duration-700"
+            loading="eager"
+          />
+        </div>
+        <p className="text-center text-[11px] text-slate-500 mt-2.5 italic">
+          Organize every category upfront to celebrate in style without surprise debts.
+        </p>
+      </div>
+
+      {/* MOBILE TABLE OF CONTENTS DRAWER */}
+      <div className="lg:hidden max-w-5xl mx-auto px-4 sm:px-6 mb-8">
+        <button
+          id="mobile-toc-toggle"
+          className="w-full flex items-center justify-between bg-white border border-[#F3E8EA] rounded-2xl px-5 py-3.5 shadow-sm hover:shadow-md transition-all cursor-pointer"
+          aria-expanded="false"
+          aria-controls="mobile-toc-panel"
+        >
+          <span className="flex items-center gap-2 text-sm font-bold text-[#1A1A1A]">
+            <svg className="w-4 h-4 text-[#B76E79]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7"></path>
+            </svg>
+            In This $10K Checklist Guide
+          </span>
+          <svg id="mobile-toc-chevron" className="w-4 h-4 text-slate-400 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="mobile-toc-panel" className="mobile-toc-panel bg-white border border-t-0 border-[#F3E8EA] rounded-b-2xl shadow-sm">
+          <nav className="p-4 space-y-1">
+            {tocItems.map(item => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className="block text-sm font-medium text-slate-600 hover:text-[#B76E79] transition-colors py-1.5 pl-3 border-l-2 border-transparent hover:border-[#B76E79] rounded-r-lg"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </div>
+
+      {/* MAIN 2-COLUMN CONTENT GRID */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 flex-grow">
+        {/* STICKY SIDEBAR (LEFT) */}
+        <aside className="col-span-1 lg:col-span-4 xl:col-span-3 hidden lg:block">
+          <div className="sticky top-24 space-y-6">
+            {/* Dynamic Table of Contents */}
+            <div className="bg-white p-5 rounded-2xl border border-[#F3E8EA] shadow-sm">
+              <h3 className="font-bold text-xs text-[#1A1A1A] uppercase tracking-wider mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#B76E79] to-[#D4AF37]"></span>
+                Checklist Contents
+              </h3>
+              <nav id="sidebar-toc" className="space-y-0.5 text-xs font-semibold text-slate-600">
+                {tocItems.map(item => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className="toc-link block py-1.5 pl-3 rounded-r-lg"
+                    data-toc-id={item.id}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            {/* Interactive Dashboard Tool CTA Box */}
+            <div className="bg-gradient-to-br from-[#1A1A1A] via-slate-900 to-[#2d2d2d] text-white p-6 rounded-2xl text-center space-y-4 shadow-lg relative overflow-hidden">
+              <div className="absolute top-2 right-2 w-16 h-16 bg-[#B76E79]/10 rounded-full blur-xl"></div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] block">
+                Free Interactive Tool
+              </span>
+              <h4 className="font-bold text-sm leading-snug relative">Track This Checklist Live</h4>
+              <p className="text-[11px] text-slate-400 leading-relaxed relative">
+                Check off tasks, track RSVPs, log vendor deposits, and monitor your remaining balance in real time.
+              </p>
+              <a
+                href="/tools/wedding-planning-dashboard"
+                className="block w-full bg-gradient-to-r from-[#B76E79] to-[#a25d66] hover:from-[#a25d66] hover:to-[#B76E79] text-white py-2.5 rounded-xl text-xs font-bold transition-all shadow-md relative"
+              >
+                Open Live Dashboard →
+              </a>
+            </div>
+
+            {/* Budget Calculator Card */}
+            <div className="bg-white border border-[#F3E8EA] p-5 rounded-2xl shadow-sm space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="text-base">💰</span>
+                <h4 className="font-bold text-xs uppercase tracking-wider text-[#1A1A1A]">Budget Calculator</h4>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Run your custom figures, test alternative guest counts, and calculate per-head costs instantly.
+              </p>
+              <a
+                href="/tools/budget-calculator"
+                className="block text-center bg-[#FCECF0] hover:bg-[#B76E79] text-[#B76E79] hover:text-white font-bold py-2 rounded-xl text-xs transition-all"
+              >
+                Run Your Numbers →
+              </a>
+            </div>
+
+            {/* Quick Planning Tools Links */}
+            <div className="bg-white rounded-2xl border border-[#F3E8EA] p-5 shadow-sm space-y-3">
+              <h4 className="font-bold text-xs uppercase tracking-wider text-[#1A1A1A]">Planning Tools</h4>
+              <ul className="space-y-1.5 text-xs font-medium">
+                <li>
+                  <a
+                    href="/tools/guest-list-manager"
+                    className="text-slate-600 hover:text-[#B76E79] flex items-center justify-between py-1.5 border-b border-slate-100 transition-colors"
+                  >
+                    <span>👥 Guest List Manager</span>
+                    <span>→</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tools/budget-calculator"
+                    className="text-slate-600 hover:text-[#B76E79] flex items-center justify-between py-1.5 border-b border-slate-100 transition-colors"
+                  >
+                    <span>💰 Budget Calculator</span>
+                    <span>→</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tools/timeline-generator"
+                    className="text-slate-600 hover:text-[#B76E79] flex items-center justify-between py-1.5 border-b border-slate-100 transition-colors"
+                  >
+                    <span>📅 Timeline Generator</span>
+                    <span>→</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tools/wedding-countdown"
+                    className="text-slate-600 hover:text-[#B76E79] flex items-center justify-between py-1.5 transition-colors"
+                  >
+                    <span>⏰ Wedding Countdown</span>
+                    <span>→</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        {/* MAIN ARTICLE COLUMN (RIGHT) */}
+        <article className="col-span-1 lg:col-span-8 xl:col-span-9 space-y-10">
+          {/* QUICK ANSWER / SUMMARY BOX */}
+          <section
+            id="quick-overview"
+            className="relative bg-gradient-to-r from-[#FCECF0] via-white to-[#FCECF0]/50 border border-[#F3E8EA] p-6 sm:p-8 rounded-2xl shadow-sm"
+          >
+            <div className="flex items-start gap-3">
+              <div className="shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center shadow-sm">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div className="space-y-2">
+                <h3 className="font-bold text-sm text-[#1A1A1A] uppercase tracking-wider">Quick Overview</h3>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                  A $10,000 wedding budget sounds tight until you break it into categories. This checklist shows exactly where each dollar should go, what trade-offs actually matter, and how to protect your budget from the surprise costs that catch most couples off guard. Pair it with the free{' '}
+                  <a href="/tools/budget-calculator" className="text-[#B76E79] font-bold underline hover:text-[#9c5963]">
+                    wedding budget calculator
+                  </a>{' '}
+                  to run your own numbers before you book a single vendor.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* KEY TAKEAWAYS */}
+          <section
+            id="key-takeaways"
+            className="bg-white border border-[#F3E8EA] p-6 sm:p-8 rounded-2xl shadow-sm space-y-4 relative overflow-hidden"
+          >
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#B76E79] via-[#D4AF37] to-[#B76E79]"></div>
+            <h3 className="font-bold text-sm text-[#1A1A1A] uppercase tracking-wider flex items-center gap-2 pl-4">
+              <span className="text-[#D4AF37] text-lg">⚡</span> Key Takeaways & Planning Rules
+            </h3>
+            <ul className="space-y-3 pl-4 text-sm text-slate-700 font-medium">
+              <li className="flex items-start gap-3">
+                <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-bold">
+                  ✓
+                </span>
+                <span className="leading-relaxed">
+                  <strong>Guest Count Lever:</strong> Keeping guests to 50–75 makes a $10,000 budget fully achievable without compromise.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-bold">
+                  ✓
+                </span>
+                <span className="leading-relaxed">
+                  <strong>Venue & Catering:</strong> Allocated at 40% ($4,000). Backyards, parks, or restaurant rooms paired with buffet catering keep you safe.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-bold">
+                  ✓
+                </span>
+                <span className="leading-relaxed">
+                  <strong>Photography Coverage:</strong> 12% ($1,200) secures 5–6 hours of high-quality coverage and digital delivery.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-bold">
+                  ✓
+                </span>
+                <span className="leading-relaxed">
+                  <strong>Non-Negotiable Buffer:</strong> Maintain the 7% ($700) contingency buffer untouched until the final month for gratuities and surprise fees.
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          {/* LUXURY ARTICLE CONTENT CONTAINER */}
+          <div className="article-content">
+            {/* SECTION 1: How Far $10,000 Really Goes */}
+            <section id="how-far-it-goes">
+              <h2>How Far $10,000 Really Goes</h2>
+              <p>
+                At this price point, guest count is the single biggest lever you control. A wedding for 50 to 75 guests keeps a $10,000 wedding budget realistic; every ten guests you add pulls roughly $150 to $250 out of every other category, since catering and rentals scale per head. A backyard, park, or non-traditional venue, a buffet-style meal, and an off-peak date such as a weekday, Friday, or a date between January and March are the three decisions that make or break a wedding at this price point.
+              </p>
+              <blockquote>
+                &quot;Guest count dictates 60% to 70% of total wedding overhead. Lock your headcount before touring venues or requesting catering proposals.&quot;
+              </blockquote>
+            </section>
+
+            {/* SECTION 2: Guest Count and Venue Type Guide */}
+            <section id="guest-count-venue">
+              <h2>Guest Count and Venue Type Guide</h2>
+              <p>
+                A backyard or family property with 50 guests leaves the most room in every other category, since venue rental drops close to zero. A rented event space or restaurant private room with 60 to 75 guests still fits comfortably inside the 40% venue-and-catering allocation if the meal stays buffet-style. Pushing past 90 guests at this budget usually forces cuts to photography or flowers to keep the math balanced, so it is worth reviewing the guest list before booking anything.
+              </p>
+              <p>
+                If you are evaluating venue types, compare notes with our specialized{' '}
+                <a href="/checklists/backyard-wedding-checklist">backyard or private estate checklist</a> or review our{' '}
+                <a href="/checklists/intimate-small-wedding-checklist">small or intimate wedding checklist</a>. Before making final decisions, test different attendance scenarios in our interactive{' '}
+                <a href="/tools/guest-list-manager">Guest List Manager</a> to see exact headcount impacts.
+              </p>
+              <figure>
+                <img
+                  src="/backyard-wedding-60-guests.jpg"
+                  alt="Backyard wedding reception setup for 60 guests on a small budget"
+                  loading="lazy"
+                />
+                <figcaption className="text-center text-xs text-slate-500 mt-2 italic">
+                  Backyard wedding reception setup for 60 guests on a small budget with wooden tables and warm overhead bistro lighting.
+                </figcaption>
+              </figure>
+            </section>
+
+            {/* SECTION 3: Budget Breakdown by Category */}
+            <section id="budget-breakdown">
+              <h2>Budget Breakdown by Category</h2>
+              <p>
+                This breakdown maps every dollar of a ten-thousand-dollar wedding budget to a specific category so nothing gets forgotten until the week before the wedding.
+              </p>
+              <figure className="my-6">
+                <img
+                  src="/10k-wedding-budget-breakdown-chart.jpg"
+                  alt="Pie chart breakdown of a $10,000 wedding budget by category"
+                  className="max-w-md mx-auto block"
+                  loading="lazy"
+                />
+                <figcaption className="text-center text-xs text-slate-500 mt-2 italic">
+                  Pie chart breakdown of a $10,000 wedding budget by category showing proportion allocations.
+                </figcaption>
+              </figure>
+
+              {/* Budget Breakdown Table */}
+              <table>
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th style={{ textAlign: 'center' }}>% of Budget</th>
+                    <th style={{ textAlign: 'right' }}>Amount</th>
+                    <th>What&apos;s Included</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {budgetTable.map((item, idx) => (
+                    <tr key={idx}>
+                      <td>
+                        <strong>{item.category}</strong>
+                      </td>
+                      <td style={{ textAlign: 'center' }}>
+                        <span className="inline-block bg-[#FCECF0] text-[#B76E79] font-bold px-2.5 py-0.5 rounded-full text-xs">
+                          {item.percent}
+                        </span>
+                      </td>
+                      <td style={{ textAlign: 'right', fontWeight: 700, color: '#1A1A1A' }}>{item.amount}</td>
+                      <td style={{ fontSize: '0.85rem', color: '#475569' }}>{item.details}</td>
+                    </tr>
+                  ))}
+                  <tr style={{ background: '#FCECF0', fontWeight: 800, borderTop: '2px solid #B76E79' }}>
+                    <td>
+                      <strong>Total</strong>
+                    </td>
+                    <td style={{ textAlign: 'center' }}>
+                      <strong>100%</strong>
+                    </td>
+                    <td style={{ textAlign: 'right', color: '#B76E79', fontSize: '1.05rem' }}>
+                      <strong>$10,000</strong>
+                    </td>
+                    <td style={{ fontSize: '0.85rem', fontWeight: 600 }}>Full 10-category breakdown</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>
+                These percentages are a starting framework, not a rulebook. Shift three to five percent between categories based on what matters most to you. A splurge-worthy photographer, for example, might justify trimming the flowers and decor line.
+              </p>
+            </section>
+
+            {/* SECTION 4: Step-by-Step */}
+            <section id="step-by-step">
+              <h2>Step-by-Step: How to Build This Budget</h2>
+              <ol>
+                <li>
+                  <strong>Set your guest count before anything else.</strong> Build a realistic list first, since every category above scales off this number. Use the{' '}
+                  <a href="/tools/guest-list-manager">Guest List Manager</a> to separate must-have attendees from extended lists.
+                </li>
+                <li>
+                  <strong>Choose a venue that doesn&apos;t require a separate catering minimum.</strong> Backyards, parks, community halls, and family properties usually cost far less than dedicated wedding venues with required vendor lists.
+                </li>
+                <li>
+                  <strong>Pick a buffet or family-style meal over plated service.</strong> Plated dinners typically run fifteen to twenty-five dollars more per guest once staffing is included.
+                </li>
+                <li>
+                  <strong>Book vendors in priority order, not calendar order.</strong> Lock in the venue and catering first, since together they consume forty percent of the budget, then move to photography.
+                </li>
+                <li>
+                  <strong>Log every deposit and payment the same day you make it.</strong> Small overages compound quickly on a fixed budget. Track line items directly in the{' '}
+                  <a href="/tools/budget-calculator">wedding budget calculator</a>.
+                </li>
+                <li>
+                  <strong>Protect the seven percent contingency buffer until the final month.</strong> Nearly every wedding under $10,000 has one cost nobody planned for.
+                </li>
+              </ol>
+
+              <figure>
+                <img
+                  src="/wedding-budget-checklist-pen-checkmarks.jpg"
+                  alt="Hand checking off items on a printed $10,000 wedding budget checklist"
+                  loading="lazy"
+                />
+                <figcaption className="text-center text-xs text-slate-500 mt-2 italic">
+                  Hand checking off items on a printed $10,000 wedding budget checklist.
+                </figcaption>
+              </figure>
+            </section>
+
+            {/* SECTION 5: Smart Ways to Stretch This Budget */}
+            <section id="stretch-budget">
+              <h2>Smart Ways to Stretch This Budget</h2>
+              <p>
+                Trimming dollars does not require sacrificing atmosphere. For an in-depth collection of cost-cutting ideas, read our guide on{' '}
+                <a href="/blog/wedding-budget-tips">budget-saving wedding tips</a>. Keep these key approaches in mind:
+              </p>
+              <ul>
+                <li>
+                  <strong>Venue:</strong> consider a backyard, public park, or a family property to eliminate the largest line item entirely.
+                </li>
+                <li>
+                  <strong>Catering:</strong> a buffet, food truck, or family-style dinner cuts per-guest costs compared with a plated meal.
+                </li>
+                <li>
+                  <strong>Photography:</strong> book a newer photographer for five to six hours instead of a full-day package with a second shooter.
+                </li>
+                <li>
+                  <strong>Attire:</strong> sample sales, gently-used dresses, and suit rentals routinely cut this category by half.
+                </li>
+                <li>
+                  <strong>Flowers:</strong> lean on greenery, candles, and in-season blooms instead of imported flowers.
+                </li>
+                <li>
+                  <strong>Guest count:</strong> every ten guests removed frees up roughly $150 to $250 for other categories.
+                </li>
+                <li>
+                  <strong>Season and day:</strong> a Friday, Sunday, or weekday date in the off-peak season, typically January through March, can lower venue and catering rates significantly.
+                </li>
+              </ul>
+
+              <figure>
+                <img
+                  src="/buffet-style-wedding-catering-budget.jpg"
+                  alt="Buffet-style wedding catering setup that helps stretch a $10,000 budget"
+                  loading="lazy"
+                />
+                <figcaption className="text-center text-xs text-slate-500 mt-2 italic">
+                  Buffet-style wedding catering setup that helps stretch a $10,000 budget.
+                </figcaption>
+              </figure>
+            </section>
+
+            {/* SECTION 6: $10,000 vs. Other Budget Tiers */}
+            <section id="budget-tiers">
+              <h2>$10,000 vs. Other Budget Tiers</h2>
+              <p>
+                This tier works best for an intimate guest list and a non-traditional venue. If your guest count or expectations outgrow it, the{' '}
+                <a href="/checklists/wedding-budget-calculator-20k">$20,000 Wedding Budget Checklist</a> allows for a plated dinner and full-day photography. The{' '}
+                <a href="/checklists/wedding-budget-calculator-30k">$30,000 Budget Checklist</a> and the{' '}
+                <a href="/checklists/wedding-budget-calculator-50k">$50,000+ Luxury Checklist</a> add room for a dedicated venue, a larger guest list, and premium vendors across every category.
+              </p>
+            </section>
+
+            {/* SECTION 7: Common Budget Mistakes */}
+            <section id="common-mistakes">
+              <h2>Common Budget Mistakes at the $10,000 Level</h2>
+              <p>Couples planning under $10,000 frequently face unexpected costs when navigating contracts:</p>
+              <div className="space-y-3 not-prose my-6">
+                <div className="bg-rose-50/70 border border-rose-200/80 p-5 rounded-2xl flex items-start gap-3">
+                  <span className="text-rose-500 font-bold text-lg leading-none">⚠️</span>
+                  <div className="space-y-1">
+                    <h4 className="font-bold text-sm text-rose-950 m-0">Booking a venue with a hidden food and beverage minimum.</h4>
+                    <p className="text-xs text-rose-900 leading-relaxed m-0">
+                      Always verify if minimum dining thresholds apply on peak days or holiday weekends.
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-rose-50/70 border border-rose-200/80 p-5 rounded-2xl flex items-start gap-3">
+                  <span className="text-rose-500 font-bold text-lg leading-none">⚠️</span>
+                  <div className="space-y-1">
+                    <h4 className="font-bold text-sm text-rose-950 m-0">Skipping the contingency buffer to afford a bigger guest list.</h4>
+                    <p className="text-xs text-rose-900 leading-relaxed m-0">
+                      Spending your $700 buffer upfront leaves zero breathing room for day-of extras or unexpected alterations.
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-rose-50/70 border border-rose-200/80 p-5 rounded-2xl flex items-start gap-3">
+                  <span className="text-rose-500 font-bold text-lg leading-none">⚠️</span>
+                  <div className="space-y-1">
+                    <h4 className="font-bold text-sm text-rose-950 m-0">Choosing plated service without pricing buffet first.</h4>
+                    <p className="text-xs text-rose-900 leading-relaxed m-0">
+                      Plated courses require high server-to-guest ratios and dish rentals that add $1,500+ quickly.
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-rose-50/70 border border-rose-200/80 p-5 rounded-2xl flex items-start gap-3">
+                  <span className="text-rose-500 font-bold text-lg leading-none">⚠️</span>
+                  <div className="space-y-1">
+                    <h4 className="font-bold text-sm text-rose-950 m-0">Forgetting service fees, gratuity, and sales tax when comparing vendor quotes.</h4>
+                    <p className="text-xs text-rose-900 leading-relaxed m-0">
+                      Service charges and taxes can add 25% to 30% on top of quoted food and beverage rates.
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-rose-50/70 border border-rose-200/80 p-5 rounded-2xl flex items-start gap-3">
+                  <span className="text-rose-500 font-bold text-lg leading-none">⚠️</span>
+                  <div className="space-y-1">
+                    <h4 className="font-bold text-sm text-rose-950 m-0">Adding guests after the budget is already locked.</h4>
+                    <p className="text-xs text-rose-900 leading-relaxed m-0">
+                      Each added guest adds catering, chair rental, and favor costs that quickly exceed your cap.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 8: Pro Tips */}
+            <section id="pro-tips">
+              <h2>Pro Tips for Using This Checklist</h2>
+              <ul>
+                <li>
+                  <strong>Set clear priorities.</strong> Dedicate sixty percent of your initial planning time to the venue, caterer, and photographer, since these three vendors are hardest to change later.
+                </li>
+                <li>
+                  <strong>Keep budgets updated.</strong> Log every deposit immediately in the{' '}
+                  <a href="/tools/budget-calculator">wedding budget calculator</a> to prevent overages.
+                </li>
+                <li>
+                  <strong>Delegate tasks.</strong> Assign specific checklist items to your partner or wedding party using the{' '}
+                  <a href="/tools/wedding-planning-dashboard">Wedding Planning Dashboard</a>.
+                </li>
+                <li>
+                  <strong>Revisit percentages quarterly.</strong> Rebalance categories as real vendor quotes come in. The framework above is a starting point, not a contract.
+                </li>
+              </ul>
+              <blockquote>
+                A $10,000 wedding is a realistic, well-planned celebration, not a compromise. Open the{' '}
+                <a href="/tools/budget-calculator">Budget Calculator</a> to plug in your own numbers, or explore the{' '}
+                <a href="/tools/wedding-planning-dashboard">Wedding Planning Dashboard</a> to track every deposit in real time. For a high-level timeline framework, consult our foundational{' '}
+                <a href="/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding">
+                  Wedding Planning Checklist guide
+                </a>
+                .
+              </blockquote>
+            </section>
+          </div>
+
+          {/* FAQ ACCORDION SECTION */}
+          <section id="faqs" className="pt-10 border-t border-[#F3E8EA] space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center shadow-sm">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Frequently Asked Questions
+              </h2>
+            </div>
+            <div className="space-y-3" id="faq-list">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-white border border-[#F3E8EA] rounded-2xl shadow-sm hover:shadow-md transition-all overflow-hidden faq-item"
+                  data-faq-index={index}
+                >
+                  <button
+                    className="w-full flex items-center justify-between p-5 sm:p-6 text-left cursor-pointer faq-toggle"
+                    aria-expanded="false"
+                  >
+                    <h3 className="font-bold text-sm sm:text-base text-[#1A1A1A] pr-4 flex items-center gap-2">
+                      <span className="shrink-0 w-7 h-7 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-extrabold">
+                        Q
+                      </span>
+                      {faq.q}
+                    </h3>
+                    <svg className="w-5 h-5 text-[#B76E79] shrink-0 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
+                  <div className="faq-answer">
+                    <p className="text-sm text-slate-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* AUTHOR BOX */}
+          <section id="author" className="bg-white border border-[#F3E8EA] p-6 sm:p-8 rounded-2xl shadow-sm relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#B76E79] via-[#D4AF37] to-[#B76E79]"></div>
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 pt-2">
+              <div className="shrink-0">
+                <div
+                  className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-[#FCECF0] shadow-sm bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center font-bold text-2xl"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  SJ
+                </div>
+              </div>
+              <div className="space-y-2 text-center sm:text-left">
+                <h3 className="font-bold text-lg text-[#1A1A1A]">Written by Sarah Jenkins</h3>
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                  <span className="text-[10px] font-bold text-white bg-gradient-to-r from-[#B76E79] to-[#a25d66] px-3 py-1 rounded-full uppercase tracking-wider">
+                    Certified Wedding Planner
+                  </span>
+                  <span className="text-[10px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3 py-1 rounded-full uppercase tracking-wider">
+                    Budget Specialist
+                  </span>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed max-w-lg">
+                  Sarah Jenkins has guided hundreds of couples through transparent, stress-free wedding planning. Specializing in intimate celebrations and budget allocation, she provides practical tools so couples can host beautiful weddings debt-free.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* RELATED CHECKLISTS GRID */}
+          <section className="pt-10 border-t border-[#F3E8EA] space-y-6">
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <h2 className="text-2xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Related Planning Checklists
+              </h2>
+              <a href="/#categorized-checklists" className="text-xs font-bold text-[#B76E79] hover:underline">
+                View All Checklists →
+              </a>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              {relatedChecklists.map(item => (
+                <a
+                  key={item.slug}
+                  href={`/checklists/${item.slug}`}
+                  className="bg-white rounded-2xl p-4 border border-[#F3E8EA] shadow-sm hover:border-[#B76E79]/40 hover:shadow-md transition-all group"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-base">{item.icon}</span>
+                    <span className="text-[10px] font-bold text-[#B76E79] uppercase">{item.category}</span>
+                  </div>
+                  <h3 className="font-bold text-xs text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+                </a>
+              ))}
+            </div>
+          </section>
+        </article>
+      </div>
+
+      {/* SOCIAL SHARE FLOATING BAR */}
+      <div id="social-share" className="social-share-bar hidden lg:flex">
+        <a
+          href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.weddingplanningchecklists.org%2Fchecklists%2Fwedding-budget-calculator-10k&text=%2410%2C000%20Wedding%20Budget%20Checklist%20%26%20Breakdown%20(2026)"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="share-btn"
+          title="Share on Twitter"
+        >
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+          </svg>
+        </a>
+        <a
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.weddingplanningchecklists.org%2Fchecklists%2Fwedding-budget-calculator-10k"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="share-btn"
+          title="Share on Facebook"
+        >
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+          </svg>
+        </a>
+        <a
+          href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.weddingplanningchecklists.org%2Fchecklists%2Fwedding-budget-calculator-10k&description=%2410%2C000%20Wedding%20Budget%20Checklist%20%26%20Breakdown%20(2026)"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="share-btn"
+          title="Share on Pinterest"
+        >
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641 0 12.017 0z"></path>
+          </svg>
+        </a>
+        <button className="share-btn cursor-pointer" title="Copy Link" id="copy-link-btn">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      {/* BACK TO TOP BUTTON */}
+      <button id="back-to-top" className="back-to-top cursor-pointer" title="Back to top" aria-label="Scroll to top">
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+      </button>
+
+      <BlogArticleClient />
+
+      <Footer lang={DEFAULT_LANGUAGE} />
+    </div>
+  );
+}

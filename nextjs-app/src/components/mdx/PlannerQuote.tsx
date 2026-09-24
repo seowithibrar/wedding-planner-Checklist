@@ -1,0 +1,31 @@
+import React from 'react';
+
+export interface PlannerQuoteProps {
+  author?: string;
+  role?: string;
+  children: React.ReactNode;
+}
+
+export default function PlannerQuote({
+  author = 'Certified Wedding Planner',
+  role = 'Wedding Industry Expert',
+  children,
+}: PlannerQuoteProps) {
+  return (
+    <blockquote className="bg-gradient-to-r from-[#FCECF0] via-white to-transparent p-6 sm:p-8 rounded-3xl border-l-4 border-[#B76E79] my-10 shadow-sm relative space-y-4">
+      <div className="text-3xl text-[#B76E79] font-serif leading-none">“</div>
+      <div className="text-sm sm:text-base text-slate-800 font-medium italic leading-relaxed">
+        {children}
+      </div>
+      <div className="pt-2 border-t border-[#F3E8EA] flex items-center gap-3">
+        <div className="w-8 h-8 rounded-full bg-[#B76E79] text-white font-bold flex items-center justify-center text-xs">
+          {author.charAt(0)}
+        </div>
+        <div>
+          <h4 className="font-bold text-xs text-[#1A1A1A]">{author}</h4>
+          <p className="text-[10px] text-slate-500 font-semibold uppercase">{role}</p>
+        </div>
+      </div>
+    </blockquote>
+  );
+}

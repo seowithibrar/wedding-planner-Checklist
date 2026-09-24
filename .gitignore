@@ -3,6 +3,7 @@ build/
 dist/
 .vercel/
 .astro/
+.next/
 coverage/
 .DS_Store
 *.log

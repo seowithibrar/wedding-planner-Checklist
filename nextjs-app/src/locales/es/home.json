@@ -1,0 +1,34 @@
+{
+  "seo": {
+    "title": "Listas de Verificación de Bodas y Herramientas Interactivas (2026)",
+    "description": "La lista definitiva mes a mes para planificar tu boda y 14 herramientas interactivas gratuitas: gestor de invitados, calculadora de presupuesto y cronogramas."
+  },
+  "hero": {
+    "badge": "La Experiencia Definitiva de Planificación",
+    "title": "Listas de Verificación de Bodas para",
+    "titleHighlight": "Tu Gran Día",
+    "subtitle": "¡Bienvenido! Hemos creado una suite completa de herramientas para ayudarte a gestionar invitados, presupuestos y proveedores sin estrés.",
+    "ctaPrimary": "Comenzar a Planificar Ahora",
+    "ctaSecondary": "Explorar 14+ Herramientas"
+  },
+  "features": {
+    "title": "Suite de Planificación Interactiva",
+    "subtitle": "Todo lo necesario para organizar la boda de tus sueños desde el compromiso hasta la fiesta.",
+    "toolsBadge": "Herramientas Interactivas"
+  },
+  "checklistsSection": {
+    "badge": "Listas Verificadas",
+    "title": "Listas de Verificación por Cronograma",
+    "subtitle": "Listas maestras paso a paso elaboradas por profesionales de bodas para cada duración de tiempo."
+  },
+  "blogSection": {
+    "badge": "Guías de Expertos",
+    "title": "Últimas Guías de Boda y Cronogramas",
+    "subtitle": "Consejos en profundidad, coordinación de proveedores e inspiración de estilismo nupcial."
+  },
+  "faqSection": {
+    "badge": "Ayuda y Orientación",
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Respuestas inmediatas a las principales preguntas sobre presupuestos, cronogramas y proveedores."
+  }
+}

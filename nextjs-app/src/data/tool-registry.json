@@ -1,0 +1,12 @@
+{
+  "tools": [
+    { "id": "budget-calculator", "title": "Wedding Budget Calculator", "description": "Estimate your wedding expenses across venue, catering, photography, and more.", "href": "/tools/budget-calculator", "icon": "calculator", "category": "Budget" },
+    { "id": "timeline-generator", "title": "Day-of Timeline Generator", "description": "Generate a customized day-of wedding schedule based on your ceremony time.", "href": "/tools/timeline-generator", "icon": "clock", "category": "Timeline" },
+    { "id": "guest-list-manager", "title": "Guest List Manager", "description": "Track RSVPs, meal preferences, seating, and plus-ones in one place.", "href": "/tools/guest-list-manager", "icon": "users", "category": "Guests" },
+    { "id": "wedding-checklist-generator", "title": "Wedding Checklist Generator", "description": "Generate a personalized wedding checklist based on your date and preferences.", "href": "/tools/wedding-checklist-generator", "icon": "check-square", "category": "Tasks" },
+    { "id": "wedding-planning-timeline", "title": "Wedding Planning Timeline", "description": "Visual milestone timeline mapped to months before your wedding date.", "href": "/tools/wedding-planning-timeline", "icon": "git-branch", "category": "Timeline" },
+    { "id": "wedding-planning-calendar", "title": "Wedding Planning Calendar", "description": "Multi-view planning calendar for scheduling vendor meetings, fittings, and daily events.", "href": "/tools/wedding-planning-calendar", "icon": "calendar", "category": "Calendar" },
+    { "id": "wedding-countdown", "title": "Wedding Countdown", "description": "Live countdown timer to your wedding day with milestone markers.", "href": "/tools/wedding-countdown", "icon": "timer", "category": "Timeline" },
+    { "id": "wedding-planning-dashboard", "title": "Wedding Planning Dashboard", "description": "Central hub with at-a-glance stats, milestone tracker, progress breakdown, and tool links.", "href": "/tools/wedding-planning-dashboard", "icon": "grid", "category": "Dashboard" }
+  ]
+}

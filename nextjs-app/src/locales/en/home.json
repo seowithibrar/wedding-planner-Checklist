@@ -1,0 +1,34 @@
+{
+  "seo": {
+    "title": "Wedding Planning Checklist, Timelines & Free Tools",
+    "description": "Free wedding planning checklist, step-by-step guide, budget calculator & 14 planning tools. Timelines for every stage, incl. Pakistani & Indian weddings."
+  },
+  "hero": {
+    "badge": "Free Wedding Planning Guide & Tools",
+    "title": "Wedding Planning Checklist – Free Wedding Planning Guide, Timelines, Budget Calculator & Tools",
+    "titleHighlight": "Tools",
+    "subtitle": "Wedding planning does not have to feel overwhelming. WeddingPlanningChecklists.org gives engaged couples a free wedding planning checklist, a complete step-by-step wedding planning guide, and a full library of interactive wedding planning tools built to answer one question at every stage: what do I do next?",
+    "ctaPrimary": "Download Free Checklist PDF",
+    "ctaSecondary": "Explore 14 Interactive Tools"
+  },
+  "features": {
+    "title": "Interactive Planning Suite",
+    "subtitle": "Everything you need to orchestrate your dream wedding from engagement to reception.",
+    "toolsBadge": "Interactive Tools"
+  },
+  "checklistsSection": {
+    "badge": "Verified Checklists",
+    "title": "Wedding Planning Checklists by Timeline",
+    "subtitle": "Step-by-step master checklists curated by wedding professionals for every planning duration."
+  },
+  "blogSection": {
+    "badge": "Expert Guides",
+    "title": "Latest Wedding Guides & Timelines",
+    "subtitle": "In-depth advice, vendor coordination strategies, and bridal styling inspiration."
+  },
+  "faqSection": {
+    "badge": "Help & Guidance",
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find immediate answers to top questions about wedding budgets, timelines, and vendor coordination."
+  }
+}

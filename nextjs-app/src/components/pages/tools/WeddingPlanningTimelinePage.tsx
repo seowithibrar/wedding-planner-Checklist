@@ -1,0 +1,837 @@
+import React from 'react';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import { PlanningTimeline } from '@/components/tools/PlanningTimeline';
+import { AccordionFaqList } from '@/components/ui/AccordionFaqList';
+
+
+export const seo = {
+  title: "Wedding Planning Timeline Tool | Free Month-by-Month Guide",
+  description: "Plan your wedding month by month with our free Wedding Planning Timeline tool. Enter your date and get a personalized, printable schedule.",
+  canonical: "https://www.weddingplanningchecklists.org/tools/wedding-planning-timeline",
+  image: "/wedding-timeline-dashboard.png"
+};
+
+const breadcrumbItems = [
+  { name: 'Home', item: 'https://www.weddingplanningchecklists.org' },
+  { name: 'Planning Tools', item: `${'https://www.weddingplanningchecklists.org'}/tools/wedding-planning-dashboard` },
+  { name: 'Wedding Planning Timeline', item: seo.canonical }
+];
+
+export const faqs = [
+  {
+    q: 'How far in advance should you start planning a wedding?',
+    a: 'Most couples start planning 12 months before the wedding, though popular venues and vendors are often easier to book with 14 to 18 months of lead time, especially for weddings during peak season.'
+  },
+  {
+    q: 'What is the first thing to do on a wedding planning timeline?',
+    a: 'Setting your overall budget comes first, since it directly shapes decisions about guest count, venue, and vendors that follow.'
+  },
+  {
+    q: 'Can I use this timeline for a shorter engagement?',
+    a: 'Yes. A 6-month or 3-month version uses the same core tasks as a longer timeline, just compressed into a faster sequence with less time between each deadline.'
+  },
+  {
+    q: 'Is there a difference between a wedding planning timeline and a wedding day timeline?',
+    a: 'Yes. A wedding planning timeline covers the entire engagement, from booking your venue to the final week before the wedding. A wedding day timeline is a separate, hour-by-hour schedule for the wedding day itself.'
+  },
+  {
+    q: 'Does a wedding planning timeline work for destination weddings?',
+    a: 'The same month-by-month structure applies, though destination weddings typically benefit from starting earlier to account for travel logistics, guest planning, and vendor communication across time zones.'
+  }
+];
+
+const combinedSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      'name': 'Wedding Planning Timeline',
+      'url': seo.canonical,
+      'applicationCategory': 'LifestyleApplication',
+      'operatingSystem': 'Any (Web-based)',
+      'description': 'A free interactive tool that generates a personalized, month-by-month wedding planning timeline based on the user\'s wedding date.',
+      'isPartOf': {
+        '@type': 'WebSite',
+        'name': 'WeddingPlanningChecklists.org',
+        'url': 'https://www.weddingplanningchecklists.org'
+      },
+      'offers': {
+        '@type': 'Offer',
+        'price': '0',
+        'priceCurrency': 'USD'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      'mainEntity': faqs.map(faq => ({
+        '@type': 'Question',
+        'name': faq.q,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': faq.a
+        }
+      }))
+    },
+    {
+      '@type': 'BreadcrumbList',
+      'itemListElement': breadcrumbItems.map((crumb, idx) => ({
+        '@type': 'ListItem',
+        'position': idx + 1,
+        'name': crumb.name,
+        'item': crumb.item
+      }))
+    }
+  ]
+});;
+
+export default function WeddingPlanningTimelinePage() {
+  return (
+    <div className="min-h-screen flex flex-col bg-white">
+      {typeof combinedSchema !== 'undefined' && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: typeof combinedSchema === 'string' ? combinedSchema : JSON.stringify(combinedSchema)
+          }}
+        />
+      )}
+      <Header lang="en" />
+      <div className="flex-grow">
+        <main>
+    {/* Breadcrumb Navigation */}
+    <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6" aria-label="Breadcrumb">
+      <ol className="flex flex-wrap items-center gap-1.5 text-xs text-slate-400">
+        {breadcrumbItems.map((crumb, idx) => (
+          <li className="flex items-center gap-1.5">
+            {idx > 0 && <span aria-hidden="true" className="text-slate-300">/</span>}
+            {idx === breadcrumbItems.length - 1 ? (
+              <span className="font-semibold text-[#B76E79]">{crumb.name}</span>
+            ) : (
+              <a href={crumb.item} className="hover:text-[#B76E79] transition-colors">{crumb.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    {/* Hero Section */}
+    <section className="pt-8 pb-12 lg:pt-12 lg:pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
+        <span className="inline-block bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+          Free Planning Tool
+        </span>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1A1A1A] leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+          Wedding Planning <span className="text-[#B76E79]">Timeline</span>
+        </h1>
+        <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+          Planning a wedding involves hundreds of small decisions, and it's easy to lose track of what should happen when. The Wedding Planning Timeline tool gives you a clear, month-by-month schedule that breaks the entire process into manageable stages, from the day you get engaged to the morning of the wedding. Instead of guessing whether you should be booking your venue or finalizing your seating chart, you'll always know exactly what task comes next. This page walks through how the tool works, what a realistic wedding planning timeline looks like, and how to choose the right length for your engagement.
+        </p>
+      </div>
+
+      {/* Hero Visual */}
+      <div className="max-w-4xl mx-auto mb-10">
+        <img
+          src="/wedding-timeline-dashboard.png"
+          alt="Interactive Wedding Planning Timeline dashboard showing month-by-month milestones"
+          className="w-full rounded-2xl shadow-lg border border-[#F3E8EA] object-cover"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+        <p className="text-center text-xs text-slate-500 mt-2 italic">
+          Interactive month-by-month planning timeline with milestone dates and completion status tracking.
+        </p>
+      </div>
+
+      {/* React Interactive Tool Island */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-6 text-center text-slate-600 text-sm leading-relaxed">
+        Select your wedding date below to automatically map out your customized milestones and tasks. Your progress is tracked dynamically as you complete each planning stage.
+      </div>
+      <PlanningTimeline lang="en" />
+    </section>
+
+    {/* Content Guide Section */}
+    <section className="py-12 bg-gradient-to-b from-white via-[#FCECF0]/20 to-white border-t border-[#F3E8EA]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+        {/* Quick Answer Box */}
+        <div className="relative bg-gradient-to-r from-[#FCECF0] via-white to-[#FCECF0]/50 border border-[#F3E8EA] p-6 sm:p-8 rounded-2xl shadow-sm">
+          <div className="flex items-start gap-3.5">
+            <div className="shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center shadow-sm">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div className="space-y-2">
+              <h2 className="font-bold text-sm text-[#1A1A1A] uppercase tracking-wider">Quick Answer: What Is a Wedding Planning Timeline?</h2>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                A wedding planning timeline is a chronological roadmap that organizes every wedding task by realistic milestone windows, counting backward from your wedding day. Rather than leaving you with an unorganized to-do list, it establishes strict operational deadlines for venue contracts, vendor deposits, attire fittings, and RSVP deadlines so decisions are made with zero panic and optimal budget control.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Key Takeaways */}
+        <div className="bg-white border border-[#F3E8EA] p-6 sm:p-8 rounded-2xl shadow-sm space-y-4 relative overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#B76E79] via-[#D4AF37] to-[#B76E79]"></div>
+          <h3 className="font-bold text-sm text-[#1A1A1A] uppercase tracking-wider flex items-center gap-2 pl-4">
+            <span className="text-[#D4AF37] text-lg">⚡</span> Key Takeaways for Couples
+          </h3>
+          <ul className="space-y-3 pl-4 text-xs sm:text-sm text-slate-700 font-medium">
+            <li className="flex items-start gap-3">
+              <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-bold">✓</span>
+              <span className="leading-relaxed"><strong>Financial Anchor First:</strong> Your total budget and guest count dictate every downstream timeline booking, starting at 12+ months out.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-bold">✓</span>
+              <span className="leading-relaxed"><strong>Sequencing by Demand:</strong> High-demand vendors (photographers, caterers, venues) must be contracted 9–11 months before smaller details like cake tastings and favors.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-bold">✓</span>
+              <span className="leading-relaxed"><strong>Engagement Flexibility:</strong> While 12 months is standard, 18-month, 14-month, 6-month, and 3-month schedules follow the exact same logical order in compressed intervals.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-bold">✓</span>
+              <span className="leading-relaxed"><strong>Live Sync:</strong> Pairing your timeline with a central <a href="/tools/wedding-planning-dashboard" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Wedding Planning Dashboard</a> keeps your calendar, budget, and checklists aligned.</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Table of Contents */}
+        <nav className="bg-white border border-[#F3E8EA] p-6 rounded-2xl shadow-sm space-y-3" aria-label="Table of Contents">
+          <span className="text-xs font-bold text-[#B76E79] uppercase tracking-wider block">Jump to Section</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+            <a href="#what-is-timeline" className="text-slate-600 hover:text-[#B76E79] flex items-center gap-2 py-1">
+              <span className="text-[#B76E79] font-bold">1.</span> What Is a Wedding Planning Timeline?
+            </a>
+            <a href="#how-to-use-tool" className="text-slate-600 hover:text-[#B76E79] flex items-center gap-2 py-1">
+              <span className="text-[#B76E79] font-bold">2.</span> How to Use the Timeline Tool
+            </a>
+            <a href="#timeline-by-month" className="text-slate-600 hover:text-[#B76E79] flex items-center gap-2 py-1">
+              <span className="text-[#B76E79] font-bold">3.</span> Wedding Planning Timeline by Month
+            </a>
+            <a href="#timeline-lengths" className="text-slate-600 hover:text-[#B76E79] flex items-center gap-2 py-1">
+              <span className="text-[#B76E79] font-bold">4.</span> Choosing the Right Timeline Length
+            </a>
+            <a href="#timeline-template-pdf" className="text-slate-600 hover:text-[#B76E79] flex items-center gap-2 py-1">
+              <span className="text-[#B76E79] font-bold">5.</span> Free Timeline Template and PDF
+            </a>
+            <a href="#tips-to-stay-on-track" className="text-slate-600 hover:text-[#B76E79] flex items-center gap-2 py-1">
+              <span className="text-[#B76E79] font-bold">6.</span> Tips to Stay on Track
+            </a>
+            <a href="#faqs" className="text-slate-600 hover:text-[#B76E79] flex items-center gap-2 py-1">
+              <span className="text-[#B76E79] font-bold">7.</span> Frequently Asked Questions
+            </a>
+            <a href="#start-timeline-today" className="text-slate-600 hover:text-[#B76E79] flex items-center gap-2 py-1">
+              <span className="text-[#B76E79] font-bold">8.</span> Start Your Timeline Today
+            </a>
+          </div>
+        </nav>
+
+        {/* Section 1: What Is a Wedding Planning Timeline? */}
+        <div id="what-is-timeline" className="space-y-6 scroll-mt-20">
+          <div className="space-y-2">
+            <span className="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Foundational Strategy</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Playfair Display', serif" }}>
+              What Is a Wedding Planning Timeline?
+            </h2>
+          </div>
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            A wedding planning timeline is a structured schedule that organizes every wedding task into the order it should realistically happen, counting backward from the wedding date. Rather than a simple to-do list, a timeline adds a "when" to every "what," so tasks like booking a venue, sending invitations, and confirming final vendor payments happen at the point in your engagement when they matter most. To understand the deeper macro planning philosophy, check our in-depth educational pillar on <a href="/blog/how-to-plan-a-wedding-timeline" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">how to plan a wedding timeline</a>.
+          </p>
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Most couples work from a 12-month timeline, though the right length depends on your wedding date, budget, and how far out you got engaged. A longer engagement, such as an 18-month or 14-month timeline, spreads tasks out with more breathing room. A shorter one, like a 6-month or 3-month timeline, compresses the same tasks into a faster sequence. Couples who wish to monitor distinct phase achievements can also pair their timeline with our interactive <a href="/tools/wedding-planning-dashboard" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Wedding Planning Dashboard</a>.
+          </p>
+
+          <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm flex items-start gap-4">
+            <span className="w-8 h-8 rounded-xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-sm shrink-0">💡</span>
+            <div>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Expert Tip: Chronological Anchoring</h3>
+              <p className="text-xs text-slate-600 leading-relaxed mt-0.5">
+                Never start by booking decor or stationery before your date and venue contract are signed. A timeline safeguards your budget by ensuring deposits are committed only when prerequisite logistical foundations are locked in.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 2: How to Use the Wedding Planning Timeline Tool */}
+        <div id="how-to-use-tool" className="space-y-6 scroll-mt-20">
+          <div className="space-y-2">
+            <span className="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Step-by-Step Instructions</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Playfair Display', serif" }}>
+              How to Use the Wedding Planning Timeline Tool
+            </h2>
+          </div>
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            The Wedding Planning Timeline tool turns this structure into something you can interact with rather than just read. Instead of managing a rigid spreadsheet, you get an adaptive schedule:
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span className="w-7 h-7 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-xs">1</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Enter your wedding date</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Enter your wedding date and the tool calculates how many months you have to plan.
+              </p>
+            </div>
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span className="w-7 h-7 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-xs">2</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Automatic stage organization</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Tasks are automatically organized into planning stages, from early-stage decisions like setting a budget to final-week details like confirming vendor arrival times.
+              </p>
+            </div>
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span className="w-7 h-7 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-xs">3</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Track completion status</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Check off tasks as you complete them to track overall progress at a glance.
+              </p>
+            </div>
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span className="w-7 h-7 rounded-lg bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-xs">4</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Dynamic schedule updates</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Revisit the timeline anytime your date, budget, or guest count changes, and the schedule adjusts accordingly.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            For couples who want every task, deadline, and vendor detail in one place, the <a href="/tools/wedding-planning-dashboard" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Wedding Planning Dashboard</a> pairs naturally with this timeline as a central planning hub. For visual date-driven scheduling of tastings and fittings, you can also cross-reference dates with our <a href="/tools/wedding-planning-calendar" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Wedding Planning Calendar</a>.
+          </p>
+
+          <div className="max-w-3xl mx-auto pt-2">
+            <img
+              src="/Tying Your Timeline to Your Wedding Checklist.webp"
+              alt="Tying your wedding timeline to your wedding checklist and planning hub"
+              className="w-full rounded-2xl shadow-sm border border-[#F3E8EA] object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <p className="text-center text-xs text-slate-500 mt-2 italic">
+              Connecting timeline milestones with real-time checklist tracking keeps your entire wedding organized.
+            </p>
+          </div>
+        </div>
+
+        {/* Section 3: Wedding Planning Timeline by Month */}
+        <div id="timeline-by-month" className="space-y-6 scroll-mt-20">
+          <div className="space-y-2">
+            <span className="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Standard 12-Month Framework</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Wedding Planning Timeline by Month
+            </h2>
+          </div>
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Here is a general framework for how wedding planning tasks are typically sequenced across a 12-month engagement. Use it as a starting point, then adjust based on your own timeline length.
+          </p>
+
+          {/* Stage Breakdown Cards */}
+          <div className="space-y-4">
+            
+            {/* 12+ Months Before */}
+            <div className="p-6 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[#F3E8EA] pb-3">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-lg bg-[#FCECF0] text-[#B76E79] font-black text-xs flex items-center justify-center">12+</span>
+                  <h3 className="font-bold text-base text-[#1A1A1A]">12+ Months Before</h3>
+                </div>
+                <span className="text-xs font-bold text-[#B76E79] bg-[#FCECF0]/50 px-2.5 py-1 rounded-full uppercase tracking-wider">Foundation Phase</span>
+              </div>
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Set an overall wedding budget (plug your estimates into our free <a href="/tools/budget-calculator" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Budget Calculator</a>)</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Create a preliminary guest list to understand required venue capacity</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Choose a wedding date and book your venue</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Start researching photographers and other high-demand vendors</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* 9–11 Months Before */}
+            <div className="p-6 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[#F3E8EA] pb-3">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-lg bg-[#FCECF0] text-[#B76E79] font-black text-xs flex items-center justify-center">9-11</span>
+                  <h3 className="font-bold text-base text-[#1A1A1A]">9–11 Months Before</h3>
+                </div>
+                <span className="text-xs font-bold text-[#B76E79] bg-[#FCECF0]/50 px-2.5 py-1 rounded-full uppercase tracking-wider">Key Vendors</span>
+              </div>
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Book your photographer, videographer, and caterer</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Choose your wedding party</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Begin shopping for a wedding dress (accounting for 6–9 months manufacturing lead time)</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Reserve a room block for out-of-town guests (generate custom task checklists with the <a href="/tools/wedding-checklist-generator" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Wedding Checklist Generator</a>)</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* 6–8 Months Before */}
+            <div className="p-6 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[#F3E8EA] pb-3">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-lg bg-[#FCECF0] text-[#B76E79] font-black text-xs flex items-center justify-center">6-8</span>
+                  <h3 className="font-bold text-base text-[#1A1A1A]">6–8 Months Before</h3>
+                </div>
+                <span className="text-xs font-bold text-[#B76E79] bg-[#FCECF0]/50 px-2.5 py-1 rounded-full uppercase tracking-wider">Stationery & Styling</span>
+              </div>
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Order invitations and save-the-dates</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Book florist, entertainment, and officiant</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Plan the ceremony structure with your officiant</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Register for gifts</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* 4–5 Months Before */}
+            <div className="p-6 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[#F3E8EA] pb-3">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-lg bg-[#FCECF0] text-[#B76E79] font-black text-xs flex items-center justify-center">4-5</span>
+                  <h3 className="font-bold text-base text-[#1A1A1A]">4–5 Months Before</h3>
+                </div>
+                <span className="text-xs font-bold text-[#B76E79] bg-[#FCECF0]/50 px-2.5 py-1 rounded-full uppercase tracking-wider">Design & Details</span>
+              </div>
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Finalize menu and cake tasting</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Book hair and makeup trials</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Arrange transportation for the wedding day</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Purchase wedding bands</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* 2–3 Months Before */}
+            <div className="p-6 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[#F3E8EA] pb-3">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-lg bg-[#FCECF0] text-[#B76E79] font-black text-xs flex items-center justify-center">2-3</span>
+                  <h3 className="font-bold text-base text-[#1A1A1A]">2–3 Months Before</h3>
+                </div>
+                <span className="text-xs font-bold text-[#B76E79] bg-[#FCECF0]/50 px-2.5 py-1 rounded-full uppercase tracking-wider">RSVP & Legal</span>
+              </div>
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Send invitations (with RSVP deadlines set for 4–5 weeks prior)</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Finalize seating chart as RSVPs arrive (learn how to organize tables with our guide to a <a href="/blog/perfect-guest-list-guide" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">guest list and seating chart</a>)</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Confirm final headcount with your caterer</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Obtain your marriage license (timing varies by state and county; verify statutory waiting periods on the official <a href="https://www.usa.gov/marriage-certificate" target="_blank" rel="noopener noreferrer" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">USA.gov Marriage Records & Certificate Guide</a>)</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* 1 Month Before */}
+            <div className="p-6 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[#F3E8EA] pb-3">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-lg bg-[#FCECF0] text-[#B76E79] font-black text-xs flex items-center justify-center">1 Mo</span>
+                  <h3 className="font-bold text-base text-[#1A1A1A]">1 Month Before</h3>
+                </div>
+                <span className="text-xs font-bold text-[#B76E79] bg-[#FCECF0]/50 px-2.5 py-1 rounded-full uppercase tracking-wider">Final Logistics</span>
+              </div>
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Confirm final details and timing with every vendor</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Finalize the day-of timeline</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Do a final dress fitting</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Prepare final vendor payments and tips in marked envelopes</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Final Week */}
+            <div className="p-6 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[#F3E8EA] pb-3">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-lg bg-[#FCECF0] text-[#B76E79] font-black text-xs flex items-center justify-center">Week</span>
+                  <h3 className="font-bold text-base text-[#1A1A1A]">Final Week</h3>
+                </div>
+                <span className="text-xs font-bold text-[#B76E79] bg-[#FCECF0]/50 px-2.5 py-1 rounded-full uppercase tracking-wider">Wedding Week</span>
+              </div>
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Confirm arrival times and delivery windows</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Pack for the honeymoon</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Delegate day-of tasks to your wedding party</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#B76E79] font-bold">✓</span>
+                  <span>Rehearse the ceremony</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            For a full breakdown with printable checkboxes for each stage, the <a href="/checklists/12-month-wedding-planning-checklist" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">12-Month Wedding Planning Checklist</a> works well alongside this timeline.
+          </p>
+
+          <div className="max-w-3xl mx-auto pt-2">
+            <img
+              src="/The Month-by-Month Wedding Planning Timeline.webp"
+              alt="Month-by-month wedding planning timeline overview from 12 months out to wedding day"
+              className="w-full rounded-2xl shadow-sm border border-[#F3E8EA] object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <p className="text-center text-xs text-slate-500 mt-2 italic">
+              Standard 12-month wedding planning stages sequenced backward from your wedding celebration date.
+            </p>
+          </div>
+        </div>
+
+        {/* Section 4: Choosing the Right Timeline Length for Your Wedding */}
+        <div id="timeline-lengths" className="space-y-6 scroll-mt-20">
+          <div className="space-y-2">
+            <span className="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Timeline Comparison</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Choosing the Right Timeline Length for Your Wedding
+            </h2>
+          </div>
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Not every couple has 12 months to plan, and not every couple wants that long of an engagement. The right wedding planning timeline depends on how much time you have and how much flexibility your budget allows.
+          </p>
+
+          {/* Engagement Lengths Cards */}
+          <div className="space-y-4">
+            
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <div className="flex items-center justify-between">
+                <h3 className="font-bold text-base text-[#1A1A1A]">18-Month Timeline</h3>
+                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">Maximum Flexibility</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Ideal for couples who want first pick of popular venues and vendors, or who are planning a larger wedding. Read the full <a href="/blog/18-month-wedding-planning-timeline" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">18-Month Wedding Planning Timeline guide</a> for a detailed month-by-month breakdown, or follow along with the companion <a href="/checklists/18-month-wedding-planning-checklist" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">18-Month Wedding Planning Checklist</a>.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <div className="flex items-center justify-between">
+                <h3 className="font-bold text-base text-[#1A1A1A]">14-Month Timeline</h3>
+                <span className="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full">Comfortable Pacing</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                A middle-ground option for couples who want more room than a standard year but aren't planning as far out as 18 months. See the complete <a href="/blog/14-month-wedding-planning-timeline" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">14-Month Wedding Planning Timeline</a> for specifics.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <div className="flex items-center justify-between">
+                <h3 className="font-bold text-base text-[#1A1A1A]">12-Month Timeline</h3>
+                <span className="text-[11px] font-bold text-[#B76E79] bg-[#FCECF0] px-2.5 py-0.5 rounded-full">Industry Standard</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                The most common engagement length, offering a realistic pace without excessive lead time. Explore the comprehensive <a href="/checklists/12-month-wedding-planning-checklist" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">12-Month Wedding Planning Checklist</a>.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <div className="flex items-center justify-between">
+                <h3 className="font-bold text-base text-[#1A1A1A]">6-Month Timeline</h3>
+                <span className="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full">Accelerated Pace</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Workable for couples focused on efficiency, especially with a smaller guest list or more flexible vendor choices. Use our structured <a href="/checklists/6-month-wedding-planning-checklist" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">6-Month Wedding Planning Checklist</a> to keep rapid deadlines synchronized.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <div className="flex items-center justify-between">
+                <h3 className="font-bold text-base text-[#1A1A1A]">3-Month Timeline</h3>
+                <span className="text-[11px] font-bold text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded-full">Express Schedule</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                An accelerated schedule that requires quick decisions and a willingness to prioritize the most important details first. Execute every fast-track task using the <a href="/checklists/3-month-wedding-planning-checklist" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">3-Month Wedding Planning Checklist</a>.
+              </p>
+            </div>
+
+          </div>
+
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            If your engagement doesn't match a standard length, this tool adjusts automatically based on the wedding date you enter, so you're not locked into a fixed template.
+          </p>
+
+          <div className="max-w-3xl mx-auto pt-2">
+            <img
+              src="/compressed-6-month-timeline.png"
+              alt="Timeline length comparison for 18-month, 12-month, 6-month, and 3-month wedding engagements"
+              className="w-full rounded-2xl shadow-sm border border-[#F3E8EA] object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <p className="text-center text-xs text-slate-500 mt-2 italic">
+              Comparing timeline urgency: Longer horizons offer first-choice vendors, while compressed dates prioritize rapid decisions.
+            </p>
+          </div>
+        </div>
+
+        {/* Section 5: Free Wedding Planning Timeline Template and PDF */}
+        <div id="timeline-template-pdf" className="space-y-6 scroll-mt-20">
+          <div className="space-y-2">
+            <span className="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Downloads & Formats</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Free Wedding Planning Timeline Template and PDF
+            </h2>
+          </div>
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            If you prefer a version you can print or reference offline, the Wedding Planning Timeline tool doubles as a free, downloadable timeline template. You can use it as:
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span className="text-xl">📄</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Printable Timeline PDF</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                A printable wedding planning timeline PDF to keep in a binder or share with family members helping you plan (access our <a href="/checklists/printable-wedding-planning-checklist" className="text-[#B76E79] font-bold underline hover:text-[#a25d66]">printable wedding planning checklist</a> for instant home printing).
+              </p>
+            </div>
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span className="text-xl">💻</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Editable Digital Checklist</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                An editable digital checklist you update directly in the tool as tasks are completed, saving your progress automatically.
+              </p>
+            </div>
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-2">
+              <span className="text-xl">👥</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Shareable Family & Vendor Hub</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                A shareable reference for your wedding planner, parents, or wedding party members who need visibility into what's coming up.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Because the tool recalculates automatically based on your actual wedding date, it stays more accurate than a generic static template that assumes a fixed 12-month countdown.
+          </p>
+        </div>
+
+        {/* Section 6: Tips to Stay on Track */}
+        <div id="tips-to-stay-on-track" className="space-y-6 scroll-mt-20">
+          <div className="space-y-2">
+            <span className="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Expert Advice</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Tips to Stay on Track
+            </h2>
+          </div>
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            Planning a celebration with dozens of vendors and hundreds of guests requires disciplined management habits:
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-1.5">
+              <span className="text-sm font-bold text-[#B76E79]">01</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Review your timeline monthly</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Review your timeline monthly, not just when a deadline is approaching, so you can catch tasks before they become urgent.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-1.5">
+              <span className="text-sm font-bold text-[#B76E79]">02</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Group similar tasks together</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Group similar tasks together, such as vendor bookings or paperwork, to save time and mental energy.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-1.5">
+              <span className="text-sm font-bold text-[#B76E79]">03</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Build in buffer time</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Build in buffer time around major deadlines like final headcounts and payments, since vendors often need confirmation earlier than the wedding date suggests.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-1.5">
+              <span className="text-sm font-bold text-[#B76E79]">04</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Delegate secondary tasks</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Delegate tasks that don't require your direct decision-making, such as coordinating hotel blocks or confirming rental drop-off times.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-2xl border border-[#F3E8EA] shadow-sm space-y-1.5 sm:col-span-2">
+              <span className="text-sm font-bold text-[#B76E79]">05</span>
+              <h3 className="font-bold text-sm text-[#1A1A1A]">Keep your budget and guest list updated</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Keep your budget and guest list updated as you go, since both directly affect timeline decisions like catering minimums, rental quantities, and venue capacity.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 7: Frequently Asked Questions */}
+        <div id="faqs" className="space-y-6 pt-6 border-t border-[#F3E8EA] scroll-mt-20">
+          <div className="space-y-2">
+            <span className="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Quick Answers</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="space-y-3" id="timeline-faq-list">
+            <AccordionFaqList items={faqs} idPrefix="tool-faq" />
+          </div>
+        </div>
+
+        {/* Author Box */}
+        <section id="author" className="bg-white border border-[#F3E8EA] p-6 sm:p-8 rounded-2xl shadow-sm relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#B76E79] via-[#D4AF37] to-[#B76E79]"></div>
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 pt-2">
+            <div className="shrink-0">
+              <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-[#FCECF0] shadow-sm bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center font-bold text-2xl" style={{ fontFamily: "'Playfair Display', serif" }}>
+                SJ
+              </div>
+            </div>
+            <div className="space-y-2 text-center sm:text-left">
+              <h3 className="font-bold text-lg text-[#1A1A1A]">Written by Sarah Jenkins</h3>
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                <span className="text-[10px] font-bold text-white bg-gradient-to-r from-[#B76E79] to-[#a25d66] px-3 py-1 rounded-full uppercase tracking-wider">Certified Wedding Planner</span>
+                <span className="text-[10px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3 py-1 rounded-full uppercase tracking-wider">Event Logistics Specialist</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed max-w-lg">
+                Sarah Jenkins has coordinated over 350 weddings across boutique estates, ballroom venues, and private residences. Her month-by-month planning frameworks prioritize realistic vendor booking windows, budget discipline, and transparent task delegation to ensure couples reach their wedding day calm, on schedule, and confident.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 8: Start Your Wedding Planning Timeline Today (CTA) */}
+        <div id="start-timeline-today" className="bg-gradient-to-br from-[#1A1A1A] via-slate-900 to-[#2d2d2d] text-white p-8 sm:p-12 rounded-3xl text-center space-y-6 shadow-2xl relative overflow-hidden scroll-mt-20">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#B76E79]/10 rounded-full blur-3xl"></div>
+          <div className="relative space-y-4">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#D4AF37] block">Get Started</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Start Your Wedding Planning Timeline Today
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              A clear timeline turns wedding planning from an overwhelming list of unknowns into a manageable sequence of steps. Enter your wedding date into the Wedding Planning Timeline tool to generate your personalized schedule, then pair it with the <a href="/tools/wedding-planning-dashboard" className="text-[#D4AF37] font-bold underline hover:text-white">Wedding Planning Dashboard</a> and <a href="/tools/budget-calculator" className="text-[#D4AF37] font-bold underline hover:text-white">Budget Calculator</a> to keep every part of your planning organized in one place.
+            </p>
+
+            <div className="max-w-xs mx-auto pt-2">
+              <img
+                src="/images/start-wedding-checklist-today.jpg"
+                alt="Start your wedding planning timeline with personalized date milestones"
+                className="w-32 h-32 rounded-2xl mx-auto shadow-lg border border-white/20 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            {/* Supporting Resources & Links */}
+            <div className="pt-6 border-t border-white/10 flex flex-wrap justify-center gap-3 text-xs">
+              <a href="/tools/wedding-planning-dashboard" className="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                wedding planning dashboard
+              </a>
+              <span className="text-slate-600">•</span>
+              <a href="/tools/budget-calculator" className="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                wedding budget calculator
+              </a>
+              <span className="text-slate-600">•</span>
+              <a href="/checklists/12-month-wedding-planning-checklist" className="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                12-month wedding planning checklist
+              </a>
+              <span className="text-slate-600">•</span>
+              <a href="/tools/wedding-checklist-generator" className="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                wedding checklist generator
+              </a>
+              <span className="text-slate-600">•</span>
+              <a href="/tools/wedding-countdown" className="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                wedding countdown
+              </a>
+              <span className="text-slate-600">•</span>
+              <a href="/tools/wedding-planning-calendar" className="text-slate-300 hover:text-[#D4AF37] underline font-medium">
+                wedding planning calendar
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  
+
+  {/* Interactive Accordion Script */}
+      </div>
+      <Footer lang="en" />
+    </div>
+  );
+}

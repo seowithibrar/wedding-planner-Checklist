@@ -1,0 +1,15 @@
+{
+  "badge": "Free Checklist",
+  "metaTitleSuffix": "Wedding Checklist (2026)",
+  "overviewTitle": "Checklist Overview & Key Stages",
+  "downloadPdf": "Download Checklist (PDF)",
+  "printChecklist": "Print Checklist",
+  "categories": {
+    "timeline": "Timeline Checklists",
+    "budget": "Budget Checklists",
+    "cultural": "Cultural & Traditional Checklists",
+    "destination": "Destination & Intimate Checklists",
+    "dayOf": "Day-of & Emergency Checklists",
+    "vendors": "Vendor & Organization Checklists"
+  }
+}

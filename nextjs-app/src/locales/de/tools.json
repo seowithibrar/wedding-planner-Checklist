@@ -1,0 +1,110 @@
+{
+  "badge": "Kostenloses Tool",
+  "tools": {
+    "budget-calculator": {
+      "title": "Hochzeits-Budgetrechner",
+      "description": "Schätzen Sie Kosten für Location, Catering, Fotografie und mehr.",
+      "category": "Budget",
+      "intro": "Nutzen Sie unseren kostenlosen Budgetrechner, um Ausgaben nach Kategorien zu kalkulieren und pro Gast zu planen."
+    },
+    "timeline-generator": {
+      "title": "Tagesablauf-Planer",
+      "description": "Erstellen Sie einen individuellen Tagesablauf basierend auf der Uhrzeit Ihrer Trauung.",
+      "category": "Zeitplan",
+      "intro": "Erstellen Sie einen reibungslosen Ablaufplan für Ihren Hochzeitstag mit Zeitfenstern für Fotos und Dienstleister."
+    },
+    "guest-list-manager": {
+      "title": "Gästelisten-Manager",
+      "description": "Verfolgen Sie Rückmeldungen, Menüwünsche und Sitzplätze an einem Ort.",
+      "category": "Gäste",
+      "intro": "Organisieren Sie Ihre Gästeliste interaktiv und exportieren Sie alle Daten bequem als CSV."
+    },
+    "wedding-checklist-generator": {
+      "title": "Hochzeits-Checklisten-Generator",
+      "description": "Generieren Sie eine maßgeschneiderte Checkliste basierend auf Ihrem Datum und Stil.",
+      "category": "Aufgaben",
+      "intro": "Erhalten Sie eine strukturierte Checkliste angepasst an Ihren Hochzeitstermin und Ihre Prioritäten."
+    },
+    "wedding-planning-timeline": {
+      "title": "Hochzeitsplanungs-Zeitplan",
+      "description": "Visueller Meilenstein-Zeitplan, aufgeteilt nach Monaten vor der Hochzeit.",
+      "category": "Zeitplan",
+      "intro": "Verfolgen Sie Ihre Hochzeitsvorbereitungen Monat für Monat bis zum großen Tag."
+    },
+    "wedding-task-generator": {
+      "title": "Aufgaben-Generator",
+      "description": "Smarte Aufgabenvorschläge basierend auf Datum, Stil und Budget.",
+      "category": "Aufgaben",
+      "intro": "Erhalten Sie intelligente Aufgabenvorschläge passend zu Ihrer Feier."
+    },
+    "wedding-milestone-tracker": {
+      "title": "Meilenstein-Tracker",
+      "description": "Verfolgen Sie die Fertigstellung von 31 wichtigen Hochzeits-Meilensteinen.",
+      "category": "Aufgaben",
+      "intro": "Behalten Sie wichtige Meilensteine im Blick, um garantiert rechtzeitig fertig zu werden."
+    },
+    "wedding-planning-calendar": {
+      "title": "Planungskalender",
+      "description": "Monatskalender für Dienstleistertermine, Anproben und Events.",
+      "category": "Kalender",
+      "intro": "Verwalten Sie Zahlungsfristen, Kleid-Anproben und Probeessen übersichtlich."
+    },
+    "daily-wedding-planner": {
+      "title": "Tagesplaner für die Hochzeit",
+      "description": "Täglicher Aufgabenplaner mit strukturierten Zeitblöcken.",
+      "category": "Planer",
+      "intro": "Planen Sie jeden Tag vor der Hochzeit strukturiert von morgens bis abends."
+    },
+    "weekly-wedding-planner": {
+      "title": "Wochenplaner für die Hochzeit",
+      "description": "Wochenübersicht mit täglicher Aufgabenverteilung.",
+      "category": "Planer",
+      "intro": "Verteilen Sie Ihre To-dos der Woche flexibel und unkompliziert."
+    },
+    "monthly-wedding-planner": {
+      "title": "Monatsplaner für die Hochzeit",
+      "description": "Monatsübersicht mit Zielen nach Kategorien und Fortschrittsanzeige.",
+      "category": "Planer",
+      "intro": "Unterteilen Sie Ihre großen Ziele in überschaubare monatliche Schritte."
+    },
+    "wedding-countdown": {
+      "title": "Hochzeits-Countdown",
+      "description": "Live-Countdown-Uhr bis zu Ihrem Hochzeitstag.",
+      "category": "Zeitplan",
+      "intro": "Live-Uhr, die Tage, Stunden und Wochen bis zu Ihrem großen Tag zählt."
+    },
+    "wedding-progress-tracker": {
+      "title": "Fortschritts-Tracker",
+      "description": "Gesamter Planungsfortschritt über alle Kategorien und Tools.",
+      "category": "Dashboard",
+      "intro": "Überblicken Sie den prozentualen Fortschritt aller Aufgaben, Gäste und Dienstleister."
+    },
+    "wedding-planning-dashboard": {
+      "title": "Planungs-Dashboard",
+      "description": "Zentrale Schaltzentrale mit Statistiken, Aktionen und Tool-Links.",
+      "category": "Dashboard",
+      "intro": "Ihre Steuerzentrale für Countdown, Budgetstatus, Gästeliste und Aufgaben."
+    }
+  },
+  "calculator": {
+    "totalBudget": "Gesamtbudget der Hochzeit",
+    "guestCount": "Geschätzte Gästeanzahl",
+    "costPerGuest": "Kosten pro Gast",
+    "standardBreakdown": "Standard-Aufteilung",
+    "customTracker": "Ausgaben-Tracker",
+    "target": "Ziel",
+    "actual": "Tatsächlich",
+    "remaining": "Verbleibend",
+    "totalSpent": "Gesamtausgaben",
+    "copySummary": "Budget-Zusammenfassung Kopieren",
+    "categories": {
+      "venue-catering": "Location & Catering",
+      "photo-video": "Foto- & Videografie",
+      "attire-beauty": "Kleidung, Haare & Make-up",
+      "flowers-decor": "Blumen & Dekoration",
+      "music-entertainment": "Musik & Entertainment",
+      "stationery-cake": "Papeterie, Torte & Gastgeschenke",
+      "contingency-buffer": "Puffer für Unvorhergesehenes"
+    }
+  }
+}
