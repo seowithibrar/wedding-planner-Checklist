@@ -13,7 +13,12 @@ interface Props {
 
 export async function generateStaticParams() {
   return checklistsData.checklists
-    .filter(item => item.slug !== 'wedding-budget-calculator-10k' && item.slug !== 'wedding-budget-calculator-20k')
+    .filter(
+      item =>
+        item.slug !== 'wedding-budget-calculator-10k' &&
+        item.slug !== 'wedding-budget-calculator-20k' &&
+        item.slug !== 'pakistani-wedding-checklist'
+    )
     .map(item => ({
       slug: item.slug,
     }));

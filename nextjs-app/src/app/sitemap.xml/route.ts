@@ -40,7 +40,7 @@ const entries: SitemapEntry[] = [
   { path: '/checklists/wedding-budget-calculator-20k', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/checklists/wedding-budget-calculator-30k', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/checklists/wedding-budget-calculator-50k', changefreq: 'weekly', priority: '0.8', lastmod },
-  { path: '/checklists/pakistani-wedding-checklist', changefreq: 'weekly', priority: '0.8', lastmod },
+  { path: '/checklists/pakistani-wedding-checklist', changefreq: 'weekly', priority: '0.8', lastmod: '2026-09-25' },
   { path: '/checklists/indian-wedding-checklist', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/checklists/destination-wedding-checklist', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/checklists/backyard-wedding-checklist', changefreq: 'weekly', priority: '0.8', lastmod },

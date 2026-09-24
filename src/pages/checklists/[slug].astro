@@ -4,7 +4,7 @@ import checklistsData from '../../data/categorized-checklists.json';
 
 export async function getStaticPaths() {
   return checklistsData.checklists
-    .filter((item) => item.slug !== 'wedding-budget-calculator-10k' && item.slug !== 'wedding-budget-calculator-20k')
+    .filter((item) => item.slug !== 'wedding-budget-calculator-10k' && item.slug !== 'wedding-budget-calculator-20k' && item.slug !== 'pakistani-wedding-checklist')
     .map((item) => ({
       params: { slug: item.slug },
       props: { checklist: item },

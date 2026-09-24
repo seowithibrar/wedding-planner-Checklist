@@ -1,0 +1,918 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import checklistsData from '../../data/categorized-checklists.json';
+
+const seo = {
+  title: 'Pakistani Wedding Checklist: Multi-Day Muslim Wedding Guide',
+  description: 'Free Pakistani wedding checklist for Dholki, Mayun, Mehndi, Baraat, Nikkah and Walima. Track venues, vendors, outfits, budget, and guest lists day by day.',
+  canonical: 'https://www.weddingplanningchecklists.org/checklists/pakistani-wedding-checklist',
+  image: '/pakistani-wedding-functions-checklist.jpg'
+};
+
+const fullSchemaGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': 'https://www.weddingplanningchecklists.org/checklists/pakistani-wedding-checklist#article',
+      'headline': 'Pakistani & Muslim Multi-Day Wedding Checklist',
+      'description': 'A step-by-step Pakistani wedding checklist covering Dholki, Mayun, Mehndi, Baraat, Nikkah, and Walima.',
+      'author': {
+        '@type': 'Person',
+        'name': 'Sarah Jenkins'
+      },
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'WeddingPlanningChecklists.org',
+        'url': 'https://www.weddingplanningchecklists.org/'
+      },
+      'dateModified': '2026-09-25',
+      'mainEntityOfPage': 'https://www.weddingplanningchecklists.org/checklists/pakistani-wedding-checklist',
+      'image': 'https://www.weddingplanningchecklists.org/og-image.jpg',
+      'inLanguage': 'en'
+    },
+    {
+      '@type': 'HowTo',
+      '@id': 'https://www.weddingplanningchecklists.org/checklists/pakistani-wedding-checklist#howto',
+      'name': 'How to use the Pakistani & Muslim Multi-Day Wedding Checklist',
+      'step': [
+        {
+          '@type': 'HowToStep',
+          'name': 'Complete the foundation tasks',
+          'text': 'Agree which functions you are holding, set the date, split the budget across events, draft a guest list per function, and book the largest venue first.'
+        },
+        {
+          '@type': 'HowToStep',
+          'name': 'Work through each event',
+          'text': 'Move through Mangni, Dholki, Mayun, Mehndi, Baraat and Rukhsati, Nikkah, and Walima, completing the venue, menu, decor, outfit, and vendor tasks for each.'
+        },
+        {
+          '@type': 'HowToStep',
+          'name': 'Lock everything down in wedding week',
+          'text': 'Reconfirm vendors, send final headcounts, prepare labeled payment envelopes, pack outfits per event, and print the schedule for each function.'
+        }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.weddingplanningchecklists.org/checklists/pakistani-wedding-checklist#faq',
+      'mainEntity': [
+        {
+          '@type': 'Question',
+          'name': 'What should a Pakistani wedding checklist include?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': "It should cover each function you're holding, such as Dholki, Mayun, Mehndi, Baraat, Nikkah, and Walima. For each, list the venue, guest list, menu, decor, outfits, and vendors. It should also include budget tracking, Nikkah paperwork, guest RSVPs, and a wedding-week confirmation list."
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'How many days does a Pakistani wedding last?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': "There's no fixed length. Many families run three to five days, with events like Dholki stretching over a week or more beforehand. Smaller families may combine Mayun and Mehndi, or hold the Nikkah and Baraat on the same day."
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'How far in advance should I start planning?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Twelve months gives you room to book the best venues and vendors. If you have less time, use the 6-month or 3-month checklist and make venue and caterer decisions in the first few weeks.'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'What is the difference between Nikkah, Baraat, and Walima?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'The Nikkah is the Islamic marriage contract. The Baraat is the groom\'s procession and the bride\'s send-off, usually with a large dinner. The Walima is the reception hosted by the groom\'s family after the marriage.'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'Who pays for which event?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Traditionally the bride\'s family hosts the Baraat and the groom\'s family hosts the Walima. Many families now split costs or share hosting. Agree on this early and record it, so nobody is surprised later.'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'What paperwork do I need for a Nikkah?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Typically you\'ll need valid ID for the bride, groom, and witnesses, an agreed mahr recorded in the Nikah Nama, and a registrar or officiant. Rules vary by province and country, so confirm with your local registrar.'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'Can I use this checklist for a Muslim wedding that isn\'t Pakistani?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Yes. This Pakistani wedding checklist shares its Nikkah, Walima, halal catering, and prayer-time planning planning with most Muslim weddings. Swap in your own cultural events and outfits for the rest.'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'Is this Pakistani wedding checklist free?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Yes. You can use it, print it, and pair it with our interactive planning tools at no cost.'
+          }
+        }
+      ]
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.weddingplanningchecklists.org/checklists/pakistani-wedding-checklist#breadcrumb',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://www.weddingplanningchecklists.org/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Checklists',
+          'item': 'https://www.weddingplanningchecklists.org/#categorized-checklists'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 3,
+          'name': 'Pakistani & Muslim Multi-Day Wedding Checklist',
+          'item': 'https://www.weddingplanningchecklists.org/checklists/pakistani-wedding-checklist'
+        }
+      ]
+    }
+  ]
+};
+
+const combinedSchema = JSON.stringify(fullSchemaGraph);
+
+const functionsTable = [
+  { function: 'Mangni (engagement)', what: 'Families formally agree to the match, rings or gifts exchanged', hostedBy: 'Either family', biggestTask: 'Deciding guest size' },
+  { function: 'Dholki', what: 'Informal evenings of dholak, singing, and dancing at home, usually in the weeks before', hostedBy: 'Both families, separately', biggestTask: 'Schedule and food for many nights' },
+  { function: 'Mayun / Ubtan', what: 'Bride wears yellow, ubtan is applied, often kept simple and private', hostedBy: "Bride's family", biggestTask: 'Outfit, ubtan, photographer' },
+  { function: 'Mehndi', what: 'Henna night with music, dance, and dinner', hostedBy: "Bride's family, often with a separate groom-side Mehndi", biggestTask: 'Stage, sound, henna artists' },
+  { function: 'Baraat and Rukhsati', what: "The groom's procession arrives, dinner is served, and the bride leaves with her new family", hostedBy: "Bride's family", biggestTask: 'Venue, catering, timing' },
+  { function: 'Nikkah', what: 'The Islamic marriage contract, with consent, mahr, and witnesses', hostedBy: 'Varies: home, mosque, or the Baraat venue', biggestTask: 'Paperwork and officiant' },
+  { function: 'Walima', what: 'Reception that celebrates the marriage', hostedBy: "Groom's family", biggestTask: 'Venue, menu, outfits' }
+];
+
+const timelinePhases = [
+  { when: '9 to 12 months out', focus: 'Budget, date, event list, first guest list, book venues' },
+  { when: '6 to 9 months out', focus: 'Caterer, photographer, decor, makeup artist, start outfit shopping' },
+  { when: '3 to 6 months out', focus: 'Jewelry, tailoring, invitations, Nikkah paperwork, hotels for guests' },
+  { when: '1 to 3 months out', focus: 'Fittings, menu tastings, RSVPs, run of show for each event' },
+  { when: 'Final week', focus: 'Vendor confirmations, final headcounts, payments, emergency kit' }
+];
+
+const tocItems = [
+  { id: 'what-is', label: 'What Is a Pakistani Wedding Checklist?' },
+  { id: 'functions-glance', label: 'The Functions at a Glance' },
+  { id: 'when-to-start', label: 'When to Start Your Checklist' },
+  { id: 'first-30-days', label: 'Foundation: Your First 30 Days' },
+  { id: 'event-by-event', label: 'Event-by-Event Checklist' },
+  { id: 'attire-checklist', label: 'Bridal & Groom Attire Checklist' },
+  { id: 'vendor-checklist', label: 'Vendor Checklist' },
+  { id: 'budget-multiple-events', label: 'Budget Across Multiple Events' },
+  { id: 'guest-list-seating', label: 'Guest List, RSVPs & Seating' },
+  { id: 'food-catering-prayer', label: 'Food, Catering & Prayer Timing' },
+  { id: 'venue-decor', label: 'Venue & Decor' },
+  { id: 'wedding-week-day-of', label: 'Wedding Week & Day-Of Checklist' },
+  { id: 'common-mistakes', label: 'Common Mistakes to Avoid' },
+  { id: 'faqs', label: 'Frequently Asked Questions' }
+];
+
+const relatedChecklists = checklistsData.checklists
+  .filter((c: any) => c.slug !== 'pakistani-wedding-checklist')
+  .slice(0, 4);
+---
+
+<BaseLayout 
+  title={seo.title} 
+  description={seo.description} 
+  canonical={seo.canonical} 
+  image={seo.image}
+  type="article"
+  schemaScript={combinedSchema}
+>
+  <Header />
+
+  <!-- READING PROGRESS BAR -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-[#D97706] z-50 transition-all duration-150" style="width: 0%"></div>
+
+  <!-- HERO HEADER SECTION -->
+  <header class="relative pt-10 pb-12 bg-gradient-to-b from-[#FFFBEB] via-[#FFFDF7] to-white border-b border-[#FDE68A]/60">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex flex-wrap items-center gap-2 text-xs text-[#78716C]">
+          <li>
+            <a href="/" class="hover:text-[#92400E] transition-colors flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+              Home
+            </a>
+          </li>
+          <li class="text-[#D6D3D1]">/</li>
+          <li>
+            <a href="/#categorized-checklists" class="hover:text-[#92400E] transition-colors">Checklists</a>
+          </li>
+          <li class="text-[#D6D3D1]">/</li>
+          <li class="text-[#92400E] font-medium" aria-current="page">Pakistani Wedding Checklist</li>
+        </ol>
+      </nav>
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A] mb-4">
+        <span>✨ Multi-Day Cultural Guide</span>
+        <span class="w-1 h-1 rounded-full bg-[#B45309]"></span>
+        <span>7 Functions Covered</span>
+      </div>
+
+      <!-- H1 -->
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#1C1917] tracking-tight leading-tight mb-5">
+        Pakistani & Muslim Multi-Day Wedding Checklist
+      </h1>
+
+      <!-- Meta byline -->
+      <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-[#78716C] pb-6 border-b border-[#FDE68A]/60">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-[#B45309] text-white flex items-center justify-center font-bold text-xs shadow-sm">
+            SJ
+          </div>
+          <div>
+            <span class="font-medium text-[#1C1917]">Sarah Jenkins</span>
+            <span class="text-[#A8A29E] block text-[11px]">Senior Wedding Planning Editor</span>
+          </div>
+        </div>
+        <span class="text-[#D6D3D1]">•</span>
+        <span>Updated: <time datetime="2026-09-25">September 25, 2026</time></span>
+        <span class="text-[#D6D3D1]">•</span>
+        <span>14 min read</span>
+        <span class="text-[#D6D3D1]">•</span>
+        <span class="text-[#059669] font-medium flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          Expert Verified
+        </span>
+      </div>
+
+      <!-- 100-Word Opening Summary Card -->
+      <div class="mt-6 bg-[#FEF3C7]/60 border border-[#FDE68A] rounded-2xl p-5 sm:p-6 shadow-sm">
+        <div class="flex items-start gap-3">
+          <div class="p-2 bg-[#F59E0B] text-white rounded-xl shadow-sm shrink-0 mt-0.5">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="text-sm sm:text-base text-[#44403C] leading-relaxed">
+            <p>
+              This Pakistani &amp; Muslim Multi-Day Wedding Checklist walks you through every function, from Dholki and Mayun to Mehndi, Baraat, Nikkah, and Walima. Use this Pakistani wedding checklist to track venues, guest lists, catering, bridal jewelry, outfit fittings, henna artists, stage decor, and vendor deposits in one place. It suits brides, grooms, and families planning a South Asian or Muslim wedding across several days. Follow the phases, tick tasks off as you go, and pair it with our free <a href="/tools/wedding-planning-dashboard" class="font-semibold text-[#B45309] hover:underline">Wedding Planning Dashboard</a> to keep your Pakistani wedding planning organized, on budget, and calm from the first deposit to the Walima.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN ARTICLE CONTAINER -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- Table of Contents (Desktop Sticky Sidebar) -->
+      <aside class="hidden lg:block lg:col-span-4">
+        <div class="sticky top-24 bg-white border border-[#E7E5E4] rounded-2xl p-5 shadow-sm">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-[#78716C] mb-4 flex items-center gap-2">
+            <svg class="w-4 h-4 text-[#B45309]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+            </svg>
+            Table of Contents
+          </h2>
+          <nav>
+            <ul class="space-y-2 text-xs leading-snug text-[#57534E]">
+              {tocItems.map(item => (
+                <li>
+                  <a href={`#${item.id}`} class="block py-1 hover:text-[#B45309] hover:font-medium transition-colors">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content Column -->
+      <div class="lg:col-span-8 space-y-12">
+        
+        <!-- SECTION 1: What Is a Pakistani Wedding Checklist? -->
+        <section id="what-is" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            What Is a Pakistani Wedding Checklist?
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            A Pakistani wedding checklist is a task list built around how Pakistani and Muslim weddings actually run: several events over several days, each with its own venue, guest list, menu, outfit, and vendors. A standard <a href="/checklists/12-month-wedding-planning-checklist" class="text-[#B45309] font-medium hover:underline">12-month wedding planning checklist</a> assumes one ceremony and one party. Yours has six or seven.
+          </p>
+          <p class="text-[#44403C] leading-relaxed">
+            That changes the work. You aren't planning one wedding, you're planning a small festival, and the tasks overlap. The henna artist you book for Mehndi needs to know the Baraat date. The tailor stitching your Walima outfit is also stitching your Mayun yellow.
+          </p>
+          <p class="text-[#44403C] leading-relaxed">
+            Use this Pakistani wedding checklist in three passes. Start with the foundation tasks below. Then work through each event. Finally, use the wedding-week list to lock everything down. Every family runs things a little differently, so treat this as a solid base and add your own customs.
+          </p>
+        </section>
+
+        <!-- SECTION 2: Functions at a Glance -->
+        <section id="functions-glance" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Pakistani Wedding Checklist: The Functions at a Glance
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            Not every family holds every function. A Punjabi family, a Pashtun family, and a Muhajir family may each add, merge, or skip events. Here is the usual line-up.
+          </p>
+
+          <!-- Table 1: Functions Table -->
+          <div class="overflow-x-auto border border-[#E7E5E4] rounded-2xl shadow-sm bg-white my-6">
+            <table class="w-full text-left text-xs sm:text-sm text-[#44403C]">
+              <thead class="bg-[#FFFBEB] text-[#92400E] font-semibold border-b border-[#FDE68A]">
+                <tr>
+                  <th scope="col" class="py-3.5 px-4 font-bold">Function</th>
+                  <th scope="col" class="py-3.5 px-4 font-bold">What it is</th>
+                  <th scope="col" class="py-3.5 px-4 font-bold">Commonly hosted by</th>
+                  <th scope="col" class="py-3.5 px-4 font-bold">Biggest planning task</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#F5F5F4]">
+                {functionsTable.map(row => (
+                  <tr class="hover:bg-[#FFFDF7] transition-colors">
+                    <td class="py-3 px-4 font-semibold text-[#1C1917] whitespace-nowrap">{row.function}</td>
+                    <td class="py-3 px-4">{row.what}</td>
+                    <td class="py-3 px-4 whitespace-nowrap">{row.hostedBy}</td>
+                    <td class="py-3 px-4">{row.biggestTask}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Image 1 -->
+          <figure class="my-8 rounded-2xl overflow-hidden border border-[#E7E5E4] bg-white shadow-sm">
+            <img 
+              src="/pakistani-wedding-functions-checklist.jpg" 
+              alt="Illustrated sequence of Pakistani wedding functions from Dholki to Walima" 
+              class="w-full h-auto object-cover max-h-[460px]"
+              loading="lazy"
+            />
+            <figcaption class="p-3 text-xs text-center text-[#78716C] bg-[#FAFAF9] border-t border-[#F5F5F4]">
+              Visual breakdown of core Pakistani &amp; Muslim multi-day wedding functions from engagement to Walima.
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SECTION 3: When to Start -->
+        <section id="when-to-start" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            When to Start Your Pakistani Wedding Checklist
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            Twelve months is comfortable. Six months is workable. Three months is possible if you decide fast and book early. Pick the <a href="/checklists/18-month-wedding-planning-checklist" class="text-[#B45309] font-medium hover:underline">18-month</a>, <a href="/checklists/12-month-wedding-planning-checklist" class="text-[#B45309] font-medium hover:underline">12-month</a>, <a href="/checklists/6-month-wedding-planning-checklist" class="text-[#B45309] font-medium hover:underline">6-month</a>, or <a href="/checklists/3-month-wedding-planning-checklist" class="text-[#B45309] font-medium hover:underline">3-month</a> master checklist that matches your runway, then layer this page on top for the cultural tasks.
+          </p>
+          <p class="text-[#44403C] leading-relaxed">
+            Two calendar points catch people out. First, Islamic dates move about ten or eleven days earlier each year on the Gregorian calendar, so a date that worked last year may land in Ramadan this year. Many families also avoid Ramadan and Muharram for wedding events, so ask your elders early. Second, in many cities the winter months are popular for weddings, and good halls book out well ahead.
+          </p>
+          <p class="text-[#44403C] leading-relaxed">
+            Here is a simple phase guide.
+          </p>
+
+          <!-- Table 2: Phase Guide -->
+          <div class="overflow-x-auto border border-[#E7E5E4] rounded-2xl shadow-sm bg-white my-6">
+            <table class="w-full text-left text-xs sm:text-sm text-[#44403C]">
+              <thead class="bg-[#FFFBEB] text-[#92400E] font-semibold border-b border-[#FDE68A]">
+                <tr>
+                  <th scope="col" class="py-3 px-4 font-bold w-1/3">When</th>
+                  <th scope="col" class="py-3 px-4 font-bold w-2/3">Focus</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#F5F5F4]">
+                {timelinePhases.map(phase => (
+                  <tr class="hover:bg-[#FFFDF7] transition-colors">
+                    <td class="py-3 px-4 font-semibold text-[#1C1917]">{phase.when}</td>
+                    <td class="py-3 px-4">{phase.focus}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-[#44403C] leading-relaxed">
+            If you'd rather see the whole runway as a sequence, our <a href="/blog/14-month-wedding-planning-timeline" class="text-[#B45309] font-medium hover:underline">14-month wedding planning timeline</a> shows how the tasks stack up week by week.
+          </p>
+        </section>
+
+        <!-- SECTION 4: Foundation: Your First 30 Days -->
+        <section id="first-30-days" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Pakistani Wedding Checklist Foundation: Your First 30 Days
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            These decisions shape everything after them. Get them settled before you pay a single deposit.
+          </p>
+          
+          <ul class="space-y-2.5 my-4">
+            {[
+              "Agree which functions you're holding and who hosts each one",
+              "Choose a date after checking family calendars, Ramadan, Muharram, exams, and weather",
+              "Set a total budget, then split it across events",
+              "Draft a guest list for each function, not just one master list",
+              "Name one point person on each side of the family",
+              "Shortlist venues and book the biggest one first, usually the Baraat hall",
+              "Decide whether you'll hire a wedding planner or coordinate through family",
+              "Open a shared folder for contracts, receipts, and quotes"
+            ].map(task => (
+              <li class="flex items-start gap-3 bg-[#FAFAF9] p-3 rounded-xl border border-[#F5F5F4]">
+                <div class="mt-0.5 w-5 h-5 rounded-md bg-[#FEF3C7] border border-[#FDE68A] flex items-center justify-center shrink-0 text-[#92400E]">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span class="text-sm text-[#292524]">{task}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p class="text-[#44403C] leading-relaxed">
+            Put your working budget into the <a href="/tools/budget-calculator" class="text-[#B45309] font-medium hover:underline">wedding budget calculator</a> early. It's far easier to adjust a plan than to explain an overspend to two families.
+          </p>
+
+          <!-- Image 2 -->
+          <figure class="my-8 rounded-2xl overflow-hidden border border-[#E7E5E4] bg-white shadow-sm">
+            <img 
+              src="/pakistani-wedding-checklist-flatlay.jpg" 
+              alt="Pakistani wedding checklist notebook with henna cone and gold bangles" 
+              class="w-full h-auto object-cover max-h-[460px]"
+              loading="lazy"
+            />
+            <figcaption class="p-3 text-xs text-center text-[#78716C] bg-[#FAFAF9] border-t border-[#F5F5F4]">
+              Laying down your foundation checklist early keeps all Pakistani wedding celebrations smooth and on-budget.
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SECTION 5: Event-by-Event Pakistani Wedding Checklist -->
+        <section id="event-by-event" class="space-y-6">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Event-by-Event Pakistani Wedding Checklist
+          </h2>
+
+          <!-- Mangni -->
+          <div class="bg-white border border-[#E7E5E4] rounded-2xl p-5 shadow-sm space-y-3">
+            <h3 class="text-xl font-serif font-bold text-[#1C1917]">Mangni (Engagement)</h3>
+            <ul class="space-y-2 text-sm text-[#44403C]">
+              <li class="flex items-center gap-2"><span>•</span> Confirm the date with both families and pick a venue or home</li>
+              <li class="flex items-center gap-2"><span>•</span> Fix the guest list, keeping it close family only if you can</li>
+              <li class="flex items-center gap-2"><span>•</span> Arrange rings, sweets, and gift exchanges</li>
+              <li class="flex items-center gap-2"><span>•</span> Plan outfits so the photographs suit both sides</li>
+              <li class="flex items-center gap-2"><span>•</span> Book a photographer if you want the day documented</li>
+            </ul>
+          </div>
+
+          <!-- Dholki -->
+          <div class="bg-white border border-[#E7E5E4] rounded-2xl p-5 shadow-sm space-y-3">
+            <h3 class="text-xl font-serif font-bold text-[#1C1917]">Dholki</h3>
+            <p class="text-sm text-[#44403C]">
+              Dholki tends to grow. What starts as a few evenings with cousins can become two weeks of nightly gatherings. Decide the number of nights early.
+            </p>
+            <ul class="space-y-2 text-sm text-[#44403C]">
+              <li class="flex items-center gap-2"><span>•</span> Fix a schedule and a rotation between homes</li>
+              <li class="flex items-center gap-2"><span>•</span> Arrange a dholak, speakers, and a playlist of songs the family knows</li>
+              <li class="flex items-center gap-2"><span>•</span> Plan snacks and chai for each night so nobody scrambles</li>
+              <li class="flex items-center gap-2"><span>•</span> Assign someone to collect and coordinate the songs and performances</li>
+              <li class="flex items-center gap-2"><span>•</span> Set clear end times, especially when neighbors are close by</li>
+            </ul>
+          </div>
+
+          <!-- Mayun / Ubtan -->
+          <div class="bg-white border border-[#E7E5E4] rounded-2xl p-5 shadow-sm space-y-3">
+            <h3 class="text-xl font-serif font-bold text-[#1C1917]">Mayun / Ubtan</h3>
+            <ul class="space-y-2 text-sm text-[#44403C]">
+              <li class="flex items-center gap-2"><span>•</span> Buy or book the yellow outfit and matching accessories</li>
+              <li class="flex items-center gap-2"><span>•</span> Prepare or order the ubtan and confirm any skin sensitivities beforehand</li>
+              <li class="flex items-center gap-2"><span>•</span> Decide who is in the room and who isn't</li>
+              <li class="flex items-center gap-2"><span>•</span> Arrange yellow floral decor, marigolds, and seating</li>
+              <li class="flex items-center gap-2"><span>•</span> Book a photographer, or ask a relative if it's a small gathering</li>
+            </ul>
+            <!-- Image 3 -->
+            <figure class="my-4 rounded-xl overflow-hidden border border-[#E7E5E4]">
+              <img 
+                src="/mayun-ubtan-setup.jpg" 
+                alt="Mayun setup with yellow dupatta, marigolds and ubtan bowl" 
+                class="w-full h-auto object-cover max-h-[360px]"
+                loading="lazy"
+              />
+              <figcaption class="p-2.5 text-xs text-center text-[#78716C] bg-[#FAFAF9]">
+                Traditional Mayun setup with glowing marigolds, yellow dupatta, and fresh ubtan paste.
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Mehndi -->
+          <div class="bg-white border border-[#E7E5E4] rounded-2xl p-5 shadow-sm space-y-3">
+            <h3 class="text-xl font-serif font-bold text-[#1C1917]">Mehndi</h3>
+            <ul class="space-y-2 text-sm text-[#44403C]">
+              <li class="flex items-center gap-2"><span>•</span> Book the venue, stage designer, and sound system</li>
+              <li class="flex items-center gap-2"><span>•</span> Hire a henna artist for the bride and separate artists for guests if needed</li>
+              <li class="flex items-center gap-2"><span>•</span> Confirm dance performances and rehearsal times</li>
+              <li class="flex items-center gap-2"><span>•</span> Plan the menu and a chai or dessert counter</li>
+              <li class="flex items-center gap-2"><span>•</span> Finalize the Mehndi outfits, often in green, yellow, or bright colors</li>
+              <li class="flex items-center gap-2"><span>•</span> Prepare the mehndi thaals and small favors</li>
+            </ul>
+            <!-- Image 4 -->
+            <figure class="my-4 rounded-xl overflow-hidden border border-[#E7E5E4]">
+              <img 
+                src="/mehndi-ceremony-tradition.jpg" 
+                alt="Bridal henna hands holding a decorated mehndi thaal" 
+                class="w-full h-auto object-cover max-h-[360px]"
+                loading="lazy"
+              />
+              <figcaption class="p-2.5 text-xs text-center text-[#78716C] bg-[#FAFAF9]">
+                Bridal henna artistry and festive mehndi thaals ready for an energetic evening.
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Baraat and Rukhsati -->
+          <div class="bg-white border border-[#E7E5E4] rounded-2xl p-5 shadow-sm space-y-3">
+            <h3 class="text-xl font-serif font-bold text-[#1C1917]">Baraat and Rukhsati</h3>
+            <p class="text-sm text-[#44403C]">
+              This is usually the largest event, so it needs the most lead time.
+            </p>
+            <ul class="space-y-2 text-sm text-[#44403C]">
+              <li class="flex items-center gap-2"><span>•</span> Confirm venue capacity, stage, parking, and separate entrances if required</li>
+              <li class="flex items-center gap-2"><span>•</span> Lock the menu, tasting date, and serving schedule</li>
+              <li class="flex items-center gap-2"><span>•</span> Arrange the groom's arrival: car, flowers, and any band or dhol</li>
+              <li class="flex items-center gap-2"><span>•</span> Plan the Rukhsati moment with the photographer and family</li>
+              <li class="flex items-center gap-2"><span>•</span> Prepare bridal transport and a car for the couple's departure</li>
+              <li class="flex items-center gap-2"><span>•</span> Assign family members to greet guests and manage seating</li>
+            </ul>
+          </div>
+
+          <!-- Nikkah -->
+          <div class="bg-white border border-[#E7E5E4] rounded-2xl p-5 shadow-sm space-y-3">
+            <h3 class="text-xl font-serif font-bold text-[#1C1917]">Nikkah</h3>
+            <p class="text-sm text-[#44403C]">
+              The Nikkah is the religious and legal heart of the wedding, so keep it on the checklist even if it feels quiet next to the parties.
+            </p>
+            <ul class="space-y-2 text-sm text-[#44403C]">
+              <li class="flex items-center gap-2"><span>•</span> Choose the date, time, and place: home, mosque, or the wedding venue</li>
+              <li class="flex items-center gap-2"><span>•</span> Confirm the nikah khwan or officiant</li>
+              <li class="flex items-center gap-2"><span>•</span> Agree on the mahr in advance and have it written into the Nikah Nama</li>
+              <li class="flex items-center gap-2"><span>•</span> Arrange two adult Muslim witnesses, following your family's tradition</li>
+              <li class="flex items-center gap-2"><span>•</span> Bring CNICs or valid ID for the bride, groom, and witnesses</li>
+              <li class="flex items-center gap-2"><span>•</span> Plan the moment for consent (ijab and qubool) and the dua afterward</li>
+              <li class="flex items-center gap-2"><span>•</span> Check local registration requirements, because these differ by province and country</li>
+            </ul>
+            <p class="text-sm text-[#44403C] mt-2">
+              If you're marrying abroad, also check whether your Nikkah is legally recognized where you live, or whether a separate civil registration is needed. Ask the registrar directly rather than relying on a cousin's memory.
+            </p>
+            <!-- Image 6 -->
+            <figure class="my-4 rounded-xl overflow-hidden border border-[#E7E5E4]">
+              <img 
+                src="/pakistani-indian-wedding-planning-checklist.jpg" 
+                alt="Nikkah paperwork with pen, rose petals and Quran on a stand" 
+                class="w-full h-auto object-cover max-h-[360px]"
+                loading="lazy"
+              />
+              <figcaption class="p-2.5 text-xs text-center text-[#78716C] bg-[#FAFAF9]">
+                Careful preparation of the Nikah Nama, identification, and official registration requirements.
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Walima -->
+          <div class="bg-white border border-[#E7E5E4] rounded-2xl p-5 shadow-sm space-y-3">
+            <h3 class="text-xl font-serif font-bold text-[#1C1917]">Walima</h3>
+            <ul class="space-y-2 text-sm text-[#44403C]">
+              <li class="flex items-center gap-2"><span>•</span> Confirm the venue, menu, and guest count, which is usually smaller than the Baraat</li>
+              <li class="flex items-center gap-2"><span>•</span> Arrange the couple's outfits, often in softer shades</li>
+              <li class="flex items-center gap-2"><span>•</span> Plan the stage, seating, and the couple's entrance</li>
+              <li class="flex items-center gap-2"><span>•</span> Coordinate with the groom's family on hosting duties</li>
+              <li class="flex items-center gap-2"><span>•</span> Book the photographer for family portraits</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SECTION 6: Bridal and Groom Attire Checklist -->
+        <section id="attire-checklist" class="space-y-5">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Pakistani Bridal and Groom Attire Checklist
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            Attire eats more time than people expect. A bridal outfit can take months to design, embroider, and fit.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+            <!-- Bride's attire -->
+            <div class="bg-[#FFFDF7] border border-[#FDE68A] rounded-2xl p-5 shadow-sm">
+              <h3 class="text-lg font-serif font-bold text-[#92400E] mb-3 flex items-center gap-2">
+                <span>👰</span> For the bride
+              </h3>
+              <ul class="space-y-2 text-xs sm:text-sm text-[#44403C]">
+                <li class="flex items-start gap-2"><span>•</span> Order the Baraat lehnga, gharara, or sharara early</li>
+                <li class="flex items-start gap-2"><span>•</span> Choose separate outfits for Mayun, Mehndi, Nikkah, and Walima</li>
+                <li class="flex items-start gap-2"><span>•</span> Schedule at least two fittings, and one final fitting near the date</li>
+                <li class="flex items-start gap-2"><span>•</span> Confirm dupattas, blouses, and any custom embroidery</li>
+                <li class="flex items-start gap-2"><span>•</span> Buy or rent the jewelry sets: gold, kundan, tikka, jhoomar, matha patti</li>
+                <li class="flex items-start gap-2"><span>•</span> Arrange safe storage and insurance for valuable pieces</li>
+                <li class="flex items-start gap-2"><span>•</span> Book a makeup and hairstyle trial, then choose the final look from our <a href="/blog/pakistani-wedding-hairstyles" class="text-[#B45309] font-medium hover:underline">Pakistani wedding hairstyles</a> guide</li>
+                <li class="flex items-start gap-2"><span>•</span> Browse ideas in our <a href="/blog/pakistani-wedding-outfits" class="text-[#B45309] font-medium hover:underline">Pakistani wedding outfits for brides</a> article</li>
+              </ul>
+            </div>
+
+            <!-- Groom's attire -->
+            <div class="bg-[#FFFDF7] border border-[#FDE68A] rounded-2xl p-5 shadow-sm">
+              <h3 class="text-lg font-serif font-bold text-[#92400E] mb-3 flex items-center gap-2">
+                <span>🤵</span> For the groom
+              </h3>
+              <ul class="space-y-2 text-xs sm:text-sm text-[#44403C]">
+                <li class="flex items-start gap-2"><span>•</span> Order the sherwani, kulla or turban, and khussa for the Baraat</li>
+                <li class="flex items-start gap-2"><span>•</span> Choose a waistcoat or prince coat for the Walima</li>
+                <li class="flex items-start gap-2"><span>•</span> Plan Mehndi and Mayun outfits that coordinate with the bride</li>
+                <li class="flex items-start gap-2"><span>•</span> Schedule tailoring appointments with buffer time for alterations</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="text-[#44403C] leading-relaxed">
+            Pack a <a href="/checklists/bridal-emergency-kit-checklist" class="text-[#B45309] font-medium hover:underline">bridal emergency kit</a> for each event. Safety pins, tissues, blotting sheets, and a sewing kit have saved many a Baraat.
+          </p>
+
+          <!-- Image 5 -->
+          <figure class="my-8 rounded-2xl overflow-hidden border border-[#E7E5E4] bg-white shadow-sm">
+            <img 
+              src="/pakistani-wedding-outfits-hero.jpg" 
+              alt="Pakistani bridal outfit and kundan jewelry laid out for the Baraat" 
+              class="w-full h-auto object-cover max-h-[460px]"
+              loading="lazy"
+            />
+            <figcaption class="p-3 text-xs text-center text-[#78716C] bg-[#FAFAF9] border-t border-[#F5F5F4]">
+              Intricate bridal craftsmanship and coordinated groom attire for the multi-day celebrations.
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SECTION 7: Vendor Checklist -->
+        <section id="vendor-checklist" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Vendor Checklist
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            Multi-day weddings mean many contracts, so vendors sit near the top of any Pakistani wedding checklist, and the wrong booking order creates problems. Our <a href="/checklists/wedding-vendor-booking-checklist" class="text-[#B45309] font-medium hover:underline">vendor booking order and contract checklist</a> covers the full sequence. For a Pakistani wedding, these are the vendors that matter most:
+          </p>
+
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+            {[
+              'Venue or marquee for each function',
+              'Caterer with halal certification and a menu tasting',
+              'Photographer and videographer, ideally booked for all events',
+              'Stage and decor designer',
+              'Makeup artist and hairstylist, including a female team if your family prefers',
+              'Henna artist for Mehndi',
+              'Dholak performers, DJ, or sound provider',
+              'Invitation designer and printer',
+              'Transport for the Baraat, bridal car, and guest shuttles'
+            ].map(vendor => (
+              <li class="bg-[#FAFAF9] p-3 rounded-xl border border-[#F5F5F4] text-xs sm:text-sm text-[#292524] flex items-center gap-2">
+                <span class="text-[#B45309] font-bold">✓</span> {vendor}
+              </li>
+            ))}
+          </ul>
+
+          <p class="text-[#44403C] leading-relaxed">
+            When you sign, check the deposit amount, the cancellation terms, overtime charges, and the exact dates listed. A contract that names only one event can leave you exposed on the others.
+          </p>
+        </section>
+
+        <!-- SECTION 8: Budget Across Multiple Events -->
+        <section id="budget-multiple-events" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Budget Across Multiple Events
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            The mistake most couples make is budgeting for the Baraat and forgetting everything else. Dholki nights, Mayun, and the Nikkah look small, but the costs add up.
+          </p>
+          <p class="text-[#44403C] leading-relaxed">
+            A good Pakistani wedding checklist gives every function its own budget line. Set a ceiling for each function, then keep a buffer of around ten percent for surprises. Log every deposit the day you pay it. If your total is fixed, use the <a href="/tools/budget-calculator" class="text-[#B45309] font-medium hover:underline">wedding budget calculator</a> to see where the split leaves you, or start from the nearest tier: <a href="/checklists/wedding-budget-calculator-10k" class="text-[#B45309] font-medium hover:underline">$10,000</a>, <a href="/checklists/wedding-budget-calculator-20k" class="text-[#B45309] font-medium hover:underline">$20,000</a>, <a href="/checklists/wedding-budget-calculator-30k" class="text-[#B45309] font-medium hover:underline">$30,000</a>, or <a href="/checklists/wedding-budget-calculator-50k" class="text-[#B45309] font-medium hover:underline">$50,000+</a>. For trimming costs without ruining the day, our <a href="/blog/wedding-budget-tips" class="text-[#B45309] font-medium hover:underline">wedding budget tips</a> are a good next read.
+          </p>
+          <p class="text-[#44403C] leading-relaxed">
+            Agree early on who pays for what. Traditionally the bride's family hosts the Baraat and the groom's family hosts the Walima, though many families now share costs. Have that conversation once, calmly, and write it down.
+          </p>
+        </section>
+
+        <!-- SECTION 9: Guest List, RSVPs, and Seating -->
+        <section id="guest-list-seating" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Guest List, RSVPs, and Seating
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            Pakistani weddings often carry large guest lists, and each event has a different one, so your Pakistani wedding checklist should track them separately. The Baraat might include extended family and neighbors. The Walima might include colleagues. The Mayun might be twelve people.
+          </p>
+
+          <ul class="space-y-2 text-sm text-[#44403C] my-3">
+            <li class="flex items-center gap-2"><span>•</span> Build a separate list for every function</li>
+            <li class="flex items-center gap-2"><span>•</span> Track each guest's RSVP per event, not overall</li>
+            <li class="flex items-center gap-2"><span>•</span> Note dietary needs and accessibility needs for elderly relatives</li>
+            <li class="flex items-center gap-2"><span>•</span> Decide on seating style: mixed, separate, or family-based</li>
+            <li class="flex items-center gap-2"><span>•</span> Book hotel blocks for out-of-town guests</li>
+            <li class="flex items-center gap-2"><span>•</span> Assign someone to follow up on missing RSVPs</li>
+          </ul>
+
+          <p class="text-[#44403C] leading-relaxed">
+            The <a href="/tools/guest-list-manager" class="text-[#B45309] font-medium hover:underline">guest list manager</a> handles the tracking, and our <a href="/blog/perfect-guest-list-guide" class="text-[#B45309] font-medium hover:underline">wedding guest list and seating chart guide</a> explains how to structure the lists. For the full task sequence, see the <a href="/checklists/wedding-guest-list-organizer" class="text-[#B45309] font-medium hover:underline">guest list and RSVP master checklist</a>.
+          </p>
+        </section>
+
+        <!-- SECTION 10: Food, Catering, and Prayer Timing -->
+        <section id="food-catering-prayer" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Food, Catering, and Prayer Timing
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            Food is the center of a Pakistani wedding, and guests will remember the menu more than the flowers. Book a tasting at least six weeks before the first event.
+          </p>
+
+          <ul class="space-y-2 text-sm text-[#44403C] my-3">
+            <li class="flex items-center gap-2"><span>•</span> Confirm that the caterer is halal and can handle your guest count</li>
+            <li class="flex items-center gap-2"><span>•</span> Choose a menu with traditional mains such as biryani and korma, plus BBQ, naan, and desserts like kheer</li>
+            <li class="flex items-center gap-2"><span>•</span> Plan a chai or Kashmiri chai station for late evenings</li>
+            <li class="flex items-center gap-2"><span>•</span> Ask about vegetarian and allergy options</li>
+            <li class="flex items-center gap-2"><span>•</span> Agree on serving times, so the main dish doesn't arrive at midnight</li>
+          </ul>
+
+          <p class="text-[#44403C] leading-relaxed">
+            Prayer times deserve a line on the schedule too. If an event runs through Maghrib or Isha, leave a gap and set aside a clean prayer space. Guests notice it, and they appreciate it.
+          </p>
+        </section>
+
+        <!-- SECTION 11: Venue and Decor -->
+        <section id="venue-decor" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Venue and Decor
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            Choose the venue by capacity, parking, kitchen access, and how easily the bride's party can enter without crossing the crowd. Our guide to <a href="/blog/how-to-choose-wedding-venue" class="text-[#B45309] font-medium hover:underline">choosing the perfect wedding venue</a> lists the questions to ask before you sign. For stage design, florals, and lighting, use the <a href="/checklists/wedding-decor-flowers-checklist" class="text-[#B45309] font-medium hover:underline">decor and floral checklist</a>, and build a <a href="/blog/moodboard-layout" class="text-[#B45309] font-medium hover:underline">moodboard</a> so every function feels connected without looking identical.
+          </p>
+        </section>
+
+        <!-- SECTION 12: Wedding Week and Day-Of Checklist -->
+        <section id="wedding-week-day-of" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Wedding Week and Day-Of Checklist
+          </h2>
+          <p class="text-[#44403C] leading-relaxed">
+            The last seven days of your Pakistani wedding checklist are about confirmation, not new decisions.
+          </p>
+
+          <ul class="space-y-2.5 my-4">
+            {[
+              'Reconfirm every vendor with time, address, and contact number',
+              'Send final headcounts to caterers and venues',
+              'Prepare labeled envelopes for final vendor payments',
+              'Pack outfits, jewelry, and accessories for each event in separate bags',
+              'Print the schedule for each function and give copies to your point people',
+              'Charge phones, cameras, and power banks',
+              'Rest. Sleep matters more than one more decor tweak'
+            ].map(task => (
+              <li class="flex items-start gap-3 bg-[#FAFAF9] p-3 rounded-xl border border-[#F5F5F4]">
+                <div class="mt-0.5 w-5 h-5 rounded-md bg-[#FEF3C7] border border-[#FDE68A] flex items-center justify-center shrink-0 text-[#92400E]">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span class="text-sm text-[#292524]">{task}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p class="text-[#44403C] leading-relaxed">
+            Build the run of show with the <a href="/tools/timeline-generator" class="text-[#B45309] font-medium hover:underline">day-of timeline generator</a>, and use the <a href="/checklists/wedding-day-of-timeline-checklist" class="text-[#B45309] font-medium hover:underline">day-of schedule and timeline checklist</a> as a cross-check. Put your first event date into the <a href="/tools/wedding-countdown" class="text-[#B45309] font-medium hover:underline">wedding countdown</a> so the whole family sees the same number of days left.
+          </p>
+
+          <!-- Image 7 -->
+          <figure class="my-8 rounded-2xl overflow-hidden border border-[#E7E5E4] bg-white shadow-sm">
+            <img 
+              src="/wedding-countdown-timer-calendar.jpg" 
+              alt="Wedding week checklist with labeled vendor envelopes and countdown" 
+              class="w-full h-auto object-cover max-h-[460px]"
+              loading="lazy"
+            />
+            <figcaption class="p-3 text-xs text-center text-[#78716C] bg-[#FAFAF9] border-t border-[#F5F5F4]">
+              Final week preparation: vendor envelopes labeled, timelines synchronized, and countdown live.
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SECTION 13: Common Mistakes to Avoid -->
+        <section id="common-mistakes" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Common Pakistani Wedding Planning Mistakes to Avoid
+          </h2>
+
+          <div class="space-y-3 my-4">
+            {[
+              { title: 'Booking one venue and stopping.', desc: 'Every function needs a confirmed place and date.' },
+              { title: 'Skipping the Nikkah paperwork.', desc: 'Check forms, ID, and registration well ahead.' },
+              { title: 'Leaving tailoring late.', desc: 'Bridal work often needs several months and multiple fittings.' },
+              { title: 'No single point of contact.', desc: 'Two families giving contradictory instructions to a caterer is a recipe for stress.' },
+              { title: 'Forgetting small events in the budget.', desc: 'Dholki and Mayun spending is easy to ignore until the bills arrive.' },
+              { title: 'Ignoring out-of-town guests.', desc: 'Hotels, transport, and directions need planning too.' }
+            ].map(item => (
+              <div class="flex items-start gap-3 bg-[#FEF2F2]/60 border border-[#FEE2E2] p-4 rounded-xl">
+                <span class="text-[#DC2626] font-bold text-base mt-0.5">⚠️</span>
+                <p class="text-sm text-[#44403C]">
+                  <strong class="text-[#991B1B]">{item.title}</strong> {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- SECTION 14: Frequently Asked Questions -->
+        <section id="faqs" class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917] tracking-tight">
+            Frequently Asked Questions
+          </h2>
+
+          <div class="space-y-3 mt-6">
+            {fullSchemaGraph['@graph'][2].mainEntity.map((faq: any) => (
+              <details class="group bg-white border border-[#E7E5E4] rounded-2xl p-5 open:bg-[#FFFDF7] open:border-[#FDE68A] transition-all">
+                <summary class="flex justify-between items-center font-semibold text-sm sm:text-base text-[#1C1917] cursor-pointer list-none">
+                  <span>{faq.name}</span>
+                  <span class="text-[#A8A29E] group-open:rotate-180 transition-transform duration-200">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="text-xs sm:text-sm text-[#57534E] mt-3 leading-relaxed border-t border-[#F5F5F4] pt-3">
+                  {faq.acceptedAnswer.text}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <!-- SECTION 15: Start Your Pakistani Wedding Checklist Today (CTA) -->
+        <section class="bg-gradient-to-br from-[#FEF3C7] via-[#FFFBEB] to-[#FEF3C7] border border-[#FDE68A] rounded-3xl p-6 sm:p-8 text-center space-y-5 shadow-sm">
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#92400E]">
+            Start Your Pakistani Wedding Checklist Today
+          </h2>
+          <p class="text-sm sm:text-base text-[#78350F] max-w-2xl mx-auto leading-relaxed">
+            A multi-day wedding feels huge until it's written down. Once every function has a date, a venue, an owner, and a budget line, the pile turns into a plan.
+          </p>
+          <p class="text-sm sm:text-base text-[#78350F] max-w-2xl mx-auto leading-relaxed">
+            Keep your Pakistani wedding checklist in one place: start with the foundation tasks, move through your events one at a time, and keep everything in one place. Open the <a href="/tools/wedding-planning-dashboard" class="font-bold underline hover:text-[#B45309]">Wedding Planning Dashboard</a> to track tasks live, or generate a personalized list with the <a href="/tools/wedding-checklist-generator" class="font-bold underline hover:text-[#B45309]">wedding checklist generator</a>. Then explore the wider <a href="/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding" class="font-bold underline hover:text-[#B45309]">Wedding Planning Checklists guide</a> for everything else on your list.
+          </p>
+          <div class="pt-2 flex flex-wrap justify-center gap-3">
+            <a 
+              href="/tools/wedding-planning-dashboard" 
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#B45309] text-white font-semibold text-sm hover:bg-[#92400E] shadow-sm transition-all hover:scale-[1.02]"
+            >
+              Open Planning Dashboard
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <a 
+              href="/tools/wedding-checklist-generator" 
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-[#92400E] border border-[#FDE68A] font-semibold text-sm hover:bg-[#FFFDF7] shadow-sm transition-all"
+            >
+              Generate Custom Checklist
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <!-- Script for Progress Bar & Interactive features -->
+  <script is:inline>
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('reading-progress');
+      if (bar) bar.style.width = scrolled + '%';
+    });
+  </script>
+</BaseLayout>
