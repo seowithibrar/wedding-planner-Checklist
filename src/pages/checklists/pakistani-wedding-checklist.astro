@@ -209,7 +209,7 @@ const relatedChecklists = checklistsData.checklists
 
   <!-- HERO HEADER SECTION -->
   <header class="relative pt-10 pb-12 bg-gradient-to-b from-[#FFFBEB] via-[#FFFDF7] to-white border-b border-[#FDE68A]/60">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Breadcrumb -->
       <nav aria-label="Breadcrumb" class="mb-6">
         <ol class="flex flex-wrap items-center gap-2 text-xs text-[#78716C]">
@@ -284,35 +284,108 @@ const relatedChecklists = checklistsData.checklists
     </div>
   </header>
 
+  <!-- MOBILE TABLE OF CONTENTS DRAWER -->
+  <div class="lg:hidden max-w-7xl mx-auto px-4 sm:px-6 my-6">
+    <details class="group bg-white border border-[#E7E5E4] rounded-2xl p-4 shadow-sm">
+      <summary class="flex items-center justify-between font-bold text-sm text-[#1C1917] cursor-pointer list-none">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-[#B45309]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+          In This Pakistani Wedding Checklist
+        </span>
+        <svg class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </summary>
+      <nav class="pt-3 mt-3 border-t border-[#F5F5F4] space-y-1">
+        {tocItems.map(item => (
+          <a href={`#${item.id}`} class="block text-sm py-1.5 px-2 rounded-lg text-[#57534E] hover:text-[#B45309] hover:bg-[#FFFBEB] transition-colors">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </details>
+  </div>
+
   <!-- MAIN ARTICLE CONTAINER -->
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 pb-24">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
       
       <!-- Table of Contents (Desktop Sticky Sidebar) -->
-      <aside class="hidden lg:block lg:col-span-4">
-        <div class="sticky top-24 bg-white border border-[#E7E5E4] rounded-2xl p-5 shadow-sm">
-          <h2 class="text-sm font-bold uppercase tracking-wider text-[#78716C] mb-4 flex items-center gap-2">
-            <svg class="w-4 h-4 text-[#B45309]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-            </svg>
-            Table of Contents
-          </h2>
-          <nav>
-            <ul class="space-y-2 text-xs leading-snug text-[#57534E]">
-              {tocItems.map(item => (
-                <li>
-                  <a href={`#${item.id}`} class="block py-1 hover:text-[#B45309] hover:font-medium transition-colors">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+      <aside class="col-span-1 lg:col-span-4 xl:col-span-3 hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+          <div class="bg-white border border-[#E7E5E4] rounded-2xl p-5 shadow-sm">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-[#78716C] mb-4 flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#B45309]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+              </svg>
+              Table of Contents
+            </h2>
+            <nav id="sidebar-toc">
+              <ul class="space-y-1 text-xs leading-snug text-[#57534E]">
+                {tocItems.map(item => (
+                  <li>
+                    <a href={`#${item.id}`} class="toc-link block py-1.5 px-2 rounded-lg hover:text-[#B45309] hover:bg-[#FFFBEB] transition-colors">
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Free Interactive Tool CTA Card -->
+          <div class="bg-gradient-to-br from-[#1C1917] via-[#292524] to-[#1C1917] text-white p-6 rounded-2xl text-center space-y-4 shadow-md relative overflow-hidden">
+            <div class="absolute top-2 right-2 w-16 h-16 bg-[#B45309]/10 rounded-full blur-xl"></div>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#FDE68A] block">Free Interactive Tool</span>
+            <h3 class="font-bold text-sm leading-snug relative">Track This Checklist Live</h3>
+            <p class="text-[11px] text-stone-300 leading-relaxed relative">
+              Check off tasks, track RSVPs, log vendor deposits, and manage all multi-day events in real time.
+            </p>
+            <a 
+              href="/tools/wedding-planning-dashboard" 
+              class="block w-full bg-[#B45309] hover:bg-[#92400E] text-white py-2.5 rounded-xl text-xs font-bold transition-all shadow-md relative"
+            >
+              Open Live Dashboard →
+            </a>
+          </div>
+
+          <!-- Related Planning Tools Links -->
+          <div class="bg-white rounded-2xl border border-[#E7E5E4] p-5 shadow-sm space-y-3">
+            <h3 class="font-bold text-xs uppercase tracking-wider text-[#1C1917]">Planning Tools</h3>
+            <ul class="space-y-1.5 text-xs font-medium">
+              <li>
+                <a href="/tools/guest-list-manager" class="text-[#57534E] hover:text-[#B45309] flex items-center justify-between py-1.5 border-b border-stone-100 transition-colors">
+                  <span>👥 Guest List Manager</span>
+                  <span>→</span>
+                </a>
+              </li>
+              <li>
+                <a href="/tools/budget-calculator" class="text-[#57534E] hover:text-[#B45309] flex items-center justify-between py-1.5 border-b border-stone-100 transition-colors">
+                  <span>💰 Budget Calculator</span>
+                  <span>→</span>
+                </a>
+              </li>
+              <li>
+                <a href="/tools/wedding-checklist-generator" class="text-[#57534E] hover:text-[#B45309] flex items-center justify-between py-1.5 border-b border-stone-100 transition-colors">
+                  <span>📋 Custom Checklist Generator</span>
+                  <span>→</span>
+                </a>
+              </li>
+              <li>
+                <a href="/tools/wedding-countdown" class="text-[#57534E] hover:text-[#B45309] flex items-center justify-between py-1.5 transition-colors">
+                  <span>⏰ Wedding Countdown</span>
+                  <span>→</span>
+                </a>
+              </li>
             </ul>
-          </nav>
+          </div>
         </div>
       </aside>
 
       <!-- Main Content Column -->
-      <div class="lg:col-span-8 space-y-12">
+      <article class="col-span-1 lg:col-span-8 xl:col-span-9 space-y-12 min-w-0">
         
         <!-- SECTION 1: What Is a Pakistani Wedding Checklist? -->
         <section id="what-is" class="space-y-4">
@@ -899,7 +972,28 @@ const relatedChecklists = checklistsData.checklists
           </div>
         </section>
 
-      </div>
+        <!-- Explore Other Categorized Checklists -->
+        <section class="bg-stone-50 rounded-3xl p-6 sm:p-8 border border-stone-200/80 space-y-6">
+          <h2 class="text-xl font-serif font-bold text-[#1C1917]">Explore Other Categorized Checklists</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {relatedChecklists.map((item: any) => (
+              <a
+                href={`/checklists/${item.slug}`}
+                class="bg-white rounded-2xl p-4 border border-[#E7E5E4] shadow-sm hover:border-[#B45309]/40 hover:shadow-md transition-all group"
+              >
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-base">{item.icon}</span>
+                  <span class="text-[10px] font-bold text-[#B45309] uppercase tracking-wider">{item.category}</span>
+                </div>
+                <h3 class="font-bold text-xs text-[#1C1917] group-hover:text-[#B45309] transition-colors leading-snug">
+                  {item.title}
+                </h3>
+              </a>
+            ))}
+          </div>
+        </section>
+
+      </article>
     </div>
   </main>
 
