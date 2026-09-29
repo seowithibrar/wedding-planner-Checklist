@@ -92,6 +92,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             `,
           }}
         />
+        {/* Google AdSense */}
+        <meta name="google-adsense-account" content="ca-pub-1486250311908638" />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1486250311908638"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="bg-[#FAFAFA] text-[#1A1A1A] antialiased selection:bg-[#FCECF0] selection:text-[#1A1A1A] font-sans">
         {/* Google Tag Manager (noscript) */}
