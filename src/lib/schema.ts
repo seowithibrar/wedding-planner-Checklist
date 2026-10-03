@@ -30,8 +30,8 @@ export function generateArticleSchema(article: {
         url: 'https://www.weddingplanningchecklists.org/favicon.png'
       }
     },
-    datePublished: article.datePublished || '2026-01-01',
-    dateModified: article.dateModified || '2026-08-01'
+    ...(article.datePublished ? { datePublished: article.datePublished } : {}),
+    ...(article.dateModified ? { dateModified: article.dateModified } : {})
   });
 }
 

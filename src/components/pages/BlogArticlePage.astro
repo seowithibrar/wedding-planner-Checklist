@@ -55,7 +55,15 @@ const howToSchema = post.data.howTo ? generateHowToSchema({
 }) : null;
 
 const schemas = [articleSchema, faqSchema, breadcrumbSchema, howToSchema].filter(Boolean);
-const combinedSchema = `[${schemas.join(', ')}]`;
+const schemaGraph = schemas.map(schema => {
+  const schemaData = JSON.parse(schema as string);
+  delete schemaData['@context'];
+  return schemaData;
+});
+const combinedSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': schemaGraph
+});
 
 // Build TOC items from frontmatter or defaults
 const tocItems = post.data.tableOfContents && post.data.tableOfContents.length > 0
