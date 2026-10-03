@@ -4,11 +4,12 @@ export interface SEOProps {
   canonical?: string;
   image?: string;
   type?: 'website' | 'article';
+  titleIsFinal?: boolean;
 }
 
-export function getSEOMetadata({ title, description, canonical, image, type = 'website' }: SEOProps) {
+export function getSEOMetadata({ title, description, canonical, image, type = 'website', titleIsFinal = false }: SEOProps) {
   const siteUrl = 'https://www.weddingplanningchecklists.org';
-  const fullTitle = (title.toLowerCase().includes('wedding planning checklists') || title.toLowerCase().includes('wedding planning checklist')) 
+  const fullTitle = titleIsFinal || title.toLowerCase().includes('wedding planning checklists') || title.toLowerCase().includes('wedding planning checklist')
     ? title 
     : `${title} | Wedding Planning Checklists`;
   

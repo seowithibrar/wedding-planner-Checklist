@@ -14,12 +14,13 @@ export interface Props {
   ogTitle?: string;
   publishDate?: string;
   modifiedDate?: string;
+  titleIsFinal?: boolean;
   schemaScript?: string;
   lang?: string;
   noindex?: boolean;
 }
 
-const { title, description, ogTitle, ogDescription, canonical, image, type = 'website', publishDate, modifiedDate, schemaScript, lang, noindex = false } = Astro.props;
+const { title, description, ogTitle, ogDescription, canonical, image, type = 'website', publishDate, modifiedDate, titleIsFinal, schemaScript, lang, noindex = false } = Astro.props;
 
 // Determine current language: explicit prop, or from URL path
 const currentLang = (lang && lang in SUPPORTED_LANGUAGES) 
@@ -46,7 +47,7 @@ if (currentLang !== DEFAULT_LANGUAGE && finalCanonical.startsWith(SITE_URL)) {
     : `${SITE_URL}/${currentLang}${cleanCanonicalPath}`;
 }
 
-const seo = getSEOMetadata({ title, description, canonical: finalCanonical, image, type });
+const seo = getSEOMetadata({ title, description, canonical: finalCanonical, image, type, titleIsFinal });
 
 // Generate reciprocal hreflang links only for indexable pages
 const shouldRenderHreflang = !noindex && cleanPath !== '/404';

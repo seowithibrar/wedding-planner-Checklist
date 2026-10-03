@@ -82,6 +82,9 @@ const displayDate = post.data.updatedDate || 'September 2026';
 <BaseLayout 
   title={pageTitle} 
   description={articleDescription} 
+  ogTitle={pageTitle}
+  ogDescription={articleDescription}
+  titleIsFinal={Boolean(post.data.seoTitle)}
   canonical={canonicalUrl}
   image={post.data.heroImage}
   type="article"
