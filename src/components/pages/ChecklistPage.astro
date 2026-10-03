@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../layout/Header.astro';
 import Footer from '../layout/Footer.astro';
+import SixMonthWeddingPlanningChecklist from '../mdx/SixMonthWeddingPlanningChecklist.mdx';
 import checklistsData from '../../data/categorized-checklists.json';
 import { generateBreadcrumbSchema, generateFAQSchema, generateArticleSchema } from '../../lib/schema';
 import { useTranslations, localizeUrl, SITE_URL } from '../../i18n/utils';
@@ -21,8 +22,8 @@ const canonicalUrl = currentLang === DEFAULT_LANGUAGE
   : `${SITE_URL}/${currentLang}/checklists/${checklist.slug}`;
 
 const seo = {
-  title: `${checklist.title} (2026)`,
-  description: checklist.description,
+  title: checklist.seoTitle || `${checklist.title} (2026)`,
+  description: checklist.metaDescription || checklist.description,
   canonical: canonicalUrl
 };
 
@@ -32,7 +33,7 @@ const breadcrumbItems = [
   { name: checklist.title, item: seo.canonical }
 ];
 
-const faqs = [
+const faqs = checklist.faqs || [
   {
     q: `How do I use the ${checklist.title}?`,
     a: `Start by reviewing the key takeaways and timeline stages outlined in this guide. Combine it with our free interactive tools to track your RSVPs, budget, and daily to-do lists.`
@@ -47,20 +48,32 @@ const faqs = [
   }
 ];
 
-const combinedSchema = `[${[
+const imageUrl = new URL(checklist.heroImage || '/Wedding%20Planning%20Checklist.webp', SITE_URL).toString();
+const schemas = [
   generateArticleSchema({
     title: checklist.title,
-    description: checklist.description,
-    slug: `checklists/${checklist.slug}`,
-    publishDate: '2026-01-01',
-    modifiedDate: '2026-08-03'
+    description: seo.description,
+    url: canonicalUrl,
+    image: imageUrl,
+    authorName: checklist.author || 'Wedding Planning Checklists Team',
+    dateModified: checklist.dateModified,
+    datePublished: checklist.datePublished
   }),
   generateFAQSchema(faqs),
   generateBreadcrumbSchema(breadcrumbItems)
-].filter(Boolean).join(',')}]`;
+].filter(Boolean);
+const schemaGraph = schemas.map(schema => {
+  const schemaData = JSON.parse(schema as string);
+  delete schemaData['@context'];
+  return schemaData;
+});
+const combinedSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': schemaGraph
+});
 ---
 
-<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical} schemaScript={combinedSchema} lang={currentLang}>
+<BaseLayout title={seo.title} description={seo.description} ogTitle={seo.title} ogDescription={seo.description} titleIsFinal={Boolean(checklist.seoTitle)} canonical={seo.canonical} modifiedDate={checklist.dateModified} schemaScript={combinedSchema} lang={currentLang}>
   <Header lang={currentLang} />
 
   <main class="space-y-12">
@@ -84,9 +97,11 @@ const combinedSchema = `[${[
       <h1 class="text-3xl sm:text-5xl font-extrabold text-[#1A1A1A] leading-tight">
         {checklist.title}
       </h1>
-      <p class="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
-        {checklist.description}
-      </p>
+      {!checklist.longForm && (
+        <p class="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
+          {checklist.description}
+        </p>
+      )}
 
       {currentLang !== DEFAULT_LANGUAGE && (
         <div class="inline-flex items-center gap-2 bg-white border border-[#F3E8EA] px-4 py-1.5 rounded-full text-xs text-slate-600 shadow-sm">
@@ -98,19 +113,41 @@ const combinedSchema = `[${[
       <!-- Authorship & Date Meta -->
       <div class="flex items-center gap-4 text-xs font-medium text-slate-500 pt-2">
         <span class="inline-flex items-center gap-2">
-          <div class="w-6 h-6 rounded-full bg-[#B76E79] text-white flex items-center justify-center font-bold text-[9px]">SJ</div>
-          {common.ui.by} <strong class="text-[#1A1A1A]">Sarah Jenkins</strong>
+          <div class="w-6 h-6 rounded-full bg-[#B76E79] text-white flex items-center justify-center font-bold text-[9px]">{checklist.author === 'Wedding Planning Checklists Team' ? 'W' : 'SJ'}</div>
+          {common.ui.by} <strong class="text-[#1A1A1A]">{checklist.author || 'Sarah Jenkins'}</strong>
         </span>
         <span class="text-slate-300">|</span>
-        <span>{common.ui.updated}: September 6, 2026</span>
+        <span>{common.ui.updated}: {checklist.updatedDate || 'September 6, 2026'}</span>
       </div>
     </header>
+
+    {checklist.heroImage && (
+      <div class="max-w-[1300px] mx-auto px-4">
+        <img
+          src={checklist.heroImage}
+          alt={checklist.heroImageAlt || checklist.title}
+          class="w-full aspect-video object-cover rounded-2xl border border-[#F3E8EA] shadow-sm"
+          width="1376"
+          height="768"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    )}
 
     <!-- Main Content Grid -->
     <section class="max-w-[1300px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
       
       <!-- Main Content Column -->
       <article class="lg:col-span-2 bg-white rounded-3xl border border-[#F3E8EA] p-6 sm:p-10 shadow-sm space-y-8">
+
+        {checklist.longForm ? (
+          <div class="six-month-checklist article-content prose prose-lg prose-rose max-w-none">
+            <SixMonthWeddingPlanningChecklist />
+          </div>
+        ) : (
+          <>
         
         {checklist.slug === '12-month-wedding-planning-checklist' && (
           <div class="bg-gradient-to-r from-[#FCECF0]/60 to-white border border-[#F3E8EA] p-4 rounded-2xl text-xs sm:text-sm text-slate-600 flex items-center gap-2.5 shadow-xs">
@@ -124,6 +161,27 @@ const combinedSchema = `[${[
           <h2 class="text-lg font-bold text-[#B76E79]">{checklists.overviewTitle || 'Overview'}</h2>
           <p class="text-sm text-slate-700 leading-relaxed">{checklist.summary}</p>
         </div>
+
+        {checklist.slug === '12-month-wedding-planning-checklist' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Planning on a shorter engagement? Use the <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6-month wedding planning checklist</a> for a faster timeline.
+          </p>
+        )}
+        {checklist.slug === '3-month-wedding-planning-checklist' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            If you have a little more time, follow our <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6-month wedding planning checklist</a> for a more flexible schedule.
+          </p>
+        )}
+        {checklist.slug === '18-month-wedding-planning-checklist' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            If your engagement is shorter, this <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6 month wedding plan</a> prioritizes the decisions that cannot wait.
+          </p>
+        )}
+        {checklist.slug === 'printable-wedding-planning-checklist' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Need a shorter planning window? Use our <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6 month wedding planning guide</a> for a 24-week timeline.
+          </p>
+        )}
 
         {checklist.slug === 'indian-wedding-checklist' && (
           <p class="text-sm text-slate-600 leading-relaxed">
@@ -173,6 +231,9 @@ const combinedSchema = `[${[
             ))}
           </div>
         </div>
+
+          </>
+        )}
 
       </article>
 
@@ -258,3 +319,16 @@ const combinedSchema = `[${[
 
   <Footer lang={currentLang} />
 </BaseLayout>
+
+<style>
+  @media (max-width: 640px) {
+    .six-month-checklist :global(table) {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+</style>
