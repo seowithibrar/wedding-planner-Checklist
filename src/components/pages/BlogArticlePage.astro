@@ -36,7 +36,7 @@ const articleSchema = generateArticleSchema({
   description: articleDescription,
   url: canonicalUrl,
   image: post.data.heroImage,
-  dateModified: post.data.dateModified || '2026-09-20',
+  dateModified: post.data.dateModified,
   datePublished: post.data.pubDate ? post.data.pubDate.toISOString().split('T')[0] : undefined
 });
 
