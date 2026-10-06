@@ -160,11 +160,34 @@ const combinedSchema = JSON.stringify({
               <p class="text-sm text-slate-700 leading-relaxed">{checklist.summary}</p>
             </div>
 
+            <nav aria-label="Table of contents" class="rounded-2xl border border-[#F3E8EA] bg-slate-50 p-5">
+              <h2 class="mb-3 text-base font-bold text-[#1A1A1A]">On this page</h2>
+              <ul class="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
+                <li><a class="text-[#B76E79] hover:underline" href="#can-you-plan-a-wedding-in-3-months">Can You Plan a Wedding in 3 Months?</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#how-to-use-this-3-month-wedding-planning-checklist">How to Use This 3 Month Wedding Planning Checklist</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#the-first-72-hours-decisions-that-unlock-everything-else">The First 72 Hours: Decisions That Unlock Everything Else</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#the-3-month-wedding-planning-checklist-at-a-glance">The 3 Month Wedding Planning Checklist at a Glance</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#weeks-12-to-10-book-the-essentials-first">Weeks 12 to 10: Book the Essentials First</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#weeks-9-to-7-style-guests-and-look">Weeks 9 to 7: Style, Guests, and Look</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#weeks-6-to-4-paperwork-details-and-logistics">Weeks 6 to 4: Paperwork, Details, and Logistics</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#weeks-3-to-2-confirm-everything">Weeks 3 to 2: Confirm Everything</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#the-final-week-rehearse-pack-and-rest">The Final Week: Rehearse, Pack, and Rest</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#what-to-book-first-simplify-or-skip">What to Book First, Simplify, or Skip</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#90-day-wedding-planning-checklist-for-a-small-budget">90 Day Wedding Planning Checklist for a Small Budget</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#planning-a-wedding-in-2-months-or-6-months">Planning a Wedding in 2 Months or 6 Months?</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#3-month-wedding-planning-checklist-pdf-and-printable-version">3 Month Wedding Planning Checklist PDF and Printable Version</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#planning-a-multi-day-south-asian-wedding-in-3-months">Planning a Multi-Day South Asian Wedding in 3 Months</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#mistakes-to-avoid-with-your-3-month-wedding-planning-checklist">Mistakes to Avoid With Your 3 Month Wedding Planning Checklist</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+                <li><a class="text-[#B76E79] hover:underline" href="#your-next-step">Your Next Step</a></li>
+              </ul>
+            </nav>
+
             <div class="three-month-checklist article-content prose prose-lg prose-rose max-w-none">
               <ThreeMonthWeddingPlanningChecklist />
             </div>
 
-            <div class="space-y-4 pt-4 border-t border-[#F3E8EA]">
+            <div id="frequently-asked-questions" class="space-y-4 pt-4 border-t border-[#F3E8EA]">
               <h2 class="text-xl font-bold text-[#1A1A1A]">Frequently Asked Questions</h2>
               <div class="space-y-3">
                 {faqs.map(faq => (
