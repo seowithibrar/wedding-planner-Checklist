@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 960" role="img" aria-labelledby="title">
+  <title id="title">Ready-to-wear attire and digital invitation for a short wedding timeline</title>
+  <rect width="640" height="960" rx="36" fill="#fffaf8"/>
+  <text x="320" y="80" text-anchor="middle" fill="#263238" font-family="Arial,sans-serif" font-size="30" font-weight="700">STYLE, GUESTS</text>
+  <text x="320" y="120" text-anchor="middle" fill="#263238" font-family="Arial,sans-serif" font-size="30" font-weight="700">AND LOOK</text>
+  <rect x="70" y="168" width="500" height="700" rx="28" fill="#f8f1e8"/>
+  <path d="M234 257h174l-18 81-40 48 61 307H229l61-307-40-48z" fill="#fff" stroke="#b76e79" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M235 256c5-47 168-47 173 0" fill="none" stroke="#b76e79" stroke-width="8"/>
+  <path d="M255 720h151" stroke="#d8c5ac" stroke-width="7"/>
+  <rect x="416" y="386" width="105" height="196" rx="20" fill="#263238"/>
+  <rect x="426" y="405" width="85" height="157" rx="12" fill="#fff"/>
+  <rect x="437" y="430" width="63" height="47" rx="6" fill="#fcecf0"/>
+  <text x="468" y="451" text-anchor="middle" fill="#9b5560" font-family="Arial,sans-serif" font-size="11" font-weight="700">YOU'RE</text>
+  <text x="468" y="466" text-anchor="middle" fill="#9b5560" font-family="Arial,sans-serif" font-size="11" font-weight="700">INVITED</text>
+  <circle cx="470" cy="572" r="5" fill="#fff"/>
+  <path d="M158 738c-4-72 17-128 50-161M164 736c-42-39-48-76-35-112M170 716c36-38 50-83 48-117" fill="none" stroke="#668874" stroke-width="7" stroke-linecap="round"/>
+  <g fill="#d99aa3"><circle cx="124" cy="614" r="16"/><circle cx="153" cy="587" r="17"/><circle cx="203" cy="587" r="15"/><circle cx="190" cy="611" r="15"/></g>
+  <g fill="#d8c69c"><circle cx="124" cy="614" r="6"/><circle cx="153" cy="587" r="6"/><circle cx="203" cy="587" r="6"/><circle cx="190" cy="611" r="6"/></g>
+  <text x="320" y="812" text-anchor="middle" fill="#54725e" font-family="Arial,sans-serif" font-size="22" font-weight="700">Choose in-stock options</text>
+</svg>

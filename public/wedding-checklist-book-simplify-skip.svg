@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 960" role="img" aria-labelledby="title">
+  <title id="title">What to book now and what to simplify or skip for a wedding in three months</title>
+  <rect width="640" height="960" rx="36" fill="#fffaf8"/>
+  <text x="320" y="78" text-anchor="middle" fill="#263238" font-family="Arial,sans-serif" font-size="28" font-weight="700">BOOK, SIMPLIFY, OR SKIP</text>
+  <rect x="54" y="126" width="532" height="346" rx="26" fill="#e7f0e8"/>
+  <rect x="54" y="496" width="532" height="398" rx="26" fill="#fcecf0"/>
+  <g font-family="Arial,sans-serif">
+    <text x="92" y="178" fill="#54725e" font-size="26" font-weight="700">BOOK NOW</text>
+    <text x="92" y="226" fill="#263238" font-size="21">Venue and photographer</text>
+    <text x="92" y="269" fill="#263238" font-size="21">Caterer and officiant</text>
+    <text x="92" y="312" fill="#263238" font-size="21">Signed vendor contracts</text>
+    <text x="92" y="355" fill="#263238" font-size="21">Ready-to-wear attire</text>
+    <text x="92" y="548" fill="#9b5560" font-size="26" font-weight="700">SIMPLIFY OR SKIP</text>
+    <text x="92" y="597" fill="#263238" font-size="20">Live band: consider a DJ</text>
+    <text x="92" y="638" fill="#263238" font-size="20">Save-the-dates: send invites early</text>
+    <text x="92" y="679" fill="#263238" font-size="20">Custom stationery: go digital</text>
+    <text x="92" y="720" fill="#263238" font-size="20">Engagement photos: optional</text>
+    <text x="92" y="761" fill="#263238" font-size="20">Favors: keep them simple</text>
+    <text x="92" y="823" fill="#6c7775" font-size="17">Protect the guest experience; cut the extras.</text>
+  </g>
+  <circle cx="535" cy="163" r="20" fill="#668874"/>
+  <path d="m525 163 8 8 15-18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m516 538 30 30m0-30-30 30" stroke="#b76e79" stroke-width="6" stroke-linecap="round"/>
+</svg>

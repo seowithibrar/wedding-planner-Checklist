@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 960" role="img" aria-labelledby="title">
+  <title id="title">3 Month Wedding Planning Checklist</title>
+  <rect width="640" height="960" rx="36" fill="#fffaf8"/>
+  <text x="320" y="82" text-anchor="middle" fill="#263238" font-family="Arial,sans-serif" font-size="34" font-weight="700">3 Month Wedding</text>
+  <text x="320" y="126" text-anchor="middle" fill="#263238" font-family="Arial,sans-serif" font-size="34" font-weight="700">Planning Checklist</text>
+  <path d="M108 196v628" stroke="#b76e79" stroke-width="6" stroke-linecap="round"/>
+  <g font-family="Arial,sans-serif">
+    <g>
+      <rect x="148" y="172" width="414" height="130" rx="22" fill="#fcecf0"/>
+      <circle cx="108" cy="237" r="25" fill="#b76e79"/>
+      <text x="108" y="245" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">1</text>
+      <text x="178" y="216" fill="#9b5560" font-size="23" font-weight="700">WEEKS 12-10</text>
+      <text x="178" y="254" fill="#263238" font-size="20">Book venue, photographer,</text>
+      <text x="178" y="281" fill="#263238" font-size="20">caterer, and officiant</text>
+    </g>
+    <g>
+      <rect x="148" y="324" width="414" height="130" rx="22" fill="#e7f0e8"/>
+      <circle cx="108" cy="389" r="25" fill="#668874"/>
+      <text x="108" y="397" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">2</text>
+      <text x="178" y="368" fill="#54725e" font-size="23" font-weight="700">WEEKS 9-7</text>
+      <text x="178" y="406" fill="#263238" font-size="20">Attire, invitations, hair,</text>
+      <text x="178" y="433" fill="#263238" font-size="20">makeup, and flowers</text>
+    </g>
+    <g>
+      <rect x="148" y="476" width="414" height="130" rx="22" fill="#f7efdf"/>
+      <circle cx="108" cy="541" r="25" fill="#bd9560"/>
+      <text x="108" y="549" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">3</text>
+      <text x="178" y="520" fill="#8d6c40" font-size="23" font-weight="700">WEEKS 6-4</text>
+      <text x="178" y="558" fill="#263238" font-size="20">License, rings, menu,</text>
+      <text x="178" y="585" fill="#263238" font-size="20">seating, and timeline</text>
+    </g>
+    <g>
+      <rect x="148" y="628" width="414" height="130" rx="22" fill="#e9e8f2"/>
+      <circle cx="108" cy="693" r="25" fill="#77718f"/>
+      <text x="108" y="701" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">4</text>
+      <text x="178" y="672" fill="#625c7b" font-size="23" font-weight="700">WEEKS 3-2</text>
+      <text x="178" y="710" fill="#263238" font-size="20">Confirm vendors, headcount,</text>
+      <text x="178" y="737" fill="#263238" font-size="20">and final fittings</text>
+    </g>
+    <g>
+      <rect x="148" y="780" width="414" height="130" rx="22" fill="#e4eff3"/>
+      <circle cx="108" cy="845" r="25" fill="#648b9b"/>
+      <text x="108" y="853" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">5</text>
+      <text x="178" y="824" fill="#4d7382" font-size="23" font-weight="700">FINAL WEEK</text>
+      <text x="178" y="862" fill="#263238" font-size="20">Rehearse, pack, hand off,</text>
+      <text x="178" y="889" fill="#263238" font-size="20">and rest</text>
+    </g>
+  </g>
+</svg>

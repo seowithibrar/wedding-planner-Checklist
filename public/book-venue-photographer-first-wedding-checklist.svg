@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title">
+  <title id="title">Vendors to book first for a wedding</title>
+  <rect width="1200" height="675" rx="32" fill="#fffaf8"/>
+  <text x="600" y="76" text-anchor="middle" fill="#263238" font-family="Arial,sans-serif" font-size="34" font-weight="700">BOOK THE ESSENTIALS FIRST</text>
+  <g font-family="Arial,sans-serif" text-anchor="middle">
+    <g transform="translate(48 132)">
+      <rect width="204" height="450" rx="22" fill="#fcecf0"/>
+      <path d="M59 167h86V78l-43-34-43 34zM75 167v-59h54v59M51 78h102" fill="none" stroke="#b76e79" stroke-width="8" stroke-linejoin="round"/>
+      <text x="102" y="240" fill="#263238" font-size="23" font-weight="700">Venue</text>
+      <text x="102" y="286" fill="#596366" font-size="17">Date and</text><text x="102" y="311" fill="#596366" font-size="17">guest capacity</text>
+    </g>
+    <g transform="translate(284 132)">
+      <rect width="204" height="450" rx="22" fill="#e7f0e8"/>
+      <rect x="45" y="65" width="114" height="94" rx="14" fill="none" stroke="#668874" stroke-width="8"/>
+      <circle cx="102" cy="112" r="31" fill="none" stroke="#668874" stroke-width="8"/>
+      <path d="M62 65 76 48h52l14 17" fill="none" stroke="#668874" stroke-width="8"/>
+      <text x="102" y="240" fill="#263238" font-size="23" font-weight="700">Photographer</text>
+      <text x="102" y="286" fill="#596366" font-size="17">Check the date</text><text x="102" y="311" fill="#596366" font-size="17">and full galleries</text>
+    </g>
+    <g transform="translate(520 132)">
+      <rect width="204" height="450" rx="22" fill="#f7efdf"/>
+      <path d="M51 83h102v77H51zM61 68h82M69 54h66M82 102h40M82 124h40" fill="none" stroke="#bd9560" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="102" y="240" fill="#263238" font-size="23" font-weight="700">Caterer</text>
+      <text x="102" y="286" fill="#596366" font-size="17">Confirm the</text><text x="102" y="311" fill="#596366" font-size="17">venue package</text>
+    </g>
+    <g transform="translate(756 132)">
+      <rect width="204" height="450" rx="22" fill="#e9e8f2"/>
+      <path d="M102 43v112M67 75h70M72 113h60M58 155h88" fill="none" stroke="#77718f" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="102" cy="45" r="15" fill="#77718f"/>
+      <text x="102" y="240" fill="#263238" font-size="23" font-weight="700">Officiant</text>
+      <text x="102" y="286" fill="#596366" font-size="17">Ask about legal</text><text x="102" y="311" fill="#596366" font-size="17">paperwork</text>
+    </g>
+    <g transform="translate(992 132)">
+      <rect width="160" height="450" rx="22" fill="#e4eff3"/>
+      <rect x="38" y="51" width="84" height="111" rx="8" fill="none" stroke="#648b9b" stroke-width="8"/>
+      <path d="m54 89 13 13 36-38M54 130h51" fill="none" stroke="#648b9b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="80" y="240" fill="#263238" font-size="21" font-weight="700">Coordinator</text>
+      <text x="80" y="286" fill="#596366" font-size="16">Assign a day-of</text><text x="80" y="311" fill="#596366" font-size="16">lead</text>
+    </g>
+  </g>
+</svg>

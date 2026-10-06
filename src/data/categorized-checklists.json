@@ -69,18 +69,47 @@
     },
     {
       "slug": "3-month-wedding-planning-checklist",
-      "title": "3-Month Express Wedding Planning Checklist",
+      "title": "3 Month Wedding Planning Checklist: Your Week-by-Week 12-Week Plan",
+      "seoTitle": "3 Month Wedding Planning Checklist: 12-Week Plan (Free)",
+      "metaDescription": "Free 3 month wedding planning checklist with a week-by-week plan: what to book first, what to skip, and a printable version. Start your 90-day countdown.",
       "category": "Timeline",
-      "description": "Streamlined express checklist for elopements, intimate weddings, and quick engagement celebrations.",
+      "description": "This 3 month wedding planning checklist turns the next 90 days into a clear 12-week plan, from booking your venue and photographer to confirming every vendor and detail before the big day. Whether you want a free printable checklist, a 90 day wedding planning checklist for a small budget, or a fast plan for an intimate ceremony or elopement, you will find the exact tasks, the order to book them, and what to skip. Pair it with our Wedding Countdown, Budget Calculator, and Planning Dashboard so you can plan a wedding in 3 months calmly and without the panic.",
       "badge": "Express",
       "icon": "🚀",
       "targetTimeline": "3 Months",
-      "summary": "Execute an intimate or elopement-style wedding in 90 days by sticking strictly to high-priority items.",
+      "summary": "This 3 month wedding planning checklist turns the next 90 days into a clear 12-week plan, from booking your venue and photographer to confirming every vendor and detail before the big day. Whether you want a free printable checklist, a 90 day wedding planning checklist for a small budget, or a fast plan for an intimate ceremony or elopement, you will find the exact tasks, the order to book them, and what to skip. Pair it with our Wedding Countdown, Budget Calculator, and Planning Dashboard so you can plan a wedding in 3 months calmly and without the panic.",
+      "author": "Wedding Planning Checklists Team",
+      "updatedDate": "October 6, 2026",
+      "dateModified": "2026-10-06",
+      "heroImage": "/wedding-planning-checklist-hero.jpg",
+      "heroImageAlt": "Wedding planning notebook with a checklist, flowers, and planning notes",
       "keyTakeaways": [
         "Weeks 12–9: Confirm venue/space, hire officiant & photographer, buy ready-to-wear attire.",
         "Weeks 8–5: Send digital invitations, order rings, and arrange simple florals.",
         "Weeks 4–1: Obtain marriage license, confirm ceremony script, and enjoy the big day."
-      ]
+      ],
+      "faqs": [
+        { "q": "Can you plan a wedding in 3 months?", "a": "Yes. With a flexible date, a manageable guest list, and fast decisions, you can plan a well-run wedding in 90 days. Book your venue and photographer in the first week, since those fill up first." },
+        { "q": "What should I do first when planning a wedding in 3 months?", "a": "Set your total budget and estimated guest count, then contact venues and photographers on the same day. Do not spend the first week only researching." },
+        { "q": "What should be on a 3 month wedding planning checklist?", "a": "The core items are a budget, guest count, venue, photographer, caterer, officiant, attire, invitations, marriage license, vendor confirmations, a final headcount, and a day-of timeline. This page orders them week by week." },
+        { "q": "What is the hardest vendor to book on a 3-month timeline?", "a": "Popular venues and sought-after photographers are usually the toughest, especially for Saturdays in busy seasons. Weekday or Sunday dates, non-traditional venues, and referrals from your venue all help." },
+        { "q": "Is there a free 3 month wedding planning checklist PDF?", "a": "Yes. This checklist is free, and you can print it from your browser or use our printable wedding planning checklist. The Wedding Checklist Generator can create a version tailored to your date." },
+        { "q": "How do I plan a wedding in 3 months on a small budget?", "a": "Choose a weekday or Sunday, keep the guest list small, pick an all-inclusive venue, and focus your spending on two or three priorities. Check your numbers in the Budget Calculator before paying deposits." },
+        { "q": "How early should I send wedding invitations on a 3-month timeline?", "a": "Send them as soon as your venue, date, and guest list are confirmed, ideally in the first few weeks. Digital invitations are the fastest option. Set the RSVP deadline about four to five weeks before the wedding." },
+        { "q": "Can I get a wedding dress in 3 months?", "a": "Yes, if you choose off-the-rack, sample-sale, or rental options and book alterations at the time of purchase. Custom orders are usually too slow for this window." },
+        { "q": "What if I have only 2 months to plan?", "a": "Follow the same order, but make every decision faster. Venue and photographer come first, invitations go out digitally right away, and optional extras get cut." }
+      ],
+      "howTo": {
+        "name": "How to plan a wedding in 3 months",
+        "description": "Follow the 12-week wedding planning checklist to book essentials, manage logistics, confirm vendors, and prepare for the wedding day.",
+        "steps": [
+          { "name": "Weeks 12 to 10: Book the essentials", "text": "Set your budget and guest count, then book the venue, photographer, caterer, and officiant." },
+          { "name": "Weeks 9 to 7: Style and guests", "text": "Choose attire, send invitations, build a wedding website, and book hair, makeup, and florals." },
+          { "name": "Weeks 6 to 4: Paperwork and logistics", "text": "Handle the marriage license, rings, menu, seating plan, and a first day-of timeline." },
+          { "name": "Weeks 3 to 2: Confirm everything", "text": "Call vendors, send the final headcount, attend final fittings, and share the timeline." },
+          { "name": "Final week: Rehearse and rest", "text": "Attend the rehearsal, pack an emergency kit, deliver items to the venue, and rest." }
+        ]
+      }
     },
     {
       "slug": "wedding-budget-calculator-10k",

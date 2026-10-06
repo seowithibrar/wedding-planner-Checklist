@@ -3,8 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../layout/Header.astro';
 import Footer from '../layout/Footer.astro';
 import SixMonthWeddingPlanningChecklist from '../mdx/SixMonthWeddingPlanningChecklist.mdx';
+import ThreeMonthWeddingPlanningChecklist from '../mdx/ThreeMonthWeddingPlanningChecklist.mdx';
 import checklistsData from '../../data/categorized-checklists.json';
-import { generateBreadcrumbSchema, generateFAQSchema, generateArticleSchema } from '../../lib/schema';
+import { generateBreadcrumbSchema, generateFAQSchema, generateArticleSchema, generateHowToSchema } from '../../lib/schema';
 import { useTranslations, localizeUrl, SITE_URL } from '../../i18n/utils';
 import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
 
@@ -60,10 +61,16 @@ const schemas = [
     datePublished: checklist.datePublished
   }),
   generateFAQSchema(faqs),
-  generateBreadcrumbSchema(breadcrumbItems)
+  generateBreadcrumbSchema(breadcrumbItems),
+  checklist.howTo
+    ? generateHowToSchema({ ...checklist.howTo, url: canonicalUrl })
+    : null
 ].filter(Boolean);
 const schemaGraph = schemas.map(schema => {
   const schemaData = JSON.parse(schema as string);
+  if (schemaData['@type'] === 'Article') {
+    schemaData['@id'] = `${canonicalUrl}#article`;
+  }
   delete schemaData['@context'];
   return schemaData;
 });
@@ -97,7 +104,7 @@ const combinedSchema = JSON.stringify({
       <h1 class="text-3xl sm:text-5xl font-extrabold text-[#1A1A1A] leading-tight">
         {checklist.title}
       </h1>
-      {!checklist.longForm && (
+      {!checklist.longForm && checklist.slug !== '3-month-wedding-planning-checklist' && (
         <p class="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
           {checklist.description}
         </p>
@@ -146,6 +153,29 @@ const combinedSchema = JSON.stringify({
           <div class="six-month-checklist article-content prose prose-lg prose-rose max-w-none">
             <SixMonthWeddingPlanningChecklist />
           </div>
+        ) : checklist.slug === '3-month-wedding-planning-checklist' ? (
+          <>
+            <div class="bg-[#FCECF0]/30 border border-[#B76E79]/20 p-6 rounded-2xl space-y-2">
+              <h2 class="text-lg font-bold text-[#B76E79]">Summary</h2>
+              <p class="text-sm text-slate-700 leading-relaxed">{checklist.summary}</p>
+            </div>
+
+            <div class="three-month-checklist article-content prose prose-lg prose-rose max-w-none">
+              <ThreeMonthWeddingPlanningChecklist />
+            </div>
+
+            <div class="space-y-4 pt-4 border-t border-[#F3E8EA]">
+              <h2 class="text-xl font-bold text-[#1A1A1A]">Frequently Asked Questions</h2>
+              <div class="space-y-3">
+                {faqs.map(faq => (
+                  <div class="bg-slate-50 p-4 rounded-2xl space-y-1">
+                    <h3 class="font-bold text-sm text-[#1A1A1A]">{faq.q}</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
         ) : (
           <>
         
@@ -167,9 +197,19 @@ const combinedSchema = JSON.stringify({
             Planning on a shorter engagement? Use the <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6-month wedding planning checklist</a> for a faster timeline.
           </p>
         )}
+        {checklist.slug === '12-month-wedding-planning-checklist' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Need a faster plan? Follow the <a href={localizeUrl('/checklists/3-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">3 month wedding planning checklist</a> for a focused 12-week timeline.
+          </p>
+        )}
         {checklist.slug === '3-month-wedding-planning-checklist' && (
           <p class="text-sm text-slate-600 leading-relaxed">
             If you have a little more time, follow our <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6-month wedding planning checklist</a> for a more flexible schedule.
+          </p>
+        )}
+        {checklist.slug === 'intimate-small-wedding-checklist' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Planning on a 90-day timeline? Use our <a href={localizeUrl('/checklists/3-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">3 month wedding planning checklist</a> to prioritize bookings and deadlines.
           </p>
         )}
         {checklist.slug === '18-month-wedding-planning-checklist' && (
@@ -323,6 +363,15 @@ const combinedSchema = JSON.stringify({
 <style>
   @media (max-width: 640px) {
     .six-month-checklist :global(table) {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .three-month-checklist :global(table) {
       display: block;
       width: 100%;
       min-width: 0;
