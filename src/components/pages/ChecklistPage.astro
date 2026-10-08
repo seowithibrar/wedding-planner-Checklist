@@ -226,6 +226,16 @@ const combinedSchema = JSON.stringify({
             Need a faster plan? Follow the <a href={localizeUrl('/checklists/3-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">3 month wedding planning checklist</a> for a focused 12-week timeline.
           </p>
         )}
+        {checklist.slug === '12-month-wedding-planning-checklist' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Set your spending plan early with this worked example of a <a href={localizeUrl('/checklists/wedding-budget-calculator-30k', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding budget by percentage</a>.
+          </p>
+        )}
+        {checklist.slug === 'wedding-budget-calculator-50k' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Comparing budget tiers? See how the numbers change in the <a href={localizeUrl('/checklists/wedding-budget-calculator-30k', currentLang)} class="text-[#B76E79] font-bold hover:underline">$30K wedding budget checklist</a>.
+          </p>
+        )}
         {checklist.slug === '3-month-wedding-planning-checklist' && (
           <p class="text-sm text-slate-600 leading-relaxed">
             If you have a little more time, follow our <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6-month wedding planning checklist</a> for a more flexible schedule.

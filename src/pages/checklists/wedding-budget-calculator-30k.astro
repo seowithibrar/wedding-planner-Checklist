@@ -1,0 +1,488 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+
+const canonical = 'https://www.weddingplanningchecklists.org/checklists/wedding-budget-calculator-30k';
+const seoTitle = '$30,000 Wedding Budget Breakdown & Checklist';
+const seoDescription = 'Plan a $30,000 wedding for 100–125 guests with a percentage breakdown, line-item budget template, stage-by-stage checklist, and expense-tracking tips.';
+const heroImage = new URL('/wedding-budget-checklist-pen-checkmarks.jpg', 'https://www.weddingplanningchecklists.org').toString();
+
+const faqs = [
+  {
+    q: 'How should I split a $30,000 wedding budget?',
+    a: 'These $30,000 wedding budget percentages work as a starting point: 45% ($13,500) for venue and dinner, 18% ($5,400) for photo and video, 17% ($5,100) for florals and production, and 20% ($6,000) for attire and planning. Then break each bucket into line items using the allocation table above.'
+  },
+  {
+    q: 'How many guests can I invite on a $30,000 wedding budget?',
+    a: 'This template is built for 100 to 125 guests with plated dinner and full bar. A smaller list leaves room for upgrades, and a larger one means simplifying food, drinks, or decor.'
+  },
+  {
+    q: 'Is $30,000 enough for a wedding?',
+    a: 'For many couples it covers a full-service wedding. In a high-cost city, or with 200 guests, it may not. Get three quotes for the venue and caterer first, since those two lines decide most of the answer.'
+  },
+  {
+    q: 'What percentage of the wedding budget should go to the venue and catering?',
+    a: 'In this template, 45% goes to the venue and dinner together. That is the largest share, so check it first when your costs run over.'
+  },
+  {
+    q: 'How do I create a wedding budget?',
+    a: 'To create a wedding budget (or plan a wedding budget from scratch), confirm your total, set a guest range, choose three priorities, assign percentages, gather quotes, and track every deposit. The budget calculator does the percentage math for you.'
+  },
+  {
+    q: 'Is there a free $30,000 wedding budget template?',
+    a: 'Yes. The tables on this page work as a free template, and the printable checklist and interactive tools on the site are free to use.'
+  },
+  {
+    q: 'What is the best way to track wedding expenses?',
+    a: 'Use one place only. A wedding budget spreadsheet works if you update it weekly. The Wedding Planning Dashboard works better if you want tasks, guests, and costs together.'
+  },
+  {
+    q: 'How can I cut costs without ruining the day?',
+    a: "Choose an off-peak date, trim the bar, reuse florals, and shorten the guest list before cutting photography or coordination. Those two are the ones couples most often wish they'd kept."
+  }
+];
+
+const breadcrumbs = [
+  { name: 'Home', item: 'https://www.weddingplanningchecklists.org/' },
+  { name: 'Checklists', item: 'https://www.weddingplanningchecklists.org/#categorized-checklists' },
+  { name: '$30,000 Budget Wedding Planning Checklist', item: canonical }
+];
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${canonical}#article`,
+      headline: '$30,000 Budget Wedding Planning Checklist',
+      description: seoDescription,
+      image: heroImage,
+      author: { '@type': 'Person', name: 'Sarah Jenkins' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'WeddingPlanningChecklists.org',
+        url: 'https://www.weddingplanningchecklists.org/'
+      },
+      mainEntityOfPage: canonical,
+      datePublished: '2026-09-06',
+      dateModified: '2026-10-08'
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a }
+      }))
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: item.item
+      }))
+    }
+  ]
+});
+
+const tocItems = [
+  ['what-does-a-30-000-wedding-budget-cover', 'What Does a $30,000 Wedding Budget Cover?'],
+  ['30-000-wedding-budget-breakdown-by-percentage', '$30,000 Wedding Budget Breakdown by Percentage'],
+  ['30-000-wedding-budget-allocation-line-by-line', '$30,000 Wedding Budget Allocation, Line by Line'],
+  ['30-000-wedding-budget-checklist-stage-by-stage', '$30,000 Wedding Budget Checklist, Stage by Stage'],
+  ['how-to-plan-a-30-000-wedding-in-seven-steps', 'How to Plan a $30,000 Wedding in Seven Steps'],
+  ['using-this-as-a-30-000-wedding-budget-template-and-expense-tracker', 'Using This as a $30,000 Wedding Budget Template and Expense Tracker'],
+  ['wedding-budget-categories-people-forget', 'Wedding Budget Categories People Forget'],
+  ['30-000-wedding-budget-by-guest-count', '$30,000 Wedding Budget by Guest Count'],
+  ['30-000-wedding-budget-ideas-where-to-save-and-where-to-spend', '$30,000 Wedding Budget Ideas: Where to Save and Where to Spend'],
+  ['planning-a-multi-day-wedding-with-30-000', 'Planning a Multi-Day Wedding with $30,000'],
+  ['track-spending-against-your-calendar', 'Track Spending Against Your Calendar'],
+  ['common-30-000-wedding-budget-mistakes', 'Common $30,000 Wedding Budget Mistakes'],
+  ['frequently-asked-questions-about-a-30-000-wedding-budget', 'Frequently Asked Questions'],
+  ['your-next-step', 'Your Next Step']
+];
+---
+
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  canonical={canonical}
+  image="/wedding-budget-calculator.jpg"
+  type="article"
+  titleIsFinal
+  publishDate="2026-09-06"
+  modifiedDate="2026-10-08"
+  schemaScript={schema}
+>
+  <Header />
+
+  <main>
+    <nav class="mx-auto flex max-w-6xl items-center gap-2 px-4 pt-6 text-xs text-slate-500" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-[#B76E79]">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/#categorized-checklists" class="hover:text-[#B76E79]">Checklists</a>
+      <span aria-hidden="true">/</span>
+      <span class="font-semibold text-slate-800">$30,000 Budget Wedding Planning Checklist</span>
+    </nav>
+
+    <header class="mx-auto max-w-6xl space-y-5 px-4 pb-10 pt-8 sm:pt-12">
+      <div class="inline-flex items-center gap-2 rounded-full bg-[#FCECF0] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#B76E79]">
+        <span aria-hidden="true">💳</span>
+        <span>Budget Guide</span>
+        <span aria-hidden="true">•</span>
+        <span>Full-Service</span>
+      </div>
+      <h1 class="max-w-4xl text-3xl font-extrabold leading-tight text-[#1A1A1A] sm:text-5xl">
+        $30,000 Budget Wedding Planning Checklist
+      </h1>
+      <p class="max-w-4xl text-lg leading-relaxed text-slate-600">
+        Full-service wedding budget template with live music, floral arches, and full-day photography.
+      </p>
+      <div class="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-500">
+        <span class="inline-flex items-center gap-2">
+          <span class="flex h-7 w-7 items-center justify-center rounded-full bg-[#B76E79] text-[10px] font-bold text-white">SJ</span>
+          By <strong class="text-[#1A1A1A]">Sarah Jenkins</strong>
+        </span>
+        <span aria-hidden="true" class="text-slate-300">|</span>
+        <span>Updated: October 8, 2026</span>
+      </div>
+    </header>
+
+    <figure class="mx-auto mb-10 max-w-6xl px-4">
+      <img
+        src="/wedding-budget-checklist-pen-checkmarks.jpg"
+        alt="Couple reviewing wedding plans and a checklist together at a laptop"
+        class="max-h-[520px] w-full rounded-2xl border border-[#F3E8EA] object-cover shadow-sm sm:rounded-3xl"
+        width="1376"
+        height="768"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 pb-16 lg:grid-cols-[minmax(0,1fr)_17rem]">
+      <article class="min-w-0 rounded-3xl border border-[#F3E8EA] bg-white p-5 shadow-sm sm:p-8 lg:p-10">
+        <div class="mb-8 rounded-2xl border border-[#B76E79]/20 bg-[#FCECF0]/30 p-5 sm:p-6">
+          <p class="mb-2 text-xs font-bold uppercase tracking-wider text-[#B76E79]">100-word summary</p>
+          <p class="mb-0 text-sm leading-relaxed text-slate-700 sm:text-base">
+            This $30,000 Budget Wedding Planning Checklist shows how to spend a $30,000 wedding budget on 100 to 125 guests without losing track of a single dollar. You'll get a $30,000 wedding budget breakdown by percentage, a line-item $30,000 wedding budget template, and a stage-by-stage wedding budget checklist for the venue, catering, photography, florals, attire, and planner. Use it as a wedding budget planner, expense tracker, or spreadsheet starting point, then adjust the wedding budget categories to your city, guest count, and priorities. Pair it with the free <a href="/tools/budget-calculator">wedding budget calculator</a> and <a href="/tools/wedding-countdown">Wedding Countdown</a> to plan, track, and finish on budget.
+          </p>
+        </div>
+
+        <nav class="mb-8 rounded-2xl border border-[#F3E8EA] bg-slate-50 p-5" aria-label="Table of contents">
+          <h2 class="mb-3 mt-0 border-0 pb-0 font-sans text-base">On this page</h2>
+          <ul class="mb-0 grid grid-cols-1 gap-2 pl-5 text-sm sm:grid-cols-2">
+            {tocItems.map(([id, label]) => <li><a href={`#${id}`}>{label}</a></li>)}
+          </ul>
+        </nav>
+
+        <div class="article-content">
+          <section id="what-does-a-30-000-wedding-budget-cover">
+            <h2>What Does a $30,000 Wedding Budget Cover?</h2>
+            <p>
+              A $30,000 wedding budget usually covers a full-service wedding for about 100 to 125 guests: an elevated venue, a plated multi-course dinner with a full bar, full-day photography with a second photographer, a statement ceremony arch, live music, and a day-of coordinator. That's the wedding this $30,000 Budget Wedding Planning Checklist plans for.
+            </p>
+            <p>
+              Start with simple division. Spread across 100 guests, $30,000 comes to $300 per guest for everything. At 125 guests it drops to $240. Every guest you add takes money from something else, so settle the headcount first with the <a href="/tools/guest-list-manager">Guest List Manager</a>.
+            </p>
+            <p>
+              Prices swing with city, season, and day of the week. Read every figure here as a planning template, not a quote. Collect real numbers from vendors, then test them in the <a href="/tools/budget-calculator">wedding budget calculator</a>.
+            </p>
+          </section>
+
+          <section id="30-000-wedding-budget-breakdown-by-percentage">
+            <h2>$30,000 Wedding Budget Breakdown by Percentage</h2>
+            <p>The simplest $30,000 wedding budget breakdown has four buckets: 45% for the venue and dinner, 18% for photo and video, 17% for florals and production, and 20% for attire and planning.</p>
+            <div class="my-6 overflow-x-auto" role="region" aria-label="$30,000 wedding budget breakdown by percentage" tabindex="0">
+              <table>
+                <thead><tr><th>Category</th><th>Share</th><th>Amount</th><th>What it covers</th></tr></thead>
+                <tbody>
+                  <tr><td>Venue &amp; plated dinner</td><td>45%</td><td>$13,500</td><td>Venue rental, multi-course dinner, full bar, cake</td></tr>
+                  <tr><td>Photo &amp; video</td><td>18%</td><td>$5,400</td><td>Full-day photography, second photographer, video</td></tr>
+                  <tr><td>Florals &amp; production</td><td>17%</td><td>$5,100</td><td>Ceremony arch, tablescapes, live music</td></tr>
+                  <tr><td>Attire &amp; planner</td><td>20%</td><td>$6,000</td><td>Gown, partner attire, day-of coordinator, hair and makeup, admin costs</td></tr>
+                  <tr><td><strong>Total</strong></td><td><strong>100%</strong></td><td><strong>$30,000</strong></td><td><strong>Every dollar assigned</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Whether you search for a $30k wedding budget, a 30000 wedding budget, or a 30k wedding budget breakdown, the math is the same. Wedding budget percentages work better than fixed dollar amounts because they scale. If your total moves to $28,000 or $33,000, a wedding budget by percentage still holds. The weak spot is the first row. Venue and food take nearly half, so a pricier venue or ten extra guests squeezes every other line.
+            </p>
+            <p>
+              Want more wedding budget examples? Compare this page with the <a href="/checklists/wedding-budget-calculator-20k">$20,000 wedding budget breakdown</a>, the <a href="/checklists/wedding-budget-calculator-10k">$10,000 wedding budget breakdown</a>, or the <a href="/checklists/wedding-budget-calculator-50k">$50,000+ luxury checklist</a>.
+            </p>
+          </section>
+
+          <section id="30-000-wedding-budget-allocation-line-by-line">
+            <h2>$30,000 Wedding Budget Allocation, Line by Line</h2>
+            <p>Four buckets are a start, but contracts arrive one line at a time. Here is the same $30,000 wedding budget allocation split into the items you'll actually pay for. Each group adds back up to the percentages above.</p>
+            <div class="my-6 overflow-x-auto" role="region" aria-label="$30,000 wedding budget allocation, line by line" tabindex="0">
+              <table>
+                <thead><tr><th>Line item</th><th>Amount</th><th>Share</th><th>Bucket</th></tr></thead>
+                <tbody>
+                  <tr><td>Venue rental and rentals</td><td>$5,000</td><td>16.7%</td><td>Venue &amp; dinner</td></tr>
+                  <tr><td>Plated dinner catering</td><td>$5,500</td><td>18.3%</td><td>Venue &amp; dinner</td></tr>
+                  <tr><td>Full bar</td><td>$2,000</td><td>6.7%</td><td>Venue &amp; dinner</td></tr>
+                  <tr><td>Cake and dessert</td><td>$500</td><td>1.7%</td><td>Venue &amp; dinner</td></tr>
+                  <tr><td>Catering service fees</td><td>$500</td><td>1.7%</td><td>Venue &amp; dinner</td></tr>
+                  <tr><td>Photographer plus second shooter</td><td>$3,600</td><td>12%</td><td>Photo &amp; video</td></tr>
+                  <tr><td>Videographer</td><td>$1,200</td><td>4%</td><td>Photo &amp; video</td></tr>
+                  <tr><td>Engagement session and album</td><td>$600</td><td>2%</td><td>Photo &amp; video</td></tr>
+                  <tr><td>Ceremony arch and personal flowers</td><td>$2,000</td><td>6.7%</td><td>Florals &amp; production</td></tr>
+                  <tr><td>Reception florals and decor</td><td>$1,600</td><td>5.3%</td><td>Florals &amp; production</td></tr>
+                  <tr><td>Live music</td><td>$1,500</td><td>5%</td><td>Florals &amp; production</td></tr>
+                  <tr><td>Gown and alterations</td><td>$2,100</td><td>7%</td><td>Attire &amp; planner</td></tr>
+                  <tr><td>Partner attire</td><td>$600</td><td>2%</td><td>Attire &amp; planner</td></tr>
+                  <tr><td>Day-of coordinator</td><td>$1,200</td><td>4%</td><td>Attire &amp; planner</td></tr>
+                  <tr><td>Hair and makeup</td><td>$600</td><td>2%</td><td>Attire &amp; planner</td></tr>
+                  <tr><td>Stationery and postage</td><td>$500</td><td>1.7%</td><td>Attire &amp; planner</td></tr>
+                  <tr><td>Marriage license and officiant</td><td>$400</td><td>1.3%</td><td>Attire &amp; planner</td></tr>
+                  <tr><td>Tips and small day-of costs</td><td>$600</td><td>2%</td><td>Attire &amp; planner</td></tr>
+                  <tr><td><strong>Total</strong></td><td><strong>$30,000</strong></td><td><strong>100%</strong></td><td><strong>All four buckets</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Shares are rounded to one decimal. Three things the table is upfront about.</p>
+            <p>
+              The attire-and-planner bucket also carries the admin items: stationery, license, officiant, and tips. Nobody budgets for them until the bill lands, so they get a home here. There is no separate cushion line either. If you want one, hold back about 5% ($1,500) from the venue-and-dinner bucket and leave it untouched until your final headcount is locked. And wedding bands, an engagement ring, and a honeymoon sit outside this template, so fund them separately or pull them from the lines above.
+            </p>
+          </section>
+
+          <section id="30-000-wedding-budget-checklist-stage-by-stage">
+            <h2>$30,000 Wedding Budget Checklist, Stage by Stage</h2>
+            <p>
+              The order you spend in matters as much as the amounts. Big-ticket vendors book first because they have the fewest open dates and the earliest deposits. Use this $30,000 wedding budget checklist alongside the <a href="/checklists/12-month-wedding-planning-checklist">12-month wedding planning checklist</a> if you have a year, or the <a href="/checklists/6-month-wedding-planning-checklist">6-month wedding planning checklist</a> if you don't.
+            </p>
+
+            <h3>Stage 1: Lock the Number and the Guest Count</h3>
+            <p>Ideally this happens a year or more before the date. Nothing else can be priced until these are fixed.</p>
+            <ul>
+              <li>Confirm the real total, including who is contributing and how much.</li>
+              <li>Draft the guest list in two tiers: must-invite and nice-to-have.</li>
+              <li>Pick your top three priorities. Food, photography, and music are common picks.</li>
+              <li>Open one account or tracker where every wedding payment goes.</li>
+              <li>Enter your date in the <a href="/tools/wedding-countdown">Wedding Countdown</a> so the weeks left are visible from day one.</li>
+            </ul>
+
+            <h3>Stage 2: Book the Venue and Caterer (the 45% Bucket)</h3>
+            <ul>
+              <li>Shortlist venues that include tables, chairs, and linens. Rentals add up fast.</li>
+              <li>Ask for an all-in per-person price with service charge and tax shown.</li>
+              <li>Get plated dinner and bar pricing in writing, plus the deposit schedule.</li>
+              <li>Check cancellation terms and overtime fees before you sign.</li>
+            </ul>
+            <p>Our guide on <a href="/blog/how-to-choose-wedding-venue">how to choose the perfect wedding venue</a> lists the questions worth asking on a tour.</p>
+
+            <h3>Stage 3: Book Photo, Video, and Music</h3>
+            <ul>
+              <li>Ask how many hours of coverage the price includes, and whether the second shooter is in it.</li>
+              <li>Find out what you receive and when: gallery, edited video, prints.</li>
+              <li>Price live music two ways, ceremony only and ceremony plus cocktail hour.</li>
+              <li>Look for travel fees buried in the contract.</li>
+            </ul>
+            <p>The <a href="/checklists/wedding-vendor-booking-checklist">vendor booking order and contract checklist</a> shows which contracts to sign first.</p>
+
+            <h3>Stage 4: Florals, Attire, and Coordinator</h3>
+            <ul>
+              <li>Request a florist proposal that itemizes the arch, bouquets, and centerpieces separately.</li>
+              <li>Order the gown early and keep the alterations money visible in the tracker.</li>
+              <li>Hire the day-of coordinator and hand over the full vendor list.</li>
+              <li>Match flower choices to the <a href="/checklists/wedding-decor-flowers-checklist">decor and floral checklist</a> so nothing gets double-ordered.</li>
+            </ul>
+
+            <h3>Stage 5: Final Payments and Wedding Week</h3>
+            <ul>
+              <li>Send the final headcount to the caterer by the date in the contract.</li>
+              <li>Pay every remaining balance on its due date, and log it the same day.</li>
+              <li>Put tips in labeled envelopes ahead of time.</li>
+              <li>Reconcile the tracker against receipts, then walk through the day-of schedule and <a href="/checklists/wedding-day-of-timeline-checklist">timeline checklist</a>.</li>
+            </ul>
+          </section>
+
+          <section id="how-to-plan-a-30-000-wedding-in-seven-steps">
+            <h2>How to Plan a $30,000 Wedding in Seven Steps</h2>
+            <p>If you want the short version of how to plan a $30,000 wedding, this is it.</p>
+            <ol>
+              <li>Confirm the true total. Count only money that's actually available.</li>
+              <li>Set a guest count range. A narrow range makes every quote easier to compare.</li>
+              <li>Choose your top three priorities and give them the largest shares.</li>
+              <li>Assign percentages first, then convert them to dollars.</li>
+              <li>Collect at least three quotes for each major vendor.</li>
+              <li>Log each deposit and due date the day you sign.</li>
+              <li>Review the tracker once a month and move money between lines on purpose, not by accident.</li>
+            </ol>
+            <p>The <a href="/tools/wedding-planning-timeline">wedding planning timeline tool</a> can turn those seven steps into dated tasks.</p>
+          </section>
+
+          <section id="using-this-as-a-30-000-wedding-budget-template-and-expense-tracker">
+            <h2>Using This as a $30,000 Wedding Budget Template and Expense Tracker</h2>
+            <p>Copy the line-item table into a wedding budget spreadsheet and add the columns below. That turns a static plan into a working wedding expense tracker.</p>
+            <div class="my-6 overflow-x-auto" role="region" aria-label="Wedding budget spreadsheet columns" tabindex="0">
+              <table>
+                <thead><tr><th>Column</th><th>What to enter</th></tr></thead>
+                <tbody>
+                  <tr><td>Estimate</td><td>The amount from the table above</td></tr>
+                  <tr><td>Quote</td><td>The real price a vendor gave you</td></tr>
+                  <tr><td>Deposit paid</td><td>Amount and date</td></tr>
+                  <tr><td>Balance due</td><td>Remaining amount and the due date</td></tr>
+                  <tr><td>Paid in full</td><td>Yes or no</td></tr>
+                  <tr><td>Notes</td><td>Contract terms, overtime rates, what's included</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              A spreadsheet only helps if you open it every week. If you know you won't, the <a href="/tools/wedding-planning-dashboard">Wedding Planning Dashboard</a> keeps tasks, guests, and budget together, and the <a href="/checklists/printable-wedding-planning-checklist">printable wedding planning checklist</a> works for anyone who prefers paper.
+            </p>
+          </section>
+
+          <section id="wedding-budget-categories-people-forget">
+            <h2>Wedding Budget Categories People Forget</h2>
+            <p>Most overruns come from $30,000 wedding expenses that were never in the plan. Use this wedding expenses checklist on every vendor call, and treat it as a wedding cost breakdown for the extras.</p>
+            <ul>
+              <li>Service charges and sales tax on catering and venue invoices</li>
+              <li>Vendor meals for the photographer, videographer, and band</li>
+              <li>Overtime if the reception runs late</li>
+              <li>Gown alterations and steaming</li>
+              <li>Cake-cutting or corkage fees</li>
+              <li>Delivery, setup, and breakdown fees for rentals and florals</li>
+              <li>Postage for invitations and any return envelopes</li>
+              <li>Tips for vendors and venue staff</li>
+              <li>Emergency supplies, which the <a href="/checklists/bridal-emergency-kit-checklist">bridal emergency kit checklist</a> covers</li>
+            </ul>
+          </section>
+
+          <section id="30-000-wedding-budget-by-guest-count">
+            <h2>$30,000 Wedding Budget by Guest Count</h2>
+            <p>Guest count is the lever that moves the whole budget. This table shows the per-guest figure at four headcounts.</p>
+            <div class="my-6 overflow-x-auto" role="region" aria-label="$30,000 wedding budget by guest count" tabindex="0">
+              <table>
+                <thead><tr><th>Guests</th><th>Per-guest budget</th><th>What it means</th></tr></thead>
+                <tbody>
+                  <tr><td>80</td><td>$375</td><td>More room for upgrades like extra photography hours or a bigger floral budget</td></tr>
+                  <tr><td>100</td><td>$300</td><td>The template on this page, with a comfortable cushion</td></tr>
+                  <tr><td>125</td><td>$240</td><td>Still workable, but plated dinner and bar costs press hard</td></tr>
+                  <tr><td>150</td><td>$200</td><td>Expect to simplify the menu, bar, or decor</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Not every cost scales with headcount. A photographer charges the same for 80 guests or 150, so cutting twenty guests saves less than the per-guest math suggests. Food, bar, rentals, and stationery are the lines that actually shrink. The <a href="/blog/perfect-guest-list-guide">wedding guest list and seating chart guide</a> explains how to trim a list without starting family arguments.
+            </p>
+          </section>
+
+          <section id="30-000-wedding-budget-ideas-where-to-save-and-where-to-spend">
+            <h2>$30,000 Wedding Budget Ideas: Where to Save and Where to Spend</h2>
+            <p>Spend where guests and photos will notice. Save where they won't. That's the heart of an affordable wedding budget, and it's the best of the wedding budgeting tips we can give.</p>
+            <p>Good places to spend: the photographer, because those images are what remains after the day; the day-of coordinator, who absorbs problems before you hear about them; and the food, since guests remember dinner.</p>
+            <p>Good places to save:</p>
+            <ul>
+              <li>Pick a Friday or Sunday date or an off-peak month, since venues often price those dates lower.</li>
+              <li>Reuse ceremony flowers at the reception.</li>
+              <li>Serve beer, wine, and two signature drinks instead of a fully open bar.</li>
+              <li>Send digital RSVPs and keep the printed suite short.</li>
+              <li>Look at sample sales or off-the-rack gowns.</li>
+            </ul>
+            <p>For more, read our list of <a href="/blog/wedding-budget-tips">wedding budget tips</a>.</p>
+          </section>
+
+          <section id="planning-a-multi-day-wedding-with-30-000">
+            <h2>Planning a Multi-Day Wedding with $30,000</h2>
+            <p>
+              Mehndi, baraat, nikkah, and walima each need a venue, food, and decor. If you're planning several events, split the $30,000 by function first, then use the percentages inside each one. The <a href="/checklists/pakistani-wedding-checklist">Pakistani &amp; Muslim multi-day wedding checklist</a> and the <a href="/checklists/indian-wedding-checklist">Indian wedding master checklist</a> show what each function typically involves.
+            </p>
+          </section>
+
+          <section id="track-spending-against-your-calendar">
+            <h2>Track Spending Against Your Calendar</h2>
+            <p>
+              Every payment has a date attached, and wedding planning expenses are easier to manage when you can see the deadline. Set your wedding date in the <a href="/tools/wedding-countdown">Wedding Countdown</a> and you'll see how many weeks remain to book, pay, and finalize. A countdown won't replace the plan, so pair it with the <a href="/tools/wedding-planning-calendar">Wedding Planning Calendar</a> for due dates and the <a href="/tools/budget-calculator">budget calculator</a> for totals.
+            </p>
+          </section>
+
+          <section id="common-30-000-wedding-budget-mistakes">
+            <h2>Common $30,000 Wedding Budget Mistakes</h2>
+            <ul>
+              <li>Budgeting by guess. Percentages and quotes beat gut feeling every time.</li>
+              <li>Ignoring service fees. A quote without service charge and tax isn't the real price.</li>
+              <li>Fixing the guest count last. It changes almost every other number.</li>
+              <li>Buying decor before booking the photographer. The best photographers fill their calendars early.</li>
+              <li>No single owner for the tracker. One person updates it, everyone else sends receipts.</li>
+              <li>Forgetting alterations. The gown price is rarely the final gown price.</li>
+            </ul>
+          </section>
+
+          <section id="frequently-asked-questions-about-a-30-000-wedding-budget">
+            <h2>Frequently Asked Questions About a $30,000 Wedding Budget</h2>
+            {faqs.map(({ q, a }) => (
+              <div class="mb-5 rounded-2xl border border-[#F3E8EA] bg-slate-50 p-5">
+                <h3 class="mt-0 text-base">{q}</h3>
+                <p class="mb-0">{a}</p>
+              </div>
+            ))}
+          </section>
+
+          <section id="your-next-step">
+            <h2>Your Next Step</h2>
+            <p>
+              You now have a $30,000 wedding budget breakdown, a line-by-line template, and a stage-by-stage checklist. Open the <a href="/tools/budget-calculator">wedding budget planner</a> to enter your own numbers, then set your date in the <a href="/tools/wedding-countdown">Wedding Countdown</a> so every deposit has a deadline. Plan Your Wedding at WeddingPlanningChecklists.org.
+            </p>
+          </section>
+        </div>
+
+        <section class="mt-10 rounded-2xl bg-gradient-to-br from-[#1A1A1A] to-slate-800 p-6 text-center text-white sm:p-8" aria-labelledby="next-tools-heading">
+          <h2 id="next-tools-heading" class="mb-3 mt-0 border-0 pb-0 font-serif text-2xl text-white">Keep Your Wedding Plan on Track</h2>
+          <p class="mx-auto mb-5 max-w-2xl text-sm leading-relaxed text-slate-200">
+            Enter your numbers in the budget calculator, then use the Wedding Countdown to keep every payment deadline in view.
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="/tools/budget-calculator" class="rounded-full bg-[#B76E79] px-5 py-3 text-sm font-bold text-white no-underline hover:bg-[#a25d66]">Open the Budget Calculator</a>
+            <a href="/tools/wedding-countdown" class="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white no-underline hover:bg-white/10">Set Your Wedding Countdown</a>
+          </div>
+        </section>
+
+        <section class="mt-10 border-t border-[#F3E8EA] pt-8" aria-labelledby="related-budget-guides">
+          <h2 id="related-budget-guides" class="mb-4 font-serif text-2xl font-bold">Related Wedding Budget Guides</h2>
+          <ul class="grid gap-3 pl-5 text-sm sm:grid-cols-2">
+            <li><a href="/checklists/wedding-budget-calculator-10k">$10,000 wedding budget breakdown</a></li>
+            <li><a href="/checklists/wedding-budget-calculator-20k">$20,000 wedding budget breakdown</a></li>
+            <li><a href="/checklists/wedding-budget-calculator-50k">$50,000+ luxury wedding checklist</a></li>
+            <li><a href="/blog/wedding-budget-tips">Wedding budget tips</a></li>
+          </ul>
+        </section>
+        <section class="mt-8 rounded-2xl border border-[#F3E8EA] bg-slate-50 p-5" aria-label="Article author">
+          <p class="mb-1 text-xs font-bold uppercase tracking-wider text-[#B76E79]">Written by</p>
+          <p class="mb-0 text-sm font-semibold text-[#1A1A1A]">Sarah Jenkins · WeddingPlanningChecklists.org</p>
+        </section>
+      </article>
+
+      <aside class="space-y-5 lg:sticky lg:top-6 lg:self-start">
+        <div class="hidden rounded-2xl border border-[#F3E8EA] bg-white p-5 shadow-sm lg:block">
+          <h2 class="mb-3 mt-0 font-serif text-lg font-bold">On this page</h2>
+          <nav aria-label="Table of contents" class="space-y-2 text-xs">
+            {tocItems.map(([id, label]) => <a class="block leading-relaxed text-slate-600 hover:text-[#B76E79]" href={`#${id}`}>{label}</a>)}
+          </nav>
+        </div>
+        <div class="rounded-2xl bg-gradient-to-br from-[#1A1A1A] to-slate-800 p-5 text-white shadow-sm">
+          <p class="mb-2 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37]">Free planning tool</p>
+          <h2 class="mb-2 mt-0 font-serif text-xl font-bold">Track Your Wedding Budget</h2>
+          <p class="mb-4 text-xs leading-relaxed text-slate-300">Test your guest count and priorities with the interactive wedding budget calculator.</p>
+          <a class="inline-flex rounded-full bg-[#B76E79] px-4 py-2 text-xs font-bold text-white no-underline hover:bg-[#a25d66]" href="/tools/budget-calculator">Open the calculator →</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  @media (max-width: 640px) {
+    .article-content table {
+      min-width: 34rem;
+    }
+  }
+</style>
