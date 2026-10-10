@@ -1,0 +1,623 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+
+const canonical = 'https://www.weddingplanningchecklists.org/checklists/wedding-budget-calculator-50k';
+const seoTitle = '$50,000 Luxury Wedding Planning Checklist & Budget';
+const seoDescription = 'Plan a $50,000 luxury wedding with this free checklist: budget breakdown by category, line-item template, and a month-by-month planning timeline. Start now.';
+const heroImage = '/$50,000%20Luxury%20Wedding%20Budget%20Checklist.webp';
+
+const faqs = [
+  {
+    q: 'How should I split a $50,000 wedding budget?',
+    a: 'These $50,000 wedding budget percentages work as a starting point: 40% ($20,000) for venue, dining, and bar, and 20% ($10,000) each for planner and production, photo, video, and music, and decor and attire. Break each bucket into line items using the allocation table above.'
+  },
+  {
+    q: 'Is $50,000 a luxury wedding budget?',
+    a: 'It can be. This template builds in luxury features such as a historic estate or ballroom, fine dining, a full planner, and a live band. In a high-cost city or with a very large guest list, the same money may feel more modest.'
+  },
+  {
+    q: 'How many guests can I invite on a $50,000 budget?',
+    a: "There's no fixed number. At 150 guests the per-guest budget is about $333, and at 100 it's $500. Choose a range first, then see which lines can carry it."
+  },
+  {
+    q: 'How do I plan a luxury wedding step by step?',
+    a: 'Confirm your total, set a guest range, pick three priorities, assign percentages, hire a planner, collect quotes, and track every deposit. The stage-by-stage list above shows the order.'
+  },
+  {
+    q: 'How far ahead should I start planning a luxury wedding?',
+    a: 'If you can, start 12 to 18 months ahead, since popular estates, bands, and photographers often book early. A shorter timeline can still work with a planner who has existing vendor relationships.'
+  },
+  {
+    q: 'Do I need a full-service planner for a $50,000 wedding?',
+    a: "This template includes one at 10% of the budget. A planner coordinates vendors, manages the timeline, and handles problems on the day. If you'd rather save that money, a day-of coordinator is a smaller option, though you'll do more of the planning yourself."
+  },
+  {
+    q: 'Is there a free $50,000 wedding budget template?',
+    a: 'Yes. The tables on this page work as a free $50K wedding budget template, and the printable checklist and interactive tools on the site are free to use.'
+  },
+  {
+    q: 'What is the best way to track luxury wedding expenses?',
+    a: 'Use one place only. A spreadsheet works if you update it weekly, and the Wedding Planning Dashboard works better if you want tasks, guests, and costs together.'
+  }
+];
+
+const breadcrumbs = [
+  { name: 'Home', item: 'https://www.weddingplanningchecklists.org/' },
+  { name: 'Checklists', item: 'https://www.weddingplanningchecklists.org/#categorized-checklists' },
+  { name: '$50,000 Budget Wedding Planning Checklist for a Luxury Wedding', item: canonical }
+];
+
+const howToSteps = [
+  "Confirm the true total and count only money that's available.",
+  'Pick a guest range, then work out the per-guest figure.',
+  'Choose three priorities, such as dining, music, and photography, and give them the largest shares.',
+  'Assign percentages first, then convert them to dollars.',
+  'Hire the planner, then collect at least three quotes for each major vendor.',
+  'Log every deposit and due date the day you sign.',
+  'Review the tracker monthly and move money between lines on purpose.'
+];
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${canonical}#article`,
+      headline: '$50,000 Budget Wedding Planning Checklist for a Luxury Wedding',
+      description: seoDescription,
+      image: new URL(heroImage, 'https://www.weddingplanningchecklists.org').toString(),
+      mainEntityOfPage: canonical,
+      inLanguage: 'en',
+      author: {
+        '@type': 'Organization',
+        name: 'WeddingPlanningChecklists.org',
+        url: 'https://www.weddingplanningchecklists.org/'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'WeddingPlanningChecklists.org',
+        url: 'https://www.weddingplanningchecklists.org/'
+      }
+    },
+    {
+      '@type': 'HowTo',
+      '@id': `${canonical}#howto`,
+      name: 'How to Plan a Luxury Wedding for $50,000 in Seven Steps',
+      step: howToSteps.map((text, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text
+      }))
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${canonical}#faq`,
+      mainEntity: faqs.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a }
+      }))
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: item.item
+      }))
+    }
+  ]
+});
+
+const tocItems = [
+  ['what-does-a-50-000-wedding-budget-cover', 'What Does a $50,000 Wedding Budget Cover?'],
+  ['50-000-wedding-budget-breakdown-by-category', '$50,000 Wedding Budget Breakdown by Category'],
+  ['50-000-wedding-budget-allocation-line-by-line', '$50,000 Wedding Budget Allocation, Line by Line'],
+  ['luxury-wedding-planning-checklist-stage-by-stage', 'Luxury Wedding Planning Checklist, Stage by Stage'],
+  ['how-to-plan-a-luxury-wedding-for-50-000-in-seven-steps', 'How to Plan a Luxury Wedding for $50,000 in Seven Steps'],
+  ['luxury-wedding-vendor-booking-checklist', 'Luxury Wedding Vendor Booking Checklist'],
+  ['luxury-wedding-decor-floral-and-reception-planning', 'Luxury Wedding Decor, Floral, and Reception Planning'],
+  ['luxury-wedding-guest-experience-invitations-seating-and-welcome-bags', 'Luxury Wedding Guest Experience: Invitations, Seating, and Welcome Bags'],
+  ['50-000-wedding-budget-by-guest-count', '$50,000 Wedding Budget by Guest Count'],
+  ['planning-a-multi-day-or-destination-luxury-wedding', 'Planning a Multi-Day or Destination Luxury Wedding'],
+  ['using-this-as-a-50-000-wedding-budget-template-and-expense-tracker', 'Using This as a $50,000 Wedding Budget Template and Expense Tracker'],
+  ['costs-luxury-couples-often-forget', 'Costs Luxury Couples Often Forget'],
+  ['luxury-wedding-planning-tips-where-to-save-without-losing-the-look', 'Luxury Wedding Planning Tips: Where to Save Without Losing the Look'],
+  ['track-spending-against-your-calendar', 'Track Spending Against Your Calendar'],
+  ['common-50-000-wedding-budget-mistakes', 'Common $50,000 Wedding Budget Mistakes'],
+  ['frequently-asked-questions-about-a-50-000-wedding-budget', 'Frequently Asked Questions About a $50,000 Wedding Budget'],
+  ['your-next-step', 'Your Next Step']
+];
+---
+
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  canonical={canonical}
+  image={heroImage}
+  type="article"
+  titleIsFinal
+  schemaScript={schema}
+>
+  <Header />
+
+  <main>
+    <nav class="mx-auto flex max-w-6xl items-center gap-2 px-4 pt-6 text-xs text-slate-500" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-[#B76E79]">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/#categorized-checklists" class="hover:text-[#B76E79]">Checklists</a>
+      <span aria-hidden="true">/</span>
+      <span class="font-semibold text-slate-800">$50,000 Budget Wedding Planning Checklist</span>
+    </nav>
+
+    <header class="mx-auto max-w-6xl space-y-5 px-4 pb-10 pt-8 sm:pt-12">
+      <div class="inline-flex items-center gap-2 rounded-full bg-[#FCECF0] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#B76E79]">
+        <span aria-hidden="true">💎</span>
+        <span>Budget Guide</span>
+        <span aria-hidden="true">•</span>
+        <span>Luxury</span>
+      </div>
+      <h1 class="max-w-4xl text-3xl font-extrabold leading-tight text-[#1A1A1A] sm:text-5xl">
+        $50,000 Budget Wedding Planning Checklist for a Luxury Wedding
+      </h1>
+      <p class="max-w-4xl text-lg leading-relaxed text-slate-600">
+        A complete luxury wedding planning checklist, $50,000 budget breakdown, and stage-by-stage plan.
+      </p>
+      <div class="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-500">
+        <span class="inline-flex items-center gap-2">
+          <span class="flex h-7 w-7 items-center justify-center rounded-full bg-[#B76E79] text-[10px] font-bold text-white">W</span>
+          By <strong class="text-[#1A1A1A]">WeddingPlanningChecklists.org</strong>
+        </span>
+      </div>
+    </header>
+
+    <figure class="mx-auto mb-10 max-w-6xl px-4">
+      <img
+        src={heroImage}
+        alt="$50,000 luxury wedding budget checklist with a budget worksheet, category chart, flowers, and calculator"
+        class="max-h-[560px] w-full rounded-2xl border border-[#F3E8EA] bg-white object-contain shadow-sm sm:rounded-3xl"
+        width="1030"
+        height="768"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 pb-16 lg:grid-cols-[minmax(0,1fr)_17rem]">
+      <article class="min-w-0 rounded-3xl border border-[#F3E8EA] bg-white p-5 shadow-sm sm:p-8 lg:p-10">
+        <div class="mb-8 rounded-2xl border border-[#B76E79]/20 bg-[#FCECF0]/30 p-5 sm:p-6">
+          <p class="mb-2 text-xs font-bold uppercase tracking-wider text-[#B76E79]">100-word summary</p>
+          <p class="mb-0 text-sm leading-relaxed text-slate-700 sm:text-base">
+            This $50,000 Budget Wedding Planning Checklist gives you a complete luxury wedding planning checklist for a $50,000 wedding budget, from venue and fine dining to planner, photography, live music, florals, and attire. You'll get a $50,000 wedding budget breakdown by category, a detailed line-by-line allocation, a month-by-month luxury wedding planning timeline, and a high-end vendor booking checklist. Use it as a luxury wedding budget planner, expense tracker, or spreadsheet template, then adapt it to your guest count and city. Pair it with the free interactive <a href="/tools/budget-calculator">wedding budget calculator</a> and <a href="/tools/wedding-countdown">Wedding Countdown</a> to keep every single deposit and deadline on track.
+          </p>
+        </div>
+
+        <nav class="mb-8 rounded-2xl border border-[#F3E8EA] bg-slate-50 p-5" aria-label="Table of contents">
+          <h2 class="mb-3 mt-0 border-0 pb-0 font-sans text-base">On this page</h2>
+          <ul class="mb-0 grid grid-cols-1 gap-2 pl-5 text-sm sm:grid-cols-2">
+            {tocItems.map(([id, label]) => <li><a href={`#${id}`}>{label}</a></li>)}
+          </ul>
+        </nav>
+
+        <div class="article-content">
+          <section id="what-does-a-50-000-wedding-budget-cover">
+            <h2>What Does a $50,000 Wedding Budget Cover?</h2>
+            <p>
+              A $50,000 wedding budget is enough to build a luxury wedding: a premium historic estate or ballroom, fine-dining service with a full bar, a full-service planner, cinematic videography, a seven-piece live band, bespoke florals and lighting, and designer attire. It can also stretch across a multi-day celebration. That's the wedding this $50,000 Budget Wedding Planning Checklist plans for.
+            </p>
+            <p>
+              Think of this page as a luxury wedding planning guide and a $50,000 wedding budget checklist in one. It works as a luxury wedding checklist for couples hiring a planner, a high-end wedding planning checklist for those doing more themselves, and a $50K wedding planning checklist you can adjust line by line.
+            </p>
+            <p>
+              Luxury is relative. In some cities $50,000 buys an upscale wedding for a large guest list, and in others it buys a smaller list at a higher standard. Your location and guest count decide which. Settle the headcount early with the <a href="/tools/guest-list-manager">Guest List Manager</a>, because nearly every other number depends on it.
+            </p>
+            <p>
+              Treat every figure here as a planning template, not a quote. This page uses $50,000 as the baseline, so if you have more to spend, the same percentages scale up. Test real vendor quotes in the <a href="/tools/budget-calculator">wedding budget calculator</a> as they arrive. A good $50,000 wedding budget calculator should show you the percentage change every time a quote lands.
+            </p>
+          </section>
+
+          <section id="50-000-wedding-budget-breakdown-by-category">
+            <h2>$50,000 Wedding Budget Breakdown by Category</h2>
+            <p>
+              The simplest luxury wedding budget breakdown has four buckets, and this $50,000 wedding budget breakdown by category follows that pattern: 40% for the venue, fine dining, and bar, then 20% each for the planner and production, photo, video, and music, and decor and attire.
+            </p>
+            <div class="my-6 overflow-x-auto" role="region" aria-label="$50,000 wedding budget breakdown by category" tabindex="0">
+              <table>
+                <thead><tr><th>Category</th><th>Share</th><th>Amount</th><th>What it covers</th></tr></thead>
+                <tbody>
+                  <tr><td>Venue, fine dining &amp; bar</td><td>40%</td><td>$20,000</td><td>Premium historic estate or luxury ballroom, multi-course dinner, full bar</td></tr>
+                  <tr><td>Full planner &amp; production</td><td>20%</td><td>$10,000</td><td>End-to-end event styling and coordination, guest transport</td></tr>
+                  <tr><td>Photo, video &amp; music</td><td>20%</td><td>$10,000</td><td>Photography, cinematic videography, 7-piece live band</td></tr>
+                  <tr><td>Custom decor &amp; luxury attire</td><td>20%</td><td>$10,000</td><td>Bespoke florals, lighting, designer attire, stationery, admin costs</td></tr>
+                  <tr><td><strong>Total</strong></td><td><strong>100%</strong></td><td><strong>$50,000</strong></td><td><strong>Every dollar assigned</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <figure class="my-6">
+              <img
+                src="/How%20to%20Split%20Your%20%2450%2C000%20Wedding%20Budget.webp"
+                alt="Illustrated four-category allocation for a $50,000 wedding budget"
+                class="w-full rounded-2xl border border-[#F3E8EA] shadow-sm"
+                width="768"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <p>
+              That's also the $50,000 wedding budget allocation for venue and catering that matters most. Venue and dining take two of every five dollars, so that's where an overrun hurts most. A venue that costs $3,000 more than planned has to be paid for by trimming the band, the florals, or the planner. Decide which of those you'd give up before you tour a single property.
+            </p>
+            <p>
+              Looking at a different budget? Compare this page with the <a href="/checklists/wedding-budget-calculator-30k">$30,000 wedding budget checklist</a>, the <a href="/checklists/wedding-budget-calculator-20k">$20,000 wedding budget breakdown</a>, or the <a href="/checklists/wedding-budget-calculator-10k">$10,000 wedding budget breakdown</a>.
+            </p>
+          </section>
+
+          <section id="50-000-wedding-budget-allocation-line-by-line">
+            <h2>$50,000 Wedding Budget Allocation, Line by Line</h2>
+            <p>
+              Buckets don't pay invoices. Contracts do. Here is the same wedding budget allocation for $50K split into the lines you'll actually be billed for, with each group adding back up to the table above.
+            </p>
+            <div class="my-6 overflow-x-auto" role="region" aria-label="$50,000 wedding budget allocation, line by line" tabindex="0">
+              <table>
+                <thead><tr><th>Line item</th><th>Amount</th><th>Share</th><th>Bucket</th></tr></thead>
+                <tbody>
+                  <tr><td>Venue hire</td><td>$7,500</td><td>15%</td><td>Venue, dining &amp; bar</td></tr>
+                  <tr><td>Fine-dining dinner and service</td><td>$8,000</td><td>16%</td><td>Venue, dining &amp; bar</td></tr>
+                  <tr><td>Premium bar and mixology</td><td>$3,000</td><td>6%</td><td>Venue, dining &amp; bar</td></tr>
+                  <tr><td>Cake, dessert, and late-night bites</td><td>$800</td><td>1.6%</td><td>Venue, dining &amp; bar</td></tr>
+                  <tr><td>Service staff and fees</td><td>$700</td><td>1.4%</td><td>Venue, dining &amp; bar</td></tr>
+                  <tr><td>Full-service planner</td><td>$5,000</td><td>10%</td><td>Planner &amp; production</td></tr>
+                  <tr><td>Event styling and design fee</td><td>$2,500</td><td>5%</td><td>Planner &amp; production</td></tr>
+                  <tr><td>Specialty rentals and furniture hire</td><td>$1,500</td><td>3%</td><td>Planner &amp; production</td></tr>
+                  <tr><td>Guest transportation</td><td>$1,000</td><td>2%</td><td>Planner &amp; production</td></tr>
+                  <tr><td>Photographer</td><td>$3,500</td><td>7%</td><td>Photo, video &amp; music</td></tr>
+                  <tr><td>Cinematic videographer</td><td>$2,000</td><td>4%</td><td>Photo, video &amp; music</td></tr>
+                  <tr><td>Seven-piece live band</td><td>$4,500</td><td>9%</td><td>Photo, video &amp; music</td></tr>
+                  <tr><td>Bespoke florals</td><td>$3,000</td><td>6%</td><td>Decor &amp; attire</td></tr>
+                  <tr><td>Lighting design</td><td>$1,500</td><td>3%</td><td>Decor &amp; attire</td></tr>
+                  <tr><td>Designer gown and alterations</td><td>$2,300</td><td>4.6%</td><td>Decor &amp; attire</td></tr>
+                  <tr><td>Partner attire</td><td>$700</td><td>1.4%</td><td>Decor &amp; attire</td></tr>
+                  <tr><td>Hair and makeup</td><td>$700</td><td>1.4%</td><td>Decor &amp; attire</td></tr>
+                  <tr><td>Stationery and welcome bags</td><td>$1,000</td><td>2%</td><td>Decor &amp; attire</td></tr>
+                  <tr><td>License, officiant, and tips</td><td>$800</td><td>1.6%</td><td>Decor &amp; attire</td></tr>
+                  <tr><td><strong>Total</strong></td><td><strong>$50,000</strong></td><td><strong>100%</strong></td><td><strong>All four buckets</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              A few honest notes about this table. The decor-and-attire bucket also carries the admin lines, because they have to live somewhere. There's no separate cushion either, so if you want one, set aside about 5% ($2,500) from the venue bucket and leave it alone until the final headcount is locked. Rings, an engagement ring, and a honeymoon are outside this template.
+            </p>
+            <figure class="my-6">
+              <img
+                src="/The%20Ultimate%20Wedding%20Budget%20Template.webp"
+                alt="Wedding budget template worksheet with estimated, actual, and paid columns"
+                class="w-full rounded-2xl border border-[#F3E8EA] shadow-sm"
+                width="768"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </section>
+
+          <section id="luxury-wedding-planning-checklist-stage-by-stage">
+            <h2>Luxury Wedding Planning Checklist, Stage by Stage</h2>
+            <p>
+              This luxury wedding planning timeline month by month runs from the first budget conversation to wedding week. Use it as your luxury wedding master checklist and planning to-do list, or as a complete checklist for planning a luxury wedding step by step. Popular estates, bands, and photographers often book a year or more ahead, so the biggest items come first. If you'd like a different pace, the <a href="/checklists/18-month-wedding-planning-checklist">18-month wedding planning checklist</a> and <a href="/checklists/12-month-wedding-planning-checklist">12-month wedding planning checklist</a> cover the same ground, and the <a href="/checklists/6-month-wedding-planning-checklist">6-month wedding planning checklist</a> is there if you're starting late.
+            </p>
+            <figure class="my-6">
+              <img
+                src="/$50,000%20Luxury%20Wedding%20Planning%20Checklist.webp"
+                alt="$50,000 luxury wedding planning checklist with a budget book, calculator, and planning notes"
+                class="mx-auto max-h-[760px] w-full rounded-2xl border border-[#F3E8EA] object-contain shadow-sm"
+                width="768"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <h3>Stage 1: 18 to 12 Months Out, Set the Foundation</h3>
+            <ul>
+              <li>Confirm the real total, including who is contributing.</li>
+              <li>Choose a guest range and decide if this is one day or several.</li>
+              <li>Hire the full-service planner early, since they can steer venue and vendor choices.</li>
+              <li>Shortlist estates and ballrooms that fit your range.</li>
+              <li>Enter your date in the <a href="/tools/wedding-countdown">Wedding Countdown</a> so the weeks left are always visible.</li>
+            </ul>
+
+            <h3>Stage 2: 12 to 9 Months Out, Book the Big Names</h3>
+            <ul>
+              <li>Sign the venue after reading the vendor, curfew, and overtime rules.</li>
+              <li>Book the photographer, cinematic videographer, and live band.</li>
+              <li>Schedule caterer tastings and confirm the bar approach.</li>
+              <li>Follow the <a href="/checklists/wedding-vendor-booking-checklist">vendor booking order and contract checklist</a> so no contract gets signed out of order.</li>
+            </ul>
+
+            <h3>Stage 3: 9 to 6 Months Out, Design and Dress</h3>
+            <ul>
+              <li>Meet your florist and lighting designer for itemized proposals.</li>
+              <li>Order the designer gown and plan the fitting schedule.</li>
+              <li>Arrange guest lodging and transportation.</li>
+              <li>Send save-the-dates and sketch the welcome bag idea.</li>
+            </ul>
+
+            <h3>Stage 4: 6 to 3 Months Out, Finalize the Details</h3>
+            <ul>
+              <li>Send invitations and start tracking RSVPs.</li>
+              <li>Lock the menu, bar list, and rentals.</li>
+              <li>Draft the seating plan and share the entertainment flow with the band.</li>
+              <li>Go through the <a href="/checklists/wedding-decor-flowers-checklist">decor and floral checklist</a> to catch anything that's missing.</li>
+            </ul>
+
+            <h3>Stage 5: The Final Three Months and Wedding Week</h3>
+            <p>This is the luxury wedding preparation checklist most couples wish they'd started sooner.</p>
+            <ul>
+              <li>Send the final headcount to the caterer by the contract date.</li>
+              <li>Pay each balance on its due date and log it the same day.</li>
+              <li>Build the luxury wedding day timeline with your planner using the day-of schedule and <a href="/checklists/wedding-day-of-timeline-checklist">timeline checklist</a>.</li>
+              <li>Prepare labeled tip envelopes and a final wedding week checklist for the family.</li>
+            </ul>
+          </section>
+
+          <section id="how-to-plan-a-luxury-wedding-for-50-000-in-seven-steps">
+            <h2>How to Plan a Luxury Wedding for $50,000 in Seven Steps</h2>
+            <p>The short version of how to plan a high-end wedding on a $50K budget looks like this, and it doubles as a luxury wedding checklist for bride and groom to share.</p>
+            <ol>
+              <li>Confirm the true total and count only money that's available.</li>
+              <li>Pick a guest range, then work out the per-guest figure.</li>
+              <li>Choose three priorities, such as dining, music, and photography, and give them the largest shares.</li>
+              <li>Assign percentages first, then convert them to dollars.</li>
+              <li>Hire the planner, then collect at least three quotes for each major vendor.</li>
+              <li>Log every deposit and due date the day you sign.</li>
+              <li>Review the tracker monthly and move money between lines on purpose.</li>
+            </ol>
+            <p>The <a href="/tools/wedding-planning-timeline">wedding planning timeline tool</a> can turn these steps into dated tasks.</p>
+          </section>
+
+          <section id="luxury-wedding-vendor-booking-checklist">
+            <h2>Luxury Wedding Vendor Booking Checklist</h2>
+            <p>
+              Premium vendors sell on reputation, so the contract details matter more than the sales call. Use this as a luxury wedding vendor checklist before you sign. It also works as a luxury wedding venue checklist and a luxury wedding catering checklist, and the photo and video row covers the luxury wedding photography and videography checklist.
+            </p>
+            <div class="my-6 overflow-x-auto" role="region" aria-label="Luxury wedding vendor contract checklist" tabindex="0">
+              <table>
+                <thead><tr><th>Vendor</th><th>Confirm before signing</th></tr></thead>
+                <tbody>
+                  <tr><td>Venue</td><td>Exclusive vendor list, noise curfew, load-in times, included rentals, overtime rates</td></tr>
+                  <tr><td>Planner</td><td>Scope of service, hours on the day, team size, how vendor fees are handled</td></tr>
+                  <tr><td>Caterer</td><td>Menu price per guest, staff ratio, service charge and tax, tasting terms</td></tr>
+                  <tr><td>Photo and video</td><td>Hours of coverage, associate shooters, delivery timeline, travel fees</td></tr>
+                  <tr><td>Live band</td><td>Number of players, set lengths, breaks, sound and stage needs</td></tr>
+                  <tr><td>Florist and lighting</td><td>Itemized proposal, install and strike times, delivery fees, rental returns</td></tr>
+                  <tr><td>Transportation</td><td>Vehicle types, hours, wait time, pick-up schedule</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="luxury-wedding-decor-floral-and-reception-planning">
+            <h2>Luxury Wedding Decor, Floral, and Reception Planning</h2>
+            <p>
+              This is your luxury wedding decor checklist in miniature, and the floral side of it matters just as much. Spend your decor money where guests spend their time: the ceremony backdrop, the dinner tables, and the dance floor lighting. A few well-lit, well-built moments look more expensive than many small ones. Entertainment follows the same rule. Luxury wedding entertainment ideas such as a string quartet at cocktail hour before the live band takes over give the evening shape without adding cost everywhere.
+            </p>
+            <figure class="my-6">
+              <img
+                src="/The%204%20Essential%20Areas%20of%20Wedding%20Planning.webp"
+                alt="Four wedding planning areas: venue and catering, photography and video, decor and flowers, and attire and beauty"
+                class="mx-auto max-h-[760px] w-full rounded-2xl border border-[#F3E8EA] object-contain shadow-sm"
+                width="768"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <p>
+              Walk through the <a href="/checklists/wedding-reception-planning-checklist">reception master checklist</a> with your planner so catering, music, and decor don't collide on the timeline. The <a href="/checklists/wedding-decor-flowers-checklist">decor and floral checklist</a> is the better place to compare florist proposals line by line, and the luxury wedding rentals checklist question (linens, lounge furniture, glassware) belongs with your planner.
+            </p>
+          </section>
+
+          <section id="luxury-wedding-guest-experience-invitations-seating-and-welcome-bags">
+            <h2>Luxury Wedding Guest Experience: Invitations, Seating, and Welcome Bags</h2>
+            <p>
+              Guests notice the details around the wedding as much as the wedding. Think about invitations, seating, lodging, transport, and the little things waiting in their rooms. This short luxury wedding invitation checklist and luxury wedding transportation planning list cover the basics.
+            </p>
+            <ul>
+              <li>Send a clear invitation suite with RSVP dates and travel details.</li>
+              <li>Plan a luxury wedding seating plan that mixes comfort and conversation. The <a href="/blog/perfect-guest-list-guide">wedding guest list and seating chart guide</a> helps.</li>
+              <li>Arrange shuttles or car service between lodging and venues.</li>
+              <li>Keep luxury wedding welcome bags and the favors checklist simple: one thoughtful item beats ten forgettable ones.</li>
+              <li>Use the <a href="/checklists/wedding-guest-list-organizer">guest list and RSVP master checklist</a> to track dietary needs and plus-ones.</li>
+            </ul>
+          </section>
+
+          <section id="50-000-wedding-budget-by-guest-count">
+            <h2>$50,000 Wedding Budget by Guest Count</h2>
+            <p>The guest count changes the per-guest budget faster than anything else. Here are four examples.</p>
+            <div class="my-6 overflow-x-auto" role="region" aria-label="$50,000 wedding budget by guest count" tabindex="0">
+              <table>
+                <thead><tr><th>Guests</th><th>Per-guest budget</th><th>What it means</th></tr></thead>
+                <tbody>
+                  <tr><td>100</td><td>$500</td><td>Room for upgrades: more band hours, extra florals, a larger planner team</td></tr>
+                  <tr><td>150</td><td>$333</td><td>A balanced luxury wedding with plenty of room for custom details</td></tr>
+                  <tr><td>200</td><td>$250</td><td>Dining and bar costs press hard, so prioritize carefully</td></tr>
+                  <tr><td>250</td><td>$200</td><td>Expect to simplify the menu, decor, or number of events</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Not every line scales with guests. The band and photographer cost the same whether 100 or 250 people show up. Food, bar, rentals, stationery, and transport are the lines that actually move.
+            </p>
+          </section>
+
+          <section id="planning-a-multi-day-or-destination-luxury-wedding">
+            <h2>Planning a Multi-Day or Destination Luxury Wedding</h2>
+            <p>
+              A multi-day celebration usually means a welcome dinner, the main ceremony and reception, and a farewell brunch. Split the $50,000 by event first, then apply the percentages inside each one. Without that step, the main night quietly absorbs everything.
+            </p>
+            <p>
+              Several cultural traditions already work this way. The <a href="/checklists/pakistani-wedding-checklist">Pakistani &amp; Muslim multi-day wedding checklist</a> and the <a href="/checklists/indian-wedding-checklist">Indian wedding master checklist</a> show what each function involves. For a luxury destination wedding planning checklist, start with the <a href="/checklists/destination-wedding-checklist">destination wedding checklist</a>. If you're drawn to a private estate, see the <a href="/checklists/backyard-wedding-checklist">backyard and private estate checklist</a>.
+            </p>
+          </section>
+
+          <section id="using-this-as-a-50-000-wedding-budget-template-and-expense-tracker">
+            <h2>Using This as a $50,000 Wedding Budget Template and Expense Tracker</h2>
+            <p>
+              Copy the line-item table into a spreadsheet and add the columns below. That turns the template into a high-end wedding budget planner and a working luxury wedding expense checklist and a luxury wedding cost breakdown you can update as quotes arrive.
+            </p>
+            <div class="my-6 overflow-x-auto" role="region" aria-label="Wedding budget template spreadsheet columns" tabindex="0">
+              <table>
+                <thead><tr><th>Column</th><th>What to enter</th></tr></thead>
+                <tbody>
+                  <tr><td>Estimate</td><td>The amount from the table above</td></tr>
+                  <tr><td>Quote</td><td>The real price a vendor gave you</td></tr>
+                  <tr><td>Deposit paid</td><td>Amount and date</td></tr>
+                  <tr><td>Balance due</td><td>Remaining amount and due date</td></tr>
+                  <tr><td>Paid in full</td><td>Yes or no</td></tr>
+                  <tr><td>Notes</td><td>Overtime rates, what's included, contract terms</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              If a spreadsheet won't survive past week three, the <a href="/tools/wedding-planning-dashboard">Wedding Planning Dashboard</a> keeps tasks, guests, and budget in one place. The <a href="/checklists/printable-wedding-planning-checklist">printable wedding planning checklist</a> suits anyone who prefers paper.
+            </p>
+          </section>
+
+          <section id="costs-luxury-couples-often-forget">
+            <h2>Costs Luxury Couples Often Forget</h2>
+            <p>Big weddings hide big small costs. Ask about each of these on vendor calls.</p>
+            <ul>
+              <li>Service charge, gratuity, and sales tax on venue and catering invoices</li>
+              <li>Permits, insurance, or security deposits required by an estate</li>
+              <li>Parking attendants or security</li>
+              <li>Vendor meals and, for travelling vendors, lodging</li>
+              <li>Overtime if the party runs late</li>
+              <li>Gown alterations and hair and makeup trials</li>
+              <li>Delivery, setup, and breakdown fees for rentals and florals</li>
+              <li>Postage for oversized invitations</li>
+            </ul>
+          </section>
+
+          <section id="luxury-wedding-planning-tips-where-to-save-without-losing-the-look">
+            <h2>Luxury Wedding Planning Tips: Where to Save Without Losing the Look</h2>
+            <p>
+              A luxury feel comes from consistency, not from spending on everything, and it's what a premium wedding planning checklist should protect. These luxury wedding planning tips keep the experience high while the total stays steady.
+            </p>
+            <figure class="my-6">
+              <img
+                src="/4%20Smart%20Tips%20for%20a%20Stunning%20Wedding%20on%20%2450%2C000.webp"
+                alt="Elegant wedding reception decor with four tips for planning a stunning wedding on $50,000"
+                class="mx-auto max-h-[760px] w-full rounded-2xl border border-[#F3E8EA] object-contain shadow-sm"
+                width="768"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <ul>
+              <li>Choose a weekday or off-peak date if the venue prices it lower.</li>
+              <li>Invest in lighting, since it changes how the whole room photographs.</li>
+              <li>Serve a curated bar menu rather than every option.</li>
+              <li>Order custom stationery for key pieces only.</li>
+              <li>Pick fewer, larger floral installations over many small arrangements.</li>
+            </ul>
+            <p>
+              For more ideas, read our <a href="/blog/wedding-budget-tips">wedding budget tips</a> and the <a href="/blog/how-to-choose-wedding-venue">guide to choosing the perfect wedding venue</a>.
+            </p>
+          </section>
+
+          <section id="track-spending-against-your-calendar">
+            <h2>Track Spending Against Your Calendar</h2>
+            <p>
+              Every deposit has a deadline. Set your wedding date in the <a href="/tools/wedding-countdown">Wedding Countdown</a> and you'll see how many weeks remain to book, pay, and finalize. A countdown doesn't replace the plan, so pair it with the <a href="/tools/wedding-planning-calendar">Wedding Planning Calendar</a> for due dates and the <a href="/tools/timeline-generator">Day-of Timeline Generator</a> when wedding week arrives.
+            </p>
+          </section>
+
+          <section id="common-50-000-wedding-budget-mistakes">
+            <h2>Common $50,000 Wedding Budget Mistakes</h2>
+            <p>No $50,000 Budget Wedding Planning Checklist can catch every slip, but these are the ones that show up most.</p>
+            <ul>
+              <li>Choosing the venue before the guest count. The room has to fit the list, not the other way around.</li>
+              <li>Skipping the planner to save money. A full planner often saves more in avoided errors than the fee costs. Get quotes and compare.</li>
+              <li>Ignoring service charges. A quote without them isn't the real price.</li>
+              <li>Spreading decor thin. Many small touches look busy, while a few strong ones look intentional.</li>
+              <li>Having no owner for the tracker. One person updates it, everyone else sends receipts.</li>
+            </ul>
+          </section>
+
+          <section id="frequently-asked-questions-about-a-50-000-wedding-budget">
+            <h2>Frequently Asked Questions About a $50,000 Wedding Budget</h2>
+            {faqs.map(({ q, a }) => (
+              <div class="mb-5 rounded-2xl border border-[#F3E8EA] bg-slate-50 p-5">
+                <h3 class="mt-0 text-base">{q}</h3>
+                <p class="mb-0">{a}</p>
+              </div>
+            ))}
+          </section>
+
+          <section id="your-next-step">
+            <h2>Your Next Step</h2>
+            <p>
+              You now have a $50,000 wedding budget breakdown, a line-by-line template, and a stage-by-stage luxury checklist. Open the <a href="/tools/budget-calculator">luxury wedding budget planner</a> to enter your own numbers, then set your date in the <a href="/tools/wedding-countdown">Wedding Countdown</a> so every deposit has a deadline. Plan Your Wedding at WeddingPlanningChecklists.org.
+            </p>
+          </section>
+        </div>
+
+        <section class="mt-10 rounded-2xl bg-gradient-to-br from-[#1A1A1A] to-slate-800 p-6 text-center text-white sm:p-8" aria-labelledby="next-tools-heading">
+          <h2 id="next-tools-heading" class="mb-3 mt-0 border-0 pb-0 font-serif text-2xl text-white">Keep Your Wedding Plan on Track</h2>
+          <p class="mx-auto mb-5 max-w-2xl text-sm leading-relaxed text-slate-200">
+            Enter your numbers in the budget calculator, then use the Wedding Countdown to keep every payment deadline in view.
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="/tools/budget-calculator" class="rounded-full bg-[#B76E79] px-5 py-3 text-sm font-bold text-white no-underline hover:bg-[#a25d66]">Open the Budget Calculator</a>
+            <a href="/tools/wedding-countdown" class="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white no-underline hover:bg-white/10">Set Your Wedding Countdown</a>
+          </div>
+        </section>
+
+        <section class="mt-10 border-t border-[#F3E8EA] pt-8" aria-labelledby="related-budget-guides">
+          <h2 id="related-budget-guides" class="mb-4 font-serif text-2xl font-bold">Related Wedding Budget Guides</h2>
+          <ul class="grid gap-3 pl-5 text-sm sm:grid-cols-2">
+            <li><a href="/checklists/wedding-budget-calculator-10k">$10,000 wedding budget breakdown</a></li>
+            <li><a href="/checklists/wedding-budget-calculator-20k">$20,000 wedding budget breakdown</a></li>
+            <li><a href="/checklists/wedding-budget-calculator-30k">$30,000 wedding budget checklist</a></li>
+            <li><a href="/blog/wedding-budget-tips">Wedding budget tips</a></li>
+          </ul>
+        </section>
+
+        <section class="mt-8 rounded-2xl border border-[#F3E8EA] bg-slate-50 p-5" aria-label="Article author">
+          <p class="mb-1 text-xs font-bold uppercase tracking-wider text-[#B76E79]">Written by</p>
+          <p class="mb-0 text-sm font-semibold text-[#1A1A1A]">WeddingPlanningChecklists.org</p>
+        </section>
+      </article>
+
+      <aside class="space-y-5 lg:sticky lg:top-6 lg:self-start">
+        <div class="hidden rounded-2xl border border-[#F3E8EA] bg-white p-5 shadow-sm lg:block">
+          <h2 class="mb-3 mt-0 font-serif text-lg font-bold">On this page</h2>
+          <nav aria-label="Table of contents" class="space-y-2 text-xs">
+            {tocItems.map(([id, label]) => <a class="block leading-relaxed text-slate-600 hover:text-[#B76E79]" href={`#${id}`}>{label}</a>)}
+          </nav>
+        </div>
+        <div class="rounded-2xl bg-gradient-to-br from-[#1A1A1A] to-slate-800 p-5 text-white shadow-sm">
+          <p class="mb-2 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37]">Free planning tool</p>
+          <h2 class="mb-2 mt-0 font-serif text-xl font-bold">Track Your Wedding Budget</h2>
+          <p class="mb-4 text-xs leading-relaxed text-slate-300">Test your guest count and priorities with the interactive wedding budget calculator.</p>
+          <a class="inline-flex rounded-full bg-[#B76E79] px-4 py-2 text-xs font-bold text-white no-underline hover:bg-[#a25d66]" href="/tools/budget-calculator">Open the calculator →</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  @media (max-width: 640px) {
+    .article-content table {
+      min-width: 36rem;
+    }
+  }
+</style>
