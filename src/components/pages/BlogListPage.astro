@@ -20,7 +20,12 @@ const sortedPosts = posts.sort((a, b) => {
   const isTargetB = (b.data.slug || b.id).includes('the-ultimate-wedding-planning-checklists-guide');
   if (isTargetA) return -1;
   if (isTargetB) return 1;
-  return (b.data.featured ? 1 : 0) - (a.data.featured ? 1 : 0);
+  if ((b.data.featured ? 1 : 0) !== (a.data.featured ? 1 : 0)) {
+    return (b.data.featured ? 1 : 0) - (a.data.featured ? 1 : 0);
+  }
+  const dateA = a.data.pubDate ? new Date(a.data.pubDate).getTime() : (a.data.dateModified ? new Date(a.data.dateModified).getTime() : 0);
+  const dateB = b.data.pubDate ? new Date(b.data.pubDate).getTime() : (b.data.dateModified ? new Date(b.data.dateModified).getTime() : 0);
+  return dateB - dateA;
 });
 const featuredPost = sortedPosts.find(p => (p.data.slug || p.id).includes('the-ultimate-wedding-planning-checklists-guide')) || sortedPosts.find(p => p.data.featured) || sortedPosts[0];
 const otherPosts = sortedPosts.filter(p => p.id !== featuredPost?.id);
