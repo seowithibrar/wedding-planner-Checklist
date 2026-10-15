@@ -1,0 +1,315 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateFAQSchema
+} from '../../lib/schema';
+
+const title = 'Indian Wedding Checklist: Complete Planning Guide';
+const description = 'Plan every Indian wedding event with a month-by-month checklist for venues, vendors, outfits, rituals, guests, budget, and wedding day. Free tools included.';
+const canonical = 'https://www.weddingplanningchecklists.org/checklists/indian-wedding-checklist';
+const image = 'https://www.weddingplanningchecklists.org/pakistani-indian-wedding-planning-checklist.jpg';
+const updatedDate = '2026-10-15';
+
+const faqs = [
+  {
+    q: 'What should be included in an Indian wedding planning checklist?',
+    a: 'Dates and venues, a single budget, vendors, the guest list, invitations, each pre-wedding function, shopping, ceremony items, hospitality, and a final-week plan.'
+  },
+  {
+    q: 'When should you start planning an Indian wedding?',
+    a: 'Ten to twelve months ahead is comfortable, especially for peak season dates. You can plan in less time, but venues and top vendors may already be booked.'
+  },
+  {
+    q: 'What are the main functions in an Indian wedding?',
+    a: 'Commonly roka or engagement, Haldi, Mehendi, Sangeet, the wedding ceremony, and the reception. Which ones you hold depends on your family and community.'
+  },
+  {
+    q: 'What should an Indian bride buy before her wedding?',
+    a: 'Wedding and function outfits, jewellery, footwear, accessories, and makeup and hair trials. Order custom clothing first.'
+  },
+  {
+    q: 'What items are needed for a Hindu wedding ceremony?',
+    a: 'Your pandit will give you a list. It usually includes items for the sacred fire, flowers, garlands, rice, and ghee. Always follow the priest’s own list.'
+  },
+  {
+    q: 'How do you create an Indian wedding budget?',
+    a: 'Set a total, split it by function, add a buffer, and log every payment. A budget calculator makes this faster.'
+  },
+  {
+    q: 'Is there a printable Indian wedding checklist?',
+    a: 'Yes. Copy this page into a document, or use the printable wedding planning checklist.'
+  }
+];
+
+const schemas = [
+  generateArticleSchema({
+    title: 'Indian Wedding Planning Master Checklist: The Complete Month-by-Month Guide',
+    description,
+    url: canonical,
+    image,
+    authorName: 'Wedding Planning Checklists Team',
+    dateModified: updatedDate
+  }),
+  generateBreadcrumbSchema([
+    { name: 'Home', item: 'https://www.weddingplanningchecklists.org/' },
+    { name: 'Checklists', item: 'https://www.weddingplanningchecklists.org/#categorized-checklists' },
+    { name: 'Indian Wedding Planning Master Checklist', item: canonical }
+  ]),
+  generateFAQSchema(faqs)
+].filter(Boolean);
+
+const schemaScript = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': schemas.map((schema) => {
+    const parsed = JSON.parse(schema as string);
+    delete parsed['@context'];
+    return parsed;
+  })
+});
+
+const tocItems = [
+  ['indian-wedding-planning-checklist-at-a-glance', 'Indian Wedding Planning Checklist at a Glance'],
+  ['12-month-indian-wedding-planning-timeline', '12-Month Indian Wedding Planning Timeline'],
+  ['indian-wedding-budget-and-vendor-checklist', 'Indian Wedding Budget and Vendor Checklist'],
+  ['indian-wedding-guest-list-and-invitations', 'Indian Wedding Guest List and Invitations'],
+  ['pre-wedding-functions-checklist', 'Pre-Wedding Functions Checklist'],
+  ['indian-bridal-and-groom-shopping-checklist', 'Indian Bridal and Groom Shopping Checklist'],
+  ['wedding-ceremony-and-rituals-checklist', 'Wedding Ceremony and Rituals Checklist'],
+  ['decor-catering-and-photography-checklist', 'Decor, Catering and Photography Checklist'],
+  ['final-week-and-wedding-day-checklist', 'Final Week and Wedding-Day Checklist'],
+  ['track-the-whole-plan-with-free-tools', 'Track the Whole Plan With Free Tools'],
+  ['indian-wedding-planning-checklist-faqs', 'Indian Wedding Planning Checklist FAQs'],
+  ['conclusion-start-with-the-date-and-the-guest-count', 'Conclusion: Start With the Date and the Guest Count']
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  image={image}
+  type="article"
+  ogTitle={title}
+  ogDescription={description}
+  titleIsFinal
+  modifiedDate={updatedDate}
+  schemaScript={schemaScript}
+>
+  <Header lang="en" />
+
+  <main class="bg-[#FAFAFA]">
+    <nav aria-label="Breadcrumb" class="mx-auto max-w-7xl px-4 pt-6 text-sm text-slate-500 sm:px-6 lg:px-8">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a class="hover:text-[#B76E79]" href="/">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a class="hover:text-[#B76E79]" href="/#categorized-checklists">Checklists</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page" class="font-medium text-slate-800">Indian Wedding Planning Master Checklist</li>
+      </ol>
+    </nav>
+
+    <header class="mx-auto grid max-w-7xl gap-8 px-4 pb-10 pt-6 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8 lg:pb-14">
+      <div class="space-y-5">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#F3E8EA] bg-[#FCECF0] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide text-[#B76E79]">
+          <span aria-hidden="true">🪔</span>
+          <span>Multi-Day Cultural Checklist</span>
+        </div>
+        <h1 class="text-3xl font-extrabold leading-tight tracking-tight text-[#1A1A1A] sm:text-5xl">
+          Indian Wedding Planning Master Checklist: The Complete Month-by-Month Guide
+        </h1>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-500">
+          <span class="inline-flex items-center gap-2">
+            <span aria-hidden="true" class="flex h-8 w-8 items-center justify-center rounded-full bg-[#B76E79] text-xs font-bold text-white">W</span>
+            <span>Wedding Planning Checklists Team</span>
+          </span>
+          <span aria-hidden="true">·</span>
+          <span>Updated <time datetime={updatedDate}>October 15, 2026</time></span>
+        </div>
+      </div>
+      <img
+        src="/pakistani-indian-wedding-planning-checklist.jpg"
+        alt="Indian and South Asian wedding planning checklist for coordinating multi-day wedding celebrations"
+        class="aspect-[16/10] w-full rounded-3xl border border-[#F3E8EA] object-cover shadow-sm"
+        width="1200"
+        height="750"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </header>
+
+    <section class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pb-16 sm:px-6 lg:grid-cols-3 lg:px-8">
+      <article class="min-w-0 space-y-8 rounded-3xl border border-[#F3E8EA] bg-white p-5 shadow-sm sm:p-8 lg:col-span-2 lg:p-10">
+        <section aria-labelledby="summary" class="rounded-2xl border border-[#B76E79]/20 bg-[#FCECF0]/40 p-5 sm:p-6">
+          <h2 id="summary" class="mb-2 text-lg font-bold text-[#B76E79]">Summary</h2>
+          <p class="leading-relaxed text-slate-700">This Indian Wedding Planning Checklist covers every stage of a multi-day celebration, from the roka and engagement to Haldi, Mehendi, Sangeet, the wedding ceremony, and the reception. Use this Indian Wedding Planning Master Checklist as your Indian wedding to-do list, month-by-month timeline, and preparation guide in one place. You’ll find vendor booking order, bridal and groom shopping, mandap and ritual essentials, guest hospitality, budget tips, a final-week plan, and a wedding-day checklist. It suits Hindu, Sikh, Muslim, and regional Indian weddings, and it’s free to print, copy, or track online with our planning tools.</p>
+        </section>
+
+        <p class="leading-relaxed text-slate-700">An Indian wedding is rarely one event. It’s three, five, sometimes seven functions, each with its own outfit, venue, food, and family expectations. That’s why a generic wedding list falls apart so quickly. You need a complete Indian wedding checklist that tracks every function side by side, and that’s what this page is built to be.</p>
+        <p class="leading-relaxed text-slate-700">Think of this Indian wedding planning checklist as your working document. Copy the tasks that apply, delete the ones that don’t, and hand sections to the people who’ll own them. Traditions differ by religion, region, and family, so where a ritual varies, check with your elders and your priest before you commit.</p>
+
+        <nav aria-label="Table of contents" class="rounded-2xl border border-[#F3E8EA] bg-slate-50 p-5 sm:p-6">
+          <h2 class="mb-3 text-lg font-bold text-[#1A1A1A]">On this page</h2>
+          <ul class="grid gap-2 text-sm sm:grid-cols-2">
+            {tocItems.map(([id, label]) => (
+              <li><a class="text-[#A25D66] underline-offset-2 hover:underline" href={`#${id}`}>{label}</a></li>
+            ))}
+          </ul>
+        </nav>
+
+        <section id="indian-wedding-planning-checklist-at-a-glance" class="scroll-mt-24 space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Indian Wedding Planning Checklist at a Glance</h2>
+          <p class="leading-relaxed text-slate-700">Before the details, here’s the shape of the whole thing. Almost every Indian wedding plan comes down to six workstreams running in parallel:</p>
+          <ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700">
+            <li>Dates and venues: the muhurat or auspicious date, plus a venue for each function.</li>
+            <li>Money: one budget that covers every event, not one budget per event.</li>
+            <li>People: a guest list split by function, because not everyone is invited to everything.</li>
+            <li>Rituals: pandit or officiant, ceremony items, and the order of events.</li>
+            <li>Style: outfits, jewellery, makeup, and hair for each function.</li>
+            <li>Logistics: travel, hotel blocks, transport, gifts, and the Baraat.</li>
+          </ul>
+          <p class="rounded-xl bg-[#FCECF0]/40 p-4 font-medium leading-relaxed text-slate-800">If you only read one thing, make it this: decide the date and the guest count first. Almost every other choice follows from those two numbers.</p>
+        </section>
+
+        <section id="12-month-indian-wedding-planning-timeline" class="scroll-mt-24 space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">12-Month Indian Wedding Planning Timeline</h2>
+          <p class="leading-relaxed text-slate-700">This is the Indian wedding planning checklist broken down month by month. If you have less than a year, compress it, but keep the order. Venue and date come before shopping, always.</p>
+          <div class="space-y-5">
+            <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">12 to 10 months before</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Talk to both families about the number of functions and a rough guest count.</li><li>Ask your priest or family elders for auspicious dates.</li><li>Set a total budget and agree who is contributing what.</li><li>Start touring venues for the main ceremony and reception.</li></ul></div>
+            <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">9 to 7 months before</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Book the venue and the main ceremony date.</li><li>Hire the photographer, videographer, and caterer. Popular ones go first in peak season.</li><li>Book the pandit or officiant.</li><li>Start the first draft of the guest list for each function.</li></ul></div>
+            <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">6 to 5 months before</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Book decorator, mehndi artist, makeup artist, DJ, and Sangeet choreographer.</li><li>Begin bridal lehenga or saree shopping and groom’s sherwani or suit, since custom work takes months.</li><li>Reserve hotel blocks for out-of-town guests.</li><li>Send save-the-dates, especially for destination or overseas guests.</li></ul></div>
+            <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">4 to 3 months before</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Order invitations and finalise wording in every language you need.</li><li>Book transport, the Baraat arrangements, and any live music.</li><li>Book honeymoon travel and check passport validity.</li><li>Schedule the first fittings.</li></ul></div>
+            <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">2 months before</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Send invitations.</li><li>Taste the menu for each function.</li><li>Start Sangeet rehearsals.</li><li>Confirm every vendor in writing.</li></ul></div>
+            <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">1 month before</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Track RSVPs and chase late replies.</li><li>Finalise seating and the schedule for each function.</li><li>Final fittings and jewellery checks.</li><li>Pack and label welcome bags.</li></ul></div>
+          </div>
+          <p class="leading-relaxed text-slate-700">If you want this timeline as a clickable plan, the <a class="font-semibold text-[#A25D66] underline" href="/tools/wedding-planning-timeline">wedding planning timeline tool</a> builds one from your date, and our <a class="font-semibold text-[#A25D66] underline" href="/checklists/12-month-wedding-planning-checklist">12-month wedding planning checklist</a> covers the general version.</p>
+        </section>
+
+        <section id="indian-wedding-budget-and-vendor-checklist" class="scroll-mt-24 space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Indian Wedding Budget and Vendor Checklist</h2>
+          <p class="leading-relaxed text-slate-700">Budgets slip in Indian weddings because the costs are spread across many events. A single spreadsheet line called “decor” can quietly hide five different setups.</p>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Build the budget</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>List every function and give each its own sub-budget.</li><li>Add a buffer. Ten percent is a common planning habit, and extra guests or last-minute outfit changes tend to use it.</li><li>Log every deposit the day you pay it.</li><li>Plug your numbers into the <a class="font-semibold text-[#A25D66] underline" href="/tools/budget-calculator">wedding budget calculator</a> to see how the totals split.</li></ul></div>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Book vendors in this order</h3><ol class="list-decimal space-y-2 pl-6 leading-relaxed text-slate-700"><li>Venue</li><li>Pandit or officiant</li><li>Caterer</li><li>Photographer and videographer</li><li>Decorator and florist</li><li>Makeup and hair artists</li><li>Mehndi artist</li><li>DJ, band, and choreographer</li><li>Transport and Baraat arrangements</li></ol></div>
+          <p class="leading-relaxed text-slate-700">For contract details, use the <a class="font-semibold text-[#A25D66] underline" href="/checklists/wedding-vendor-booking-checklist">vendor booking order and contract checklist</a>. Ask each vendor what’s included, what overtime costs, and what happens if the date moves.</p>
+        </section>
+
+        <section id="indian-wedding-guest-list-and-invitations" class="scroll-mt-24 space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Indian Wedding Guest List and Invitations</h2>
+          <p class="leading-relaxed text-slate-700">Big family weddings live or die on the guest list. Build it in tiers: immediate family, extended family, close friends, then everyone else. Then tag each name by function. A cousin might be on the Sangeet list but not the pheras.</p>
+          <ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700">
+            <li>Collect addresses and phone numbers early, including overseas relatives.</li>
+            <li>Decide on plus-ones and children before invitations go out.</li>
+            <li>Plan hotel blocks and airport pickups for out-of-town guests.</li>
+            <li>Order a few extra invitations for last-minute additions.</li>
+          </ul>
+          <p class="leading-relaxed text-slate-700">The <a class="font-semibold text-[#A25D66] underline" href="/tools/guest-list-manager">guest list manager</a> lets you track RSVPs, and the <a class="font-semibold text-[#A25D66] underline" href="/checklists/wedding-guest-list-organizer">guest list and seating chart guide</a> goes deeper on seating.</p>
+        </section>
+
+        <section id="pre-wedding-functions-checklist" class="scroll-mt-24 space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Pre-Wedding Functions Checklist</h2>
+          <p class="leading-relaxed text-slate-700">This is the Indian wedding functions checklist. Keep only the events your families actually hold.</p>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Roka or engagement</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Confirm the date and venue, and who’s attending from each side.</li><li>Prepare the ring or gift exchange and sweets.</li><li>Arrange outfits and a photographer.</li></ul></div>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Haldi</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Prepare the haldi paste, bowls, and flowers, and plan for stains.</li><li>Pick outfits you’re happy to ruin, usually yellow or pastel.</li><li>Set up a spot with good light for photos.</li></ul></div>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Mehendi</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Book the mehndi artist early, and confirm how many hands they can finish in your timeframe.</li><li>Allow several hours for the bride’s design to be applied and to dry.</li><li>Arrange snacks, drinks, and music.</li></ul></div>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Sangeet</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Lock the song list and rehearsal dates.</li><li>Test the sound system and stage in advance.</li><li>Plan the order of performances and who emcees.</li></ul></div>
+        </section>
+
+        <section id="indian-bridal-and-groom-shopping-checklist" class="scroll-mt-24 space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Indian Bridal and Groom Shopping Checklist</h2>
+          <p class="leading-relaxed text-slate-700">Use this as your Indian bridal shopping checklist. Order custom pieces first, since they take the longest.</p>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Bride</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Wedding outfit (lehenga, saree, or your family’s traditional choice)</li><li>Outfits for Haldi, Mehendi, Sangeet, and reception</li><li>Jewellery sets, with matching earrings, maang tikka, and bangles</li><li>Footwear, dupattas, and blouse fittings</li><li>Makeup trial and hair trial. See our <a class="font-semibold text-[#A25D66] underline" href="/blog/indian-wedding-hairstyles-guide">Indian wedding hairstyles guide</a> and <a class="font-semibold text-[#A25D66] underline" href="/blog/regional-indian-wedding-hairstyles">regional Indian wedding hairstyles</a> for ideas</li></ul></div>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Groom</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Sherwani or suit, turban or safa if your tradition uses one</li><li>Mojari or shoes, stole, and accessories</li><li>Outfits for the other functions</li><li>Grooming appointments a few days before</li></ul></div>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Both families</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Outfits for parents and siblings</li><li>Gifts for relatives, often exchanged during milni or other rituals</li><li>Trousseau items, if that’s part of your tradition</li></ul></div>
+          <p class="leading-relaxed text-slate-700">Our <a class="font-semibold text-[#A25D66] underline" href="/blog/wedding-outfits">wedding outfits guide</a> is a good starting point for style choices.</p>
+        </section>
+
+        <section id="wedding-ceremony-and-rituals-checklist" class="scroll-mt-24 space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Wedding Ceremony and Rituals Checklist</h2>
+          <p class="leading-relaxed text-slate-700">For a traditional Indian wedding checklist, details vary by community. This list fits many Hindu ceremonies, so treat it as a Hindu wedding checklist you can adapt. Sikh, Muslim, and regional ceremonies have their own customs, so confirm yours with the officiant.</p>
+          <ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700">
+            <li>Confirm the pandit and the order of rituals, and ask what he needs supplied.</li>
+            <li>Collect the pooja items on the pandit’s list. Common ones include a sacred fire setup, flowers, rice, ghee, and a kalash.</li>
+            <li>Arrange the mandap, seating for family, and a sound system for the priest.</li>
+            <li>Prepare Jai Mala garlands.</li>
+            <li>Plan the Baraat: horse or car, band, route, and timing.</li>
+            <li>Assign someone to handle the pheras and saptapadi props.</li>
+            <li>Plan the vidaai, including petals or rice if it’s part of your custom.</li>
+            <li>Appoint a family member to hold the ritual items and shout when it’s time.</li>
+          </ul>
+        </section>
+
+        <section id="decor-catering-and-photography-checklist" class="scroll-mt-24 space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Decor, Catering and Photography Checklist</h2>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Decor</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Agree a colour direction for each function so they feel related, not identical.</li><li>Walk through the venue with the decorator and confirm what’s allowed (open flame, floral hanging, fog).</li><li>Confirm mandap build time and teardown.</li><li>Use our <a class="font-semibold text-[#A25D66] underline" href="/checklists/wedding-decor-flowers-checklist">decor and floral checklist</a> to avoid gaps.</li></ul></div>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Catering</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Confirm dietary needs: vegetarian, Jain, halal, and allergy needs.</li><li>Plan live counters and dessert tables.</li><li>Taste the menu, and ask how they’ll handle a larger crowd than expected.</li><li>Plan snacks for the quieter family functions, too.</li></ul></div>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Photography and video</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Share a family shot list, covering elders and relatives who matter most.</li><li>Mark the key ritual moments so nobody misses them.</li><li>Confirm who’s covering the Baraat and who’s covering the bride getting ready.</li></ul></div>
+        </section>
+
+        <section id="final-week-and-wedding-day-checklist" class="scroll-mt-24 space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Final Week and Wedding-Day Checklist</h2>
+          <p class="leading-relaxed text-slate-700">This part of the Indian wedding planning checklist is your preparation list for the last seven days.</p>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Final week</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Confirm every vendor’s arrival time, in writing.</li><li>Pack outfits, jewellery, and accessories by function.</li><li>Deliver ritual items and gifts to the venue contact.</li><li>Print the day’s schedule for the family.</li><li>Prepare an emergency kit with safety pins, a sewing kit, and pain relief. Our <a class="font-semibold text-[#A25D66] underline" href="/checklists/bridal-emergency-kit-checklist">bridal emergency kit checklist</a> lists more.</li></ul></div>
+          <div><h3 class="mb-2 text-lg font-bold text-[#1A1A1A]">Wedding day</h3><ul class="list-disc space-y-2 pl-6 leading-relaxed text-slate-700"><li>Start with a proper breakfast.</li><li>Bride and groom start hair and makeup at the planned time.</li><li>Give one trusted person the vendor numbers and payment envelopes.</li><li>Check the mandap, seating, and sound before guests arrive.</li><li>Keep a printed schedule at the venue entrance.</li></ul></div>
+          <p class="leading-relaxed text-slate-700">For a detailed schedule, use the <a class="font-semibold text-[#A25D66] underline" href="/tools/timeline-generator">day-of timeline generator</a> and the <a class="font-semibold text-[#A25D66] underline" href="/checklists/wedding-day-of-timeline-checklist">day-of schedule checklist</a>.</p>
+        </section>
+
+        <section id="track-the-whole-plan-with-free-tools" class="scroll-mt-24 space-y-4">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Track the Whole Plan With Free Tools</h2>
+          <p class="leading-relaxed text-slate-700">A checklist only works if it stays current, so keep your Indian wedding planning checklist somewhere the whole family can see it. A long checklist only helps if you keep it current. Put the main wedding date into the <a class="font-semibold text-[#A25D66] underline" href="/tools/wedding-countdown">Wedding Countdown</a> and you’ll see how many weeks remain, which makes it easier to decide when to start shopping or send invitations. Then move your tasks into the <a class="font-semibold text-[#A25D66] underline" href="/tools/wedding-planning-dashboard">Wedding Planning Dashboard</a> so family members can see what’s done. If you want tasks suggested for you, the <a class="font-semibold text-[#A25D66] underline" href="/tools/wedding-checklist-generator">wedding checklist generator</a> can help.</p>
+          <p class="leading-relaxed text-slate-700">If your wedding blends Indian and Pakistani or Muslim customs, compare this list with the <a class="font-semibold text-[#A25D66] underline" href="/checklists/pakistani-wedding-checklist">Pakistani and Muslim multi-day wedding checklist</a>. Planning abroad? The <a class="font-semibold text-[#A25D66] underline" href="/checklists/destination-wedding-checklist">destination wedding checklist</a> covers travel logistics.</p>
+        </section>
+
+        <section id="indian-wedding-planning-checklist-faqs" class="scroll-mt-24 space-y-4 border-t border-[#F3E8EA] pt-7">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Indian Wedding Planning Checklist FAQs</h2>
+          <div class="space-y-3">
+            {faqs.map((faq) => (
+              <div class="rounded-2xl border border-[#F3E8EA] bg-slate-50 p-4">
+                <h3 class="font-semibold text-slate-800">{faq.q}</h3>
+                <p class="mt-2 leading-relaxed text-slate-600">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="conclusion-start-with-the-date-and-the-guest-count" class="scroll-mt-24 space-y-4 border-t border-[#F3E8EA] pt-7">
+          <h2 class="text-2xl font-bold text-[#1A1A1A] sm:text-3xl">Conclusion: Start With the Date and the Guest Count</h2>
+          <p class="leading-relaxed text-slate-700">An Indian wedding takes a lot of people, and a good Indian Wedding Planning Master Checklist keeps all of them pointed the same way. Pick your date, set your guest count, book the big vendors, and tick off one workstream at a time.</p>
+          <p class="leading-relaxed text-slate-700">You don’t need to finish everything today. You just need to know what comes next.</p>
+          <p class="rounded-2xl bg-[#1A1A1A] p-5 font-medium leading-relaxed text-white">Next step: open the <a class="font-bold text-[#F4C5CD] underline" href="/tools/wedding-planning-dashboard">Wedding Planning Dashboard</a>, load this Indian wedding planning checklist, and set your first three tasks for this week.</p>
+        </section>
+
+        <aside aria-label="About the author" class="flex items-center gap-4 rounded-2xl border border-[#F3E8EA] bg-[#FAFAFA] p-5">
+          <span aria-hidden="true" class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#B76E79] text-lg font-bold text-white">W</span>
+          <div>
+            <p class="font-bold text-[#1A1A1A]">Wedding Planning Checklists Team</p>
+            <p class="text-sm text-slate-600">Wedding planning resources and checklists from WeddingPlanningChecklists.org.</p>
+          </div>
+        </aside>
+      </article>
+
+      <aside class="space-y-6 lg:sticky lg:top-24 lg:self-start">
+        <section class="space-y-4 rounded-3xl bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] p-6 text-white shadow-md">
+          <p class="text-xs font-bold uppercase tracking-wide text-[#F4C5CD]">Free planning tool</p>
+          <h2 class="text-xl font-bold">Track This Checklist Live</h2>
+          <p class="text-sm leading-relaxed text-slate-300">Use our interactive Wedding Planning Dashboard to check off tasks, track RSVPs, and save your progress in real-time.</p>
+          <a class="block rounded-full bg-[#B76E79] px-4 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-[#a25d66]" href="/tools/wedding-planning-dashboard">Open Wedding Planning Dashboard</a>
+        </section>
+
+        <section class="space-y-3 rounded-3xl border border-[#F3E8EA] bg-white p-6 shadow-sm">
+          <h2 class="font-bold text-[#1A1A1A]">Related planning guides</h2>
+          <ul class="space-y-3 text-sm">
+            <li><a class="font-medium text-[#A25D66] underline" href="/checklists/12-month-wedding-planning-checklist">12-month wedding planning checklist</a></li>
+            <li><a class="font-medium text-[#A25D66] underline" href="/checklists/pakistani-wedding-checklist">Pakistani and Muslim multi-day wedding checklist</a></li>
+            <li><a class="font-medium text-[#A25D66] underline" href="/checklists/destination-wedding-checklist">destination wedding checklist</a></li>
+          </ul>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <Footer lang="en" />
+</BaseLayout>
