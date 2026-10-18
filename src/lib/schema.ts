@@ -3,28 +3,37 @@ export function generateArticleSchema(article: {
   description: string;
   url: string;
   image: string;
+  inLanguage?: string;
+  about?: string[];
   datePublished?: string;
   dateModified?: string;
   authorName?: string;
 }) {
+  const imageUrl = article.image.startsWith('http')
+    ? article.image
+    : `https://www.weddingplanningchecklists.org${article.image.startsWith('/') ? '' : '/'}${article.image}`;
+
   return JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
+    '@id': `${article.url}#article`,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': article.url
     },
     headline: article.title,
     description: article.description,
-    image: article.image,
+    image: imageUrl,
+    inLanguage: article.inLanguage || 'en',
+    ...(article.about ? { about: article.about } : {}),
     author: {
       '@type': 'Organization',
       name: article.authorName || 'Wedding Planning Checklists Team',
-      url: 'https://www.weddingplanningchecklists.org'
+      url: 'https://www.weddingplanningchecklists.org/about-us'
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Wedding Planning Checklists',
+      name: 'WeddingPlanningChecklists.org',
       logo: {
         '@type': 'ImageObject',
         url: 'https://www.weddingplanningchecklists.org/favicon.png'
@@ -35,11 +44,12 @@ export function generateArticleSchema(article: {
   });
 }
 
-export function generateFAQSchema(faqs: { q: string; a: string }[]) {
+export function generateFAQSchema(faqs: { q: string; a: string }[], url?: string) {
   if (!faqs || faqs.length === 0) return null;
   return JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    ...(url ? { '@id': `${url}#faq` } : {}),
     mainEntity: faqs.map(faq => ({
       '@type': 'Question',
       name: faq.q,
@@ -47,6 +57,21 @@ export function generateFAQSchema(faqs: { q: string; a: string }[]) {
         '@type': 'Answer',
         text: faq.a
       }
+    }))
+  });
+}
+
+export function generateItemListSchema(list: { name: string; items: string[] }, url: string) {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${url}#tips`,
+    name: list.name,
+    numberOfItems: list.items.length,
+    itemListElement: list.items.map((name, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name
     }))
   });
 }

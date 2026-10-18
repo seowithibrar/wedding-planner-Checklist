@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../layout/Header.astro';
 import Footer from '../layout/Footer.astro';
 import { render } from 'astro:content';
-import { generateArticleSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema } from '../../lib/schema';
+import { generateArticleSchema, generateFAQSchema, generateItemListSchema, generateBreadcrumbSchema, generateHowToSchema } from '../../lib/schema';
 import { useTranslations, localizeUrl, getArticleI18n, SITE_URL } from '../../i18n/utils';
 import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
 
@@ -37,13 +37,18 @@ const articleSchema = generateArticleSchema({
   url: canonicalUrl,
   image: post.data.heroImage,
   dateModified: post.data.dateModified,
-  datePublished: post.data.pubDate ? post.data.pubDate.toISOString().split('T')[0] : undefined
+  datePublished: post.data.pubDate ? post.data.pubDate.toISOString().split('T')[0] : undefined,
+  inLanguage: currentLang,
+  about: post.data.about
 });
 
-const faqSchema = post.data.faqs ? generateFAQSchema(post.data.faqs) : null;
+const faqSchema = post.data.faqs ? generateFAQSchema(post.data.faqs, canonicalUrl) : null;
+const itemListSchema = post.data.itemList
+  ? generateItemListSchema(post.data.itemList, canonicalUrl)
+  : null;
 const breadcrumbSchema = generateBreadcrumbSchema([
-  { name: common.nav.home, item: localizeUrl('/', currentLang) },
-  { name: common.nav.blog, item: localizeUrl('/blog', currentLang) },
+  { name: common.nav.home, item: `${SITE_URL}${localizeUrl('/', currentLang)}` },
+  { name: common.nav.blog, item: `${SITE_URL}${localizeUrl('/blog', currentLang)}` },
   { name: articleTitle, item: canonicalUrl }
 ]);
 
@@ -54,7 +59,7 @@ const howToSchema = post.data.howTo ? generateHowToSchema({
   steps: post.data.howTo.step
 }) : null;
 
-const schemas = [articleSchema, faqSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+const schemas = [articleSchema, itemListSchema, faqSchema, breadcrumbSchema, howToSchema].filter(Boolean);
 const schemaGraph = schemas.map(schema => {
   const schemaData = JSON.parse(schema as string);
   delete schemaData['@context'];
@@ -73,6 +78,7 @@ const tocItems = post.data.tableOfContents && post.data.tableOfContents.length >
       ...(post.data.keyTakeaways && post.data.keyTakeaways.length > 0 ? [{ id: 'key-takeaways', label: common.ui.keyTakeaways }] : []),
       { id: 'main-content', label: 'Full Guide' },
       ...(post.data.faqs && post.data.faqs.length > 0 ? [{ id: 'faq', label: common.ui.faqs }] : []),
+      ...(post.data.closingSection ? [{ id: 'turn-these-tips-into-your-plan', label: post.data.closingSection.title }] : []),
       { id: 'author', label: common.ui.author }
     ];
 
@@ -87,6 +93,8 @@ const displayDate = post.data.updatedDate || 'September 2026';
   titleIsFinal={Boolean(post.data.seoTitle)}
   canonical={canonicalUrl}
   image={post.data.heroImage}
+  publishDate={post.data.pubDate ? post.data.pubDate.toISOString().split('T')[0] : undefined}
+  modifiedDate={post.data.dateModified}
   type="article"
   schemaScript={combinedSchema}
   lang={currentLang}
@@ -317,6 +325,13 @@ const displayDate = post.data.updatedDate || 'September 2026';
         </section>
       )}
 
+      {post.data.closingSection && (
+        <section id="turn-these-tips-into-your-plan" class="article-content prose prose-lg prose-rose max-w-none pt-6">
+          <h2>{post.data.closingSection.title}</h2>
+          <p>{post.data.closingSection.body}</p>
+        </section>
+      )}
+
       <!-- ═══ AUTHOR BOX ═══ -->
       <section id="author" class="bg-white border border-[#F3E8EA] p-6 sm:p-8 rounded-2xl shadow-sm relative overflow-hidden">
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#B76E79] via-[#D4AF37] to-[#B76E79]"></div>
@@ -329,18 +344,28 @@ const displayDate = post.data.updatedDate || 'September 2026';
           <div class="space-y-2 text-center sm:text-left rtl:sm:text-right">
             <h3 class="font-bold text-lg text-[#1A1A1A]">{post.data.author}</h3>
             <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-              <span class="text-[10px] font-bold text-white bg-gradient-to-r from-[#B76E79] to-[#a25d66] px-3 py-1 rounded-full uppercase tracking-wider">Certified Experts</span>
-              <span class="text-[10px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3 py-1 rounded-full uppercase tracking-wider">Verified Publisher</span>
+              <span class="text-[10px] font-bold text-white bg-gradient-to-r from-[#B76E79] to-[#a25d66] px-3 py-1 rounded-full uppercase tracking-wider">Wedding Planning Resources</span>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed max-w-lg">
-              The Wedding Planning Checklists Team is dedicated to helping engaged couples plan their dream wedding without stress. We deliver expert timeline templates, budget trackers, and cultural planning advice backed by years of wedding industry experience.
+              The Wedding Planning Checklists Team creates checklists, timelines, budget tools, and cultural planning resources to help couples organize their wedding.
             </p>
           </div>
         </div>
       </section>
 
       <!-- ═══ RELATED ARTICLES GRID ═══ -->
-      {allPosts && allPosts.length > 0 && (
+      {post.data.relatedLinks && post.data.relatedLinks.length > 0 ? (
+        <section class="pt-10 border-t border-[#F3E8EA] space-y-6">
+          <h2 class="text-2xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">{common.ui.relatedArticles}</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {post.data.relatedLinks.map((item: { title: string; url: string }) => (
+              <a href={localizeUrl(item.url, currentLang)} class="block bg-white rounded-2xl border border-[#F3E8EA] p-5 shadow-sm hover:shadow-md hover:border-[#B76E79]/40 transition-all">
+                <span class="font-bold text-sm text-[#1A1A1A] hover:text-[#B76E79] transition-colors">{item.title}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ) : allPosts && allPosts.length > 0 && (
         <section class="pt-10 border-t border-[#F3E8EA] space-y-6">
           <h2 class="text-2xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">{common.ui.relatedArticles}</h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

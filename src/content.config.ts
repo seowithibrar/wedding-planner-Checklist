@@ -32,10 +32,25 @@ const blog = defineCollection({
         label: z.string()
       })
     ).optional(),
+    about: z.array(z.string()).optional(),
+    itemList: z.object({
+      name: z.string(),
+      items: z.array(z.string())
+    }).optional(),
     faqs: z.array(
       z.object({
         q: z.string(),
         a: z.string()
+      })
+    ).optional(),
+    closingSection: z.object({
+      title: z.string(),
+      body: z.string()
+    }).optional(),
+    relatedLinks: z.array(
+      z.object({
+        title: z.string(),
+        url: z.string()
       })
     ).optional(),
     howTo: z.object({
