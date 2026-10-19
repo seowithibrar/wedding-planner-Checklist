@@ -58,7 +58,7 @@ const entries: SitemapEntry[] = [
   { path: '/blog/14-month-wedding-planning-timeline', changefreq: 'weekly', priority: '0.9', lastmod },
   { path: '/blog/how-to-plan-a-wedding-timeline', changefreq: 'weekly', priority: '0.9', lastmod },
   { path: '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding', changefreq: 'weekly', priority: '0.9', lastmod },
-  { path: '/blog/20-tips-for-your-wedding-planning-checklist', changefreq: 'weekly', priority: '0.8', lastmod },
+  { path: '/blog/20-tips-for-your-wedding-planning-checklist', changefreq: 'weekly', priority: '0.8', lastmod: '2026-10-19' },
   { path: '/blog/how-to-choose-wedding-venue', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/blog/wedding-budget-tips', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/blog/perfect-guest-list-guide', changefreq: 'weekly', priority: '0.8', lastmod },

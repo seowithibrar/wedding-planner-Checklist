@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- ═══════════════════════════════════════════════
        CORE PAGES
        ═══════════════════════════════════════════════ -->
@@ -252,9 +252,101 @@
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://www.weddingplanningchecklists.org/ur/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.weddingplanningchecklists.org/hi/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.weddingplanningchecklists.org/es/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.weddingplanningchecklists.org/fr/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.weddingplanningchecklists.org/de/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.weddingplanningchecklists.org/ar/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.weddingplanningchecklists.org/ur/blog/20-tips-for-your-wedding-planning-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://www.weddingplanningchecklists.org/ur/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.weddingplanningchecklists.org/hi/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.weddingplanningchecklists.org/es/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.weddingplanningchecklists.org/fr/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.weddingplanningchecklists.org/de/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.weddingplanningchecklists.org/ar/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.weddingplanningchecklists.org/hi/blog/20-tips-for-your-wedding-planning-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://www.weddingplanningchecklists.org/ur/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.weddingplanningchecklists.org/hi/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.weddingplanningchecklists.org/es/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.weddingplanningchecklists.org/fr/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.weddingplanningchecklists.org/de/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.weddingplanningchecklists.org/ar/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.weddingplanningchecklists.org/es/blog/20-tips-for-your-wedding-planning-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://www.weddingplanningchecklists.org/ur/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.weddingplanningchecklists.org/hi/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.weddingplanningchecklists.org/es/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.weddingplanningchecklists.org/fr/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.weddingplanningchecklists.org/de/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.weddingplanningchecklists.org/ar/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.weddingplanningchecklists.org/fr/blog/20-tips-for-your-wedding-planning-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://www.weddingplanningchecklists.org/ur/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.weddingplanningchecklists.org/hi/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.weddingplanningchecklists.org/es/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.weddingplanningchecklists.org/fr/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.weddingplanningchecklists.org/de/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.weddingplanningchecklists.org/ar/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.weddingplanningchecklists.org/de/blog/20-tips-for-your-wedding-planning-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://www.weddingplanningchecklists.org/ur/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.weddingplanningchecklists.org/hi/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.weddingplanningchecklists.org/es/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.weddingplanningchecklists.org/fr/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.weddingplanningchecklists.org/de/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.weddingplanningchecklists.org/ar/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.weddingplanningchecklists.org/ar/blog/20-tips-for-your-wedding-planning-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://www.weddingplanningchecklists.org/ur/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.weddingplanningchecklists.org/hi/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.weddingplanningchecklists.org/es/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.weddingplanningchecklists.org/fr/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.weddingplanningchecklists.org/de/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.weddingplanningchecklists.org/ar/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.weddingplanningchecklists.org/blog/20-tips-for-your-wedding-planning-checklist"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.weddingplanningchecklists.org/blog/how-to-choose-wedding-venue</loc>

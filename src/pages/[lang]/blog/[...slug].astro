@@ -1,21 +1,28 @@
 ---
 import BlogArticlePage from '../../../components/pages/BlogArticlePage.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { NON_DEFAULT_LANGUAGES, type SupportedLanguage } from '../../../i18n/config';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
+  const translations = await getCollection('blogTranslations');
   const paths: any[] = [];
 
   for (const lang of NON_DEFAULT_LANGUAGES) {
     for (const post of posts) {
       const slug = post.data.slug || post.id.replace(/\.(md|mdx)$/, '');
+      const translationPost = translations.find((entry: CollectionEntry<'blogTranslations'>) =>
+        entry.data.lang === lang && entry.data.sourceSlug === slug
+      );
       paths.push({
         params: { lang, slug },
         props: { 
           post,
+          translationPost,
           slug,
-          allPosts: posts.filter(p => (p.data.slug || p.id.replace(/\.(md|mdx)$/, '')) !== slug).slice(0, 3)
+          allPosts: posts.filter((p: CollectionEntry<'blog'>) =>
+            (p.data.slug || p.id.replace(/\.(md|mdx)$/, '')) !== slug
+          ).slice(0, 3)
         },
       });
     }
@@ -24,8 +31,8 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { post, slug, allPosts } = Astro.props;
+const { post, translationPost, slug, allPosts } = Astro.props;
 const { lang } = Astro.params;
 ---
 
-<BlogArticlePage post={post} slug={slug} allPosts={allPosts} lang={lang as SupportedLanguage} />
+<BlogArticlePage post={post} translationPost={translationPost} slug={slug} allPosts={allPosts} lang={lang as SupportedLanguage} />

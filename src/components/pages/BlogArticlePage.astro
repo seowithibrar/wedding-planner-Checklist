@@ -9,23 +9,28 @@ import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
 
 export interface Props {
   post: any;
+  translationPost?: any;
   slug: string;
   allPosts: any[];
   lang?: string;
 }
 
-const { post, slug, allPosts, lang = DEFAULT_LANGUAGE } = Astro.props;
+const { post, translationPost, slug, allPosts, lang = DEFAULT_LANGUAGE } = Astro.props;
+const articlePost = translationPost || post;
+const articleData = articlePost.data;
 const currentLang = lang as SupportedLanguage;
 const { common, t } = useTranslations(currentLang);
 
-const { Content } = await render(post);
+const { Content } = await render(articlePost);
 
 // Check if there is localized metadata for this article
 const postI18n = getArticleI18n(slug, currentLang);
-const articleTitle = postI18n?.title || post.data.title;
-const pageTitle = postI18n?.seoTitle || post.data.seoTitle || articleTitle;
-const articleDescription = postI18n?.description || post.data.description;
-const articleCategory = postI18n?.category || post.data.category;
+const articleTitle = translationPost ? articleData.title : postI18n?.title || articleData.title;
+const pageTitle = translationPost
+  ? articleData.seoTitle || articleTitle
+  : postI18n?.seoTitle || articleData.seoTitle || articleTitle;
+const articleDescription = translationPost ? articleData.description : postI18n?.description || articleData.description;
+const articleCategory = translationPost ? articleData.category : postI18n?.category || articleData.category;
 
 const canonicalUrl = currentLang === DEFAULT_LANGUAGE 
   ? `${SITE_URL}/blog/${slug}` 
@@ -35,16 +40,16 @@ const articleSchema = generateArticleSchema({
   title: articleTitle,
   description: articleDescription,
   url: canonicalUrl,
-  image: post.data.heroImage,
-  dateModified: post.data.dateModified,
-  datePublished: post.data.pubDate ? post.data.pubDate.toISOString().split('T')[0] : undefined,
+  image: articleData.heroImage,
+  dateModified: articleData.dateModified,
+  datePublished: articleData.pubDate ? articleData.pubDate.toISOString().split('T')[0] : undefined,
   inLanguage: currentLang,
-  about: post.data.about
+  about: articleData.about
 });
 
-const faqSchema = post.data.faqs ? generateFAQSchema(post.data.faqs, canonicalUrl) : null;
-const itemListSchema = post.data.itemList
-  ? generateItemListSchema(post.data.itemList, canonicalUrl)
+const faqSchema = articleData.faqs ? generateFAQSchema(articleData.faqs, canonicalUrl) : null;
+const itemListSchema = articleData.itemList
+  ? generateItemListSchema(articleData.itemList, canonicalUrl)
   : null;
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: common.nav.home, item: `${SITE_URL}${localizeUrl('/', currentLang)}` },
@@ -52,11 +57,11 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   { name: articleTitle, item: canonicalUrl }
 ]);
 
-const howToSchema = post.data.howTo ? generateHowToSchema({
-  name: post.data.howTo.name,
-  description: post.data.howTo.description,
+const howToSchema = articleData.howTo ? generateHowToSchema({
+  name: articleData.howTo.name,
+  description: articleData.howTo.description,
   url: canonicalUrl,
-  steps: post.data.howTo.step
+  steps: articleData.howTo.step
 }) : null;
 
 const schemas = [articleSchema, itemListSchema, faqSchema, breadcrumbSchema, howToSchema].filter(Boolean);
@@ -71,18 +76,18 @@ const combinedSchema = JSON.stringify({
 });
 
 // Build TOC items from frontmatter or defaults
-const tocItems = post.data.tableOfContents && post.data.tableOfContents.length > 0
-  ? post.data.tableOfContents
+const tocItems = articleData.tableOfContents && articleData.tableOfContents.length > 0
+  ? articleData.tableOfContents
   : [
-      ...(post.data.quickAnswer ? [{ id: 'quick-answer', label: common.ui.quickAnswer }] : []),
-      ...(post.data.keyTakeaways && post.data.keyTakeaways.length > 0 ? [{ id: 'key-takeaways', label: common.ui.keyTakeaways }] : []),
+      ...(articleData.quickAnswer ? [{ id: 'quick-answer', label: common.ui.quickAnswer }] : []),
+      ...(articleData.keyTakeaways && articleData.keyTakeaways.length > 0 ? [{ id: 'key-takeaways', label: common.ui.keyTakeaways }] : []),
       { id: 'main-content', label: 'Full Guide' },
-      ...(post.data.faqs && post.data.faqs.length > 0 ? [{ id: 'faq', label: common.ui.faqs }] : []),
-      ...(post.data.closingSection ? [{ id: 'turn-these-tips-into-your-plan', label: post.data.closingSection.title }] : []),
+      ...(articleData.faqs && articleData.faqs.length > 0 ? [{ id: 'faq', label: common.ui.faqs }] : []),
+      ...(articleData.closingSection ? [{ id: 'turn-these-tips-into-your-plan', label: articleData.closingSection.title }] : []),
       { id: 'author', label: common.ui.author }
     ];
 
-const displayDate = post.data.updatedDate || 'September 2026';
+const displayDate = articleData.updatedDate || 'September 2026';
 ---
 
 <BaseLayout 
@@ -90,13 +95,11 @@ const displayDate = post.data.updatedDate || 'September 2026';
   description={articleDescription} 
   ogTitle={pageTitle}
   ogDescription={articleDescription}
-  titleIsFinal={Boolean(post.data.seoTitle)}
+  titleIsFinal={Boolean(articleData.seoTitle)}
   canonical={canonicalUrl}
-  image={post.data.heroImage}
-  publishDate={post.data.pubDate ? post.data.pubDate.toISOString().split('T')[0] : undefined}
-  modifiedDate={post.data.dateModified}
-  publishDate={post.data.pubDate ? post.data.pubDate.toISOString().split('T')[0] : undefined}
-  modifiedDate={post.data.dateModified}
+  image={articleData.heroImage}
+  publishDate={articleData.pubDate ? articleData.pubDate.toISOString().split('T')[0] : undefined}
+  modifiedDate={articleData.dateModified}
   type="article"
   schemaScript={combinedSchema}
   lang={currentLang}
@@ -145,7 +148,7 @@ const displayDate = post.data.updatedDate || 'September 2026';
         <span class="text-slate-300">•</span>
         <span class="text-slate-600 inline-flex items-center gap-1">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          {post.data.readTime}
+          {articleData.readTime}
         </span>
       </div>
 
@@ -158,7 +161,7 @@ const displayDate = post.data.updatedDate || 'September 2026';
       <div class="flex items-center justify-center gap-2 sm:gap-4 flex-wrap text-xs text-slate-500 font-medium">
         <span class="inline-flex items-center gap-2">
           <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center text-[10px] font-bold shadow-sm">W</div>
-          {common.ui.by} <strong class="text-[#1A1A1A]">{post.data.author}</strong>
+          {common.ui.by} <strong class="text-[#1A1A1A]">{articleData.author}</strong>
         </span>
         <span class="text-slate-300">|</span>
         <span class="inline-flex items-center gap-1">
@@ -175,14 +178,14 @@ const displayDate = post.data.updatedDate || 'September 2026';
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 mb-12 relative">
     <div class="rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl border border-white/60 bg-white group">
       <img 
-        src={post.data.heroImage} 
-        alt={post.data.heroImageAlt || articleTitle} 
+        src={articleData.heroImage}
+        alt={articleData.heroImageAlt || articleTitle}
         class="w-full h-auto max-h-[520px] object-cover group-hover:scale-[1.02] transition-transform duration-700" 
         loading="eager"
       />
     </div>
-    {post.data.heroImageAlt && (
-      <p class="text-center text-[10px] text-slate-400 mt-2 italic">{post.data.heroImageAlt}</p>
+    {articleData.heroImageAlt && (
+      <p class="text-center text-[10px] text-slate-400 mt-2 italic">{articleData.heroImageAlt}</p>
     )}
   </div>
 
@@ -259,7 +262,7 @@ const displayDate = post.data.updatedDate || 'September 2026';
     <article class="col-span-1 lg:col-span-9 space-y-10">
       
       <!-- ═══ QUICK ANSWER BOX ═══ -->
-      {post.data.quickAnswer && (
+      {articleData.quickAnswer && (
         <section id="quick-answer" class="relative bg-gradient-to-r from-[#FCECF0] via-white to-[#FCECF0]/50 border border-[#F3E8EA] p-6 sm:p-8 rounded-2xl shadow-sm">
           <div class="flex items-start gap-3">
             <div class="shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center shadow-sm">
@@ -267,21 +270,21 @@ const displayDate = post.data.updatedDate || 'September 2026';
             </div>
             <div>
               <h3 class="font-bold text-sm text-[#1A1A1A] uppercase tracking-wider mb-2">{common.ui.quickAnswer}</h3>
-              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">{post.data.quickAnswer}</p>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">{articleData.quickAnswer}</p>
             </div>
           </div>
         </section>
       )}
 
       <!-- ═══ KEY TAKEAWAYS ═══ -->
-      {post.data.keyTakeaways && post.data.keyTakeaways.length > 0 && (
+      {articleData.keyTakeaways && articleData.keyTakeaways.length > 0 && (
         <section id="key-takeaways" class="bg-white border border-[#F3E8EA] p-6 sm:p-8 rounded-2xl shadow-sm space-y-4 relative overflow-hidden">
           <div class="absolute left-0 rtl:left-auto rtl:right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#B76E79] via-[#D4AF37] to-[#B76E79]"></div>
           <h3 class="font-bold text-sm text-[#1A1A1A] uppercase tracking-wider flex items-center gap-2 pl-4 rtl:pl-0 rtl:pr-4">
             <span class="text-[#D4AF37] text-lg">⚡</span> {common.ui.keyTakeaways}
           </h3>
           <ul class="space-y-3 pl-4 rtl:pl-0 rtl:pr-4">
-            {post.data.keyTakeaways.map((item: string) => (
+            {articleData.keyTakeaways.map((item: string) => (
               <li class="flex items-start gap-3 text-sm text-slate-700 font-medium">
                 <span class="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-[10px] font-bold">✓</span>
                 <span class="leading-relaxed">{item}</span>
@@ -297,7 +300,7 @@ const displayDate = post.data.updatedDate || 'September 2026';
       </div>
 
       <!-- ═══ FAQ ACCORDION SECTION ═══ -->
-      {post.data.faqs && post.data.faqs.length > 0 && (
+      {articleData.faqs && articleData.faqs.length > 0 && (
         <section id="faq" class="pt-10 border-t border-[#F3E8EA] space-y-6">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#B76E79] to-[#a25d66] text-white flex items-center justify-center shadow-sm">
@@ -306,7 +309,7 @@ const displayDate = post.data.updatedDate || 'September 2026';
             <h2 class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">{common.ui.faqs}</h2>
           </div>
           <div class="space-y-3" id="faq-list">
-            {post.data.faqs.map((faq: { q: string; a: string }, index: number) => (
+            {articleData.faqs.map((faq: { q: string; a: string }, index: number) => (
               <div class="bg-white border border-[#F3E8EA] rounded-2xl shadow-sm hover:shadow-md transition-all overflow-hidden faq-item" data-faq-index={index}>
                 <button 
                   class="w-full flex items-center justify-between p-5 sm:p-6 text-left rtl:text-right cursor-pointer faq-toggle"
@@ -327,10 +330,16 @@ const displayDate = post.data.updatedDate || 'September 2026';
         </section>
       )}
 
-      {post.data.closingSection && (
+      {articleData.closingSection && (
         <section id="turn-these-tips-into-your-plan" class="article-content prose prose-lg prose-rose max-w-none pt-6">
-          <h2>{post.data.closingSection.title}</h2>
-          <p>{post.data.closingSection.body}</p>
+          <h2>{articleData.closingSection.title}</h2>
+          <p>
+            {articleData.closingSection.body.map((part: { text: string; url?: string }) => (
+              part.url
+                ? <a href={localizeUrl(part.url, currentLang)}>{part.text}</a>
+                : part.text
+            ))}
+          </p>
         </section>
       )}
 
@@ -344,7 +353,7 @@ const displayDate = post.data.updatedDate || 'September 2026';
             </div>
           </div>
           <div class="space-y-2 text-center sm:text-left rtl:sm:text-right">
-            <h3 class="font-bold text-lg text-[#1A1A1A]">{post.data.author}</h3>
+            <h3 class="font-bold text-lg text-[#1A1A1A]">{articleData.author}</h3>
             <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
               <span class="text-[10px] font-bold text-white bg-gradient-to-r from-[#B76E79] to-[#a25d66] px-3 py-1 rounded-full uppercase tracking-wider">Wedding Planning Resources</span>
             </div>
@@ -356,11 +365,11 @@ const displayDate = post.data.updatedDate || 'September 2026';
       </section>
 
       <!-- ═══ RELATED ARTICLES GRID ═══ -->
-      {post.data.relatedLinks && post.data.relatedLinks.length > 0 ? (
+      {articleData.relatedLinks && articleData.relatedLinks.length > 0 ? (
         <section class="pt-10 border-t border-[#F3E8EA] space-y-6">
           <h2 class="text-2xl font-bold text-[#1A1A1A]" style="font-family: 'Playfair Display', serif;">{common.ui.relatedArticles}</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {post.data.relatedLinks.map((item: { title: string; url: string }) => (
+            {articleData.relatedLinks.map((item: { title: string; url: string }) => (
               <a href={localizeUrl(item.url, currentLang)} class="block bg-white rounded-2xl border border-[#F3E8EA] p-5 shadow-sm hover:shadow-md hover:border-[#B76E79]/40 transition-all">
                 <span class="font-bold text-sm text-[#1A1A1A] hover:text-[#B76E79] transition-colors">{item.title}</span>
               </a>

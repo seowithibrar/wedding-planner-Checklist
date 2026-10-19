@@ -1,9 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-const blog = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
-  schema: z.object({
+const blogSchema = z.object({
     slug: z.string({
       required_error: "Blog post frontmatter must include a 'slug' field."
     })
@@ -45,7 +43,10 @@ const blog = defineCollection({
     ).optional(),
     closingSection: z.object({
       title: z.string(),
-      body: z.string()
+      body: z.array(z.object({
+        text: z.string(),
+        url: z.string().optional()
+      }))
     }).optional(),
     relatedLinks: z.array(
       z.object({
@@ -63,7 +64,23 @@ const blog = defineCollection({
         })
       )
     }).optional()
+  });
+
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
+  schema: blogSchema
+});
+
+const blogTranslations = defineCollection({
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/blog-translations',
+    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/i, '').replace(/[\\/]/g, '-')
+  }),
+  schema: blogSchema.extend({
+    lang: z.enum(['ur', 'hi', 'es', 'fr', 'de', 'ar']),
+    sourceSlug: z.string()
   })
 });
 
-export const collections = { blog };
+export const collections = { blog, blogTranslations };
