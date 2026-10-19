@@ -46,7 +46,11 @@ const blogSchema = z.object({
       body: z.array(z.object({
         text: z.string(),
         url: z.string().optional()
-      }))
+      })).optional(),
+      paragraphs: z.array(z.array(z.object({
+        text: z.string(),
+        url: z.string().optional()
+      }))).optional()
     }).optional(),
     relatedLinks: z.array(
       z.object({

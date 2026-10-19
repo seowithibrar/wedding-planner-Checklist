@@ -68,7 +68,7 @@ const entries: SitemapEntry[] = [
   { path: '/blog/pakistani-wedding-hairstyles', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/blog/indian-wedding-hairstyles-guide', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/blog/regional-indian-wedding-hairstyles', changefreq: 'weekly', priority: '0.8', lastmod },
-  { path: '/blog/moodboard-layout', changefreq: 'weekly', priority: '0.8', lastmod },
+  { path: '/blog/moodboard-layout', changefreq: 'weekly', priority: '0.8', lastmod: '2026-10-19' },
   { path: '/blog/4-month-wedding-planning-timeline', changefreq: 'weekly', priority: '0.8', lastmod },
   { path: '/blog/wedding-photography-poses-for-beginners', changefreq: 'weekly', priority: '0.8', lastmod: '2026-10-12' }
 ];

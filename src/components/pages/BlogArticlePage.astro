@@ -333,13 +333,25 @@ const displayDate = articleData.updatedDate || 'September 2026';
       {articleData.closingSection && (
         <section id="turn-these-tips-into-your-plan" class="article-content prose prose-lg prose-rose max-w-none pt-6">
           <h2>{articleData.closingSection.title}</h2>
-          <p>
-            {articleData.closingSection.body.map((part: { text: string; url?: string }) => (
-              part.url
-                ? <a href={localizeUrl(part.url, currentLang)}>{part.text}</a>
-                : part.text
-            ))}
-          </p>
+          {articleData.closingSection.paragraphs
+            ? articleData.closingSection.paragraphs.map((paragraph: { text: string; url?: string }[]) => (
+                <p>
+                  {paragraph.map((part: { text: string; url?: string }) => (
+                    part.url
+                      ? <a href={localizeUrl(part.url, currentLang)}>{part.text}</a>
+                      : part.text
+                  ))}
+                </p>
+              ))
+            : (
+                <p>
+                  {(articleData.closingSection.body || []).map((part: { text: string; url?: string }) => (
+                    part.url
+                      ? <a href={localizeUrl(part.url, currentLang)}>{part.text}</a>
+                      : part.text
+                  ))}
+                </p>
+              )}
         </section>
       )}
 

@@ -216,6 +216,12 @@ const combinedSchema = JSON.stringify({
           <p class="text-sm text-slate-700 leading-relaxed">{checklist.summary}</p>
         </div>
 
+        {checklist.slug === 'wedding-decor-flowers-checklist' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Before you choose flowers and decor, use a <a href={localizeUrl('/blog/moodboard-layout', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding moodboard</a> to share your colors, textures, and overall style with your vendors.
+          </p>
+        )}
+
         {checklist.slug === '12-month-wedding-planning-checklist' && (
           <p class="text-sm text-slate-600 leading-relaxed">
             Planning on a shorter engagement? Use the <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6-month wedding planning checklist</a> for a faster timeline.
