@@ -49,6 +49,7 @@ const blogArticles = [
   { title: 'Regional Indian Bridal Hairstyles by State & Tradition', url: '/blog/regional-indian-wedding-hairstyles', cat: 'Beauty' },
   { title: 'How to Create an Inspiring Wedding Moodboard', url: '/blog/moodboard-layout', cat: 'Design' },
   { title: '4-Month Wedding Planning Timeline: Week-by-Week Checklist', url: '/blog/4-month-wedding-planning-timeline', cat: 'Planning' },
+  { title: 'Christmas Wedding Planning Checklist: Timeline, Budget & Decor', url: '/blog/christmas-wedding-planning-checklist', cat: 'Seasonal Planning' },
 ];
 
 export default function VisualSitemapPage() {
