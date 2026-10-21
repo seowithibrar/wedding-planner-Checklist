@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Wedding nail shape chart</title>
+  <desc id="desc">Six nail silhouettes compare almond, oval, squoval, square, coffin and stiletto shapes.</desc>
+  <rect width="1200" height="1200" rx="48" fill="#fbf7f4"/>
+  <g fill="#f0d6ce" stroke="#b78578" stroke-width="8">
+    <path d="M112 315V175c0-74 112-122 158-25l20 165z"/>
+    <path d="M468 315V175c0-96 153-96 153 0v140z"/>
+    <path d="M812 315V175q0-24 24-24h116q24 0 24 24v140z"/>
+    <path d="M136 770V620q0-22 22-22h118q22 0 22 22v150z"/>
+    <path d="M473 770V620l30-32h82l30 32v150z"/>
+    <path d="M819 770V620l52-110h46l52 110v150z"/>
+  </g>
+  <g fill="#fffaf8" opacity=".9">
+    <path d="M129 300V184c0-48 58-76 91-31l37 147z"/>
+    <path d="M486 300V178c0-65 117-65 117 0v122z"/>
+    <path d="M830 300V178q0-9 9-9h99q9 0 9 9v122z"/>
+    <path d="M154 754V625q0-9 9-9h108q9 0 9 9v129z"/>
+    <path d="M491 754V625l24-24h59l24 24v129z"/>
+    <path d="M837 754V624l40-84h22l40 84v130z"/>
+  </g>
+  <g fill="#493c39" font-family="Arial,sans-serif" font-size="34" font-weight="700" text-anchor="middle">
+    <text x="200" y="390">Almond</text><text x="545" y="390">Oval</text><text x="890" y="390">Squoval</text>
+    <text x="200" y="850">Square</text><text x="545" y="850">Coffin</text><text x="890" y="850">Stiletto</text>
+  </g>
+  <path d="M90 930h1020" stroke="#e9d8d1" stroke-width="5"/>
+  <text x="600" y="1010" fill="#876960" font-family="Arial,sans-serif" font-size="28" text-anchor="middle">Choose a comfortable length before settling on your design.</text>
+</svg>

@@ -237,6 +237,11 @@ const combinedSchema = JSON.stringify({
             Set your spending plan early with this worked example of a <a href={localizeUrl('/checklists/wedding-budget-calculator-30k', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding budget by percentage</a>.
           </p>
         )}
+        {checklist.slug === '12-month-wedding-planning-checklist' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Add your manicure dates to the plan with this guide to <a href={localizeUrl('/blog/wedding-nail-designs', currentLang)} class="text-[#B76E79] font-bold hover:underline">booking your bridal nail trial</a>.
+          </p>
+        )}
         {checklist.slug === 'wedding-budget-calculator-50k' && (
           <p class="text-sm text-slate-600 leading-relaxed">
             Comparing budget tiers? See how the numbers change in the <a href={localizeUrl('/checklists/wedding-budget-calculator-30k', currentLang)} class="text-[#B76E79] font-bold hover:underline">$30K wedding budget checklist</a>.
@@ -271,6 +276,11 @@ const combinedSchema = JSON.stringify({
         {checklist.slug === 'wedding-day-of-timeline-checklist' && (
           <p class="text-sm text-slate-600 leading-relaxed">
             Planning portrait blocks for your day-of run of show? Use our <a href={localizeUrl('/blog/wedding-photography-poses-for-beginners', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding photography poses for beginners</a> guide to share a structured pose checklist with your photographer.
+          </p>
+        )}
+        {checklist.slug === 'bridal-emergency-kit-checklist' && (
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Add a small <a href={localizeUrl('/blog/wedding-nail-designs', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding nail repair kit</a> to the bag for quick fixes on the day.
           </p>
         )}
         {checklist.slug === 'wedding-vendor-booking-checklist' && (

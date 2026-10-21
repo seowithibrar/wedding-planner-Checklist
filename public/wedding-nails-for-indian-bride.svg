@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">South Asian bridal nail palette</title>
+  <desc id="desc">A wedding nail palette combines deep maroon, warm nude and gold with a fine henna-inspired floral motif.</desc>
+  <rect width="1200" height="1500" rx="42" fill="#f9f0e7"/>
+  <path d="M0 0h1200v370c-290 130-530-40-780 55C270 500 125 480 0 420z" fill="#7c2639"/>
+  <path d="M0 1260c330-120 560 60 870-30 120-35 225-80 330-60v330H0z" fill="#a87136"/>
+  <g transform="translate(160 455)">
+    <rect x="0" y="0" width="880" height="500" rx="240" fill="#dbb28b"/>
+    <g stroke="#7c2639" stroke-width="8" fill="#f4e4d6">
+      <rect x="100" y="100" width="135" height="240" rx="68"/>
+      <rect x="280" y="70" width="145" height="255" rx="72"/>
+      <rect x="465" y="70" width="145" height="255" rx="72"/>
+      <rect x="650" y="100" width="135" height="240" rx="68"/>
+    </g>
+    <g fill="#a72e43">
+      <path d="M120 260q48 35 95 0v58q-48 30-95 0z"/>
+      <path d="M300 235q52 36 105 0v62q-52 30-105 0z"/>
+      <path d="M485 235q52 36 105 0v62q-52 30-105 0z"/>
+      <path d="M670 260q48 35 95 0v58q-48 30-95 0z"/>
+    </g>
+    <g fill="none" stroke="#d9ad65" stroke-width="9" stroke-linecap="round">
+      <path d="M348 130c-58 35 52 55 0 92s58 54 0 82"/>
+      <path d="M530 130c58 35-52 55 0 92s-58 54 0 82"/>
+      <path d="M348 160h36m-36 36h-35m217-36h-36m36 36h35"/>
+    </g>
+  </g>
+  <g fill="none" stroke="#f0d5ad" stroke-width="7" opacity=".9">
+    <path d="M110 1050c120-100 225-100 340 0s220 100 340 0 210-110 310-25"/>
+    <circle cx="210" cy="1070" r="28"/><circle cx="450" cy="1070" r="28"/><circle cx="690" cy="1070" r="28"/><circle cx="930" cy="1050" r="28"/>
+  </g>
+</svg>

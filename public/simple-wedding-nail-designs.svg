@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Simple wedding nail designs</title>
+  <desc id="desc">Six nail swatches show milky white, sheer blush, French, micro French, ivory and satin finishes.</desc>
+  <rect width="1200" height="1500" rx="40" fill="#fbf7f4"/>
+  <g font-family="Arial,sans-serif" fill="#493c39" text-anchor="middle">
+    <g transform="translate(110 140)">
+      <rect x="0" y="0" width="420" height="460" rx="36" fill="#fff" stroke="#eadbd5" stroke-width="5"/>
+      <rect x="145" y="55" width="130" height="230" rx="65" fill="#fff" stroke="#d6bdb4" stroke-width="7"/>
+      <text x="210" y="360" font-size="30" font-weight="700">Milky white</text>
+    </g>
+    <g transform="translate(670 140)">
+      <rect x="0" y="0" width="420" height="460" rx="36" fill="#fff" stroke="#eadbd5" stroke-width="5"/>
+      <rect x="145" y="55" width="130" height="230" rx="65" fill="#f6dfe1" stroke="#d6bdb4" stroke-width="7"/>
+      <text x="210" y="360" font-size="30" font-weight="700">Sheer blush</text>
+    </g>
+    <g transform="translate(110 680)">
+      <rect x="0" y="0" width="420" height="460" rx="36" fill="#fff" stroke="#eadbd5" stroke-width="5"/>
+      <rect x="145" y="55" width="130" height="230" rx="65" fill="#f8e7e4" stroke="#d6bdb4" stroke-width="7"/>
+      <path d="M150 228q60 40 120 0v35q-60 34-120 0z" fill="#fff"/>
+      <text x="210" y="360" font-size="30" font-weight="700">Classic French</text>
+    </g>
+    <g transform="translate(670 680)">
+      <rect x="0" y="0" width="420" height="460" rx="36" fill="#fff" stroke="#eadbd5" stroke-width="5"/>
+      <rect x="145" y="55" width="130" height="230" rx="65" fill="#f8e7e4" stroke="#d6bdb4" stroke-width="7"/>
+      <path d="M150 247q60 24 120 0v16q-60 23-120 0z" fill="#fff"/>
+      <text x="210" y="360" font-size="30" font-weight="700">Micro French</text>
+    </g>
+    <g transform="translate(110 1220)">
+      <rect x="0" y="0" width="420" height="220" rx="36" fill="#fff" stroke="#eadbd5" stroke-width="5"/>
+      <rect x="48" y="35" width="90" height="140" rx="45" fill="#f4e8d7" stroke="#d6bdb4" stroke-width="6"/>
+      <text x="270" y="115" font-size="28" font-weight="700">Ivory</text>
+    </g>
+    <g transform="translate(670 1220)">
+      <rect x="0" y="0" width="420" height="220" rx="36" fill="#fff" stroke="#eadbd5" stroke-width="5"/>
+      <rect x="48" y="35" width="90" height="140" rx="45" fill="#e8d9cf" stroke="#d6bdb4" stroke-width="6"/>
+      <path d="M65 60q25-14 58 0" fill="none" stroke="#fff" stroke-width="10" opacity=".65"/>
+      <text x="270" y="115" font-size="28" font-weight="700">Satin nude</text>
+    </g>
+  </g>
+</svg>
