@@ -13,6 +13,7 @@ const blogSchema = z.object({
     title: z.string({ required_error: "Blog post title is required." }).min(1, "Title cannot be empty."),
     seoTitle: z.string().optional(),
     description: z.string(),
+    cardDescription: z.string().optional(),
     pubDate: z.date().optional(),
     updatedDate: z.string().optional(),
     dateModified: z.string().optional(),
@@ -31,6 +32,7 @@ const blogSchema = z.object({
       })
     ).optional(),
     about: z.array(z.string()).optional(),
+    faqTitle: z.string().optional(),
     itemList: z.object({
       name: z.string(),
       items: z.array(z.string())

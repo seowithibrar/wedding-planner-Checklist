@@ -90,7 +90,7 @@ const seo = {
         const slug = post.data.slug || post.id.replace(/\.(md|mdx)$/, '');
         const postI18n = getArticleI18n(slug, currentLang);
         const postTitle = postI18n?.title || post.data.title;
-        const postDescription = postI18n?.description || post.data.description;
+        const postDescription = postI18n?.description || post.data.cardDescription || post.data.description;
         const postCategory = postI18n?.category || post.data.category;
 
         return (
