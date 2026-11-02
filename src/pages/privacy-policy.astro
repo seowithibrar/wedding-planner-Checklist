@@ -5,23 +5,492 @@ import Footer from '../components/layout/Footer.astro';
 
 const seo = {
   title: 'Privacy Policy — Wedding Planning Checklists',
-  description: 'Privacy Policy for WeddingPlanningChecklists.org regarding data collection, cookies, and privacy rights.',
+  description: 'Our privacy policy explains how Wedding Planning Checklists protects your data. No selling, GDPR/CCPA compliant, transparent practices.',
   canonical: 'https://www.weddingplanningchecklists.org/privacy-policy'
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Wedding Planning Checklists",
+  "url": "https://www.weddingplanningchecklists.org",
+  "privacyPolicy": "https://www.weddingplanningchecklists.org/privacy-policy"
 };
 ---
 
 <BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
   <Header />
 
-  <main class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-slate-700">
-    <h1 class="text-4xl font-bold text-[#1A1A1A]">Privacy Policy</h1>
-    <p class="text-xs text-slate-400">Last updated: August 2026</p>
-    <div class="prose max-w-none space-y-4">
-      <p>Your privacy is important to us. WeddingPlanningChecklists.org does not sell or rent personal information to third parties.</p>
-      <h2 class="text-xl font-bold text-[#1A1A1A]">Information We Collect</h2>
-      <p>We collect minimal analytical information to improve user experience and deliver requested digital tools.</p>
-    </div>
-  </main>
+  <main class="bg-white">
+    <!-- Hero Section -->
+    <section class="py-16 sm:py-24 bg-gradient-to-b from-[#F8F6F4] to-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <span class="text-xs font-bold text-[#1B5E3F] uppercase tracking-widest">Legal</span>
+        <h1 class="text-5xl sm:text-6xl font-black text-[#1A1A1A] leading-tight">
+          Privacy<br /><span class="text-[#1B5E3F]">Policy</span>
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          We take your privacy seriously. This policy explains exactly how we collect, use, and protect your data.
+        </p>
+      </div>
+    </section>
 
-  <Footer />
+    <!-- Main Content -->
+    <section class="py-16 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg prose-slate max-w-none space-y-10">
+
+        <!-- Last Updated & Key Points -->
+        <div class="bg-gradient-to-r from-[#1B5E3F] to-[#0f3d28] rounded-3xl p-8 text-white mb-8">
+          <p class="text-sm opacity-90 mb-4">Last Updated: November 2, 2026</p>
+          <h2 class="text-2xl font-black mb-6">Privacy at a Glance</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <p class="font-bold mb-2">✓ No Selling Data</p>
+              <p class="text-sm opacity-90">We never sell, share, or rent your personal information to third parties.</p>
+            </div>
+            <div>
+              <p class="font-bold mb-2">✓ GDPR & CCPA</p>
+              <p class="text-sm opacity-90">We comply with GDPR, CCPA, and other privacy regulations for your protection.</p>
+            </div>
+            <div>
+              <p class="font-bold mb-2">✓ Transparent</p>
+              <p class="text-sm opacity-90">We're clear about what we collect and why. No hidden practices.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Introduction -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">1. Introduction</h2>
+          <p class="text-lg text-slate-700 leading-relaxed">
+            Wedding Planning Checklists ("we," "us," "our," or "Company") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="https://www.weddingplanningchecklists.org" class="text-[#1B5E3F] font-bold hover:underline">www.weddingplanningchecklists.org</a> (the "Website").
+          </p>
+          <p class="text-lg text-slate-700 leading-relaxed mt-4">
+            Please read this Privacy Policy carefully. If you do not agree with our policies and practices, please do not use our Website. By accessing and using Wedding Planning Checklists, you acknowledge that you have read, understood, and agree to be bound by all the provisions of this Privacy Policy.
+          </p>
+        </div>
+
+        <!-- 2. Information We Collect -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">2. Information We Collect</h2>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Information You Provide Directly</h3>
+          <p class="text-slate-700 mb-4">
+            When you use our Website or contact us, we may collect:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700">
+            <li><strong>Contact Information:</strong> Name, email address, and message content when you use our contact form</li>
+            <li><strong>Feedback:</strong> Any suggestions, feedback, or comments you share with us</li>
+            <li><strong>Communication Preferences:</strong> Your choice of how you'd like us to contact you (email only)</li>
+          </ul>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-8 mb-3">Information Collected Automatically</h3>
+          <p class="text-slate-700 mb-4">
+            When you visit our Website, we automatically collect certain information:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700">
+            <li><strong>Analytics Data:</strong> Pages visited, time spent on site, referring website, browser type, operating system (via Google Analytics)</li>
+            <li><strong>Device Information:</strong> Device type (mobile, desktop), screen resolution, language preferences</li>
+            <li><strong>Location Data:</strong> Approximate general location based on IP address (city/state level, not precise)</li>
+            <li><strong>Cookies & Tracking:</strong> Cookies used to remember preferences and improve your experience</li>
+          </ul>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-8 mb-3">Information We Do NOT Collect</h3>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700">
+            <li>✓ We do <strong>not</strong> collect sensitive information like credit card numbers or passwords</li>
+            <li>✓ We do <strong>not</strong> track you across other websites</li>
+            <li>✓ We do <strong>not</strong> collect precise location data (GPS)</li>
+            <li>✓ We do <strong>not</strong> use facial recognition or biometric data</li>
+          </ul>
+        </div>
+
+        <!-- 3. How We Use Your Information -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">3. How We Use Your Information</h2>
+          <p class="text-slate-700 mb-6">
+            We use the information we collect for the following purposes:
+          </p>
+          <div class="space-y-4">
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-3">
+              <p class="font-bold text-[#1A1A1A] mb-2">To Respond to Your Inquiries</p>
+              <p class="text-slate-700 text-sm">When you contact us, we use your email and message to respond to your questions or feedback.</p>
+            </div>
+            <div class="border-l-4 border-[#C9A961] pl-6 py-3">
+              <p class="font-bold text-[#1A1A1A] mb-2">To Improve Our Website</p>
+              <p class="text-slate-700 text-sm">We analyze how you use our Website to improve user experience, fix bugs, and add new features.</p>
+            </div>
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-3">
+              <p class="font-bold text-[#1A1A1A] mb-2">To Understand Our Audience</p>
+              <p class="text-slate-700 text-sm">Analytics help us understand who uses our resources and what content is most helpful.</p>
+            </div>
+            <div class="border-l-4 border-[#C9A961] pl-6 py-3">
+              <p class="font-bold text-[#1A1A1A] mb-2">To Maintain Security</p>
+              <p class="text-slate-700 text-sm">We use data to prevent fraud, abuse, and to ensure the security of our Website.</p>
+            </div>
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-3">
+              <p class="font-bold text-[#1A1A1A] mb-2">To Comply with Law</p>
+              <p class="text-slate-700 text-sm">We may use information to comply with legal obligations, court orders, or government requests.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Cookies & Tracking -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">4. Cookies & Tracking Technologies</h2>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">What Are Cookies?</h3>
+          <p class="text-slate-700 mb-6">
+            Cookies are small data files stored on your device. We use cookies to remember your preferences, understand how you use our Website, and improve your experience.
+          </p>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Types of Cookies We Use</h3>
+          <div class="bg-[#F8F6F4] p-6 rounded-2xl space-y-4 mb-6">
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">Essential Cookies</p>
+              <p class="text-sm text-slate-700">Required for the Website to function (login, security, preferences)</p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">Analytics Cookies</p>
+              <p class="text-sm text-slate-700">Help us understand how visitors use our Website (via Google Analytics)</p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">Preference Cookies</p>
+              <p class="text-sm text-slate-700">Remember your language and display preferences</p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Managing Cookies</h3>
+          <p class="text-slate-700">
+            Most web browsers allow you to control cookies through their settings. You can:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700 mt-3">
+            <li>Block all cookies</li>
+            <li>Allow only certain cookies</li>
+            <li>Clear cookies regularly</li>
+            <li>Disable tracking for analytics</li>
+          </ul>
+          <p class="text-slate-700 mt-4">
+            <em>Note:</em> Disabling essential cookies may affect Website functionality. Analytics cookies are optional and can be disabled without issues.
+          </p>
+        </div>
+
+        <!-- 5. Third-Party Services -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">5. Third-Party Services</h2>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Google Analytics</h3>
+          <p class="text-slate-700 mb-4">
+            We use Google Analytics to understand how visitors use our Website. Google Analytics may collect information including:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700 mb-4">
+            <li>Pages visited and time spent</li>
+            <li>Device type and browser information</li>
+            <li>General location data</li>
+            <li>Traffic sources</li>
+          </ul>
+          <p class="text-slate-700 mb-4">
+            Google's Privacy Policy: <a href="https://policies.google.com/privacy" class="text-[#1B5E3F] font-bold hover:underline">https://policies.google.com/privacy</a>
+          </p>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">External Links</h3>
+          <p class="text-slate-700">
+            Our Website may contain links to third-party websites. We are not responsible for the privacy practices of those sites. Please review their privacy policies before sharing information.
+          </p>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Email Service Provider</h3>
+          <p class="text-slate-700">
+            If you contact us via email, your email is handled by our email service provider. We do not add you to mailing lists without explicit consent.
+          </p>
+        </div>
+
+        <!-- 6. Data Retention -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">6. How Long We Keep Your Data</h2>
+
+          <div class="bg-[#F8F6F4] p-6 rounded-2xl space-y-4">
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">Contact Form Information</p>
+              <p class="text-sm text-slate-700">Kept for 90 days after your inquiry is resolved, then deleted</p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">Analytics Data</p>
+              <p class="text-sm text-slate-700">Google Analytics retains data for 26 months by default, then automatically deletes</p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">Cookies</p>
+              <p class="text-sm text-slate-700">Removed when you clear browser cookies or after browser session ends</p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">Email Communications</p>
+              <p class="text-sm text-slate-700">Kept until you unsubscribe or request deletion</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Your Privacy Rights -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">7. Your Privacy Rights (GDPR & CCPA)</h2>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">If You're in the EU (GDPR)</h3>
+          <p class="text-slate-700 mb-4">Under GDPR, you have the right to:</p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700 mb-6">
+            <li><strong>Access:</strong> Request a copy of your personal data</li>
+            <li><strong>Correction:</strong> Ask us to correct inaccurate data</li>
+            <li><strong>Deletion:</strong> Request deletion of your data ("right to be forgotten")</li>
+            <li><strong>Restrict Processing:</strong> Limit how we use your data</li>
+            <li><strong>Portability:</strong> Receive your data in a portable format</li>
+            <li><strong>Withdraw Consent:</strong> Stop consenting to data processing</li>
+          </ul>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">If You're in California (CCPA/CPRA)</h3>
+          <p class="text-slate-700 mb-4">Under CCPA, you have the right to:</p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700">
+            <li><strong>Know:</strong> What personal information is collected</li>
+            <li><strong>Access:</strong> Request a copy of your data</li>
+            <li><strong>Delete:</strong> Request deletion of your data</li>
+            <li><strong>Opt-Out:</strong> Opt out of data sharing (we don't share, so this is moot)</li>
+            <li><strong>Non-Discrimination:</strong> We won't discriminate against you for exercising rights</li>
+          </ul>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">How to Exercise Your Rights</h3>
+          <p class="text-slate-700">
+            To exercise any of these rights, contact us at <a href="mailto:hello@weddingplanningchecklists.org" class="text-[#1B5E3F] font-bold hover:underline">hello@weddingplanningchecklists.org</a> with "Privacy Request" in the subject line. Include:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700 mt-3">
+            <li>Your name and email address</li>
+            <li>The specific right you're requesting</li>
+            <li>Any relevant details</li>
+          </ul>
+          <p class="text-slate-700 mt-4">
+            We'll respond within 30 days (or as required by law).
+          </p>
+        </div>
+
+        <!-- 8. Data Security -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">8. Data Security</h2>
+
+          <p class="text-slate-700 mb-6">
+            We take data security seriously and implement appropriate technical and organizational measures to protect your information:
+          </p>
+
+          <div class="space-y-3">
+            <div class="flex gap-3">
+              <span class="text-2xl">🔒</span>
+              <div>
+                <p class="font-bold text-[#1A1A1A]">Encryption</p>
+                <p class="text-slate-700 text-sm">Our Website uses HTTPS/SSL encryption to protect data in transit</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-2xl">🛡️</span>
+              <div>
+                <p class="font-bold text-[#1A1A1A]">Access Controls</p>
+                <p class="text-slate-700 text-sm">Only authorized personnel can access your data, and they're bound by confidentiality</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-2xl">🚨</span>
+              <div>
+                <p class="font-bold text-[#1A1A1A]">Breach Notification</p>
+                <p class="text-slate-700 text-sm">If a data breach occurs, we'll notify you within 30 days (as required by law)</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-2xl">👥</span>
+              <div>
+                <p class="font-bold text-[#1A1A1A]">No Third-Party Sharing</p>
+                <p class="text-slate-700 text-sm">We don't sell, share, or rent your data to advertisers or other third parties</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-slate-700 mt-6 text-sm italic">
+            Note: While we implement strong security measures, no system is 100% secure. We cannot guarantee absolute security of your data.
+          </p>
+        </div>
+
+        <!-- 9. Children's Privacy -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">9. Children's Privacy</h2>
+
+          <p class="text-slate-700 mb-4">
+            Our Website is not intended for children under 13. We do not knowingly collect personal information from children under 13. If we discover we have collected information from a child under 13, we will delete it immediately.
+          </p>
+
+          <p class="text-slate-700">
+            If you are a parent or guardian and believe your child has provided personal information to us, please contact us at <a href="mailto:hello@weddingplanningchecklists.org" class="text-[#1B5E3F] font-bold hover:underline">hello@weddingplanningchecklists.org</a>.
+          </p>
+        </div>
+
+        <!-- 10. California Privacy Rights -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">10. California Consumer Privacy Rights</h2>
+
+          <p class="text-slate-700 mb-4">
+            Under California law, you have the right to know what personal information a business collects, uses, shares, and sells. We want to be transparent:
+          </p>
+
+          <div class="bg-[#F8F6F4] p-6 rounded-2xl space-y-4">
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">We Collect:</p>
+              <p class="text-sm text-slate-700">Contact info (via form), analytics data, cookies, device info</p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">We Use It For:</p>
+              <p class="text-sm text-slate-700">Responding to inquiries, improving Website, analytics, security</p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">We Share With:</p>
+              <p class="text-sm text-slate-700">Google Analytics only (and only anonymized, aggregated data)</p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">We Sell:</p>
+              <p class="text-sm text-slate-700">We do NOT sell your personal information. Period.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Contact Us -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">11. Contact Us About Privacy</h2>
+
+          <p class="text-slate-700 mb-6">
+            If you have questions about this Privacy Policy or our privacy practices, please contact us:
+          </p>
+
+          <div class="bg-gradient-to-r from-[#1B5E3F] to-[#0f3d28] rounded-3xl p-8 text-white">
+            <p class="font-bold text-lg mb-3">Wedding Planning Checklists</p>
+            <p class="mb-4">
+              <strong>Email:</strong> <a href="mailto:hello@weddingplanningchecklists.org" class="underline font-bold">hello@weddingplanningchecklists.org</a>
+            </p>
+            <p class="mb-4">
+              <strong>Website:</strong> <a href="https://www.weddingplanningchecklists.org/contact" class="underline font-bold">www.weddingplanningchecklists.org/contact</a>
+            </p>
+            <p class="text-sm opacity-90">
+              We'll respond to privacy requests within 30 days or as required by applicable law.
+            </p>
+          </div>
+        </div>
+
+        <!-- 12. Updates to Policy -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">12. Changes to This Privacy Policy</h2>
+
+          <p class="text-slate-700 mb-4">
+            We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will notify you of material changes by updating the "Last Updated" date at the top of this policy and, when required, by email.
+          </p>
+
+          <p class="text-slate-700">
+            Your continued use of our Website after any changes constitutes your acceptance of the updated Privacy Policy. We encourage you to review this policy periodically to stay informed about how we protect your information.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="mt-16 space-y-8">
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">Privacy FAQ</h2>
+        <div class="space-y-4">
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              Do you sell my data?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">No, absolutely not. We never sell, rent, or share your personal information with third parties for their marketing purposes. The only exception is sharing anonymized, aggregated analytics data with Google Analytics to understand how people use our Website.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              Can I delete my data?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">Yes! Under GDPR and CCPA, you have the right to request deletion of your personal data. Contact us at hello@weddingplanningchecklists.org with "Privacy Request - Delete My Data" in the subject line. We'll delete your data within 30 days.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              Do you use cookies?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">Yes, but only essential and analytics cookies. Essential cookies help the Website function properly. Analytics cookies help us understand how visitors use our site. You can disable cookies in your browser settings anytime.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              Are you GDPR compliant?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">Yes, we fully comply with GDPR. We have lawful basis for processing data, respect your rights (access, deletion, portability), and can provide privacy notices. If you're in the EU, you have all rights outlined in the GDPR section of this policy.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              How do I unsubscribe from emails?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">If you've received emails from us, each email contains an unsubscribe link at the bottom. Click it to remove yourself from our mailing list. You can also email us at hello@weddingplanningchecklists.org to unsubscribe immediately.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              Is my payment information secure?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">All our resources are free, so we never collect payment information. If we ever offer paid services in the future, we'll use secure payment processors and never store your credit card information.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              What if there's a data breach?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">If we discover a breach affecting your personal information, we'll notify you as soon as possible (within 30 days as required by law). We'll provide details about what happened, what information was affected, and steps we're taking to secure it.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-16">
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-8">Other Important Pages</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <a href="/terms-of-service" class="bg-[#F8F6F4] p-6 rounded-2xl border border-[#F3E8EA] hover:border-[#1B5E3F] hover:shadow-md transition-all group">
+            <p class="text-2xl mb-2">📋</p>
+            <h3 class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#1B5E3F] transition-colors">Terms of Service</h3>
+            <p class="text-sm text-slate-700">Legal terms and conditions for using our Website</p>
+          </a>
+          <a href="/contact" class="bg-[#F8F6F4] p-6 rounded-2xl border border-[#F3E8EA] hover:border-[#1B5E3F] hover:shadow-md transition-all group">
+            <p class="text-2xl mb-2">💬</p>
+            <h3 class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#1B5E3F] transition-colors">Contact Us</h3>
+            <p class="text-sm text-slate-700">Questions about privacy or anything else? Get in touch</p>
+          </a>
+          <a href="/about-us" class="bg-[#F8F6F4] p-6 rounded-2xl border border-[#F3E8EA] hover:border-[#1B5E3F] hover:shadow-md transition-all group">
+            <p class="text-2xl mb-2">💚</p>
+            <h3 class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#1B5E3F] transition-colors">About Us</h3>
+            <p class="text-sm text-slate-700">Learn about Wedding Planning Checklists and our mission</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
 </BaseLayout>
+
+<style>
+  details summary {
+    transition: all 0.3s ease;
+  }
+
+  details[open] summary {
+    color: #1B5E3F;
+    font-weight: 700;
+  }
+
+  details[open] summary span {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+</style>

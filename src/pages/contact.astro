@@ -4,40 +4,403 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 
 const seo = {
-  title: 'Contact Us — Wedding Planning Checklists',
-  description: 'Get in touch with the Wedding Planning Checklists team for inquiries, guide suggestions, or media features.',
+  title: 'Contact Wedding Planning Checklists — Get in Touch',
+  description: 'Have questions about our wedding planning resources? Contact our expert team. We typically respond within 24 hours. Free guides, budget help, and more.',
   canonical: 'https://www.weddingplanningchecklists.org/contact'
+};
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPoint",
+  "contactType": "Customer Support",
+  "telephone": "+1-contact-form",
+  "email": "hello@weddingplanningchecklists.org",
+  "areaServed": "US",
+  "availableLanguage": ["en"],
+  "hoursAvailable": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "17:00"
+  }
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Wedding Planning Checklists",
+  "url": "https://www.weddingplanningchecklists.org",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "email": "hello@weddingplanningchecklists.org"
+  }
 };
 ---
 
 <BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
   <Header />
 
-  <main class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-    <div class="text-center space-y-4">
-      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Get in Touch</span>
-      <h1 class="text-4xl sm:text-5xl font-black text-[#1A1A1A]">Contact Us</h1>
-      <p class="text-slate-600 text-sm">Have questions, feedback, or partnership ideas? Send us a message below.</p>
-    </div>
+  <main class="bg-white">
+    <!-- Hero Section -->
+    <section class="py-16 sm:py-24 bg-gradient-to-b from-[#F8F6F4] to-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <span class="text-xs font-bold text-[#1B5E3F] uppercase tracking-widest">Get in Touch</span>
+        <h1 class="text-5xl sm:text-6xl font-black text-[#1A1A1A] leading-tight">
+          Contact Wedding<br /><span class="text-[#1B5E3F]">Planning Checklists</span>
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Questions about our resources? Feedback to share? Partnership opportunities? We'd love to hear from you. Our team typically responds within 24 hours.
+        </p>
+      </div>
+    </section>
 
-    <form class="bg-white p-8 rounded-3xl border border-[#F3E8EA] shadow-sm space-y-6 max-w-xl mx-auto">
-      <div>
-        <label class="block text-xs font-bold uppercase text-[#B76E79] mb-2">Your Name</label>
-        <input type="text" placeholder="Jane Doe" required class="w-full p-4 border border-slate-200 rounded-2xl outline-none focus:border-[#B76E79] text-sm" />
+    <!-- Main Content -->
+    <section class="py-16 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-12">
+
+        <!-- Contact Methods Section -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-8">Ways to Reach Us</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <!-- Email -->
+            <div class="bg-gradient-to-br from-[#F8F6F4] to-white p-8 rounded-2xl border border-[#F3E8EA] shadow-sm text-center">
+              <div class="text-4xl mb-4">📧</div>
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Email (Fastest)</h3>
+              <p class="text-sm text-slate-700 mb-4">
+                Email us directly for questions or feedback. We respond within 24 hours, usually faster.
+              </p>
+              <a href="mailto:hello@weddingplanningchecklists.org" class="inline-block text-[#1B5E3F] font-bold text-sm hover:underline">
+                hello@weddingplanningchecklists.org
+              </a>
+            </div>
+
+            <!-- Form -->
+            <div class="bg-gradient-to-br from-[#F8F6F4] to-white p-8 rounded-2xl border border-[#F3E8EA] shadow-sm text-center">
+              <div class="text-4xl mb-4">💬</div>
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Contact Form</h3>
+              <p class="text-sm text-slate-700 mb-4">
+                Use our contact form below to send a message. Great for longer inquiries and feedback.
+              </p>
+              <a href="#contact-form" class="inline-block text-[#1B5E3F] font-bold text-sm hover:underline">
+                Go to Form
+              </a>
+            </div>
+
+            <!-- Social -->
+            <div class="bg-gradient-to-br from-[#F8F6F4] to-white p-8 rounded-2xl border border-[#F3E8EA] shadow-sm text-center">
+              <div class="text-4xl mb-4">🤝</div>
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Follow Us</h3>
+              <p class="text-sm text-slate-700 mb-4">
+                Connect with us on social media for updates, tips, and wedding planning advice.
+              </p>
+              <div class="flex gap-4 justify-center">
+                <a href="#" class="text-[#1B5E3F] font-bold hover:underline text-sm">Instagram</a>
+                <a href="#" class="text-[#1B5E3F] font-bold hover:underline text-sm">Facebook</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Response Times & Expectations -->
+        <div class="bg-gradient-to-r from-[#1B5E3F] to-[#0f3d28] rounded-3xl p-8 sm:p-12 text-white">
+          <h2 class="text-2xl sm:text-3xl font-black mb-6">What to Expect</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div>
+              <p class="text-4xl font-black mb-2">⚡ 24h</p>
+              <p class="text-sm opacity-90">Typical response time for emails and messages</p>
+            </div>
+            <div>
+              <p class="text-4xl font-black mb-2">✅ 100%</p>
+              <p class="text-sm opacity-90">Read rate - we read every message sent to us</p>
+            </div>
+            <div>
+              <p class="text-4xl font-black mb-2">💚 Helpful</p>
+              <p class="text-sm opacity-90">We provide detailed, actionable responses</p>
+            </div>
+          </div>
+          <p class="mt-8 text-sm opacity-90">
+            Our team is based in the US (Eastern Time). We respond to messages Monday–Friday, 9am–5pm ET. Expect replies within 24 hours during business days.
+          </p>
+        </div>
+
+        <!-- Contact Form -->
+        <div id="contact-form">
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-8">Send Us a Message</h2>
+          <form class="bg-white border border-[#F3E8EA] rounded-3xl p-8 sm:p-12 shadow-sm space-y-6 max-w-2xl">
+            <!-- Name -->
+            <div>
+              <label for="name" class="block text-xs font-bold uppercase text-[#1B5E3F] mb-3">Your Name</label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                placeholder="Jane Doe"
+                required
+                class="w-full p-4 border border-slate-200 rounded-2xl outline-none focus:border-[#1B5E3F] focus:ring-2 focus:ring-[#1B5E3F] focus:ring-opacity-20 text-base transition-all"
+              />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-xs font-bold uppercase text-[#1B5E3F] mb-3">Your Email</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="jane@example.com"
+                required
+                class="w-full p-4 border border-slate-200 rounded-2xl outline-none focus:border-[#1B5E3F] focus:ring-2 focus:ring-[#1B5E3F] focus:ring-opacity-20 text-base transition-all"
+              />
+              <p class="text-xs text-slate-500 mt-2">We'll only use this to respond to your message</p>
+            </div>
+
+            <!-- Subject -->
+            <div>
+              <label for="subject" class="block text-xs font-bold uppercase text-[#1B5E3F] mb-3">Subject</label>
+              <select
+                id="subject"
+                name="subject"
+                required
+                class="w-full p-4 border border-slate-200 rounded-2xl outline-none focus:border-[#1B5E3F] focus:ring-2 focus:ring-[#1B5E3F] focus:ring-opacity-20 text-base transition-all bg-white"
+              >
+                <option value="">Select a subject...</option>
+                <option value="question">Question about resources</option>
+                <option value="feedback">Feedback or suggestion</option>
+                <option value="bug">Report a problem</option>
+                <option value="partnership">Partnership opportunity</option>
+                <option value="media">Media inquiry</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="message" class="block text-xs font-bold uppercase text-[#1B5E3F] mb-3">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Tell us how we can help..."
+                required
+                class="w-full p-4 border border-slate-200 rounded-2xl outline-none focus:border-[#1B5E3F] focus:ring-2 focus:ring-[#1B5E3F] focus:ring-opacity-20 text-base transition-all resize-none"
+              ></textarea>
+              <p class="text-xs text-slate-500 mt-2">Be as detailed as possible so we can help better</p>
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="w-full bg-[#1B5E3F] hover:bg-[#0f3d28] text-white p-4 rounded-2xl text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95"
+            >
+              Send Message
+            </button>
+
+            <!-- Trust Badge -->
+            <p class="text-xs text-slate-500 text-center">
+              ✓ No spam • ✓ We respond personally • ✓ Your data is safe
+            </p>
+          </form>
+        </div>
+
+        <!-- Why Contact Us Section -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-8">Common Reasons to Contact Us</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-4">
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Questions About Resources</h3>
+              <p class="text-slate-700 text-sm">
+                Have a question about how to use our checklists, calculator, or timeline? We're happy to clarify.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#C9A961] pl-6 py-4">
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Suggestions & Ideas</h3>
+              <p class="text-slate-700 text-sm">
+                Know what resources would help couples? Share your ideas and help us improve.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-4">
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Report a Problem</h3>
+              <p class="text-slate-700 text-sm">
+                Found a broken link or inaccuracy? Please let us know so we can fix it immediately.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#C9A961] pl-6 py-4">
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Partnership Opportunities</h3>
+              <p class="text-slate-700 text-sm">
+                Interested in collaboration or featuring our resources? We'd love to hear from you.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-4">
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Media Inquiries</h3>
+              <p class="text-slate-700 text-sm">
+                Press, interviews, or featured content? Our team handles all media requests personally.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#C9A961] pl-6 py-4">
+              <h3 class="font-bold text-[#1A1A1A] mb-2">General Questions</h3>
+              <p class="text-slate-700 text-sm">
+                Anything else? We're here to help with whatever questions you have about wedding planning.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-8">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                How long does it take to get a response?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">We typically respond within 24 hours. During business days (Monday–Friday, 9am–5pm ET), you'll often get a response within a few hours. Weekend responses may take until Monday.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                What should I do if I don't hear back within 24 hours?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">If you don't receive a response within 24 hours, please check your spam folder. If it's still missing, feel free to resend your message or reach out via email directly.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                Will you share my email with anyone?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">Absolutely not. Your email is used only to respond to your message. We never share, sell, or use your information for any other purpose. See our privacy policy for more details.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                Can I submit feedback about your resources?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">Yes, we love feedback! Use the contact form and select "Feedback or suggestion" as the subject. Tell us what's working, what could be better, and what resources you'd like to see next.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                Who actually responds to my message?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">Our founder Sarah Jenkins or team member Michael Rivera responds personally to every message. You'll get a genuine, thoughtful response from a real person, not an automated reply.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                Can I request a refund or change my mind about something?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">Since all our resources are completely free, there's nothing to refund! If you have any concerns or want to stop receiving emails, just let us know and we'll take care of it immediately.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                Do you offer phone support?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">We primarily support customers via email and our contact form. This allows us to provide thoughtful, documented responses. For urgent matters, use "Other" as the subject and explain why you need quick attention.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                Are you accepting partnership opportunities right now?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">We're always open to discussing partnerships that align with our mission of making wedding planning accessible. Use the contact form with "Partnership opportunity" as the subject to start a conversation.</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Trust & Privacy Section -->
+        <div class="bg-[#F8F6F4] rounded-3xl p-8 sm:p-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-[#1A1A1A] mb-6">Your Privacy & Trust</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">🔒 We Keep Your Data Safe</p>
+              <p class="text-sm text-slate-700">
+                Your email and message are encrypted and stored securely. We never share your information with third parties.
+              </p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">✓ No Spam, Ever</p>
+              <p class="text-sm text-slate-700">
+                We only use your email to respond to your message. You won't be added to any mailing lists without consent.
+              </p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">💬 Personal Response</p>
+              <p class="text-sm text-slate-700">
+                Every message is read and responded to personally by our team, not automated systems.
+              </p>
+            </div>
+            <div>
+              <p class="font-bold text-[#1A1A1A] mb-2">⚖️ Full Transparency</p>
+              <p class="text-sm text-slate-700">
+                Check our <a href="/privacy-policy" class="text-[#1B5E3F] font-bold hover:underline">privacy policy</a> for complete details on how we handle your information.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="bg-gradient-to-r from-[#1B5E3F] to-[#0f3d28] rounded-3xl p-8 sm:p-12 text-center text-white">
+          <h2 class="text-2xl sm:text-3xl font-black mb-4">Ready to Send a Message?</h2>
+          <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+            Use the form above or email us directly at <a href="mailto:hello@weddingplanningchecklists.org" class="underline font-bold">hello@weddingplanningchecklists.org</a>. We'll respond within 24 hours.
+          </p>
+          <a href="#contact-form" class="inline-block bg-white text-[#1B5E3F] font-bold px-8 py-4 rounded-full hover:bg-slate-100 transition-colors">
+            Go to Contact Form
+          </a>
+        </div>
+
+        <!-- Related Resources -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-8">Still Have Questions?</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <a href="/blog" class="bg-[#F8F6F4] p-6 rounded-2xl border border-[#F3E8EA] hover:border-[#1B5E3F] hover:shadow-md transition-all group">
+              <p class="text-2xl mb-2">📚</p>
+              <h3 class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#1B5E3F] transition-colors">Wedding Planning Blog</h3>
+              <p class="text-sm text-slate-700">Browse our complete wedding planning guides and resources</p>
+            </a>
+            <a href="/checklists/printable-wedding-planning-checklist" class="bg-[#F8F6F4] p-6 rounded-2xl border border-[#F3E8EA] hover:border-[#1B5E3F] hover:shadow-md transition-all group">
+              <p class="text-2xl mb-2">📋</p>
+              <h3 class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#1B5E3F] transition-colors">Wedding Checklists</h3>
+              <p class="text-sm text-slate-700">Download our free, comprehensive wedding planning checklists</p>
+            </a>
+            <a href="/tools/budget-calculator" class="bg-[#F8F6F4] p-6 rounded-2xl border border-[#F3E8EA] hover:border-[#1B5E3F] hover:shadow-md transition-all group">
+              <p class="text-2xl mb-2">💰</p>
+              <h3 class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#1B5E3F] transition-colors">Budget Calculator</h3>
+              <p class="text-sm text-slate-700">Plan your wedding budget with our free interactive calculator</p>
+            </a>
+          </div>
+        </div>
       </div>
-      <div>
-        <label class="block text-xs font-bold uppercase text-[#B76E79] mb-2">Your Email</label>
-        <input type="email" placeholder="jane@example.com" required class="w-full p-4 border border-slate-200 rounded-2xl outline-none focus:border-[#B76E79] text-sm" />
-      </div>
-      <div>
-        <label class="block text-xs font-bold uppercase text-[#B76E79] mb-2">Message</label>
-        <textarea rows="5" placeholder="How can we help you?" required class="w-full p-4 border border-slate-200 rounded-2xl outline-none focus:border-[#B76E79] text-sm"></textarea>
-      </div>
-      <button type="submit" class="w-full bg-[#1A1A1A] hover:bg-[#B76E79] text-white p-4 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all shadow-md">
-        Send Message
-      </button>
-    </form>
+    </section>
+
+    <Footer />
   </main>
-
-  <Footer />
 </BaseLayout>
+
+<style>
+  details summary {
+    transition: all 0.3s ease;
+  }
+
+  details[open] summary {
+    color: #1B5E3F;
+    font-weight: 700;
+  }
+
+  details[open] summary span {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+</style>

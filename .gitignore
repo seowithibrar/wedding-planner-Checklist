@@ -10,3 +10,5 @@ coverage/
 .env*
 !.env.example
 wedding-planner-Checklist-main/
+
+kims-redesign/

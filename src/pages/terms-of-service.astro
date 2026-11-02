@@ -5,21 +5,449 @@ import Footer from '../components/layout/Footer.astro';
 
 const seo = {
   title: 'Terms of Service — Wedding Planning Checklists',
-  description: 'Terms of Service for using WeddingPlanningChecklists.org guides and planning tools.',
+  description: 'Legal terms of service for using Wedding Planning Checklists. Understand your rights and responsibilities when using our resources.',
   canonical: 'https://www.weddingplanningchecklists.org/terms-of-service'
+};
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Wedding Planning Checklists",
+  "url": "https://www.weddingplanningchecklists.org",
+  "termsOfService": "https://www.weddingplanningchecklists.org/terms-of-service"
 };
 ---
 
 <BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
+
   <Header />
 
-  <main class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-slate-700">
-    <h1 class="text-4xl font-bold text-[#1A1A1A]">Terms of Service</h1>
-    <p class="text-xs text-slate-400">Last updated: August 2026</p>
-    <div class="prose max-w-none space-y-4">
-      <p>By accessing WeddingPlanningChecklists.org, you agree to comply with our usage guidelines and copyright terms.</p>
-    </div>
-  </main>
+  <main class="bg-white">
+    <!-- Hero Section -->
+    <section class="py-16 sm:py-24 bg-gradient-to-b from-[#F8F6F4] to-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <span class="text-xs font-bold text-[#1B5E3F] uppercase tracking-widest">Legal</span>
+        <h1 class="text-5xl sm:text-6xl font-black text-[#1A1A1A] leading-tight">
+          Terms of<br /><span class="text-[#1B5E3F]">Service</span>
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Please read these terms carefully before using Wedding Planning Checklists. By accessing our Website, you accept all terms and conditions.
+        </p>
+      </div>
+    </section>
 
-  <Footer />
+    <!-- Main Content -->
+    <section class="py-16 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg prose-slate max-w-none space-y-10">
+
+        <!-- Key Points -->
+        <div class="bg-gradient-to-r from-[#1B5E3F] to-[#0f3d28] rounded-3xl p-8 text-white mb-8">
+          <p class="text-sm opacity-90 mb-4">Last Updated: November 2, 2026</p>
+          <h2 class="text-2xl font-black mb-6">Key Points</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <p class="font-bold mb-2">✓ Free to Use</p>
+              <p class="text-sm opacity-90">All our resources are free. No payment or subscription required.</p>
+            </div>
+            <div>
+              <p class="font-bold mb-2">✓ Personal Use Only</p>
+              <p class="text-sm opacity-90">For personal planning. Not for commercial resale or redistribution.</p>
+            </div>
+            <div>
+              <p class="font-bold mb-2">✓ "As-Is" Basis</p>
+              <p class="text-sm opacity-90">Resources provided without warranties. We're not liable for specific outcomes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Acceptance of Terms -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">1. Acceptance of Terms</h2>
+          <p class="text-lg text-slate-700 leading-relaxed">
+            By accessing and using Wedding Planning Checklists (the "Website"), you agree to be bound by these Terms of Service (the "Terms"). If you do not agree to these Terms, do not access or use the Website.
+          </p>
+          <p class="text-lg text-slate-700 leading-relaxed mt-4">
+            We may modify these Terms at any time. Your continued use of the Website after changes constitutes acceptance of the updated Terms. We will notify you of material changes by updating the "Last Updated" date above.
+          </p>
+        </div>
+
+        <!-- 2. Use License -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">2. Use License</h2>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Grant of License</h3>
+          <p class="text-slate-700 mb-4">
+            Wedding Planning Checklists grants you a limited, non-exclusive, non-transferable license to access and use the Website and its content (checklists, guides, calculators, templates) for personal wedding planning purposes only.
+          </p>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Restrictions</h3>
+          <p class="text-slate-700 mb-4">
+            You may NOT:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700 mb-4">
+            <li>Modify, adapt, or translate our content</li>
+            <li>Sell, rent, lease, or redistribute our resources (in whole or part)</li>
+            <li>Reverse engineer, disassemble, or decompile Website code</li>
+            <li>Remove or alter any copyright, trademark, or proprietary notice</li>
+            <li>Use our content for commercial purposes or competing services</li>
+            <li>Reproduce, duplicate, or copy content for public distribution</li>
+            <li>Create derivative works from our resources</li>
+            <li>Share our resources on public repositories or file-sharing sites</li>
+          </ul>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Permitted Uses</h3>
+          <p class="text-slate-700 mb-4">
+            You MAY:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700">
+            <li>Download resources for your personal wedding planning</li>
+            <li>Print checklists and guides for personal use</li>
+            <li>Share with your fiancé, family, and wedding party for planning purposes</li>
+            <li>Use the tools to plan your wedding</li>
+            <li>Reference our content with proper attribution</li>
+          </ul>
+        </div>
+
+        <!-- 3. Disclaimer of Warranties -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">3. Disclaimer of Warranties</h2>
+
+          <p class="text-slate-700 mb-4">
+            <strong>IMPORTANT: The Website and all content are provided "AS-IS" without any warranties of any kind.</strong>
+          </p>
+
+          <p class="text-slate-700 mb-4">
+            Wedding Planning Checklists disclaims all warranties, express or implied, including but not limited to:
+          </p>
+
+          <ul class="list-disc pl-6 space-y-2 text-slate-700 mb-6">
+            <li><strong>Accuracy:</strong> We do not warrant that content is accurate, complete, or error-free</li>
+            <li><strong>Fitness for Purpose:</strong> Resources may not be suitable for your specific situation</li>
+            <li><strong>Availability:</strong> Website availability is not guaranteed</li>
+            <li><strong>Results:</strong> We do not guarantee specific wedding outcomes or success</li>
+            <li><strong>Legal Advice:</strong> Our content is not legal, financial, or professional advice</li>
+          </ul>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded">
+            <p class="text-slate-700 font-bold mb-2">⚠️ Professional Advice</p>
+            <p class="text-slate-700 text-sm">
+              For legal, financial, medical, or other professional matters, consult with a qualified professional. Our resources are educational guides, not substitutes for professional advice.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Limitations of Liability -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">4. Limitations of Liability</h2>
+
+          <p class="text-slate-700 mb-4">
+            To the fullest extent permitted by law, Wedding Planning Checklists and its owners, operators, employees, and agents will not be liable for:
+          </p>
+
+          <ul class="list-disc pl-6 space-y-2 text-slate-700 mb-6">
+            <li>Any indirect, incidental, special, or consequential damages</li>
+            <li>Loss of revenue, profits, data, or business opportunities</li>
+            <li>Damages from wedding planning failures or outcomes</li>
+            <li>Technical issues, interruptions, or bugs in the Website</li>
+            <li>Content errors, inaccuracies, or outdated information</li>
+            <li>Third-party actions or content</li>
+          </ul>
+
+          <p class="text-slate-700 mb-4">
+            <strong>Total Liability Cap:</strong> Our total liability is limited to the amount you paid (which is zero, since all services are free). Some jurisdictions do not allow liability limitations, so this may not apply to you.
+          </p>
+        </div>
+
+        <!-- 5. Accuracy of Information -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">5. Accuracy of Information</h2>
+
+          <p class="text-slate-700 mb-4">
+            While we strive to provide accurate, current, and helpful information, we make no guarantee of accuracy. Wedding planning information changes frequently, and:
+          </p>
+
+          <ul class="list-disc pl-6 space-y-2 text-slate-700 mb-6">
+            <li>Pricing and vendor costs vary by location and season</li>
+            <li>Timelines may need adjustment based on your circumstances</li>
+            <li>Regulations and legal requirements change over time</li>
+            <li>Best practices evolve with industry changes</li>
+          </ul>
+
+          <p class="text-slate-700">
+            It's your responsibility to verify current information and consult professionals when needed. We recommend checking current prices, regulations, and availability before making wedding planning decisions.
+          </p>
+        </div>
+
+        <!-- 6. Links & External Sites -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">6. Links & External Websites</h2>
+
+          <p class="text-slate-700 mb-4">
+            Our Website may contain links to third-party websites. We are not responsible for:
+          </p>
+
+          <ul class="list-disc pl-6 space-y-2 text-slate-700 mb-6">
+            <li>Content, accuracy, or practices of linked sites</li>
+            <li>Third-party privacy policies or terms</li>
+            <li>Changes to external websites</li>
+            <li>Technical issues with linked sites</li>
+          </ul>
+
+          <p class="text-slate-700">
+            Links to external sites do not constitute endorsement. Review each site's terms and privacy policy before using them. We recommend verifying information from multiple sources.
+          </p>
+        </div>
+
+        <!-- 7. User Behavior & Prohibited Actions -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">7. Prohibited Behavior</h2>
+
+          <p class="text-slate-700 mb-4">
+            You agree NOT to:
+          </p>
+
+          <div class="space-y-3">
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-2">
+              <p class="font-bold text-[#1A1A1A] mb-1">Harassment or Abuse</p>
+              <p class="text-slate-700 text-sm">Send threatening, abusive, or harassing messages</p>
+            </div>
+            <div class="border-l-4 border-[#C9A961] pl-6 py-2">
+              <p class="font-bold text-[#1A1A1A] mb-1">Illegal Activity</p>
+              <p class="text-slate-700 text-sm">Use the Website for illegal purposes or to violate laws</p>
+            </div>
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-2">
+              <p class="font-bold text-[#1A1A1A] mb-1">Spam or Fraud</p>
+              <p class="text-slate-700 text-sm">Send spam, unsolicited messages, or engage in fraudulent activity</p>
+            </div>
+            <div class="border-l-4 border-[#C9A961] pl-6 py-2">
+              <p class="font-bold text-[#1A1A1A] mb-1">Malware or Hacking</p>
+              <p class="text-slate-700 text-sm">Introduce viruses, malware, or attempt to gain unauthorized access</p>
+            </div>
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-2">
+              <p class="font-bold text-[#1A1A1A] mb-1">Impersonation</p>
+              <p class="text-slate-700 text-sm">Pretend to be someone else or misrepresent your identity</p>
+            </div>
+            <div class="border-l-4 border-[#C9A961] pl-6 py-2">
+              <p class="font-bold text-[#1A1A1A] mb-1">Scraping or Automation</p>
+              <p class="text-slate-700 text-sm">Use bots or automated tools to download or collect content</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Intellectual Property Rights -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">8. Intellectual Property Rights</h2>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Our Rights</h3>
+          <p class="text-slate-700 mb-4">
+            All content on the Website—including text, graphics, logos, images, checklists, guides, calculators, and templates—is owned by or licensed to Wedding Planning Checklists and protected by copyright and other intellectual property laws.
+          </p>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Your Rights</h3>
+          <p class="text-slate-700 mb-4">
+            You may download and use content for personal wedding planning only. You do not acquire ownership rights by downloading or printing content.
+          </p>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Proper Attribution</h3>
+          <p class="text-slate-700">
+            When sharing or referencing our content, please attribute to "Wedding Planning Checklists" or link to our Website. This helps other couples find our resources.
+          </p>
+        </div>
+
+        <!-- 9. Indemnification -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">9. Indemnification</h2>
+
+          <p class="text-slate-700 mb-4">
+            You agree to indemnify, defend, and hold harmless Wedding Planning Checklists and its owners, operators, employees, and agents from any claims, damages, losses, or expenses arising from:
+          </p>
+
+          <ul class="list-disc pl-6 space-y-2 text-slate-700">
+            <li>Your use of the Website</li>
+            <li>Your violation of these Terms</li>
+            <li>Your violation of any laws or third-party rights</li>
+            <li>Any content you submit or share</li>
+            <li>Your actions on the Website</li>
+          </ul>
+        </div>
+
+        <!-- 10. Termination -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">10. Termination of Access</h2>
+
+          <p class="text-slate-700 mb-4">
+            We reserve the right to terminate or restrict your access to the Website if you:
+          </p>
+
+          <ul class="list-disc pl-6 space-y-2 text-slate-700 mb-6">
+            <li>Violate these Terms</li>
+            <li>Engage in illegal or harmful activity</li>
+            <li>Attempt to disrupt Website functionality</li>
+            <li>Violate intellectual property rights</li>
+            <li>Violate others' rights or privacy</li>
+          </ul>
+
+          <p class="text-slate-700">
+            Termination is at our sole discretion. Termination does not affect your obligations under these Terms.
+          </p>
+        </div>
+
+        <!-- 11. Governing Law -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">11. Governing Law & Jurisdiction</h2>
+
+          <p class="text-slate-700 mb-4">
+            These Terms are governed by and construed in accordance with the laws of the United States, without regard to its conflict of law provisions. You agree that:
+          </p>
+
+          <ul class="list-disc pl-6 space-y-2 text-slate-700">
+            <li>Any legal action or dispute arises under U.S. law</li>
+            <li>You consent to jurisdiction in appropriate courts</li>
+            <li>You waive any claim of inconvenient forum</li>
+            <li>If any provision is invalid, other provisions remain in effect</li>
+          </ul>
+        </div>
+
+        <!-- 12. Contact & Changes -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">12. Changes to Terms & Contact</h2>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Changes to Terms</h3>
+          <p class="text-slate-700 mb-6">
+            We may modify these Terms at any time. Continued use of the Website after changes constitutes acceptance of updated Terms. We recommend reviewing these Terms periodically.
+          </p>
+
+          <h3 class="text-xl font-bold text-[#1A1A1A] mt-6 mb-3">Contact for Questions</h3>
+          <p class="text-slate-700 mb-4">
+            If you have questions about these Terms, please contact us:
+          </p>
+
+          <div class="bg-gradient-to-r from-[#1B5E3F] to-[#0f3d28] rounded-3xl p-8 text-white">
+            <p class="font-bold text-lg mb-3">Wedding Planning Checklists</p>
+            <p class="mb-3">
+              <strong>Email:</strong> <a href="mailto:hello@weddingplanningchecklists.org" class="underline font-bold">hello@weddingplanningchecklists.org</a>
+            </p>
+            <p class="mb-3">
+              <strong>Website:</strong> <a href="https://www.weddingplanningchecklists.org/contact" class="underline font-bold">www.weddingplanningchecklists.org/contact</a>
+            </p>
+            <p class="text-sm opacity-90">
+              We'll respond to questions within 2 business days.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="mt-16 space-y-8">
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">Terms FAQ</h2>
+        <div class="space-y-4">
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              Can I use your resources for my wedding planning business?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">No, our resources are for personal wedding planning only. Commercial use, resale, or redistribution is not permitted. We offer partnership opportunities—contact us if you're interested in collaboration.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              Can I share the checklists with my wedding party?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">Yes! You can share our resources with your fiancé, family, wedding party, and anyone involved in your wedding planning. Just don't resell or republish them publicly.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              What if I find an error in your resources?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">Please contact us immediately at hello@weddingplanningchecklists.org. We appreciate error reports and will correct inaccurate information as soon as possible.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              Are your resources guaranteed to work?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">No. Our resources are provided "as-is" without warranties. Wedding outcomes depend on many factors beyond our control. We recommend consulting professionals for important decisions.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              Can I modify your content?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">You can customize resources for your personal use (add your details, adjust timelines, etc.). You cannot modify, adapt, or republish content for public distribution or commercial purposes.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              Is your content professional legal/financial advice?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">No. Our content is educational and informational, not professional advice. For legal, financial, or other professional matters, consult with a qualified professional.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              What if these Terms conflict with laws in my area?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">These Terms are governed by U.S. law. If any provision conflicts with local laws, that provision may be unenforceable in your jurisdiction, but others remain valid.</p>
+          </details>
+
+          <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+            <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+              <span class="text-lg text-[#1B5E3F]">+</span>
+              How often do you update these Terms?
+            </summary>
+            <p class="text-slate-700 mt-4 ml-8">We update Terms as needed to reflect changes in our Website and services. The "Last Updated" date shows when we last modified them. Check back periodically for changes.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-16">
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-8">Other Legal Documents</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <a href="/privacy-policy" class="bg-[#F8F6F4] p-6 rounded-2xl border border-[#F3E8EA] hover:border-[#1B5E3F] hover:shadow-md transition-all group">
+            <p class="text-2xl mb-2">🔒</p>
+            <h3 class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#1B5E3F] transition-colors">Privacy Policy</h3>
+            <p class="text-sm text-slate-700">How we collect, use, and protect your data</p>
+          </a>
+          <a href="/contact" class="bg-[#F8F6F4] p-6 rounded-2xl border border-[#F3E8EA] hover:border-[#1B5E3F] hover:shadow-md transition-all group">
+            <p class="text-2xl mb-2">💬</p>
+            <h3 class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#1B5E3F] transition-colors">Contact Us</h3>
+            <p class="text-sm text-slate-700">Questions about our Terms? Get in touch</p>
+          </a>
+          <a href="/about-us" class="bg-[#F8F6F4] p-6 rounded-2xl border border-[#F3E8EA] hover:border-[#1B5E3F] hover:shadow-md transition-all group">
+            <p class="text-2xl mb-2">💚</p>
+            <h3 class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#1B5E3F] transition-colors">About Us</h3>
+            <p class="text-sm text-slate-700">Learn about Wedding Planning Checklists</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
 </BaseLayout>
+
+<style>
+  details summary {
+    transition: all 0.3s ease;
+  }
+
+  details[open] summary {
+    color: #1B5E3F;
+    font-weight: 700;
+  }
+
+  details[open] summary span {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+</style>
