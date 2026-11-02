@@ -4,6 +4,7 @@ import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import { createRequire } from 'module';
+import { rehypeImageSize } from './src/lib/image-size.mjs';
 
 const require = createRequire(import.meta.url);
 
@@ -57,6 +58,10 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport'
+  },
+  markdown: {
+    // Give every content image real width/height to prevent layout shift
+    rehypePlugins: [rehypeImageSize]
   },
   integrations: [
     mdx(),

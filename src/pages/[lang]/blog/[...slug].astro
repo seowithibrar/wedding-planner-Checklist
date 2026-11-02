@@ -22,7 +22,16 @@ export async function getStaticPaths() {
           slug,
           allPosts: posts.filter((p: CollectionEntry<'blog'>) =>
             (p.data.slug || p.id.replace(/\.(md|mdx)$/, '')) !== slug
-          ).slice(0, 3)
+          ).slice(0, 3).map((p: CollectionEntry<'blog'>) => {
+            // Show the translated title on related cards when this language has one
+            const relSlug = p.data.slug || p.id.replace(/\.(md|mdx)$/, '');
+            const rel = translations.find((entry: CollectionEntry<'blogTranslations'>) =>
+              entry.data.lang === lang && entry.data.sourceSlug === relSlug
+            );
+            return rel
+              ? { ...p, data: { ...p.data, title: rel.data.title, category: rel.data.category, heroImageAlt: rel.data.heroImageAlt } }
+              : p;
+          })
         },
       });
     }

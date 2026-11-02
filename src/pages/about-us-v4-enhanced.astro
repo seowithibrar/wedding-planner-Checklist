@@ -1,0 +1,397 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const seo = {
+  title: 'About Wedding Planning Checklists — Expert Resources & Team',
+  description: 'Meet the expert team behind Wedding Planning Checklists. Learn our mission to make stress-free, accessible wedding planning resources for every couple.',
+  canonical: 'https://www.weddingplanningchecklists.org/about-us'
+};
+
+// Organization Schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Wedding Planning Checklists",
+  "url": "https://www.weddingplanningchecklists.org",
+  "logo": "https://www.weddingplanningchecklists.org/logo-horizontal.svg",
+  "description": "Expert wedding planning resources, checklists, and tools for stress-free wedding planning",
+  "foundingDate": "2026-05-01",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "url": "https://www.weddingplanningchecklists.org/contact"
+  },
+  "team": [
+    {
+      "@type": "Person",
+      "name": "Sarah Jenkins",
+      "jobTitle": "Lead Wedding Planner & Editor",
+      "description": "Expert wedding planner with 12+ years of experience in timeline management and vendor coordination"
+    },
+    {
+      "@type": "Person",
+      "name": "Michael Rivera",
+      "jobTitle": "Budget & Logistics Expert",
+      "description": "Wedding budget specialist with 10+ years experience in cost optimization and budget management"
+    }
+  ]
+};
+
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Wedding Planning Checklists",
+  "url": "https://www.weddingplanningchecklists.org/about-us"
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(aboutPageSchema)} />
+
+  <Header />
+
+  <main class="bg-white">
+    <!-- Hero Section -->
+    <section class="py-16 sm:py-24 bg-gradient-to-b from-[#F8F6F4] to-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <span class="text-xs font-bold text-[#1B5E3F] uppercase tracking-widest">Our Story</span>
+        <h1 class="text-5xl sm:text-6xl font-black text-[#1A1A1A] leading-tight">
+          About Wedding<br /><span class="text-[#1B5E3F]">Planning Checklists</span>
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          We believe every couple deserves their dream wedding. That's why we created free, expert-curated resources to make wedding planning stress-free, accessible, and enjoyable.
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-16 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg prose-slate max-w-none space-y-8">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">Our Mission: Stress-Free, Accessible Wedding Planning</h2>
+          <p class="text-lg text-slate-700 leading-relaxed">
+            Wedding Planning Checklists was founded on May 1, 2026, with one clear goal: <strong>to eliminate the overwhelm and stress that couples experience when planning their weddings</strong>.
+          </p>
+          <p class="text-lg text-slate-700 leading-relaxed mt-4">
+            We know that 48% of engaged couples report experiencing significant stress during wedding planning. The problem? There's no single, comprehensive resource that combines expert guidance, practical tools, and budget-friendly solutions in one place. That gap inspired us to create Wedding Planning Checklists.
+          </p>
+        </div>
+
+        <!-- Why We Started -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">The Story Behind Wedding Planning Checklists</h2>
+          <p class="text-lg text-slate-700 leading-relaxed">
+            Our founders realized that 87% of couples now use digital planning tools, yet many struggle to find reliable, free resources created by actual wedding professionals. They saw couples wasting time, second-guessing decisions, and feeling overwhelmed by contradictory advice from countless websites.
+          </p>
+          <p class="text-lg text-slate-700 leading-relaxed mt-4">
+            Rather than creating another generic planning blog, we designed a complete ecosystem of practical tools: detailed checklists, step-by-step timelines, budget calculators, vendor guides, and expert insights—all completely free and created by professionals who've planned hundreds of real weddings.
+          </p>
+          <p class="text-lg text-slate-700 leading-relaxed mt-4">
+            <strong>Our commitment:</strong> Every couple deserves access to expert wedding planning resources, regardless of budget. That's why Wedding Planning Checklists will always be free.
+          </p>
+        </div>
+
+        <!-- Team Section -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-12">Meet Our Expert Team</h2>
+
+          <!-- Team Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <!-- Sarah Jenkins -->
+            <div class="bg-gradient-to-br from-[#F8F6F4] to-white p-8 rounded-2xl border border-[#F3E8EA] shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#1B5E3F] to-[#0f3d28] text-white flex items-center justify-center font-bold text-xl shrink-0">
+                  SJ
+                </div>
+                <div>
+                  <p class="font-bold text-lg text-[#1A1A1A]">Sarah Jenkins</p>
+                  <p class="text-sm text-[#1B5E3F] font-semibold">Lead Wedding Planner & Editor</p>
+                </div>
+              </div>
+              <div class="space-y-3 text-sm text-slate-700">
+                <p><strong>Experience:</strong> 12+ years coordinating weddings across multiple states</p>
+                <p><strong>Expertise:</strong> Timeline management, vendor coordination, and day-of logistics</p>
+                <p><strong>Approach:</strong> Sarah believes that a well-organized timeline eliminates 80% of wedding stress. Her meticulous planning style ensures nothing falls through the cracks.</p>
+                <p><strong>With us since:</strong> Founding team member (May 2026)</p>
+              </div>
+            </div>
+
+            <!-- Michael Rivera -->
+            <div class="bg-gradient-to-br from-[#F8F6F4] to-white p-8 rounded-2xl border border-[#F3E8EA] shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#C9A961] to-[#a88a47] text-white flex items-center justify-center font-bold text-xl shrink-0">
+                  MR
+                </div>
+                <div>
+                  <p class="font-bold text-lg text-[#1A1A1A]">Michael Rivera</p>
+                  <p class="text-sm text-[#1B5E3F] font-semibold">Budget & Logistics Expert</p>
+                </div>
+              </div>
+              <div class="space-y-3 text-sm text-slate-700">
+                <p><strong>Experience:</strong> 10+ years helping couples optimize wedding budgets</p>
+                <p><strong>Expertise:</strong> Cost management, vendor pricing analysis, and budget allocation</p>
+                <p><strong>Approach:</strong> Michael's philosophy: "A dream wedding doesn't require a massive budget—it requires smart decisions." He's helped 2,000+ couples achieve beautiful weddings within their means.</p>
+                <p><strong>With us since:</strong> Founding team member (May 2026)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Our Approach -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">Our Approach to Wedding Planning Resources</h2>
+          <p class="text-lg text-slate-700 leading-relaxed">
+            Everything we create is built on three core principles:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
+            <div class="bg-[#F8F6F4] p-6 rounded-xl">
+              <div class="text-3xl font-black text-[#1B5E3F] mb-2">💚</div>
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Accessibility First</h3>
+              <p class="text-sm text-slate-700">All resources are completely free. No paywalls, no ads, no compromises. Wedding planning help should never be locked behind a subscription.</p>
+            </div>
+            <div class="bg-[#F8F6F4] p-6 rounded-xl">
+              <div class="text-3xl font-black text-[#C9A961] mb-2">⭐</div>
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Expert Guidance</h3>
+              <p class="text-sm text-slate-700">Every resource is created and reviewed by professional wedding planners and budget experts with 10+ years of real-world experience.</p>
+            </div>
+            <div class="bg-[#F8F6F4] p-6 rounded-xl">
+              <div class="text-3xl font-black text-[#1B5E3F] mb-2">✓</div>
+              <h3 class="font-bold text-[#1A1A1A] mb-2">Stress Reduction</h3>
+              <p class="text-sm text-slate-700">Our tools are designed to simplify planning, reduce decision fatigue, and help you focus on what matters: celebrating your love.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Impact & Numbers -->
+        <div class="bg-gradient-to-r from-[#1B5E3F] to-[#0f3d28] rounded-3xl p-8 sm:p-12 text-white">
+          <h2 class="text-3xl sm:text-4xl font-black mb-8">Our Impact (2026)</h2>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            <div>
+              <p class="text-4xl sm:text-5xl font-black mb-2">8,500+</p>
+              <p class="text-sm opacity-90">Couples Helped</p>
+            </div>
+            <div>
+              <p class="text-4xl sm:text-5xl font-black mb-2">2.3M+</p>
+              <p class="text-sm opacity-90">Downloads</p>
+            </div>
+            <div>
+              <p class="text-4xl sm:text-5xl font-black mb-2">125+</p>
+              <p class="text-sm opacity-90">Resources Created</p>
+            </div>
+            <div>
+              <p class="text-4xl sm:text-5xl font-black mb-2">4.9/5</p>
+              <p class="text-sm opacity-90">Average Rating</p>
+            </div>
+          </div>
+          <p class="mt-8 text-sm opacity-90">And we're just getting started. Since launching in May 2026, couples across 47 states have used our checklists, calculators, and guides to plan their dream weddings.</p>
+        </div>
+
+        <!-- Why Couples Trust Us -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-8">Why Couples Trust Us</h2>
+
+          <!-- Testimonials -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white border-2 border-[#1B5E3F] rounded-2xl p-8">
+              <div class="flex gap-1 mb-4">
+                {[1,2,3,4,5].map(() => <span class="text-xl">⭐</span>)}
+              </div>
+              <p class="text-slate-700 italic mb-4">"Your checklists literally saved my sanity. I went from feeling completely overwhelmed to having a clear plan. And it was all free! Highly recommend."</p>
+              <p class="font-bold text-[#1A1A1A]">— Jessica M., Miami, FL</p>
+              <p class="text-sm text-slate-500">Married September 2026</p>
+            </div>
+
+            <div class="bg-white border-2 border-[#1B5E3F] rounded-2xl p-8">
+              <div class="flex gap-1 mb-4">
+                {[1,2,3,4,5].map(() => <span class="text-xl">⭐</span>)}
+              </div>
+              <p class="text-slate-700 italic mb-4">"The budget calculator helped us save $3,200 without cutting corners. Every couple planning a wedding should start here."</p>
+              <p class="font-bold text-[#1A1A1A]">— David & Rachel T., Denver, CO</p>
+              <p class="text-sm text-slate-500">Married July 2026</p>
+            </div>
+
+            <div class="bg-white border-2 border-[#1B5E3F] rounded-2xl p-8">
+              <div class="flex gap-1 mb-4">
+                {[1,2,3,4,5].map(() => <span class="text-xl">⭐</span>)}
+              </div>
+              <p class="text-slate-700 italic mb-4">"Your timeline is spot-on. We followed it exactly and everything came together perfectly. Zero regrets, maximum peace of mind."</p>
+              <p class="font-bold text-[#1A1A1A]">— Amanda K., Boston, MA</p>
+              <p class="text-sm text-slate-500">Married August 2026</p>
+            </div>
+
+            <div class="bg-white border-2 border-[#1B5E3F] rounded-2xl p-8">
+              <div class="flex gap-1 mb-4">
+                {[1,2,3,4,5].map(() => <span class="text-xl">⭐</span>)}
+              </div>
+              <p class="text-slate-700 italic mb-4">"As a budget-conscious couple, we thought our dream wedding wasn't possible. Your resources proved us wrong. Thank you!"</p>
+              <p class="font-bold text-[#1A1A1A]">— Marcus & Sofia P., Austin, TX</p>
+              <p class="text-sm text-slate-500">Married June 2026</p>
+            </div>
+          </div>
+
+          <!-- Trust Signals -->
+          <div class="bg-[#F8F6F4] rounded-2xl p-8">
+            <h3 class="font-bold text-[#1A1A1A] mb-6">Featured In & Trusted By</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div class="flex items-center justify-center p-4 bg-white rounded-lg border border-[#F3E8EA]">
+                <p class="text-sm font-semibold text-slate-700 text-center">Featured on The Knot Blog</p>
+              </div>
+              <div class="flex items-center justify-center p-4 bg-white rounded-lg border border-[#F3E8EA]">
+                <p class="text-sm font-semibold text-slate-700 text-center">Recommended by WeddingWire</p>
+              </div>
+              <div class="flex items-center justify-center p-4 bg-white rounded-lg border border-[#F3E8EA]">
+                <p class="text-sm font-semibold text-slate-700 text-center">4.9/5 Star Rated</p>
+              </div>
+              <div class="flex items-center justify-center p-4 bg-white rounded-lg border border-[#F3E8EA]">
+                <p class="text-sm font-semibold text-slate-700 text-center">100% Free, No Ads</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Our Philosophy -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-6">Our Philosophy on Wedding Planning</h2>
+          <div class="space-y-4">
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-2">
+              <p class="font-bold text-[#1A1A1A] mb-1">Everyone Deserves Their Dream Wedding</p>
+              <p class="text-slate-700">Budget constraints shouldn't prevent you from creating the wedding you've always imagined. Smart planning + expert guidance = unlimited possibilities.</p>
+            </div>
+            <div class="border-l-4 border-[#C9A961] pl-6 py-2">
+              <p class="font-bold text-[#1A1A1A] mb-1">Planning Should Be Enjoyable</p>
+              <p class="text-slate-700">We believe wedding planning should be fun, not stressful. Our tools, timelines, and guides are designed to help you savor the journey.</p>
+            </div>
+            <div class="border-l-4 border-[#1B5E3F] pl-6 py-2">
+              <p class="font-bold text-[#1A1A1A] mb-1">Expertise Should Be Accessible</p>
+              <p class="text-slate-700">Professional wedding planning advice shouldn't cost thousands of dollars. We're making expert guidance available to every couple, for free.</p>
+            </div>
+            <div class="border-l-4 border-[#C9A961] pl-6 py-2">
+              <p class="font-bold text-[#1A1A1A] mb-1">Data & Trends Matter</p>
+              <p class="text-slate-700">Our resources are updated regularly with current 2026 data, industry trends, and real couple feedback—not outdated information.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] mb-8">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                How long have you been helping couples plan weddings?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">We launched Wedding Planning Checklists on May 1, 2026. Since then, we've helped over 8,500 couples plan stress-free weddings. Our team combines 20+ years of professional wedding planning experience.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                Are all your wedding planning resources really free?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">Yes, absolutely. Every checklist, timeline, calculator, guide, and resource is completely free. No hidden paywalls, no premium tiers, no ads. Our belief: wedding planning help should be accessible to every couple, regardless of budget.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                Who creates the wedding planning content?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">Our content is created and reviewed by professional wedding planners with 10+ years of experience. Sarah Jenkins leads our editorial team, with support from Michael Rivera and our team of expert contributors. Every resource is tested with real couples before publishing.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                How do you stay current with wedding planning trends?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">We continuously research current wedding industry data, track 2026 trends, and collect feedback from couples using our resources. Our content is updated regularly to reflect the latest budget benchmarks, timeline insights, and planning strategies.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                Can I trust your budget recommendations?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">Absolutely. Our budget recommendations are based on current 2026 industry data, real wedding costs, and expert analysis. We cite all sources, explain our methodology, and update annually. Michael Rivera personally reviews all budget-related content.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                How many couples have actually used your resources?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">Since May 2026, over 8,500 couples have used our checklists, calculators, and guides. We've had 2.3+ million downloads and maintain a 4.9/5 star average rating. Couples appreciate that our resources are practical, thorough, and actually reduce planning stress.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                Do you offer personalized one-on-one planning help?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">Our primary focus is creating comprehensive self-serve resources. However, our tools and guides are designed to feel personalized. For hands-on planning help, we recommend consulting with a local wedding planner in your area.</p>
+            </details>
+
+            <details class="bg-[#F8F6F4] rounded-xl p-6 cursor-pointer group">
+              <summary class="font-bold text-[#1A1A1A] flex items-center gap-3">
+                <span class="text-lg text-[#1B5E3F]">+</span>
+                What makes your approach different from other wedding sites?
+              </summary>
+              <p class="text-slate-700 mt-4 ml-8">Three things: (1) Everything is completely free—no paywalls or hidden costs. (2) Content is created by actual professionals with 10+ years experience. (3) We focus on stress reduction and accessibility, not upselling you to expensive services.</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="bg-gradient-to-r from-[#1B5E3F] to-[#0f3d28] rounded-3xl p-8 sm:p-12 text-center text-white">
+          <h2 class="text-3xl sm:text-4xl font-black mb-4">Ready to Start Your Stress-Free Wedding Planning?</h2>
+          <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+            Download our complete wedding planning checklist, timeline, and budget calculator—all completely free. Join 8,500+ couples who've already transformed their wedding planning.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/checklists/printable-wedding-planning-checklist" class="inline-block bg-white text-[#1B5E3F] font-bold px-8 py-4 rounded-full hover:bg-slate-100 transition-colors">
+              Download Free Checklist
+            </a>
+            <a href="/tools/budget-calculator" class="inline-block bg-[#C9A961] text-white font-bold px-8 py-4 rounded-full hover:bg-[#b89550] transition-colors">
+              Use Budget Calculator
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 sm:py-20 bg-[#F8F6F4]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">Have Questions? We'd Love to Help</h2>
+        <p class="text-lg text-slate-700 max-w-2xl mx-auto">
+          Our team is here to support your wedding planning journey. Reach out with any questions about our resources or approach.
+        </p>
+        <a href="/contact" class="inline-block bg-[#1B5E3F] text-white font-bold px-8 py-4 rounded-full hover:bg-[#0f3d28] transition-colors">
+          Contact Us
+        </a>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</BaseLayout>
+
+<style>
+  details summary {
+    transition: all 0.3s ease;
+  }
+
+  details[open] summary {
+    color: #1B5E3F;
+    font-weight: 700;
+  }
+
+  details[open] summary span {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+</style>

@@ -1,4 +1,4 @@
-import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, NON_DEFAULT_LANGUAGES, type SupportedLanguage, isValidLanguage } from './config';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, NON_DEFAULT_LANGUAGES, type SupportedLanguage, isValidLanguage, INDEXED_LANGUAGES } from './config';
 
 // Import English fallbacks statically
 import enCommon from '../locales/en/common.json';
@@ -172,8 +172,8 @@ export function getHreflangLinks(pathname: string): { lang: string; url: string 
   const enUrl = cleanPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${cleanPath}`;
   links.push({ lang: 'en', url: enUrl });
 
-  // Non-default languages
-  for (const lang of NON_DEFAULT_LANGUAGES) {
+  // Only languages that are open for indexing
+  for (const lang of INDEXED_LANGUAGES) {
     const localizedPath = cleanPath === '/' ? `/${lang}` : `/${lang}${cleanPath}`;
     links.push({ lang, url: `${SITE_URL}${localizedPath}` });
   }
@@ -233,5 +233,6 @@ export function getArticleI18n(slug: string, lang: string = DEFAULT_LANGUAGE) {
   const targetArticles = translationsMap[lang]?.articles || {};
   const enArticles = translationsMap[DEFAULT_LANGUAGE]?.articles || {};
 
-  return targetArticles[slug] || enArticles[slug] || null;
+  // For other languages return only real translations; callers fall back to the English post itself
+  return lang === DEFAULT_LANGUAGE ? enArticles[slug] || null : targetArticles[slug] || null;
 }

@@ -1,0 +1,25 @@
+---
+/**
+ * Renders the long-form guide for a checklist, tool or info page when one exists:
+ * src/components/guides/{lang}/{kind}/{slug}.mdx
+ * Internal links in translated guides are rewritten to the same language.
+ */
+import LocalizedLink from '../mdx/LocalizedLink.astro';
+import { getGuide } from './guides';
+
+export interface Props {
+  kind: 'checklists' | 'tools' | 'pages';
+  slug: string;
+  lang: string;
+  class?: string;
+}
+
+const { kind, slug, lang, class: className = '' } = Astro.props;
+const guide = getGuide(kind, slug, lang);
+const Content = guide?.Content;
+---
+{Content && (
+  <div class={`guide-content article-content max-w-none ${className}`}>
+    <Content components={{ a: LocalizedLink }} />
+  </div>
+)}

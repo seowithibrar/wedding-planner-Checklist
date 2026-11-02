@@ -4,6 +4,10 @@ import Header from '../layout/Header.astro';
 import Footer from '../layout/Footer.astro';
 import SixMonthWeddingPlanningChecklist from '../mdx/SixMonthWeddingPlanningChecklist.mdx';
 import ThreeMonthWeddingPlanningChecklist from '../mdx/ThreeMonthWeddingPlanningChecklist.mdx';
+import SixMonthWeddingPlanningChecklistEs from '../mdx/SixMonthWeddingPlanningChecklist.es.mdx';
+import { localizeChecklist } from '../../i18n/checklists';
+import GuideContent from '../guides/GuideContent.astro';
+import { getGuide, getGuideFaqs } from '../guides/guides';
 import checklistsData from '../../data/categorized-checklists.json';
 import { generateBreadcrumbSchema, generateFAQSchema, generateArticleSchema, generateHowToSchema } from '../../lib/schema';
 import { useTranslations, localizeUrl, SITE_URL } from '../../i18n/utils';
@@ -14,10 +18,14 @@ export interface Props {
   lang?: string;
 }
 
-const { checklist, lang = DEFAULT_LANGUAGE } = Astro.props;
+const { checklist: sourceChecklist, lang = DEFAULT_LANGUAGE } = Astro.props;
 const currentLang = lang as SupportedLanguage;
+const checklist = localizeChecklist(sourceChecklist, currentLang);
 const isEnglishThreeMonthChecklist = currentLang === DEFAULT_LANGUAGE && checklist.slug === '3-month-wedding-planning-checklist';
-const { common, checklists } = useTranslations(currentLang);
+const { common, checklists: localChecklists } = useTranslations(currentLang);
+// Fill keys a language has not translated yet with English
+const checklists: any = { ...useTranslations(DEFAULT_LANGUAGE).checklists, ...localChecklists };
+const slugNotes: { before: string; anchor: string; href: string; after: string }[] = checklists.slugNotes?.[checklist.slug] || [];
 
 const canonicalUrl = currentLang === DEFAULT_LANGUAGE 
   ? `${SITE_URL}/checklists/${checklist.slug}` 
@@ -31,26 +39,20 @@ const seo = {
 
 const breadcrumbItems = [
   { name: common.nav.home, item: localizeUrl('/', currentLang) },
-  { name: 'Checklists', item: localizeUrl('/#categorized-checklists', currentLang) },
+  { name: checklists.breadcrumb, item: localizeUrl('/#categorized-checklists', currentLang) },
   { name: checklist.title, item: seo.canonical }
 ];
 
-const faqs: { q: string; a: string }[] = checklist.faqs || [
-  {
-    q: `How do I use the ${checklist.title}?`,
-    a: `Start by reviewing the key takeaways and timeline stages outlined in this guide. Combine it with our free interactive tools to track your RSVPs, budget, and daily to-do lists.`
-  },
-  {
-    q: `Is the ${checklist.title} completely free?`,
-    a: `Yes! All checklist templates and interactive planning tools on WeddingPlanningChecklists.org are 100% free to access, download, and print.`
-  },
-  {
-    q: `Can I customize this checklist for my wedding style?`,
-    a: `Absolutely. You can tailor every task by using our interactive Wedding Task Generator and Dashboard to add or remove custom items.`
-  }
-];
+const hasGuide = Boolean(getGuide('checklists', checklist.slug, currentLang));
+const baseFaqs: { q: string; a: string }[] = checklist.faqs ||
+  (checklists.defaultFaqs as { q: string; a: string }[]).map((f) => ({
+    q: f.q.replace('{title}', checklist.title),
+    a: f.a.replace('{title}', checklist.title)
+  }));
+// Page-specific FAQs from the guide come first; the existing ones are kept after them
+const faqs: { q: string; a: string }[] = [...getGuideFaqs('checklists', checklist.slug, currentLang), ...baseFaqs];
 
-const imageUrl = new URL(checklist.heroImage || '/Wedding%20Planning%20Checklist.webp', SITE_URL).toString();
+const imageUrl = new URL(checklist.heroImage || '/wedding-planning-checklist.webp', SITE_URL).toString();
 const schemas = [
   generateArticleSchema({
     title: checklist.title,
@@ -59,7 +61,8 @@ const schemas = [
     image: imageUrl,
     authorName: checklist.author || 'Wedding Planning Checklists Team',
     dateModified: checklist.dateModified,
-    datePublished: checklist.datePublished
+    datePublished: checklist.datePublished,
+    inLanguage: currentLang
   }),
   generateFAQSchema(faqs),
   generateBreadcrumbSchema(breadcrumbItems),
@@ -89,7 +92,7 @@ const combinedSchema = JSON.stringify({
     <nav class="max-w-[1300px] mx-auto px-4 pt-6 text-xs text-slate-500 flex items-center gap-2">
       <a href={localizeUrl('/', currentLang)} class="hover:text-[#B76E79]">{common.nav.home}</a>
       <span>/</span>
-      <a href={localizeUrl('/#categorized-checklists', currentLang)} class="hover:text-[#B76E79]">Checklists</a>
+      <a href={localizeUrl('/#categorized-checklists', currentLang)} class="hover:text-[#B76E79]">{checklists.breadcrumb}</a>
       <span>/</span>
       <span class="text-slate-800 font-semibold">{checklist.title}</span>
     </nav>
@@ -98,7 +101,7 @@ const combinedSchema = JSON.stringify({
     <header class="max-w-[1300px] mx-auto px-4 space-y-4">
       <div class="inline-flex items-center gap-2 bg-[#FCECF0] text-[#B76E79] px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
         <span>{checklist.icon}</span>
-        <span>{checklist.category} Guide</span>
+        <span>{checklist.category} {checklists.guideSuffix}</span>
         <span>•</span>
         <span>{checklist.badge}</span>
       </div>
@@ -152,7 +155,7 @@ const combinedSchema = JSON.stringify({
 
         {checklist.longForm ? (
           <div class="six-month-checklist article-content prose prose-lg prose-rose max-w-none">
-            <SixMonthWeddingPlanningChecklist />
+            {currentLang === 'es' ? <SixMonthWeddingPlanningChecklistEs /> : <SixMonthWeddingPlanningChecklist />}
           </div>
         ) : isEnglishThreeMonthChecklist ? (
           <>
@@ -205,8 +208,8 @@ const combinedSchema = JSON.stringify({
         
         {checklist.slug === '12-month-wedding-planning-checklist' && (
           <div class="bg-gradient-to-r from-[#FCECF0]/60 to-white border border-[#F3E8EA] p-4 rounded-2xl text-xs sm:text-sm text-slate-600 flex items-center gap-2.5 shadow-xs">
-            <span class="text-[#B76E79] font-bold">💡 Tip:</span>
-            <span>Planning on an accelerated or custom timeline? Learn <a href={localizeUrl('/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding', currentLang)} class="text-[#B76E79] font-bold hover:underline">how to choose the right wedding checklist</a> for your target wedding date.</span>
+            <span class="text-[#B76E79] font-bold">{checklists.tipLabel}</span>
+            <span>{checklists.tip12.before}<a href={localizeUrl(checklists.tip12.href, currentLang)} class="text-[#B76E79] font-bold hover:underline">{checklists.tip12.anchor}</a>{checklists.tip12.after}</span>
           </div>
         )}
 
@@ -216,82 +219,15 @@ const combinedSchema = JSON.stringify({
           <p class="text-sm text-slate-700 leading-relaxed">{checklist.summary}</p>
         </div>
 
-        {checklist.slug === 'wedding-decor-flowers-checklist' && (
+        {slugNotes.map((note) => (
           <p class="text-sm text-slate-600 leading-relaxed">
-            Before you choose flowers and decor, use a <a href={localizeUrl('/blog/moodboard-layout', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding moodboard</a> to share your colors, textures, and overall style with your vendors.
+            {note.before}<a href={localizeUrl(note.href, currentLang)} class="text-[#B76E79] font-bold hover:underline">{note.anchor}</a>{note.after}
           </p>
-        )}
-
-        {checklist.slug === '12-month-wedding-planning-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Planning on a shorter engagement? Use the <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6-month wedding planning checklist</a> for a faster timeline.
-          </p>
-        )}
-        {checklist.slug === '12-month-wedding-planning-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Need a faster plan? Follow the <a href={localizeUrl('/checklists/3-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">3 month wedding planning checklist</a> for a focused 12-week timeline.
-          </p>
-        )}
-        {checklist.slug === '12-month-wedding-planning-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Set your spending plan early with this worked example of a <a href={localizeUrl('/checklists/wedding-budget-calculator-30k', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding budget by percentage</a>.
-          </p>
-        )}
-        {checklist.slug === '12-month-wedding-planning-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Add your manicure dates to the plan with this guide to <a href={localizeUrl('/blog/wedding-nail-designs', currentLang)} class="text-[#B76E79] font-bold hover:underline">booking your bridal nail trial</a>.
-          </p>
-        )}
-        {checklist.slug === 'wedding-budget-calculator-50k' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Comparing budget tiers? See how the numbers change in the <a href={localizeUrl('/checklists/wedding-budget-calculator-30k', currentLang)} class="text-[#B76E79] font-bold hover:underline">$30K wedding budget checklist</a>.
-          </p>
-        )}
-        {checklist.slug === '3-month-wedding-planning-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            If you have a little more time, follow our <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6-month wedding planning checklist</a> for a more flexible schedule.
-          </p>
-        )}
-        {checklist.slug === 'intimate-small-wedding-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Planning on a 90-day timeline? Use our <a href={localizeUrl('/checklists/3-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">3 month wedding planning checklist</a> to prioritize bookings and deadlines.
-          </p>
-        )}
-        {checklist.slug === '18-month-wedding-planning-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            If your engagement is shorter, this <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6 month wedding plan</a> prioritizes the decisions that cannot wait.
-          </p>
-        )}
-        {checklist.slug === 'printable-wedding-planning-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Need a shorter planning window? Use our <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6 month wedding planning guide</a> for a 24-week timeline.
-          </p>
-        )}
-
-        {checklist.slug === 'indian-wedding-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Explore <a href={localizeUrl('/blog/indian-wedding-hairstyles-guide', currentLang)} class="text-[#B76E79] font-bold hover:underline">Indian bridal hairstyle ideas</a> for Haldi, Mehendi, Sangeet and the ceremony.
-          </p>
-        )}
-        {checklist.slug === 'wedding-day-of-timeline-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Planning portrait blocks for your day-of run of show? Use our <a href={localizeUrl('/blog/wedding-photography-poses-for-beginners', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding photography poses for beginners</a> guide to share a structured pose checklist with your photographer.
-          </p>
-        )}
-        {checklist.slug === 'bridal-emergency-kit-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Add a small <a href={localizeUrl('/blog/wedding-nail-designs', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding nail repair kit</a> to the bag for quick fixes on the day.
-          </p>
-        )}
-        {checklist.slug === 'wedding-vendor-booking-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Hiring a wedding photographer? Prepare your portrait briefing and inspiration board in advance with our <a href={localizeUrl('/blog/wedding-photography-poses-for-beginners', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding photography poses for beginners</a> checklist.
-          </p>
-        )}
+        ))}
 
         <!-- Key Takeaways & Stages -->
         <div class="space-y-4">
-          <h2 class="text-2xl font-bold text-[#1A1A1A]">Key Execution Steps & Stages</h2>
+          <h2 class="text-2xl font-bold text-[#1A1A1A]">{checklists.keyStepsTitle}</h2>
           <div class="space-y-3">
             {checklist.keyTakeaways.map((takeaway: string, idx: number) => (
               <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl flex items-start gap-3">
@@ -306,16 +242,23 @@ const combinedSchema = JSON.stringify({
 
         <hr class="border-[#F3E8EA]" />
 
+        {hasGuide && (
+          <>
+            <GuideContent kind="checklists" slug={checklist.slug} lang={currentLang} />
+            <hr class="border-[#F3E8EA]" />
+          </>
+        )}
+
         <!-- Deep Dive Guidance -->
         <div class="space-y-4">
-          <h2 class="text-2xl font-bold text-[#1A1A1A]">Pro Tips for Using This Checklist</h2>
+          <h2 class="text-2xl font-bold text-[#1A1A1A]">{checklists.proTipsTitle}</h2>
           <p class="text-sm text-slate-600 leading-relaxed">
-            Organizing your wedding with a dedicated checklist ensures peace of mind. Combine this guide with our interactive planning tools to assign priorities, set deadlines, and track vendor budgets automatically.
+            {checklists.proTipsIntro}
           </p>
           <ul class="list-disc pl-5 rtl:pl-0 rtl:pr-5 space-y-2 text-sm text-slate-600">
-            <li><strong>Set Clear Priorities:</strong> Focus 60% of your initial planning time on the venue, caterer, and photographer.</li>
-            <li><strong>Keep Budgets Updated:</strong> Log every deposit immediately to prevent unexpected cost overruns.</li>
-            <li><strong>Delegate Tasks:</strong> Assign specific checklist items to your partner, maid of honor, or family members.</li>
+            {checklists.proTips.map((tip: { label: string; text: string }) => (
+              <li><strong>{tip.label}</strong> {tip.text}</li>
+            ))}
           </ul>
         </div>
 
@@ -345,9 +288,9 @@ const combinedSchema = JSON.stringify({
           <span class="text-[10px] font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0]/20 px-2.5 py-1 rounded-full">
             {common.ui.freePlanningTool}
           </span>
-          <h3 class="text-xl font-bold">Track This Checklist Live</h3>
+          <h3 class="text-xl font-bold">{checklists.trackTitle}</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
-            Use our interactive Wedding Planning Dashboard to check off tasks, track RSVPs, and save your progress in real-time.
+            {checklists.trackText}
           </p>
           <a
             href={localizeUrl('/tools/wedding-planning-dashboard', currentLang)}
@@ -359,7 +302,7 @@ const combinedSchema = JSON.stringify({
 
         <!-- Quick Tools Links -->
         <div class="bg-white rounded-3xl border border-[#F3E8EA] p-6 shadow-sm space-y-4">
-          <h3 class="font-bold text-base text-[#1A1A1A]">Related Planning Tools</h3>
+          <h3 class="font-bold text-base text-[#1A1A1A]">{checklists.relatedToolsTitle}</h3>
           <ul class="space-y-2 text-xs font-medium">
             <li>
               <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="text-slate-600 hover:text-[#B76E79] flex items-center justify-between py-1.5 border-b border-slate-100">
@@ -395,9 +338,9 @@ const combinedSchema = JSON.stringify({
     <!-- Related Checklists Navigation -->
     <section class="max-w-[1300px] mx-auto px-4 py-8">
       <div class="bg-slate-50 rounded-3xl p-8 border border-slate-100 space-y-6">
-        <h2 class="text-xl font-bold text-[#1A1A1A]">Explore Other Categorized Checklists</h2>
+        <h2 class="text-xl font-bold text-[#1A1A1A]">{checklists.exploreTitle}</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {checklistsData.checklists.filter(c => c.slug !== checklist.slug).slice(0, 4).map(item => (
+          {checklistsData.checklists.filter(c => c.slug !== checklist.slug).slice(0, 4).map(source => localizeChecklist(source, currentLang)).map(item => (
             <a
               href={localizeUrl(`/checklists/${item.slug}`, currentLang)}
               class="bg-white rounded-2xl p-4 border border-[#F3E8EA] shadow-sm hover:border-[#B76E79]/40 transition-all group"

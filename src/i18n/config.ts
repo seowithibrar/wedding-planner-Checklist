@@ -64,6 +64,18 @@ export const DEFAULT_LANGUAGE = 'en';
 
 export const NON_DEFAULT_LANGUAGES = ['ur', 'hi', 'es', 'fr', 'de', 'ar'] as const;
 
+/**
+ * Languages Google may index. A language belongs here only once its pages are
+ * really translated (title, description, headings and body). All other
+ * languages still build, but get noindex and are left out of hreflang and the sitemap.
+ * To launch a language, translate it fully, then add its code here.
+ */
+export const INDEXED_LANGUAGES: readonly string[] = ['es'];
+
+export function isIndexedLanguage(code: string): boolean {
+  return code === DEFAULT_LANGUAGE || INDEXED_LANGUAGES.includes(code);
+}
+
 export type SupportedLanguage = keyof typeof SUPPORTED_LANGUAGES;
 
 export function isValidLanguage(code: string): code is SupportedLanguage {

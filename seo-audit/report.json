@@ -1,0 +1,418 @@
+{
+ "pages": 455,
+ "sitemap_urls": 128,
+ "redirects": 40,
+ "langs": {
+  "en": 65,
+  "ar": 65,
+  "de": 65,
+  "es": 65,
+  "fr": 65,
+  "hi": 65,
+  "ur": 65
+ },
+ "issues": [
+  {
+   "issue": "Page set to noindex",
+   "sev": "high",
+   "count": 320,
+   "examples": [
+    {
+     "sev": "high",
+     "url": "/ar/about-us",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/14-month-wedding-planning-timeline",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/18-month-wedding-planning-timeline",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/20-christmas-wedding-photo-poses",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/20-tips-for-your-wedding-planning-checklist",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/4-month-wedding-planning-timeline",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/candid-christmas-wedding-photo-moments",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/christmas-wedding-bridal-party-photo-ideas",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/christmas-wedding-detail-photo-shot-list",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/christmas-wedding-fairy-light-photo-ideas",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/christmas-wedding-family-photo-list",
+     "detail": "noindex, follow"
+    },
+    {
+     "sev": "high",
+     "url": "/ar/blog/christmas-wedding-first-look-photo-ideas",
+     "detail": "noindex, follow"
+    }
+   ]
+  },
+  {
+   "issue": "Translated page still has the English title",
+   "sev": "medium",
+   "count": 206,
+   "examples": [
+    {
+     "sev": "medium",
+     "url": "/ar/404",
+     "detail": "same as /404"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/20-christmas-wedding-photo-poses",
+     "detail": "same as /blog/20-christmas-wedding-photo-poses"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/4-month-wedding-planning-timeline",
+     "detail": "same as /blog/4-month-wedding-planning-timeline"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/candid-christmas-wedding-photo-moments",
+     "detail": "same as /blog/candid-christmas-wedding-photo-moments"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-bridal-party-photo-ideas",
+     "detail": "same as /blog/christmas-wedding-bridal-party-photo-ideas"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-detail-photo-shot-list",
+     "detail": "same as /blog/christmas-wedding-detail-photo-shot-list"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-fairy-light-photo-ideas",
+     "detail": "same as /blog/christmas-wedding-fairy-light-photo-ideas"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-family-photo-list",
+     "detail": "same as /blog/christmas-wedding-family-photo-list"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-first-look-photo-ideas",
+     "detail": "same as /blog/christmas-wedding-first-look-photo-ideas"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-photo-booth-ideas",
+     "detail": "same as /blog/christmas-wedding-photo-booth-ideas"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-planning-checklist",
+     "detail": "same as /blog/christmas-wedding-planning-checklist"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-tree-photo-ideas",
+     "detail": "same as /blog/christmas-wedding-tree-photo-ideas"
+    }
+   ]
+  },
+  {
+   "issue": "Duplicate title across pages",
+   "sev": "medium",
+   "count": 47,
+   "examples": [
+    {
+     "sev": "medium",
+     "url": "/ar/blog/20-christmas-wedding-photo-poses",
+     "detail": "6 pages: 20 Christmas Wedding Photo Poses for Couples | /ar/blog/20-christmas-wedding-photo-poses, /blog/20-christmas-wedding-photo-poses, /de/blog/20-christmas-wedding-photo-poses, /fr/blog/20-christmas-wedding-photo-po"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/4-month-wedding-planning-timeline",
+     "detail": "6 pages: 4-Month Wedding Planning Timeline: Week-by-Week Checklist | /ar/blog/4-month-wedding-planning-timeline, /blog/4-month-wedding-planning-timeline, /de/blog/4-month-wedding-planning-timeline, /fr/blog/4-month-weddi"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/candid-christmas-wedding-photo-moments",
+     "detail": "6 pages: 20 Candid Moments to Capture at a Christmas Wedding | /ar/blog/candid-christmas-wedding-photo-moments, /blog/candid-christmas-wedding-photo-moments, /de/blog/candid-christmas-wedding-photo-moments, /fr/blog/cand"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-bridal-party-photo-ideas",
+     "detail": "6 pages: 15 Christmas Wedding Bridal Party Photo Ideas | /ar/blog/christmas-wedding-bridal-party-photo-ideas, /blog/christmas-wedding-bridal-party-photo-ideas, /de/blog/christmas-wedding-bridal-party-photo-ideas, /fr/blo"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-detail-photo-shot-list",
+     "detail": "6 pages: 12 Christmas Wedding Detail Photos for Your Shot List | /ar/blog/christmas-wedding-detail-photo-shot-list, /blog/christmas-wedding-detail-photo-shot-list, /de/blog/christmas-wedding-detail-photo-shot-list, /fr/b"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-fairy-light-photo-ideas",
+     "detail": "6 pages: 15 Christmas Wedding Photo Ideas With Fairy Lights | /ar/blog/christmas-wedding-fairy-light-photo-ideas, /blog/christmas-wedding-fairy-light-photo-ideas, /de/blog/christmas-wedding-fairy-light-photo-ideas, /fr/b"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-family-photo-list",
+     "detail": "6 pages: 20 Christmas Wedding Family Photo Combinations | /ar/blog/christmas-wedding-family-photo-list, /blog/christmas-wedding-family-photo-list, /de/blog/christmas-wedding-family-photo-list, /fr/blog/christmas-wedding-"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-first-look-photo-ideas",
+     "detail": "6 pages: 15 Christmas Wedding First-Look Photo Ideas | /ar/blog/christmas-wedding-first-look-photo-ideas, /blog/christmas-wedding-first-look-photo-ideas, /de/blog/christmas-wedding-first-look-photo-ideas, /fr/blog/christ"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-photo-booth-ideas",
+     "detail": "6 pages: 20 Christmas Wedding Photo Booth Ideas and Props | /ar/blog/christmas-wedding-photo-booth-ideas, /blog/christmas-wedding-photo-booth-ideas, /de/blog/christmas-wedding-photo-booth-ideas, /fr/blog/christmas-weddin"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-planning-checklist",
+     "detail": "6 pages: Christmas Wedding Planning Checklist: Timeline & Budget | /ar/blog/christmas-wedding-planning-checklist, /blog/christmas-wedding-planning-checklist, /de/blog/christmas-wedding-planning-checklist, /fr/blog/christ"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-tree-photo-ideas",
+     "detail": "6 pages: 15 Christmas Wedding Photo Ideas by the Tree | /ar/blog/christmas-wedding-tree-photo-ideas, /blog/christmas-wedding-tree-photo-ideas, /de/blog/christmas-wedding-tree-photo-ideas, /fr/blog/christmas-wedding-tree-"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/hairstyles-for-wedding",
+     "detail": "6 pages: Wedding Hairstyles: Beautiful Ideas for Every Hair Type | /ar/blog/hairstyles-for-wedding, /blog/hairstyles-for-wedding, /de/blog/hairstyles-for-wedding, /fr/blog/hairstyles-for-wedding"
+    }
+   ]
+  },
+  {
+   "issue": "Duplicate meta description across pages",
+   "sev": "medium",
+   "count": 47,
+   "examples": [
+    {
+     "sev": "medium",
+     "url": "/ar/blog/20-christmas-wedding-photo-poses",
+     "detail": "6 pages | /ar/blog/20-christmas-wedding-photo-poses, /blog/20-christmas-wedding-photo-poses, /de/blog/20-christmas-wedding-photo-poses, /fr/blog/20-christmas-wedding-photo-poses"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/4-month-wedding-planning-timeline",
+     "detail": "6 pages | /ar/blog/4-month-wedding-planning-timeline, /blog/4-month-wedding-planning-timeline, /de/blog/4-month-wedding-planning-timeline, /fr/blog/4-month-wedding-planning-timeline"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/candid-christmas-wedding-photo-moments",
+     "detail": "6 pages | /ar/blog/candid-christmas-wedding-photo-moments, /blog/candid-christmas-wedding-photo-moments, /de/blog/candid-christmas-wedding-photo-moments, /fr/blog/candid-christmas-wedding-photo-moments"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-bridal-party-photo-ideas",
+     "detail": "6 pages | /ar/blog/christmas-wedding-bridal-party-photo-ideas, /blog/christmas-wedding-bridal-party-photo-ideas, /de/blog/christmas-wedding-bridal-party-photo-ideas, /fr/blog/christmas-wedding-bridal-party-photo-ideas"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-detail-photo-shot-list",
+     "detail": "6 pages | /ar/blog/christmas-wedding-detail-photo-shot-list, /blog/christmas-wedding-detail-photo-shot-list, /de/blog/christmas-wedding-detail-photo-shot-list, /fr/blog/christmas-wedding-detail-photo-shot-list"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-fairy-light-photo-ideas",
+     "detail": "6 pages | /ar/blog/christmas-wedding-fairy-light-photo-ideas, /blog/christmas-wedding-fairy-light-photo-ideas, /de/blog/christmas-wedding-fairy-light-photo-ideas, /fr/blog/christmas-wedding-fairy-light-photo-ideas"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-family-photo-list",
+     "detail": "6 pages | /ar/blog/christmas-wedding-family-photo-list, /blog/christmas-wedding-family-photo-list, /de/blog/christmas-wedding-family-photo-list, /fr/blog/christmas-wedding-family-photo-list"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-first-look-photo-ideas",
+     "detail": "6 pages | /ar/blog/christmas-wedding-first-look-photo-ideas, /blog/christmas-wedding-first-look-photo-ideas, /de/blog/christmas-wedding-first-look-photo-ideas, /fr/blog/christmas-wedding-first-look-photo-ideas"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-photo-booth-ideas",
+     "detail": "6 pages | /ar/blog/christmas-wedding-photo-booth-ideas, /blog/christmas-wedding-photo-booth-ideas, /de/blog/christmas-wedding-photo-booth-ideas, /fr/blog/christmas-wedding-photo-booth-ideas"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-planning-checklist",
+     "detail": "6 pages | /ar/blog/christmas-wedding-planning-checklist, /blog/christmas-wedding-planning-checklist, /de/blog/christmas-wedding-planning-checklist, /fr/blog/christmas-wedding-planning-checklist"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/christmas-wedding-tree-photo-ideas",
+     "detail": "6 pages | /ar/blog/christmas-wedding-tree-photo-ideas, /blog/christmas-wedding-tree-photo-ideas, /de/blog/christmas-wedding-tree-photo-ideas, /fr/blog/christmas-wedding-tree-photo-ideas"
+    },
+    {
+     "sev": "medium",
+     "url": "/ar/blog/hairstyles-for-wedding",
+     "detail": "6 pages | /ar/blog/hairstyles-for-wedding, /blog/hairstyles-for-wedding, /de/blog/hairstyles-for-wedding, /fr/blog/hairstyles-for-wedding"
+    }
+   ]
+  },
+  {
+   "issue": "Meta description length outside 70-160 chars",
+   "sev": "low",
+   "count": 56,
+   "examples": [
+    {
+     "sev": "low",
+     "url": "/ar/404",
+     "detail": "57"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/blog/18-month-wedding-planning-timeline",
+     "detail": "54"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/blog/20-tips-for-your-wedding-planning-checklist",
+     "detail": "164"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/blog/wedding-outfits",
+     "detail": "69"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/contact",
+     "detail": "50"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/privacy-policy",
+     "detail": "53"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/sitemap",
+     "detail": "56"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/terms-of-service",
+     "detail": "55"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/tools/budget-calculator",
+     "detail": "64"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/tools/guest-list-manager",
+     "detail": "55"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/tools/timeline-generator",
+     "detail": "54"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/tools/wedding-checklist-generator",
+     "detail": "51"
+    }
+   ]
+  },
+  {
+   "issue": "Title length outside 30-65 chars",
+   "sev": "low",
+   "count": 12,
+   "examples": [
+    {
+     "sev": "low",
+     "url": "/ar/checklists/wedding-budget-calculator-10k",
+     "detail": "70: $10,000 Wedding Budget Checklist: A Complete Breakdown for 2026 (2026)"
+    },
+    {
+     "sev": "low",
+     "url": "/ar/checklists/wedding-budget-calculator-20k",
+     "detail": "84: $20,000 Wedding Budget Checklist: Complete Breakdown for 75-100 Guests (2026) (2026)"
+    },
+    {
+     "sev": "low",
+     "url": "/de/blog/20-tips-for-your-wedding-planning-checklist",
+     "detail": "66: 20 Tipps f\u00fcr deine Hochzeitscheckliste, damit du im Budget bleibst"
+    },
+    {
+     "sev": "low",
+     "url": "/de/checklists/wedding-budget-calculator-10k",
+     "detail": "70: $10,000 Wedding Budget Checklist: A Complete Breakdown for 2026 (2026)"
+    },
+    {
+     "sev": "low",
+     "url": "/de/checklists/wedding-budget-calculator-20k",
+     "detail": "84: $20,000 Wedding Budget Checklist: Complete Breakdown for 75-100 Guests (2026) (2026)"
+    },
+    {
+     "sev": "low",
+     "url": "/fr/blog/20-tips-for-your-wedding-planning-checklist",
+     "detail": "67: 20 conseils pour organiser votre mariage sans d\u00e9passer votre budget"
+    },
+    {
+     "sev": "low",
+     "url": "/fr/checklists/wedding-budget-calculator-10k",
+     "detail": "70: $10,000 Wedding Budget Checklist: A Complete Breakdown for 2026 (2026)"
+    },
+    {
+     "sev": "low",
+     "url": "/fr/checklists/wedding-budget-calculator-20k",
+     "detail": "84: $20,000 Wedding Budget Checklist: Complete Breakdown for 75-100 Guests (2026) (2026)"
+    },
+    {
+     "sev": "low",
+     "url": "/hi/checklists/wedding-budget-calculator-10k",
+     "detail": "70: $10,000 Wedding Budget Checklist: A Complete Breakdown for 2026 (2026)"
+    },
+    {
+     "sev": "low",
+     "url": "/hi/checklists/wedding-budget-calculator-20k",
+     "detail": "84: $20,000 Wedding Budget Checklist: Complete Breakdown for 75-100 Guests (2026) (2026)"
+    },
+    {
+     "sev": "low",
+     "url": "/ur/checklists/wedding-budget-calculator-10k",
+     "detail": "70: $10,000 Wedding Budget Checklist: A Complete Breakdown for 2026 (2026)"
+    },
+    {
+     "sev": "low",
+     "url": "/ur/checklists/wedding-budget-calculator-20k",
+     "detail": "84: $20,000 Wedding Budget Checklist: Complete Breakdown for 75-100 Guests (2026) (2026)"
+    }
+   ]
+  }
+ ]
+}

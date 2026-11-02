@@ -3,7 +3,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import { PlanningCalendar } from '../../components/tools/PlanningCalendar';
-import { generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
+import { generateBreadcrumbSchema, generateWebApplicationSchema, generateFAQSchema } from '../../lib/schema';
+import GuideContent from '../../components/guides/GuideContent.astro';
+import { getGuideFaqs } from '../../components/guides/guides';
+
+const guideFaqs = getGuideFaqs('tools', 'wedding-planning-calendar', 'en');
 
 const seo = {
   title: 'Wedding Planning Calendar (2026)',
@@ -20,7 +24,8 @@ const breadcrumbItems = [
 
 const combinedSchema = `[${[
   generateWebApplicationSchema({ name: 'Wedding Planning Calendar', description: seo.description, url: seo.canonical }),
-  generateBreadcrumbSchema(breadcrumbItems)
+  generateBreadcrumbSchema(breadcrumbItems),
+  generateFAQSchema(guideFaqs, seo.canonical)
 ].filter(Boolean).join(',')}]`;
 ---
 
@@ -39,6 +44,21 @@ const combinedSchema = `[${[
       This interactive Wedding Planning Calendar helps you stay completely organized and on top of your wedding planning process. Simply enter your details below, and the tool will automatically adjust to fit your specific wedding needs. Save time, reduce stress, and ensure no detail is overlooked with this free resource.
     </div>
     <PlanningCalendar client:visible />
+
+    <article class="max-w-4xl mx-auto mt-16 bg-white rounded-3xl border border-[#F3E8EA] p-6 sm:p-10 shadow-sm">
+      <GuideContent kind="tools" slug="wedding-planning-calendar" lang="en" />
+      <div class="space-y-4 pt-8 mt-8 border-t border-[#F3E8EA]">
+        <h2 class="text-xl font-bold text-[#1A1A1A]">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {guideFaqs.map(faq => (
+            <div class="bg-slate-50 p-4 rounded-2xl space-y-1">
+              <h3 class="font-bold text-sm text-[#1A1A1A]">{faq.q}</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </article>
   </main>
   <Footer />
 </BaseLayout>

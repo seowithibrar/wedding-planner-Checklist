@@ -17,46 +17,50 @@ const { common } = useTranslations(currentLang);
 
 const canonicalUrl = `${SITE_URL}/${currentLang}/404`;
 
+// Spanish labels; other languages keep English until they are translated
+const es404: Record<string, string> = {"How to Plan a Wedding Timeline": "Cómo planificar el cronograma de una boda", "Featured Guide": "Guía destacada", "Professional 6-phase framework for stress-free wedding planning from 18 months to day-of.": "Marco profesional de 6 fases para planificar tu boda sin estrés, desde 18 meses antes hasta el gran día.", "Wedding Budget Calculator": "Calculadora de presupuesto de boda", "Interactive Tool": "Herramienta interactiva", "Real-time budget allocation across venue, catering, photography, attire, and buffer.": "Reparto del presupuesto en tiempo real entre lugar, catering, fotografía, atuendo y margen.", "Day-of Timeline Generator": "Generador del cronograma del día", "Generate a customized hour-by-hour schedule based on your ceremony start time.": "Crea un horario personalizado hora a hora según la hora de inicio de tu ceremonia.", "Guest List Manager": "Gestor de la lista de invitados", "Track RSVPs, meal preferences, plus-ones, and seating arrangements in one place.": "Controla confirmaciones, menús, acompañantes y mesas en un solo lugar.", "12-Month Wedding Checklist": "Lista de boda de 12 meses", "Popular Checklist": "Lista popular", "The golden standard month-by-month timeline for planning your wedding 1 year in advance.": "El cronograma de referencia, mes a mes, para planificar tu boda con un año de antelación.", "Wedding Planning Dashboard": "Panel de planificación de boda", "Central Hub": "Centro de control", "All-in-one planning suite with live progress, countdown, and tool shortcuts.": "Suite de planificación todo en uno con progreso en directo, cuenta regresiva y accesos a las herramientas."};
+const tr = (s: string) => (currentLang === 'es' ? es404[s] || s : s);
+
 const popularGuides = [
   {
-    title: 'How to Plan a Wedding Timeline',
-    category: 'Featured Guide',
-    desc: 'Professional 6-phase framework for stress-free wedding planning from 18 months to day-of.',
+    title: tr('How to Plan a Wedding Timeline'),
+    category: tr('Featured Guide'),
+    desc: tr('Professional 6-phase framework for stress-free wedding planning from 18 months to day-of.'),
     href: '/blog/how-to-plan-a-wedding-timeline',
     icon: '📅'
   },
   {
-    title: 'Wedding Budget Calculator',
-    category: 'Interactive Tool',
-    desc: 'Real-time budget allocation across venue, catering, photography, attire, and buffer.',
+    title: tr('Wedding Budget Calculator'),
+    category: tr('Interactive Tool'),
+    desc: tr('Real-time budget allocation across venue, catering, photography, attire, and buffer.'),
     href: '/tools/budget-calculator',
     icon: '💰'
   },
   {
-    title: 'Day-of Timeline Generator',
-    category: 'Interactive Tool',
-    desc: 'Generate a customized hour-by-hour schedule based on your ceremony start time.',
+    title: tr('Day-of Timeline Generator'),
+    category: tr('Interactive Tool'),
+    desc: tr('Generate a customized hour-by-hour schedule based on your ceremony start time.'),
     href: '/tools/timeline-generator',
     icon: '⏰'
   },
   {
-    title: 'Guest List Manager',
-    category: 'Interactive Tool',
-    desc: 'Track RSVPs, meal preferences, plus-ones, and seating arrangements in one place.',
+    title: tr('Guest List Manager'),
+    category: tr('Interactive Tool'),
+    desc: tr('Track RSVPs, meal preferences, plus-ones, and seating arrangements in one place.'),
     href: '/tools/guest-list-manager',
     icon: '👥'
   },
   {
-    title: '12-Month Wedding Checklist',
-    category: 'Popular Checklist',
-    desc: 'The golden standard month-by-month timeline for planning your wedding 1 year in advance.',
+    title: tr('12-Month Wedding Checklist'),
+    category: tr('Popular Checklist'),
+    desc: tr('The golden standard month-by-month timeline for planning your wedding 1 year in advance.'),
     href: '/checklists/12-month-wedding-planning-checklist',
     icon: '📋'
   },
   {
-    title: 'Wedding Planning Dashboard',
-    category: 'Central Hub',
-    desc: 'All-in-one planning suite with live progress, countdown, and tool shortcuts.',
+    title: tr('Wedding Planning Dashboard'),
+    category: tr('Central Hub'),
+    desc: tr('All-in-one planning suite with live progress, countdown, and tool shortcuts.'),
     href: '/tools/wedding-planning-dashboard',
     icon: '✨'
   }
@@ -64,8 +68,8 @@ const popularGuides = [
 ---
 
 <BaseLayout 
-  title="Page Not Found (404) — Wedding Planning Checklists" 
-  description="The page you are looking for does not exist or has moved." 
+  title={currentLang === 'es' ? "Página no encontrada (404) — Wedding Planning Checklists" : "Page Not Found (404) — Wedding Planning Checklists"} 
+  description={currentLang === 'es' ? "La página que buscas no existe o se ha movido." : "The page you are looking for does not exist or has moved."} 
   canonical={canonicalUrl}
   lang={currentLang}
   noindex={true}
@@ -76,15 +80,15 @@ const popularGuides = [
     <div class="text-center space-y-6 max-w-2xl mx-auto">
       <div class="inline-flex items-center gap-2 bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
         <span>⚠️</span>
-        <span>Error 404 • Page Not Found</span>
+        <span>{currentLang === 'es' ? 'Error 404 • Página no encontrada' : 'Error 404 • Page Not Found'}</span>
       </div>
 
       <h1 class="text-4xl sm:text-6xl font-black text-[#1A1A1A] tracking-tight leading-tight">
-        Lost in the <span class="text-[#B76E79]">Planning</span> Details?
+        {currentLang === 'es' ? <>¿Perdida entre los <span class="text-[#B76E79]">detalles</span> de la planificación?</> : <>Lost in the <span class="text-[#B76E79]">Planning</span> Details?</>}
       </h1>
 
       <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
-        The page you are looking for might have been moved, renamed, or doesn't exist. Don't worry — all our wedding planning checklists, tools, and guides are right here to get you back on track.
+        {currentLang === 'es' ? 'Puede que la página que buscas se haya movido, haya cambiado de nombre o no exista. No te preocupes: todas nuestras listas, herramientas y guías de planificación de boda están aquí para ayudarte a retomar el camino.' : "The page you are looking for might have been moved, renamed, or doesn't exist. Don't worry — all our wedding planning checklists, tools, and guides are right here to get you back on track."}
       </p>
 
       <div class="flex flex-wrap justify-center gap-4 pt-2">
@@ -106,9 +110,9 @@ const popularGuides = [
     <!-- Popular Resources Grid -->
     <div class="mt-20 space-y-8">
       <div class="text-center space-y-2">
-        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Helpful Shortcuts</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-[#1A1A1A]">Popular Planning Resources</h2>
-        <p class="text-sm text-slate-500">Jump directly to our most frequently used checklists and tools.</p>
+        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">{currentLang === 'es' ? 'Accesos útiles' : 'Helpful Shortcuts'}</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-[#1A1A1A]">{currentLang === 'es' ? 'Recursos de planificación populares' : 'Popular Planning Resources'}</h2>
+        <p class="text-sm text-slate-500">{currentLang === 'es' ? 'Ve directamente a nuestras listas y herramientas más usadas.' : 'Jump directly to our most frequently used checklists and tools.'}</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -132,7 +136,7 @@ const popularGuides = [
               </p>
             </div>
             <div class="pt-4 flex items-center gap-1 text-xs font-bold text-[#B76E79] border-t border-slate-50 mt-4">
-              <span>Open Guide</span>
+              <span>{currentLang === 'es' ? 'Abrir guía' : 'Open Guide'}</span>
               <span class="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl-flip">→</span>
             </div>
           </a>
@@ -141,9 +145,9 @@ const popularGuides = [
     </div>
 
     <div class="mt-16 bg-white rounded-3xl p-8 border border-[#F3E8EA] shadow-sm text-center max-w-xl mx-auto space-y-3">
-      <h3 class="font-bold text-base text-[#1A1A1A]">Looking for a specific checklist?</h3>
+      <h3 class="font-bold text-base text-[#1A1A1A]">{currentLang === 'es' ? '¿Buscas una lista concreta?' : 'Looking for a specific checklist?'}</h3>
       <p class="text-xs text-slate-500 leading-relaxed">
-        If you followed a link from an external website or email, please feel free to reach out to our team so we can help you find what you need.
+        {currentLang === 'es' ? 'Si has llegado desde un enlace de otra web o de un correo, escríbenos y te ayudaremos a encontrar lo que necesitas.' : 'If you followed a link from an external website or email, please feel free to reach out to our team so we can help you find what you need.'}
       </p>
       <div class="pt-2">
         <a href={localizeUrl('/contact', currentLang)} class="text-xs font-bold text-[#B76E79] hover:underline">

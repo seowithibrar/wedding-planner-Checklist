@@ -79,5 +79,23 @@
     "title": "¿Te gustaría ver Wedding Planning Checklists en español?",
     "viewIn": "Ver en español",
     "keepEnglish": "Mantener en inglés"
+  },
+  "blogUi": {
+    "freeDownload": "Descarga gratuita",
+    "suiteTitle": "Kit de listas de boda imprimibles",
+    "suiteText": "Accede al instante a hojas de planificación mes a mes, plantillas de presupuesto y registros de proveedores.",
+    "downloadFree": "Descargar gratis →",
+    "authorBadge": "Recursos de planificación de boda",
+    "authorBio": "El equipo de Wedding Planning Checklists crea listas, cronogramas, herramientas de presupuesto y recursos de planificación cultural para ayudar a las parejas a organizar su boda.",
+    "newsKicker": "Consejos gratuitos para planificar tu boda",
+    "newsTitle": "Únete a miles de parejas felices",
+    "newsText": "Recibe cada mes recordatorios de tu lista de boda, consejos para ahorrar y plantillas imprimibles exclusivas en tu correo.",
+    "emailPlaceholder": "Escribe tu correo electrónico",
+    "subscribe": "Suscribirme gratis",
+    "noSpam": "Sin spam. Puedes darte de baja cuando quieras.",
+    "backToTop": "Volver arriba",
+    "scrollToTop": "Desplazarse arriba",
+    "listDescription": "Consejos expertos, listas detalladas y guías de cronogramas para ayudarte a crear un día de boda sin estrés.",
+    "directory": "Directorio"
   }
 }

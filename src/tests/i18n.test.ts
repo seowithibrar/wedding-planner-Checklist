@@ -7,7 +7,7 @@ import {
   useTranslations,
   SITE_URL
 } from '../i18n/utils';
-import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '../i18n/config';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, INDEXED_LANGUAGES } from '../i18n/config';
 
 describe('i18n Utility Suite', () => {
   describe('getLangFromPath', () => {
@@ -60,20 +60,21 @@ describe('i18n Utility Suite', () => {
   });
 
   describe('getHreflangLinks', () => {
-    it('should generate reciprocal links for all supported languages plus x-default', () => {
+    it('should generate reciprocal links for indexed languages plus x-default', () => {
       const links = getHreflangLinks('/tools/budget-calculator');
-      const supportedCount = Object.keys(SUPPORTED_LANGUAGES).length;
-      
-      // Should include all supported languages + x-default
-      expect(links.length).toBe(supportedCount + 1);
+
+      // English + indexed languages + x-default
+      expect(links.length).toBe(1 + INDEXED_LANGUAGES.length + 1);
 
       const xDefault = links.find(l => l.lang === 'x-default');
       expect(xDefault).toBeDefined();
       expect(xDefault?.url).toBe(`${SITE_URL}/tools/budget-calculator`);
 
-      const urLink = links.find(l => l.lang === 'ur');
-      expect(urLink).toBeDefined();
-      expect(urLink?.url).toBe(`${SITE_URL}/ur/tools/budget-calculator`);
+      const esLink = links.find(l => l.lang === 'es');
+      expect(esLink?.url).toBe(`${SITE_URL}/es/tools/budget-calculator`);
+
+      // Untranslated languages must not be advertised to Google
+      expect(links.find(l => l.lang === 'ur')).toBeUndefined();
     });
 
     it('should strip trailing slashes and resolve legacy aliases to canonical URLs', () => {
@@ -85,8 +86,8 @@ describe('i18n Utility Suite', () => {
       const legacyEn = legacyLinks.find(l => l.lang === 'en');
       expect(legacyEn?.url).toBe(`${SITE_URL}/tools/wedding-checklist-generator`);
 
-      const legacyUr = legacyLinks.find(l => l.lang === 'ur');
-      expect(legacyUr?.url).toBe(`${SITE_URL}/ur/tools/wedding-checklist-generator`);
+      const legacyEs = legacyLinks.find(l => l.lang === 'es');
+      expect(legacyEs?.url).toBe(`${SITE_URL}/es/tools/wedding-checklist-generator`);
     });
   });
 

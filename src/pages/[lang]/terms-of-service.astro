@@ -1,4 +1,5 @@
 ---
+import GuideContent from '../../components/guides/GuideContent.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
@@ -23,10 +24,11 @@ const canonicalUrl = `${SITE_URL}/${currentLang}/terms-of-service`;
 
   <main class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-slate-700">
     <h1 class="text-3xl sm:text-4xl font-bold text-[#1A1A1A]">{common.footer.termsOfService}</h1>
-    <p class="text-xs text-slate-400">{common.ui.updated}: August 2026</p>
+    <p class="text-xs text-slate-400">{common.ui.updated}: {currentLang === 'es' ? 'agosto de 2026' : 'August 2026'}</p>
     <div class="prose max-w-none space-y-4 bg-white p-8 rounded-3xl border border-[#F3E8EA] shadow-sm">
-      <p>By accessing WeddingPlanningChecklists.org, you agree to comply with our usage guidelines and copyright terms.</p>
+      <p>{currentLang === 'es' ? 'Al acceder a WeddingPlanningChecklists.org, aceptas cumplir nuestras normas de uso y nuestras condiciones de derechos de autor.' : 'By accessing WeddingPlanningChecklists.org, you agree to comply with our usage guidelines and copyright terms.'}</p>
     </div>
+    <GuideContent kind="pages" slug="terms-of-service" lang={currentLang} class="bg-white p-6 sm:p-10 rounded-3xl border border-[#F3E8EA] shadow-sm" />
   </main>
 
   <Footer lang={currentLang} />

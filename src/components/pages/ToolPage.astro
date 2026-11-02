@@ -3,7 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../layout/Header.astro';
 import Footer from '../layout/Footer.astro';
 import toolRegistry from '../../data/tool-registry.json';
-import { generateBreadcrumbSchema, generateWebApplicationSchema } from '../../lib/schema';
+import { generateBreadcrumbSchema, generateWebApplicationSchema, generateFAQSchema } from '../../lib/schema';
+import GuideContent from '../guides/GuideContent.astro';
+import { getGuide, getGuideFaqs } from '../guides/guides';
 import { useTranslations, localizeUrl, SITE_URL } from '../../i18n/utils';
 import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
 
@@ -38,8 +40,9 @@ const canonicalUrl = currentLang === DEFAULT_LANGUAGE
   ? `${SITE_URL}/tools/${toolId}` 
   : `${SITE_URL}/${currentLang}/tools/${toolId}`;
 
+// Translated tool names are longer, so they skip the site-name suffix to stay under ~65 characters
 const seo = {
-  title: `${title} (2026)`,
+  title: currentLang === DEFAULT_LANGUAGE ? `${title} (2026)` : `${title} gratis (2026)`,
   description,
   canonical: canonicalUrl
 };
@@ -50,13 +53,17 @@ const breadcrumbItems = [
   { name: title, item: canonicalUrl }
 ];
 
+const hasGuide = Boolean(getGuide('tools', toolId, currentLang));
+const guideFaqs = getGuideFaqs('tools', toolId, currentLang);
+
 const schema = `[${[
   generateWebApplicationSchema({ name: title, description, url: canonicalUrl }),
-  generateBreadcrumbSchema(breadcrumbItems)
+  generateBreadcrumbSchema(breadcrumbItems),
+  generateFAQSchema(guideFaqs, canonicalUrl)
 ].filter(Boolean).join(',')}]`;
 ---
 
-<BaseLayout title={seo.title} description={seo.description} canonical={seo.canonical} schemaScript={schema} lang={currentLang}>
+<BaseLayout title={seo.title} titleIsFinal={currentLang !== DEFAULT_LANGUAGE} description={seo.description} canonical={seo.canonical} schemaScript={schema} lang={currentLang}>
   <Header lang={currentLang} />
 
   <main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -110,6 +117,27 @@ const schema = `[${[
       {(toolId === 'wedding-countdown') && <WeddingCountdown client:visible lang={currentLang} />}
       {(toolId === 'wedding-planning-dashboard' || toolId === 'planning-dashboard') && <PlanningDashboard client:visible lang={currentLang} />}
     </div>
+
+    <!-- Long-form guide for this tool -->
+    {hasGuide && (
+    <article class="max-w-4xl mx-auto mt-16 bg-white rounded-3xl border border-[#F3E8EA] p-6 sm:p-10 shadow-sm">
+      <GuideContent kind="tools" slug={toolId} lang={currentLang} />
+
+      {guideFaqs.length > 0 && (
+        <div class="space-y-4 pt-8 mt-8 border-t border-[#F3E8EA]">
+          <h2 class="text-xl font-bold text-[#1A1A1A]">{common.ui.faqs}</h2>
+          <div class="space-y-3">
+            {guideFaqs.map(faq => (
+              <div class="bg-slate-50 p-4 rounded-2xl space-y-1">
+                <h3 class="font-bold text-sm text-[#1A1A1A]">{faq.q}</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </article>
+    )}
   </main>
 
   <Footer lang={currentLang} />

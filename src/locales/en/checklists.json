@@ -11,5 +11,158 @@
     "destination": "Destination & Intimate Checklists",
     "dayOf": "Day-of & Emergency Checklists",
     "vendors": "Vendor & Organization Checklists"
+  },
+  "guideSuffix": "Guide",
+  "breadcrumb": "Checklists",
+  "summaryTitle": "Summary",
+  "tipLabel": "💡 Tip:",
+  "keyStepsTitle": "Key Execution Steps & Stages",
+  "proTipsTitle": "Pro Tips for Using This Checklist",
+  "proTipsIntro": "Organizing your wedding with a dedicated checklist ensures peace of mind. Combine this guide with our interactive planning tools to assign priorities, set deadlines, and track vendor budgets automatically.",
+  "proTips": [
+    {
+      "label": "Set Clear Priorities:",
+      "text": "Focus 60% of your initial planning time on the venue, caterer, and photographer."
+    },
+    {
+      "label": "Keep Budgets Updated:",
+      "text": "Log every deposit immediately to prevent unexpected cost overruns."
+    },
+    {
+      "label": "Delegate Tasks:",
+      "text": "Assign specific checklist items to your partner, maid of honor, or family members."
+    }
+  ],
+  "trackTitle": "Track This Checklist Live",
+  "trackText": "Use our interactive Wedding Planning Dashboard to check off tasks, track RSVPs, and save your progress in real-time.",
+  "relatedToolsTitle": "Related Planning Tools",
+  "exploreTitle": "Explore Other Categorized Checklists",
+  "defaultFaqs": [
+    {
+      "q": "How do I use the {title}?",
+      "a": "Start by reviewing the key takeaways and timeline stages outlined in this guide. Combine it with our free interactive tools to track your RSVPs, budget, and daily to-do lists."
+    },
+    {
+      "q": "Is the {title} completely free?",
+      "a": "Yes! All checklist templates and interactive planning tools on WeddingPlanningChecklists.org are 100% free to access, download, and print."
+    },
+    {
+      "q": "Can I customize this checklist for my wedding style?",
+      "a": "Absolutely. You can tailor every task by using our interactive Wedding Task Generator and Dashboard to add or remove custom items."
+    }
+  ],
+  "tip12": {
+    "before": "Planning on an accelerated or custom timeline? Learn ",
+    "anchor": "how to choose the right wedding checklist",
+    "href": "/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding",
+    "after": " for your target wedding date."
+  },
+  "slugNotes": {
+    "wedding-decor-flowers-checklist": [
+      {
+        "before": "Before you choose flowers and decor, use a ",
+        "anchor": "wedding moodboard",
+        "href": "/blog/moodboard-layout",
+        "after": " to share your colors, textures, and overall style with your vendors."
+      }
+    ],
+    "12-month-wedding-planning-checklist": [
+      {
+        "before": "Planning on a shorter engagement? Use the ",
+        "anchor": "6-month wedding planning checklist",
+        "href": "/checklists/6-month-wedding-planning-checklist",
+        "after": " for a faster timeline."
+      },
+      {
+        "before": "Need a faster plan? Follow the ",
+        "anchor": "3 month wedding planning checklist",
+        "href": "/checklists/3-month-wedding-planning-checklist",
+        "after": " for a focused 12-week timeline."
+      },
+      {
+        "before": "Set your spending plan early with this worked example of a ",
+        "anchor": "wedding budget by percentage",
+        "href": "/checklists/wedding-budget-calculator-30k",
+        "after": "."
+      },
+      {
+        "before": "Add your manicure dates to the plan with this guide to ",
+        "anchor": "booking your bridal nail trial",
+        "href": "/blog/wedding-nail-designs",
+        "after": "."
+      }
+    ],
+    "wedding-budget-calculator-50k": [
+      {
+        "before": "Comparing budget tiers? See how the numbers change in the ",
+        "anchor": "$30K wedding budget checklist",
+        "href": "/checklists/wedding-budget-calculator-30k",
+        "after": "."
+      }
+    ],
+    "3-month-wedding-planning-checklist": [
+      {
+        "before": "If you have a little more time, follow our ",
+        "anchor": "6-month wedding planning checklist",
+        "href": "/checklists/6-month-wedding-planning-checklist",
+        "after": " for a more flexible schedule."
+      }
+    ],
+    "intimate-small-wedding-checklist": [
+      {
+        "before": "Planning on a 90-day timeline? Use our ",
+        "anchor": "3 month wedding planning checklist",
+        "href": "/checklists/3-month-wedding-planning-checklist",
+        "after": " to prioritize bookings and deadlines."
+      }
+    ],
+    "18-month-wedding-planning-checklist": [
+      {
+        "before": "If your engagement is shorter, this ",
+        "anchor": "6 month wedding plan",
+        "href": "/checklists/6-month-wedding-planning-checklist",
+        "after": " prioritizes the decisions that cannot wait."
+      }
+    ],
+    "printable-wedding-planning-checklist": [
+      {
+        "before": "Need a shorter planning window? Use our ",
+        "anchor": "6 month wedding planning guide",
+        "href": "/checklists/6-month-wedding-planning-checklist",
+        "after": " for a 24-week timeline."
+      }
+    ],
+    "indian-wedding-checklist": [
+      {
+        "before": "Explore ",
+        "anchor": "Indian bridal hairstyle ideas",
+        "href": "/blog/indian-wedding-hairstyles-guide",
+        "after": " for Haldi, Mehendi, Sangeet and the ceremony."
+      }
+    ],
+    "wedding-day-of-timeline-checklist": [
+      {
+        "before": "Planning portrait blocks for your day-of run of show? Use our ",
+        "anchor": "wedding photography poses for beginners",
+        "href": "/blog/wedding-photography-poses-for-beginners",
+        "after": " guide to share a structured pose checklist with your photographer."
+      }
+    ],
+    "bridal-emergency-kit-checklist": [
+      {
+        "before": "Add a small ",
+        "anchor": "wedding nail repair kit",
+        "href": "/blog/wedding-nail-designs",
+        "after": " to the bag for quick fixes on the day."
+      }
+    ],
+    "wedding-vendor-booking-checklist": [
+      {
+        "before": "Hiring a wedding photographer? Prepare your portrait briefing and inspiration board in advance with our ",
+        "anchor": "wedding photography poses for beginners",
+        "href": "/blog/wedding-photography-poses-for-beginners",
+        "after": " checklist."
+      }
+    ]
   }
 }

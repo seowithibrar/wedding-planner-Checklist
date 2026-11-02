@@ -11,5 +11,158 @@
     "destination": "Listas de Destino e Íntimas",
     "dayOf": "Listas del Día de la Boda y Kit de Emergencia",
     "vendors": "Listas de Proveedores y Organización"
+  },
+  "guideSuffix": "Guía",
+  "breadcrumb": "Listas",
+  "summaryTitle": "Resumen",
+  "tipLabel": "💡 Consejo:",
+  "keyStepsTitle": "Pasos y etapas clave",
+  "proTipsTitle": "Consejos para sacar partido a esta lista",
+  "proTipsIntro": "Organizar tu boda con una lista específica te da tranquilidad. Combina esta guía con nuestras herramientas interactivas para fijar prioridades, poner plazos y controlar el presupuesto de cada proveedor de forma automática.",
+  "proTips": [
+    {
+      "label": "Fija prioridades claras:",
+      "text": "dedica el 60 % del tiempo inicial de planificación al lugar, el catering y el fotógrafo."
+    },
+    {
+      "label": "Mantén el presupuesto al día:",
+      "text": "registra cada anticipo en el momento para evitar sobrecostes inesperados."
+    },
+    {
+      "label": "Delega tareas:",
+      "text": "asigna puntos concretos de la lista a tu pareja, a tu dama de honor o a tu familia."
+    }
+  ],
+  "trackTitle": "Sigue esta lista en tiempo real",
+  "trackText": "Usa nuestro Panel de planificación de boda para marcar tareas, controlar las confirmaciones y guardar tu progreso al momento.",
+  "relatedToolsTitle": "Herramientas de planificación relacionadas",
+  "exploreTitle": "Explora otras listas por categoría",
+  "defaultFaqs": [
+    {
+      "q": "¿Cómo uso la {title}?",
+      "a": "Empieza revisando las ideas clave y las etapas del cronograma de esta guía. Combínala con nuestras herramientas interactivas gratuitas para controlar las confirmaciones, el presupuesto y tus tareas diarias."
+    },
+    {
+      "q": "¿La {title} es totalmente gratuita?",
+      "a": "Sí. Todas las plantillas de listas y herramientas interactivas de WeddingPlanningChecklists.org son 100 % gratuitas para consultar, descargar e imprimir."
+    },
+    {
+      "q": "¿Puedo adaptar esta lista al estilo de mi boda?",
+      "a": "Por supuesto. Puedes personalizar cada tarea con nuestro Generador de tareas de boda y el Panel de planificación para añadir o quitar puntos."
+    }
+  ],
+  "tip12": {
+    "before": "¿Tu calendario es acelerado o personalizado? Aprende ",
+    "anchor": "cómo elegir la lista de boda adecuada",
+    "href": "/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding",
+    "after": " para la fecha de tu boda."
+  },
+  "slugNotes": {
+    "wedding-decor-flowers-checklist": [
+      {
+        "before": "Antes de elegir flores y decoración, usa un ",
+        "anchor": "moodboard de boda",
+        "href": "/blog/moodboard-layout",
+        "after": " para compartir colores, texturas y estilo con tus proveedores."
+      }
+    ],
+    "12-month-wedding-planning-checklist": [
+      {
+        "before": "¿Tienes un compromiso más corto? Usa la ",
+        "anchor": "lista de planificación de boda de 6 meses",
+        "href": "/checklists/6-month-wedding-planning-checklist",
+        "after": " para un cronograma más rápido."
+      },
+      {
+        "before": "¿Necesitas un plan aún más rápido? Sigue la ",
+        "anchor": "lista para planificar una boda en 3 meses",
+        "href": "/checklists/3-month-wedding-planning-checklist",
+        "after": ", con un cronograma concentrado de 12 semanas."
+      },
+      {
+        "before": "Define pronto tu plan de gasto con este ejemplo práctico de ",
+        "anchor": "presupuesto de boda por porcentajes",
+        "href": "/checklists/wedding-budget-calculator-30k",
+        "after": "."
+      },
+      {
+        "before": "Añade al plan las citas de manicura con esta guía para ",
+        "anchor": "reservar tu prueba de uñas de novia",
+        "href": "/blog/wedding-nail-designs",
+        "after": "."
+      }
+    ],
+    "wedding-budget-calculator-50k": [
+      {
+        "before": "¿Comparas niveles de presupuesto? Mira cómo cambian las cifras en la ",
+        "anchor": "lista de presupuesto de boda de 30.000 $",
+        "href": "/checklists/wedding-budget-calculator-30k",
+        "after": "."
+      }
+    ],
+    "3-month-wedding-planning-checklist": [
+      {
+        "before": "Si tienes algo más de tiempo, sigue nuestra ",
+        "anchor": "lista de planificación de boda de 6 meses",
+        "href": "/checklists/6-month-wedding-planning-checklist",
+        "after": " para un calendario más flexible."
+      }
+    ],
+    "intimate-small-wedding-checklist": [
+      {
+        "before": "¿Planificas en 90 días? Usa nuestra ",
+        "anchor": "lista para planificar una boda en 3 meses",
+        "href": "/checklists/3-month-wedding-planning-checklist",
+        "after": " para priorizar reservas y plazos."
+      }
+    ],
+    "18-month-wedding-planning-checklist": [
+      {
+        "before": "Si tu compromiso es más corto, este ",
+        "anchor": "plan de boda de 6 meses",
+        "href": "/checklists/6-month-wedding-planning-checklist",
+        "after": " prioriza las decisiones que no pueden esperar."
+      }
+    ],
+    "printable-wedding-planning-checklist": [
+      {
+        "before": "¿Necesitas un plazo más corto? Usa nuestra ",
+        "anchor": "guía de planificación de boda de 6 meses",
+        "href": "/checklists/6-month-wedding-planning-checklist",
+        "after": " con un cronograma de 24 semanas."
+      }
+    ],
+    "indian-wedding-checklist": [
+      {
+        "before": "Descubre ",
+        "anchor": "ideas de peinados de novia india",
+        "href": "/blog/indian-wedding-hairstyles-guide",
+        "after": " para el Haldi, el Mehendi, el Sangeet y la ceremonia."
+      }
+    ],
+    "wedding-day-of-timeline-checklist": [
+      {
+        "before": "¿Estás planificando los bloques de retratos del día? Usa nuestra guía de ",
+        "anchor": "poses de fotografía de boda para principiantes",
+        "href": "/blog/wedding-photography-poses-for-beginners",
+        "after": " y comparte con tu fotógrafo una lista de poses ordenada."
+      }
+    ],
+    "bridal-emergency-kit-checklist": [
+      {
+        "before": "Añade a la bolsa un pequeño ",
+        "anchor": "kit de reparación de uñas",
+        "href": "/blog/wedding-nail-designs",
+        "after": " para arreglos rápidos durante el día."
+      }
+    ],
+    "wedding-vendor-booking-checklist": [
+      {
+        "before": "¿Vas a contratar fotógrafo? Prepara con antelación tus indicaciones para los retratos y tu tablero de inspiración con nuestra lista de ",
+        "anchor": "poses de fotografía de boda para principiantes",
+        "href": "/blog/wedding-photography-poses-for-beginners",
+        "after": "."
+      }
+    ]
   }
 }

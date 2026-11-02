@@ -6,6 +6,7 @@ import categorizedChecklists from '../../data/categorized-checklists.json';
 import toolRegistry from '../../data/tool-registry.json';
 import { NON_DEFAULT_LANGUAGES, type SupportedLanguage } from '../../i18n/config';
 import { useTranslations, localizeUrl, SITE_URL } from '../../i18n/utils';
+import { localizeChecklist } from '../../i18n/checklists';
 
 export function getStaticPaths() {
   return NON_DEFAULT_LANGUAGES.map(lang => ({
@@ -18,6 +19,20 @@ const currentLang = lang as SupportedLanguage;
 const { common, pages } = useTranslations(currentLang);
 
 const canonicalUrl = `${SITE_URL}/${currentLang}/sitemap`;
+
+// Tool names already exist in the footer translations
+const toolLabelKey: Record<string, string> = {
+  'budget-calculator': 'budgetCalculator',
+  'timeline-generator': 'timelineGenerator',
+  'guest-list-manager': 'guestListManager',
+  'wedding-checklist-generator': 'checklistGenerator',
+  'wedding-planning-timeline': 'planningTimeline',
+  'wedding-planning-calendar': 'planningCalendar',
+  'wedding-countdown': 'weddingCountdown',
+  'wedding-planning-dashboard': 'planningDashboard'
+};
+const toolTitle = (tool: { id: string; title: string }) => (common.footer as any)[toolLabelKey[tool.id]] || tool.title;
+const directoryLabel = (common as any).blogUi?.directory || 'Directory';
 ---
 
 <BaseLayout title={pages.sitemap.title} description={pages.sitemap.description} canonical={canonicalUrl} lang={currentLang}>
@@ -25,7 +40,7 @@ const canonicalUrl = `${SITE_URL}/${currentLang}/sitemap`;
 
   <main class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
     <div class="text-center space-y-4">
-      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">Directory</span>
+      <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">{directoryLabel}</span>
       <h1 class="text-3xl sm:text-5xl font-black text-[#1A1A1A]">{common.footer.sitemap}</h1>
       <p class="text-slate-600 text-sm max-w-xl mx-auto">{pages.sitemap.description}</p>
     </div>
@@ -40,7 +55,7 @@ const canonicalUrl = `${SITE_URL}/${currentLang}/sitemap`;
           {toolRegistry.tools.map(tool => (
             <li>
               <a href={localizeUrl(tool.href, currentLang)} class="hover:text-[#B76E79] transition-colors flex items-center justify-between py-1 border-b border-slate-50">
-                <span>{tool.title}</span>
+                <span>{toolTitle(tool)}</span>
                 <span class="rtl-flip">→</span>
               </a>
             </li>
@@ -54,7 +69,7 @@ const canonicalUrl = `${SITE_URL}/${currentLang}/sitemap`;
           <span>📋</span> {common.footer.timelinesTitle}
         </h2>
         <ul class="space-y-2 text-sm text-slate-600">
-          {categorizedChecklists.checklists.map(item => (
+          {categorizedChecklists.checklists.map(source => localizeChecklist(source, currentLang)).map(item => (
             <li>
               <a href={localizeUrl(`/checklists/${item.slug}`, currentLang)} class="hover:text-[#B76E79] transition-colors flex items-center justify-between py-1 border-b border-slate-50">
                 <span>{item.title}</span>

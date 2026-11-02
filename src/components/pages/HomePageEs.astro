@@ -1,0 +1,1195 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../layout/Header.astro';
+import Footer from '../layout/Footer.astro';
+import toolRegistry from '../../data/tool-registry.json';
+import categorizedChecklists from '../../data/categorized-checklists.json';
+import { useTranslations, localizeUrl } from '../../i18n/utils';
+import { localizeChecklist } from '../../i18n/checklists';
+import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang = DEFAULT_LANGUAGE } = Astro.props;
+const currentLang = lang as SupportedLanguage;
+const { t, common, home, tools } = useTranslations(currentLang);
+
+const siteUrl = 'https://www.weddingplanningchecklists.org';
+const currentCanonical = currentLang === DEFAULT_LANGUAGE ? `${siteUrl}/` : `${siteUrl}/${currentLang}`;
+
+const seo = {
+  title: 'Lista de planificación de boda y herramientas gratis',
+  description: 'Lista de boda gratis, guía paso a paso, calculadora de presupuesto y 14 herramientas. Cronogramas para cada etapa, con bodas pakistaníes e indias.',
+  ogTitle: 'Lista de planificación de boda y herramientas gratuitas',
+  ogDescription: 'Planifica tu boda paso a paso con una lista gratuita, una calculadora de presupuesto, cronogramas y 14 herramientas interactivas, incluidas listas para bodas pakistaníes e indias.',
+  canonical: currentCanonical,
+  publishDate: '2024-01-01T00:00:00Z',
+  modifiedDate: '2026-09-17T00:00:00Z'
+};
+
+const faqs = [
+  {
+    num: 1,
+    category: 'Cronograma',
+    q: '¿Qué es una lista de planificación de boda?',
+    a: 'Una lista de planificación de boda es una lista de tareas que divide la organización de la boda en pasos concretos y ordenados (presupuesto, lugar, lista de invitados, proveedores, atuendo y logística del día) organizados por plazos para que siempre sepas qué hacer y cuándo.'
+  },
+  {
+    num: 2,
+    category: 'Cronograma',
+    q: '¿Cómo empiezo a planificar una boda?',
+    a: 'Empieza fijando tu presupuesto con una calculadora de presupuesto de boda y después elige la fecha y el lugar, porque esas dos decisiones condicionan casi todas las demás, incluida la lista de invitados, las reservas de proveedores y el cronograma.'
+  },
+  {
+    num: 3,
+    category: 'Cronograma',
+    q: '¿Hay una lista de planificación de boda gratuita que pueda descargar?',
+    a: 'Sí. Nuestra lista gratuita está disponible en PDF imprimible, y también puedes usar el Generador de listas de boda gratuito para crear una versión personalizada según la fecha de tu boda.'
+  },
+  {
+    num: 4,
+    category: 'Cronograma',
+    q: '¿Qué es un cronograma de planificación de boda?',
+    a: 'Un cronograma de boda asigna cada tarea a meses o semanas concretos antes de la boda, para que hagas cosas como reservar el lugar o enviar las invitaciones en el momento adecuado y no demasiado pronto o, peor aún, demasiado tarde.'
+  },
+  {
+    num: 5,
+    category: 'Cronograma',
+    q: '¿Con cuánta antelación debo empezar a planificar la boda?',
+    a: 'La mayoría de las parejas empiezan entre 12 y 18 meses antes de la boda, aunque una lista acelerada de 6 o de 3 meses funciona bien para compromisos más cortos.'
+  },
+  {
+    num: 6,
+    category: 'Presupuesto',
+    q: '¿Qué debe incluir una lista de presupuesto de boda?',
+    a: 'Una lista de presupuesto de boda debe dividir el presupuesto total en categorías (lugar, catering, fotografía, atuendo, flores y entretenimiento) con un porcentaje o un rango de importe recomendado para cada una.'
+  },
+  {
+    num: 7,
+    category: 'Proveedores',
+    q: '¿Tenéis listas para bodas pakistaníes o indias?',
+    a: 'Sí. Tenemos una lista específica para bodas pakistaníes y musulmanas de varios días y una lista maestra para bodas indias, ambas organizadas según la secuencia completa de eventos de varios días y no en formato de un solo día.'
+  },
+  {
+    num: 8,
+    category: 'Cronograma',
+    q: '¿Qué es un generador de listas de boda?',
+    a: 'Un generador de listas de boda es una herramienta interactiva que crea una lista de planificación personalizada según la fecha de tu boda y ordena automáticamente las tareas por plazo, en lugar de darte una lista genérica para todo el mundo.'
+  },
+  {
+    num: 9,
+    category: 'Cronograma',
+    q: '¿Qué diferencia hay entre una lista de planificación de boda y el cronograma del día de la boda?',
+    a: 'La lista de planificación cubre todo lo previo a la boda, durante meses o un año, mientras que el cronograma del día cubre solo las horas del propio día de la boda, desde la peluquería y el maquillaje hasta el último baile.'
+  },
+  {
+    num: 10,
+    category: 'Proveedores',
+    q: '¿Las herramientas de planificación de esta web son realmente gratuitas?',
+    a: 'Sí. Las 14 herramientas interactivas, incluidas la Calculadora de presupuesto, el Gestor de invitados y el Generador de listas, son gratuitas.'
+  }
+];
+
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.weddingplanningchecklists.org/#website",
+      "url": "https://www.weddingplanningchecklists.org/",
+      "name": "WeddingPlanningChecklists.org",
+      "description": "Listas de planificación de boda gratuitas, cronogramas, calculadora de presupuesto y herramientas interactivas de planificación.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.weddingplanningchecklists.org/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.weddingplanningchecklists.org/#organization",
+      "name": "WeddingPlanningChecklists.org",
+      "url": "https://www.weddingplanningchecklists.org/",
+      "sameAs": []
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.weddingplanningchecklists.org/es#webpage",
+      "url": "https://www.weddingplanningchecklists.org/es",
+      "inLanguage": "es",
+      "name": "Lista de planificación de boda: guía gratuita, cronogramas, calculadora de presupuesto y herramientas",
+      "isPartOf": { "@id": "https://www.weddingplanningchecklists.org/#website" },
+      "about": { "@id": "https://www.weddingplanningchecklists.org/#organization" },
+      "description": "Lista de planificación de boda gratuita, guía paso a paso, calculadora de presupuesto y 14 herramientas con cronogramas para cada etapa.",
+      "datePublished": seo.publishDate,
+      "dateModified": seo.modifiedDate
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.weddingplanningchecklists.org/es#faq",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    }
+  ]
+};
+
+const combinedSchema = JSON.stringify(schemaGraph);
+---
+
+<BaseLayout 
+  title={seo.title}
+  titleIsFinal={true}
+  description={seo.description} 
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  canonical={seo.canonical} 
+  image="/wedding-planning-checklist-hero.jpg"
+  publishDate={seo.publishDate}
+  modifiedDate={seo.modifiedDate}
+  schemaScript={combinedSchema} 
+  lang={currentLang}
+>
+  <Header lang={currentLang} />
+
+  <main class="space-y-16 sm:space-y-24">
+    <!-- SECTION 1: HERO SECTION -->
+    <section class="relative pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden bg-gradient-to-b from-[#FCECF0]/60 via-white to-transparent">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center space-y-6">
+        <div class="inline-flex items-center gap-2 bg-[#FCECF0] text-[#B76E79] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm border border-[#F3E8EA]">
+          <span class="w-2 h-2 rounded-full bg-[#B76E79] animate-pulse"></span>
+          <span>Guía gratuita para planificar tu boda y 14 herramientas interactivas</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#1A1A1A] leading-[1.15] tracking-tight font-serif max-w-5xl mx-auto">
+          Lista de planificación de boda: <span class="text-[#B76E79]">guía gratuita</span>, cronogramas, calculadora de presupuesto y herramientas
+        </h1>
+
+        <p class="text-base sm:text-lg lg:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-normal">
+          Planificar una boda no tiene por qué ser abrumador. WeddingPlanningChecklists.org ofrece a las parejas prometidas una lista de planificación de boda gratuita, una guía completa paso a paso y una biblioteca de herramientas interactivas pensadas para responder a una pregunta en cada etapa: <strong>¿qué hago ahora?</strong> En lugar de notas sueltas, hojas de cálculo a medias y consejos genéricos, tienes un cronograma real, una calculadora de presupuesto, un gestor de la lista de invitados y listas imprimibles organizadas por meses, por presupuesto y por cultura, incluidas listas específicas para bodas pakistaníes, indias y del sur de Asia. Cada herramienta y cada lista de esta web persiguen el mismo objetivo: ayudarte a pasar de «¿por dónde empiezo?» a un día de boda totalmente organizado, sin olvidar ni una sola tarea.
+        </p>
+
+        <!-- Primary Hero Action Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 pt-2">
+          <a 
+            href={localizeUrl('/checklists/printable-wedding-planning-checklist', currentLang)} 
+            class="bg-[#B76E79] hover:bg-[#a25d66] text-white px-8 py-4 rounded-full text-sm sm:text-base font-bold shadow-lg shadow-[#B76E79]/20 transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
+          >
+            <span>📥 Descargar la lista gratis (PDF)</span>
+          </a>
+          <a 
+            href={localizeUrl('/tools/wedding-checklist-generator', currentLang)} 
+            class="bg-white hover:bg-[#FCECF0]/40 text-[#1A1A1A] border-2 border-[#B76E79]/30 px-8 py-4 rounded-full text-sm sm:text-base font-bold transition-all shadow-sm flex items-center gap-2"
+          >
+            <span>⚡ Generador de listas de boda gratis</span>
+          </a>
+          <a 
+            href={localizeUrl('/tools/wedding-planning-dashboard', currentLang)} 
+            class="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-full text-sm sm:text-base font-bold transition-all shadow-md flex items-center gap-2"
+          >
+            <span>📊 Panel de planificación de boda</span>
+          </a>
+        </div>
+
+        <!-- Social Proof Stats (User Screenshot design) -->
+        <div class="pt-10 grid grid-cols-2 sm:grid-cols-4 max-w-4xl mx-auto gap-6 border-t border-[#F3E8EA] mt-10 text-center">
+          <div class="p-4 rounded-2xl bg-white border border-[#F3E8EA]/60 shadow-xs">
+            <p class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">14</p>
+            <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Herramientas interactivas</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white border border-[#F3E8EA]/60 shadow-xs">
+            <p class="text-3xl sm:text-4xl font-black text-[#B76E79]">20+</p>
+            <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Listas imprimibles</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white border border-[#F3E8EA]/60 shadow-xs">
+            <p class="text-3xl sm:text-4xl font-black text-[#D4AF37]">$10k–$50k+</p>
+            <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Guías de presupuesto</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white border border-[#F3E8EA]/60 shadow-xs">
+            <p class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">100%</p>
+            <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Herramientas gratis y sin anuncios</p>
+          </div>
+        </div>
+
+        <!-- HERO IMAGE (16:9) -->
+        <figure class="relative max-w-5xl mx-auto mt-10 rounded-3xl overflow-hidden shadow-2xl border border-[#F3E8EA] bg-white group">
+          <img 
+            src="/wedding-planning-checklist-hero.jpg" 
+            alt="Lista de planificación de boda gratuita y planificador de presupuesto sobre una mesa" 
+            width="1200" 
+            height="675" 
+            class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-500" 
+            loading="eager" 
+            fetchpriority="high" 
+          />
+          <figcaption class="p-4 bg-white/95 backdrop-blur-sm border-t border-slate-100 text-xs sm:text-sm text-slate-600 flex flex-wrap items-center justify-between gap-2">
+            <span class="font-medium text-[#1A1A1A]">Bodegón editorial: lista de planificación, hoja de presupuesto y cronograma</span>
+            <span class="text-[#B76E79] font-bold">Recursos 100 % gratuitos &bull; Actualizado para 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SECTION 2: WHAT IS WEDDINGPLANNINGCHECKLISTS.ORG? -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-8">
+        <div class="max-w-3xl space-y-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Nuestra misión y nuestro ecosistema de planificación
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+            ¿Qué es WeddingPlanningChecklists.org?
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            WeddingPlanningChecklists.org es un centro de recursos para planificar bodas construido en torno a cuatro ideas que toda pareja necesita: <strong>listas, cronogramas, calculadoras y seguimiento</strong>. En lugar de un único artículo larguísimo que intenta explicar una boda entera, la web está organizada como un sistema conectado: nuestra <a href={localizeUrl('/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">guía de listas de planificación de boda</a> enlaza directamente con el cronograma, el nivel de presupuesto o la lista de proveedores que necesitas en cada etapa. La web incluye 14 herramientas interactivas, más de 20 listas descargables e imprimibles y una biblioteca creciente de guías que abarcan desde el presupuesto, la lista de invitados y los contratos con proveedores hasta los peinados de novia y las tradiciones de las bodas culturales de varios días. El objetivo de cada página es sencillo: dar a novias, novios y organizadoras un único lugar para planificar, organizar, calcular y seguir cada tarea desde el compromiso hasta el «sí, quiero», en lugar de reunir información de una docena de webs distintas.
+          </p>
+        </div>
+
+        <!-- 4 Core Pillars Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+          <div class="p-6 rounded-2xl bg-[#FAFAFA] border border-slate-100 space-y-3 hover:border-[#B76E79]/30 transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-2xl font-bold">✓</div>
+            <h3 class="font-bold text-lg text-[#1A1A1A]">1. Listas maestras</h3>
+            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+              Carpetas en PDF imprimibles, calendarios de tareas mensuales y listas de emergencia para el día, en orden cronológico.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#FAFAFA] border border-slate-100 space-y-3 hover:border-[#B76E79]/30 transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-2xl font-bold">📅</div>
+            <h3 class="font-bold text-lg text-[#1A1A1A]">2. Cronogramas reales</h3>
+            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+              Cuentas regresivas a medida de 18 a 3 meses y generadores del horario del día de la boda hora a hora.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#FAFAFA] border border-slate-100 space-y-3 hover:border-[#B76E79]/30 transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-2xl font-bold">💰</div>
+            <h3 class="font-bold text-lg text-[#1A1A1A]">3. Calculadoras de presupuesto</h3>
+            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+              Límites de gasto por categoría para presupuestos de 10.000 $, 20.000 $, 30.000 $ y más de 50.000 $, con control de pagos a proveedores.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#FAFAFA] border border-slate-100 space-y-3 hover:border-[#B76E79]/30 transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center text-2xl font-bold">📊</div>
+            <h3 class="font-bold text-lg text-[#1A1A1A]">4. Seguimiento en tiempo real</h3>
+            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+              Panel de boda unificado, organizador de invitados y confirmaciones, control de dietas y avisos de plazos e hitos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: KEY FEATURES OVERVIEW (OLD DESIGN) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="text-center space-y-3 mb-12">
+        <h2 class="text-3xl font-black text-[#1A1A1A]">{home.features.title}</h2>
+        <p class="text-slate-600 text-sm max-w-xl mx-auto">{home.features.subtitle}</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href={localizeUrl('/tools/wedding-checklist-generator', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">✓</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['wedding-checklist-generator']?.title || 'Smart Checklist'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['wedding-checklist-generator']?.description || 'Manage every detail with our priority-sorted task manager organized by timeline.'}</p>
+        </a>
+
+        <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">👥</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['guest-list-manager']?.title || 'Guest List'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['guest-list-manager']?.description || 'Keep track of RSVPs, dietary needs, meal choices, seating, and plus-ones easily.'}</p>
+        </a>
+
+        <a href={localizeUrl('/tools/budget-calculator', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">💰</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['budget-calculator']?.title || 'Budget Tracker'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['budget-calculator']?.description || 'Never overspend with real-time allocation across venue, catering, photo & buffer.'}</p>
+        </a>
+
+        <a href={localizeUrl('/tools/timeline-generator', currentLang)} class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm space-y-3 hover:border-[#B76E79]/40 hover:shadow-md transition-all group block">
+          <div class="w-10 h-10 rounded-2xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-lg">📅</div>
+          <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{(tools.tools as any)['timeline-generator']?.title || 'Timeline Planner'}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{(tools.tools as any)['timeline-generator']?.description || 'Visual milestone maps and time-blocked daily schedules for your big day.'}</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 14 INTERACTIVE PLANNING TOOLS GRID (OLD DESIGN) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="text-center space-y-3 mb-12">
+        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider">{home.features.toolsBadge}</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">14 herramientas interactivas gratuitas para planificar tu boda</h2>
+        <p class="text-slate-600 max-w-xl mx-auto text-sm">
+          Todas las herramientas se sincronizan con la fecha de tu boda y guardan tu progreso de forma segura en tu navegador.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {toolRegistry.tools.map(tool => {
+          const localizedTool = tools.tools[tool.id as keyof typeof tools.tools] || tool;
+          return (
+            <a
+              href={localizeUrl(tool.href, currentLang)}
+              class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md hover:border-[#B76E79]/40 transition-all group flex flex-col justify-between"
+            >
+              <div class="space-y-3">
+                <span class="inline-block text-[10px] font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-2.5 py-1 rounded-full">
+                  {localizedTool.category || tool.category}
+                </span>
+                <h3 class="font-bold text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">{localizedTool.title || tool.title}</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">{localizedTool.description || tool.description}</p>
+              </div>
+              <div class="pt-4 flex items-center gap-1 text-xs font-bold text-[#B76E79]">
+                <span>{common.buttons.useTool}</span>
+                <span class="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl-flip">→</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- SECTION 5: 20 CATEGORIZED CHECKLISTS & TOOL GUIDES (OLD DESIGN) -->
+    <section id="categorized-checklists" class="max-w-[1300px] mx-auto px-4 sm:px-6 py-12 border-t border-slate-100">
+      <div class="text-center space-y-3 mb-12">
+        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider bg-[#FCECF0] px-3.5 py-1 rounded-full">
+          {home.checklistsSection.badge}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A]">{home.checklistsSection.title}</h2>
+        <p class="text-slate-600 max-w-xl mx-auto text-sm">
+          {home.checklistsSection.subtitle}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {categorizedChecklists.checklists.map(source => localizeChecklist(source, currentLang)).map(item => (
+          <a
+            href={localizeUrl(`/checklists/${item.slug}`, currentLang)}
+            class="bg-white rounded-3xl p-6 border border-[#F3E8EA] shadow-sm hover:shadow-md hover:border-[#B76E79]/40 transition-all group flex flex-col justify-between"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">{item.icon}</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-2.5 py-0.5 rounded-full">
+                  {item.badge}
+                </span>
+              </div>
+              <h3 class="font-bold text-base text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors leading-snug">
+                {item.title}
+              </h3>
+              <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                {item.description}
+              </p>
+            </div>
+            <div class="pt-4 flex items-center justify-between text-xs font-bold text-[#B76E79] border-t border-slate-50 mt-4">
+              <span class="text-[11px] text-slate-400 font-medium">{item.targetTimeline}</span>
+              <span class="flex items-center gap-1">
+                <span>{common.buttons.viewChecklist}</span>
+                <span class="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl-flip">→</span>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- SECTION 6: FREE WEDDING PLANNING CHECKLIST — START HERE -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-100 pt-16">
+      <div class="bg-gradient-to-br from-white to-[#FCECF0]/30 rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-5">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Punto de partida recomendado
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+            Lista de planificación de boda gratuita: empieza aquí
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Si solo te quedas con una cosa de esta página, que sea esta: descarga la lista de planificación de boda gratuita antes de hacer nada más. Una lista de planificación te da una relación maestra de todas las tareas que de verdad exige una boda (lugar, presupuesto, lista de invitados, proveedores, atuendo, invitaciones, trámites legales y logística del día) ordenadas tal como las tendrás que abordar en la realidad, y no por orden alfabético o al azar.
+          </p>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Nuestra lista gratuita está disponible en <a href={localizeUrl('/checklists/printable-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">PDF imprimible</a>, para que trabajes con una copia en papel en la mesa de la cocina, en una carpeta de planificación o en un corcho donde todo el cortejo pueda verla. Para las parejas que quieren una lista adaptada a la fecha exacta de su boda, el <a href={localizeUrl('/tools/wedding-checklist-generator', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Generador de listas de boda</a> crea automáticamente una lista totalmente personalizada, tarea por tarea, ordenando cada paso hacia atrás desde el día de tu boda para que nunca tengas que adaptar el cronograma genérico de otra persona.
+          </p>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Combina cualquiera de las dos versiones con el <a href={localizeUrl('/tools/wedding-planning-dashboard', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Panel de planificación de boda</a> para seguir las tareas terminadas, los próximos plazos y los anticipos a proveedores desde una sola pantalla, actualizada al momento a medida que marcas tareas.
+          </p>
+
+          <div class="pt-2 flex flex-wrap gap-4">
+            <a 
+              href={localizeUrl('/checklists/printable-wedding-planning-checklist', currentLang)} 
+              class="bg-[#B76E79] hover:bg-[#a25d66] text-white px-6 py-3 rounded-full text-sm font-bold shadow-md transition-all flex items-center gap-2"
+            >
+              <span>📄 Obtener la lista imprimible en PDF</span>
+            </a>
+            <a 
+              href={localizeUrl('/tools/wedding-checklist-generator', currentLang)} 
+              class="bg-white hover:bg-slate-50 text-[#1A1A1A] border border-slate-200 px-6 py-3 rounded-full text-sm font-bold shadow-xs transition-all flex items-center gap-2"
+            >
+              <span>⚙️ generador de listas de boda gratis</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- IMAGE: Printable checklist in use -->
+        <div class="lg:col-span-5">
+          <figure class="rounded-3xl overflow-hidden shadow-xl border border-[#F3E8EA] bg-white group">
+            <img 
+              src="/free-wedding-planning-checklist-pdf.jpg" 
+              alt="Lista de planificación de boda gratuita e imprimible en PDF" 
+              width="800" 
+              height="1067" 
+              class="w-full h-auto object-cover transform group-hover:scale-102 transition-transform duration-500" 
+              loading="lazy" 
+            />
+            <figcaption class="p-3 bg-white border-t border-slate-100 text-xs text-center text-slate-500 font-medium">
+              Lista de planificación de boda gratuita en PDF, en formato de carpeta
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: QUICK WEDDING CHECKLIST (IF YOU'RE SHORT ON TIME) -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
+        <div class="max-w-3xl space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Lista exprés
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+            Lista rápida de boda (si vas justa de tiempo)
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed">
+            No todas las parejas tienen de 12 a 18 meses para planificar. Si tu boda se acerca rápido, o simplemente quieres una lista rápida para comprobar lo más importante, céntrate primero en estos imprescindibles:
+          </p>
+        </div>
+
+        <!-- Interactive 7 Non-Negotiables Checklist Card -->
+        <div class="bg-[#FAFAFA] rounded-2xl p-6 sm:p-8 border border-slate-200/80 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+            <span class="text-xs font-bold uppercase text-slate-500 tracking-wider">7 tareas imprescindibles</span>
+            <span id="quick-counter" class="text-xs font-bold text-[#B76E79] bg-[#FCECF0] px-2.5 py-1 rounded-full">0 de 7 completadas</span>
+          </div>
+
+          <ul class="space-y-3 text-sm sm:text-base text-slate-700">
+            <li class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-xs hover:border-[#B76E79]/40 transition-colors">
+              <input type="checkbox" class="mt-1 w-5 h-5 rounded text-[#B76E79] border-slate-300 focus:ring-[#B76E79] cursor-pointer quick-task" id="quick-1" />
+              <label for="quick-1" class="cursor-pointer leading-snug">
+                <strong>1. Lugar y fecha:</strong> confirma por escrito el lugar y la fecha, con un contrato firmado y el recibo del anticipo.
+              </label>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-xs hover:border-[#B76E79]/40 transition-colors">
+              <input type="checkbox" class="mt-1 w-5 h-5 rounded text-[#B76E79] border-slate-300 focus:ring-[#B76E79] cursor-pointer quick-task" id="quick-2" />
+              <label for="quick-2" class="cursor-pointer leading-snug">
+                <strong>2. Techo de presupuesto:</strong> cierra tu presupuesto total y fija límites de gasto por categoría con la <a href={localizeUrl('/tools/budget-calculator', currentLang)} class="text-[#B76E79] font-bold underline">Calculadora de presupuesto de boda</a>.
+              </label>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-xs hover:border-[#B76E79]/40 transition-colors">
+              <input type="checkbox" class="mt-1 w-5 h-5 rounded text-[#B76E79] border-slate-300 focus:ring-[#B76E79] cursor-pointer quick-task" id="quick-3" />
+              <label for="quick-3" class="cursor-pointer leading-snug">
+                <strong>3. Proveedores clave:</strong> reserva primero tus tres proveedores principales (fotógrafo, catering y coordinadora del lugar), porque sus fechas son las que antes se llenan.
+              </label>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-xs hover:border-[#B76E79]/40 transition-colors">
+              <input type="checkbox" class="mt-1 w-5 h-5 rounded text-[#B76E79] border-slate-300 focus:ring-[#B76E79] cursor-pointer quick-task" id="quick-4" />
+              <label for="quick-4" class="cursor-pointer leading-snug">
+                <strong>4. Save the date:</strong> envía las invitaciones o los save the date digitales en cuanto la fecha y el lugar estén confirmados.
+              </label>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-xs hover:border-[#B76E79]/40 transition-colors">
+              <input type="checkbox" class="mt-1 w-5 h-5 rounded text-[#B76E79] border-slate-300 focus:ring-[#B76E79] cursor-pointer quick-task" id="quick-5" />
+              <label for="quick-5" class="cursor-pointer leading-snug">
+                <strong>5. Número de invitados:</strong> crea una lista de invitados sencilla y un control de confirmaciones con el <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="text-[#B76E79] font-bold underline">Gestor de la lista de invitados</a> para que el recuento del catering sea exacto.
+              </label>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-xs hover:border-[#B76E79]/40 transition-colors">
+              <input type="checkbox" class="mt-1 w-5 h-5 rounded text-[#B76E79] border-slate-300 focus:ring-[#B76E79] cursor-pointer quick-task" id="quick-6" />
+              <label for="quick-6" class="cursor-pointer leading-snug">
+                <strong>6. Horario del día:</strong> haz un borrador del cronograma del día con el <a href={localizeUrl('/tools/timeline-generator', currentLang)} class="text-[#B76E79] font-bold underline">Generador del cronograma del día</a> para que cada proveedor sepa su hora de llegada y de montaje.
+              </label>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-xs hover:border-[#B76E79]/40 transition-colors">
+              <input type="checkbox" class="mt-1 w-5 h-5 rounded text-[#B76E79] border-slate-300 focus:ring-[#B76E79] cursor-pointer quick-task" id="quick-7" />
+              <label for="quick-7" class="cursor-pointer leading-snug">
+                <strong>7. Kit de emergencia:</strong> prepara un kit de emergencia de novia para el propio día de la boda.
+              </label>
+            </li>
+          </ul>
+
+          <div class="p-4 rounded-xl bg-[#FCECF0]/50 border border-[#F3E8EA] text-xs sm:text-sm text-slate-700">
+            💡 <em>Una lista rápida como esta no sustituye a una lista de planificación completa: es una forma de asegurarte de que no se escapa nada crítico cuando vas justa de tiempo.</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: HOW TO PLAN A WEDDING STEP BY STEP -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-10">
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Marco general
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1A1A1A] font-serif">
+            Cómo planificar una boda paso a paso
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Todas las bodas siguen la misma estructura de fondo, aunque cada una sea completamente distinta el gran día. Este es un marco de planificación paso a paso que puedes seguir desde el compromiso hasta el día de tu boda:
+          </p>
+        </div>
+
+        <!-- INFOGRAPHIC IMAGE -->
+        <figure class="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-xl border border-[#F3E8EA] bg-white group">
+          <img 
+            src="/wedding-planning-steps-infographic.jpg" 
+            alt="Infografía del proceso de planificación de una boda paso a paso" 
+            width="900" 
+            height="900" 
+            class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-500" 
+            loading="lazy" 
+          />
+          <figcaption class="p-3 bg-white border-t border-slate-100 text-xs text-center text-slate-500 font-medium">
+            Infografía del marco de planificación de boda en 10 pasos
+          </figcaption>
+        </figure>
+
+        <!-- 10 Detailed Step Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Step 1 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#F3E8EA] shadow-xs space-y-3 relative hover:shadow-md transition-shadow">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#B76E79] text-white text-sm font-extrabold">1</span>
+            <h3 class="text-lg font-bold text-[#1A1A1A]">Fija primero el presupuesto</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Antes de enamorarte de un lugar que no puedes pagar, decide cuánto puedes gastar de forma realista en la boda. Usa la <a href={localizeUrl('/tools/budget-calculator', currentLang)} class="text-[#B76E79] font-bold underline">Calculadora de presupuesto de boda</a> para dividir el total en objetivos por categoría (lugar, catering, atuendo, fotografía, flores y entretenimiento) y que cada decisión posterior tenga un límite.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#F3E8EA] shadow-xs space-y-3 relative hover:shadow-md transition-shadow">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#B76E79] text-white text-sm font-extrabold">2</span>
+            <h3 class="text-lg font-bold text-[#1A1A1A]">Elige la fecha y el lugar de la boda</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              La elección del lugar suele determinar el número de invitados, el presupuesto general y todo el cronograma, porque la disponibilidad decide la fecha más que casi cualquier otra cosa. Lee nuestra guía sobre <a href={localizeUrl('/blog/how-to-choose-wedding-venue', currentLang)} class="text-[#B76E79] font-bold underline">cómo elegir el lugar perfecto para tu boda</a> antes de firmar un contrato o pagar un anticipo.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#F3E8EA] shadow-xs space-y-3 relative hover:shadow-md transition-shadow">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#B76E79] text-white text-sm font-extrabold">3</span>
+            <h3 class="text-lg font-bold text-[#1A1A1A]">Crea pronto la lista de invitados</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Usa el <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="text-[#B76E79] font-bold underline">Gestor de la lista de invitados</a> para controlar las invitaciones, las confirmaciones y los acompañantes desde el principio, porque el número de invitados influye en el coste del catering, el aforo y la distribución de las mesas más que cualquier otra decisión.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#F3E8EA] shadow-xs space-y-3 relative hover:shadow-md transition-shadow">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#B76E79] text-white text-sm font-extrabold">4</span>
+            <h3 class="text-lg font-bold text-[#1A1A1A]">Reserva a los proveedores clave en el orden correcto</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              El fotógrafo, el catering, el florista y la organizadora deben reservarse en un orden concreto, no por orden de llegada: consulta la <a href={localizeUrl('/checklists/wedding-vendor-booking-checklist', currentLang)} class="text-[#B76E79] font-bold underline">lista del orden de reserva y contratos de proveedores</a> para ver el orden que evita fechas solapadas y prisas de última hora.
+            </p>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#F3E8EA] shadow-xs space-y-3 relative hover:shadow-md transition-shadow">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#B76E79] text-white text-sm font-extrabold">5</span>
+            <h3 class="text-lg font-bold text-[#1A1A1A]">Elige el cronograma que encaje con tu cuenta regresiva</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Elige la versión que encaje con lo lejos que está tu boda: una <a href={localizeUrl('/checklists/18-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold underline">lista de planificación de 18 meses</a>, una <a href={localizeUrl('/checklists/12-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold underline">lista de 12 meses</a>, una <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold underline">lista acelerada de 6 meses</a> o una <a href={localizeUrl('/checklists/3-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold underline">lista exprés de 3 meses</a>.
+            </p>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#F3E8EA] shadow-xs space-y-3 relative hover:shadow-md transition-shadow">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#B76E79] text-white text-sm font-extrabold">6</span>
+            <h3 class="text-lg font-bold text-[#1A1A1A]">Planifica el atuendo, el peinado y la belleza con tiempo</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Desde los <a href={localizeUrl('/blog/wedding-outfits', currentLang)} class="text-[#B76E79] font-bold underline">trajes de boda para novias</a> hasta los <a href={localizeUrl('/blog/hairstyles-for-wedding', currentLang)} class="text-[#B76E79] font-bold underline">peinados para la boda</a>, date varios meses para pruebas y arreglos, porque el atuendo a medida y las estilistas más solicitadas exigen reservar con mucha antelación.
+            </p>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#F3E8EA] shadow-xs space-y-3 relative hover:shadow-md transition-shadow">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#B76E79] text-white text-sm font-extrabold">7</span>
+            <h3 class="text-lg font-bold text-[#1A1A1A]">Cierra las invitaciones y la papelería a tiempo</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Envía los save the date unos 6 a 8 meses antes de la boda y las invitaciones formales de 8 a 12 semanas antes, adelantándolas en bodas de destino o celebraciones culturales de varios días. Prepara también los trámites de la licencia de matrimonio según las <a href="https://www.usa.gov/marriage-certificates" target="_blank" rel="noopener noreferrer" class="text-[#B76E79] font-bold underline">pautas oficiales del gobierno sobre licencias de matrimonio</a>.
+            </p>
+          </div>
+
+          <!-- Step 8 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#F3E8EA] shadow-xs space-y-3 relative hover:shadow-md transition-shadow">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#B76E79] text-white text-sm font-extrabold">8</span>
+            <h3 class="text-lg font-bold text-[#1A1A1A]">Confirma al detalle la ceremonia y la recepción</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Cierra el orden de los eventos, el plano de mesas, las franjas de llegada de los proveedores y cualquier requisito cultural o religioso mucho antes de la semana de la boda.
+            </p>
+          </div>
+
+          <!-- Step 9 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#F3E8EA] shadow-xs space-y-3 relative hover:shadow-md transition-shadow">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#B76E79] text-white text-sm font-extrabold">9</span>
+            <h3 class="text-lg font-bold text-[#1A1A1A]">Crea el cronograma detallado del día</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Usa el <a href={localizeUrl('/tools/timeline-generator', currentLang)} class="text-[#B76E79] font-bold underline">Generador del cronograma del día</a> para planificar cada hora del día de tu boda, desde la peluquería y el maquillaje hasta la ceremonia, la recepción y el último baile, y compártelo con cada proveedor y cada familiar clave.
+            </p>
+          </div>
+
+          <!-- Step 10 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#F3E8EA] shadow-xs space-y-3 relative hover:shadow-md transition-shadow">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#B76E79] text-white text-sm font-extrabold">10</span>
+            <h3 class="text-lg font-bold text-[#1A1A1A]">Prepara el kit de emergencia y confirma los últimos detalles</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              En la última semana, usa a la vez la <a href={localizeUrl('/checklists/bridal-emergency-kit-checklist', currentLang)} class="text-[#B76E79] font-bold underline">lista del kit de emergencia para la novia</a> y la <a href={localizeUrl('/checklists/wedding-day-of-timeline-checklist', currentLang)} class="text-[#B76E79] font-bold underline">lista del horario y cronograma del día</a> para que nada, ni una llamada a un proveedor, ni una prueba del vestido, ni un detalle del plano de mesas, quede sin confirmar.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-[#FCECF0]/40 border border-[#F3E8EA] text-center max-w-3xl mx-auto">
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+            Esta estructura de diez pasos es el mismo marco que siguen todas las listas y herramientas de esta web, así que cuando la entiendas aquí, el resto de páginas de WeddingPlanningChecklists.org cobrarán sentido.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: WEDDING PLANNING TIMELINES — CHOOSE YOUR COUNTDOWN -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+              Calendarios de cuenta regresiva
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+              Cronogramas de boda: elige tu cuenta regresiva
+            </h2>
+            <p class="text-slate-600 text-base leading-relaxed">
+              No todas las parejas planifican su boda con el mismo calendario, por eso ofrecemos varios cronogramas en lugar de una única versión genérica que supone que todo el mundo tiene un año. Elige el cronograma que encaje con tu cuenta regresiva real hasta el día de la boda:
+            </p>
+
+            <!-- Timelines List -->
+            <div class="space-y-3 pt-2">
+              <a 
+                href={localizeUrl('/checklists/18-month-wedding-planning-checklist', currentLang)} 
+                class="block p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 hover:bg-[#FCECF0]/20 transition-all group"
+              >
+                <div class="flex items-center justify-between">
+                  <h3 class="font-bold text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">
+                    Lista de planificación de boda de 18 meses
+                  </h3>
+                  <span class="text-xs font-bold text-[#B76E79] bg-white px-2.5 py-1 rounded-full border border-slate-200">18 meses</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                  Para parejas con un compromiso más largo que quieren elegir primero entre los mejores proveedores y lugares.
+                </p>
+              </a>
+
+              <a 
+                href={localizeUrl('/checklists/12-month-wedding-planning-checklist', currentLang)} 
+                class="block p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 hover:bg-[#FCECF0]/20 transition-all group"
+              >
+                <div class="flex items-center justify-between">
+                  <h3 class="font-bold text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">
+                    Lista de planificación de boda de 12 meses
+                  </h3>
+                  <span class="text-xs font-bold text-[#B76E79] bg-white px-2.5 py-1 rounded-full border border-slate-200">La más popular</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                  El cronograma más habitual, con margen suficiente para planificar con cuidado sin prisas.
+                </p>
+              </a>
+
+              <a 
+                href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} 
+                class="block p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 hover:bg-[#FCECF0]/20 transition-all group"
+              >
+                <div class="flex items-center justify-between">
+                  <h3 class="font-bold text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">
+                    Lista acelerada de 6 meses
+                  </h3>
+                  <span class="text-xs font-bold text-[#B76E79] bg-white px-2.5 py-1 rounded-full border border-slate-200">6 meses</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                  Un calendario acelerado pensado para parejas con un compromiso más corto.
+                </p>
+              </a>
+
+              <a 
+                href={localizeUrl('/checklists/3-month-wedding-planning-checklist', currentLang)} 
+                class="block p-4 rounded-2xl bg-[#FAFAFA] border border-slate-100 hover:border-[#B76E79]/40 hover:bg-[#FCECF0]/20 transition-all group"
+              >
+                <div class="flex items-center justify-between">
+                  <h3 class="font-bold text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors">
+                    Lista para planificar una boda en 3 meses
+                  </h3>
+                  <span class="text-xs font-bold text-[#B76E79] bg-white px-2.5 py-1 rounded-full border border-slate-200">3 meses</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                  Una lista exprés para bodas que se acercan rápido o celebraciones tipo fuga.
+                </p>
+              </a>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-500 pt-2 leading-relaxed">
+              Cada cronograma divide las tareas en hitos mes a mes y se conecta con el <a href={localizeUrl('/tools/wedding-planning-calendar', currentLang)} class="text-[#B76E79] font-bold underline">Calendario de planificación de boda</a> y el seguimiento de hitos, para que siempre sepas qué debería estar terminado en cada fecha, y no solo lo que técnicamente te queda por hacer.
+            </p>
+          </div>
+
+          <!-- IMAGE: Timeline Calendar -->
+          <div class="lg:col-span-5">
+            <figure class="rounded-3xl overflow-hidden shadow-xl border border-[#F3E8EA] bg-white group">
+              <img 
+                src="/wedding-planning-timeline-calendar.jpg" 
+                alt="Calendario de un cronograma de boda de 12 meses" 
+                width="800" 
+                height="1067" 
+                class="w-full h-auto object-cover transform group-hover:scale-102 transition-transform duration-500" 
+                loading="lazy" 
+              />
+              <figcaption class="p-3 bg-white border-t border-slate-100 text-xs text-center text-slate-500 font-medium">
+                Calendario de un cronograma de boda de 12 meses y seguimiento de hitos
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: WEDDING BUDGET PLANNING & FREE BUDGET CALCULATOR -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-white via-white to-[#FCECF0]/30 rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <!-- IMAGE: Budget Calculator Visual -->
+          <div class="lg:col-span-5 order-2 lg:order-1">
+            <figure class="rounded-3xl overflow-hidden shadow-xl border border-[#F3E8EA] bg-white group">
+              <img 
+                src="/wedding-budget-calculator.jpg" 
+                alt="Calculadora de presupuesto de boda y gráfico del desglose" 
+                width="800" 
+                height="1067" 
+                class="w-full h-auto object-cover transform group-hover:scale-102 transition-transform duration-500" 
+                loading="lazy" 
+              />
+              <figcaption class="p-3 bg-white border-t border-slate-100 text-xs text-center text-slate-500 font-medium">
+                Calculadora de presupuesto de boda y gráfico de desglose por categorías
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4 order-1 lg:order-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+              Tranquilidad financiera
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+              Presupuesto de boda y calculadora gratuita
+            </h2>
+            <p class="text-slate-600 text-base leading-relaxed">
+              El presupuesto suele ser la primera decisión real de la planificación, porque condiciona las opciones de lugar, el número máximo de invitados y casi todas las elecciones de proveedores. Nuestra <a href={localizeUrl('/tools/budget-calculator', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Calculadora de presupuesto de boda</a> gratuita te permite introducir tu presupuesto total y ver un desglose sugerido por categorías (lugar, catering, fotografía, atuendo, flores y entretenimiento), para que no tengas que adivinar cuánto es razonable gastar en cada partida. Cuando tengas una cifra aproximada, elige la lista de presupuesto que encaje con tu rango:
+            </p>
+
+            <!-- 4 Budget Tiers Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <a 
+                href={localizeUrl('/checklists/wedding-budget-calculator-10k', currentLang)} 
+                class="p-4 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 transition-all group block"
+              >
+                <span class="text-xs font-black text-[#B76E79]">Presupuesto de 10.000 $</span>
+                <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-0.5">
+                  Lista de presupuesto de boda de 10.000 $
+                </h3>
+                <p class="text-xs text-slate-500 mt-1">
+                  Una lista realista y detallada para una boda más pequeña y ajustada.
+                </p>
+              </a>
+
+              <a 
+                href={localizeUrl('/checklists/wedding-budget-calculator-20k', currentLang)} 
+                class="p-4 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 transition-all group block"
+              >
+                <span class="text-xs font-black text-[#B76E79]">Presupuesto de 20.000 $</span>
+                <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-0.5">
+                  Lista de presupuesto de boda de 20.000 $
+                </h3>
+                <p class="text-xs text-slate-500 mt-1">
+                  Pensada para el rango de presupuesto más habitual entre las parejas de EE. UU.
+                </p>
+              </a>
+
+              <a 
+                href={localizeUrl('/checklists/wedding-budget-calculator-30k', currentLang)} 
+                class="p-4 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 transition-all group block"
+              >
+                <span class="text-xs font-black text-[#B76E79]">Presupuesto de 30.000 $</span>
+                <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-0.5">
+                  Lista de presupuesto de boda de 30.000 $
+                </h3>
+                <p class="text-xs text-slate-500 mt-1">
+                  Una lista de presupuesto medio con espacio para más invitados y algunos extras.
+                </p>
+              </a>
+
+              <a 
+                href={localizeUrl('/checklists/wedding-budget-calculator-50k', currentLang)} 
+                class="p-4 rounded-2xl bg-white border border-[#F3E8EA] shadow-2xs hover:border-[#B76E79]/50 transition-all group block"
+              >
+                <span class="text-xs font-black text-[#D4AF37]">Lujo, más de 50.000 $</span>
+                <h3 class="font-bold text-sm text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors mt-0.5">
+                  Lista para una boda de lujo de más de 50.000 $
+                </h3>
+                <p class="text-xs text-slate-500 mt-1">
+                  Para parejas que planifican una celebración más grande, más elaborada o en varios lugares.
+                </p>
+              </a>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white border border-slate-200 text-xs sm:text-sm text-slate-600">
+              💰 Combina cualquier lista de presupuesto con nuestro artículo de <a href={localizeUrl('/blog/wedding-budget-tips', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">10 consejos para ahorrar en la boda</a> y descubre formas prácticas de recortar en las partidas que menos te importan sin escatimar en los detalles que más valoras.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: WEDDING PLANNING TIPS THAT ACTUALLY SAVE TIME AND MONEY -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
+        <div class="max-w-3xl space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Recomendaciones de expertos
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+            Consejos que de verdad ahorran tiempo y dinero
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Más allá de las listas y las calculadoras, algunos consejos hacen que el proceso sea más fluido, sea cual sea tu presupuesto o tu plazo:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
+          <div class="p-6 rounded-2xl bg-[#FAFAFA] border border-slate-100 space-y-2">
+            <span class="text-2xl">⚡</span>
+            <h3 class="font-bold text-base text-[#1A1A1A]">Por demanda, no por ilusión</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Reserva a los proveedores por orden de demanda, no por orden de ilusión: los lugares, los fotógrafos y los caterings se agotan primero, mientras que los detalles pequeños como los recuerdos o la señalización pueden esperar.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#FAFAFA] border border-slate-100 space-y-2">
+            <span class="text-2xl">👥</span>
+            <h3 class="font-bold text-base text-[#1A1A1A]">Un límite firme de invitados</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Fija un número firme de invitados antes de visitar lugares, porque el aforo y el coste del catering por persona son los dos factores que más suelen desbaratar un presupuesto.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#FAFAFA] border border-slate-100 space-y-2">
+            <span class="text-2xl">🛡️</span>
+            <h3 class="font-bold text-base text-[#1A1A1A]">Un margen de emergencia del 5 al 10 %</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Añade a tu presupuesto un margen del 5 al 10 % para imprevistos, porque casi todas las bodas tienen al menos uno.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#FAFAFA] border border-slate-100 space-y-2">
+            <span class="text-2xl">📦</span>
+            <h3 class="font-bold text-base text-[#1A1A1A]">Agrupa las decisiones parecidas</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Agrupa las tareas parecidas, por ejemplo reservando a todos los proveedores en las mismas dos semanas en lugar de repartir la búsqueda en varios meses, para comparar opciones con la cabeza despejada en lugar de conformarte por cansancio.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#FAFAFA] border border-slate-100 space-y-2">
+            <span class="text-2xl">🔄</span>
+            <h3 class="font-bold text-base text-[#1A1A1A]">Revisión mensual de la lista</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Por último, revisa tu lista cada mes y no solo cuando te sientas agobiada, para que las tareas pequeñas no se acumulen hasta convertirse en prisas de última hora.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-[#FCECF0]/60 to-white border border-[#F3E8EA] space-y-2 flex flex-col justify-between">
+            <div>
+              <span class="text-2xl">📖</span>
+              <h3 class="font-bold text-base text-[#1A1A1A]">Lee 20 consejos a fondo</h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mt-1">
+                Descubre nuestra guía con 20 secretos prácticos de planificación de coordinadoras de bodas con experiencia.
+              </p>
+            </div>
+            <a href={localizeUrl('/blog/20-tips-for-your-wedding-planning-checklist', currentLang)} class="text-xs font-bold text-[#B76E79] underline hover:text-[#a25d66] pt-2 inline-block">
+              Ver los consejos para tu lista de boda &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12: PAKISTANI, INDIAN & SOUTH ASIAN WEDDING PLANNING -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-[#FCECF0]/40 via-white to-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Bodas culturales
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+            Planificación de bodas pakistaníes, indias y del sur de Asia
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Las bodas del sur de Asia de varios días necesitan una lista de planificación muy distinta a la de una ceremonia de un solo día, y hemos construido nuestro contenido sobre bodas culturales en torno a esa realidad en lugar de tratarlo como algo secundario.
+          </p>
+          <p class="text-slate-600 text-base leading-relaxed">
+            La <a href={localizeUrl('/checklists/pakistani-wedding-checklist', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">lista para bodas pakistaníes y musulmanas de varios días</a> y la <a href={localizeUrl('/checklists/indian-wedding-checklist', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">lista maestra para bodas indias</a> recogen la secuencia completa de eventos, desde el mehndi y la pedida hasta el baraat, el nikah y la recepción, con tareas organizadas por evento y no solo por fecha genérica.
+          </p>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Combina cualquiera de las dos con nuestras guías de <a href={localizeUrl('/blog/pakistani-wedding-outfits', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">trajes de novia pakistaníes</a>, <a href={localizeUrl('/blog/pakistani-wedding-hairstyles', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">peinados de boda pakistaníes</a>, <a href={localizeUrl('/blog/indian-wedding-hairstyles-guide', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">peinados de boda indios</a> y <a href={localizeUrl('/blog/regional-indian-wedding-hairstyles', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">peinados de boda indios por región</a> para la parte de estilo nupcial, porque la logística del atuendo y la belleza se multiplica rápido en varias ceremonias.
+          </p>
+
+          <div class="p-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-500">
+            📌 <em>Próximamente: estamos ampliando esta sección, con listas para bodas bengalíes, sijs y del sur de la India entre las próximas incorporaciones.</em>
+          </div>
+        </div>
+
+        <!-- IMAGE: South Asian Wedding Flat Lay -->
+        <div class="lg:col-span-5">
+          <figure class="rounded-3xl overflow-hidden shadow-xl border border-[#F3E8EA] bg-white group">
+            <img 
+              src="/pakistani-indian-wedding-planning-checklist.jpg" 
+              alt="Lista de planificación para bodas pakistaníes e indias de varios días" 
+              width="800" 
+              height="1067" 
+              class="w-full h-auto object-cover transform group-hover:scale-102 transition-transform duration-500" 
+              loading="lazy" 
+            />
+            <figcaption class="p-3 bg-white border-t border-slate-100 text-xs text-center text-slate-500 font-medium">
+              Bodegón de la lista de planificación para bodas pakistaníes e indias de varios días
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 13: WEDDING VENUES, VENDORS & GUEST LIST PLANNING -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
+        <div class="max-w-3xl space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Las decisiones clave
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+            Lugares, proveedores y lista de invitados
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed">
+            El lugar, los proveedores y la lista de invitados son decisiones muy relacionadas, por eso las tratamos como un único bloque y no como tres temas sueltos repartidos por la web. Empieza con nuestra guía sobre <a href={localizeUrl('/blog/how-to-choose-wedding-venue', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">cómo elegir el lugar perfecto para tu boda</a>, que repasa las preguntas que conviene hacer antes de firmar un contrato o entregar un anticipo.
+          </p>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Cuando tengas el lugar reservado, usa la <a href={localizeUrl('/checklists/wedding-vendor-booking-checklist', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">lista del orden de reserva y contratos de proveedores</a> para contratar fotógrafos, caterings, floristas y otros proveedores clave en un orden que evite choques de agenda y problemas de disponibilidad de última hora.
+          </p>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Para la lista de invitados en concreto, la herramienta <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Gestor de la lista de invitados</a> y nuestra <a href={localizeUrl('/blog/perfect-guest-list-guide', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">guía de la lista de invitados y el plano de mesas</a> cubren desde el control de confirmaciones y las normas sobre acompañantes hasta la lógica del plano de mesas, tanto en bodas tradicionales como de varios días.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 14: BRIDAL STYLE, HAIRSTYLES & WEDDING DAY BEAUTY -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-white via-white to-[#FCECF0]/30 rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
+        <div class="max-w-3xl space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Plazos de belleza y atuendo
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+            Estilo nupcial, peinados y belleza del día de la boda
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed">
+            La planificación del atuendo y la belleza merece su propio cronograma, separado de la logística de proveedores y del lugar, porque las pruebas y los arreglos siguen su propio calendario. Nuestro contenido de estilo incluye <a href={localizeUrl('/blog/wedding-outfits', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">trajes de boda para novias</a>, <a href={localizeUrl('/blog/pakistani-wedding-outfits', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">trajes de novia pakistaníes</a> y una serie completa de guías de peinados, como <a href={localizeUrl('/blog/hairstyles-for-wedding', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">peinados para la boda</a>, <a href={localizeUrl('/blog/indian-wedding-hairstyles-guide', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">peinados de boda indios</a>, <a href={localizeUrl('/blog/regional-indian-wedding-hairstyles', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">peinados de boda indios por región</a> y <a href={localizeUrl('/blog/pakistani-wedding-hairstyles', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">peinados de boda pakistaníes</a>, además de una <a href={localizeUrl('/blog/moodboard-layout', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">guía del moodboard de boda</a> para las parejas que aún están definiendo su estética antes de reservar estilista o encargar el vestido.
+          </p>
+          <div class="p-4 rounded-xl bg-white border border-slate-200 text-xs sm:text-sm text-slate-700">
+            💄 <strong>Regla de plazos:</strong> empieza pronto a planificar el atuendo y el peinado: la mayoría de las estilistas recomiendan reservar las pruebas de peinado y maquillaje de 2 a 3 meses antes de la boda y cerrar los arreglos del vestido como muy tarde de 2 a 3 semanas antes, para tener tiempo de corregir lo que haga falta.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 15: WEDDING DAY EXECUTION — TIMELINE, EMERGENCY KIT & RECEPTION CHECKLISTS -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#F3E8EA] shadow-sm space-y-6">
+        <div class="max-w-3xl space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Un día de la boda impecable
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+            El día de la boda: cronograma, kit de emergencia y listas de la recepción
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed">
+            La recta final de la planificación consiste en ejecutar, no en tomar decisiones nuevas. Usa el <a href={localizeUrl('/tools/timeline-generator', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">Generador del cronograma del día</a> para planificar tu boda hora a hora y compáralo con la <a href={localizeUrl('/checklists/wedding-day-of-timeline-checklist', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">lista del horario y cronograma del día</a> para confirmar por escrito cada llegada de proveedores, cada responsabilidad del cortejo y cada detalle de la logística familiar.
+          </p>
+          <p class="text-slate-600 text-base leading-relaxed">
+            La <a href={localizeUrl('/checklists/bridal-emergency-kit-checklist', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">lista del kit de emergencia para la novia</a> recoge las pequeñas cosas que salvan un día de boda (imperdibles, quitamanchas, apósitos para ampollas, un costurero), mientras que la <a href={localizeUrl('/checklists/wedding-reception-planning-checklist', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">lista maestra para la recepción</a> y la <a href={localizeUrl('/checklists/wedding-decor-flowers-checklist', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">lista de decoración y flores</a> se aseguran de que el montaje, las mesas, la iluminación y la decoración estén confirmados antes de que empiece la ceremonia.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 16: WHY USE A WEDDING PLANNING CHECKLIST? & HOW WE BUILD OUR CONTENT -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-3xl p-8 border border-[#F3E8EA] shadow-sm space-y-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Valor estratégico
+          </span>
+          <h2 class="text-xl sm:text-2xl font-black text-[#1A1A1A] font-serif">
+            ¿Por qué usar una lista de planificación de boda?
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Una lista de planificación funciona porque convierte un proyecto abrumador y sin límites en una serie de tareas pequeñas, concretas y ordenadas, en lugar de una lista gigante de pendientes. Planificar una boda implica decenas de piezas conectadas (presupuesto, lugar, proveedores, lista de invitados, atuendo, trámites legales y logística del día) y, sin una lista, es fácil hacer las tareas en mal orden u olvidar alguna hasta que de repente se vuelve urgente.
+          </p>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Una buena lista de boda hace tres cosas: ordena las tareas por plazos realistas y no por lo que más ilusión hace, agrupa las tareas relacionadas para que puedas tomar decisiones en bloque, como las reservas de proveedores o las pruebas de vestuario, y se adapta a tu boda concreta, ya sea un cronograma exprés de 3 meses, una boda con 10.000 $ de presupuesto o una boda pakistaní o india de varios días con distintas ceremonias. Esa estructura es la base de todas las listas, cronogramas y herramientas de esta web.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-3xl p-8 border border-[#F3E8EA] shadow-sm space-y-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0] px-3.5 py-1 rounded-full">
+            Integridad editorial
+          </span>
+          <h2 class="text-xl sm:text-2xl font-black text-[#1A1A1A] font-serif">
+            Cómo creamos nuestro contenido de planificación de bodas
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Cada lista, cronograma y herramienta de WeddingPlanningChecklists.org se organiza en torno al mismo marco de planificación, en lugar de escribirse como un artículo aislado. El contenido se agrupa por temas (presupuesto, cronogramas, lista de invitados, bodas culturales, estilo nupcial y ejecución del día) para que cualquier lista en la que aterrices se conecte de forma lógica con el cronograma, la herramienta o la lista relacionada que probablemente necesites después.
+          </p>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            No publicamos relleno genérico ni estadísticas inventadas; cada recomendación refleja la misma secuencia práctica de planificación que usan las herramientas de la web, y las páginas se actualizan a medida que se añaden nuevas categorías de listas, herramientas y guías de bodas culturales. Para profundizar, consulta nuestra <a href={localizeUrl('/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding', currentLang)} class="text-[#B76E79] font-bold underline hover:text-[#a25d66]">guía definitiva de listas de planificación de boda</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 17: FREQUENTLY ASKED QUESTIONS -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="text-center space-y-3 mb-10">
+        <span class="text-xs font-bold text-[#B76E79] uppercase tracking-wider bg-[#FCECF0] px-3.5 py-1 rounded-full">
+          Preguntas frecuentes
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A1A1A] font-serif">
+          Preguntas frecuentes
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
+          Respuestas claras sobre listas de boda, cronogramas, presupuestos y herramientas de planificación.
+        </p>
+      </div>
+
+      <!-- Native Accessible FAQ Accordion -->
+      <div class="bg-white rounded-3xl border border-[#F3E8EA] p-6 sm:p-8 shadow-sm divide-y divide-slate-100">
+        {faqs.map((faq, index) => (
+          <details class="group py-5 first:pt-0 last:pb-0" open={index === 0}>
+            <summary class="flex items-start justify-between gap-4 cursor-pointer list-none focus:outline-none">
+              <div class="flex items-start gap-3 sm:gap-4">
+                <span class="w-8 h-8 rounded-xl bg-[#FCECF0] text-[#B76E79] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 group-hover:bg-[#B76E79] group-hover:text-white transition-colors">
+                  {index + 1}
+                </span>
+                <h3 class="font-bold text-base sm:text-lg text-[#1A1A1A] group-hover:text-[#B76E79] transition-colors leading-snug">
+                  {faq.q}
+                </h3>
+              </div>
+              <span class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-[#B76E79] group-hover:bg-[#FCECF0] shrink-0 transition-all ml-2">
+                <svg class="w-4 h-4 transform group-open:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
+            </summary>
+            <div class="pl-11 sm:pl-12 pr-4 pt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+              <p>{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- SECTION 18: START PLANNING YOUR WEDDING TODAY (CLOSING CTA BANNER) -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-[#1A1A1A] text-white rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
+        <div class="absolute -right-16 -top-16 w-64 h-64 bg-[#B76E79]/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-[#D4AF37]/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#FCECF0] bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
+          ¿Lista para organizarte?
+        </span>
+
+        <h2 class="text-3xl sm:text-5xl font-black font-serif tracking-tight max-w-3xl mx-auto">
+          Empieza hoy a planificar tu boda
+        </h2>
+
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          Tanto si te faltan doce meses para la boda como si te faltan tres, la forma más rápida de reducir el estrés es una lista clara combinada con las herramientas adecuadas. Descarga tu <a href={localizeUrl('/checklists/printable-wedding-planning-checklist', currentLang)} class="text-white underline font-bold hover:text-[#FCECF0]">lista de planificación de boda gratuita</a>, crea un plan personalizado con el <a href={localizeUrl('/tools/wedding-checklist-generator', currentLang)} class="text-white underline font-bold hover:text-[#FCECF0]">Generador de listas de boda</a> y usa el <a href={localizeUrl('/tools/wedding-planning-dashboard', currentLang)} class="text-white underline font-bold hover:text-[#FCECF0]">Panel de planificación de boda</a> para seguir cada tarea en un solo lugar, desde el presupuesto y el lugar hasta la lista de invitados, los proveedores y el cronograma final del día.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 pt-4">
+          <a 
+            href={localizeUrl('/checklists/printable-wedding-planning-checklist', currentLang)} 
+            class="bg-[#B76E79] hover:bg-[#a25d66] text-white px-8 py-4 rounded-full text-sm sm:text-base font-bold shadow-lg transition-all transform hover:-translate-y-0.5"
+          >
+            📥 Descargar la lista gratis (PDF)
+          </a>
+          <a 
+            href={localizeUrl('/tools/wedding-checklist-generator', currentLang)} 
+            class="bg-white hover:bg-slate-100 text-slate-900 px-8 py-4 rounded-full text-sm sm:text-base font-bold transition-all shadow-md"
+          >
+            ⚡ Abrir el generador de listas
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL & EEAT TRUST BOX -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 pb-8 space-y-2">
+      <div class="p-6 rounded-2xl bg-white border border-slate-200/60 shadow-2xs space-y-2">
+        <p class="font-bold text-slate-700">Normas editoriales y verificación de WeddingPlanningChecklists.org</p>
+        <p class="leading-relaxed max-w-2xl mx-auto">
+          Cada cronograma, calculadora y lista de esta web se elabora y revisa con criterios de coordinación de bodas profesional y se contrasta con plazos de reserva realistas, referencias de reparto del presupuesto y requisitos culturales de cada región. Se actualiza con regularidad para las bodas de 2026.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={currentLang} />
+
+  <!-- Client-side Quick Checklist Interaction Script -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const checkboxes = document.querySelectorAll('.quick-task');
+      const counter = document.getElementById('quick-counter');
+      if (!checkboxes.length || !counter) return;
+
+      const updateCount = () => {
+        let completed = 0;
+        checkboxes.forEach(cb => {
+          if (cb.checked) completed++;
+        });
+        counter.textContent = `${completed} de ${checkboxes.length} completadas`;
+        if (completed === checkboxes.length) {
+          counter.classList.remove('bg-[#FCECF0]', 'text-[#B76E79]');
+          counter.classList.add('bg-emerald-100', 'text-emerald-800');
+        } else {
+          counter.classList.add('bg-[#FCECF0]', 'text-[#B76E79]');
+          counter.classList.remove('bg-emerald-100', 'text-emerald-800');
+        }
+      };
+
+      checkboxes.forEach(cb => {
+        cb.addEventListener('change', updateCount);
+      });
+    });
+  </script>
+</BaseLayout>

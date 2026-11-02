@@ -1,0 +1,16 @@
+---
+/**
+ * Replaces <a> inside translated articles: internal page links point to the
+ * same language version. Images, files, anchors and external links are left alone.
+ */
+import { localizeUrl, getLangFromPath } from '../../i18n/utils';
+
+const { href = '', ...rest } = Astro.props;
+const lang = getLangFromPath(Astro.url.pathname);
+const isPage = typeof href === 'string'
+  && href.startsWith('/')
+  && !href.startsWith('//')
+  && !/\.[a-z0-9]{2,5}($|[?#])/i.test(href);
+const finalHref = isPage && lang ? localizeUrl(href, lang) : href;
+---
+<a href={finalHref} {...rest}><slot /></a>

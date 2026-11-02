@@ -1,5 +1,6 @@
 ---
 import HomePage from '../../components/pages/HomePage.astro';
+import HomePageEs from '../../components/pages/HomePageEs.astro';
 import { NON_DEFAULT_LANGUAGES, type SupportedLanguage } from '../../i18n/config';
 
 export function getStaticPaths() {
@@ -11,4 +12,4 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 ---
 
-<HomePage lang={lang as SupportedLanguage} />
+{lang === 'es' ? <HomePageEs lang="es" /> : <HomePage lang={lang as SupportedLanguage} />}

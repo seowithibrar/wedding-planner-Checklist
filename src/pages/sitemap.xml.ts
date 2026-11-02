@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
-import { NON_DEFAULT_LANGUAGES, SUPPORTED_LANGUAGES } from '../i18n/config';
+import { getCollection } from 'astro:content';
+import { INDEXED_LANGUAGES } from '../i18n/config';
 
 interface SitemapEntry {
   path: string;
@@ -83,7 +84,7 @@ function buildAlternatesXml(path: string): string {
   lines.push(`    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>`);
 
   // Localized languages
-  for (const lang of NON_DEFAULT_LANGUAGES) {
+  for (const lang of INDEXED_LANGUAGES) {
     const locUrl = `${siteUrl}/${lang}${path}`;
     lines.push(`    <xhtml:link rel="alternate" hreflang="${lang}" href="${locUrl}"/>`);
   }
@@ -96,6 +97,18 @@ function buildAlternatesXml(path: string): string {
 
 export const GET: APIRoute = async () => {
   const urlNodes: string[] = [];
+
+  // Add every blog post from the content collection, so new posts never go missing
+  const known = new Set(entries.map((e) => e.path));
+  const posts = await getCollection('blog');
+  for (const post of posts) {
+    const path = `/blog/${post.data.slug || post.id.replace(/\.mdx?$/, '')}`;
+    if (known.has(path)) continue;
+    const date = post.data.dateModified || post.data.updatedDate || post.data.pubDate;
+    const iso = date ? new Date(date).toISOString().slice(0, 10) : lastmod;
+    entries.push({ path, changefreq: 'weekly', priority: '0.8', lastmod: iso === 'Invalid Date' ? lastmod : iso });
+    known.add(path);
+  }
 
   // 1. Generate English entries
   for (const entry of entries) {
@@ -111,7 +124,7 @@ ${alternates}
   }
 
   // 2. Generate Localized entries for non-default languages
-  for (const lang of NON_DEFAULT_LANGUAGES) {
+  for (const lang of INDEXED_LANGUAGES) {
     for (const entry of entries) {
       const loc = `${siteUrl}/${lang}${entry.path}`;
       const alternates = buildAlternatesXml(entry.path);

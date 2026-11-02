@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../layout/Header.astro';
 import Footer from '../layout/Footer.astro';
 import { getCollection } from 'astro:content';
+import { getImageSize } from '../../lib/image-size.mjs';
 import { useTranslations, localizeUrl, getArticleI18n } from '../../i18n/utils';
 import { DEFAULT_LANGUAGE, type SupportedLanguage } from '../../i18n/config';
 
@@ -15,6 +16,15 @@ const currentLang = lang as SupportedLanguage;
 const { common, home } = useTranslations(currentLang);
 
 const posts = await getCollection('blog');
+const cardSizes = new Map(await Promise.all(posts.map(async (p: any) => [p.data.heroImage, await getImageSize(p.data.heroImage)] as const)));
+// Translated article files for this language, keyed by the English slug
+const translatedPosts = new Map(
+  currentLang === DEFAULT_LANGUAGE
+    ? []
+    : (await getCollection('blogTranslations'))
+        .filter((entry: any) => entry.data.lang === currentLang)
+        .map((entry: any) => [entry.data.sourceSlug, entry.data])
+);
 const sortedPosts = posts.sort((a, b) => {
   const isTargetA = (a.data.slug || a.id).includes('the-ultimate-wedding-planning-checklists-guide');
   const isTargetB = (b.data.slug || b.id).includes('the-ultimate-wedding-planning-checklists-guide');
@@ -32,16 +42,17 @@ const otherPosts = sortedPosts.filter(p => p.id !== featuredPost?.id);
 
 const featuredSlug = featuredPost ? (featuredPost.data.slug || featuredPost.id.replace(/\.(md|mdx)$/, '')) : '';
 const featuredI18n = featuredSlug ? getArticleI18n(featuredSlug, currentLang) : null;
-const featuredTitle = featuredI18n?.title || featuredPost?.data.title;
-const featuredDescription = featuredI18n?.description || featuredPost?.data.description;
-const featuredCategory = featuredI18n?.category || featuredPost?.data.category;
+const featuredTr: any = translatedPosts.get(featuredSlug);
+const featuredTitle = featuredTr?.title || featuredI18n?.title || featuredPost?.data.title;
+const featuredDescription = featuredTr?.description || featuredI18n?.description || featuredPost?.data.description;
+const featuredCategory = featuredTr?.category || featuredI18n?.category || featuredPost?.data.category;
 
 const siteUrl = 'https://www.weddingplanningchecklists.org';
 const currentCanonical = currentLang === DEFAULT_LANGUAGE ? `${siteUrl}/blog` : `${siteUrl}/${currentLang}/blog`;
 
 const seo = {
   title: `${common.nav.blog} — Wedding Planning Checklists`,
-  description: 'Expert advice, detailed checklists, and timeline planning guides to help you create a stress-free wedding day.',
+  description: (common as any).blogUi?.listDescription || 'Expert advice, detailed checklists, and timeline planning guides to help you create a stress-free wedding day.',
   canonical: currentCanonical
 };
 ---
@@ -59,7 +70,7 @@ const seo = {
     {featuredPost && (
       <div class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden mb-16 grid grid-cols-1 lg:grid-cols-2">
         <div class="h-64 sm:h-96 lg:h-auto overflow-hidden">
-          <img src={featuredPost.data.heroImage} alt={featuredPost.data.heroImageAlt || featuredTitle} class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+          <img src={featuredPost.data.heroImage} width={cardSizes.get(featuredPost.data.heroImage)?.width} height={cardSizes.get(featuredPost.data.heroImage)?.height} alt={featuredTr?.heroImageAlt || featuredPost.data.heroImageAlt || featuredTitle} class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
         </div>
         <div class="p-8 lg:p-12 flex flex-col justify-between">
           <div>
@@ -89,14 +100,15 @@ const seo = {
       {otherPosts.map(post => {
         const slug = post.data.slug || post.id.replace(/\.(md|mdx)$/, '');
         const postI18n = getArticleI18n(slug, currentLang);
-        const postTitle = postI18n?.title || post.data.title;
-        const postDescription = postI18n?.description || post.data.cardDescription || post.data.description;
-        const postCategory = postI18n?.category || post.data.category;
+        const postTr: any = translatedPosts.get(slug);
+        const postTitle = postTr?.title || postI18n?.title || post.data.title;
+        const postDescription = postTr?.cardDescription || postTr?.description || postI18n?.description || post.data.cardDescription || post.data.description;
+        const postCategory = postTr?.category || postI18n?.category || post.data.category;
 
         return (
           <article class="bg-white rounded-3xl border border-[#F3E8EA] shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all">
             <div class="h-48 overflow-hidden">
-              <img src={post.data.heroImage} alt={post.data.heroImageAlt || postTitle} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+              <img src={post.data.heroImage} width={cardSizes.get(post.data.heroImage)?.width} height={cardSizes.get(post.data.heroImage)?.height} alt={postTr?.heroImageAlt || post.data.heroImageAlt || postTitle} class="w-full h-full object-cover" loading="lazy" decoding="async" />
             </div>
             <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
               <div>

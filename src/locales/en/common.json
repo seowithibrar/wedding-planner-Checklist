@@ -79,5 +79,23 @@
     "title": "Would you like to view Wedding Planning Checklists in {language}?",
     "viewIn": "View in {language}",
     "keepEnglish": "Keep English"
+  },
+  "blogUi": {
+    "freeDownload": "Free Download",
+    "suiteTitle": "Printable Wedding Checklist Suite",
+    "suiteText": "Get instant access to month-by-month planning sheets, budget templates, and vendor trackers.",
+    "downloadFree": "Download Free →",
+    "authorBadge": "Wedding Planning Resources",
+    "authorBio": "The Wedding Planning Checklists Team creates checklists, timelines, budget tools, and cultural planning resources to help couples organize their wedding.",
+    "newsKicker": "Free Wedding Planning Tips",
+    "newsTitle": "Join Thousands of Happy Couples",
+    "newsText": "Get monthly wedding checklist reminders, budget savings tips, and exclusive printable templates straight to your inbox.",
+    "emailPlaceholder": "Enter your email address",
+    "subscribe": "Subscribe Free",
+    "noSpam": "No spam. Unsubscribe anytime.",
+    "backToTop": "Back to top",
+    "scrollToTop": "Scroll to top",
+    "listDescription": "Expert advice, detailed checklists, and timeline planning guides to help you create a stress-free wedding day.",
+    "directory": "Directory"
   }
 }

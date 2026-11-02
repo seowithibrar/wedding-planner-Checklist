@@ -3,7 +3,7 @@
   "tools": {
     "budget-calculator": {
       "title": "Calculadora de Presupuesto de Boda",
-      "description": "Estima los gastos del lugar, catering, fotografía y más.",
+      "description": "Reparte tu presupuesto de boda por categorías en tiempo real: lugar, catering, fotografía, atuendo y margen para imprevistos.",
       "category": "Presupuesto",
       "intro": "Usa nuestra calculadora gratuita para estimar costos por categoría, distribuir gastos por invitado y controlar tu presupuesto en un solo lugar."
     },
@@ -21,7 +21,7 @@
     },
     "wedding-checklist-generator": {
       "title": "Generador de Listas de Verificación",
-      "description": "Genera una lista personalizada según tu fecha y preferencias.",
+      "description": "Crea una lista de boda personalizada según tu fecha y tus preferencias, con cada tarea ordenada por plazo de forma automática.",
       "category": "Tareas",
       "intro": "Obtén una lista completa adaptada a tu fecha, tradiciones y estilo de celebración."
     },
@@ -69,7 +69,7 @@
     },
     "wedding-countdown": {
       "title": "Cuenta Regresiva de Boda",
-      "description": "Reloj de cuenta regresiva en vivo hacia el día de tu boda.",
+      "description": "Cuenta regresiva en directo hasta el día de tu boda, con los días que faltan e hitos para saber qué toca hacer en cada momento.",
       "category": "Cronograma",
       "intro": "Reloj en tiempo real para contar los días, horas y semanas restantes."
     },

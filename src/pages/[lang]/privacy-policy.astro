@@ -1,4 +1,5 @@
 ---
+import GuideContent from '../../components/guides/GuideContent.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
@@ -23,12 +24,13 @@ const canonicalUrl = `${SITE_URL}/${currentLang}/privacy-policy`;
 
   <main class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-slate-700">
     <h1 class="text-3xl sm:text-4xl font-bold text-[#1A1A1A]">{common.footer.privacyPolicy}</h1>
-    <p class="text-xs text-slate-400">{common.ui.updated}: August 2026</p>
+    <p class="text-xs text-slate-400">{common.ui.updated}: {currentLang === 'es' ? 'agosto de 2026' : 'August 2026'}</p>
     <div class="prose max-w-none space-y-4 bg-white p-8 rounded-3xl border border-[#F3E8EA] shadow-sm">
-      <p>Your privacy is important to us. WeddingPlanningChecklists.org does not sell or rent personal information to third parties.</p>
-      <h2 class="text-xl font-bold text-[#1A1A1A]">Information We Collect</h2>
-      <p>We collect minimal analytical information to improve user experience and deliver requested digital tools.</p>
+      <p>{currentLang === 'es' ? 'Tu privacidad es importante para nosotros. WeddingPlanningChecklists.org no vende ni alquila información personal a terceros.' : 'Your privacy is important to us. WeddingPlanningChecklists.org does not sell or rent personal information to third parties.'}</p>
+      <h2 class="text-xl font-bold text-[#1A1A1A]">{currentLang === 'es' ? 'Información que recopilamos' : 'Information We Collect'}</h2>
+      <p>{currentLang === 'es' ? 'Recopilamos la mínima información analítica necesaria para mejorar la experiencia de uso y ofrecer las herramientas digitales que solicitas.' : 'We collect minimal analytical information to improve user experience and deliver requested digital tools.'}</p>
     </div>
+    <GuideContent kind="pages" slug="privacy-policy" lang={currentLang} class="bg-white p-6 sm:p-10 rounded-3xl border border-[#F3E8EA] shadow-sm" />
   </main>
 
   <Footer lang={currentLang} />
