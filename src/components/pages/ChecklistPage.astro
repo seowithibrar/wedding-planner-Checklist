@@ -340,22 +340,46 @@ const combinedSchema = JSON.stringify({
       <!-- Sidebar Column -->
       <aside class="space-y-6">
         
-        <!-- Interactive Tool CTA Box -->
-        <div class="bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] text-white rounded-3xl p-6 shadow-md space-y-4">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0]/20 px-2.5 py-1 rounded-full">
-            {common.ui.freePlanningTool}
-          </span>
-          <h3 class="text-xl font-bold">Track This Checklist Live</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Use our interactive Wedding Planning Dashboard to check off tasks, track RSVPs, and save your progress in real-time.
-          </p>
-          <a
-            href={localizeUrl('/tools/wedding-planning-dashboard', currentLang)}
-            class="block text-center bg-[#B76E79] hover:bg-[#a25d66] text-white font-bold py-3 px-4 rounded-full text-xs transition-all shadow-md"
-          >
-            {common.buttons.useTool} →
-          </a>
-        </div>
+        <!-- Interactive Tool CTA Box / PDF Download -->
+        {checklist.slug === 'printable-wedding-planning-checklist' ? (
+          <div class="bg-gradient-to-br from-[#1B5E3F] to-[#0f3d28] text-white rounded-3xl p-6 shadow-md space-y-4">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-[#C9A961] bg-[#C9A961]/20 px-2.5 py-1 rounded-full">
+              📥 Free PDF Download
+            </span>
+            <h3 class="text-xl font-bold">Download Now</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Get the complete 4-page printable PDF checklist. Print it, add it to your wedding binder, and start planning.
+            </p>
+            <div class="space-y-2">
+              <a
+                href="/products/printable-wedding-planner/dist/printable-wedding-planner.pdf"
+                download="Wedding-Planning-Checklist.pdf"
+                class="block text-center bg-[#C9A961] hover:bg-[#b89550] text-white font-bold py-3 px-4 rounded-full text-xs transition-all shadow-md"
+              >
+                📥 Download PDF Now
+              </a>
+              <p class="text-[10px] text-slate-400 text-center">
+                100% Free • 4 Pages • Print-Friendly
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div class="bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] text-white rounded-3xl p-6 shadow-md space-y-4">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-[#B76E79] bg-[#FCECF0]/20 px-2.5 py-1 rounded-full">
+              {common.ui.freePlanningTool}
+            </span>
+            <h3 class="text-xl font-bold">Track This Checklist Live</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Use our interactive Wedding Planning Dashboard to check off tasks, track RSVPs, and save your progress in real-time.
+            </p>
+            <a
+              href={localizeUrl('/tools/wedding-planning-dashboard', currentLang)}
+              class="block text-center bg-[#B76E79] hover:bg-[#a25d66] text-white font-bold py-3 px-4 rounded-full text-xs transition-all shadow-md"
+            >
+              {common.buttons.useTool} →
+            </a>
+          </div>
+        )}
 
         <!-- Quick Tools Links -->
         <div class="bg-white rounded-3xl border border-[#F3E8EA] p-6 shadow-sm space-y-4">
