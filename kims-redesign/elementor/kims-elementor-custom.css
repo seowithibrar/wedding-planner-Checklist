@@ -1,0 +1,102 @@
+/* KIMS homepage – custom CSS for the Elementor container template.
+   Only covers what Elementor's native controls cannot do. Every rule is scoped to
+   the template's own classes (.kims, .kims-*), so nothing else on the site changes.
+   The template already embeds this file in its first HTML widget; if you move it to
+   Site Settings > Custom CSS (Pro) or Appearance > Customize > Additional CSS,
+   delete that widget. */
+
+html { scroll-behavior: smooth; }
+.kims { font-family: Helvetica, Arial, sans-serif; }
+.kims .elementor-widget-text-editor p { margin: 0; }
+.kims .elementor-widget-text-editor p + p { margin-top: 1em; }
+.kims a:focus-visible, .kims select:focus-visible, .kims .elementor-tab-title:focus-visible {
+  outline: 3px solid #d1a64a; outline-offset: 4px;
+}
+
+/* Eyebrow: short gold rule before the label (.eyebrow:before) */
+.kims-eyebrow .elementor-heading-title::before {
+  content: ""; display: inline-block; width: 20px; height: 2px; margin-right: 12px;
+  background: currentColor; vertical-align: middle;
+}
+
+/* Gold second line of the hero heading */
+.kims .kims-gold { color: #d1a64a; }
+
+/* Sticky white header (Elementor Free has no sticky option) */
+.kims-sticky-header { position: sticky; top: 0; z-index: 50; }
+.admin-bar .kims-sticky-header { top: 32px; }
+@media (max-width: 782px) { .admin-bar .kims-sticky-header { top: 0; } }
+
+/* Buttons: small lift on hover */
+.kims-btn .elementor-button { transition: background .18s, transform .18s, border-color .18s; }
+.kims-btn .elementor-button:hover { transform: translateY(-2px); }
+
+/* Text links: underline on hover, stay inline-sized */
+.kims-text-link .elementor-button { min-height: 0; }
+.kims-text-link .elementor-button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.kims-quick-link .elementor-button-content-wrapper { justify-content: flex-start; }
+
+/* Hero media: extra left fade into the navy copy column (second gradient in the HTML) */
+.kims-hero-media { isolation: isolate; }
+.kims-hero-media::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(90deg, #10283b 0%, transparent 18%);
+}
+.kims-hero-caption { position: relative; z-index: 1; }
+@media (max-width: 767px) { .kims-hero-media::after { display: none; } }
+
+/* Card hover lift (.program-card:hover) */
+.kims-lift { transition: transform .2s, box-shadow .2s; }
+.kims-lift:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(16, 40, 59, .09); }
+
+.kims-campus-card h3 { margin: 0; }
+
+/* FAQ toggle: bottom rules only, like the original <details> list */
+.kims-faq .elementor-toggle-item { border-bottom: 1px solid #d4dfe5; }
+.kims-faq .elementor-tab-title, .kims-faq .elementor-tab-content { border: 0 !important; }
+.kims-faq .elementor-toggle-icon { font-size: 1rem; }
+
+/* Map tone */
+.kims-map iframe { filter: saturate(.7); }
+
+/* Contact rows: links inherit the row colour, underline on hover */
+.kims .elementor-heading-title a { color: inherit; }
+.kims .elementor-heading-title a:hover { text-decoration: underline; }
+
+/* Footer */
+.kims-footer .kims-brand-sub {
+  display: block; margin-top: 4px; font-size: 8.3px; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase; line-height: 1.3;
+}
+.kims-footer-legal a { color: inherit; }
+.kims-footer-legal a:hover { color: #d1a64a; }
+
+/* Mobile quick-action bar pinned to the bottom of the screen */
+.kims-mobile-bar { position: sticky; bottom: 0; z-index: 40; }
+
+/* Pathway selector (HTML widget) */
+.kims-path label { display: block; margin-bottom: 10px; font-weight: 700; color: #172b3a; }
+.kims-path select {
+  width: 100%; padding: 13px 15px; border: 1px solid #9cafb9; border-radius: 3px;
+  background: #fff; color: #10283b; font: inherit;
+}
+.kims-path-result {
+  min-height: 180px; margin-top: 22px; padding: 20px;
+  background: #f8f7f2; border-left: 4px solid #d1a64a;
+}
+.kims-path-result small {
+  color: #8a641c; font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+.kims-path-result h3 {
+  margin: 10px 0 8px; color: #10283b; font-size: 1.3rem; font-weight: 700;
+  letter-spacing: -.045em; line-height: 1.12;
+}
+.kims-path-result p { margin: 0 0 14px; color: #647686; font-size: .9rem; }
+.kims-path-link { color: #10283b; font-size: .84rem; font-weight: 700; }
+.kims-path-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .kims *, .kims *::before, .kims *::after { transition: none !important; animation: none !important; }
+  .kims-lift:hover, .kims-btn .elementor-button:hover { transform: none; }
+}
