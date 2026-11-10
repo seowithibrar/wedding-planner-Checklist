@@ -13,6 +13,7 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'never',
   redirects: {
+    '/checklists': '/blog/the-ultimate-wedding-planning-checklists-guide-for-a-stress-free-wedding',
     '/how-to-plan-a-wedding-timeline.html': '/blog/how-to-plan-a-wedding-timeline',
     '/how-to-plan-a-wedding-timeline': '/blog/how-to-plan-a-wedding-timeline',
     '/how-to-plan-wedding-timeline.html': '/blog/how-to-plan-a-wedding-timeline',
