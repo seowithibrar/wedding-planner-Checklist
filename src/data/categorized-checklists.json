@@ -14,6 +14,31 @@
         "Months 8–6: Shop for wedding attire, choose bridal party, and book caterer.",
         "Months 5–3: Send formal invitations, order wedding cake, and schedule hair/makeup trials.",
         "Months 2–1: Obtain marriage license, finalize seating chart, and assemble emergency kit."
+      ],
+      "heroImage": "/The%20Month-by-Month%20Wedding%20Planning%20Timeline.webp",
+      "heroImageAlt": "Month-by-month wedding planning timeline graphic for a 12-month engagement",
+      "metaDescription": "A month-by-month 12-month wedding planning checklist covering venue, vendors, attire, invitations and final details, so nothing is missed.",
+      "faqs": [
+        {
+          "q": "Is 12 months enough time to plan a wedding?",
+          "a": "Yes. Twelve months gives you time to book a venue and key vendors, shop for attire without rushing, and handle paperwork at a steady pace."
+        },
+        {
+          "q": "What should we book first on a 12-month timeline?",
+          "a": "Settle your budget and guest count, then book the venue and date. Photographer and caterer usually follow, since popular ones fill early."
+        },
+        {
+          "q": "When should invitations go out?",
+          "a": "Send save-the-dates earlier, then mail formal invitations roughly two to three months before the wedding, adjusting for travel guests."
+        },
+        {
+          "q": "What if we are behind schedule?",
+          "a": "Move to the next stage and prioritize tasks that depend on availability, such as venue and vendors. Decor and favors can be simplified or done later."
+        },
+        {
+          "q": "Can we customize this checklist?",
+          "a": "Yes. Use it as a base and add or remove tasks to match your style, then track progress in our free wedding checklist generator."
+        }
       ]
     },
     {
@@ -30,6 +55,31 @@
         "Months 13–10: Secure venue, photographer, band/DJ, and event designer.",
         "Months 9–6: Order custom couture dress, arrange room blocks, and plan engagement party.",
         "Months 5–1: Track RSVPs, complete fittings, and conduct final venue walkthroughs."
+      ],
+      "heroImage": "/timeline-18-month-phases.jpg",
+      "heroImageAlt": "Eighteen-month wedding planning timeline broken into phases",
+      "metaDescription": "An 18-month wedding planning checklist for early venue booking, destination or large weddings, and custom attire, with tasks for each phase.",
+      "faqs": [
+        {
+          "q": "Who should use an 18-month wedding timeline?",
+          "a": "It suits couples planning a large wedding, a destination event, a peak-season date, or custom attire that takes months to make."
+        },
+        {
+          "q": "What can we do in the first few months?",
+          "a": "Set a budget, draft the guest list, research venues, and decide your wedding style. These steps shape every later choice."
+        },
+        {
+          "q": "Can planning too early cause problems?",
+          "a": "It can if you lock details like exact menus or decor too soon. Book venue and key vendors early, and leave smaller decisions for later."
+        },
+        {
+          "q": "When should we book a photographer?",
+          "a": "Soon after the venue is secured, since experienced photographers often book a year or more ahead for popular dates."
+        },
+        {
+          "q": "How do we avoid burnout over a long timeline?",
+          "a": "Plan in small monthly goals, take planning breaks, and use a shared checklist so tasks do not pile up near the end."
+        }
       ]
     },
     {
@@ -57,14 +107,38 @@
         "Treat the 6-month wedding planning checklist as a working document. Add dates, owners and costs to every task."
       ],
       "faqs": [
-        { "q": "Is 6 months enough time to plan a wedding?", "a": "Yes. Six months is enough for most weddings if you follow a 6-month wedding planning checklist and book the venue and photographer in the first two weeks and choose attire that doesn't need to be made. Peak-season Saturdays may be taken, so stay open on the day and the venue style." },
-        { "q": "What should I do first when planning a wedding in 6 months?", "a": "Set a budget and guest count, then contact venues and photographers right away. These bookings limit everything else, so they come before décor, stationery and favors." },
-        { "q": "How many weeks are in a 6-month wedding timeline?", "a": "Six months is about 26 weeks or 180 days. Many people plan with a 24-week timeline, leaving two weeks free before the wedding for last-minute changes." },
-        { "q": "Can I get a wedding dress in 6 months?", "a": "Yes, if you choose ready-to-wear, sample or rental options. Custom gowns usually need a long production window plus alterations, so confirm delivery dates in writing before you buy." },
-        { "q": "Should I skip save-the-dates on a 6-month timeline?", "a": "Usually yes. Put the date on a wedding website, tell close guests directly, and send invitations earlier than the usual window, around 10 to 12 weeks before the wedding." },
-        { "q": "What is included in a 6-month wedding planning checklist?", "a": "A 6-month wedding planning checklist covers budget, guest count, venue, photographer, caterer, music, attire, invitations, rings, license, fittings, vendor confirmations and the final headcount, arranged in six monthly blocks." },
-        { "q": "Is there a free printable 6-month wedding planning checklist?", "a": "Yes. Use our printable wedding planning checklist, or save this 6-month wedding planning checklist as a PDF. You can also copy the tasks into a spreadsheet and add owners, deadlines and costs." },
-        { "q": "How do I track a 6-month wedding countdown?", "a": "Enter your wedding date in the Wedding Countdown to see the days left, then match that number to the month on this 6-month wedding planning checklist. Use the planning dashboard to tick off tasks as you go." }
+        {
+          "q": "Is 6 months enough time to plan a wedding?",
+          "a": "Yes. Six months is enough for most weddings if you follow a 6-month wedding planning checklist and book the venue and photographer in the first two weeks and choose attire that doesn't need to be made. Peak-season Saturdays may be taken, so stay open on the day and the venue style."
+        },
+        {
+          "q": "What should I do first when planning a wedding in 6 months?",
+          "a": "Set a budget and guest count, then contact venues and photographers right away. These bookings limit everything else, so they come before décor, stationery and favors."
+        },
+        {
+          "q": "How many weeks are in a 6-month wedding timeline?",
+          "a": "Six months is about 26 weeks or 180 days. Many people plan with a 24-week timeline, leaving two weeks free before the wedding for last-minute changes."
+        },
+        {
+          "q": "Can I get a wedding dress in 6 months?",
+          "a": "Yes, if you choose ready-to-wear, sample or rental options. Custom gowns usually need a long production window plus alterations, so confirm delivery dates in writing before you buy."
+        },
+        {
+          "q": "Should I skip save-the-dates on a 6-month timeline?",
+          "a": "Usually yes. Put the date on a wedding website, tell close guests directly, and send invitations earlier than the usual window, around 10 to 12 weeks before the wedding."
+        },
+        {
+          "q": "What is included in a 6-month wedding planning checklist?",
+          "a": "A 6-month wedding planning checklist covers budget, guest count, venue, photographer, caterer, music, attire, invitations, rings, license, fittings, vendor confirmations and the final headcount, arranged in six monthly blocks."
+        },
+        {
+          "q": "Is there a free printable 6-month wedding planning checklist?",
+          "a": "Yes. Use our printable wedding planning checklist, or save this 6-month wedding planning checklist as a PDF. You can also copy the tasks into a spreadsheet and add owners, deadlines and costs."
+        },
+        {
+          "q": "How do I track a 6-month wedding countdown?",
+          "a": "Enter your wedding date in the Wedding Countdown to see the days left, then match that number to the month on this 6-month wedding planning checklist. Use the planning dashboard to tick off tasks as you go."
+        }
       ]
     },
     {
@@ -89,25 +163,67 @@
         "Weeks 4–1: Obtain marriage license, confirm ceremony script, and enjoy the big day."
       ],
       "faqs": [
-        { "q": "Can you plan a wedding in 3 months?", "a": "Yes. With a flexible date, a manageable guest list, and fast decisions, you can plan a well-run wedding in 90 days. Book your venue and photographer in the first week, since those fill up first." },
-        { "q": "What should I do first when planning a wedding in 3 months?", "a": "Set your total budget and estimated guest count, then contact venues and photographers on the same day. Do not spend the first week only researching." },
-        { "q": "What should be on a 3 month wedding planning checklist?", "a": "The core items are a budget, guest count, venue, photographer, caterer, officiant, attire, invitations, marriage license, vendor confirmations, a final headcount, and a day-of timeline. This page orders them week by week." },
-        { "q": "What is the hardest vendor to book on a 3-month timeline?", "a": "Popular venues and sought-after photographers are usually the toughest, especially for Saturdays in busy seasons. Weekday or Sunday dates, non-traditional venues, and referrals from your venue all help." },
-        { "q": "Is there a free 3 month wedding planning checklist PDF?", "a": "Yes. This checklist is free, and you can print it from your browser or use our printable wedding planning checklist. The Wedding Checklist Generator can create a version tailored to your date." },
-        { "q": "How do I plan a wedding in 3 months on a small budget?", "a": "Choose a weekday or Sunday, keep the guest list small, pick an all-inclusive venue, and focus your spending on two or three priorities. Check your numbers in the Budget Calculator before paying deposits." },
-        { "q": "How early should I send wedding invitations on a 3-month timeline?", "a": "Send them as soon as your venue, date, and guest list are confirmed, ideally in the first few weeks. Digital invitations are the fastest option. Set the RSVP deadline about four to five weeks before the wedding." },
-        { "q": "Can I get a wedding dress in 3 months?", "a": "Yes, if you choose off-the-rack, sample-sale, or rental options and book alterations at the time of purchase. Custom orders are usually too slow for this window." },
-        { "q": "What if I have only 2 months to plan?", "a": "Follow the same order, but make every decision faster. Venue and photographer come first, invitations go out digitally right away, and optional extras get cut." }
+        {
+          "q": "Can you plan a wedding in 3 months?",
+          "a": "Yes. With a flexible date, a manageable guest list, and fast decisions, you can plan a well-run wedding in 90 days. Book your venue and photographer in the first week, since those fill up first."
+        },
+        {
+          "q": "What should I do first when planning a wedding in 3 months?",
+          "a": "Set your total budget and estimated guest count, then contact venues and photographers on the same day. Do not spend the first week only researching."
+        },
+        {
+          "q": "What should be on a 3 month wedding planning checklist?",
+          "a": "The core items are a budget, guest count, venue, photographer, caterer, officiant, attire, invitations, marriage license, vendor confirmations, a final headcount, and a day-of timeline. This page orders them week by week."
+        },
+        {
+          "q": "What is the hardest vendor to book on a 3-month timeline?",
+          "a": "Popular venues and sought-after photographers are usually the toughest, especially for Saturdays in busy seasons. Weekday or Sunday dates, non-traditional venues, and referrals from your venue all help."
+        },
+        {
+          "q": "Is there a free 3 month wedding planning checklist PDF?",
+          "a": "Yes. This checklist is free, and you can print it from your browser or use our printable wedding planning checklist. The Wedding Checklist Generator can create a version tailored to your date."
+        },
+        {
+          "q": "How do I plan a wedding in 3 months on a small budget?",
+          "a": "Choose a weekday or Sunday, keep the guest list small, pick an all-inclusive venue, and focus your spending on two or three priorities. Check your numbers in the Budget Calculator before paying deposits."
+        },
+        {
+          "q": "How early should I send wedding invitations on a 3-month timeline?",
+          "a": "Send them as soon as your venue, date, and guest list are confirmed, ideally in the first few weeks. Digital invitations are the fastest option. Set the RSVP deadline about four to five weeks before the wedding."
+        },
+        {
+          "q": "Can I get a wedding dress in 3 months?",
+          "a": "Yes, if you choose off-the-rack, sample-sale, or rental options and book alterations at the time of purchase. Custom orders are usually too slow for this window."
+        },
+        {
+          "q": "What if I have only 2 months to plan?",
+          "a": "Follow the same order, but make every decision faster. Venue and photographer come first, invitations go out digitally right away, and optional extras get cut."
+        }
       ],
       "howTo": {
         "name": "How to plan a wedding in 3 months",
         "description": "Follow the 12-week wedding planning checklist to book essentials, manage logistics, confirm vendors, and prepare for the wedding day.",
         "steps": [
-          { "name": "Weeks 12 to 10: Book the essentials", "text": "Set your budget and guest count, then book the venue, photographer, caterer, and officiant." },
-          { "name": "Weeks 9 to 7: Style and guests", "text": "Choose attire, send invitations, build a wedding website, and book hair, makeup, and florals." },
-          { "name": "Weeks 6 to 4: Paperwork and logistics", "text": "Handle the marriage license, rings, menu, seating plan, and a first day-of timeline." },
-          { "name": "Weeks 3 to 2: Confirm everything", "text": "Call vendors, send the final headcount, attend final fittings, and share the timeline." },
-          { "name": "Final week: Rehearse and rest", "text": "Attend the rehearsal, pack an emergency kit, deliver items to the venue, and rest." }
+          {
+            "name": "Weeks 12 to 10: Book the essentials",
+            "text": "Set your budget and guest count, then book the venue, photographer, caterer, and officiant."
+          },
+          {
+            "name": "Weeks 9 to 7: Style and guests",
+            "text": "Choose attire, send invitations, build a wedding website, and book hair, makeup, and florals."
+          },
+          {
+            "name": "Weeks 6 to 4: Paperwork and logistics",
+            "text": "Handle the marriage license, rings, menu, seating plan, and a first day-of timeline."
+          },
+          {
+            "name": "Weeks 3 to 2: Confirm everything",
+            "text": "Call vendors, send the final headcount, attend final fittings, and share the timeline."
+          },
+          {
+            "name": "Final week: Rehearse and rest",
+            "text": "Attend the rehearsal, pack an emergency kit, deliver items to the venue, and rest."
+          }
         ]
       }
     },
@@ -218,6 +334,29 @@
         "12–14 Months Out: Send Save-the-Dates with travel website link & passport validity reminders.",
         "9–6 Months Out: Secure resort group rate codes, book site visit, and verify local legal marriage documents.",
         "3–1 Months Out: Finalize welcome bag favors, group excursions, and airport transfer shuttles."
+      ],
+      "metaDescription": "A destination wedding checklist covering travel logistics, local marriage requirements, guest accommodations and a timeline from save-the-date to arrival.",
+      "faqs": [
+        {
+          "q": "How early should we plan a destination wedding?",
+          "a": "Start 12 to 18 months ahead when you can, so guests have time to arrange travel and you can handle documents and site visits."
+        },
+        {
+          "q": "Do we need to be legally married at the destination?",
+          "a": "Rules vary by country. Check the local marriage requirements early, and consider a legal ceremony at home plus a symbolic ceremony abroad."
+        },
+        {
+          "q": "When should we send save-the-dates?",
+          "a": "Send them as soon as the date and location are set, ideally with a wedding website that lists flights, lodging, and travel documents."
+        },
+        {
+          "q": "How do we help guests with travel costs?",
+          "a": "Negotiate a room block or group rate, suggest a range of lodging prices, and share travel details early so guests can budget."
+        },
+        {
+          "q": "Should we visit the venue before the wedding?",
+          "a": "Yes, if possible. A site visit lets you meet vendors, test food, and confirm logistics that are hard to judge from photos."
+        }
       ]
     },
     {
@@ -233,6 +372,31 @@
         "Infrastructure Check: Rent luxury restroom trailers, backup generators, and tent flooring.",
         "Permits & Insurance: Obtain city noise permits, parking permissions, and event liability insurance.",
         "Vendor Access: Confirm catering setup space, trash management, and outdoor lighting."
+      ],
+      "heroImage": "/backyard-wedding-60-guests.jpg",
+      "heroImageAlt": "Backyard wedding reception with long wooden tables, candles, greenery and string lights",
+      "metaDescription": "A backyard and private estate wedding checklist covering tenting, power, restrooms, permits, parking and rain plans for a smooth home celebration.",
+      "faqs": [
+        {
+          "q": "What permits might a backyard wedding need?",
+          "a": "Requirements vary by city and county. Ask about noise, parking, tent, and event permits, and check any homeowner association rules."
+        },
+        {
+          "q": "Do we need to rent a tent?",
+          "a": "Often yes, for shade, rain protection, or a defined dining area. Ask rental companies about size, flooring, sides, and lighting."
+        },
+        {
+          "q": "How many restrooms will we need?",
+          "a": "It depends on guest count and event length. Ask your rental provider for a recommendation and consider upgraded portable units for comfort."
+        },
+        {
+          "q": "What is the biggest hidden cost?",
+          "a": "Rentals and logistics add up quickly. Price tables, chairs, tents, power, restrooms, and cleanup together before comparing to a venue."
+        },
+        {
+          "q": "What is our rain plan?",
+          "a": "Decide in advance whether to use a tent, move indoors, or rebook, and set a decision deadline with your vendors."
+        }
       ]
     },
     {
@@ -248,6 +412,29 @@
         "Personal Touches: Handwritten letters for every guest, custom place cards, and premium favors.",
         "Elevated Dining: Chef's tasting menu, wine pairings, and single-table family seating.",
         "Relaxed Timeline: Extra time for conversation, portraits, and intimate toasts."
+      ],
+      "metaDescription": "A small wedding checklist for under 50 guests, with tips on dining, personal touches, venue choice and a relaxed timeline for an intimate celebration.",
+      "faqs": [
+        {
+          "q": "What counts as an intimate or small wedding?",
+          "a": "There is no strict rule. Many couples use the term for weddings with roughly 50 guests or fewer, including micro-weddings with just a few guests."
+        },
+        {
+          "q": "Does a smaller wedding cost less?",
+          "a": "Often the total is lower, but cost per guest may rise as you choose better food, a nicer venue, or more personal details."
+        },
+        {
+          "q": "What venue works best for a small wedding?",
+          "a": "A restaurant, private dining room, garden, or home can fit a small group well, so look for a space that feels full, not empty."
+        },
+        {
+          "q": "How do we choose who to invite?",
+          "a": "Set a firm number, rank guests in tiers, and use a clear rule such as only people you have seen in the last year."
+        },
+        {
+          "q": "Can we still have a first dance and toasts?",
+          "a": "Yes. A smaller group allows longer toasts, more conversation, and a relaxed schedule, so keep the moments that matter most to you."
+        }
       ]
     },
     {
@@ -263,6 +450,31 @@
         "Fashion Fixes: Fashion tape, stain remover pen, safety pins, needle & thread, backup shoe pads.",
         "Beauty Emergency: Bobby pins, hairspray, blotting paper, lip gloss, mini perfume, clear nail polish.",
         "Health & Practical: Pain relief, mints, tissues, phone charger, water bottle, vendor contact sheet."
+      ],
+      "heroImage": "/wedding-day-emergency-kit.jpg",
+      "heroImageAlt": "Bridal emergency kit with fashion tape, safety pins, beauty touch-up items and essentials",
+      "metaDescription": "A bridal emergency kit checklist with 35+ items for clothing fixes, beauty touch-ups, health and practical needs, so you stay calm on your wedding day.",
+      "faqs": [
+        {
+          "q": "What are the most important items in a bridal emergency kit?",
+          "a": "Safety pins, fashion tape, a stain remover pen, needle and thread, pain relief, tissues, blotting paper, and a phone charger cover most surprises."
+        },
+        {
+          "q": "Who should carry the kit?",
+          "a": "Give it to a trusted bridesmaid, family member, or your planner, so you are not carrying it while getting ready or posing for photos."
+        },
+        {
+          "q": "When should we pack the kit?",
+          "a": "Pack it a few days before the wedding so you have time to buy anything missing, and keep it with your getting-ready items."
+        },
+        {
+          "q": "Should we include items for the groom?",
+          "a": "Yes. A small set with a spare tie or pocket square, cufflinks, lint roller, and breath mints helps everyone in the wedding party."
+        },
+        {
+          "q": "What about weather-related items?",
+          "a": "Add an umbrella, sunscreen, or a light wrap depending on the season, plus bottled water and snacks for long photo sessions."
+        }
       ]
     },
     {
@@ -278,6 +490,31 @@
         "Morning (7:00 AM - 12:00 PM): Hair & makeup, bridal party photos, vendor arrival.",
         "Afternoon (1:00 PM - 4:00 PM): First look portraits, ceremony room walkthrough, guest seating.",
         "Evening (5:00 PM - 11:00 PM): Ceremony, cocktail hour, grand entrance, speeches, dancing & exit."
+      ],
+      "heroImage": "/images/wedding-day-timeline-generator-hero.jpg",
+      "heroImageAlt": "Wedding day timeline planner showing a schedule from morning preparation to the evening reception",
+      "metaDescription": "A wedding day-of timeline checklist with a morning-to-night schedule template for hair, photos, ceremony, reception and exit, so everyone stays on time.",
+      "faqs": [
+        {
+          "q": "How far in advance should we create the day-of timeline?",
+          "a": "Draft it one to two months ahead, then confirm details with vendors and finalize it a week or two before the wedding."
+        },
+        {
+          "q": "Who should receive the timeline?",
+          "a": "Share it with your photographer, venue coordinator, caterer, DJ, florist, wedding party, and key family members."
+        },
+        {
+          "q": "How much time should we allow for hair and makeup?",
+          "a": "Ask your stylists how long each person needs, add a buffer for delays, and schedule the bride last or first depending on photo plans."
+        },
+        {
+          "q": "How do we plan time for photos?",
+          "a": "Work backward from the ceremony start, and ask your photographer how long family portraits, the couple session, and wedding party photos should take."
+        },
+        {
+          "q": "What should we include as buffer time?",
+          "a": "Add 10 to 15 minutes between major events, since travel, dressing, and group photos often take longer than planned."
+        }
       ]
     },
     {
@@ -293,6 +530,29 @@
         "Tier Breakdown: A-List (Must-haves), B-List (Second round), C-List (Acquaintances).",
         "Dietary Tracking: Track vegan, gluten-free, halal, kosher, and nut allergies.",
         "Seating Chart: Group by family relationships, friend circles, and age groups."
+      ],
+      "metaDescription": "A wedding guest list and RSVP checklist covering guest tiers, plus-one rules, dietary needs, seating charts and thank-you notes in one organized plan.",
+      "faqs": [
+        {
+          "q": "How do we start a wedding guest list?",
+          "a": "Write every name you would like to invite, then sort into tiers such as must-haves, second-round guests, and optional guests."
+        },
+        {
+          "q": "What information should we track for each guest?",
+          "a": "Track the full name, address, RSVP, meal choice, dietary needs, plus-one, and thank-you note status."
+        },
+        {
+          "q": "How do we set a plus-one rule?",
+          "a": "Choose one rule and apply it to everyone, such as plus-ones for married, engaged, and living-together couples and the wedding party."
+        },
+        {
+          "q": "When should we send invitations?",
+          "a": "Many couples mail formal invitations about two to three months ahead and ask for replies four to six weeks before the wedding."
+        },
+        {
+          "q": "How do we plan a seating chart?",
+          "a": "Group guests by family, friend circles, and age, then seat key tables first and adjust after your RSVP deadline."
+        }
       ]
     },
     {
@@ -308,6 +568,31 @@
         "Order of Booking: 1. Venue, 2. Planner, 3. Photo/Video, 4. Caterer, 5. DJ, 6. Florist.",
         "Contract Verification: Check cancellation clauses, overtime hourly rates, and meal requirements.",
         "Payment Tracking: Record initial deposit, mid-way progress payments, and final balances."
+      ],
+      "heroImage": "/What%20Order%20to%20Book%20Your%20Wedding%20Vendors.webp",
+      "heroImageAlt": "Graphic showing the order in which to book wedding vendors",
+      "metaDescription": "A wedding vendor booking checklist with the best hiring order, a deposit tracker and contract red flags, so you book the right team with confidence.",
+      "faqs": [
+        {
+          "q": "Which vendors should we book first?",
+          "a": "Start with the venue, then book planner, photographer and videographer, caterer, and entertainment, since popular vendors fill early."
+        },
+        {
+          "q": "What should be in a vendor contract?",
+          "a": "Check the date, services, price, payment schedule, cancellation and refund terms, overtime rates, and what happens if the vendor cannot attend."
+        },
+        {
+          "q": "How many quotes should we collect?",
+          "a": "Ask for at least two or three quotes per category so you can compare services as well as price."
+        },
+        {
+          "q": "How do we track deposits?",
+          "a": "Record each vendor, the deposit paid, the due date for the balance, and the contact person in one table, or use our budget calculator."
+        },
+        {
+          "q": "What are common contract red flags?",
+          "a": "Watch for vague service descriptions, pressure to sign immediately, no written cancellation terms, and large non-refundable fees without explanation."
+        }
       ]
     },
     {
@@ -323,6 +608,31 @@
         "Entrance & Dances: Grand entrance, first dance, parent dances, open floor transition.",
         "Toasts & Speeches: Limit speeches to 3–5 minutes each during salad or dessert course.",
         "Night Finish: Cake cutting, bouquet toss (optional), final song, and sparkler send-off."
+      ],
+      "heroImage": "/20k-wedding-venue-reception.jpg",
+      "heroImageAlt": "Outdoor wedding reception with long wooden dining tables set with candles and greenery under string lights",
+      "metaDescription": "A wedding reception planning checklist covering the grand entrance, dinner service, toasts, first dance, cake cutting and send-off from start to finish.",
+      "faqs": [
+        {
+          "q": "What is a typical wedding reception order of events?",
+          "a": "Many receptions follow a grand entrance, dinner, toasts, first dance, open dancing, cake cutting, and a final send-off, but you can reorder them."
+        },
+        {
+          "q": "How long should toasts be?",
+          "a": "Keep each toast to a few minutes, and ask speakers to prepare in advance so the evening keeps moving."
+        },
+        {
+          "q": "When should we cut the cake?",
+          "a": "Many couples do it after dinner or before dancing starts, so guests can enjoy dessert and photos can be taken while the room is full."
+        },
+        {
+          "q": "How do we keep the reception on schedule?",
+          "a": "Share a written timeline with your DJ, caterer, and coordinator, and name one person to keep the schedule moving."
+        },
+        {
+          "q": "Who should be the master of ceremonies?",
+          "a": "A DJ, planner, or a confident friend or family member can help, as long as they know the schedule and the names to pronounce."
+        }
       ]
     },
     {
@@ -338,6 +648,31 @@
         "Personal Florals: Bridal bouquet, bridesmaid bouquets, boutonnieres, corsages, flower girl basket.",
         "Ceremony Decor: Entrance arch/chuppah, aisle runner, chair tie-backs, welcome sign.",
         "Reception Tablescapes: Centerpieces, table numbers, place cards, chargers, candles, menu cards."
+      ],
+      "heroImage": "/Wedding%20Attire%2C%20Flowers%20and%20Decorations.webp",
+      "heroImageAlt": "Wedding attire, flowers and decoration ideas shown together as a planning guide",
+      "metaDescription": "A wedding decor and flowers checklist covering bouquets, ceremony arrangements, reception centerpieces, signage and lighting so no detail is forgotten.",
+      "faqs": [
+        {
+          "q": "When should we book a florist?",
+          "a": "Book once your venue and date are set, often several months ahead, so your florist can plan around the season and your budget."
+        },
+        {
+          "q": "What flowers do we need beyond the bouquet?",
+          "a": "Plan for bridesmaid bouquets, boutonnieres, corsages, ceremony arrangements, and reception centerpieces."
+        },
+        {
+          "q": "How can we lower floral costs?",
+          "a": "Choose seasonal and local blooms, add greenery, and reuse ceremony arrangements at the reception."
+        },
+        {
+          "q": "What decor items do people often forget?",
+          "a": "Signage, table numbers, place cards, aisle markers, candles, and lighting are commonly overlooked, so add them to your list early."
+        },
+        {
+          "q": "How do we coordinate decor with the venue?",
+          "a": "Ask what the venue provides, what is allowed, and when your team can access the space for setup and breakdown."
+        }
       ]
     },
     {
