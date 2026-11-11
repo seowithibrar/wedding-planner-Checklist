@@ -20,7 +20,10 @@
       "WebSearch",
       "PowerShell($u='http://themetesting.local/'; try{$r=Invoke-WebRequest $u -UseBasicParsing -TimeoutSec 20; \"status $\\($r.StatusCode\\) bytes $\\($r.RawContentLength\\)\"; \\($r.Content | Select-String -Pattern '<\\(link|script\\)[^>]+\\(href|src\\)=\"[^\"]+\"' -AllMatches\\).Matches | % {$_.Value} | Select -First 40}catch{$_.Exception.Message}; node -v; npx --no-install lighthouse --version 2>&1 | Select -First 2)",
       "PowerShell($sp='C:\\\\Users\\\\mitec\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\3d1d52b1c3d08f48\\\\e09a1f8d-7cc5-4bc2-9e95-7c80725a2c56\\\\scratchpad'; mkdir \"$sp\\\\lh\" -Force | Out-Null; cd \"$sp\\\\lh\"; npm init -y 2>&1 | Out-Null; npm install lighthouse --no-audit --no-fund 2>&1 | Select -Last 3; Test-Path \"$sp\\\\lh\\\\node_modules\\\\.bin\\\\lighthouse.cmd\"; Test-Path 'C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe')",
-      "Bash(python -)"
+      "Bash(python -)",
+      "Bash(grep -n \"jQuery\\\\|\\\\$\\(document\\)\" assets/js/admin-demos.js)",
+      "Bash(sed -n '/## Not yet tested/,$p' TESTING.md)",
+      "mcp__claude_ai_Education_Eminents_WordPress__wp_update_page"
     ]
   }
 }
