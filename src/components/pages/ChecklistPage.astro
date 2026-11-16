@@ -17,6 +17,16 @@ export interface Props {
 const { checklist, lang = DEFAULT_LANGUAGE } = Astro.props;
 const currentLang = lang as SupportedLanguage;
 const isEnglishThreeMonthChecklist = currentLang === DEFAULT_LANGUAGE && checklist.slug === '3-month-wedding-planning-checklist';
+const isPrintableWeddingChecklist = checklist.slug === 'printable-wedding-planning-checklist';
+const displayHeroImage = isPrintableWeddingChecklist
+  ? '/images/checklists/printable-wedding-planning-checklist/printable-wedding-planning-checklist-hero.webp'
+  : checklist.heroImage;
+const displayHeroAlt = isPrintableWeddingChecklist
+  ? 'Printable wedding planning checklist binder with wedding stationery'
+  : checklist.heroImageAlt || checklist.title;
+const displayDescription = isPrintableWeddingChecklist
+  ? 'Download a free four-page printable wedding planning checklist PDF with a 12-month task timeline, checkboxes, vendor contacts, payment tracking, and notes space. Print it for your wedding binder or use it as a simple paper planning system from engagement to wedding day.'
+  : checklist.description;
 const { common, checklists } = useTranslations(currentLang);
 
 const canonicalUrl = currentLang === DEFAULT_LANGUAGE 
@@ -50,7 +60,7 @@ const faqs: { q: string; a: string }[] = checklist.faqs || [
   }
 ];
 
-const imageUrl = new URL(checklist.heroImage || '/Wedding%20Planning%20Checklist.webp', SITE_URL).toString();
+const imageUrl = new URL(displayHeroImage || '/Wedding%20Planning%20Checklist.webp', SITE_URL).toString();
 const schemas = [
   generateArticleSchema({
     title: checklist.title,
@@ -107,7 +117,7 @@ const combinedSchema = JSON.stringify({
       </h1>
       {!checklist.longForm && !isEnglishThreeMonthChecklist && (
         <p class="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
-          {checklist.description}
+          {displayDescription}
         </p>
       )}
 
@@ -129,11 +139,11 @@ const combinedSchema = JSON.stringify({
       </div>
     </header>
 
-    {checklist.heroImage && (
+    {displayHeroImage && (
       <div class="max-w-[1300px] mx-auto px-4">
         <img
-          src={checklist.heroImage}
-          alt={checklist.heroImageAlt || checklist.title}
+          src={displayHeroImage}
+          alt={displayHeroAlt}
           class="w-full aspect-video object-cover rounded-2xl border border-[#F3E8EA] shadow-sm"
           width="1376"
           height="768"
@@ -212,9 +222,26 @@ const combinedSchema = JSON.stringify({
 
         <!-- Summary Box -->
         <div class="bg-[#FCECF0]/30 border border-[#B76E79]/20 p-6 rounded-2xl space-y-2">
-          <h2 class="text-lg font-bold text-[#B76E79]">{checklists.overviewTitle || 'Overview'}</h2>
-          <p class="text-sm text-slate-700 leading-relaxed">{checklist.summary}</p>
+          <h2 class="text-lg font-bold text-[#B76E79]">{isPrintableWeddingChecklist ? 'Quick answer' : checklists.overviewTitle || 'Overview'}</h2>
+          <p class="text-sm text-slate-700 leading-relaxed">
+            {isPrintableWeddingChecklist
+              ? 'If you want a wedding plan you can see at a glance, print this checklist and work through the tasks in date order. Begin with the decisions that affect everything else—budget, guest count, date, and venue—then use the later pages to track vendors, payments, final details, and notes. You can start at the month that matches your own engagement length.'
+              : checklist.summary}
+          </p>
         </div>
+
+        {isPrintableWeddingChecklist && (
+          <nav aria-label="Printable checklist page navigation" class="rounded-2xl border border-[#F3E8EA] bg-slate-50 p-5">
+            <h2 class="mb-3 text-base font-bold text-[#1A1A1A]">On this page</h2>
+            <ul class="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
+              <li><a class="text-[#B76E79] hover:underline" href="#whats-inside-printable-checklist">What is inside the checklist?</a></li>
+              <li><a class="text-[#B76E79] hover:underline" href="#12-month-wedding-planning-roadmap">12-month roadmap</a></li>
+              <li><a class="text-[#B76E79] hover:underline" href="#use-printable-wedding-checklist">How to use the printable</a></li>
+              <li><a class="text-[#B76E79] hover:underline" href="#track-wedding-budget-and-vendors">Budget and vendor tracking</a></li>
+              <li><a class="text-[#B76E79] hover:underline" href="#print-and-binder-tips">Print and binder tips</a></li>
+            </ul>
+          </nav>
+        )}
 
         {checklist.slug === 'wedding-decor-flowers-checklist' && (
           <p class="text-sm text-slate-600 leading-relaxed">
@@ -263,9 +290,71 @@ const combinedSchema = JSON.stringify({
           </p>
         )}
         {checklist.slug === 'printable-wedding-planning-checklist' && (
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Need a shorter planning window? Use our <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6 month wedding planning guide</a> for a 24-week timeline.
-          </p>
+          <div class="space-y-8">
+            <section id="whats-inside-printable-checklist" class="space-y-3">
+              <h2 class="text-2xl font-bold text-[#1A1A1A]">What is inside the printable wedding planning checklist?</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                The free PDF is a four-page master checklist covering the decisions that shape a wedding: budget, guest list, venue, vendors, attire, stationery, final confirmations, and day-of essentials. Pages one through three move from the early months to the final week, while the final page keeps vendor contacts and payment details close to hand. It is designed to be marked up, moved into a binder, and adapted to your own plans—not followed as a rigid one-size-fits-all schedule.
+              </p>
+              <figure class="overflow-hidden rounded-2xl border border-[#F3E8EA] bg-slate-50 shadow-sm">
+                <img src="/images/checklists/printable-wedding-planning-checklist/printable-checklist-binder-setup.webp" alt="Open printable wedding planning checklist in an organized wedding binder" width="800" height="1200" loading="lazy" decoding="async" class="w-full max-h-[720px] object-cover" />
+                <figcaption class="px-4 py-3 text-xs text-slate-500">Keep the checklist in a wedding binder so decisions, quotes, and notes stay together.</figcaption>
+              </figure>
+            </section>
+
+            <section id="12-month-wedding-planning-roadmap" class="space-y-4">
+              <h2 class="text-2xl font-bold text-[#1A1A1A]">What should you do on a 12-month wedding planning timeline?</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Use the monthly order as a decision guide, not a deadline you have to copy exactly. Earlier tasks unlock the choices that come later, so it helps to secure the date and core budget before you spend time on smaller details. If your wedding is closer than a year away, start from the nearest month and prioritize bookings with limited availability.
+              </p>
+              <div class="overflow-x-auto rounded-2xl border border-[#F3E8EA]">
+                <table class="min-w-full text-left text-sm text-slate-600">
+                  <thead class="bg-[#FCECF0]/50 text-[#1A1A1A]">
+                    <tr><th class="px-4 py-3 font-bold">Planning stage</th><th class="px-4 py-3 font-bold">Use the checklist for</th></tr>
+                  </thead>
+                  <tbody class="divide-y divide-[#F3E8EA]">
+                    <tr><td class="px-4 py-3 font-semibold text-slate-700">12–9 months</td><td class="px-4 py-3">Budget, guest-count estimate, date, venue, and priority vendors.</td></tr>
+                    <tr><td class="px-4 py-3 font-semibold text-slate-700">8–5 months</td><td class="px-4 py-3">Attire, invitations, catering choices, ceremony details, and vendor follow-ups.</td></tr>
+                    <tr><td class="px-4 py-3 font-semibold text-slate-700">4–1 months</td><td class="px-4 py-3">RSVPs, final fittings, transport, timeline details, and outstanding balances.</td></tr>
+                    <tr><td class="px-4 py-3 font-semibold text-slate-700">Final week</td><td class="px-4 py-3">Confirmations, packing, hand-off notes, and a calm day-of plan.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section id="use-printable-wedding-checklist" class="space-y-3">
+              <h2 class="text-2xl font-bold text-[#1A1A1A]">How should you use a printable wedding checklist?</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                First, read the whole checklist without trying to complete it in one sitting. Circle the tasks that must happen first: agree a budget range, estimate guest count, choose a target date, and research venues. Next, add your own deadline beside each item and decide who owns it. Review the pages together once a week, cross out completed tasks, and move anything unfinished to a realistic new date. Use the <a href={localizeUrl('/tools/wedding-checklist-generator', currentLang)} class="text-[#B76E79] font-bold hover:underline">Wedding Checklist Generator</a> when you need a timeline built around your exact date.
+              </p>
+              <figure class="overflow-hidden rounded-2xl border border-[#F3E8EA] bg-slate-50 shadow-sm">
+                <img src="/images/checklists/printable-wedding-planning-checklist/printable-checklist-timeline.webp" alt="Wedding checklist pages arranged with a planning timeline" width="800" height="1200" loading="lazy" decoding="async" class="w-full max-h-[720px] object-cover" />
+                <figcaption class="px-4 py-3 text-xs text-slate-500">Turn each task into a date-based deadline rather than leaving it as a loose idea.</figcaption>
+              </figure>
+            </section>
+
+            <section id="track-wedding-budget-and-vendors" class="space-y-3">
+              <h2 class="text-2xl font-bold text-[#1A1A1A]">What should you track alongside the checklist?</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                A printed task list works best with a place for the details behind each decision. Keep vendor quotes, contract dates, deposit due dates, contact details, and your working budget beside it. Every time you sign or pay for something, update the payment tracker before moving on to the next task. Our <a href={localizeUrl('/tools/budget-calculator', currentLang)} class="text-[#B76E79] font-bold hover:underline">wedding budget calculator</a>, <a href={localizeUrl('/tools/guest-list-manager', currentLang)} class="text-[#B76E79] font-bold hover:underline">guest list manager</a>, and <a href={localizeUrl('/tools/wedding-planning-dashboard', currentLang)} class="text-[#B76E79] font-bold hover:underline">planning dashboard</a> can hold the information that is harder to fit on paper.
+              </p>
+              <figure class="overflow-hidden rounded-2xl border border-[#F3E8EA] bg-slate-50 shadow-sm">
+                <img src="/images/checklists/printable-wedding-planning-checklist/printable-checklist-budget-vendors.webp" alt="Wedding budget and vendor planning sheets beside wedding stationery" width="800" height="1200" loading="lazy" decoding="async" class="w-full max-h-[720px] object-cover" />
+                <figcaption class="px-4 py-3 text-xs text-slate-500">Track deposits and vendor details beside the tasks that depend on them.</figcaption>
+              </figure>
+            </section>
+
+            <section id="print-and-binder-tips" class="space-y-3 rounded-2xl bg-[#FCECF0]/30 p-5">
+              <h2 class="text-xl font-bold text-[#1A1A1A]">How can you print and organize the PDF?</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Print on standard letter-size paper and keep the pages in a small binder or folder with clear pockets for contracts and inspiration. Print a second copy of the vendor and payment page if you have a larger celebration, or write the date you updated each section in the margin. Prefer digital planning? Save the PDF to your device for reference, then use the dashboard to keep changing numbers and deadlines in one place.
+              </p>
+            </section>
+
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Need a shorter planning window? Use our <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6 month wedding planning guide</a> for a focused 24-week timeline, or open the printable PDF and begin with the first unchecked task today.
+            </p>
+          </div>
         )}
 
         {checklist.slug === 'indian-wedding-checklist' && (
@@ -291,7 +380,7 @@ const combinedSchema = JSON.stringify({
 
         <!-- Key Takeaways & Stages -->
         <div class="space-y-4">
-          <h2 class="text-2xl font-bold text-[#1A1A1A]">Key Execution Steps & Stages</h2>
+          <h2 class="text-2xl font-bold text-[#1A1A1A]">{isPrintableWeddingChecklist ? 'What does the printable checklist include?' : 'Key Execution Steps & Stages'}</h2>
           <div class="space-y-3">
             {checklist.keyTakeaways.map((takeaway: string, idx: number) => (
               <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl flex items-start gap-3">
@@ -308,15 +397,31 @@ const combinedSchema = JSON.stringify({
 
         <!-- Deep Dive Guidance -->
         <div class="space-y-4">
-          <h2 class="text-2xl font-bold text-[#1A1A1A]">Pro Tips for Using This Checklist</h2>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Organizing your wedding with a dedicated checklist ensures peace of mind. Combine this guide with our interactive planning tools to assign priorities, set deadlines, and track vendor budgets automatically.
-          </p>
-          <ul class="list-disc pl-5 rtl:pl-0 rtl:pr-5 space-y-2 text-sm text-slate-600">
-            <li><strong>Set Clear Priorities:</strong> Focus 60% of your initial planning time on the venue, caterer, and photographer.</li>
-            <li><strong>Keep Budgets Updated:</strong> Log every deposit immediately to prevent unexpected cost overruns.</li>
-            <li><strong>Delegate Tasks:</strong> Assign specific checklist items to your partner, maid of honor, or family members.</li>
-          </ul>
+          <h2 class="text-2xl font-bold text-[#1A1A1A]">{isPrintableWeddingChecklist ? 'How do you keep the checklist useful all the way to the wedding?' : 'Pro Tips for Using This Checklist'}</h2>
+          {isPrintableWeddingChecklist ? (
+            <>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                The checklist should become a record of decisions, not another sheet of paper to feel guilty about. Keep it visible, date the changes you make, and use it as the agenda for a short planning check-in with your partner or family. When a task is complete, tick it; when it changes, write the new plan beside it.
+              </p>
+              <ul class="list-disc pl-5 rtl:pl-0 rtl:pr-5 space-y-2 text-sm text-slate-600">
+                <li><strong>Use one source of truth:</strong> Put the latest vendor contact and payment date in one place, then make the printed page match it.</li>
+                <li><strong>Protect the early decisions:</strong> Do not let decor, favors, or small extras distract from budget, date, venue, and guest count.</li>
+                <li><strong>Give every task an owner:</strong> Write a name or initial beside shared tasks so follow-ups do not get lost.</li>
+                <li><strong>Plan for your actual timeline:</strong> If you are within six months, use the <a href={localizeUrl('/checklists/6-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">6-month wedding planning checklist</a>; if you have about twelve weeks, move to the <a href={localizeUrl('/checklists/3-month-wedding-planning-checklist', currentLang)} class="text-[#B76E79] font-bold hover:underline">3-month checklist</a>.</li>
+              </ul>
+            </>
+          ) : (
+            <>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Organizing your wedding with a dedicated checklist ensures peace of mind. Combine this guide with our interactive planning tools to assign priorities, set deadlines, and track vendor budgets automatically.
+              </p>
+              <ul class="list-disc pl-5 rtl:pl-0 rtl:pr-5 space-y-2 text-sm text-slate-600">
+                <li><strong>Set Clear Priorities:</strong> Focus 60% of your initial planning time on the venue, caterer, and photographer.</li>
+                <li><strong>Keep Budgets Updated:</strong> Log every deposit immediately to prevent unexpected cost overruns.</li>
+                <li><strong>Delegate Tasks:</strong> Assign specific checklist items to your partner, maid of honor, or family members.</li>
+              </ul>
+            </>
+          )}
         </div>
 
         <!-- FAQs -->
